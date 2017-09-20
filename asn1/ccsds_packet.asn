@@ -5,79 +5,17 @@ PUS-CcsdsPacket DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
-    PusUInt4, PusUInt11, PusUInt14, PusUInt16 FROM PUS-NbitIntegers
     PusTime FROM PUS-Time
+
     PusServiceType, PusSubserviceType FROM PUS-Services
+
+    PusVersionNumber, PusTimeReferenceStatus, PusMessageTypeCounter, PusPacketType, PusApid, 
+    PusChecksum, PusAcknowledgementFlags, PusPacketVersion, PusSecondaryHeaderFlag, PusSequenceFlags, 
+    PusSequenceCount, PusPacketDataLength FROM PUS-CcsdsPacketFields
+
     PusTM-1-1-Data FROM PUS-ST01;
 
 
-    -- Packet version number field
-    PusPacketVersion ::= ENUMERATED
-    {
-        pusCcsdsV1  (0) -- Version 0 for CCSDS 133. 0-B-1 (version 1 CCSDS packet)
-    }
-
-    -- Packet type field (1 bit)
-    PusPacketType ::= ENUMERATED
-    {
-        pusTm  (0),
-        pusTc  (1)
-    }
-    
-    -- Packet secondary header flag (1 bit)
-    PusSecondaryHeaderFlag ::= BOOLEAN
-    
-    -- Application Process ID (11 bits)
-    PusApid ::= PusUInt11
-    
-    -- reserved APIDs
-    pusApidTime PusApid ::= 0       -- time packets
-    pusApidIdle PusApid ::= 2047    -- idle packets
-    
-    -- Sequence flags (3 bits)
-    PusSequenceFlags ::= ENUMERATED
-    {
-        pusStandalonePacket (3)     -- all PUS standard packets are standalone (11)
-    }
-    
-    -- Sequence count (14 bits)
-    PusSequenceCount ::= PusUInt14
-    
-    -- Packet data length (16 bits)
-    PusPacketDataLength ::= PusUInt16
-
-    -- PUS version numver (4 bits)
-    PusVersionNumber ::= ENUMERATED
-    {
-        pusV0       (0),    -- ESA PSS-07-101
-        pusV1       (1),    -- ECSS-E-70-41A
-        pusV2       (2)     -- ECSS-E-ST-70-41C
-    }
-    
-    pusVersionCurrent PusVersionNumber ::= pusV2    -- current version
-    
-    -- Spacecraft time reference status
-    PusTimeReferenceStatus ::= PusUInt4
-
-    pusTimeReferenceStatusNone PusTimeReferenceStatus ::= 0 -- value for application processes without the capability to report it
-    
-    -- Message type counter (per destination and type)
-    PusMessageTypeCounter ::= PusUInt16
-    
-    pusMessageTypeCounterNone PusMessageTypeCounter ::= 0   -- value for application processes without such counter
-    
-    -- Acknowledgement flags (4 bits)
-    PusAcknowledgementFlags ::= SEQUENCE
-    {
-        acceptanceReportRequested   BOOLEAN,
-        startReportRequested        BOOLEAN,
-        progressReportRequested     BOOLEAN,
-        completionReportRequested   BOOLEAN
-    }
-    
-    -- Packet error control checksum (16 bits)
-    PusChecksum ::= PusUInt16
-    
     -- TM secondary header
     PusTmHeader ::= SEQUENCE
     {

@@ -5,7 +5,7 @@ PUS-ST01 DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
-    PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount FROM PUS-CcsdsPacket;
+    PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount FROM PUS-CcsdsPacketFields;
     
     -- Data of TM[1,1]
     PusTM-1-1-Data ::= SEQUENCE

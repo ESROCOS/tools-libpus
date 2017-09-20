@@ -4,5 +4,6 @@ build/*
 CMakeFiles
 cmake_install.cmake
 
-include/asn1    # Exclude source files generated from the .asn
-
+# Exclude source files generated from the .asn but not the CMakeLists.txt
+src/asn1/*
+!src/asn1/CMakeLists.txt

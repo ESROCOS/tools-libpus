@@ -24,6 +24,7 @@ cmake_minimum_required(VERSION 2.6)
 project(ESROCOS_PUS)
 
 add_subdirectory(asn1)
+add_subdirectory(src)
 
 
 ### Install stuff commenged ###
