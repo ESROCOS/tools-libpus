@@ -1,12 +1,15 @@
 -- ASN.1 definitions for small N-bit integers used in PUS packets
 
-PUS-NbitInteger DEFINITIONS ::=
+PUS-NbitIntegers DEFINITIONS ::=
 BEGIN
 
     PusUInt3  ::= INTEGER (0 .. 7)
     PusUInt4  ::= INTEGER (0 .. 5)
+    PusUInt8  ::= INTEGER (0 .. 255)
     PusUInt11 ::= INTEGER (0 .. 2047)
     PusUInt14 ::= INTEGER (0 .. 16383)
     PusUInt16 ::= INTEGER (0 .. 65535)
+
+    PusInt64 ::= INTEGER (-9223372036854775808 .. 9223372036854775807)
 
 END

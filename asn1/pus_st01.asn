@@ -1,0 +1,21 @@
+-- ASN.1 definitions for service ST[01] telecommand verification
+-- (cf. ECSS-E-ST-70-41C sections 6.1.4.3, 8.1)
+
+PUS-ST01 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount FROM PUS-CcsdsPacket;
+    
+    -- Data of TM[1,1]
+    PusTM-1-1-Data ::= SEQUENCE
+    {
+        packetVersion       PusPacketVersion,
+        packetType          PusPacketType,
+        secondaryHeaderFlag PusSecondaryHeaderFlag,
+        apid                PusApid,
+        sequenceFlags       PusSequenceFlags,
+        sequenceCount       PusSequenceCount
+    }
+    
+END

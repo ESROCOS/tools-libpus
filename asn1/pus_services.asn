@@ -6,11 +6,11 @@ PUS-Services DEFINITIONS ::=
 
 BEGIN
 
-	IMPORTS T-Int32, T-UInt32, T-Int8, T-UInt8, T-Boolean FROM TASTE-BasicTypes;
+	IMPORTS PusUInt8 FROM PUS-NbitIntegers;
 
     -- PUS service types
-    PusServiceType     ::= T-UInt8
-    PusSubserviceType  ::= T-UInt8
+    PusServiceType     ::= PusUInt8
+    PusSubserviceType  ::= PusUInt8
 
 	-- Standard service types (1..127)
     pusService-1-requestVerification            PusServiceType ::=  1

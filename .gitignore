@@ -1,0 +1,8 @@
+*~
+.*.swp
+build/*
+CMakeFiles
+cmake_install.cmake
+
+include/asn1    # Exclude source files generated from the .asn
+

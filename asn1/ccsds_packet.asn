@@ -1,12 +1,14 @@
 -- ASN.1 definitions for CCSDS packets
--- (cf. ECSS-E-ST-70-41C)
+-- (cf. ECSS-E-ST-70-41C section 7.4)
 
 PUS-CcsdsPacket DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
-    PusUInt4, PusUInt11, PusUInt14, PusUInt16 FROM PUS-NbitInteger
-    PusServiceType, PusSubserviceType FROM PUS-Services;
+    PusUInt4, PusUInt11, PusUInt14, PusUInt16 FROM PUS-NbitIntegers
+    PusTime FROM PUS-Time
+    PusServiceType, PusSubserviceType FROM PUS-Services
+    PusTM-1-1-Data FROM PUS-ST01;
 
 
     -- Packet version number field
@@ -73,9 +75,6 @@ BEGIN
         completionReportRequested   BOOLEAN
     }
     
-    -- PUS packet time
-    PusTime ::= INTEGER -- TBD
-    
     -- Packet error control checksum (16 bits)
     PusChecksum ::= PusUInt16
     
@@ -93,7 +92,10 @@ BEGIN
     }
     
     -- TM actual data
-    PusTmSourceData ::= INTEGER -- TBD
+    PusTmSourceData ::= CHOICE
+    {
+        st-1-1 PusTM-1-1-Data
+    }
     
     -- TM user data
     PusTmData ::= SEQUENCE
