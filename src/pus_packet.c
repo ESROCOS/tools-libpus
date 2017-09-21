@@ -1,4 +1,4 @@
-#include "pus_types.h"
+#include "pus_packet.h"
 
 
 int dummy(int a)

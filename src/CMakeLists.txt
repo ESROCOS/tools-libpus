@@ -1,14 +1,24 @@
 # Source files
 set(SOURCES
-    pus.c
+    pus_packet.c
+    pus_types.c
 )
 
 # Define the PUS library
 add_library(esrocos_pus STATIC ${SOURCES})
-
-# Specify linker
 set_target_properties(esrocos_pus PROPERTIES LINKER_LANGUAGE C)
-
-# Depends on the library with the types generated from ASN.1
 add_dependencies(esrocos_pus esrocos_pus_asn1)
 
+
+# Test executable
+add_executable(esrocos_pus_test main.c)
+target_link_libraries(esrocos_pus_test
+    esrocos_pus
+    esrocos_pus_asn1
+    esrocos_pus_asn1common
+)
+add_dependencies(esrocos_pus_test
+    esrocos_pus
+    esrocos_pus_asn1
+    esrocos_pus_asn1common
+)

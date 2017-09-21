@@ -22,13 +22,18 @@ cmake_minimum_required(VERSION 3.3)
 ###########################################
 
 
-
 project(ESROCOS_PUS)
+
+include(CTest)
+
+# Local directory with CMake modules
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules;${CMAKE_MODULE_PATH}")
 
 include_directories(include asn1/generated)
 
 add_subdirectory(asn1)
 add_subdirectory(src)
+add_subdirectory(test)
 
 
 ### Install stuff commenged ###

@@ -14,6 +14,9 @@ BEGIN
     {
         pusCcsdsV1  (0) -- Version 0 for CCSDS 133. 0-B-1 (version 1 CCSDS packet)
     }
+    
+    -- Default packet version
+    pusPacketVersionCurrent PusPacketVersion ::= pusCcsdsV1
 
     -- Packet type field (1 bit)
     PusPacketType ::= ENUMERATED

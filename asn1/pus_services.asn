@@ -12,6 +12,9 @@ BEGIN
     PusServiceType     ::= PusUInt8
     PusSubserviceType  ::= PusUInt8
 
+    -- Default value
+    pusService-none                             PusServiceType ::=  0
+
 	-- Standard service types (1..127)
     pusService-1-requestVerification            PusServiceType ::=  1
     pusService-2-deviceAccess           	    PusServiceType ::=  2
@@ -38,6 +41,9 @@ BEGIN
     pusService-23-fileManagement                PusServiceType ::= 23
 
 	-- Standard service subtypes
+
+    -- Default value
+    pusSubservice-none                      PusSubserviceType ::=  0
 
 	-- ST[01] Request Verification
 	pusTM-1-1-successfulAcceptance          PusSubserviceType ::=  1
