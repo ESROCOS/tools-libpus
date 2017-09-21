@@ -2,7 +2,7 @@
 # executed from 'project/build' with 'cmake ../'.
 
 cmake_minimum_required(VERSION 3.3)
-# Required version 3.3: provides "IN_LIST" operator in if()
+# required version 3.3: provides "IN_LIST" operator in if()
 
 ### Autoproj and SARGON stuff commented ###
 
@@ -24,6 +24,8 @@ cmake_minimum_required(VERSION 3.3)
 
 
 project(ESROCOS_PUS)
+
+include_directories(include asn1/generated)
 
 add_subdirectory(asn1)
 add_subdirectory(src)

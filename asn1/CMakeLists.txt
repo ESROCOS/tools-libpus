@@ -12,11 +12,10 @@ set(ASN1
 )
 
 file(GLOB ASN1_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/*.asn")
-set(ASN1_OUT_DIR "${CMAKE_SOURCE_DIR}/src/asn1")
+set(ASN1_OUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated/asn1")
 
 # Command for asn.1 compilation; creates timestamp file
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/pus-asn1-stamp
-    COMMAND mkdir -p ${ASN1_OUT_DIR}
     COMMAND mono $ENV{ASN1SCC} -c -typePrefix asn1Scc -o ${ASN1_OUT_DIR} ${ASN1_PATHS}
     COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/pus-asn1-stamp
     DEPENDS ${ASN1}
@@ -29,3 +28,7 @@ add_custom_target(
     asn1_compile_c
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/pus-asn1-stamp
 )
+
+# Add asn1 folder with generated C code
+add_subdirectory(generated)
+
