@@ -1,9 +1,24 @@
-# Compile all generated .c files
-file(GLOB SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.c")
+# Common files created by the ASN.1 compiler
+set(ASN1SCC_COMMON
+    acn.c
+    asn1crt.c
+    real.c
+)
 
-message(STATUS ${SOURCES})
+# Get generated .c files 
+file(GLOB C_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.c")
 
-# Define the library
+set(SOURCES "")
+
+foreach(cFile ${C_FILES})
+    get_filename_component(fName ${cFile} NAME)
+    if(NOT ${fName} IN_LIST ASN1SCC_COMMON)
+        list(APPEND SOURCES ${cFile})
+    endif()
+endforeach()
+
+
+# Define the types library
 add_library(esrocos_pus_asn1 STATIC ${SOURCES})
 
 # Specify linker
@@ -11,4 +26,10 @@ set_target_properties(esrocos_pus_asn1 PROPERTIES LINKER_LANGUAGE C)
 
 # Depends on the compilation of the ASN.1 files
 add_dependencies(esrocos_pus_asn1 asn1_compile_c)
+
+
+# Create a library with the common .c files
+add_library(esrocos_pus_asn1common STATIC ${ASN1SCC_COMMON})
+set_target_properties(esrocos_pus_asn1common PROPERTIES LINKER_LANGUAGE C)
+add_dependencies(esrocos_pus_asn1common asn1_compile_c)
 

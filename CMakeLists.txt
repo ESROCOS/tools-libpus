@@ -1,6 +1,8 @@
 # CMakeLists.txt has to be located in the project folder and cmake has to be
 # executed from 'project/build' with 'cmake ../'.
-cmake_minimum_required(VERSION 2.6)
+
+cmake_minimum_required(VERSION 3.3)
+# Required version 3.3: provides "IN_LIST" operator in if()
 
 ### Autoproj and SARGON stuff commented ###
 
