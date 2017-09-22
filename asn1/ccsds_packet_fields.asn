@@ -12,17 +12,17 @@ BEGIN
     -- Packet version number field
     PusPacketVersion ::= ENUMERATED
     {
-        pusCcsdsV1  (0) -- Version 0 for CCSDS 133. 0-B-1 (version 1 CCSDS packet)
+        pus-CCSDS-V1  (0) -- Version 0 for CCSDS 133. 0-B-1 (version 1 CCSDS packet)
     }
     
     -- Default packet version
-    pusPacketVersionCurrent PusPacketVersion ::= pusCcsdsV1
+    pus-PACKET-VERSION-CURRENT PusPacketVersion ::= pus-CCSDS-V1
 
     -- Packet type field (1 bit)
     PusPacketType ::= ENUMERATED
     {
-        pusTm  (0),
-        pusTc  (1)
+        pus-TM  (0),
+        pus-TC  (1)
     }
     
     -- Packet secondary header flag (1 bit)
@@ -32,13 +32,13 @@ BEGIN
     PusApid ::= PusUInt11
     
     -- reserved APIDs
-    pusApidTime PusApid ::= 0       -- time packets
-    pusApidIdle PusApid ::= 2047    -- idle packets
+    pus-APID-TIME PusApid ::= 0       -- time packets
+    pus-APID-IDLE PusApid ::= 2047    -- idle packets
     
     -- Sequence flags (3 bits)
     PusSequenceFlags ::= ENUMERATED
     {
-        pusStandalonePacket (3)     -- all PUS standard packets are standalone (11)
+        pus-STANDALONE-PACKET (3)     -- all PUS standard packets are standalone (11)
     }
     
     -- Sequence count (14 bits)
@@ -50,22 +50,22 @@ BEGIN
     -- PUS version numver (4 bits)
     PusVersionNumber ::= ENUMERATED
     {
-        pusV0       (0),    -- ESA PSS-07-101
-        pusV1       (1),    -- ECSS-E-70-41A
-        pusV2       (2)     -- ECSS-E-ST-70-41C
+        pus-V0       (0),    -- ESA PSS-07-101
+        pus-V1       (1),    -- ECSS-E-70-41A
+        pus-V2       (2)     -- ECSS-E-ST-70-41C
     }
     
-    pusVersionCurrent PusVersionNumber ::= pusV2    -- current version
+    pus-VERSION-CURRENT PusVersionNumber ::= pus-V2    -- current version
     
     -- Spacecraft time reference status
     PusTimeReferenceStatus ::= PusUInt4
 
-    pusTimeReferenceStatusNone PusTimeReferenceStatus ::= 0 -- value for application processes without the capability to report it
+    pus-TIME-REFERENCE-STATUS-NONE PusTimeReferenceStatus ::= 0 -- value for application processes without the capability to report it
     
     -- Message type counter (per destination and type)
     PusMessageTypeCounter ::= PusUInt16
     
-    pusMessageTypeCounterNone PusMessageTypeCounter ::= 0   -- value for application processes without such counter
+    pus-MESSAGE-TYPE-COUNTER-NONE PusMessageTypeCounter ::= 0   -- value for application processes without such counter
     
     -- Acknowledgement flags (4 bits)
     PusAcknowledgementFlags ::= SEQUENCE
