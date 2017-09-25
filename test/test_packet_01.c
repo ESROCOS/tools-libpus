@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 // Sample init and clean functions
 /*
@@ -19,12 +20,13 @@ void test_setPacketDefaults(void)
     pusPacket_t packet;
 
     pus_setPacketDefaults(&packet);
-    CU_ASSERT_EQUAL(pus_PACKET_VERSION_CURRENT, packet.packetVersion);
-    CU_ASSERT_FALSE(packet.secondaryHeaderFlag);
-    CU_ASSERT_EQUAL(pus_APID_IDLE, packet.apid);
-    CU_ASSERT_EQUAL(pus_STANDALONE_PACKET, packet.sequenceFlags);
-    CU_ASSERT_EQUAL(0, packet.sequenceCount);
 
+    CU_ASSERT_EQUAL(pus_PACKET_VERSION_CURRENT, pus_getPacketVersion(&packet));
+    CU_ASSERT_FALSE(pus_getSecondaryHeaderFlag(&packet));
+    CU_ASSERT_EQUAL(pus_APID_IDLE, pus_getApid(&packet));
+    CU_ASSERT_EQUAL(pus_STANDALONE_PACKET, pus_getSequenceFlags(&packet));
+    CU_ASSERT_EQUAL(0, pus_getSequenceCount(&packet));
+    CU_ASSERT_EQUAL(pus_PACKET_DATA_NONE, pus_getPacketDataKind(&packet));
 }
 
 void test_setSequenceIncrement(void)
@@ -34,42 +36,6 @@ void test_setSequenceIncrement(void)
 }
 
 
-/*
-void test_success2(void)
-{
-   CU_ASSERT_NOT_EQUAL(2, -1);
-}
-
-void test_success3(void)
-{
-   CU_ASSERT_STRING_EQUAL("string #1", "string #1");
-}
-
-void test_success4(void)
-{
-   CU_ASSERT_STRING_NOT_EQUAL("string #1", "string #2");
-}
-
-void test_failure1(void)
-{
-   CU_ASSERT(FALSE);
-}
-
-void test_failure2(void)
-{
-   CU_ASSERT_EQUAL(2, 3);
-}
-
-void test_failure3(void)
-{
-   CU_ASSERT_STRING_NOT_EQUAL("string #1", "string #1");
-}
-
-void test_failure4(void)
-{
-   CU_ASSERT_STRING_EQUAL("string #1", "string #2");
-}
-*/
 
 int main()
 {

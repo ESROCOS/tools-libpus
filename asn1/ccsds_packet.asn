@@ -81,10 +81,10 @@ BEGIN
     -- Packet data
     PusPacketData ::= CHOICE
     {
-        tmWithHeader    PusTmHeaderData,
-        tmWithoutHeader PusTmData,
-        tcWithHeader    PusTcHeaderData,
-        tcWithoutHeader PusTcData
+        tmData          PusTmHeaderData,
+        tmDataNoHeader  PusTmData,
+        tcData          PusTcHeaderData,
+        tcDataNoHeader  PusTcData
     }
 
     -- CCSDS packet

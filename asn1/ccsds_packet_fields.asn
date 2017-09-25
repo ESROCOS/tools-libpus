@@ -50,9 +50,10 @@ BEGIN
     -- PUS version numver (4 bits)
     PusVersionNumber ::= ENUMERATED
     {
-        pus-V0       (0),    -- ESA PSS-07-101
-        pus-V1       (1),    -- ECSS-E-70-41A
-        pus-V2       (2)     -- ECSS-E-ST-70-41C
+        pus-V0               (0),   -- ESA PSS-07-101
+        pus-V1               (1),   -- ECSS-E-70-41A
+        pus-V2               (2),   -- ECSS-E-ST-70-41C
+        pus-INVALID-VERSION (15)    -- Invalid value
     }
     
     pus-VERSION-CURRENT PusVersionNumber ::= pus-V2    -- current version

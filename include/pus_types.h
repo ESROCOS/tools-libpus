@@ -15,6 +15,9 @@ typedef asn1SccPusApid pusApid_t; //!< Type of CCSDS packet APID
 typedef asn1SccPusSequenceFlags pusSequenceFlags_t; //!< Type of CCSDS packet sequence flags
 typedef asn1SccPusSequenceCount pusSequenceCount_t; //!< Type of CCSDS packet sequence flags
 typedef uint16_t pusPacketDataLength_t; //!< Type of CCSDS packet data length; use directly uint16_t to enforce limit
+typedef asn1SccPusVersionNumber pusVersion_t; //!< Type of the PUS version number
+typedef asn1SccPusServiceType pusService_t; //!< Type of the PUS service type
+typedef asn1SccPusSubserviceType pusSubservice_t; //!< Type of the PUS subservice type
 
 
 
@@ -23,6 +26,9 @@ extern const pusPacketType_t pus_TM;
 extern const pusPacketType_t pus_TC;
 
 extern const pusSequenceFlags_t pus_STANDALONE_PACKET;
+
+extern const pusVersion_t pus_V2;
+extern const pusVersion_t pus_INVALID_VERSION;
 
 
 // Type limits
@@ -39,14 +45,36 @@ extern const pusSequenceFlags_t pus_STANDALONE_PACKET;
 
 // Error type and codes
 
+//! Type for the result of PUS library operations
 typedef enum
 {
     PUS_SUCCESS = 0,
     PUS_FAIL,
     
-    // For iteration
+    // Limit
     PUS_LAST_RESULT
 } pusResult_t;
+
+
+
+
+
+// Supporting types for unions
+
+//! Possible types of data in a CCSDS packet
+typedef enum
+{
+    pus_PACKET_DATA_NONE = 0,
+    pus_TM_DATA,
+    pus_TM_DATA_NO_HEADER,
+    pus_TC_DATA,
+    pus_TC_DATA_NO_HEADER,
+    
+    // Limit
+    pus_PACKET_DATA_LAST
+} pusPacketDataKind_t;
+
+
 
 #endif //PUS_TYPES_H
 

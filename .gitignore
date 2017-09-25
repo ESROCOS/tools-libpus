@@ -1,6 +1,12 @@
 *~
 .*.swp
+
+.project
+.cproject
+
 build/*
+debug/*
+release/*
 CMakeFiles
 cmake_install.cmake
 

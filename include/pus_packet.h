@@ -52,6 +52,24 @@ pusPacketDataLength_t pus_getPacketDataLength(const pusPacket_t* packet);
  */
 void pus_setPacketDataLength(pusPacket_t* packet, pusPacketDataLength_t length);
 
+//! Initialize the packet data field with no data (sets length=0 and data=NONE)
+void pus_setPacketDataNone(pusPacket_t* packet);
+
+//! Setter for the packet data field according to the type of packet
+void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);
+
+//! Getter for the kind of packet data field
+pusPacketDataKind_t pus_getPacketDataKind(pusPacket_t* packet);
+
+//! Getter for the PUS version number in secondary header
+/*! Must be called only if there is a secondary header
+ */
+pusVersion_t pus_getPusVersion(pusPacket_t* packet);
+
+//! Setter for the PUS version number in secondary header
+/*! Must be called only if there is a secondary header
+ */
+void pus_setPusVersion(pusPacket_t* packet, pusVersion_t version);
 
 
 // Utility functions for packet types
