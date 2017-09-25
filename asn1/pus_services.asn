@@ -43,7 +43,7 @@ BEGIN
 	-- Standard service subtypes
 
     -- Default value
-    pusSubservice-NONE                      PusSubserviceType ::=  0
+    pusSubtype-NONE                        PusSubserviceType ::=  0
 
 	-- ST[01] Request Verification
 	pus-TM-1-1-successfulAcceptance         PusSubserviceType ::=  1

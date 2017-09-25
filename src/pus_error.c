@@ -44,11 +44,3 @@ void pus_clearError()
 }
 
 
-//! Get last error code
-/*! \param[out] outError If not null address is passed, writes the error code to it
- *  \param[out] outSource If not null address is passed, writes the error source to it
- *  \param[out] outData If not null address is passed, writes the error data to it
- *  \return The error code
- *  \warning Not thread-safe
- *
- */

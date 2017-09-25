@@ -3,6 +3,7 @@
 #include "CUnit/Automated.h"
 
 #include "pus_packet.h"
+#include "pus_time.h"
 
 #include <stdio.h>
 #include <math.h>
@@ -14,9 +15,8 @@ int init_suite_pusPacket(void) { return 0; }
 int clean_suite_pusPacket(void) { return 0; }
 */
 
-void test_setPacketDefaults(void)
+void test_packetHeader(void)
 {
-    pusResult_t result = PUS_FAIL;
     pusPacket_t packet;
 
     pus_setPacketDefaults(&packet);
@@ -35,7 +35,41 @@ void test_setSequenceIncrement(void)
     CU_ASSERT_EQUAL(0, pus_incrementSequenceCount(pow(2,14) - 1));
 }
 
+void test_time(void)
+{
+	pusTime_t t1, t2;
+	struct timespec ts;
 
+	pus_now(&t1);
+	pus_time2posix(&ts, &t1);
+	pus_posix2time(&t2, &ts);
+
+	CU_ASSERT_EQUAL(t1.tv_sec, t2.tv_sec);
+	CU_ASSERT_EQUAL(t1.tv_nsec, t2.tv_nsec);
+}
+
+void test_tmHeader(void)
+{
+	pusPacket_t packet;
+
+	pus_initTmPacket(&packet);
+
+	CU_ASSERT_EQUAL(pus_TM, pus_getPacketType(&packet));
+    CU_ASSERT_TRUE(pus_getSecondaryHeaderFlag(&packet));
+
+    CU_ASSERT_EQUAL(pus_VERSION_CURRENT, pus_getPusVersion(&packet));
+    CU_ASSERT_EQUAL(pus_TIME_REFERENCE_STATUS_NONE, pus_getTimeReferenceStatus(&packet));
+    CU_ASSERT_EQUAL(pusService_NONE, pus_getTmService(&packet));
+    CU_ASSERT_EQUAL(pusSubtype_NONE, pus_getTmSubtype(&packet));
+    CU_ASSERT_EQUAL(pus_MESSAGE_TYPE_COUNTER_NONE, pus_getMessageTypeCounter(&packet));
+    CU_ASSERT_EQUAL(pus_APID_IDLE, pus_getDestination(&packet));
+
+    pusTime_t time;
+    pus_getPacketTime(&time, &packet);
+    CU_ASSERT_NOT_EQUAL(0, time.tv_sec);
+
+    CU_ASSERT_EQUAL(pus_TM_DATA, pus_getPacketDataKind(&packet));
+}
 
 int main()
 {
@@ -56,8 +90,11 @@ int main()
     }
 
     /* add the tests to the suite */
-    if ((NULL == CU_add_test(pSuite, "test_setPacketDefaults_null", test_setPacketDefaults)) ||
-        (NULL == CU_add_test(pSuite, "test_setSequenceIncrement", test_setSequenceIncrement)))
+    if ((NULL == CU_add_test(pSuite, "test_packetHeader", test_packetHeader)) ||
+        (NULL == CU_add_test(pSuite, "test_setSequenceIncrement", test_setSequenceIncrement)) ||
+		(NULL == CU_add_test(pSuite, "test_time", test_time)) ||
+		(NULL == CU_add_test(pSuite, "test_tmHeader", test_tmHeader)) ||
+		0)
     {
       CU_cleanup_registry();
       return CU_get_error();

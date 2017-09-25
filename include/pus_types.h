@@ -18,6 +18,9 @@ typedef uint16_t pusPacketDataLength_t; //!< Type of CCSDS packet data length; u
 typedef asn1SccPusVersionNumber pusVersion_t; //!< Type of the PUS version number
 typedef asn1SccPusServiceType pusService_t; //!< Type of the PUS service type
 typedef asn1SccPusSubserviceType pusSubservice_t; //!< Type of the PUS subservice type
+typedef asn1SccPusTimeReferenceStatus pusTimeRefStatus_t; //!< Type of the TM time reference status field
+typedef asn1SccPusMessageTypeCounter pusMsgTypeCount_t; //!< Type of the TM message type counter filed
+typedef asn1SccPusTime pusTime_t; //!< Type of the TM packet time field
 
 
 

@@ -2,6 +2,7 @@
 set(SOURCES
     pus_error.c
     pus_packet.c
+    pus_time.c
     pus_types.c
 )
 
