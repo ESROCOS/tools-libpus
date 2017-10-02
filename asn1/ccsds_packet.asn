@@ -35,14 +35,6 @@ BEGIN
         st-1-1 PusTM-1-1-Data
     }
     
-    -- TM user data
-    PusTmData ::= SEQUENCE
-    {
-        data        PusTmSourceData,
-        -- no spare bits
-        checksum    PusChecksum
-    }
-
     -- TC secondary header
     PusTcHeader ::= SEQUENCE
     {
@@ -57,24 +49,16 @@ BEGIN
     -- TC actual data
     PusTcApplicationData ::= INTEGER -- TBD
     
-    -- TC user data
-    PusTcData ::= SEQUENCE
-    {
-        data        PusTcApplicationData,
-        -- no spare bits
-        checksum    PusChecksum
-    }
-    
     -- TM/TC header + data
     PusTmHeaderData ::= SEQUENCE
     {
         header  PusTmHeader,
-        data    PusTmData
+        data    PusTmSourceData
     }
     PusTcHeaderData ::= SEQUENCE
     {
         header  PusTcHeader,
-        data    PusTcData
+        data    PusTcApplicationData
     }
 
 
@@ -82,12 +66,16 @@ BEGIN
     PusPacketData ::= CHOICE
     {
         tmData          PusTmHeaderData,
-        tmDataNoHeader  PusTmData,
+        tmDataNoHeader  PusTmSourceData,
         tcData          PusTcHeaderData,
-        tcDataNoHeader  PusTcData
+        tcDataNoHeader  PusTcApplicationData
     }
 
     -- CCSDS packet
+    -- TM/TC user data contains only the source/application data. No spare bits or checksum is used.
+    -- Spare bits are not needed because TASTE handles the packing of the fields.
+    -- Checksum is not used because TASTE handles encoding/decoding, and there might be 
+    -- mismatched checksums if a message is transmitted between hosts with different endianness. 
     PusPacket ::= SEQUENCE
     {
         packetVersion       PusPacketVersion,

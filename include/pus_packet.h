@@ -2,6 +2,7 @@
 #define PUS_PACKET_H
 
 #include "pus_types.h"
+#include "pus_error.h"
 
 // Getters and setters
 
@@ -231,6 +232,40 @@ void pus_initTmPacket(pusPacket_t* packet);
 
 //! Initialize with defaults the packet header and secondary header of a TC packet
 void pus_initTcPacket(pusPacket_t* packet);
+
+//! Initialize a TM packet without secondary header
+/*! E.g., for time report packets of ST[09]
+ */
+void pus_initTmPacketNoHeader(pusPacket_t* packet);
+
+//! Initialize a TC packet without secondary header
+void pus_initTcPacketNoHeader(pusPacket_t* packet);
+
+
+// Packet verification
+
+//! Verify the CCSDS header defaults
+pusError_t pus_verifyCcsdsHeaderDefaults(const pusPacket_t* packet);
+
+//! Check that the data kind matches the CCSDS header flags
+pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet);
+
+//! Verify the secondary header defaults for a TM
+pusError_t pus_verifyTmSecondaryHeaderDefaults(const pusPacket_t* packet);
+
+//! Verify the secondary header defaults for a TC
+pusError_t pus_checkTcSecondaryHeaderDefaults(const pusPacket_t* packet);
+
+//! Verify the header defaults for a TM
+/*! Includes check for CCSDS header defaults and packet data kind
+ */
+pusError_t pus_verifyTmHeaderDefaults(const pusPacket_t* packet);
+
+//! Verify the header defaults for a TC
+/*! Includes check for CCSDS header defaults and packet data kind
+ */
+pusError_t pus_verifyTcHeaderDefaults(const pusPacket_t* packet);
+
 
 
 
