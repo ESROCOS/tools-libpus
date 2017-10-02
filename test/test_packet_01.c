@@ -57,18 +57,39 @@ void test_tmHeader(void)
 	CU_ASSERT_EQUAL(pus_TM, pus_getPacketType(&packet));
     CU_ASSERT_TRUE(pus_getSecondaryHeaderFlag(&packet));
 
-    CU_ASSERT_EQUAL(pus_VERSION_CURRENT, pus_getPusVersion(&packet));
-    CU_ASSERT_EQUAL(pus_TIME_REFERENCE_STATUS_NONE, pus_getTimeReferenceStatus(&packet));
+    CU_ASSERT_EQUAL(pus_VERSION_CURRENT, pus_getTmPusVersion(&packet));
+    CU_ASSERT_EQUAL(pus_TIME_REFERENCE_STATUS_NONE, pus_getTmTimeReferenceStatus(&packet));
     CU_ASSERT_EQUAL(pusService_NONE, pus_getTmService(&packet));
     CU_ASSERT_EQUAL(pusSubtype_NONE, pus_getTmSubtype(&packet));
-    CU_ASSERT_EQUAL(pus_MESSAGE_TYPE_COUNTER_NONE, pus_getMessageTypeCounter(&packet));
-    CU_ASSERT_EQUAL(pus_APID_IDLE, pus_getDestination(&packet));
+    CU_ASSERT_EQUAL(pus_MESSAGE_TYPE_COUNTER_NONE, pus_getTmMessageTypeCounter(&packet));
+    CU_ASSERT_EQUAL(pus_APID_IDLE, pus_getTmDestination(&packet));
 
     pusTime_t time;
-    pus_getPacketTime(&time, &packet);
+    pus_getTmPacketTime(&time, &packet);
     CU_ASSERT_NOT_EQUAL(0, time.tv_sec);
 
     CU_ASSERT_EQUAL(pus_TM_DATA, pus_getPacketDataKind(&packet));
+}
+
+void test_tcHeader(void)
+{
+	pusPacket_t packet;
+
+	pus_initTcPacket(&packet);
+
+	CU_ASSERT_EQUAL(pus_TC, pus_getPacketType(&packet));
+    CU_ASSERT_TRUE(pus_getSecondaryHeaderFlag(&packet));
+
+    CU_ASSERT_EQUAL(pus_VERSION_CURRENT, pus_getTcPusVersion(&packet));
+    CU_ASSERT_FALSE(pus_getTcAckFlagAcceptance(&packet));
+    CU_ASSERT_FALSE(pus_getTcAckFlagStart(&packet));
+    CU_ASSERT_FALSE(pus_getTcAckFlagProgress(&packet));
+    CU_ASSERT_FALSE(pus_getTcAckFlagCompletion(&packet));
+    CU_ASSERT_EQUAL(pusService_NONE, pus_getTcService(&packet));
+    CU_ASSERT_EQUAL(pusSubtype_NONE, pus_getTcSubtype(&packet));
+    CU_ASSERT_EQUAL(pus_APID_IDLE, pus_getTcSource(&packet));
+
+    CU_ASSERT_EQUAL(pus_TC_DATA, pus_getPacketDataKind(&packet));
 }
 
 int main()
@@ -94,6 +115,7 @@ int main()
         (NULL == CU_add_test(pSuite, "test_setSequenceIncrement", test_setSequenceIncrement)) ||
 		(NULL == CU_add_test(pSuite, "test_time", test_time)) ||
 		(NULL == CU_add_test(pSuite, "test_tmHeader", test_tmHeader)) ||
+		(NULL == CU_add_test(pSuite, "test_tcHeader", test_tcHeader)) ||
 		0)
     {
       CU_cleanup_registry();

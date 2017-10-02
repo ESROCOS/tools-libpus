@@ -21,7 +21,7 @@ typedef asn1SccPusSubserviceType pusSubservice_t; //!< Type of the PUS subservic
 typedef asn1SccPusTimeReferenceStatus pusTimeRefStatus_t; //!< Type of the TM time reference status field
 typedef asn1SccPusMessageTypeCounter pusMsgTypeCount_t; //!< Type of the TM message type counter filed
 typedef asn1SccPusTime pusTime_t; //!< Type of the TM packet time field
-
+typedef asn1SccPusAcknowledgementFlags pusAckFlags_t; //!< Type of the TC packet acknowledgment flags
 
 
 // Aliases for enum values

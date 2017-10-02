@@ -61,15 +61,25 @@ void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);
 //! Getter for the kind of packet data field
 pusPacketDataKind_t pus_getPacketDataKind(const pusPacket_t* packet);
 
-//! Getter for the PUS version number in secondary header
-/*! Must be called only if there is a secondary header
+//! Getter for the PUS version number in TM secondary header
+/*! Must be called for TM packet with secondary header
  */
-pusVersion_t pus_getPusVersion(const pusPacket_t* packet);
+pusVersion_t pus_getTmPusVersion(const pusPacket_t* packet);
 
-//! Setter for the PUS version number in secondary header
-/*! Must be called only if there is a secondary header
+//! Setter for the PUS version number in TM secondary header
+/*! Must be called for TM packet with secondary header
  */
-void pus_setPusVersion(pusPacket_t* packet, pusVersion_t version);
+void pus_setTmPusVersion(pusPacket_t* packet, pusVersion_t version);
+
+//! Getter for the PUS version number in TC secondary header
+/*! Must be called for TC packet with secondary header
+ */
+pusVersion_t pus_getTcPusVersion(const pusPacket_t* packet);
+
+//! Setter for the PUS version number in TC secondary header
+/*! Must be called for TC packet with secondary header
+ */
+void pus_setTcPusVersion(pusPacket_t* packet, pusVersion_t version);
 
 //! Getter for the TM service type
 /*! Must be called for TM packet with secondary header
@@ -91,48 +101,107 @@ pusSubservice_t pus_getTmSubtype(const pusPacket_t* packet);
  */
 void pus_setTmSubtype(pusPacket_t* packet, pusService_t subtype);
 
+//! Getter for the TC service type
+/*! Must be called for TC packet with secondary header
+ */
+pusService_t pus_getTcService(const pusPacket_t* packet);
+
+//! Setter for the TC service type
+/*! Must be called for TC packet with secondary header
+ */
+void pus_setTcService(pusPacket_t* packet, pusService_t service);
+
+//! Getter for the TC service subtype
+/*! Must be called for TC packet with secondary header
+ */
+pusSubservice_t pus_getTcSubtype(const pusPacket_t* packet);
+
+//! Setter for the TC service subtype
+/*! Must be called for TC packet with secondary header
+ */
+void pus_setTcSubtype(pusPacket_t* packet, pusService_t subtype);
+
 //! Getter for the TM time reference status field
 /*! Must be called for a TM packet with header
  */
-pusTimeRefStatus_t pus_getTimeReferenceStatus(const pusPacket_t* packet);
+pusTimeRefStatus_t pus_getTmTimeReferenceStatus(const pusPacket_t* packet);
 
 //! Setter for the TM time reference status field
 /*! Must be called for a TM packet with header
  */
-void pus_setTimeReferenceStatus(pusPacket_t* packet, pusTimeRefStatus_t status);
+void pus_setTmTimeReferenceStatus(pusPacket_t* packet, pusTimeRefStatus_t status);
 
 //! Getter for the TM message type counter field
 /*! Must be called for a TM packet with header
  */
-pusMsgTypeCount_t pus_getMessageTypeCounter(const pusPacket_t* packet);
+pusMsgTypeCount_t pus_getTmMessageTypeCounter(const pusPacket_t* packet);
 
 //! Setter for the TM message type counter field
 /*! Must be called for a TM packet with header
  */
-void pus_setMessageTypeCounter(pusPacket_t* packet, pusMsgTypeCount_t count);
+void pus_setTmMessageTypeCounter(pusPacket_t* packet, pusMsgTypeCount_t count);
 
 //! Getter for the TM packet destination field
 /*! Must be called for a TM packet with header
  */
-pusApid_t pus_getDestination(const pusPacket_t* packet);
+pusApid_t pus_getTmDestination(const pusPacket_t* packet);
 
 //! Setter for the TM packet destination field
 /*! Must be called for a TM packet with header
  */
-void pus_setDestination(pusPacket_t* packet, pusApid_t apid);
+void pus_setTmDestination(pusPacket_t* packet, pusApid_t apid);
+
+//! Getter for the TC packet source field
+/*! Must be called for a TC packet with header
+ */
+pusApid_t pus_getTcSource(const pusPacket_t* packet);
+
+//! Setter for the TC packet destination field
+/*! Must be called for a TC packet with header
+ */
+void pus_setTcSource(pusPacket_t* packet, pusApid_t apid);
 
 //! Getter for the TM packet time field
 /*! Must be called for a TM packet with header
  * \param[out] outTime Address to write the time value
  */
-void pus_getPacketTime(pusTime_t* outTime, const pusPacket_t* packet);
+void pus_getTmPacketTime(pusTime_t* outTime, const pusPacket_t* packet);
 
 //! Setter for the TM packet time field
 /*! Must be called for a TM packet with header
  * \param[in] time Address of the time value
  */
-void pus_setPacketTime(pusPacket_t* packet, const pusTime_t* time);
+void pus_setTmPacketTime(pusPacket_t* packet, const pusTime_t* time);
 
+//! Set the TM packet time field to now
+/*! Must be called for a TM packet with header
+ */
+void pus_setTmPacketTimeNow(pusPacket_t* packet);
+
+//! Getter for the TC packet acknowledgment flag for acceptance report
+/*! Must be called for a TC packet with header
+ */
+bool pus_getTcAckFlagAcceptance(const pusPacket_t* packet);
+
+//! Getter for the TC packet acknowledgment flag for start report
+/*! Must be called for a TC packet with header
+ */
+bool pus_getTcAckFlagStart(const pusPacket_t* packet);
+
+//! Getter for the TC packet acknowledgment flag for progress report
+/*! Must be called for a TC packet with header
+ */
+bool pus_getTcAckFlagProgress(const pusPacket_t* packet);
+
+//! Getter for the TC packet acknowledgment flag for completion report
+/*! Must be called for a TC packet with header
+ */
+bool pus_getTcAckFlagCompletion(const pusPacket_t* packet);
+
+//! Setter for the TC packet acknowledgment flags
+/*! Must be called for a TC packet with header
+ */
+void pus_setTcAckFlags(pusPacket_t* packet, bool acceptance, bool start, bool progress, bool completion);
 
 
 
@@ -159,6 +228,9 @@ void pus_setPacketDefaults(pusPacket_t* packet);
  *  excluded.
  */
 void pus_initTmPacket(pusPacket_t* packet);
+
+//! Initialize with defaults the packet header and secondary header of a TC packet
+void pus_initTcPacket(pusPacket_t* packet);
 
 
 
