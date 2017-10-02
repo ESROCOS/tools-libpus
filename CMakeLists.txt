@@ -32,15 +32,22 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules;${CMAKE_MODULE_PATH}")
 include_directories(include asn1/generated)
 
 add_subdirectory(asn1)
+add_subdirectory(doc)
 add_subdirectory(src)
 add_subdirectory(test)
 
 
-### Install stuff commenged ###
+### Install stuff commented ###
 
 #install(DIRECTORY ${CMAKE_SOURCE_DIR}/asn/base DESTINATION share/taste/asn1_types)
 #install(DIRECTORY ${CMAKE_SOURCE_DIR}/asn/drivers DESTINATION share/taste/asn1_types)
 #install(DIRECTORY ${CMAKE_SOURCE_DIR}/asn/sargon DESTINATION share/taste/asn1_types)
 
 ###############################
+
+# The project version number.
+set(VERSION_MAJOR   0   CACHE STRING "Project major version number.")
+set(VERSION_MINOR   1   CACHE STRING "Project minor version number.")
+set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
+mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
