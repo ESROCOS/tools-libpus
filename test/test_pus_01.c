@@ -2,6 +2,7 @@
 #include "CUnit/Console.h"
 #include "CUnit/Automated.h"
 
+#include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_time.h"
 
@@ -181,6 +182,29 @@ void test_packetVerification(void)
 #endif
 }
 
+void test_error()
+{
+	pusError_t err;
+	pusErrorFunction_t fun;
+	pusErrorData_t dat;
+
+	pus_clearError();
+	CU_ASSERT_FALSE(PUS_ISERROR());
+	PUS_SETERROR(PUS_ERROR_LIMIT);
+	CU_ASSERT(PUS_ISERROR());
+	CU_ASSERT_EQUAL(PUS_ERROR_LIMIT, PUS_GETERROR());
+	CU_ASSERT_EQUAL(PUS_ERROR_LIMIT, pus_getError(&err, &fun, &dat));
+	CU_ASSERT_NSTRING_EQUAL("test_error", fun, 20);
+	pus_clearError();
+	CU_ASSERT_FALSE(PUS_ISERROR());
+	PUS_SETERROR2(PUS_ERROR_NOT_IMPLEMENTED, 5);
+	CU_ASSERT(PUS_ISERROR());
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_IMPLEMENTED, pus_getError(&err, &fun, &dat));
+	CU_ASSERT_NSTRING_EQUAL("test_error", fun, 20);
+	CU_ASSERT_EQUAL(5, dat);
+}
+
+
 int main()
 {
     CU_pSuite pSuite = NULL;
@@ -202,10 +226,11 @@ int main()
     /* add the tests to the suite */
     if ((NULL == CU_add_test(pSuite, "test_packetHeader", test_packetHeader)) ||
         (NULL == CU_add_test(pSuite, "test_setSequenceIncrement", test_setSequenceIncrement)) ||
-		(NULL == CU_add_test(pSuite, "test_time", test_time)) ||
 		(NULL == CU_add_test(pSuite, "test_tmHeader", test_tmHeader)) ||
 		(NULL == CU_add_test(pSuite, "test_tcHeader", test_tcHeader)) ||
 		(NULL == CU_add_test(pSuite, "test_packetVerification", test_packetVerification)) ||
+		(NULL == CU_add_test(pSuite, "test_time", test_time)) ||
+		(NULL == CU_add_test(pSuite, "test_error", test_error)) ||
 		0)
     {
       CU_cleanup_registry();
