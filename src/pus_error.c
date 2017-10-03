@@ -2,19 +2,19 @@
 
 // Error variables
 volatile pusError_t lastErrorCode = PUS_NO_ERROR;
-volatile pusErrorSource_t lastErrorSource = PUS_SOURCE_NONE;
+volatile pusErrorFunction_t lastErrorFunction = "none";
 volatile pusErrorData_t lastErrorData = 0;
 
 
-void pus_setError(pusError_t error, pusErrorSource_t source, pusErrorData_t data)
+void pus_setError(pusError_t error, const char* function, pusErrorData_t data)
 {
     lastErrorCode = error;
-    lastErrorSource = source;
+    lastErrorFunction = function;
     lastErrorData = data;
 }
 
 
-pusError_t pus_getError(pusError_t* outError, pusErrorSource_t* outSource, pusErrorData_t* outData)
+pusError_t pus_getError(pusError_t* outError, pusErrorFunction_t* outFunction, pusErrorData_t* outData)
 {
     pusError_t code = lastErrorCode;
     
@@ -23,9 +23,9 @@ pusError_t pus_getError(pusError_t* outError, pusErrorSource_t* outSource, pusEr
         *outError = code;
     }
     
-    if (NULL != outSource)
+    if (NULL != outFunction)
     {
-        *outData = lastErrorSource;
+        *outFunction = lastErrorFunction;
     }
     
     if (NULL != outData)
@@ -40,6 +40,7 @@ pusError_t pus_getError(pusError_t* outError, pusErrorSource_t* outSource, pusEr
 void pus_clearError()
 {
     lastErrorCode = PUS_NO_ERROR;
+    lastErrorFunction = "none";
     lastErrorData = 0;
 }
 

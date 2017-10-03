@@ -4,9 +4,9 @@
  *  This module contains functions to initialize PUS packets, get and set the
  *  packet header fields, and verify the content of the headers.
  *
- *  Getter/setter and utility functions use the pus_setError/pus_getError mechanism
- *  for error reporting.
- *
+ *  Getter/setter and utility functions use the \ref pus_setError / \ref pus_getError mechanism
+ *  for error reporting. Other functions return \ref pusError_t, but may also set
+ *  error codes. The functions do not check error codes.
  *
  *  \author GMV
  */

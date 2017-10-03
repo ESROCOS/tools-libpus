@@ -7,6 +7,12 @@ void pus_now(pusTime_t* outNow)
 {
 	assert(NULL != outNow);
 
+	if (NULL == outNow)
+	{
+		PUS_SETERROR(PUS_ERROR_NULLPTR);
+		return;
+	}
+
 	struct timespec ts;
 
 	if (0 == clock_gettime(CLOCK_REALTIME, &ts))
@@ -15,9 +21,9 @@ void pus_now(pusTime_t* outNow)
 	}
 	else
 	{
-		pus_setError(PUS_ERROR_SYSTEM_TIME, PUS_NOW, 0);
+		PUS_SETERROR(PUS_ERROR_SYSTEM_TIME);
+		return;
 	}
-
 }
 
 void pus_time2posix(struct timespec* outPosixTime, const pusTime_t* pusTime)
