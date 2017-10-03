@@ -1,3 +1,16 @@
+/*! \file pus_packet.h
+ *  \brief Functions for managing PUS TM/TC packets and their header information.
+ *
+ *  This module contains functions to initialize PUS packets, get and set the
+ *  packet header fields, and verify the content of the headers.
+ *
+ *  Getter/setter and utility functions use the pus_setError/pus_getError mechanism
+ *  for error reporting.
+ *
+ *
+ *  \author GMV
+ */
+
 #ifndef PUS_PACKET_H
 #define PUS_PACKET_H
 
@@ -221,25 +234,25 @@ void pus_setPacketTimeNow(pusPacket_t* packet);
 // Packet initialisation
 
 //! Set default values for a CCDS packet
-void pus_setPacketDefaults(pusPacket_t* packet);
+pusError_t pus_setPacketDefaults(pusPacket_t* packet);
 
 //! Initialize a TM packet
 /*! Set default header fields and secondary header.
  *  Time report packets of ST[09], which have no secondary header, are
  *  excluded.
  */
-void pus_initTmPacket(pusPacket_t* packet);
+pusError_t pus_initTmPacket(pusPacket_t* packet);
 
 //! Initialize with defaults the packet header and secondary header of a TC packet
-void pus_initTcPacket(pusPacket_t* packet);
+pusError_t pus_initTcPacket(pusPacket_t* packet);
 
 //! Initialize a TM packet without secondary header
 /*! E.g., for time report packets of ST[09]
  */
-void pus_initTmPacketNoHeader(pusPacket_t* packet);
+pusError_t pus_initTmPacketNoHeader(pusPacket_t* packet);
 
 //! Initialize a TC packet without secondary header
-void pus_initTcPacketNoHeader(pusPacket_t* packet);
+pusError_t pus_initTcPacketNoHeader(pusPacket_t* packet);
 
 
 // Packet verification

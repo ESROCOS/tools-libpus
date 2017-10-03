@@ -1,7 +1,7 @@
 #include <assert.h>
 
 // Debug
-#include <stdio.h>
+#include <stddef.h>
 
 #include "pus_packet.h"
 #include "pus_error.h"
@@ -14,63 +14,135 @@ pusPacketVersion_t pus_getPacketVersion(const pusPacket_t* packet)
 {
     assert(NULL != packet);
     
-    return packet->packetVersion;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETPACKETVERSION, 0);
+    	return 0;
+    }
+    else
+    {
+    	return packet->packetVersion;
+    }
 }
 
 void pus_setPacketVersion(pusPacket_t* packet, pusPacketVersion_t version)
 {
     assert(NULL != packet);
     
-    packet->packetVersion = version;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_SETPACKETVERSION, 0);
+    	return;
+    }
+    else
+    {
+    	packet->packetVersion = version;
+    }
 }
 
 pusPacketType_t pus_getPacketType(const pusPacket_t* packet)
 {
     assert(NULL != packet);
     
-    return packet->packetType;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETPACKETTYPE, 0);
+    	return 0;
+    }
+    else
+    {
+    	return packet->packetType;
+    }
 }
 
 void pus_setPacketType(pusPacket_t* packet, pusPacketType_t type)
 {
     assert(NULL != packet);
     
-    packet->packetType = type;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_SETPACKETTYPE, 0);
+    	return;
+    }
+    else
+    {
+    	packet->packetType = type;
+    }
 }
 
 pusApid_t pus_getApid(const pusPacket_t* packet)
 {
     assert(NULL != packet);
     
-    return packet->apid;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETAPID, 0);
+    	return pus_APID_IDLE;
+    }
+    else
+    {
+    	return packet->apid;
+    }
 }
 
 void pus_setApid(pusPacket_t* packet, pusApid_t apid)
 {
     assert(NULL != packet);
     
-    packet->apid = apid;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_SETAPID, 0);
+    	return;
+    }
+    else
+    {
+    	packet->apid = apid;
+    }
 }
 
 bool pus_getSecondaryHeaderFlag(const pusPacket_t* packet)
 {
     assert(NULL != packet);
     
-    return packet->secondaryHeaderFlag;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETSECONDARYHEADERFLAG, 0);
+    	return false;
+    }
+    else
+    {
+    	return packet->secondaryHeaderFlag;
+    }
 }
 
 void pus_setSecondaryHeaderFlag(pusPacket_t* packet, bool hasIt)
 {
     assert(NULL != packet);
     
-    packet->secondaryHeaderFlag = hasIt;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_SETSECONDARYHEADERFLAG, 0);
+    	return;
+    }
+    else
+    {
+    	packet->secondaryHeaderFlag = hasIt;
+    }
 }
 
 pusSequenceFlags_t pus_getSequenceFlags(const pusPacket_t* packet)
 {
     assert(NULL != packet);
     
-    return packet->sequenceFlags;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETSEQUENCEFLAGS, 0);
+    	return pus_STANDALONE_PACKET;
+    }
+    else
+    {
+    	return packet->sequenceFlags;
+    }
 }
 
 void pus_setSequenceFlags(pusPacket_t* packet, pusSequenceFlags_t flags)
@@ -85,7 +157,15 @@ pusSequenceCount_t pus_getSequenceCount(const pusPacket_t* packet)
     assert(NULL != packet);
     assert(pusSequenceCount_LIMIT > packet->sequenceCount);
     
-    return packet->sequenceCount;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETSEQUENCECOUNT, 0);
+    	return 0;
+    }
+    else
+    {
+    	return packet->sequenceCount;
+    }
 }
 
 pusSequenceCount_t pus_setSequenceCount(pusPacket_t* packet, pusSequenceCount_t count)
@@ -95,7 +175,13 @@ pusSequenceCount_t pus_setSequenceCount(pusPacket_t* packet, pusSequenceCount_t 
     assert(NULL != packet);
     assert(pusSequenceCount_LIMIT > count);
     
-    // Limit should be checked by caller, but wrap just in case
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_SETSEQUENCECOUNT, 0);
+    	return 0;
+    }
+
+	// Limit should be checked by caller, but wrap just in case
     if (count >= pusSequenceCount_LIMIT)
     {
         countWrapped = count % pusSequenceCount_LIMIT;
@@ -112,7 +198,15 @@ pusPacketDataLength_t pus_getPacketDataLength(const pusPacket_t* packet)
     assert(NULL != packet);
     assert(pusPacketDataLenght_LIMIT > packet->dataLength);
     
-    return packet->dataLength;
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETPACKETDATALENGTH, 0);
+    	return 0;
+    }
+    else
+    {
+    	return packet->dataLength;
+    }
 }
 
 void pus_setPacketDataLength(pusPacket_t* packet, pusPacketDataLength_t length)
@@ -120,7 +214,12 @@ void pus_setPacketDataLength(pusPacket_t* packet, pusPacketDataLength_t length)
     assert(NULL != packet);
     assert(pusPacketDataLenght_LIMIT > length);
     
-    if (pusPacketDataLenght_LIMIT <= length)
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_SETPACKETDATALENGTH, 0);
+    	return;
+    }
+    else if (pusPacketDataLenght_LIMIT <= length)
     {
         pus_setError(PUS_ERROR_LIMIT, PUS_SETPACKETDATALENGTH, 0);
     }
@@ -141,7 +240,13 @@ pusPacketDataKind_t pus_getPacketDataKind(const pusPacket_t* packet)
     assert(NULL != packet);
     
     pusPacketDataKind_t kind = pus_PACKET_DATA_NONE;
-    
+
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETPACKETDATAKIND, 0);
+    	return pus_PACKET_DATA_NONE;
+    }
+
     switch(packet->data.kind)
     {
     case PusPacketData_NONE:
@@ -172,7 +277,13 @@ void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
 {
     assert(NULL != packet);
     assert(pus_PACKET_DATA_NONE <= kind && pus_PACKET_DATA_LAST > kind);
-    
+
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_SETPACKETDATAKIND, 0);
+    	return;
+    }
+
     switch(kind)
     {
     case pus_PACKET_DATA_NONE:
@@ -203,7 +314,12 @@ pusVersion_t pus_getTmPusVersion(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
     
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_GETTMPUSVERSION, 0);
+    	return pus_INVALID_VERSION;
+    }
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_GETTMPUSVERSION, 0);
         return pus_INVALID_VERSION;
@@ -225,7 +341,12 @@ void pus_setTmPusVersion(pusPacket_t* packet, pusVersion_t version)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
     
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+    {
+    	pus_setError(PUS_ERROR_NULLPTR, PUS_SETTMPUSVERSION, 0);
+    	return;
+    }
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_SETTMPUSVERSION, 0);
         return;
@@ -247,7 +368,12 @@ pusVersion_t pus_getTcPusVersion(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTCPUSVERSION, 0);
+		return pus_INVALID_VERSION;
+	}
+	else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_GETTCPUSVERSION, 0);
         return pus_INVALID_VERSION;
@@ -269,7 +395,12 @@ void pus_setTcPusVersion(pusPacket_t* packet, pusVersion_t version)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
     
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTCPUSVERSION, 0);
+		return;
+	}
+	else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_SETTCPUSVERSION, 0);
         return;
@@ -292,7 +423,12 @@ pusService_t pus_getTmService(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
     
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTMSERVICE, 0);
+		return pusService_NONE;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_GETTMSERVICE, 0);
         return pusService_NONE;
@@ -315,7 +451,12 @@ void pus_setTmService(pusPacket_t* packet, pusService_t service)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTMSERVICE, 0);
+		return;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_SETTMSERVICE, (pusErrorData_t)service);
         return;
@@ -338,15 +479,20 @@ pusSubservice_t pus_getTmSubtype(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTMSUBTYPE, 0);
+		return pusSubtype_NONE;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_GETTMSUBTYPE, 0);
-        return pusService_NONE;
+        return pusSubtype_NONE;
     }
     else if (!pus_getSecondaryHeaderFlag(packet) || pus_TM_DATA != pus_getPacketDataKind(packet))
     {
         pus_setError(PUS_ERROR_HEADER_MISMATCH, PUS_GETTMSUBTYPE, 0);
-        return pusService_NONE;
+        return pusSubtype_NONE;
     }
     else
     {
@@ -361,7 +507,12 @@ void pus_setTmSubtype(pusPacket_t* packet, pusService_t subtype)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTMSUBTYPE, 0);
+		return;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_SETTMSUBTYPE, (pusErrorData_t)subtype);
         return;
@@ -384,7 +535,12 @@ pusService_t pus_getTcService(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTCSERVICE, 0);
+		return pusService_NONE;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_GETTCSERVICE, 0);
         return pusService_NONE;
@@ -407,7 +563,12 @@ void pus_setTcService(pusPacket_t* packet, pusService_t service)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTCSERVICE, 0);
+		return;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_SETTCSERVICE, (pusErrorData_t)service);
         return;
@@ -430,15 +591,20 @@ pusSubservice_t pus_getTcSubtype(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTCSUBTYPE, 0);
+		return pusSubtype_NONE;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_GETTCSUBTYPE, 0);
-        return pusService_NONE;
+        return pusSubtype_NONE;
     }
     else if (!pus_getSecondaryHeaderFlag(packet) || pus_TC_DATA != pus_getPacketDataKind(packet))
     {
         pus_setError(PUS_ERROR_HEADER_MISMATCH, PUS_GETTCSUBTYPE, 0);
-        return pusService_NONE;
+        return pusSubtype_NONE;
     }
     else
     {
@@ -453,7 +619,12 @@ void pus_setTcSubtype(pusPacket_t* packet, pusService_t subtype)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTCSUBTYPE, 0);
+		return;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_SETTCSUBTYPE, (pusErrorData_t)subtype);
         return;
@@ -476,15 +647,20 @@ pusTimeRefStatus_t pus_getTmTimeReferenceStatus(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTMTIMEREFSTATUS, 0);
+		return pus_TIME_REFERENCE_STATUS_NONE;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_GETTMTIMEREFSTATUS, 0);
-        return pusService_NONE;
+        return pus_TIME_REFERENCE_STATUS_NONE;
     }
     else if (!pus_getSecondaryHeaderFlag(packet) || pus_TM_DATA != pus_getPacketDataKind(packet))
     {
         pus_setError(PUS_ERROR_HEADER_MISMATCH, PUS_GETTMTIMEREFSTATUS, 0);
-        return pusService_NONE;
+        return pus_TIME_REFERENCE_STATUS_NONE;
     }
     else
     {
@@ -499,7 +675,12 @@ void pus_setTmTimeReferenceStatus(pusPacket_t* packet, pusTimeRefStatus_t status
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTMTIMEREFSTATUS, 0);
+		return;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_SETTMTIMEREFSTATUS, (pusErrorData_t)status);
         return;
@@ -522,15 +703,20 @@ pusMsgTypeCount_t pus_getTmMessageTypeCounter(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTMMESSAGETYPECOUNTER, 0);
+		return 0;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_GETTMMESSAGETYPECOUNTER, 0);
-        return pusService_NONE;
+        return 0;
     }
     else if (!pus_getSecondaryHeaderFlag(packet) || pus_TM_DATA != pus_getPacketDataKind(packet))
     {
         pus_setError(PUS_ERROR_HEADER_MISMATCH, PUS_GETTMMESSAGETYPECOUNTER, 0);
-        return pusService_NONE;
+        return 0;
     }
     else
     {
@@ -545,7 +731,12 @@ void pus_setTmMessageTypeCounter(pusPacket_t* packet, pusMsgTypeCount_t count)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTMMESSAGETYPECOUNTER, 0);
+		return;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_SETTMMESSAGETYPECOUNTER, (pusErrorData_t)count);
         return;
@@ -568,15 +759,20 @@ pusApid_t pus_getTmDestination(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTMDESTINATION, 0);
+		return pus_APID_IDLE;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_GETTMDESTINATION, 0);
-        return pusService_NONE;
+		return pus_APID_IDLE;
     }
     else if (!pus_getSecondaryHeaderFlag(packet) || pus_TM_DATA != pus_getPacketDataKind(packet))
     {
         pus_setError(PUS_ERROR_HEADER_MISMATCH, PUS_GETTMDESTINATION, 0);
-        return pusService_NONE;
+		return pus_APID_IDLE;
     }
     else
     {
@@ -591,7 +787,12 @@ void pus_setTmDestination(pusPacket_t* packet, pusApid_t destination)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTMDESTINATION, 0);
+		return;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_SETTMDESTINATION, (pusErrorData_t)destination);
         return;
@@ -614,15 +815,20 @@ pusApid_t pus_getTcSource(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTCSOURCE, 0);
+		return pus_APID_IDLE;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_GETTCSOURCE, 0);
-        return pusService_NONE;
+        return pus_APID_IDLE;
     }
     else if (!pus_getSecondaryHeaderFlag(packet) || pus_TC_DATA != pus_getPacketDataKind(packet))
     {
         pus_setError(PUS_ERROR_HEADER_MISMATCH, PUS_GETTCSOURCE, 0);
-        return pusService_NONE;
+        return pus_APID_IDLE;
     }
     else
     {
@@ -637,7 +843,12 @@ void pus_setTcSource(pusPacket_t* packet, pusApid_t source)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTCSOURCE, 0);
+		return;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_SETTCSOURCE, (pusErrorData_t)source);
         return;
@@ -661,7 +872,12 @@ void pus_getTmPacketTime(pusTime_t* outTime, const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet || NULL == outTime)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTMPACKETTIME, 0);
+		return;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_GETTMPACKETTIME, 0);
         return;
@@ -685,7 +901,12 @@ void pus_setTmPacketTime(pusPacket_t* packet, const pusTime_t* time)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet || NULL == time)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTMPACKETTIME, 0);
+		return;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TM, PUS_SETTMPACKETTIME, 0);
         return;
@@ -722,7 +943,12 @@ bool pus_getTcAckFlagAcceptance(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTCACKFLAGACCEPTANCE, 0);
+		return false;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_GETTCACKFLAGACCEPTANCE, 0);
         return false;
@@ -745,7 +971,12 @@ bool pus_getTcAckFlagStart(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTCACKFLAGSTART, 0);
+		return false;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_GETTCACKFLAGSTART, 0);
         return false;
@@ -768,7 +999,12 @@ bool pus_getTcAckFlagProgress(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTCACKFLAGPROGRESS, 0);
+		return false;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_GETTCACKFLAGPROGRESS, 0);
         return false;
@@ -791,7 +1027,12 @@ bool pus_getTcAckFlagCompletion(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_GETTCACKFLAGCOMPLETION, 0);
+		return false;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_GETTCACKFLAGCOMPLETION, 0);
         return false;
@@ -814,7 +1055,12 @@ void pus_setTcAckFlags(pusPacket_t* packet, bool acceptance, bool start, bool pr
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETTCACKFLAGS, 0);
+		return;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         pus_setError(PUS_ERROR_NOT_TC, PUS_SETTCACKFLAGS, 0);
         return;
@@ -845,9 +1091,15 @@ pusSequenceCount_t pus_incrementSequenceCount(pusSequenceCount_t count)
 
 // CCSDS packet initialization
 
-void pus_setPacketDefaults(pusPacket_t* packet)
+pusError_t pus_setPacketDefaults(pusPacket_t* packet)
 {
     assert(NULL != packet);
+
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_SETPACKETDEFAULTS, 0);
+		return PUS_ERROR_NULLPTR;
+	}
 
     pus_setPacketVersion(packet, pus_PACKET_VERSION_CURRENT);
     pus_setPacketType(packet, pus_TM);
@@ -856,11 +1108,21 @@ void pus_setPacketDefaults(pusPacket_t* packet)
     pus_setSequenceFlags(packet, pus_STANDALONE_PACKET);
     pus_setSequenceCount(packet, 0);
     pus_setPacketDataNone(packet);
+
+    assert(PUS_NO_ERROR == pus_verifyCcsdsHeaderDefaults(packet));
+
+    return PUS_NO_ERROR;
 }
 
-void pus_initTmPacket(pusPacket_t* packet)
+pusError_t pus_initTmPacket(pusPacket_t* packet)
 {
     assert(NULL != packet);
+
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_INITTMPACKET, 0);
+		return PUS_ERROR_NULLPTR;
+	}
 
     // CCSDS header
     pus_setPacketDefaults(packet);
@@ -878,22 +1140,42 @@ void pus_initTmPacket(pusPacket_t* packet)
     pus_setTmMessageTypeCounter(packet, pus_MESSAGE_TYPE_COUNTER_NONE);
     pus_setTmDestination(packet, pus_APID_IDLE);
     pus_setTmPacketTimeNow(packet);
+
+    assert(PUS_NO_ERROR == pus_verifyTmHeaderDefaults(packet));
+
+    return PUS_NO_ERROR;
 }
 
-void pus_initTmPacketNoHeader(pusPacket_t* packet)
+pusError_t pus_initTmPacketNoHeader(pusPacket_t* packet)
 {
     assert(NULL != packet);
+
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_INITTMPACKETNOHEADER, 0);
+		return PUS_ERROR_NULLPTR;
+	}
 
     // CCSDS header
     pus_setPacketDefaults(packet);
     pus_setPacketType(packet, pus_TM);
     pus_setSecondaryHeaderFlag(packet, false);
     pus_setPacketDataKind(packet, pus_TM_DATA_NO_HEADER);
+
+    assert(PUS_NO_ERROR == pus_verifyTmHeaderDefaults(packet));
+
+    return PUS_NO_ERROR;
 }
 
-void pus_initTcPacket(pusPacket_t* packet)
+pusError_t pus_initTcPacket(pusPacket_t* packet)
 {
 	assert(NULL != packet);
+
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_INITTCPACKET, 0);
+		return PUS_ERROR_NULLPTR;
+	}
 
 	// CCSDS header
 	pus_setPacketDefaults(packet);
@@ -909,17 +1191,31 @@ void pus_initTcPacket(pusPacket_t* packet)
     pus_setTcService(packet, pusService_NONE);
     pus_setTcSubtype(packet, pusSubtype_NONE);
     pus_setTcSource(packet, pus_APID_IDLE);
+
+    assert(PUS_NO_ERROR == pus_verifyTcHeaderDefaults(packet));
+
+    return PUS_NO_ERROR;
 }
 
-void pus_initTcPacketNoHeader(pusPacket_t* packet)
+pusError_t pus_initTcPacketNoHeader(pusPacket_t* packet)
 {
     assert(NULL != packet);
+
+    if (NULL == packet)
+	{
+		pus_setError(PUS_ERROR_NULLPTR, PUS_INITTCPACKETNOHEADER, 0);
+		return PUS_ERROR_NULLPTR;
+	}
 
     // CCSDS header
     pus_setPacketDefaults(packet);
     pus_setPacketType(packet, pus_TC);
     pus_setSecondaryHeaderFlag(packet, false);
     pus_setPacketDataKind(packet, pus_TC_DATA_NO_HEADER);
+
+    assert(PUS_NO_ERROR == pus_verifyTcHeaderDefaults(packet));
+
+    return PUS_NO_ERROR;
 }
 
 
@@ -931,7 +1227,11 @@ pusError_t pus_verifyCcsdsHeaderDefaults(const pusPacket_t* packet)
 {
 	assert(NULL != packet);
 
-	if (pus_PACKET_VERSION_CURRENT != pus_getPacketVersion(packet))
+    if (NULL == packet)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+    else if (pus_PACKET_VERSION_CURRENT != pus_getPacketVersion(packet))
 	{
 		return PUS_ERROR_UNEXPECTED_PACKET_VERSION;
 	}
@@ -949,7 +1249,11 @@ pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet)
 {
 	assert(NULL != packet);
 
-	if (pus_TM == pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+    else if (pus_TM == pus_getPacketType(packet))
 	{
 		if (pus_getSecondaryHeaderFlag(packet))
 		{
@@ -1013,7 +1317,11 @@ pusError_t pus_verifyTmSecondaryHeaderDefaults(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TM_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
     	return PUS_ERROR_NOT_TM;
     }
@@ -1039,30 +1347,36 @@ pusError_t pus_verifyTmHeaderDefaults(const pusPacket_t* packet)
 	assert(NULL != packet);
     assert(pus_TM == pus_getPacketType(packet));
 
-    if (pus_TM != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+    else if (pus_TM != pus_getPacketType(packet))
     {
         return PUS_ERROR_NOT_TM;
     }
-
-    pusError_t ccsdsCheck = pus_verifyCcsdsHeaderDefaults(packet);
-    if (PUS_NO_ERROR != ccsdsCheck)
-    {
-    	return ccsdsCheck;
-    }
-
-    pusError_t kindCheck = pus_verifyPacketDataKind(packet);
-    if (PUS_NO_ERROR != kindCheck)
-    {
-    	return kindCheck;
-    }
-
-    if (pus_getSecondaryHeaderFlag(packet))
-    {
-    	return pus_verifyTmSecondaryHeaderDefaults(packet);
-    }
     else
     {
-    	return PUS_NO_ERROR;
+		pusError_t ccsdsCheck = pus_verifyCcsdsHeaderDefaults(packet);
+		if (PUS_NO_ERROR != ccsdsCheck)
+		{
+			return ccsdsCheck;
+		}
+
+		pusError_t kindCheck = pus_verifyPacketDataKind(packet);
+		if (PUS_NO_ERROR != kindCheck)
+		{
+			return kindCheck;
+		}
+
+		if (pus_getSecondaryHeaderFlag(packet))
+		{
+			return pus_verifyTmSecondaryHeaderDefaults(packet);
+		}
+		else
+		{
+			return PUS_NO_ERROR;
+		}
     }
 }
 
@@ -1073,7 +1387,11 @@ pusError_t pus_verifyTcSecondaryHeaderDefaults(const pusPacket_t* packet)
     assert(pus_getSecondaryHeaderFlag(packet));
     assert(pus_TC_DATA == pus_getPacketDataKind(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
     	return PUS_ERROR_NOT_TC;
     }
@@ -1099,33 +1417,38 @@ pusError_t pus_verifyTcHeaderDefaults(const pusPacket_t* packet)
 	assert(NULL != packet);
     assert(pus_TC == pus_getPacketType(packet));
 
-    if (pus_TC != pus_getPacketType(packet))
+    if (NULL == packet)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+    else if (pus_TC != pus_getPacketType(packet))
     {
         return PUS_ERROR_NOT_TC;
     }
-
-    pusError_t ccsdsCheck = pus_verifyCcsdsHeaderDefaults(packet);
-    if (PUS_NO_ERROR != ccsdsCheck)
-    {
-    	return ccsdsCheck;
-    }
-
-    pusError_t kindCheck = pus_verifyPacketDataKind(packet);
-    if (PUS_NO_ERROR != kindCheck)
-    {
-    	return kindCheck;
-    }
-
-    if (pus_getSecondaryHeaderFlag(packet))
-    {
-    	return pus_verifyTcSecondaryHeaderDefaults(packet);
-    }
     else
     {
-    	return PUS_NO_ERROR;
-    }
-}
+		pusError_t ccsdsCheck = pus_verifyCcsdsHeaderDefaults(packet);
+		if (PUS_NO_ERROR != ccsdsCheck)
+		{
+			return ccsdsCheck;
+		}
 
+		pusError_t kindCheck = pus_verifyPacketDataKind(packet);
+		if (PUS_NO_ERROR != kindCheck)
+		{
+			return kindCheck;
+		}
+
+		if (pus_getSecondaryHeaderFlag(packet))
+		{
+			return pus_verifyTcSecondaryHeaderDefaults(packet);
+		}
+		else
+		{
+			return PUS_NO_ERROR;
+		}
+	}
+}
 
 
 
