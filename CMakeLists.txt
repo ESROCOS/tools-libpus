@@ -22,12 +22,23 @@ cmake_minimum_required(VERSION 3.3)
 ###########################################
 
 
-project(ESROCOS_PUS)
+project(ESROCOS_PUS LANGUAGES C)
 
-include(CTest)
+#
+# CMake modules
+#
 
 # Local directory with CMake modules
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules;${CMAKE_MODULE_PATH}")
+
+# codecov module
+find_package(codecov REQUIRED)
+if (NOT ENABLE_COVERAGE)
+	message(STATUS "Configure with -DENABLE_COVERAGE=On to collect coverage metrics")
+endif()
+
+
+include(CTest)
 
 include_directories(include asn1/generated)
 
@@ -51,3 +62,4 @@ set(VERSION_MINOR   1   CACHE STRING "Project minor version number.")
 set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
 mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
+coverage_evaluate()
