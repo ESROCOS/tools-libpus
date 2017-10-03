@@ -102,12 +102,9 @@ void test_packetVerification(void)
 
 	pus_initTmPacket(&packet);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_verifyTmHeaderDefaults(&packet));
-// Some error conditions are checked by asserts, so we disable checks in
-#ifdef NDEBUG
 	packet.packetType = pus_TC;
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TM, pus_verifyTmHeaderDefaults(&packet));
 	packet.packetType = pus_TM;
-#endif
 	packet.packetVersion = 25;
 	CU_ASSERT_EQUAL(PUS_ERROR_UNEXPECTED_PACKET_VERSION, pus_verifyTmHeaderDefaults(&packet));
 	packet.packetVersion = pus_PACKET_VERSION_CURRENT;
@@ -124,12 +121,9 @@ void test_packetVerification(void)
 
 	pus_initTcPacket(&packet);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_verifyTcHeaderDefaults(&packet));
-// Some error conditions are checked by asserts, so we disable checks in
-#ifdef NDEBUG
 	packet.packetType = pus_TM;
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_verifyTcHeaderDefaults(&packet));
 	packet.packetType = pus_TC;
-#endif
 	packet.packetVersion = 25;
 	CU_ASSERT_EQUAL(PUS_ERROR_UNEXPECTED_PACKET_VERSION, pus_verifyTcHeaderDefaults(&packet));
 	packet.packetVersion = pus_PACKET_VERSION_CURRENT;
@@ -174,12 +168,9 @@ void test_packetVerification(void)
 	pus_setSecondaryHeaderFlag(&packet, true);
 	CU_ASSERT_EQUAL(PUS_ERROR_HEADER_MISMATCH, pus_verifyPacketDataKind(&packet));
 
-// Some error conditions are checked by asserts, so we disable checks in
-#ifdef NDEBUG
 	pus_setPacketDefaults(&packet);
 	packet.packetType = 2;
 	CU_ASSERT_EQUAL(PUS_ERROR_PACKET_TYPE, pus_verifyPacketDataKind(&packet));
-#endif
 }
 
 void test_error()

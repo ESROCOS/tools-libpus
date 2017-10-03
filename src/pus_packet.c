@@ -12,8 +12,6 @@
 
 pusPacketVersion_t pus_getPacketVersion(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -27,8 +25,6 @@ pusPacketVersion_t pus_getPacketVersion(const pusPacket_t* packet)
 
 void pus_setPacketVersion(pusPacket_t* packet, pusPacketVersion_t version)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -42,8 +38,6 @@ void pus_setPacketVersion(pusPacket_t* packet, pusPacketVersion_t version)
 
 pusPacketType_t pus_getPacketType(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -57,8 +51,6 @@ pusPacketType_t pus_getPacketType(const pusPacket_t* packet)
 
 void pus_setPacketType(pusPacket_t* packet, pusPacketType_t type)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -72,8 +64,6 @@ void pus_setPacketType(pusPacket_t* packet, pusPacketType_t type)
 
 pusApid_t pus_getApid(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -87,8 +77,6 @@ pusApid_t pus_getApid(const pusPacket_t* packet)
 
 void pus_setApid(pusPacket_t* packet, pusApid_t apid)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -102,8 +90,6 @@ void pus_setApid(pusPacket_t* packet, pusApid_t apid)
 
 bool pus_getSecondaryHeaderFlag(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -117,8 +103,6 @@ bool pus_getSecondaryHeaderFlag(const pusPacket_t* packet)
 
 void pus_setSecondaryHeaderFlag(pusPacket_t* packet, bool hasIt)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -132,8 +116,6 @@ void pus_setSecondaryHeaderFlag(pusPacket_t* packet, bool hasIt)
 
 pusSequenceFlags_t pus_getSequenceFlags(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -154,7 +136,6 @@ void pus_setSequenceFlags(pusPacket_t* packet, pusSequenceFlags_t flags)
 
 pusSequenceCount_t pus_getSequenceCount(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
     assert(pusSequenceCount_LIMIT > packet->sequenceCount);
     
     if (NULL == packet)
@@ -171,9 +152,6 @@ pusSequenceCount_t pus_getSequenceCount(const pusPacket_t* packet)
 pusSequenceCount_t pus_setSequenceCount(pusPacket_t* packet, pusSequenceCount_t count)
 {
     int countWrapped = count;
-    
-    assert(NULL != packet);
-    assert(pusSequenceCount_LIMIT > count);
     
     if (NULL == packet)
     {
@@ -195,7 +173,6 @@ pusSequenceCount_t pus_setSequenceCount(pusPacket_t* packet, pusSequenceCount_t 
 
 pusPacketDataLength_t pus_getPacketDataLength(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
     assert(pusPacketDataLenght_LIMIT > packet->dataLength);
     
     if (NULL == packet)
@@ -222,23 +199,22 @@ void pus_setPacketDataLength(pusPacket_t* packet, pusPacketDataLength_t length)
     else if (pusPacketDataLenght_LIMIT <= length)
     {
         PUS_SETERROR(PUS_ERROR_LIMIT);
+        return;
     }
-
-    packet->dataLength = length;
+    else
+    {
+    	packet->dataLength = length;
+    }
 }
 
 void pus_setPacketDataNone(pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    
     pus_setPacketDataLength(packet, 0);
     pus_setPacketDataKind(packet, pus_PACKET_DATA_NONE);
 }
 
 pusPacketDataKind_t pus_getPacketDataKind(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    
     pusPacketDataKind_t kind = pus_PACKET_DATA_NONE;
 
     if (NULL == packet)
@@ -265,8 +241,8 @@ pusPacketDataKind_t pus_getPacketDataKind(const pusPacket_t* packet)
         kind = pus_TC_DATA_NO_HEADER;
         break;
     default:
-        assert(false);
         PUS_SETERROR(PUS_ERROR_HEADER_MISMATCH);
+        assert(false);
     }
 
     assert(pus_PACKET_DATA_NONE <= kind && pus_PACKET_DATA_LAST > kind);
@@ -275,7 +251,6 @@ pusPacketDataKind_t pus_getPacketDataKind(const pusPacket_t* packet)
 
 void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
 {
-    assert(NULL != packet);
     assert(pus_PACKET_DATA_NONE <= kind && pus_PACKET_DATA_LAST > kind);
 
     if (NULL == packet)
@@ -302,18 +277,13 @@ void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
         packet->data.kind = tcDataNoHeader_PRESENT;
         break;
     default:
-        assert(false);
-        packet->data.kind = PusPacketData_NONE;
         PUS_SETERROR2(PUS_ERROR_HEADER_MISMATCH, kind);
+        assert(false);
     }
 }
 
 pusVersion_t pus_getTmPusVersion(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -337,10 +307,6 @@ pusVersion_t pus_getTmPusVersion(const pusPacket_t* packet)
 
 void pus_setTmPusVersion(pusPacket_t* packet, pusVersion_t version)
 {
-    assert(NULL != packet);
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-    
     if (NULL == packet)
     {
     	PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -364,10 +330,6 @@ void pus_setTmPusVersion(pusPacket_t* packet, pusVersion_t version)
 
 pusVersion_t pus_getTcPusVersion(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -391,10 +353,6 @@ pusVersion_t pus_getTcPusVersion(const pusPacket_t* packet)
 
 void pus_setTcPusVersion(pusPacket_t* packet, pusVersion_t version)
 {
-    assert(NULL != packet);
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-    
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -418,11 +376,6 @@ void pus_setTcPusVersion(pusPacket_t* packet, pusVersion_t version)
 
 pusService_t pus_getTmService(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-    
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -446,11 +399,6 @@ pusService_t pus_getTmService(const pusPacket_t* packet)
 
 void pus_setTmService(pusPacket_t* packet, pusService_t service)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR2(PUS_ERROR_NULLPTR, service);
@@ -474,11 +422,6 @@ void pus_setTmService(pusPacket_t* packet, pusService_t service)
 
 pusSubservice_t pus_getTmSubtype(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -502,11 +445,6 @@ pusSubservice_t pus_getTmSubtype(const pusPacket_t* packet)
 
 void pus_setTmSubtype(pusPacket_t* packet, pusService_t subtype)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR2(PUS_ERROR_NULLPTR, subtype);
@@ -530,11 +468,6 @@ void pus_setTmSubtype(pusPacket_t* packet, pusService_t subtype)
 
 pusService_t pus_getTcService(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -558,11 +491,6 @@ pusService_t pus_getTcService(const pusPacket_t* packet)
 
 void pus_setTcService(pusPacket_t* packet, pusService_t service)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR2(PUS_ERROR_NULLPTR, service);
@@ -586,11 +514,6 @@ void pus_setTcService(pusPacket_t* packet, pusService_t service)
 
 pusSubservice_t pus_getTcSubtype(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -614,11 +537,6 @@ pusSubservice_t pus_getTcSubtype(const pusPacket_t* packet)
 
 void pus_setTcSubtype(pusPacket_t* packet, pusService_t subtype)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR2(PUS_ERROR_NULLPTR, subtype);
@@ -642,11 +560,6 @@ void pus_setTcSubtype(pusPacket_t* packet, pusService_t subtype)
 
 pusTimeRefStatus_t pus_getTmTimeReferenceStatus(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -670,11 +583,6 @@ pusTimeRefStatus_t pus_getTmTimeReferenceStatus(const pusPacket_t* packet)
 
 void pus_setTmTimeReferenceStatus(pusPacket_t* packet, pusTimeRefStatus_t status)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR2(PUS_ERROR_NULLPTR, status);
@@ -698,11 +606,6 @@ void pus_setTmTimeReferenceStatus(pusPacket_t* packet, pusTimeRefStatus_t status
 
 pusMsgTypeCount_t pus_getTmMessageTypeCounter(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -726,11 +629,6 @@ pusMsgTypeCount_t pus_getTmMessageTypeCounter(const pusPacket_t* packet)
 
 void pus_setTmMessageTypeCounter(pusPacket_t* packet, pusMsgTypeCount_t count)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR2(PUS_ERROR_NULLPTR, count);
@@ -754,11 +652,6 @@ void pus_setTmMessageTypeCounter(pusPacket_t* packet, pusMsgTypeCount_t count)
 
 pusApid_t pus_getTmDestination(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -782,11 +675,6 @@ pusApid_t pus_getTmDestination(const pusPacket_t* packet)
 
 void pus_setTmDestination(pusPacket_t* packet, pusApid_t destination)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR2(PUS_ERROR_NULLPTR, destination);
@@ -810,11 +698,6 @@ void pus_setTmDestination(pusPacket_t* packet, pusApid_t destination)
 
 pusApid_t pus_getTcSource(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -838,11 +721,6 @@ pusApid_t pus_getTcSource(const pusPacket_t* packet)
 
 void pus_setTcSource(pusPacket_t* packet, pusApid_t source)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR2(PUS_ERROR_NULLPTR, source);
@@ -866,12 +744,6 @@ void pus_setTcSource(pusPacket_t* packet, pusApid_t source)
 
 void pus_getTmPacketTime(pusTime_t* outTime, const pusPacket_t* packet)
 {
-	assert(NULL != outTime);
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet || NULL == outTime)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -895,12 +767,6 @@ void pus_getTmPacketTime(pusTime_t* outTime, const pusPacket_t* packet)
 
 void pus_setTmPacketTime(pusPacket_t* packet, const pusTime_t* time)
 {
-    assert(NULL != packet);
-    assert(NULL != time);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet || NULL == time)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -924,11 +790,6 @@ void pus_setTmPacketTime(pusPacket_t* packet, const pusTime_t* time)
 
 void pus_setTmPacketTimeNow(pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     // Errors set by pus_setTmPacketTime
 
     pusTime_t now;
@@ -938,11 +799,6 @@ void pus_setTmPacketTimeNow(pusPacket_t* packet)
 
 bool pus_getTcAckFlagAcceptance(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -966,11 +822,6 @@ bool pus_getTcAckFlagAcceptance(const pusPacket_t* packet)
 
 bool pus_getTcAckFlagStart(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -994,11 +845,6 @@ bool pus_getTcAckFlagStart(const pusPacket_t* packet)
 
 bool pus_getTcAckFlagProgress(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -1022,11 +868,6 @@ bool pus_getTcAckFlagProgress(const pusPacket_t* packet)
 
 bool pus_getTcAckFlagCompletion(const pusPacket_t* packet)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -1050,11 +891,6 @@ bool pus_getTcAckFlagCompletion(const pusPacket_t* packet)
 
 void pus_setTcAckFlags(pusPacket_t* packet, bool acceptance, bool start, bool progress, bool completion)
 {
-    assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -1093,8 +929,6 @@ pusSequenceCount_t pus_incrementSequenceCount(pusSequenceCount_t count)
 
 pusError_t pus_setPacketDefaults(pusPacket_t* packet)
 {
-    assert(NULL != packet);
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -1116,8 +950,6 @@ pusError_t pus_setPacketDefaults(pusPacket_t* packet)
 
 pusError_t pus_initTmPacket(pusPacket_t* packet)
 {
-    assert(NULL != packet);
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -1148,8 +980,6 @@ pusError_t pus_initTmPacket(pusPacket_t* packet)
 
 pusError_t pus_initTmPacketNoHeader(pusPacket_t* packet)
 {
-    assert(NULL != packet);
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -1169,8 +999,6 @@ pusError_t pus_initTmPacketNoHeader(pusPacket_t* packet)
 
 pusError_t pus_initTcPacket(pusPacket_t* packet)
 {
-	assert(NULL != packet);
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -1199,8 +1027,6 @@ pusError_t pus_initTcPacket(pusPacket_t* packet)
 
 pusError_t pus_initTcPacketNoHeader(pusPacket_t* packet)
 {
-    assert(NULL != packet);
-
     if (NULL == packet)
 	{
 		PUS_SETERROR(PUS_ERROR_NULLPTR);
@@ -1225,8 +1051,6 @@ pusError_t pus_initTcPacketNoHeader(pusPacket_t* packet)
 
 pusError_t pus_verifyCcsdsHeaderDefaults(const pusPacket_t* packet)
 {
-	assert(NULL != packet);
-
     if (NULL == packet)
 	{
 		return PUS_ERROR_NULLPTR;
@@ -1247,8 +1071,6 @@ pusError_t pus_verifyCcsdsHeaderDefaults(const pusPacket_t* packet)
 
 pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet)
 {
-	assert(NULL != packet);
-
     if (NULL == packet)
 	{
 		return PUS_ERROR_NULLPTR;
@@ -1305,18 +1127,12 @@ pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet)
 	}
 	else
 	{
-		assert(false);
 		return PUS_ERROR_PACKET_TYPE;
 	}
 }
 
 pusError_t pus_verifyTmSecondaryHeaderDefaults(const pusPacket_t* packet)
 {
-	assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TM_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		return PUS_ERROR_NULLPTR;
@@ -1344,9 +1160,6 @@ pusError_t pus_verifyTmSecondaryHeaderDefaults(const pusPacket_t* packet)
 
 pusError_t pus_verifyTmHeaderDefaults(const pusPacket_t* packet)
 {
-	assert(NULL != packet);
-    assert(pus_TM == pus_getPacketType(packet));
-
     if (NULL == packet)
 	{
 		return PUS_ERROR_NULLPTR;
@@ -1382,11 +1195,6 @@ pusError_t pus_verifyTmHeaderDefaults(const pusPacket_t* packet)
 
 pusError_t pus_verifyTcSecondaryHeaderDefaults(const pusPacket_t* packet)
 {
-	assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-    assert(pus_getSecondaryHeaderFlag(packet));
-    assert(pus_TC_DATA == pus_getPacketDataKind(packet));
-
     if (NULL == packet)
 	{
 		return PUS_ERROR_NULLPTR;
@@ -1414,9 +1222,6 @@ pusError_t pus_verifyTcSecondaryHeaderDefaults(const pusPacket_t* packet)
 
 pusError_t pus_verifyTcHeaderDefaults(const pusPacket_t* packet)
 {
-	assert(NULL != packet);
-    assert(pus_TC == pus_getPacketType(packet));
-
     if (NULL == packet)
 	{
 		return PUS_ERROR_NULLPTR;
