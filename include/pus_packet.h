@@ -4,9 +4,13 @@
  *  This module contains functions to initialize PUS packets, get and set the
  *  packet header fields, and verify the content of the headers.
  *
- *  Getter/setter and utility functions use the \ref pus_setError / \ref pus_getError mechanism
- *  for error reporting. Other functions return \ref pusError_t, but may also set
- *  error codes. The functions do not check error codes.
+ *  Getter/setter and utility functions use the \ref pus_setError / \ref pus_getError
+ *  mechanism for error reporting. Other functions return \ref pusError_t, but may also
+ *  set error codes. The functions do not check error codes.
+ *
+ *  The packet fields are accessed through the getter/setter functions in order to
+ *  be independent from the underlaying representation coming from the ASN.1 type
+ *  definitions.
  *
  *  \author GMV
  */
@@ -17,7 +21,10 @@
 #include "pus_types.h"
 #include "pus_error.h"
 
+
+//
 // Getters and setters
+//
 
 //! Getter for packet version in CCSDS packet header
 pusPacketVersion_t pus_getPacketVersion(const pusPacket_t* packet);
@@ -68,12 +75,6 @@ void pus_setPacketDataLength(pusPacket_t* packet, pusPacketDataLength_t length);
 
 //! Initialize the packet data field with no data (sets length=0 and data=NONE)
 void pus_setPacketDataNone(pusPacket_t* packet);
-
-//! Setter for the packet data field according to the type of packet
-void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);
-
-//! Getter for the kind of packet data field
-pusPacketDataKind_t pus_getPacketDataKind(const pusPacket_t* packet);
 
 //! Getter for the PUS version number in TM secondary header
 /*! Must be called for TM packet with secondary header
@@ -218,8 +219,32 @@ bool pus_getTcAckFlagCompletion(const pusPacket_t* packet);
 void pus_setTcAckFlags(pusPacket_t* packet, bool acceptance, bool start, bool progress, bool completion);
 
 
+//
+// Getters/setters for union types
+//
 
+//! Getter for the kind of packet data field
+pusPacketDataKind_t pus_getPacketDataKind(const pusPacket_t* packet);
+
+//! Setter for the packet data field according to the type of packet
+void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);
+
+//! Getter for the kind of TM data field, for packets with secondary header
+pusTmDataKind_t pus_getTmDataKind(const pusPacket_t* packet);
+
+//! Setter for the kind of TM data field, for packets with secondary header
+void pus_setTmDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);
+
+//! Getter for the kind of TM data field, for packets without secondary header
+pusTmDataKind_t pus_getTmNoHeaderDataKind(const pusPacket_t* packet);
+
+//! Setter for the kind of TM data field, for packets without secondary header
+void pus_setTmNoHeaderDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);
+
+
+//
 // Utility functions for packet types
+//
 
 //! Wrapping increment of packet sequence number
 pusSequenceCount_t pus_incrementSequenceCount(pusSequenceCount_t count);
@@ -230,8 +255,9 @@ pusSequenceCount_t pus_incrementSequenceCount(pusSequenceCount_t count);
 void pus_setPacketTimeNow(pusPacket_t* packet);
 
 
-
+//
 // Packet initialisation
+//
 
 //! Set default values for a CCDS packet
 pusError_t pus_setPacketDefaults(pusPacket_t* packet);
@@ -255,7 +281,9 @@ pusError_t pus_initTmPacketNoHeader(pusPacket_t* packet);
 pusError_t pus_initTcPacketNoHeader(pusPacket_t* packet);
 
 
+//
 // Packet verification
+//
 
 //! Verify the CCSDS header defaults
 pusError_t pus_verifyCcsdsHeaderDefaults(const pusPacket_t* packet);
@@ -280,6 +308,104 @@ pusError_t pus_verifyTmHeaderDefaults(const pusPacket_t* packet);
 pusError_t pus_verifyTcHeaderDefaults(const pusPacket_t* packet);
 
 
+//
+// Parameter checking
+//
 
+//! Check that a packet is a TM, and set error condition otherwise
+/*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
+ *  with pus_setError and returns the error code. Use with macros for convenience.
+ *  \param[in] packet The packet to check
+ *  \param[in] function Name of the function to log in case of error
+ *  \param[in] data Data to log in case of error
+ *  \return PUS_NO_ERROR if OK, or error code set otherwise
+ */
+pusError_t pus_expectTm(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+
+//! Check that a packet is a TM, and set error condition otherwise
+/*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
+ *  with pus_setError and returns the error code. Use with macros for convenience.
+ *  \param[in] packet The packet to check
+ *  \param[in] function Name of the function to log in case of error
+ *  \param[in] data Data to log in case of error
+ *  \return PUS_NO_ERROR if OK, or error code set otherwise
+ */
+pusError_t pus_expectTmHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+
+//! Check that a packet is a TM, and set error condition otherwise
+/*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
+ *  with pus_setError and returns the error code. Use with macros for convenience.
+ *  \param[in] packet The packet to check
+ *  \param[in] function Name of the function to log in case of error
+ *  \param[in] data Data to log in case of error
+ *  \return PUS_NO_ERROR if OK, or error code set otherwise
+ */
+pusError_t pus_expectTmNoHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+
+//! Check that a packet is a TM, and set error condition otherwise
+/*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
+ *  with pus_setError and returns the error code. Use with macros for convenience.
+ *  \param[in] packet The packet to check
+ *  \param[in] function Name of the function to log in case of error
+ *  \param[in] data Data to log in case of error
+ *  \return PUS_NO_ERROR if OK, or error code set otherwise
+ */
+pusError_t pus_expectTc(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+
+//! Check that a packet is a TM, and set error condition otherwise
+/*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
+ *  with pus_setError and returns the error code. Use with macros for convenience.
+ *  \param[in] packet The packet to check
+ *  \param[in] function Name of the function to log in case of error
+ *  \param[in] data Data to log in case of error
+ *  \return PUS_NO_ERROR if OK, or error code set otherwise
+ */
+pusError_t pus_expectTcHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+
+//! Check that a packet is a TM, and set error condition otherwise
+/*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
+ *  with pus_setError and returns the error code. Use with macros for convenience.
+ *  \param[in] packet The packet to check
+ *  \param[in] function Name of the function to log in case of error
+ *  \param[in] data Data to log in case of error
+ *  \return PUS_NO_ERROR if OK, or error code set otherwise
+ */
+pusError_t pus_expectTcNoHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+
+//! Helper macro for pus_expectTm; adds caller function's name
+#define PUS_EXPECT_TM(packet) pus_expectTm((packet), __func__, 0)
+
+//! Helper macro for pus_expectTmHeader; adds caller function's name and data
+#define PUS_EXPECT_TM_2(packet, data) pus_expectTm((packet), __func__, (pusErrorData_t)(data))
+
+//! Helper macro for pus_expectTmHeader; adds caller function's name
+#define PUS_EXPECT_TM_HEADER(packet) pus_expectTmHeader((packet), __func__, 0)
+
+//! Helper macro for pus_expectTmHeader; adds caller function's name
+#define PUS_EXPECT_TM_HEADER_2(packet, data) pus_expectTmHeader((packet), __func__, (pusErrorData_t)(data))
+
+//! Helper macro for pus_expectTmNoNoHeader; adds caller function's name
+#define PUS_EXPECT_TM_NO_HEADER(packet) pus_expectTmNoHeader((packet), __func__, 0)
+
+//! Helper macro for pus_expectTmNoNoHeader; adds caller function's name
+#define PUS_EXPECT_TM_NO_HEADER_2(packet, data) pus_expectTmNoHeader((packet), __func__, (pusErrorData_t)(data))
+
+//! Helper macro for pus_expectTc; adds caller function's name
+#define PUS_EXPECT_TC(packet) pus_expectTc((packet), __func__, 0)
+
+//! Helper macro for pus_expectTcHeader; adds caller function's name and data
+#define PUS_EXPECT_TC_2(packet, data) pus_expectTc((packet), __func__, (pusErrorData_t)(data))
+
+//! Helper macro for pus_expectTcHeader; adds caller function's name
+#define PUS_EXPECT_TC_HEADER(packet) pus_expectTcHeader((packet), __func__, 0)
+
+//! Helper macro for pus_expectTcHeader; adds caller function's name
+#define PUS_EXPECT_TC_HEADER_2(packet, data) pus_expectTcHeader((packet), __func__, (pusErrorData_t)(data))
+
+//! Helper macro for pus_expectTcNoHeader; adds caller function's name
+#define PUS_EXPECT_TC_NO_HEADER(packet) pus_expectTcNoHeader((packet), __func__, 0)
+
+//! Helper macro for pus_expectTcNoHeader; adds caller function's name
+#define PUS_EXPECT_TC_NO_HEADER_2(packet, data) pus_expectTcNoHeader((packet), __func__, (pusErrorData_t)(data))
 
 #endif // PUS_PACKET_H

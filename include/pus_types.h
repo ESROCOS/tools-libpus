@@ -1,3 +1,13 @@
+/*! \file pus_types.h
+ *  \brief Types used in the PUS packet data structures.
+ *
+ *  The structure of the packets is defined by the ASN.1 types. This module provides
+ *  wrapper types and supporting definitions for convenience. In addition, these
+ *  types provide some independence from the underlaying representation.
+ *
+ *  \author GMV
+ */
+
 #ifndef PUS_TYPES_H
 #define PUS_TYPES_H
 
@@ -6,7 +16,10 @@
 
 #include "asn1/ccsds_packet.h"
 
-// Create aliases for the generated PUS types
+
+//
+// Aliases for the generated PUS types
+//
 
 typedef asn1SccPusPacket pusPacket_t;   //!< Type of CCSDS packets
 typedef asn1SccPusPacketVersion pusPacketVersion_t; //!< Type of CCSDS packet version
@@ -23,18 +36,45 @@ typedef asn1SccPusMessageTypeCounter pusMsgTypeCount_t; //!< Type of the TM mess
 typedef asn1SccPusTime pusTime_t; //!< Type of the TM packet time field
 typedef asn1SccPusAcknowledgementFlags pusAckFlags_t; //!< Type of the TC packet acknowledgment flags
 
-
-// Aliases for enum values
-extern const pusPacketType_t pus_TM;
-extern const pusPacketType_t pus_TC;
-
-extern const pusSequenceFlags_t pus_STANDALONE_PACKET;
-
-extern const pusVersion_t pus_V2;
-extern const pusVersion_t pus_INVALID_VERSION;
+// Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
+typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
+typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
 
 
+
+//
+// Aliases for enum and union values
+//
+
+// pusPacketType_t
+#define pus_TM ((pusPacketType_t) asn1Sccpus_TM)
+#define pus_TC ((pusPacketType_t) asn1Sccpus_TC)
+
+// pusSequenceFlags_t
+#define pus_STANDALONE_PACKET ((pusSequenceFlags_t) asn1Sccpus_STANDALONE_PACKET)
+
+// pusVersion_t
+#define pus_V2 				((pusVersion_t) asn1Sccpus_V2)
+#define pus_INVALID_VERSION ((pusVersion_t) asn1Sccpus_INVALID_VERSION)
+
+// packetDataKind_t
+#define pus_PACKET_DATA_NONE 	((pusPacketDataKind_t) PusPacketData_NONE)
+#define pus_TM_DATA 			((pusPacketDataKind_t) tmData_PRESENT)
+#define pus_TM_DATA_NO_HEADER 	((pusPacketDataKind_t) tmDataNoHeader_PRESENT)
+#define pus_TC_DATA 			((pusPacketDataKind_t) tcData_PRESENT)
+#define pus_TC_DATA_NO_HEADER 	((pusPacketDataKind_t) tcDataNoHeader_PRESENT)
+
+// pusPacketTmDataKind_t
+#define pus_TM_DATA_NONE 		((pusTmDataKind_t) PusTmSourceData_NONE)
+#define pus_TM_DATA_ST_1_1		((pusTmDataKind_t) st_1_1_PRESENT)
+
+
+
+
+//
 // Type limits
+//
+
 #define pusUInt3_LIMIT  ((const unsigned int) 8)
 #define pusUInt4_LIMIT  ((const unsigned int) 16)
 #define pusUInt8_LIMIT  ((const unsigned int) 256)
@@ -42,41 +82,11 @@ extern const pusVersion_t pus_INVALID_VERSION;
 #define pusUInt14_LIMIT ((const unsigned int) 16384)
 #define pusUInt16_LIMIT ((const unsigned int) 65536)
 
+//! First value not representable by the pusSequenceCount_t type
 #define pusSequenceCount_LIMIT pusUInt14_LIMIT
-#define pusPacketDataLenght_LIMIT pusUInt16_LIMIT
 
-
-// Error type and codes
-
-//! Type for the result of PUS library operations
-typedef enum
-{
-    PUS_SUCCESS = 0,
-    PUS_FAIL,
-    
-    // Limit
-    PUS_LAST_RESULT
-} pusResult_t;
-
-
-
-
-
-// Supporting types for unions
-
-//! Possible types of data in a CCSDS packet
-typedef enum
-{
-    pus_PACKET_DATA_NONE = 0,
-    pus_TM_DATA,
-    pus_TM_DATA_NO_HEADER,
-    pus_TC_DATA,
-    pus_TC_DATA_NO_HEADER,
-    
-    // Limit
-    pus_PACKET_DATA_LAST
-} pusPacketDataKind_t;
-
+//! First value not representable by the pusPacketDataLength_t type
+#define pusPacketDataLength_LIMIT pusUInt16_LIMIT
 
 
 #endif //PUS_TYPES_H

@@ -21,16 +21,16 @@
 
 
 //! Macro to set the error code, including the function name
-#define PUS_SETERROR(code) pus_setError((code), __func__, 0)
+#define PUS_SET_ERROR(code) pus_setError((code), __func__, 0)
 
 //! Macro to set the error code, including the function name, with a data parameter
-#define PUS_SETERROR2(code, data) pus_setError((code), __func__, (pusErrorData_t)(data))
+#define PUS_SET_ERROR_2(code, data) pus_setError((code), __func__, (pusErrorData_t)(data))
 
 //! Macro to get the last error code, without additional data
-#define PUS_GETERROR() pus_getError(NULL, NULL, NULL)
+#define PUS_GET_ERROR() pus_getError(NULL, NULL, NULL)
 
 //! Macro to check if there was an error
-#define PUS_ISERROR() (PUS_NO_ERROR != pus_getError(NULL, NULL, NULL))
+#define PUS_IS_ERROR() (PUS_NO_ERROR != pus_getError(NULL, NULL, NULL))
 
 
 //! Type for the internal PUS library error codes
@@ -55,7 +55,7 @@ typedef enum
 } pusError_t;
 
 //! Type for additional error data
-typedef int32_t pusErrorData_t;
+typedef size_t pusErrorData_t;
 
 //! Type of the function name for internal errors
 typedef const char* pusErrorFunction_t;

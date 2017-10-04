@@ -9,7 +9,7 @@ void pus_now(pusTime_t* outNow)
 
 	if (NULL == outNow)
 	{
-		PUS_SETERROR(PUS_ERROR_NULLPTR);
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return;
 	}
 
@@ -21,7 +21,7 @@ void pus_now(pusTime_t* outNow)
 	}
 	else
 	{
-		PUS_SETERROR(PUS_ERROR_SYSTEM_TIME);
+		PUS_SET_ERROR(PUS_ERROR_SYSTEM_TIME);
 		return;
 	}
 }

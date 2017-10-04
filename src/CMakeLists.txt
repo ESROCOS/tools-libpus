@@ -4,7 +4,6 @@ set(SOURCES
     pus_packet.c
     pus_st01.c
     pus_time.c
-    pus_types.c
 )
 
 # Define the PUS library
