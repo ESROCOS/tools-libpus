@@ -1,8 +1,10 @@
 # Source files
 set(SOURCES
+	pus_apid.c
     pus_error.c
     pus_packet.c
     pus_st01.c
+    pus_threads.c
     pus_time.c
 )
 

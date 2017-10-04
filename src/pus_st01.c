@@ -147,7 +147,7 @@ pusSequenceCount_t pus_tm_1_1_getSequenceCount(pusPacket_t* tm)
 // Creation of TC acceptance report
 //
 
-pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, const pusPacket_t* receivedTc)
+pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc)
 {
 	if (NULL == outTm || NULL == receivedTc)
 	{
@@ -162,6 +162,14 @@ pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, const pu
 	{
 		pus_initTmPacket(outTm);
 
+		// Source information
+		pus_setApid(outTm, pus_getInfoApid(apid));
+		pus_setSequenceCount(outTm, pus_getNextTmCount(apid));
+
+		// Data length
+		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));
+
+		// Service identification
 		pus_setTmService(outTm, pus_ST01_requestVerification);
 		pus_setTmSubtype(outTm, pus_TM_1_1_successfulAcceptance);
 

@@ -1,15 +1,31 @@
+/*! \file pus_st01.h
+ *  \brief PUS service ST[01] Request Verification.
+ *
+ *  This module provides the functions to generate reports of the service ST[01],
+ *  as well as getter/setter and checking functions.
+ *
+ *  \author GMV
+ */
+
 #ifndef PUS_ST01_H
 #define PUS_ST01_H
 
 #include "pus_types.h"
 #include "pus_error.h"
+#include "pus_apid.h"
 
 //
 // Creation of TC acceptance report
 //
 
 //! Build an acceptance report for a TC
-pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* tm, const pusPacket_t* receivedTc);
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ */
+pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
 
 
 //

@@ -2,6 +2,7 @@
 #include "CUnit/Console.h"
 #include "CUnit/Automated.h"
 
+#include "pus_apid.h"
 #include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_time.h"
@@ -97,7 +98,6 @@ void test_tcHeader(void)
 void test_packetVerification(void)
 {
 	pusPacket_t packet;
-	int* a;
 
 	// TM packet
 
@@ -202,17 +202,24 @@ void test_st01()
 	pusPacket_t tc;
 	pusPacket_t tm;
 
+	pusApidInfo_t apid;
+	pus_initApidInfo(&apid, 33, NULL);
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+
 	// Acceptance success
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacket(&tc));
 	pus_setTcSource(&tc, 11);
 	pus_setSequenceCount(&tc, 22);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &tc));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tc));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_1_successfulAcceptance));
 	CU_ASSERT_EQUAL(11, pus_getTmDestination(&tm));
 	CU_ASSERT_EQUAL(22, pus_tm_1_1_getSequenceCount(&tm));
+	CU_ASSERT_EQUAL(33, pus_getApid(&tm));
+	CU_ASSERT_EQUAL(0, pus_getSequenceCount(&tm));
 	CU_ASSERT_EQUAL(pus_TC, pus_tm_1_1_getPacketType(&tm));
 	CU_ASSERT_TRUE(pus_tm_1_1_getSecondaryHeaderFlag(&tm));
 	CU_ASSERT_EQUAL(pus_getPacketVersion(&tc), pus_tm_1_1_getPacketVersionNumber(&tm));
@@ -220,7 +227,8 @@ void test_st01()
 
 	// Case TC without header
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacketNoHeader(&tc));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &tc));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tc));
+	CU_ASSERT_EQUAL(1, pus_getSequenceCount(&tm));
 	CU_ASSERT_FALSE(pus_tm_1_1_getSecondaryHeaderFlag(&tm));
 }
 

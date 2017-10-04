@@ -35,6 +35,7 @@ typedef asn1SccPusTimeReferenceStatus pusTimeRefStatus_t; //!< Type of the TM ti
 typedef asn1SccPusMessageTypeCounter pusMsgTypeCount_t; //!< Type of the TM message type counter filed
 typedef asn1SccPusTime pusTime_t; //!< Type of the TM packet time field
 typedef asn1SccPusAcknowledgementFlags pusAckFlags_t; //!< Type of the TC packet acknowledgment flags
+typedef asn1SccPusPacketData pusPacketData_t; //!< Type of the CCSDS packet data section
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
 typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
