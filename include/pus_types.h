@@ -36,6 +36,10 @@ typedef asn1SccPusMessageTypeCounter pusMsgTypeCount_t; //!< Type of the TM mess
 typedef asn1SccPusTime pusTime_t; //!< Type of the TM packet time field
 typedef asn1SccPusAcknowledgementFlags pusAckFlags_t; //!< Type of the TC packet acknowledgment flags
 typedef asn1SccPusPacketData pusPacketData_t; //!< Type of the CCSDS packet data section
+typedef asn1SccPusSt01Failure pusSt01Failure_t; //!< Type of the failure code and information in ST[01] reports
+typedef asn1SccPusSt01FailureCode pusSt01FailureCode_t; //!< Type of the failure code in ST[01] reports
+typedef asn1SccPusSt01FailureInfo pusSt01FailureInfo_t; //!< Type of the failure information in ST[01] reports
+typedef asn1SccPusStepId pusStepId_t; //!< Type of procedure steps
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
 typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
@@ -67,7 +71,7 @@ typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union dis
 
 // pusPacketTmDataKind_t
 #define pus_TM_DATA_NONE 		((pusTmDataKind_t) PusTmSourceData_NONE)
-#define pus_TM_DATA_ST_1_1		((pusTmDataKind_t) st_1_1_PRESENT)
+#define pus_TM_DATA_ST_1_X		((pusTmDataKind_t) st_1_X_PRESENT)
 
 
 

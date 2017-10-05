@@ -206,30 +206,77 @@ void test_st01()
 	pus_initApidInfo(&apid, 33, NULL);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
-
-	// Acceptance success
+	// Test TC
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacket(&tc));
 	pus_setTcSource(&tc, 11);
 	pus_setSequenceCount(&tc, 22);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tc));
+	// Test failures
+	pusSt01FailureInfo_t info1, info2;
+	pus_setSt01FailureInfo(&info1, 101, (void*)102, (void*)103);
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
+	// TM[1,1]
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tc));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_1_successfulAcceptance));
 	CU_ASSERT_EQUAL(11, pus_getTmDestination(&tm));
-	CU_ASSERT_EQUAL(22, pus_tm_1_1_getSequenceCount(&tm));
+	CU_ASSERT_EQUAL(22, pus_tm_1_X_getSequenceCount(&tm));
 	CU_ASSERT_EQUAL(33, pus_getApid(&tm));
 	CU_ASSERT_EQUAL(0, pus_getSequenceCount(&tm));
-	CU_ASSERT_EQUAL(pus_TC, pus_tm_1_1_getPacketType(&tm));
-	CU_ASSERT_TRUE(pus_tm_1_1_getSecondaryHeaderFlag(&tm));
-	CU_ASSERT_EQUAL(pus_getPacketVersion(&tc), pus_tm_1_1_getPacketVersionNumber(&tm));
-	CU_ASSERT_EQUAL(pus_getSequenceFlags(&tc), pus_tm_1_1_getSequenceFlags(&tm));
+	CU_ASSERT_EQUAL(pus_TC, pus_tm_1_X_getPacketType(&tm));
+	CU_ASSERT_TRUE(pus_tm_1_X_getSecondaryHeaderFlag(&tm));
+	CU_ASSERT_EQUAL(pus_getPacketVersion(&tc), pus_tm_1_X_getPacketVersionNumber(&tm));
+	CU_ASSERT_EQUAL(pus_getSequenceFlags(&tc), pus_tm_1_X_getSequenceFlags(&tm));
+	CU_ASSERT_EQUAL(0, pus_tm_1_X_getStep(&tm));
+	CU_ASSERT_EQUAL(pus_ST01_NO_ERROR, pus_tm_1_X_getFailureInfo(&tm, NULL))
 
-	// Case TC without header
+	// TM[1,2]
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_2_createAcceptanceReportFailure(&tm, &apid, &tc, pus_ST01_ERROR_SERVICE_UNAVAILABLE, &info1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_2_failedAcceptance));
+	pus_initSt01FailureInfo(&info2);
+	CU_ASSERT_EQUAL(pus_ST01_ERROR_SERVICE_UNAVAILABLE, pus_tm_1_X_getFailureInfo(&tm, &info2));
+	CU_ASSERT_EQUAL(101, pus_getSt01FailureSubcode(&info2));
+	CU_ASSERT_EQUAL(102, pus_getSt01FailureData(&info2));
+	CU_ASSERT_EQUAL(103, pus_getSt01FailureAddress(&info2));
+
+	// TM[1,3]
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_3_createStartReportSuccess(&tm, &apid, &tc));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_3_successfulStart));
+
+	// TM[1,4]
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_4_createStartReportFailure(&tm, &apid, &tc, pus_ST01_ERROR_WRONG_FORMAT, NULL));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_4_failedStart));
+	CU_ASSERT_EQUAL(pus_ST01_ERROR_WRONG_FORMAT, pus_tm_1_X_getFailureInfo(&tm, NULL));
+
+	// TM[1,5]
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_5_createProgressReportSuccess(&tm, &apid, &tc, 71));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_5_successfulProgress));
+	CU_ASSERT_EQUAL(71, pus_tm_1_X_getStep(&tm));
+
+	// TM[1,6]
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_6_createProgressReportFailure(&tm, &apid, &tc, 72, pus_ST01_ERROR_SUBTYPE_UNAVAILABLE, NULL));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_6_failedProgress));
+	CU_ASSERT_EQUAL(pus_ST01_ERROR_SUBTYPE_UNAVAILABLE, pus_tm_1_X_getFailureInfo(&tm, NULL));
+	CU_ASSERT_EQUAL(72, pus_tm_1_X_getStep(&tm));
+
+	// TM[1,7]
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_7_createCompletionReportSuccess(&tm, &apid, &tc));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_7_successfulCompletion));
+
+	// TM[1,8]
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_8_createCompletionReportFailure(&tm, &apid, &tc, pus_ST01_ERROR_WRONG_FORMAT, NULL));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST01(&tm, pus_TM_1_8_failedCompletion));
+	CU_ASSERT_EQUAL(pus_ST01_ERROR_WRONG_FORMAT, pus_tm_1_X_getFailureInfo(&tm, NULL));
+
+	// TC without header
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacketNoHeader(&tc));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tc));
-	CU_ASSERT_EQUAL(1, pus_getSequenceCount(&tm));
-	CU_ASSERT_FALSE(pus_tm_1_1_getSecondaryHeaderFlag(&tm));
+	CU_ASSERT_FALSE(pus_tm_1_X_getSecondaryHeaderFlag(&tm));
+
+	// TM counter
+	CU_ASSERT_EQUAL(8, pus_getSequenceCount(&tm));
+
 }
 
 

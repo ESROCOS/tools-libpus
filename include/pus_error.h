@@ -64,7 +64,7 @@ typedef enum
 } pusError_t;
 
 //! Type for additional error data
-typedef size_t pusErrorData_t;
+typedef void* pusErrorData_t;
 
 //! Type of the function name for internal errors
 typedef const char* pusErrorFunction_t;

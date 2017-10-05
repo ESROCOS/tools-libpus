@@ -18,6 +18,16 @@
 // Creation of TC acceptance report
 //
 
+//! Build the common part of the ST[01] reports
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ *  \param[in] subtype The TM service subtype to be created
+ */
+pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc, pusSubservice_t subtype);
+
 //! Build an acceptance report for a TC
 /*! Builds a TM[1,1] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
@@ -27,49 +37,166 @@
  */
 pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
 
+//! Build an acceptance report for a TC
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ *  \param[in] code Failure code
+ *  \param[in] info Failure info; pass NULL to leave default
+ */
+pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
+		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
+
+//! Build an acceptance report for a TC
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ */
+pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
+
+//! Build an acceptance report for a TC
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ *  \param[in] code Failure code
+ *  \param[in] info Failure info; pass NULL to leave default
+ */
+pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
+		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
+
+//! Build an acceptance report for a TC
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ *  \param[in] step The procedure step
+ */
+pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc, pusStepId_t step);
+
+//! Build an acceptance report for a TC
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ *  \param[in] step The procedure step
+ *  \param[in] code Failure code
+ *  \param[in] info Failure info; pass NULL to leave default
+ */
+pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
+		pusStepId_t step, pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
+
+//! Build an acceptance report for a TC
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ */
+pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
+
+//! Build an acceptance report for a TC
+/*! Builds a TM[1,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] count TM sequence counter for the source APID
+ *  \param[in] receivedTc The TC acknowledged in the report
+ *  \param[in] code Failure code
+ *  \param[in] info Failure info; pass NULL to leave default
+ */
+pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
+		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
+
 
 //
 // Report field (of the verified TC) getters and setters
 //
 
-//! Set the packet version number field (of the verified TC) for a TM(1,1) report
-void pus_tm_1_1_setPacketVersionNumber(pusPacket_t* tm, pusPacketVersion_t version);
+//! Set the packet version number field (of the verified TC) for a TM(1,X) report
+void pus_tm_1_X_setPacketVersionNumber(pusPacket_t* tm, pusPacketVersion_t version);
 
-//! Get the packet version number field (of the verified TC) for a TM(1,1) report
-pusPacketVersion_t pus_tm_1_1_getPacketVersionNumber(pusPacket_t* tm);
+//! Get the packet version number field (of the verified TC) for a TM(1,X) report
+pusPacketVersion_t pus_tm_1_X_getPacketVersionNumber(pusPacket_t* tm);
 
-//! Set the packet type field (of the verified TC) for a TM(1,1) report
-void pus_tm_1_1_setPacketType(pusPacket_t* tm, pusPacketType_t type);
+//! Set the packet type field (of the verified TC) for a TM(1,X) report
+void pus_tm_1_X_setPacketType(pusPacket_t* tm, pusPacketType_t type);
 
-//! Get the packet type field (of the verified TC) for a TM(1,1) report
-pusPacketType_t pus_tm_1_1_getPacketType(pusPacket_t* tm);
+//! Get the packet type field (of the verified TC) for a TM(1,X) report
+pusPacketType_t pus_tm_1_X_getPacketType(pusPacket_t* tm);
 
-//! Set the secondary header field (of the verified TC) for a TM(1,1) report
-void pus_tm_1_1_setSecondaryHeaderFlag(pusPacket_t* tm, bool flag);
+//! Set the secondary header field (of the verified TC) for a TM(1,X) report
+void pus_tm_1_X_setSecondaryHeaderFlag(pusPacket_t* tm, bool flag);
 
-//! Get the secondary header field (of the verified TC) for a TM(1,1) report
-bool pus_tm_1_1_getSecondaryHeaderFlag(pusPacket_t* tm);
+//! Get the secondary header field (of the verified TC) for a TM(1,X) report
+bool pus_tm_1_X_getSecondaryHeaderFlag(pusPacket_t* tm);
 
-//! Set the APID field (of the verified TC) for a TM(1,1) report
-void pus_tm_1_1_setApid(pusPacket_t* tm, pusApid_t apid);
+//! Set the APID field (of the verified TC) for a TM(1,X) report
+void pus_tm_1_X_setApid(pusPacket_t* tm, pusApid_t apid);
 
-//! Get the APID field (of the verified TC) for a TM(1,1) report
-pusApid_t pus_tm_1_1_getApid(pusPacket_t* tm);
+//! Get the APID field (of the verified TC) for a TM(1,X) report
+pusApid_t pus_tm_1_X_getApid(pusPacket_t* tm);
 
-//! Set the packet sequence flags field (of the verified TC) for a TM(1,1) report
-void pus_tm_1_1_setSequenceFlags(pusPacket_t* tm, pusSequenceFlags_t flags);
+//! Set the packet sequence flags field (of the verified TC) for a TM(1,X) report
+void pus_tm_1_X_setSequenceFlags(pusPacket_t* tm, pusSequenceFlags_t flags);
 
-//! Get the packet sequence flags field (of the verified TC) for a TM(1,1) report
-pusSequenceFlags_t pus_tm_1_1_getSequenceFlags(pusPacket_t* tm);
+//! Get the packet sequence flags field (of the verified TC) for a TM(1,X) report
+pusSequenceFlags_t pus_tm_1_X_getSequenceFlags(pusPacket_t* tm);
 
-//! Set the packet sequence count field (of the verified TC) for a TM(1,1) report
-void pus_tm_1_1_setSequenceCount(pusPacket_t* tm, pusSequenceCount_t count);
+//! Set the packet sequence count field (of the verified TC) for a TM(1,X) report
+void pus_tm_1_X_setSequenceCount(pusPacket_t* tm, pusSequenceCount_t count);
 
-//! Get the packet sequence count field (of the verified TC) for a TM(1,1) report
-pusSequenceCount_t pus_tm_1_1_getSequenceCount(pusPacket_t* tm);
+//! Get the packet sequence count field (of the verified TC) for a TM(1,X) report
+pusSequenceCount_t pus_tm_1_X_getSequenceCount(pusPacket_t* tm);
+
+//! Set the step field for a TM(1,X) report
+void pus_tm_1_X_setStep(pusPacket_t* tm, pusStepId_t step);
+
+//! Get the step field for a TM(1,X) report
+pusStepId_t pus_tm_1_X_getStep(pusPacket_t* tm);
+
+//! Initialize the failure data structure in a ST[01] TM packet
+void pus_tm_1_X_initFailureInfo(pusPacket_t* tm);
+
+//! Get the failure information in a ST[01] TM packet
+/*! \param[in] tm The ST[01] TM packet
+ *  \param[inout] info The failure info; if NULL, the info field is not returned
+ *  \return The failure code
+ */
+pusSt01FailureCode_t pus_tm_1_X_getFailureInfo(const pusPacket_t* tm, pusSt01FailureInfo_t* outInfo);
+
+//! Set the failure information in a ST[01] TM packet
+/*! \param[in] tm The ST[01] TM packet
+ *  \param[in] code The failure code
+ *  \param[in] info The failure info; if NULL, the info field is not filled
+ */
+void pus_tm_1_X_setFailureInfo(pusPacket_t* tm, pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
 
 
+//
+// Management of failure values
+//
 
+//! Default values for failure info
+void pus_initSt01FailureInfo(pusSt01FailureInfo_t* info);
+
+//! Set failure information
+void pus_setSt01FailureInfo(pusSt01FailureInfo_t* info, int32_t subcode, void* data, void* address);
+
+//! Get failure information: subcode
+int32_t pus_getSt01FailureSubcode(const pusSt01FailureInfo_t* info);
+
+//! Get failure information: data
+void* pus_getSt01FailureData(const pusSt01FailureInfo_t* info);
+
+//! Get failure information: address
+void* pus_getSt01FailureAddress(const pusSt01FailureInfo_t* info);
 
 
 //
@@ -77,6 +204,11 @@ pusSequenceCount_t pus_tm_1_1_getSequenceCount(pusPacket_t* tm);
 //
 
 //! Check that a packet is of a PUS ST[01] kind
+/*! \param[in] packet The PUS packet
+ *  \param[in] expectedSubtype Check that the TM has this subtype; use pusSubtype_NONE to check for all TM types in ST[01]
+ *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST01 to include the caller function's name)
+ *  \return If valid TM, PUS_NO_ERROR; otherwise, an error code
+ */
 pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
 
 //! Helper macro for pus_expectSt01; adds function name

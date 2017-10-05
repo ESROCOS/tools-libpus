@@ -5,7 +5,7 @@ PUS-CcsdsPacketFields DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
-    PusUInt4, PusUInt11, PusUInt14, PusUInt16 FROM PUS-NbitIntegers
+    PusUInt4, PusUInt11, PusUInt14, PusUInt16, PusUInt32 FROM PUS-NbitIntegers
     PusServiceType, PusSubserviceType FROM PUS-Services;
 
 
@@ -79,5 +79,10 @@ BEGIN
     
     -- Packet error control checksum (16 bits)
     PusChecksum ::= PusUInt16
+    
+    -- Type to identify progress steps used e.g. by ST[01] and ST[18]
+	PusStepId ::= PusUInt32
+	
+	pus-STEP-NONE PusStepId ::= 0	-- Null step value
     
 END
