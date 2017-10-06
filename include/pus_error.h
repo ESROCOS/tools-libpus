@@ -21,10 +21,10 @@
 
 
 //! Macro to set the error code, including the function name
-#define PUS_SET_ERROR(code) pus_setError((code), __func__, 0)
+#define PUS_SET_ERROR(code) pus_setError((code), __func__, (pusErrorData_t){.integer=0})
 
 //! Macro to set the error code, including the function name, with a data parameter
-#define PUS_SET_ERROR_2(code, data) pus_setError((code), __func__, (pusErrorData_t)(data))
+#define PUS_SET_ERROR_INT(code, data) pus_setError((code), __func__, (pusErrorData_t){.integer=(int32_t)(data)})
 
 //! Macro to get the last error code, without additional data
 #define PUS_GET_ERROR() pus_getError(NULL, NULL, NULL)
@@ -64,7 +64,13 @@ typedef enum
 } pusError_t;
 
 //! Type for additional error data
-typedef void* pusErrorData_t;
+/*! For the moment, all error codes have an integer data (0 if not used).
+ *  A union is used here so that in the future other codes can be added, without needing casts.
+ */
+typedef union
+{
+	int32_t integer;
+} pusErrorData_t;
 
 //! Type of the function name for internal errors
 typedef const char* pusErrorFunction_t;

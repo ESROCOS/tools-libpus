@@ -3,7 +3,7 @@
 // Error variables
 volatile pusError_t lastErrorCode = PUS_NO_ERROR;
 volatile pusErrorFunction_t lastErrorFunction = "none";
-volatile pusErrorData_t lastErrorData = 0;
+volatile pusErrorData_t lastErrorData = (pusErrorData_t){.integer=0};
 
 
 void pus_setError(pusError_t error, const char* function, pusErrorData_t data)
@@ -41,7 +41,7 @@ void pus_clearError()
 {
     lastErrorCode = PUS_NO_ERROR;
     lastErrorFunction = "none";
-    lastErrorData = 0;
+    lastErrorData = (pusErrorData_t){.integer=0};
 }
 
 

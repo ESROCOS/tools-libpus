@@ -155,7 +155,7 @@ void pus_initSt01FailureInfo(pusSt01FailureInfo_t* info)
 	pus_setSt01FailureInfo(info, pus_ST01_NO_ERROR, 0, 0);
 }
 
-void pus_setSt01FailureInfo(pusSt01FailureInfo_t* info, int32_t subcode, void* data, void* address)
+void pus_setSt01FailureInfo(pusSt01FailureInfo_t* info, pusInt32_t subcode, pusInt32_t data, pusMemAddr_t address)
 {
 	if (NULL == info)
 	{
@@ -170,7 +170,7 @@ void pus_setSt01FailureInfo(pusSt01FailureInfo_t* info, int32_t subcode, void* d
 	}
 }
 
-int32_t pus_getSt01FailureSubcode(const pusSt01FailureInfo_t* info)
+pusInt32_t pus_getSt01FailureSubcode(const pusSt01FailureInfo_t* info)
 {
 	if (NULL == info)
 	{
@@ -183,7 +183,7 @@ int32_t pus_getSt01FailureSubcode(const pusSt01FailureInfo_t* info)
 	}
 }
 
-void* pus_getSt01FailureData(const pusSt01FailureInfo_t* info)
+pusInt32_t pus_getSt01FailureData(const pusSt01FailureInfo_t* info)
 {
 	if (NULL == info)
 	{
@@ -196,7 +196,7 @@ void* pus_getSt01FailureData(const pusSt01FailureInfo_t* info)
 	}
 }
 
-void* pus_getSt01FailureAddress(const pusSt01FailureInfo_t* info)
+pusMemAddr_t pus_getSt01FailureAddress(const pusSt01FailureInfo_t* info)
 {
 	if (NULL == info)
 	{
@@ -506,7 +506,7 @@ pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApidI
  */
 pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
 {
-	pusError_t expectResult = pus_expectTmHeader(packet, function, 0);
+	pusError_t expectResult = pus_expectTmHeader(packet, function, (pusErrorData_t){.integer=0});
 	if (PUS_NO_ERROR == expectResult)
 	{
 		pusService_t service = pus_getTmService(packet);
@@ -515,7 +515,7 @@ pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSub
 
 		if (service != pus_ST01_requestVerification)
 		{
-			pus_setError(PUS_ERROR_TM_SERVICE, function, service);
+			pus_setError(PUS_ERROR_TM_SERVICE, function, (pusErrorData_t){.integer=service});
 			return PUS_ERROR_TM_SERVICE;
 		}
 
@@ -531,7 +531,7 @@ pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSub
 				(subtype != pus_TM_1_7_successfulCompletion) &&
 				(subtype != pus_TM_1_8_failedCompletion))
 			{
-				pus_setError(PUS_ERROR_TM_SUBTYPE, function, subtype);
+				pus_setError(PUS_ERROR_TM_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
 				return PUS_ERROR_TM_SUBTYPE;
 			}
 		}
@@ -540,7 +540,7 @@ pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSub
 			// Check that subtype is as expected
 			if (subtype != expectedSubtype)
 			{
-				pus_setError(PUS_ERROR_TM_SUBTYPE, function, subtype);
+				pus_setError(PUS_ERROR_TM_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
 				return PUS_ERROR_TM_SUBTYPE;
 
 			}
@@ -549,7 +549,7 @@ pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSub
 		pusPacketDataKind_t kind = pus_getTmDataKind(packet);
 		if (kind != pus_TM_DATA_ST_1_X)
 		{
-			pus_setError(PUS_ERROR_TM_KIND, function, expectedKind);
+			pus_setError(PUS_ERROR_TM_KIND, function, (pusErrorData_t){.integer=kind});
 			return PUS_ERROR_TM_KIND;
 		}
 

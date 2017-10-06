@@ -10,7 +10,7 @@ BEGIN
 
     IMPORTS 
     PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount, PusStepId FROM PUS-CcsdsPacketFields
-    PusInt32, PusUInt32, PusUInt64 FROM PUS-NbitIntegers;
+    PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-NbitIntegers;
     
     -- Type to represent failure codes used by service ST[01]
     PusSt01FailureCode ::= PusUInt32
@@ -32,8 +32,8 @@ BEGIN
 	PusSt01FailureInfo ::= SEQUENCE
 	{
 		subcode	PusInt32,	-- Internal error code, matching a C enum
-		data	PusUInt64,	-- Error data, the type is selected to be able to store a C pointer
-		address PusUInt64	-- A memory address
+		data	PusInt32,	-- Error data
+		address PusMemAddr	-- A memory address
 	}
 
     -- Request ID, used by ST[01] packets

@@ -275,7 +275,7 @@ pusService_t pus_getTmService(const pusPacket_t* packet)
 
 void pus_setTmService(pusPacket_t* packet, pusService_t service)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_2(packet, service))
+    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_INT(packet, service))
 	{
         packet->data.u.tmData.header.service = service;
 	}
@@ -295,7 +295,7 @@ pusSubservice_t pus_getTmSubtype(const pusPacket_t* packet)
 
 void pus_setTmSubtype(pusPacket_t* packet, pusService_t subtype)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_2(packet, subtype))
+    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_INT(packet, subtype))
 	{
         packet->data.u.tmData.header.subtype = subtype;
 	}
@@ -315,7 +315,7 @@ pusService_t pus_getTcService(const pusPacket_t* packet)
 
 void pus_setTcService(pusPacket_t* packet, pusService_t service)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_2(packet, service))
+    if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_INT(packet, service))
 	{
         packet->data.u.tcData.header.service = service;
 	}
@@ -335,7 +335,7 @@ pusSubservice_t pus_getTcSubtype(const pusPacket_t* packet)
 
 void pus_setTcSubtype(pusPacket_t* packet, pusService_t subtype)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_2(packet, subtype))
+    if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_INT(packet, subtype))
 	{
         packet->data.u.tcData.header.subtype = subtype;
 	}
@@ -355,7 +355,7 @@ pusTimeRefStatus_t pus_getTmTimeReferenceStatus(const pusPacket_t* packet)
 
 void pus_setTmTimeReferenceStatus(pusPacket_t* packet, pusTimeRefStatus_t status)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_2(packet, status))
+    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_INT(packet, status))
 	{
         packet->data.u.tmData.header.timeRefStatus = status;
 	}
@@ -375,7 +375,7 @@ pusMsgTypeCount_t pus_getTmMessageTypeCounter(const pusPacket_t* packet)
 
 void pus_setTmMessageTypeCounter(pusPacket_t* packet, pusMsgTypeCount_t count)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_2(packet, count))
+    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_INT(packet, count))
 	{
         packet->data.u.tmData.header.msgTypeCount = count;
 	}
@@ -395,7 +395,7 @@ pusApid_t pus_getTmDestination(const pusPacket_t* packet)
 
 void pus_setTmDestination(pusPacket_t* packet, pusApid_t destination)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_2(packet, destination))
+    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_INT(packet, destination))
 	{
         packet->data.u.tmData.header.destination = destination;
 	}
@@ -415,7 +415,7 @@ pusApid_t pus_getTcSource(const pusPacket_t* packet)
 
 void pus_setTcSource(pusPacket_t* packet, pusApid_t source)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_2(packet, source))
+    if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_INT(packet, source))
 	{
         packet->data.u.tcData.header.source = source;
 	}
@@ -535,7 +535,7 @@ void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
 {
     if (NULL == packet)
     {
-    	PUS_SET_ERROR_2(PUS_ERROR_NULLPTR, kind);
+    	PUS_SET_ERROR_INT(PUS_ERROR_NULLPTR, kind);
     	return;
     }
     else
@@ -558,7 +558,7 @@ pusTmDataKind_t pus_getTmDataKind(const pusPacket_t* packet)
 
 void pus_setTmDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_2(packet, kind))
+    if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_INT(packet, kind))
     {
     	packet->data.u.tmData.data.kind = kind;
     }
@@ -578,7 +578,7 @@ pusTmDataKind_t pus_getTmNoHeaderDataKind(const pusPacket_t* packet)
 
 void pus_setTmDataNoHeaderKind(pusPacket_t* packet, pusPacketDataKind_t kind)
 {
-    if (PUS_NO_ERROR == PUS_EXPECT_TM_NO_HEADER_2(packet, kind))
+    if (PUS_NO_ERROR == PUS_EXPECT_TM_NO_HEADER_INT(packet, kind))
     {
     	packet->data.u.tmDataNoHeader.kind = kind;
     }

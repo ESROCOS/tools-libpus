@@ -4,6 +4,9 @@
  *  This module provides the functions to generate reports of the service ST[01],
  *  as well as getter/setter and checking functions.
  *
+ *  All standard reports are implemented except for:
+ *  - TM[1,10] Failed routing verification report
+ *
  *  \author GMV
  */
 
@@ -187,16 +190,16 @@ void pus_tm_1_X_setFailureInfo(pusPacket_t* tm, pusSt01FailureCode_t code, const
 void pus_initSt01FailureInfo(pusSt01FailureInfo_t* info);
 
 //! Set failure information
-void pus_setSt01FailureInfo(pusSt01FailureInfo_t* info, int32_t subcode, void* data, void* address);
+void pus_setSt01FailureInfo(pusSt01FailureInfo_t* info, pusInt32_t subcode, pusInt32_t data, pusMemAddr_t address);
 
 //! Get failure information: subcode
-int32_t pus_getSt01FailureSubcode(const pusSt01FailureInfo_t* info);
+pusInt32_t pus_getSt01FailureSubcode(const pusSt01FailureInfo_t* info);
 
 //! Get failure information: data
-void* pus_getSt01FailureData(const pusSt01FailureInfo_t* info);
+pusInt32_t pus_getSt01FailureData(const pusSt01FailureInfo_t* info);
 
 //! Get failure information: address
-void* pus_getSt01FailureAddress(const pusSt01FailureInfo_t* info);
+pusMemAddr_t pus_getSt01FailureAddress(const pusSt01FailureInfo_t* info);
 
 
 //

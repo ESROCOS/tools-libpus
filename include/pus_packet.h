@@ -373,39 +373,39 @@ pusError_t pus_expectTcHeader(const pusPacket_t* packet, const char* function, p
 pusError_t pus_expectTcNoHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
 
 //! Helper macro for pus_expectTm; adds caller function's name
-#define PUS_EXPECT_TM(packet) pus_expectTm((packet), __func__, 0)
+#define PUS_EXPECT_TM(packet) pus_expectTm((packet), __func__, (pusErrorData_t){.integer=0})
 
 //! Helper macro for pus_expectTmHeader; adds caller function's name and data
-#define PUS_EXPECT_TM_2(packet, data) pus_expectTm((packet), __func__, (pusErrorData_t)(data))
+#define PUS_EXPECT_TM_INT(packet, data) pus_expectTm((packet), __func__, (pusErrorData_t){.integer=(int32_t)(data)})
 
 //! Helper macro for pus_expectTmHeader; adds caller function's name
-#define PUS_EXPECT_TM_HEADER(packet) pus_expectTmHeader((packet), __func__, 0)
+#define PUS_EXPECT_TM_HEADER(packet) pus_expectTmHeader((packet), __func__, (pusErrorData_t){.integer=0})
 
 //! Helper macro for pus_expectTmHeader; adds caller function's name
-#define PUS_EXPECT_TM_HEADER_2(packet, data) pus_expectTmHeader((packet), __func__, (pusErrorData_t)(data))
+#define PUS_EXPECT_TM_HEADER_INT(packet, data) pus_expectTmHeader((packet), __func__, (pusErrorData_t){.integer=(int32_t)(data)})
 
 //! Helper macro for pus_expectTmNoNoHeader; adds caller function's name
-#define PUS_EXPECT_TM_NO_HEADER(packet) pus_expectTmNoHeader((packet), __func__, 0)
+#define PUS_EXPECT_TM_NO_HEADER(packet) pus_expectTmNoHeader((packet), __func__, (pusErrorData_t){.integer=0})
 
 //! Helper macro for pus_expectTmNoNoHeader; adds caller function's name
-#define PUS_EXPECT_TM_NO_HEADER_2(packet, data) pus_expectTmNoHeader((packet), __func__, (pusErrorData_t)(data))
+#define PUS_EXPECT_TM_NO_HEADER_INT(packet, data) pus_expectTmNoHeader((packet), __func__, (pusErrorData_t){.integer=(int32_t)(data)})
 
 //! Helper macro for pus_expectTc; adds caller function's name
-#define PUS_EXPECT_TC(packet) pus_expectTc((packet), __func__, 0)
+#define PUS_EXPECT_TC(packet) pus_expectTc((packet), __func__, (pusErrorData_t){.integer=0})
 
 //! Helper macro for pus_expectTcHeader; adds caller function's name and data
-#define PUS_EXPECT_TC_2(packet, data) pus_expectTc((packet), __func__, (pusErrorData_t)(data))
+#define PUS_EXPECT_TC_INT(packet, data) pus_expectTc((packet), __func__, (pusErrorData_t){.integer=(int32_t)(data)})
 
 //! Helper macro for pus_expectTcHeader; adds caller function's name
-#define PUS_EXPECT_TC_HEADER(packet) pus_expectTcHeader((packet), __func__, 0)
+#define PUS_EXPECT_TC_HEADER(packet) pus_expectTcHeader((packet), __func__, (pusErrorData_t){.integer=0})
 
 //! Helper macro for pus_expectTcHeader; adds caller function's name
-#define PUS_EXPECT_TC_HEADER_2(packet, data) pus_expectTcHeader((packet), __func__, (pusErrorData_t)(data))
+#define PUS_EXPECT_TC_HEADER_INT(packet, data) pus_expectTcHeader((packet), __func__, (pusErrorData_t){.integer=(int32_t)(data)})
 
 //! Helper macro for pus_expectTcNoHeader; adds caller function's name
-#define PUS_EXPECT_TC_NO_HEADER(packet) pus_expectTcNoHeader((packet), __func__, 0)
+#define PUS_EXPECT_TC_NO_HEADER(packet) pus_expectTcNoHeader((packet), __func__, (pusErrorData_t){.integer=0})
 
 //! Helper macro for pus_expectTcNoHeader; adds caller function's name
-#define PUS_EXPECT_TC_NO_HEADER_2(packet, data) pus_expectTcNoHeader((packet), __func__, (pusErrorData_t)(data))
+#define PUS_EXPECT_TC_NO_HEADER_INT(packet, data) pus_expectTcNoHeader((packet), __func__, (pusErrorData_t){.integer=(int32_t)(data)})
 
 #endif // PUS_PACKET_H

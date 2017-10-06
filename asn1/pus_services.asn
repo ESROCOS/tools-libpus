@@ -78,7 +78,7 @@ BEGIN
 	pus-TC-3-2-createDiagnosticStructure         PusSubserviceType ::=   2
 	pus-TC-3-4-deleteDiagnosticStructure         PusSubserviceType ::=   4
 	pus-TC-3-7-enablePeriodicDiagnostic          PusSubserviceType ::=   7
-	pus-TC-3-8-disableperiodicDiagnostic         PusSubserviceType ::=   8
+	pus-TC-3-8-disablePeriodicDiagnostic         PusSubserviceType ::=   8
 	-- pus-TC-3-11-reportDiagnosticStructures       PusSubserviceType ::=  11 -- NOT IMPLEMENTED
 	-- pus-TM-3-12-reportDiagnosticStructures       PusSubserviceType ::=  12 -- NOT IMPLEMENTED
 	pus-TM-3-26-diagnosticReport                 PusSubserviceType ::=  26

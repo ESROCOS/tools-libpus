@@ -189,11 +189,11 @@ void test_error()
 	CU_ASSERT_NSTRING_EQUAL("test_error", fun, 20);
 	pus_clearError();
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
-	PUS_SET_ERROR_2(PUS_ERROR_NOT_IMPLEMENTED, 5);
+	PUS_SET_ERROR_INT(PUS_ERROR_NOT_IMPLEMENTED, 5);
 	CU_ASSERT(PUS_IS_ERROR());
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_IMPLEMENTED, pus_getError(&err, &fun, &dat));
 	CU_ASSERT_NSTRING_EQUAL("test_error", fun, 20);
-	CU_ASSERT_EQUAL(5, dat);
+	CU_ASSERT_EQUAL(5, dat.integer);
 	pus_clearError();
 }
 
@@ -214,7 +214,7 @@ void test_st01()
 
 	// Test failures
 	pusSt01FailureInfo_t info1, info2;
-	pus_setSt01FailureInfo(&info1, 101, (void*)102, (void*)103);
+	pus_setSt01FailureInfo(&info1, 101, 102, 103);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
 	// TM[1,1]
