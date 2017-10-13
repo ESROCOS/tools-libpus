@@ -37,7 +37,8 @@ add_custom_target(
 file(GLOB C_FILES "${OUT_DIR}/*.c")
 
 # Define the mission-specific library
-add_library(esrocos_pus_mission STATIC ${C_FILES})
-set_target_properties(esrocos_pus_mission PROPERTIES LINKER_LANGUAGE C)
-add_dependencies(esrocos_pus_mission mission_generate_code)
+set(MISSION_LIB "esrocos_pus_mission_${MISSION}")
+add_library(${MISSION_LIB} STATIC ${C_FILES})
+set_target_properties(${MISSION_LIB} PROPERTIES LINKER_LANGUAGE C)
+add_dependencies(${MISSION_LIB} mission_generate_code)
 
