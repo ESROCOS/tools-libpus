@@ -1,0 +1,23 @@
+[
+    {
+        "label": "myint01",
+        "type": "INT32"
+    },
+    {
+        "label": "myreal01",
+        "type": "REAL64"
+    },
+    {
+        "label": "myint02",
+        "type": "INT32"
+    },
+    {
+        "label": "myuint01",
+        "type": "UINT32"
+    },
+    {
+        "label": "mybyte01",
+        "type": "BYTE"
+    }
+]
+

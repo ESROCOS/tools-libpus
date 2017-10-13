@@ -12,7 +12,21 @@ set(ASN1
 )
 
 file(GLOB ASN1_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/*.asn")
-set(ASN1_OUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated/asn1")
+set(ASN1_OUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated/asn1")
+file(MAKE_DIRECTORY ${ASN1_OUT_DIR})
+
+# Run the .c generation, so that FILE(GLOB ...) will 
+execute_process(
+    COMMAND mono $ENV{ASN1SCC} -c -typePrefix asn1Scc -o ${ASN1_OUT_DIR} ${ASN1_PATHS}
+    RESULT_VARIABLE ASN1SCC_RESULT
+)
+
+if(${ASN1SCC_RESULT} EQUAL 0)
+    message(STATUS "ASN.1 first compilation successful.")
+else()
+    message(FATAL_ERROR "ASN.1 first compilation failed.")
+endif()
+
 
 # Command for asn.1 compilation; creates timestamp file
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/pus-asn1-stamp
@@ -23,12 +37,41 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/pus-asn1-stamp
 )
 
 
-# Target for asn.1 compilation; uses stamp file to run only if changed
+# Target for asn.1 compilation; uses stamp file to run dependent targets only if changed
 add_custom_target(
-    asn1_compile_c
+    asn1_generate_c
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/pus-asn1-stamp
 )
 
 # Add asn1 folder with generated C code
-add_subdirectory(generated)
+#add_subdirectory(generated)
 
+# Common files created by the ASN.1 compiler
+set(ASN1SCC_COMMON
+    ${ASN1_OUT_DIR}/acn.c
+    ${ASN1_OUT_DIR}/asn1crt.c
+    ${ASN1_OUT_DIR}/real.c
+)
+
+# Get generated .c files 
+file(GLOB C_FILES "${ASN1_OUT_DIR}/*.c")
+
+set(SOURCES "")
+
+foreach(cFile ${C_FILES})
+    get_filename_component(fName ${cFile} NAME)
+    if(NOT ${fName} IN_LIST ASN1SCC_COMMON)
+        list(APPEND SOURCES ${cFile})
+    endif()
+endforeach()
+
+# Define the types library
+add_library(esrocos_pus_asn1 STATIC ${SOURCES})
+set_target_properties(esrocos_pus_asn1 PROPERTIES LINKER_LANGUAGE C)
+add_dependencies(esrocos_pus_asn1 asn1_generate_c)
+
+
+# Create a library with the common .c files
+add_library(esrocos_pus_asn1common STATIC ${ASN1SCC_COMMON})
+set_target_properties(esrocos_pus_asn1common PROPERTIES LINKER_LANGUAGE C)
+add_dependencies(esrocos_pus_asn1common asn1_generate_c)

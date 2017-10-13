@@ -1,0 +1,43 @@
+# Input and ouput directories
+set(JSON_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+set(OUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
+
+# Mission configuration JSON files
+file(GLOB JSON "${JSON_DIR}/*.json")
+
+
+# Run files generation once so that FILE(GLOB ...) will find the files
+execute_process(
+    COMMAND python3 ${PROJECT_SOURCE_DIR}/python/generate_mission_config.py ${JSON_DIR} ${OUT_DIR}
+    RESULT_VARIABLE GEN_RESULT
+)
+
+if(${GEN_RESULT} EQUAL 0)
+    message(STATUS "Mission files generation successful.")
+else()
+    message(FATAL_ERROR "Mission files generation failed.")
+endif()
+
+
+# Command for mission files generation; creates timestamp file
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/pus-mission-stamp
+    COMMAND python3 ${PROJECT_SOURCE_DIR}/python/generate_mission_config.py ${JSON_DIR} ${OUT_DIR}
+    COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/pus-mission-stamp
+    DEPENDS ${JSON} python_pus_config
+    COMMENT "Generate code for mission configuration ${JSON_DIR} in ${OUT_DIR}"
+)
+
+# Target for mission code generation; uses stamp file to run dependent targets only if changed
+add_custom_target(
+    mission_generate_code
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/pus-mission-stamp
+)
+
+# Get generated .c files 
+file(GLOB C_FILES "${OUT_DIR}/*.c")
+
+# Define the mission-specific library
+add_library(esrocos_pus_mission STATIC ${C_FILES})
+set_target_properties(esrocos_pus_mission PROPERTIES LINKER_LANGUAGE C)
+add_dependencies(esrocos_pus_mission mission_generate_code)
+

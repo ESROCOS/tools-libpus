@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "id": "https://github.com/esrocos/TBD",
+    "title": "HK parameters",
+    "description": "Housekeeping parameters configuration for PUS service ST[03]",
+    "type" : "array",
+    "items" : {
+        "title": "HK parameter",
+        "type": "object",
+        "properties": {
+            "label": {
+                "description": "Textual label for the parameter",
+                "type": "string"
+            },
+            "type": {
+                "description": "Data type of the parameter",
+                "type": "string",
+                "enum": ["INT32", "UINT32", "REAL64", "BYTE", "BOOL"]
+            }
+        }
+    }
+}
+

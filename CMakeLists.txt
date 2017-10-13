@@ -40,10 +40,13 @@ endif()
 
 include(CTest)
 
-include_directories(include asn1/generated)
+# Location of the generated ASN.1 headers
+include_directories(include ${CMAKE_BINARY_DIR}/asn1/generated)
 
 add_subdirectory(asn1)
 add_subdirectory(doc)
+add_subdirectory(python)
+add_subdirectory(mission)
 add_subdirectory(src)
 add_subdirectory(test)
 

@@ -1,0 +1,17 @@
+# Package files
+set(PYTHON_SCRIPTS
+    __init__.py
+    mission_config.py
+    st03_config.py
+)
+
+# Subdirectories
+add_subdirectory(schemas)
+add_subdirectory(templates)
+
+# Target to add dependencies on the schemas
+add_custom_target(
+    python_pus_config
+    DEPENDS ${PYTHON_SCRIPTS} python_pus_config_schemas python_pus_config_templates
+)
+
