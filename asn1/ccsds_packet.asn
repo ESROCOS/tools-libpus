@@ -13,7 +13,9 @@ BEGIN
     PusChecksum, PusAcknowledgementFlags, PusPacketVersion, PusSecondaryHeaderFlag, PusSequenceFlags, 
     PusSequenceCount, PusPacketDataLength FROM PUS-CcsdsPacketFields
 
-    PusTM-1-X-Data FROM PUS-ST01;
+    PusTM-1-X-Data FROM PUS-ST01
+    PusTM-3-25-Data FROM PUS-ST03
+    ;
 
 
     -- TM secondary header
@@ -32,7 +34,8 @@ BEGIN
     -- TM actual data
     PusTmSourceData ::= CHOICE
     {
-        st-1-X PusTM-1-X-Data
+        st-1-X PusTM-1-X-Data,
+        st-3-25 PusTM-3-25-Data
     }
     
     -- TC secondary header

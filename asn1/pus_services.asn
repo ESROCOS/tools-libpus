@@ -75,13 +75,13 @@ BEGIN
 	-- pus-TM-3-35-reportHousekeepingPeriod         PusSubserviceType ::= 35 -- NOT IMPLEMENTED
 
 	-- Diagnostic
-	pus-TC-3-2-createDiagnosticStructure         PusSubserviceType ::=   2
-	pus-TC-3-4-deleteDiagnosticStructure         PusSubserviceType ::=   4
-	pus-TC-3-7-enablePeriodicDiagnostic          PusSubserviceType ::=   7
-	pus-TC-3-8-disablePeriodicDiagnostic         PusSubserviceType ::=   8
+	-- pus-TC-3-2-createDiagnosticStructure         PusSubserviceType ::=   2 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-3-4-deleteDiagnosticStructure         PusSubserviceType ::=   4 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-3-7-enablePeriodicDiagnostic          PusSubserviceType ::=   7 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-3-8-disablePeriodicDiagnostic         PusSubserviceType ::=   8 -- NOT IMPLEMENTED (LOW PRIORITY)
 	-- pus-TC-3-11-reportDiagnosticStructures       PusSubserviceType ::=  11 -- NOT IMPLEMENTED
 	-- pus-TM-3-12-reportDiagnosticStructures       PusSubserviceType ::=  12 -- NOT IMPLEMENTED
-	pus-TM-3-26-diagnosticReport                 PusSubserviceType ::=  26
+	-- pus-TM-3-26-diagnosticReport                 PusSubserviceType ::=  26 -- NOT IMPLEMENTED (LOW PRIORITY)
 	-- pus-TC-3-28-oneShotDiagnostic                PusSubserviceType ::=  28 -- NOT IMPLEMENTED
 	-- pus-TC-3-30-appendDiagnosticParameter        PusSubserviceType ::=  30 -- NOT IMPLEMENTED
 	-- pus-TC-3-32-modifyDiagnosticInterval         PusSubserviceType ::=  32 -- NOT IMPLEMENTED

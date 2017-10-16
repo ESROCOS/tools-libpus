@@ -1,0 +1,20 @@
+-- ASN.1 constant definitions related to the configuration of PUS services
+--
+-- This file centralizes some definitions regarding sizes, etc. of the PUS services.
+-- 
+-- Limitations:
+-- These sizes could be derived from the mission configuration. However, in order to 
+-- simplify code generation, they are currently defined here.
+
+
+PUS-Config DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-NbitIntegers
+    ;
+
+    -- Maximum number of parameters in a housekeeping report
+    pus-ST03-MAX-HK-PARAMS PusUInt32 ::= 20
+    
+END

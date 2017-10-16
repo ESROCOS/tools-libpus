@@ -4,6 +4,7 @@ set(SOURCES
     pus_error.c
     pus_packet.c
     pus_st01.c
+    pus_st03.c
     pus_threads.c
     pus_time.c
 )

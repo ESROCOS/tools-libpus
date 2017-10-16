@@ -37,8 +37,11 @@ if (NOT ENABLE_COVERAGE)
 	message(STATUS "Configure with -DENABLE_COVERAGE=On to collect coverage metrics")
 endif()
 
-
+# Include for tests automation
 include(CTest)
+
+# Find libpthread
+find_package(Threads REQUIRED)
 
 # Location of the generated ASN.1 headers
 include_directories(include ${CMAKE_BINARY_DIR}/asn1/generated)

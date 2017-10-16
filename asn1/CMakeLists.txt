@@ -5,9 +5,11 @@ endif()
 set(ASN1
     ccsds_packet.asn
     ccsds_packet_fields.asn
+    pus_config.asn
     pus_nbit_integers.asn
     pus_services.asn
     pus_st01.asn
+    pus_st03.asn
     pus_time.asn
 )
 

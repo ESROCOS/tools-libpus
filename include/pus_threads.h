@@ -14,12 +14,6 @@
 #include <pthread.h>
 
 
-#ifndef PUS_USE_PTHREAD
-//! Set PUS_USE_PTHREAD to 0 to not use libpthread; functions in this module will return failure
-#define PUS_USE_PTHREAD 1
-#endif
-
-
 //! Mutex type
 typedef pthread_mutex_t pusMutex_t;
 
@@ -27,6 +21,11 @@ typedef pthread_mutex_t pusMutex_t;
 /*! Returns true if success. Otherwise, returns false and sets error condition with \ref pus_setError
  */
 bool pus_mutexInit(pusMutex_t* mutex);
+
+//! Destroy a mutex object
+/*! Returns true if success. Otherwise, returns false and sets error condition with \ref pus_setError
+ */
+bool pus_mutexDestroy(pusMutex_t* mutex);
 
 //! Lock a mutex
 /*! Returns true if success. Otherwise, returns false and sets error condition with \ref pus_setError

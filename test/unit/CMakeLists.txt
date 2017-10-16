@@ -3,7 +3,7 @@ find_package(CUnit REQUIRED)
 
 # Test executables
 add_executable(test_pus_01 test_pus_01.c)
-target_link_libraries(test_pus_01 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common ${CUNIT_LIBRARIES})
+target_link_libraries(test_pus_01 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_pus_01 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_pus_01)
 

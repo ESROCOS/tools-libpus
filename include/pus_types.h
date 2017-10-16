@@ -15,6 +15,9 @@
 #include <stdbool.h>
 
 #include "asn1/ccsds_packet.h"
+#include "asn1/pus_config.h"
+#include "asn1/pus_st01.h"
+#include "asn1/pus_st03.h"
 
 
 //
@@ -42,6 +45,8 @@ typedef asn1SccPusSt01FailureInfo pusSt01FailureInfo_t; //!< Type of the failure
 typedef asn1SccPusStepId pusStepId_t; //!< Type of procedure steps
 typedef asn1SccPusInt32 pusInt32_t; //!< Type of int32 fields
 typedef asn1SccPusMemAddr pusMemAddr_t; //!< Type of memory address fields
+typedef asn1SccPusSt03HousekeepingReportId pusSt03HousekeepingReportId_t; //!< Type of the ST[03] housekeeping report identifier field
+typedef asn1SccPusSt03ParameterId pusSt03ParamId_t; //!< Type of the ST[03] parameter identifiers
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
 typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
