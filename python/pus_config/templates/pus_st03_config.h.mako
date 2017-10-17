@@ -21,7 +21,7 @@
 
 // Parameter identifiers
 <% count = 0 %>
-% for param in config:
+% for param in config['parameters']:
 #define ${param['label']} ((pusSt03ParamId_t) ${count}) \
 <% count = count + 1 %>
 % endfor

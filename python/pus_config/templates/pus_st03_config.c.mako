@@ -48,7 +48,7 @@ const pusSt03ParamId_t pus_ST03_PARAM_LIMIT = PUS_ST03_PARAM_LIMIT;
 
 pusError_t pus_st03_configure()
 {
-% for param in config:
+% for param in config['parameters']:
 <%
     tempvars['paramsCount'] = tempvars['paramsCount'] + 1
 %>
