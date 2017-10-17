@@ -41,4 +41,5 @@ set(MISSION_LIB "esrocos_pus_mission_${MISSION}")
 add_library(${MISSION_LIB} STATIC ${C_FILES})
 set_target_properties(${MISSION_LIB} PROPERTIES LINKER_LANGUAGE C)
 add_dependencies(${MISSION_LIB} mission_generate_code)
+#add_coverage(${MISSION_LIB})
 
