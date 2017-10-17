@@ -197,6 +197,58 @@ void test_error()
 	pus_clearError();
 }
 
+void test_apid()
+{
+	pusApidInfo_t obj;
+	pusMutex_t mutex;
+
+	// Valid, no mutex
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&obj, 33, NULL));
+	CU_ASSERT_EQUAL(33, pus_getInfoApid(&obj));
+	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(1, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(2, pus_getNextTmCount(&obj));
+
+	// Valid, mutex
+	CU_ASSERT_TRUE(pus_mutexInit(&mutex));
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&obj, 44, &mutex));
+	CU_ASSERT_EQUAL(44, pus_getInfoApid(&obj));
+	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+	CU_ASSERT_EQUAL(1, pus_getNextTmCount(&obj));
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+	CU_ASSERT_EQUAL(2, pus_getNextTmCount(&obj));
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+	// Wrap
+	obj.tmCount = 16383;
+	CU_ASSERT_EQUAL(16383, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
+	pus_clearError();
+
+	// Errors
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_initApidInfo(NULL, 55, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(pus_APID_IDLE, pus_getInfoApid(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(0, pus_getNextTmCount(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_mutexDestroy(&mutex);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&obj, 66, &mutex));
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, PUS_GET_ERROR());
+	pus_clearError();
+
+}
+
 void test_st01()
 {
 	pusPacket_t tc;
@@ -277,6 +329,231 @@ void test_st01()
 	// TM counter
 	CU_ASSERT_EQUAL(8, pus_getSequenceCount(&tm));
 
+	// Errors
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_X_createReport(NULL, &apid, &tc, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_X_createReport(&tm, NULL, &tc, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_X_createReport(&tm, &apid, NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_1_createAcceptanceReportSuccess(NULL, &apid, &tc));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, NULL, &tc));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_2_createAcceptanceReportFailure(NULL, &apid, &tc, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_2_createAcceptanceReportFailure(&tm, NULL, &tc, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_2_createAcceptanceReportFailure(&tm, &apid, NULL, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_3_createStartReportSuccess(NULL, &apid, &tc));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_3_createStartReportSuccess(&tm, NULL, &tc));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_3_createStartReportSuccess(&tm, &apid, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_4_createStartReportFailure(NULL, &apid, &tc, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_4_createStartReportFailure(&tm, NULL, &tc, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_4_createStartReportFailure(&tm, &apid, NULL, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_5_createProgressReportSuccess(NULL, &apid, &tc, 11));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_5_createProgressReportSuccess(&tm, NULL, &tc, 12));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_5_createProgressReportSuccess(&tm, &apid, NULL, 13));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_6_createProgressReportFailure(NULL, &apid, &tc, 11, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_6_createProgressReportFailure(&tm, NULL, &tc, 12, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_6_createProgressReportFailure(&tm, &apid, NULL, 13, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_7_createCompletionReportSuccess(NULL, &apid, &tc));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_7_createCompletionReportSuccess(&tm, NULL, &tc));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_7_createCompletionReportSuccess(&tm, &apid, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_8_createCompletionReportFailure(NULL, &apid, &tc, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_8_createCompletionReportFailure(&tm, NULL, &tc, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_1_8_createCompletionReportFailure(&tm, &apid, NULL, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tc));
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_2_createAcceptanceReportFailure(&tm, &apid, &tc, 0, NULL));
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_3_createStartReportSuccess(&tm, &apid, &tc));
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_4_createStartReportFailure(&tm, &apid, &tc, 0, &info1));
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_5_createProgressReportSuccess(&tm, &apid, &tc, 20));
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_6_createProgressReportFailure(&tm, &apid, &tc, 21, 1, &info1));
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_7_createCompletionReportSuccess(&tm, &apid, &tc));
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_8_createCompletionReportFailure(&tm, &apid, &tc, 1, &info1));
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tm));
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tm));
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_2_createAcceptanceReportFailure(&tm, &apid, &tm, 0, NULL));
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_3_createStartReportSuccess(&tm, &apid, &tm));
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_4_createStartReportFailure(&tm, &apid, &tm, 0, &info1));
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_5_createProgressReportSuccess(&tm, &apid, &tm, 20));
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_6_createProgressReportFailure(&tm, &apid, &tm, 21, 1, &info1));
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_7_createCompletionReportSuccess(&tm, &apid, &tm));
+	pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_8_createCompletionReportFailure(&tm, &apid, &tm, 1, &info1));
+	pus_clearError();
+
+	pus_tm_1_X_setPacketVersionNumber(NULL, 0);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(pus_PACKET_VERSION_CURRENT, pus_tm_1_X_getPacketVersionNumber(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_tm_1_X_setPacketType(NULL, pus_TC);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_tm_1_X_getPacketType(NULL);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_tm_1_X_setSecondaryHeaderFlag(NULL, false);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(false, pus_tm_1_X_getSecondaryHeaderFlag(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_tm_1_X_setApid(&tm, 35);
+	CU_ASSERT_EQUAL(35, pus_tm_1_X_getApid(&tm));
+	CU_ASSERT_EQUAL(pus_APID_IDLE, pus_tm_1_X_getApid(NULL));
+
+	pus_tm_1_X_setSequenceFlags(NULL, pus_STANDALONE_PACKET);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(pus_STANDALONE_PACKET, pus_tm_1_X_getSequenceFlags(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_tm_1_X_setSequenceCount(NULL, 5);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(0, pus_tm_1_X_getSequenceCount(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_tm_1_X_setStep(NULL, 5);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(0, pus_tm_1_X_getStep(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_tm_1_X_initFailureInfo(NULL);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_tm_1_X_getFailureInfo(&tc, NULL);
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TM, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_initSt01FailureInfo(NULL);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	pus_setSt01FailureInfo(NULL, 1, 2, 3);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(0, pus_getSt01FailureSubcode(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(0, pus_getSt01FailureData(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(0, pus_getSt01FailureAddress(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apid, &tc));
+	tm.data.u.tmData.header.service = pusService_NONE;
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_EXPECT_ST01(&tm, pus_TM_1_1_successfulAcceptance));
+	tm.data.u.tmData.header.service = pus_ST01_requestVerification;
+	tm.data.u.tmData.header.subtype = pus_TM_1_2_failedAcceptance;
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SUBTYPE, PUS_EXPECT_ST01(&tm, pus_TM_1_1_successfulAcceptance));
+	tm.data.u.tmData.header.subtype = pus_TM_1_1_successfulAcceptance;
+	tm.data.u.tmData.header.subtype = pusSubtype_NONE;
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SUBTYPE, PUS_EXPECT_ST01(&tm, pusSubtype_NONE));
+	tm.data.u.tmData.header.subtype = pus_TM_1_1_successfulAcceptance;
+	tm.data.u.tmData.data.kind = pus_TM_DATA_NONE;
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_KIND, PUS_EXPECT_ST01(&tm, pus_TM_1_1_successfulAcceptance));
+	tm.data.u.tmData.data.kind = pus_TM_DATA_ST_1_X;
+/*
+pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
+*/
 }
 
 
@@ -306,6 +583,7 @@ int main()
 		(NULL == CU_add_test(pSuite, "test_packetVerification", test_packetVerification)) ||
 		(NULL == CU_add_test(pSuite, "test_time", test_time)) ||
 		(NULL == CU_add_test(pSuite, "test_error", test_error)) ||
+		(NULL == CU_add_test(pSuite, "test_apid", test_apid)) ||
 		(NULL == CU_add_test(pSuite, "test_st01", test_st01)) ||
 		0)
     {

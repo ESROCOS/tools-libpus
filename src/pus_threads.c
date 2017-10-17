@@ -4,7 +4,7 @@
 
 bool pus_mutexInit(pusMutex_t* mutex)
 {
-	int ok = 0;
+	int res = 0;
 	pthread_mutexattr_t attrib;
 
 	if (NULL == mutex)
@@ -13,17 +13,17 @@ bool pus_mutexInit(pusMutex_t* mutex)
 		return false;
 	}
 
-	ok = pthread_mutexattr_init(&attrib);
-	if (!ok)
+	res = pthread_mutexattr_init(&attrib);
+	if (0 != res)
 	{
-		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, ok);
+		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, res);
 		return false;
 	}
 	
-	ok = pthread_mutex_init(mutex, &attrib);
-	if (!ok)
+	res = pthread_mutex_init(mutex, &attrib);
+	if (0 != res)
 	{
-		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, ok);
+		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, res);
 		return false;
 	}
 	
@@ -32,7 +32,7 @@ bool pus_mutexInit(pusMutex_t* mutex)
 
 bool pus_mutexDestroy(pusMutex_t* mutex)
 {
-	int ok = 0;
+	int res = 0;
 
 	if (NULL == mutex)
 	{
@@ -40,10 +40,10 @@ bool pus_mutexDestroy(pusMutex_t* mutex)
 		return false;
 	}
 
-	ok = pthread_mutex_destroy(mutex);
-	if (!ok)
+	res = pthread_mutex_destroy(mutex);
+	if (0 != res)
 	{
-		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, ok);
+		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, res);
 		return false;
 	}
 
@@ -52,7 +52,7 @@ bool pus_mutexDestroy(pusMutex_t* mutex)
 
 bool pus_mutexLock(pusMutex_t* mutex)
 {
-	int ok = 0;
+	int res = 0;
 	
 	if (NULL == mutex)
 	{
@@ -60,10 +60,10 @@ bool pus_mutexLock(pusMutex_t* mutex)
 		return false;
 	}
 	
-	ok = pthread_mutex_lock(mutex);
-	if (!ok)
+	res = pthread_mutex_lock(mutex);
+	if (0 != res)
 	{
-		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, ok);
+		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, res);
 		return false;
 	}
 	
@@ -72,7 +72,7 @@ bool pus_mutexLock(pusMutex_t* mutex)
 
 bool pus_mutexUnlock(pusMutex_t* mutex)
 {
-	int ok = 0;
+	int res = 0;
 
 	if (NULL == mutex)
 	{
@@ -80,10 +80,10 @@ bool pus_mutexUnlock(pusMutex_t* mutex)
 		return false;
 	}
 
-	ok = pthread_mutex_unlock(mutex);
-	if (!ok)
+	res = pthread_mutex_unlock(mutex);
+	if (0 != res)
 	{
-		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, ok);
+		PUS_SET_ERROR_INT(PUS_ERROR_THREADS, res);
 		return false;
 	}
 

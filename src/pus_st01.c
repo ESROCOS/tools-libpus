@@ -258,7 +258,7 @@ void pus_tm_1_X_setFailureInfo(pusPacket_t* tm, pusSt01FailureCode_t code, const
 
 pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc, pusSubservice_t subtype)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
@@ -309,7 +309,7 @@ pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, cons
 
 pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
@@ -327,7 +327,7 @@ pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidI
 pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
 		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
@@ -353,7 +353,7 @@ pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApidI
 
 pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
@@ -371,7 +371,7 @@ pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApidInfo_t
 pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
 		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
@@ -397,7 +397,7 @@ pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApidInfo_t
 
 pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc, pusStepId_t step)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
@@ -424,7 +424,7 @@ pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApidInf
 pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
 		pusStepId_t step, pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
@@ -451,7 +451,7 @@ pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApidInf
 
 pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
@@ -469,7 +469,7 @@ pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApidI
 pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
 		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info)
 {
-	if (NULL == outTm || NULL == receivedTc)
+	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return PUS_ERROR_NULLPTR;
