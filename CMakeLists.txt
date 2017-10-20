@@ -43,6 +43,8 @@ include(CTest)
 # Find libpthread
 find_package(Threads REQUIRED)
 
+add_compile_options(-Wall -Wextra)
+
 # Location of the generated ASN.1 headers
 include_directories(include ${CMAKE_BINARY_DIR}/asn1/generated)
 
