@@ -7,7 +7,7 @@
 ##             (see http://docs.makotemplates.org/en/latest/runtime.html#context)
 <%
 # Array lengths
-tempvars['numParams'] = len(config)
+tempvars['numParams'] = len(config['parameters'])
 
 # Counters for adding to arrays
 tempvars['paramsCount'] = -1
@@ -35,13 +35,14 @@ def typeEnum(str):
 //                     -- DO NOT MODIFY --
 
 #include "pus_st03_config.h"
+#include "pus_st03.h"
 
 
 // Array with parameter information (length = number of parameters)
 pusSt03ParamInfo_t pus_st03_paramInfo[${tempvars['numParams']}];
 
 // Array for parameters values (all stored in 64 bits)
-uint64_t pus_st03_params[${tempvars['numParams']}];
+pusInternalParam_t pus_st03_params[${tempvars['numParams']}];
 
 // First invalid parameter ID
 const pusSt03ParamId_t pus_ST03_PARAM_LIMIT = PUS_ST03_PARAM_LIMIT;
@@ -59,4 +60,3 @@ pusError_t pus_st03_configure()
     return PUS_NO_ERROR;
 }
 
-#endif // PUS_ST03_CONFIG_H

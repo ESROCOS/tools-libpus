@@ -34,12 +34,13 @@ add_custom_target(
 )
 
 # Get generated .c files 
-file(GLOB C_FILES "${OUT_DIR}/*.c")
+file(GLOB C_FILES "${OUT_DIR}/src/*.c")
 
 # Define the mission-specific library
 set(MISSION_LIB "esrocos_pus_mission_${MISSION}")
 add_library(${MISSION_LIB} STATIC ${C_FILES})
+target_include_directories(${MISSION_LIB} BEFORE PUBLIC ${OUT_DIR}/include)
 set_target_properties(${MISSION_LIB} PROPERTIES LINKER_LANGUAGE C)
 add_dependencies(${MISSION_LIB} mission_generate_code)
-#add_coverage(${MISSION_LIB})
+add_coverage(${MISSION_LIB})
 

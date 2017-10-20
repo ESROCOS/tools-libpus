@@ -1,26 +1,30 @@
 {
     "parameters": [
         {
-            "label": "myint01",
+            "label": "HK_PARAM_INT01",
             "type": "INT32"
         },
         {
-            "label": "myreal01",
+            "label": "HK_PARAM_REAL01",
             "type": "REAL64"
         },
         {
-            "label": "myint02",
+            "label": "HK_PARAM_INT02",
             "type": "INT32"
         },
         {
-            "label": "myuint01",
+            "label": "HK_PARAM_UINT01",
             "type": "UINT32"
         },
         {
-            "label": "mybyte01",
+            "label": "HK_PARAM_BYTE01",
             "type": "BYTE"
+        },
+        {
+            "label": "HK_PARAM_BOOL01",
+            "type": "BOOL"
         }
     ],
-    "defaultHkReport": ["myreal01", "myuint01", "myint01", "mybyte01"]
+    "defaultHkReport": ["HK_PARAM_REAL01", "HK_PARAM_INT01", "HK_PARAM_INT02", "HK_PARAM_BYTE01", "HK_PARAM_BOOL01"]
 }
 

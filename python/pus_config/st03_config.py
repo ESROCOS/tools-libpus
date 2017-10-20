@@ -24,7 +24,7 @@ def generate_st03_config(jsonDir, outDir):
     srcTemplate = os.path.join(scriptDir, 'templates', 'pus_st03_config.c.mako')
     missionFile = os.path.join(jsonDir, 'st03_config.json')
 
-    outHeaderFile = os.path.join(outDir, 'include', 'pus_st30_config.h')
+    outHeaderFile = os.path.join(outDir, 'include', 'pus_st03_config.h')
     outSrcFile = os.path.join(outDir, 'src', 'pus_st03_config.c')
     
     if not os.path.isfile(missionFile):
