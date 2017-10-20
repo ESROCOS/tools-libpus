@@ -1,6 +1,39 @@
 #include "pus_threads.h"
 #include "pus_error.h"
 
+#ifdef PUS_DISABLE_THREADS
+
+#define UNUSED(x) (void)(x)
+
+bool pus_mutexInit(pusMutex_t* mutex)
+{
+	UNUSED(mutex);
+	PUS_SET_ERROR(PUS_ERROR_THREADS_DISABLED);
+	return false;
+}
+
+bool pus_mutexDestroy(pusMutex_t* mutex)
+{
+	UNUSED(mutex);
+	PUS_SET_ERROR(PUS_ERROR_THREADS_DISABLED);
+	return false;
+}
+
+bool pus_mutexLock(pusMutex_t* mutex)
+{
+	UNUSED(mutex);
+	PUS_SET_ERROR(PUS_ERROR_THREADS_DISABLED);
+	return false;
+}
+
+bool pus_mutexUnlock(pusMutex_t* mutex)
+{
+	UNUSED(mutex);
+	PUS_SET_ERROR(PUS_ERROR_THREADS_DISABLED);
+	return false;
+}
+
+#else
 
 bool pus_mutexInit(pusMutex_t* mutex)
 {
@@ -89,4 +122,4 @@ bool pus_mutexUnlock(pusMutex_t* mutex)
 
 	return true;
 }
-
+#endif
