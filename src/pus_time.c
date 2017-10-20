@@ -5,8 +5,6 @@
 
 void pus_now(pusTime_t* outNow)
 {
-	assert(NULL != outNow);
-
 	if (NULL == outNow)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
