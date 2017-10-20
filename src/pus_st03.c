@@ -4,7 +4,7 @@
 #include <string.h>
 
 // Mutex to lock access to the housekeeping parameter tables
-pusMutex_t* tableMutex = NULL;
+pusMutex_t* pus_st03_mutex = NULL;
 
 // Initialized flag
 bool pus_st03_initializedFlag = false;
@@ -13,7 +13,7 @@ bool pus_st03_initializedFlag = false;
 extern pusSt03ParamInfo_t pus_st03_paramInfo[];
 
 // Array for parameters values (all stored in 64 bits)
-extern uint64_t pus_st03_params[];
+extern pusInternalParam_t pus_st03_params[];
 
 // First invalid parameter ID
 extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
@@ -28,40 +28,29 @@ pusError_t pus_st03_initialize(pusMutex_t* mutex)
 		return PUS_ERROR_ALREADY_INITIALIZED;
 	}
 
-	// Create mutex
-	if (NULL != mutex && !pus_mutexInit(mutex))
+	pus_st03_mutex = mutex;
+
+	if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 	{
 		return PUS_ERROR_INITIALIZATION;
 	}
-	else
-	{
-		tableMutex = mutex;
 
-		if (!pus_mutexLock(tableMutex))
+	if (PUS_NO_ERROR != pus_st03_configure(&numParams))
+	{
+		if (NULL != pus_st03_mutex)
 		{
-			return PUS_ERROR_INITIALIZATION;
+			(void*) pus_mutexUnlock(pus_st03_mutex);
 		}
-		else if (PUS_NO_ERROR != pus_st03_configure(&numParams))
-		{
-			return PUS_ERROR_INITIALIZATION;
-		}
-		else if (!pus_mutexUnlock(tableMutex))
-		{
-			return PUS_ERROR_INITIALIZATION;
-		}
-		else if (numParams > pus_ST03_MAX_HK_PARAMS)
-		{
-			// Check that the number of parameters defined in the mission data base
-			// is compatible with the ASN.1 constraint defined by the library
-			PUS_SET_ERROR_INT(PUS_ERROR_LIMIT, numParams);
-			return PUS_ERROR_LIMIT;
-		}
-		else
-		{
-			pus_st03_initializedFlag = true;
-			return PUS_NO_ERROR;
-		}
+		return PUS_ERROR_INITIALIZATION;
 	}
+
+	if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
+	{
+		return PUS_ERROR_INITIALIZATION;
+	}
+
+	pus_st03_initializedFlag = true;
+	return PUS_NO_ERROR;
 }
 
 pusError_t pus_st03_finalize()
@@ -70,13 +59,10 @@ pusError_t pus_st03_finalize()
 	{
 		return PUS_ERROR_NOT_INITIALIZED;
 	}
-	else if (NULL != tableMutex && !pus_mutexDestroy(tableMutex))
-	{
-		return PUS_ERROR_FINALIZATION;
-	}
 	else
 	{
-		tableMutex = NULL;
+		pus_st03_mutex = NULL;
+		pus_st03_initializedFlag = false;
 		return PUS_NO_ERROR;
 	}
 }
@@ -117,7 +103,7 @@ pusError_t pus_st03_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -131,11 +117,20 @@ pusError_t pus_st03_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 		}
 		else
 		{
-			*outValue = (uint32_t)pus_st03_params[param];
-			result = PUS_NO_ERROR;
+			pusInternalParam_t value = pus_st03_params[param];
+
+			if (UINT32_MAX >= value)
+			{
+				*outValue = (uint32_t)value;
+				result = PUS_NO_ERROR;
+			}
+			else
+			{
+				return PUS_ERROR_LIMIT;
+			}
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -153,7 +148,7 @@ pusError_t pus_st03_setUInt32Param(pusSt03ParamId_t param, uint32_t value)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -171,7 +166,7 @@ pusError_t pus_st03_setUInt32Param(pusSt03ParamId_t param, uint32_t value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -194,7 +189,7 @@ pusError_t pus_st03_getInt32Param(pusSt03ParamId_t param, int32_t* outValue)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -208,13 +203,21 @@ pusError_t pus_st03_getInt32Param(pusSt03ParamId_t param, int32_t* outValue)
 		}
 		else
 		{
-			int64_t aux = 0;
-			memcpy(&aux, &pus_st03_params[param], sizeof(int64_t));
-			*outValue = aux;
-			result = PUS_NO_ERROR;
+			int64_t value = 0;
+			memcpy(&value, &pus_st03_params[param], sizeof(int64_t));
+
+			if (INT32_MIN <= value && INT32_MAX >= value)
+			{
+				*outValue = value;
+				result = PUS_NO_ERROR;
+			}
+			else
+			{
+				return PUS_ERROR_LIMIT;
+			}
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -232,7 +235,7 @@ pusError_t pus_st03_setInt32Param(pusSt03ParamId_t param, int32_t value)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -251,7 +254,7 @@ pusError_t pus_st03_setInt32Param(pusSt03ParamId_t param, int32_t value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -274,7 +277,7 @@ pusError_t pus_st03_getReal64Param(pusSt03ParamId_t param, double* outValue)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -288,13 +291,13 @@ pusError_t pus_st03_getReal64Param(pusSt03ParamId_t param, double* outValue)
 		}
 		else
 		{
-			double aux = 0.0;
-			memcpy(&aux, &pus_st03_params[param], sizeof(double));
-			*outValue = aux;
+			double value = 0.0;
+			memcpy(&value, &pus_st03_params[param], sizeof(double));
+			*outValue = value;
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -312,7 +315,7 @@ pusError_t pus_st03_setReal64Param(pusSt03ParamId_t param, double value)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -331,7 +334,7 @@ pusError_t pus_st03_setReal64Param(pusSt03ParamId_t param, double value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -354,7 +357,7 @@ pusError_t pus_st03_getBoolParam(pusSt03ParamId_t param, bool* outValue)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -372,7 +375,7 @@ pusError_t pus_st03_getBoolParam(pusSt03ParamId_t param, bool* outValue)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -390,7 +393,7 @@ pusError_t pus_st03_setBoolParam(pusSt03ParamId_t param, bool value)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -408,7 +411,7 @@ pusError_t pus_st03_setBoolParam(pusSt03ParamId_t param, bool value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -431,7 +434,7 @@ pusError_t pus_st03_getByteParam(pusSt03ParamId_t param, uint8_t* outValue)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -443,18 +446,22 @@ pusError_t pus_st03_getByteParam(pusSt03ParamId_t param, uint8_t* outValue)
 			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 			result = PUS_ERROR_INVALID_TYPE;
 		}
-		else if (pus_st03_params[param] > 255)
-		{
-			PUS_SET_ERROR(PUS_ERROR_LIMIT);
-			result = PUS_ERROR_LIMIT;
-		}
 		else
 		{
-			*outValue = (uint8_t)pus_st03_params[param];
-			result = PUS_NO_ERROR;
+			uint64_t value = pus_st03_params[param];
+
+			if (UINT8_MAX >= value)
+			{
+				*outValue = (uint8_t)value;
+				result = PUS_NO_ERROR;
+			}
+			else
+			{
+				return PUS_ERROR_LIMIT;
+			}
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -472,7 +479,7 @@ pusError_t pus_st03_setByteParam(pusSt03ParamId_t param, uint8_t value)
 	}
 	else
 	{
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexLock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexLock(pus_st03_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -490,7 +497,7 @@ pusError_t pus_st03_setByteParam(pusSt03ParamId_t param, uint8_t value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != tableMutex && PUS_NO_ERROR == pus_mutexUnlock(tableMutex))
+		if (NULL != pus_st03_mutex && !pus_mutexUnlock(pus_st03_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}

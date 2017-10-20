@@ -39,6 +39,8 @@ typedef struct
 	pusSt03ParamType_t type; //!< Data type
 } pusSt03ParamInfo_t;
 
+//! Type used for the internal storage of parameters in an array
+typedef uint64_t pusInternalParam_t;
 
 //! Function to initialize the service ST[03] configuration
 /*! This function is generated from the mission database, and it should be declared
