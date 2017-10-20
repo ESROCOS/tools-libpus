@@ -320,7 +320,7 @@ pusError_t pus_verifyTcHeaderDefaults(const pusPacket_t* packet);
  *  \param[in] data Data to log in case of error
  *  \return PUS_NO_ERROR if OK, or error code set otherwise
  */
-pusError_t pus_expectTm(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+pusError_t pus_expectTm(const pusPacket_t* packet, const char* funcname, pusErrorData_t data);
 
 //! Check that a packet is a TM, and set error condition otherwise
 /*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
@@ -330,7 +330,7 @@ pusError_t pus_expectTm(const pusPacket_t* packet, const char* function, pusErro
  *  \param[in] data Data to log in case of error
  *  \return PUS_NO_ERROR if OK, or error code set otherwise
  */
-pusError_t pus_expectTmHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+pusError_t pus_expectTmHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data);
 
 //! Check that a packet is a TM, and set error condition otherwise
 /*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
@@ -340,7 +340,7 @@ pusError_t pus_expectTmHeader(const pusPacket_t* packet, const char* function, p
  *  \param[in] data Data to log in case of error
  *  \return PUS_NO_ERROR if OK, or error code set otherwise
  */
-pusError_t pus_expectTmNoHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+pusError_t pus_expectTmNoHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data);
 
 //! Check that a packet is a TM, and set error condition otherwise
 /*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
@@ -350,7 +350,7 @@ pusError_t pus_expectTmNoHeader(const pusPacket_t* packet, const char* function,
  *  \param[in] data Data to log in case of error
  *  \return PUS_NO_ERROR if OK, or error code set otherwise
  */
-pusError_t pus_expectTc(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+pusError_t pus_expectTc(const pusPacket_t* packet, const char* funcname, pusErrorData_t data);
 
 //! Check that a packet is a TM, and set error condition otherwise
 /*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
@@ -360,7 +360,7 @@ pusError_t pus_expectTc(const pusPacket_t* packet, const char* function, pusErro
  *  \param[in] data Data to log in case of error
  *  \return PUS_NO_ERROR if OK, or error code set otherwise
  */
-pusError_t pus_expectTcHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+pusError_t pus_expectTcHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data);
 
 //! Check that a packet is a TM, and set error condition otherwise
 /*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
@@ -370,7 +370,7 @@ pusError_t pus_expectTcHeader(const pusPacket_t* packet, const char* function, p
  *  \param[in] data Data to log in case of error
  *  \return PUS_NO_ERROR if OK, or error code set otherwise
  */
-pusError_t pus_expectTcNoHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data);
+pusError_t pus_expectTcNoHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data);
 
 //! Helper macro for pus_expectTm; adds caller function's name
 #define PUS_EXPECT_TM(packet) pus_expectTm((packet), __func__, (pusErrorData_t){.integer=0})

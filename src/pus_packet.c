@@ -197,17 +197,11 @@ pusPacketDataLength_t pus_getPacketDataLength(const pusPacket_t* packet)
 void pus_setPacketDataLength(pusPacket_t* packet, pusPacketDataLength_t length)
 {
     assert(NULL != packet);
-    assert(pusPacketDataLength_LIMIT > length);
     
     if (NULL == packet)
     {
     	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
     	return;
-    }
-    else if (pusPacketDataLength_LIMIT <= length)
-    {
-        PUS_SET_ERROR(PUS_ERROR_LIMIT);
-        return;
     }
     else
     {
@@ -928,16 +922,16 @@ pusError_t pus_verifyTcHeaderDefaults(const pusPacket_t* packet)
 // Parameter checking
 //
 
-pusError_t pus_expectTm(const pusPacket_t* packet, const char* function, pusErrorData_t data)
+pusError_t pus_expectTm(const pusPacket_t* packet, const char* funcname, pusErrorData_t data)
 {
     if (NULL == packet)
     {
-    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    	pus_setError(PUS_ERROR_NULLPTR, funcname, data);
     	return PUS_ERROR_NULLPTR;
     }
     else if (pus_TM != pus_getPacketType(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_NOT_TM);
+    	pus_setError(PUS_ERROR_NOT_TM, funcname, data);
         return PUS_ERROR_NOT_TM;
     }
     else
@@ -946,21 +940,21 @@ pusError_t pus_expectTm(const pusPacket_t* packet, const char* function, pusErro
     }
 }
 
-pusError_t pus_expectTmHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data)
+pusError_t pus_expectTmHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data)
 {
     if (NULL == packet)
     {
-    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    	pus_setError(PUS_ERROR_NULLPTR, funcname, data);
     	return PUS_ERROR_NULLPTR;
     }
     else if (pus_TM != pus_getPacketType(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_NOT_TM);
+    	pus_setError(PUS_ERROR_NOT_TM, funcname, data);
         return PUS_ERROR_NOT_TM;
     }
     else if (!pus_getSecondaryHeaderFlag(packet) || pus_TM_DATA != pus_getPacketDataKind(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
+    	pus_setError(PUS_ERROR_HEADER_MISMATCH, funcname, data);
         return PUS_ERROR_HEADER_MISMATCH;
     }
     else
@@ -969,21 +963,21 @@ pusError_t pus_expectTmHeader(const pusPacket_t* packet, const char* function, p
     }
 }
 
-pusError_t pus_expectTmNoHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data)
+pusError_t pus_expectTmNoHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data)
 {
     if (NULL == packet)
     {
-    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    	pus_setError(PUS_ERROR_NULLPTR, funcname, data);
     	return PUS_ERROR_NULLPTR;
     }
     else if (pus_TM != pus_getPacketType(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_NOT_TM);
+    	pus_setError(PUS_ERROR_NOT_TM, funcname, data);
         return PUS_ERROR_NOT_TM;
     }
     else if (pus_getSecondaryHeaderFlag(packet) || pus_TM_DATA_NO_HEADER != pus_getPacketDataKind(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
+    	pus_setError(PUS_ERROR_HEADER_MISMATCH, funcname, data);
         return PUS_ERROR_HEADER_MISMATCH;
     }
     else
@@ -992,16 +986,16 @@ pusError_t pus_expectTmNoHeader(const pusPacket_t* packet, const char* function,
     }
 }
 
-pusError_t pus_expectTc(const pusPacket_t* packet, const char* function, pusErrorData_t data)
+pusError_t pus_expectTc(const pusPacket_t* packet, const char* funcname, pusErrorData_t data)
 {
     if (NULL == packet)
     {
-    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    	pus_setError(PUS_ERROR_NULLPTR, funcname, data);
     	return PUS_ERROR_NULLPTR;
     }
     else if (pus_TC != pus_getPacketType(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_NOT_TC);
+    	pus_setError(PUS_ERROR_NOT_TC, funcname, data);
         return PUS_ERROR_NOT_TC;
     }
     else
@@ -1010,21 +1004,21 @@ pusError_t pus_expectTc(const pusPacket_t* packet, const char* function, pusErro
     }
 }
 
-pusError_t pus_expectTcHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data)
+pusError_t pus_expectTcHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data)
 {
     if (NULL == packet)
     {
-    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    	pus_setError(PUS_ERROR_NULLPTR, funcname, data);
     	return PUS_ERROR_NULLPTR;
     }
     else if (pus_TC != pus_getPacketType(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_NOT_TC);
+    	pus_setError(PUS_ERROR_NOT_TC, funcname, data);
         return PUS_ERROR_NOT_TC;
     }
     else if (!pus_getSecondaryHeaderFlag(packet) || pus_TC_DATA != pus_getPacketDataKind(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
+    	pus_setError(PUS_ERROR_HEADER_MISMATCH, funcname, data);
         return PUS_ERROR_HEADER_MISMATCH;
     }
     else
@@ -1033,21 +1027,21 @@ pusError_t pus_expectTcHeader(const pusPacket_t* packet, const char* function, p
     }
 }
 
-pusError_t pus_expectTcNoHeader(const pusPacket_t* packet, const char* function, pusErrorData_t data)
+pusError_t pus_expectTcNoHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data)
 {
     if (NULL == packet)
     {
-    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    	pus_setError(PUS_ERROR_NULLPTR, funcname, data);
     	return PUS_ERROR_NULLPTR;
     }
     else if (pus_TC != pus_getPacketType(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_NOT_TC);
+    	pus_setError(PUS_ERROR_NOT_TC, funcname, data);
         return PUS_ERROR_NOT_TC;
     }
     else if (pus_getSecondaryHeaderFlag(packet) || pus_TC_DATA_NO_HEADER != pus_getPacketDataKind(packet))
     {
-        PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
+    	pus_setError(PUS_ERROR_HEADER_MISMATCH, funcname, data);
         return PUS_ERROR_HEADER_MISMATCH;
     }
     else
