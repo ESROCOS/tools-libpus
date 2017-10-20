@@ -511,7 +511,6 @@ pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSub
 	{
 		pusService_t service = pus_getTmService(packet);
 		pusSubservice_t subtype = pus_getTmSubtype(packet);
-		pusTmDataKind_t expectedKind = pus_TM_DATA_NONE;
 
 		if (service != pus_ST01_requestVerification)
 		{
