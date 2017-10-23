@@ -3,6 +3,8 @@
 
 .project
 .cproject
+.pydevproject
+.settings/*
 
 build/*
 debug/*
