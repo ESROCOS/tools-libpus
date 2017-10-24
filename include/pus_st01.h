@@ -212,10 +212,10 @@ pusMemAddr_t pus_getSt01FailureAddress(const pusSt01FailureInfo_t* info);
  *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST01 to include the caller function's name)
  *  \return If valid TM, PUS_NO_ERROR; otherwise, an error code
  */
-pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
+pusError_t pus_expectSt01Tm(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
 
 //! Helper macro for pus_expectSt01; adds function name
-#define PUS_EXPECT_ST01(packet, subtype) pus_expectSt01((packet), (subtype), __func__)
+#define PUS_EXPECT_ST01(packet, subtype) pus_expectSt01Tm((packet), (subtype), __func__)
 
 
 #endif // PUS_ST01_H

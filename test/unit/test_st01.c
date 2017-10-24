@@ -23,8 +23,9 @@ void test_st01()
 {
 	pusPacket_t tc;
 	pusPacket_t tm;
-
+	pusTime_t tv, now;
 	pusApidInfo_t apid;
+
 	pus_initApidInfo(&apid, 33, NULL);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
@@ -52,6 +53,14 @@ void test_st01()
 	CU_ASSERT_EQUAL(pus_getSequenceFlags(&tc), pus_tm_1_X_getSequenceFlags(&tm));
 	CU_ASSERT_EQUAL(0, pus_tm_1_X_getStep(&tm));
 	CU_ASSERT_EQUAL(pus_ST01_NO_ERROR, pus_tm_1_X_getFailureInfo(&tm, NULL))
+
+	pus_now(&now);
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+	pus_getTmPacketTime(&tv, &tm);
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+	CU_ASSERT_TRUE(now.tv_sec >= tv.tv_sec && tv.tv_sec - now.tv_sec <= 1);
 
 	// TM[1,2]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_1_2_createAcceptanceReportFailure(&tm, &apid, &tc, pus_ST01_ERROR_SERVICE_UNAVAILABLE, &info1));

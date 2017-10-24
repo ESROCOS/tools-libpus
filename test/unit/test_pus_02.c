@@ -64,16 +64,16 @@ void test_mutex()
 {
 	pusMutex_t mutex;
 
-	CU_ASSERT_FALSE(pus_mutexInit(&mutex));
+	CU_ASSERT_FALSE(pus_mutexInitOk(&mutex));
 	CU_ASSERT_EQUAL(PUS_ERROR_THREADS_DISABLED, PUS_GET_ERROR());
 	pus_clearError();
-	CU_ASSERT_FALSE(pus_mutexDestroy(&mutex));
+	CU_ASSERT_FALSE(pus_mutexDestroyOk(&mutex));
 	CU_ASSERT_EQUAL(PUS_ERROR_THREADS_DISABLED, PUS_GET_ERROR());
 	pus_clearError();
-	CU_ASSERT_FALSE(pus_mutexLock(&mutex));
+	CU_ASSERT_FALSE(pus_mutexLockOk(&mutex));
 	CU_ASSERT_EQUAL(PUS_ERROR_THREADS_DISABLED, PUS_GET_ERROR());
 	pus_clearError();
-	CU_ASSERT_FALSE(pus_mutexUnlock(&mutex));
+	CU_ASSERT_FALSE(pus_mutexUnlockOk(&mutex));
 	CU_ASSERT_EQUAL(PUS_ERROR_THREADS_DISABLED, PUS_GET_ERROR());
 	pus_clearError();
 }

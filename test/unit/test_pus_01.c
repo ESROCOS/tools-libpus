@@ -215,7 +215,7 @@ void test_apid()
 	CU_ASSERT_EQUAL(2, pus_getNextTmCount(&obj));
 
 	// Valid, mutex
-	CU_ASSERT_TRUE(pus_mutexInit(&mutex));
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutex));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&obj, 44, &mutex));
 	CU_ASSERT_EQUAL(44, pus_getInfoApid(&obj));
@@ -245,7 +245,7 @@ void test_apid()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
 	pus_clearError();
 
-	pus_mutexDestroy(&mutex);
+	pus_mutexDestroyOk(&mutex);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&obj, 66, &mutex));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
@@ -258,35 +258,35 @@ void test_threads()
 {
 	pusMutex_t mutex;
 
-	CU_ASSERT_TRUE(pus_mutexInit(&mutex));
-	CU_ASSERT_TRUE(pus_mutexLock(&mutex));
-	CU_ASSERT_TRUE(pus_mutexUnlock(&mutex));
-	CU_ASSERT_TRUE(pus_mutexDestroy(&mutex));
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutex));
+	CU_ASSERT_TRUE(pus_mutexLockOk(&mutex));
+	CU_ASSERT_TRUE(pus_mutexUnlockOk(&mutex));
+	CU_ASSERT_TRUE(pus_mutexDestroyOk(&mutex));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
 	// Errors, null pointer
-	CU_ASSERT_FALSE(pus_mutexInit(NULL));
+	CU_ASSERT_FALSE(pus_mutexInitOk(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_FALSE(pus_mutexLock(NULL));
+	CU_ASSERT_FALSE(pus_mutexLockOk(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_FALSE(pus_mutexUnlock(NULL));
+	CU_ASSERT_FALSE(pus_mutexUnlockOk(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_FALSE(pus_mutexDestroy(NULL));
+	CU_ASSERT_FALSE(pus_mutexDestroyOk(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
 	// Errors, mutex previously destroyed
-	CU_ASSERT_FALSE(pus_mutexLock(&mutex));
+	CU_ASSERT_FALSE(pus_mutexLockOk(&mutex));
 	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_FALSE(pus_mutexUnlock(&mutex));
+	CU_ASSERT_FALSE(pus_mutexUnlockOk(&mutex));
 	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, PUS_GET_ERROR()); pus_clearError();
 
 	// Errors, destroying locked mutex
-	CU_ASSERT_TRUE(pus_mutexInit(&mutex));
-	CU_ASSERT_TRUE(pus_mutexLock(&mutex));
-	CU_ASSERT_FALSE(pus_mutexDestroy(&mutex));
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutex));
+	CU_ASSERT_TRUE(pus_mutexLockOk(&mutex));
+	CU_ASSERT_FALSE(pus_mutexDestroyOk(&mutex));
 	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_TRUE(pus_mutexUnlock(&mutex));
-	CU_ASSERT_TRUE(pus_mutexDestroy(&mutex));
+	CU_ASSERT_TRUE(pus_mutexUnlockOk(&mutex));
+	CU_ASSERT_TRUE(pus_mutexDestroyOk(&mutex));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 }
 

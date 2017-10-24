@@ -11,6 +11,10 @@ tempvars['numParams'] = len(config['parameters'])
 
 # Counters for adding to arrays
 tempvars['paramsCount'] = -1
+tempvars['defaultReportCount'] = -1
+
+# Indices assigned to the parameters
+tempvars['paramIndex'] = dict()
 
 # Get the C enum string for a data type identifier
 def typeEnum(str):
@@ -35,28 +39,54 @@ def typeEnum(str):
 //                     -- DO NOT MODIFY --
 
 #include "pus_st03_config.h"
-#include "pus_st03.h"
 
 
-// Array with parameter information (length = number of parameters)
+// ST[03] arrays
 pusSt03ParamInfo_t pus_st03_paramInfo[${tempvars['numParams']}];
-
-// Array for parameters values (all stored in 64 bits)
 pusInternalParam_t pus_st03_params[${tempvars['numParams']}];
+pusSt03ParamId_t pus_st03_defaultHkReport[${len(config['defaultHkReport'])}];
+pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
 
-// First invalid parameter ID
+// ST[03] constants
 const pusSt03ParamId_t pus_ST03_PARAM_LIMIT = PUS_ST03_PARAM_LIMIT;
+
 
 pusError_t pus_st03_configure()
 {
+	pus_st03_defaultHkReportInfo.numParams = 0;
+	pus_st03_defaultHkReportInfo.paramIds = &pus_st03_defaultHkReport[0];
+
+	// Store parameters info
 % for param in config['parameters']:
 <%
     tempvars['paramsCount'] = tempvars['paramsCount'] + 1
+    tempvars['paramIndex'][param['label']] = tempvars['paramsCount']
 %>
     pus_st03_paramInfo[${tempvars['paramsCount']}].label = "${param['label']}";
     pus_st03_paramInfo[${tempvars['paramsCount']}].type = ${typeEnum(param['type'])};
 % endfor
-    
+
+	// Default HK report
+% for id in config['defaultHkReport']:
+% if id in tempvars['paramIndex']:
+<%
+    tempvars['defaultReportCount'] = tempvars['defaultReportCount'] + 1
+%>\
+    pus_st03_defaultHkReport[${tempvars['defaultReportCount']}] = ${tempvars['paramIndex'][id]}; 
+% else:
+<% 
+    raise Exception('ST[03] configuration: unknown parameter ID {} in defaultHKReport'.format(id)) 
+%>
+% endif
+% endfor
+% if tempvars['defaultReportCount'] >= 0:
+	pus_st03_defaultHkReportInfo.numParams = ${tempvars['defaultReportCount']};
+% else:
+<% 
+    raise Exception('ST[03] configuration: defaultHKReport is empty') 
+%>
+% endif  
+
     return PUS_NO_ERROR;
 }
 

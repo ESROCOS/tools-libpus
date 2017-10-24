@@ -17,6 +17,7 @@
 
 #include "pus_error.h"
 #include "pus_types.h"
+#include "pus_st03.h"
 
 
 // Parameter identifiers
@@ -28,10 +29,19 @@
 #define PUS_ST03_PARAM_LIMIT ((pusSt03ParamId_t) ${count})
 
 
-// First invalid parameter ID
+//! Array with parameter information (length = number of parameters)
+extern pusSt03ParamInfo_t pus_st03_paramInfo[];
+
+//! Array for parameters values (all stored in 64 bits)
+extern pusInternalParam_t pus_st03_params[];
+
+//! Structure of the default HK report
+extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
+
+//! First invalid parameter ID
 extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
 
-// Initialize the configuration of the ST[03] service from the mission database
+//! Initialize the configuration of the ST[03] service from the mission database
 pusError_t pus_st03_configure();
 
 

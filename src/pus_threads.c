@@ -5,28 +5,28 @@
 
 #define UNUSED(x) (void)(x)
 
-bool pus_mutexInit(pusMutex_t* mutex)
+bool pus_mutexInitOk(pusMutex_t* mutex)
 {
 	UNUSED(mutex);
 	PUS_SET_ERROR(PUS_ERROR_THREADS_DISABLED);
 	return false;
 }
 
-bool pus_mutexDestroy(pusMutex_t* mutex)
+bool pus_mutexDestroyOk(pusMutex_t* mutex)
 {
 	UNUSED(mutex);
 	PUS_SET_ERROR(PUS_ERROR_THREADS_DISABLED);
 	return false;
 }
 
-bool pus_mutexLock(pusMutex_t* mutex)
+bool pus_mutexLockOk(pusMutex_t* mutex)
 {
 	UNUSED(mutex);
 	PUS_SET_ERROR(PUS_ERROR_THREADS_DISABLED);
 	return false;
 }
 
-bool pus_mutexUnlock(pusMutex_t* mutex)
+bool pus_mutexUnlockOk(pusMutex_t* mutex)
 {
 	UNUSED(mutex);
 	PUS_SET_ERROR(PUS_ERROR_THREADS_DISABLED);
@@ -35,7 +35,7 @@ bool pus_mutexUnlock(pusMutex_t* mutex)
 
 #else
 
-bool pus_mutexInit(pusMutex_t* mutex)
+bool pus_mutexInitOk(pusMutex_t* mutex)
 {
 	int res = 0;
 	pthread_mutexattr_t attrib;
@@ -63,7 +63,7 @@ bool pus_mutexInit(pusMutex_t* mutex)
 	return true;
 }
 
-bool pus_mutexDestroy(pusMutex_t* mutex)
+bool pus_mutexDestroyOk(pusMutex_t* mutex)
 {
 	int res = 0;
 
@@ -83,7 +83,7 @@ bool pus_mutexDestroy(pusMutex_t* mutex)
 	return true;
 }
 
-bool pus_mutexLock(pusMutex_t* mutex)
+bool pus_mutexLockOk(pusMutex_t* mutex)
 {
 	int res = 0;
 	
@@ -103,7 +103,7 @@ bool pus_mutexLock(pusMutex_t* mutex)
 	return true;
 }
 
-bool pus_mutexUnlock(pusMutex_t* mutex)
+bool pus_mutexUnlockOk(pusMutex_t* mutex)
 {
 	int res = 0;
 
@@ -123,3 +123,4 @@ bool pus_mutexUnlock(pusMutex_t* mutex)
 	return true;
 }
 #endif
+

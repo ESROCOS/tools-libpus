@@ -18,7 +18,7 @@ BEGIN
     IMPORTS 
     PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount, PusStepId FROM PUS-CcsdsPacketFields
     PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-NbitIntegers
-    pus-ST03-MAX-HK-PARAMS FROM PUS-Config
+    PusConfigDummyType, pus-ST03-MAX-REPORT-LENGTH FROM PUS-Config
     ;
     
     -- Identifier of housekeeping reports
@@ -31,7 +31,7 @@ BEGIN
     PusSt03ParameterId ::= PusUInt32
     
     -- Array of parameters in the report (all stored as PusUInt64)
-    PusSt03ParameterArray ::= SEQUENCE (SIZE(pus-ST03-MAX-HK-PARAMS)) OF PusUInt64
+    PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusUInt64
     
     -- Data for TM[3,25], housekeeping parameter report
     PusTM-3-25-Data ::= SEQUENCE

@@ -79,6 +79,7 @@ typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union dis
 // pusPacketTmDataKind_t
 #define pus_TM_DATA_NONE 		((pusTmDataKind_t) PusTmSourceData_NONE)
 #define pus_TM_DATA_ST_1_X		((pusTmDataKind_t) st_1_X_PRESENT)
+#define pus_TM_DATA_ST_3_25		((pusTmDataKind_t) st_3_25_PRESENT)
 
 
 

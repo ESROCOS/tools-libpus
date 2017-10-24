@@ -36,22 +36,21 @@ typedef pthread_mutex_t pusMutex_t;
 //! Initialize a mutex object
 /*! Returns true if success. Otherwise, returns false and sets error condition with \ref pus_setError
  */
-bool pus_mutexInit(pusMutex_t* mutex);
+bool pus_mutexInitOk(pusMutex_t* mutex);
 
 //! Destroy a mutex object
 /*! Returns true if success. Otherwise, returns false and sets error condition with \ref pus_setError
  */
-bool pus_mutexDestroy(pusMutex_t* mutex);
+bool pus_mutexDestroyOk(pusMutex_t* mutex);
 
 //! Lock a mutex
 /*! Returns true if success. Otherwise, returns false and sets error condition with \ref pus_setError
  */
-bool pus_mutexLock(pusMutex_t* mutex);
+bool pus_mutexLockOk(pusMutex_t* mutex);
 
 //! Unlock a mutex
 /*! Returns true if success. Otherwise, returns false and sets error condition with \ref pus_setError
  */
-bool pus_mutexUnlock(pusMutex_t* mutex);
-
+bool pus_mutexUnlockOk(pusMutex_t* mutex);
 
 #endif // PUS_THREADS_H

@@ -13,8 +13,11 @@ BEGIN
     IMPORTS 
     PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-NbitIntegers
     ;
+    
+    -- Dummy type, workaround for missing include bug in asn1.exe (TO-DO: remove when fixed)
+    PusConfigDummyType ::= PusUInt32
 
     -- Maximum number of parameters in a housekeeping report
-    pus-ST03-MAX-HK-PARAMS PusUInt32 ::= 20
-    
+    pus-ST03-MAX-REPORT-LENGTH PusUInt32 ::= 20
+
 END

@@ -43,13 +43,10 @@ pusSequenceCount_t pus_getNextTmCount(pusApidInfo_t* obj)
 	{
 		int next = 0;
 
-		if (NULL != obj->mutex)
+		if (NULL != obj->mutex && !pus_mutexLockOk(obj->mutex))
 		{
-			if (!pus_mutexLock(obj->mutex))
-			{
-				// PUS_SET_ERROR called by pus_mutexLock
-				return 0;
-			}
+			// PUS_SET_ERROR called by pus_mutexLock
+			return 0;
 		}
 
 		// Get next and increment with function to wrap counter if needed
@@ -58,7 +55,7 @@ pusSequenceCount_t pus_getNextTmCount(pusApidInfo_t* obj)
 
 		if (NULL != obj->mutex)
 		{
-			pus_mutexUnlock(obj->mutex);
+			(void) pus_mutexUnlockOk(obj->mutex);
 			// PUS_SET_ERROR called by pus_mutexLock; if error, continue and return next
 		}
 

@@ -266,6 +266,7 @@ pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, cons
 	else
 	{
 		pus_initTmPacket(outTm);
+		pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
 
 		// Source information
 		pus_setApid(outTm, pus_getInfoApid(apid));
@@ -289,7 +290,8 @@ pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, cons
 			pus_setTmDestination(outTm, pus_APID_IDLE);
 		}
 
-		pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
+		// Timestamp
+		pus_setTmPacketTimeNow(outTm);
 
 		// TC information
 		pus_tm_1_X_setPacketVersionNumber(outTm, pus_getPacketVersion(receivedTc));
@@ -498,13 +500,7 @@ pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApidI
 // Parameter checking
 //
 
-//! Check that a packet is of a PUS ST[01] kind
-/*! \param[in] packet The PUS packet
- *  \param[in] expectedSubtype Check that the TM has this subtype; use pusSubtype_NONE to check for all TM types in ST[01]
- *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST01 to include the caller function's name)
- *  \return If valid TM, PUS_NO_ERROR; otherwise, an error code
- */
-pusError_t pus_expectSt01(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
+pusError_t pus_expectSt01Tm(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
 {
 	pusError_t expectResult = pus_expectTmHeader(packet, function, (pusErrorData_t){.integer=0});
 	if (PUS_NO_ERROR == expectResult)
