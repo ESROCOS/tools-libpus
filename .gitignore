@@ -5,6 +5,7 @@
 .cproject
 .pydevproject
 .settings/*
+*.log
 
 build/*
 debug/*

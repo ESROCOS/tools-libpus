@@ -80,7 +80,7 @@ pusError_t pus_st03_configure()
 % endif
 % endfor
 % if tempvars['defaultReportCount'] >= 0:
-	pus_st03_defaultHkReportInfo.numParams = ${tempvars['defaultReportCount']};
+	pus_st03_defaultHkReportInfo.numParams = ${tempvars['defaultReportCount'] + 1};
 % else:
 <% 
     raise Exception('ST[03] configuration: defaultHKReport is empty') 

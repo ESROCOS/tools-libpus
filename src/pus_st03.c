@@ -28,7 +28,7 @@ pusError_t pus_st03_initialize(pusMutex_t* mutex)
 
 	if (pus_st03_isInitialized())
 	{
-		return PUS_ERROR_ALREADY_INITIALIZED;
+		return PUS_SET_ERROR(PUS_ERROR_ALREADY_INITIALIZED);
 	}
 
 	pus_st03_mutex = mutex;
@@ -44,7 +44,7 @@ pusError_t pus_st03_initialize(pusMutex_t* mutex)
 		{
 			(void) pus_mutexUnlockOk(pus_st03_mutex);
 		}
-		return PUS_ERROR_INITIALIZATION;
+		return PUS_SET_ERROR(PUS_ERROR_INITIALIZATION);
 	}
 
 	if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
@@ -60,7 +60,7 @@ pusError_t pus_st03_finalize()
 {
 	if (!pus_st03_isInitialized())
 	{
-		return PUS_ERROR_NOT_INITIALIZED;
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
 	else
 	{
@@ -88,8 +88,7 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApidInfo_
 
 	if (NULL == outTm || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
 	if (PUS_IS_ERROR())
@@ -99,8 +98,7 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApidInfo_
 
 	if (!pus_st03_isInitialized())
 	{
-		PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
-		return PUS_ERROR_NOT_INITIALIZED;
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
 
 	// Get the array defining the report contents
@@ -112,14 +110,12 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApidInfo_
 	// handle here user-defined HK reports (not yet implemented)
 	else
 	{
-		PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
-		return PUS_ERROR_REPORT_ID_UNKNOWN;
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
 	}
 
 	if (numParams > pus_ST03_MAX_REPORT_LENGTH)
 	{
-		PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
-		return PUS_ERROR_REPORT_LENGTH;
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
 	}
 
 	// Build the TM packet
@@ -154,13 +150,11 @@ pusError_t pus_st03_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 {
 	if (NULL == outValue)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -173,22 +167,11 @@ pusError_t pus_st03_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 
 		if (PUS_ST03_UINT32 != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
-			pusInternalParam_t value = pus_st03_params[param];
-
-			if (UINT32_MAX >= value)
-			{
-				*outValue = (uint32_t)value;
-				result = PUS_NO_ERROR;
-			}
-			else
-			{
-				return PUS_ERROR_LIMIT;
-			}
+			result = pus_st03_paramToUInt32(outValue, pus_st03_params[param]);
 		}
 
 		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
@@ -204,8 +187,7 @@ pusError_t pus_st03_setUInt32Param(pusSt03ParamId_t param, uint32_t value)
 {
 	if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -218,8 +200,7 @@ pusError_t pus_st03_setUInt32Param(pusSt03ParamId_t param, uint32_t value)
 
 		if (PUS_ST03_UINT32 != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
@@ -240,13 +221,11 @@ pusError_t pus_st03_getInt32Param(pusSt03ParamId_t param, int32_t* outValue)
 {
 	if (NULL == outValue)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -259,23 +238,11 @@ pusError_t pus_st03_getInt32Param(pusSt03ParamId_t param, int32_t* outValue)
 
 		if (PUS_ST03_INT32 != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
-			int64_t value = 0;
-			memcpy(&value, &pus_st03_params[param], sizeof(int64_t));
-
-			if (INT32_MIN <= value && INT32_MAX >= value)
-			{
-				*outValue = value;
-				result = PUS_NO_ERROR;
-			}
-			else
-			{
-				return PUS_ERROR_LIMIT;
-			}
+			result = pus_st03_paramToInt32(outValue, pus_st03_params[param]);
 		}
 
 		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
@@ -291,8 +258,7 @@ pusError_t pus_st03_setInt32Param(pusSt03ParamId_t param, int32_t value)
 {
 	if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -305,8 +271,7 @@ pusError_t pus_st03_setInt32Param(pusSt03ParamId_t param, int32_t value)
 
 		if (PUS_ST03_INT32 != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
@@ -328,13 +293,11 @@ pusError_t pus_st03_getReal64Param(pusSt03ParamId_t param, double* outValue)
 {
 	if (NULL == outValue)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -347,15 +310,11 @@ pusError_t pus_st03_getReal64Param(pusSt03ParamId_t param, double* outValue)
 
 		if (PUS_ST03_REAL64 != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
-			double value = 0.0;
-			memcpy(&value, &pus_st03_params[param], sizeof(double));
-			*outValue = value;
-			result = PUS_NO_ERROR;
+			result = pus_st03_paramToReal64(outValue, pus_st03_params[param]);
 		}
 
 		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
@@ -371,8 +330,7 @@ pusError_t pus_st03_setReal64Param(pusSt03ParamId_t param, double value)
 {
 	if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -385,8 +343,7 @@ pusError_t pus_st03_setReal64Param(pusSt03ParamId_t param, double value)
 
 		if (PUS_ST03_REAL64 != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
@@ -408,13 +365,11 @@ pusError_t pus_st03_getBoolParam(pusSt03ParamId_t param, bool* outValue)
 {
 	if (NULL == outValue)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -427,13 +382,11 @@ pusError_t pus_st03_getBoolParam(pusSt03ParamId_t param, bool* outValue)
 
 		if (PUS_ST03_BOOL != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
-			*outValue = (bool)pus_st03_params[param];
-			result = PUS_NO_ERROR;
+			result = pus_st03_paramToBool(outValue, pus_st03_params[param]);
 		}
 
 		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
@@ -449,8 +402,7 @@ pusError_t pus_st03_setBoolParam(pusSt03ParamId_t param, bool value)
 {
 	if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -463,8 +415,7 @@ pusError_t pus_st03_setBoolParam(pusSt03ParamId_t param, bool value)
 
 		if (PUS_ST03_BOOL != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
@@ -485,13 +436,11 @@ pusError_t pus_st03_getByteParam(pusSt03ParamId_t param, uint8_t* outValue)
 {
 	if (NULL == outValue)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -504,22 +453,11 @@ pusError_t pus_st03_getByteParam(pusSt03ParamId_t param, uint8_t* outValue)
 
 		if (PUS_ST03_BYTE != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
-			uint64_t value = pus_st03_params[param];
-
-			if (UINT8_MAX >= value)
-			{
-				*outValue = (uint8_t)value;
-				result = PUS_NO_ERROR;
-			}
-			else
-			{
-				return PUS_ERROR_LIMIT;
-			}
+			result = pus_st03_paramToByte(outValue, pus_st03_params[param]);
 		}
 
 		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
@@ -535,8 +473,7 @@ pusError_t pus_st03_setByteParam(pusSt03ParamId_t param, uint8_t value)
 {
 	if (param >= pus_ST03_PARAM_LIMIT)
 	{
-		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
-		return PUS_ERROR_INVALID_ID;
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	else
 	{
@@ -549,8 +486,7 @@ pusError_t pus_st03_setByteParam(pusSt03ParamId_t param, uint8_t value)
 
 		if (PUS_ST03_BYTE != pus_st03_paramInfo[param].type)
 		{
-			PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
-			result = PUS_ERROR_INVALID_TYPE;
+			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
 		else
 		{
@@ -586,14 +522,13 @@ pusSt03HousekeepingReportId_t pus_tm_3_25_getReportId(const pusPacket_t* tm)
 
 void pus_tm_3_25_setReportId(pusPacket_t* outTm, pusSt03HousekeepingReportId_t reportId)
 {
-	if (PUS_NO_ERROR == PUS_EXPECT_ST03(outTm, pus_TM_3_25_housekeepingReport))
+	if (NULL == outTm)
 	{
-		if (NULL == outTm)
-		{
-			PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-			return;
-		}
-
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return;
+	}
+	else if (PUS_NO_ERROR == PUS_EXPECT_ST03(outTm, pus_TM_3_25_housekeepingReport))
+	{
 		outTm->data.u.tmData.data.u.st_3_25.reportId = reportId;
 	}
 }
@@ -602,18 +537,17 @@ pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, const pusSt03Param
 {
 	if (NULL == outTm || NULL == paramIds)
 	{
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
 	if (numParams > pus_ST03_MAX_REPORT_LENGTH)
 	{
-		PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
-		return PUS_ERROR_REPORT_LENGTH;
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
 	}
 
 	if (PUS_NO_ERROR != PUS_EXPECT_ST03(outTm, pus_TM_3_25_housekeepingReport))
 	{
-		return PUS_ERROR_PACKET_TYPE;
+		return PUS_GET_ERROR();
 	}
 
 	// Lock access parameters array
@@ -644,20 +578,18 @@ pusError_t pus_tm_3_25_getParameterValue(const pusPacket_t* tm, size_t index, pu
 {
 	if (NULL == tm || NULL == outValue)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
 	if (PUS_NO_ERROR != PUS_EXPECT_ST03(tm, pus_TM_3_25_housekeepingReport))
 	{
-		return PUS_ERROR_PACKET_TYPE;
+		return PUS_GET_ERROR();
 	}
 
 	// Check against maximum and actual size of the packet
 	if (index > (size_t)pus_ST03_MAX_REPORT_LENGTH || index > (size_t)tm->data.u.tmData.data.u.st_3_25.parameters.nCount)
 	{
-		PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
-		return PUS_ERROR_REPORT_LENGTH;
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
 	}
 
 	*outValue = tm->data.u.tmData.data.u.st_3_25.parameters.arr[index];
@@ -669,19 +601,107 @@ pusError_t pus_tm_3_25_getNumParameters(const pusPacket_t* tm, size_t* outNumPar
 {
 	if (NULL == tm || NULL == outNumParams)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
 	if (PUS_NO_ERROR != PUS_EXPECT_ST03(tm, pus_TM_3_25_housekeepingReport))
 	{
-		return PUS_ERROR_PACKET_TYPE;
+		return PUS_GET_ERROR();
 	}
 
 	*outNumParams = (size_t)tm->data.u.tmData.data.u.st_3_25.parameters.nCount;
 
 	return PUS_NO_ERROR;
 }
+
+
+//
+// Cast parameter to type
+//
+
+pusError_t pus_st03_paramToUInt32(uint32_t* outValue, pusInternalParam_t paramValue)
+{
+	if (NULL == outValue)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (paramValue > UINT32_MAX)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_LIMIT);
+	}
+	else
+	{
+		*outValue = (uint32_t)paramValue;
+		return PUS_NO_ERROR;
+	}
+}
+
+pusError_t pus_st03_paramToInt32(int32_t* outValue, pusInternalParam_t paramValue)
+{
+	if (NULL == outValue)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		int64_t i64 = 0;
+		memcpy(&i64, &paramValue, sizeof(int64_t));
+
+		if (i64 < INT32_MIN || i64 > INT32_MAX)
+		{
+			return PUS_SET_ERROR(PUS_ERROR_LIMIT);
+		}
+		else
+		{
+			*outValue = (int32_t)i64;
+			return PUS_NO_ERROR;
+		}
+	}
+}
+
+pusError_t pus_st03_paramToReal64(double* outValue, pusInternalParam_t paramValue)
+{
+	if (NULL == outValue)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		memcpy(outValue, &paramValue, sizeof(double));
+		return PUS_NO_ERROR;
+	}
+}
+
+pusError_t pus_st03_paramToBool(bool* outValue, pusInternalParam_t paramValue)
+{
+	if (NULL == outValue)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		*outValue = (bool)paramValue;
+		return PUS_NO_ERROR;
+	}
+}
+
+pusError_t pus_st03_paramToByte(uint8_t* outValue, pusInternalParam_t paramValue)
+{
+	if (NULL == outValue)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (paramValue > UINT8_MAX)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_LIMIT);
+	}
+	else
+	{
+		*outValue = (uint8_t)paramValue;
+		return PUS_NO_ERROR;
+	}
+}
+
 
 //
 // Parameter checking

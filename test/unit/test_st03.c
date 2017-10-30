@@ -164,17 +164,17 @@ void test_params()
 void test_st03()
 {
 	pusMutex_t mutexHk, mutexApid;
-	pusPacket_t tm;
+	pusPacket_t tm, tm2;
 	pusApidInfo_t apid;
 	uint32_t ui1 = 0;
 	int32_t i1 = 0;
-	int32_t i2 = 0;
 	double d1 = 0;
 	uint8_t c1 = 0;
 	bool b1 = false;
 	pusTime_t tv, now;
 	size_t len;
 	pusInternalParam_t val;
+	pusSt03ParamId_t paramIds[3] = {HK_PARAM_REAL01, HK_PARAM_INT01, HK_PARAM_INT02};
 
 	CU_ASSERT_TRUE(pus_mutexInitOk(&mutexHk));
 	CU_ASSERT_TRUE(pus_mutexInitOk(&mutexApid));
@@ -185,11 +185,11 @@ void test_st03()
 	// Initialize parameters
 	pus_st03_setReal64Param(HK_PARAM_REAL01, 5.4321);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
-	pus_st03_setInt32Param(HK_PARAM_INT01, 1001);
+	pus_st03_setInt32Param(HK_PARAM_INT01, -1001);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
-	pus_st03_setInt32Param(HK_PARAM_INT02, 1002);
+	pus_st03_setUInt32Param(HK_PARAM_UINT01, 1001);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
-	pus_st03_setByteParam(HK_PARAM_BYTE01, 0xb1);
+	pus_st03_setByteParam(HK_PARAM_BYTE01, 0xc1);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 	pus_st03_setBoolParam(HK_PARAM_BOOL01, true);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
@@ -234,11 +234,145 @@ void test_st03()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getNumParameters(&tm, &len));
 	CU_ASSERT_EQUAL(len, pus_st03_defaultHkReportInfo.numParams);
 
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 0, &val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_paramToReal64(&d1, val));
+	CU_ASSERT_EQUAL(5.4321, d1);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 1, &val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_paramToInt32(&i1, val));
+	CU_ASSERT_EQUAL(-1001, i1);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 2, &val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_paramToUInt32(&ui1, val));
+	CU_ASSERT_EQUAL(1001, ui1);
+
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 3, &val));
-	c1 = val;
-	CU_ASSERT_EQUAL(0xb1, c1);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_paramToByte(&c1, val));
+	CU_ASSERT_EQUAL(0xc1, c1);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 4, &val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_paramToBool(&b1, val));
+	CU_ASSERT_EQUAL(true, b1);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_finalize());
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+	CU_ASSERT_TRUE(pus_mutexDestroyOk(&mutexHk));
+	CU_ASSERT_TRUE(pus_mutexDestroyOk(&mutexApid));
+
+	// Errors
+
+	// Pointers
+	CU_ASSERT_EQUAL(0, pus_tm_3_25_getReportId(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	pus_tm_3_25_setReportId(NULL, 15);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_setParameterValues(NULL, paramIds, 3));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_setParameterValues(&tm, NULL, 3));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_getParameterValue(NULL, HK_PARAM_REAL01, &val));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_getParameterValue(&tm, HK_PARAM_REAL01, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_getNumParameters(NULL, &len));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_getNumParameters(&tm, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st03_paramToUInt32(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st03_paramToInt32(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st03_paramToReal64(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st03_paramToByte(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st03_paramToBool(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_createHousekeepingReport(NULL, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_createHousekeepingReport(&tm, NULL, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+
+	// Not initialized
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_tm_3_25_createHousekeepingReport(&tm, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, PUS_GET_ERROR()); pus_clearError();
+
+	// Reinitialize
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutexHk));
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutexApid));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&apid, 33, &mutexApid));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_initialize(&mutexHk));
 
 
+	// Wrong packet
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReport(&tm2, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+
+	pus_setTmService(&tm2, pusService_NONE);
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_EXPECT_ST03(&tm2, pus_TM_3_25_housekeepingReport));
+	pus_setTmService(&tm2, pus_ST03_housekeeping);
+
+	pus_setTmSubtype(&tm2, pusSubtype_NONE);
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SUBTYPE, PUS_EXPECT_ST03(&tm2, pus_TM_3_25_housekeepingReport));
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SUBTYPE, PUS_EXPECT_ST03(&tm2, pusSubtype_NONE));
+	pus_setTmSubtype(&tm2, pus_TM_3_25_housekeepingReport);
+
+	pus_setTmDataKind(&tm2, pus_TM_DATA_ST_1_X);
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_KIND, PUS_EXPECT_ST03(&tm2, pus_TM_3_25_housekeepingReport));
+	pus_setTmDataKind(&tm2, pus_TM_DATA_ST_3_25);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacketNoHeader(&tm2));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TM, PUS_EXPECT_ST03(&tm2, pus_TM_3_25_housekeepingReport)); pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReport(&tm2, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	pus_setTmService(&tm2, pusService_NONE);
+
+	CU_ASSERT_EQUAL(0, pus_tm_3_25_getReportId(&tm2));
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_GET_ERROR()); pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, pus_tm_3_25_setParameterValues(&tm2, paramIds, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_GET_ERROR()); pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, pus_tm_3_25_getParameterValue(&tm2, 0, &val));
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_GET_ERROR()); pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, pus_tm_3_25_getNumParameters(&tm2, &len));
+	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_GET_ERROR()); pus_clearError();
+
+	// pus_tm_3_25_createHousekeepingReport
+	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_3_25_createHousekeepingReport(&tm, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, pus_tm_3_25_createHousekeepingReport(&tm, &apid, 1234, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, PUS_GET_ERROR()); pus_clearError();
+
+	extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
+	size_t oldNumParams = pus_st03_defaultHkReportInfo.numParams;
+
+	pus_st03_defaultHkReportInfo.numParams = 1000;
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, pus_tm_3_25_createHousekeepingReport(&tm, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, PUS_GET_ERROR()); pus_clearError();
+	pus_st03_defaultHkReportInfo.numParams = oldNumParams;
+
+	// pus_tm_3_25_setParameterValues
+	CU_ASSERT_TRUE(pus_mutexDestroyOk(&mutexHk));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, pus_tm_3_25_setParameterValues(&tm, paramIds, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, PUS_GET_ERROR()); pus_clearError();
+
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutexHk));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, pus_tm_3_25_setParameterValues(&tm, paramIds, 1000));
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, PUS_GET_ERROR()); pus_clearError();
+
+	// pus_tm_3_25_getParameterValue
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, pus_tm_3_25_getParameterValue(&tm, 1000, &val));
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, PUS_GET_ERROR()); pus_clearError();
+
+
+	// Finalize
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_finalize());
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 

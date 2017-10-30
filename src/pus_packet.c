@@ -598,8 +598,7 @@ pusError_t pus_setPacketDefaults(pusPacket_t* packet)
 {
     if (NULL == packet)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
     pus_setPacketVersion(packet, pus_PACKET_VERSION_CURRENT);
@@ -619,8 +618,7 @@ pusError_t pus_initTmPacket(pusPacket_t* packet)
 {
     if (NULL == packet)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
     // CCSDS header
@@ -649,8 +647,7 @@ pusError_t pus_initTmPacketNoHeader(pusPacket_t* packet)
 {
     if (NULL == packet)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
     // CCSDS header
@@ -668,8 +665,7 @@ pusError_t pus_initTcPacket(pusPacket_t* packet)
 {
     if (NULL == packet)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
 	// CCSDS header
@@ -696,8 +692,7 @@ pusError_t pus_initTcPacketNoHeader(pusPacket_t* packet)
 {
     if (NULL == packet)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
     // CCSDS header
@@ -720,18 +715,15 @@ pusError_t pus_verifyCcsdsHeaderDefaults(const pusPacket_t* packet)
 {
     if (NULL == packet)
 	{
-    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+    	return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
     else if (pus_PACKET_VERSION_CURRENT != pus_getPacketVersion(packet))
 	{
-    	PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_PACKET_VERSION);
-		return PUS_ERROR_UNEXPECTED_PACKET_VERSION;
+    	return PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_PACKET_VERSION);
 	}
 	else if (pus_STANDALONE_PACKET != pus_getSequenceFlags(packet))
 	{
-    	PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_SEQUENCE_FLAGS);
-		return PUS_ERROR_UNEXPECTED_SEQUENCE_FLAGS;
+    	return PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_SEQUENCE_FLAGS);
 	}
 	else
 	{
@@ -743,8 +735,7 @@ pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet)
 {
     if (NULL == packet)
 	{
-    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+    	return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
     else if (pus_TM == pus_getPacketType(packet))
 	{
@@ -756,8 +747,7 @@ pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet)
 			}
 			else
 			{
-		    	PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
-				return PUS_ERROR_HEADER_MISMATCH;
+		    	return PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
 			}
 		}
 		else
@@ -768,8 +758,7 @@ pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet)
 			}
 			else
 			{
-		    	PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
-				return PUS_ERROR_HEADER_MISMATCH;
+		    	return PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
 			}
 		}
 	}
@@ -783,8 +772,7 @@ pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet)
 			}
 			else
 			{
-		    	PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
-				return PUS_ERROR_HEADER_MISMATCH;
+		    	return PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
 			}
 		}
 		else
@@ -795,15 +783,13 @@ pusError_t pus_verifyPacketDataKind(const pusPacket_t* packet)
 			}
 			else
 			{
-		    	PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
-				return PUS_ERROR_HEADER_MISMATCH;
+		    	return PUS_SET_ERROR(PUS_ERROR_HEADER_MISMATCH);
 			}
 		}
 	}
 	else
 	{
-    	PUS_SET_ERROR(PUS_ERROR_PACKET_TYPE);
-		return PUS_ERROR_PACKET_TYPE;
+    	return PUS_SET_ERROR(PUS_ERROR_PACKET_TYPE);
 	}
 }
 
@@ -814,8 +800,7 @@ pusError_t pus_verifyTmSecondaryHeaderDefaults(const pusPacket_t* packet)
     {
 		if (pus_VERSION_CURRENT != pus_getTmPusVersion(packet))
 		{
-	    	PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_PUS_VERSION);
-			return PUS_ERROR_UNEXPECTED_PUS_VERSION;
+	    	return PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_PUS_VERSION);
 		}
 		else
 		{
@@ -869,8 +854,7 @@ pusError_t pus_verifyTcSecondaryHeaderDefaults(const pusPacket_t* packet)
     {
 		if (pus_VERSION_CURRENT != pus_getTcPusVersion(packet))
 		{
-	    	PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_PUS_VERSION);
-			return PUS_ERROR_UNEXPECTED_PUS_VERSION;
+	    	return PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_PUS_VERSION);
 		}
 		else
 		{

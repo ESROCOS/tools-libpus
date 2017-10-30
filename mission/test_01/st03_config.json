@@ -25,6 +25,6 @@
             "type": "BOOL"
         }
     ],
-    "defaultHkReport": ["HK_PARAM_REAL01", "HK_PARAM_INT01", "HK_PARAM_INT02", "HK_PARAM_BYTE01", "HK_PARAM_BOOL01"]
+    "defaultHkReport": ["HK_PARAM_REAL01", "HK_PARAM_INT01", "HK_PARAM_UINT01", "HK_PARAM_BYTE01", "HK_PARAM_BOOL01"]
 }
 

@@ -260,8 +260,7 @@ pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, cons
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else
 	{
@@ -313,8 +312,7 @@ pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidI
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (PUS_IS_ERROR())
 	{
@@ -331,8 +329,7 @@ pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApidI
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (PUS_IS_ERROR())
 	{
@@ -357,8 +354,7 @@ pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApidInfo_t
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (PUS_IS_ERROR())
 	{
@@ -375,8 +371,7 @@ pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApidInfo_t
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (PUS_IS_ERROR())
 	{
@@ -401,8 +396,7 @@ pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApidInf
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (PUS_IS_ERROR())
 	{
@@ -428,8 +422,7 @@ pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApidInf
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (PUS_IS_ERROR())
 	{
@@ -455,8 +448,7 @@ pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApidI
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (PUS_IS_ERROR())
 	{
@@ -473,8 +465,7 @@ pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApidI
 {
 	if (NULL == outTm || NULL == receivedTc || NULL == apid)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else if (PUS_IS_ERROR())
 	{

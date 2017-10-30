@@ -6,11 +6,12 @@ volatile pusErrorFunction_t lastErrorFunction = "none";
 volatile pusErrorData_t lastErrorData = (pusErrorData_t){.integer=0};
 
 
-void pus_setError(pusError_t error, const char* function, pusErrorData_t data)
+pusError_t pus_setError(pusError_t error, const char* function, pusErrorData_t data)
 {
     lastErrorCode = error;
     lastErrorFunction = function;
     lastErrorData = data;
+    return error;
 }
 
 

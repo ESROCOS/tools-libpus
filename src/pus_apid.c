@@ -6,8 +6,7 @@ pusError_t pus_initApidInfo(pusApidInfo_t* obj, pusApid_t apid, pusMutex_t* mute
 {
 	if (NULL == obj)
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else
 	{

@@ -87,7 +87,7 @@ typedef const char* pusErrorFunction_t;
 //! Set error code
 /*! \warning Not thread-safe
  */
-void pus_setError(pusError_t error, const char* function, pusErrorData_t data);
+pusError_t pus_setError(pusError_t error, const char* function, pusErrorData_t data);
 
 //! Get last error code
 /*! \param[out] outError If not null address is passed, writes the error code to it
