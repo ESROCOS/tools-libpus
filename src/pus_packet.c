@@ -144,7 +144,7 @@ void pus_setSequenceFlags(pusPacket_t* packet, pusSequenceFlags_t flags)
 
 pusSequenceCount_t pus_getSequenceCount(const pusPacket_t* packet)
 {
-    assert(pusSequenceCount_LIMIT > packet->sequenceCount);
+    assert(packet == NULL || pusSequenceCount_LIMIT > packet->sequenceCount);
     
     if (NULL == packet)
     {
@@ -181,7 +181,7 @@ pusSequenceCount_t pus_setSequenceCount(pusPacket_t* packet, pusSequenceCount_t 
 
 pusPacketDataLength_t pus_getPacketDataLength(const pusPacket_t* packet)
 {
-    assert(pusPacketDataLength_LIMIT > packet->dataLength);
+    assert(NULL == packet || pusPacketDataLength_LIMIT > packet->dataLength);
     
     if (NULL == packet)
     {
@@ -196,8 +196,6 @@ pusPacketDataLength_t pus_getPacketDataLength(const pusPacket_t* packet)
 
 void pus_setPacketDataLength(pusPacket_t* packet, pusPacketDataLength_t length)
 {
-    assert(NULL != packet);
-    
     if (NULL == packet)
     {
     	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
@@ -570,7 +568,7 @@ pusTmDataKind_t pus_getTmNoHeaderDataKind(const pusPacket_t* packet)
     }
 }
 
-void pus_setTmDataNoHeaderKind(pusPacket_t* packet, pusPacketDataKind_t kind)
+void pus_setTmNoHeaderDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TM_NO_HEADER_INT(packet, kind))
     {
