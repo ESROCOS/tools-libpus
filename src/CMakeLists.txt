@@ -2,9 +2,11 @@
 set(SOURCES
 	pus_apid.c
     pus_error.c
+    pus_housekeeping.c
     pus_packet.c
-    pus_st01.c
-    pus_st03.c
+    pus_st01_packets.c
+    pus_st03_packets.c
+    pus_st05_packets.c
     pus_threads.c
     pus_time.c
 )

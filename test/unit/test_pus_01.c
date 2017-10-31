@@ -6,12 +6,11 @@
 #include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_time.h"
-#include "pus_st01.h"
-#include "pus_st03.h"
-
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
+#include "../../include/pus_st01_packets.h"
+#include "../../include/pus_st03_packets.h"
 
 // Sample init and clean functions
 /*

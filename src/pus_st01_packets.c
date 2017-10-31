@@ -1,8 +1,7 @@
-#include "pus_st01.h"
-
 #include <stddef.h>
 #include <assert.h>
 
+#include "pus_st01_packets.h"
 #include "pus_packet.h"
 
 

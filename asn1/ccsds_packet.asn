@@ -15,6 +15,7 @@ BEGIN
 
     PusTM-1-X-Data FROM PUS-ST01
     PusTM-3-25-Data FROM PUS-ST03
+    PusTM-5-X-Data FROM PUS-ST05
     ;
 
 
@@ -35,7 +36,8 @@ BEGIN
     PusTmSourceData ::= CHOICE
     {
         st-1-X PusTM-1-X-Data,
-        st-3-25 PusTM-3-25-Data
+        st-3-25 PusTM-3-25-Data,
+        st-5-X PusTM-5-X-Data
     }
     
     -- TC secondary header

@@ -11,7 +11,7 @@
 #include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_time.h"
-#include "pus_st01.h"
+#include "../../include/pus_st01_packets.h"
 
 #include <stdio.h>
 #include <math.h>

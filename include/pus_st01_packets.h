@@ -1,4 +1,4 @@
-/*! \file pus_st01.h
+/*! \file pus_st01_packets.h
  *  \brief PUS service ST[01] Request Verification.
  *
  *  This module provides the functions to generate reports of the service ST[01],
@@ -10,8 +10,8 @@
  *  \author GMV
  */
 
-#ifndef PUS_ST01_H
-#define PUS_ST01_H
+#ifndef PUS_ST01_PACKETS_H
+#define PUS_ST01_PACKETS_H
 
 #include "pus_types.h"
 #include "pus_error.h"
@@ -218,4 +218,4 @@ pusError_t pus_expectSt01Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 #define PUS_EXPECT_ST01(packet, subtype) pus_expectSt01Tm((packet), (subtype), __func__)
 
 
-#endif // PUS_ST01_H
+#endif // PUS_ST01_PACKETS_H
