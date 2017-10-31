@@ -51,7 +51,7 @@ pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
 const pusSt03ParamId_t pus_ST03_PARAM_LIMIT = PUS_ST03_PARAM_LIMIT;
 
 
-pusError_t pus_st03_configure()
+pusError_t pus_hk_configure()
 {
 	pus_st03_defaultHkReportInfo.numParams = 0;
 	pus_st03_defaultHkReportInfo.paramIds = &pus_st03_defaultHkReport[0];

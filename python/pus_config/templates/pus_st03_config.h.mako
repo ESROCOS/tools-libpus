@@ -42,7 +42,7 @@ extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
 extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
 
 //! Initialize the configuration of the ST[03] service from the mission database
-pusError_t pus_st03_configure();
+pusError_t pus_hk_configure();
 
 
 #endif // PUS_ST03_CONFIG_H
