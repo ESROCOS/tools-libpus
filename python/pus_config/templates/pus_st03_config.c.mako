@@ -43,7 +43,7 @@ def typeEnum(str):
 
 // ST[03] arrays
 pusSt03ParamInfo_t pus_st03_paramInfo[${tempvars['numParams']}];
-pusInternalParam_t pus_st03_params[${tempvars['numParams']}];
+pusStoredParam_t pus_st03_params[${tempvars['numParams']}];
 pusSt03ParamId_t pus_st03_defaultHkReport[${len(config['defaultHkReport'])}];
 pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
 

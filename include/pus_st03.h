@@ -8,7 +8,7 @@
  *  Only a subset of the standard requests and reports are implemented.
  *
  *  - Housekeeping
- *    +
+ *    + TM[3,25] Housekeeping parameter report
  *
  *  \author GMV
  */
@@ -44,7 +44,7 @@ typedef struct
 } pusSt03ParamInfo_t;
 
 //! Type used for the internal storage of parameters in an array
-typedef uint64_t pusInternalParam_t;
+typedef uint64_t pusStoredParam_t;
 
 //! Type to define the structure of a housekeeping report
 typedef struct
@@ -214,7 +214,7 @@ pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, const pusSt03Param
  *  \param[in] index The index of the parameter to be returned; must be at most \ref pus_ST03_MAX_REPORT_LENGTH
  *  \param[out] outValue Outputs the parameter value as \ref pusInternalParam_t, to be casted to the correct type
  */
-pusError_t pus_tm_3_25_getParameterValue(const pusPacket_t* tm, size_t index, pusInternalParam_t* outValue);
+pusError_t pus_tm_3_25_getParameterValue(const pusPacket_t* tm, size_t index, pusStoredParam_t* outValue);
 
 //! Get the number of parameters in the report
 /*! \param[in] tm The TM packet
@@ -228,19 +228,19 @@ pusError_t pus_tm_3_25_getNumParameters(const pusPacket_t* tm, size_t* outNumPar
 //
 
 //! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_st03_paramToUInt32(uint32_t* outValue, pusInternalParam_t paramValue);
+pusError_t pus_st03_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue);
 
 //! Convert a value from the internal parameter format to int32_t
-pusError_t pus_st03_paramToInt32(int32_t* outValue, pusInternalParam_t paramValue);
+pusError_t pus_st03_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue);
 
 //! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_st03_paramToReal64(double* outValue, pusInternalParam_t paramValue);
+pusError_t pus_st03_paramToReal64(double* outValue, pusStoredParam_t paramValue);
 
 //! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_st03_paramToBool(bool* outValue, pusInternalParam_t paramValue);
+pusError_t pus_st03_paramToBool(bool* outValue, pusStoredParam_t paramValue);
 
 //! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_st03_paramToByte(uint8_t* outValue, pusInternalParam_t paramValue);
+pusError_t pus_st03_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
 
 
 //

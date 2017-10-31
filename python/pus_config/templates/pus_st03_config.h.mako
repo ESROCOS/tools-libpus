@@ -33,7 +33,7 @@
 extern pusSt03ParamInfo_t pus_st03_paramInfo[];
 
 //! Array for parameters values (all stored in 64 bits)
-extern pusInternalParam_t pus_st03_params[];
+extern pusStoredParam_t pus_st03_params[];
 
 //! Structure of the default HK report
 extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;

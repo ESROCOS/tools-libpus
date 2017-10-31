@@ -14,7 +14,7 @@ bool pus_st03_initializedFlag = false;
 extern pusSt03ParamInfo_t pus_st03_paramInfo[];
 
 // Array for parameters values (all stored in 64 bits)
-extern pusInternalParam_t pus_st03_params[];
+extern pusStoredParam_t pus_st03_params[];
 
 // Structure of the default HK report
 extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
@@ -574,7 +574,7 @@ pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, const pusSt03Param
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tm_3_25_getParameterValue(const pusPacket_t* tm, size_t index, pusInternalParam_t* outValue)
+pusError_t pus_tm_3_25_getParameterValue(const pusPacket_t* tm, size_t index, pusStoredParam_t* outValue)
 {
 	if (NULL == tm || NULL == outValue)
 	{
@@ -619,7 +619,7 @@ pusError_t pus_tm_3_25_getNumParameters(const pusPacket_t* tm, size_t* outNumPar
 // Cast parameter to type
 //
 
-pusError_t pus_st03_paramToUInt32(uint32_t* outValue, pusInternalParam_t paramValue)
+pusError_t pus_st03_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue)
 {
 	if (NULL == outValue)
 	{
@@ -636,7 +636,7 @@ pusError_t pus_st03_paramToUInt32(uint32_t* outValue, pusInternalParam_t paramVa
 	}
 }
 
-pusError_t pus_st03_paramToInt32(int32_t* outValue, pusInternalParam_t paramValue)
+pusError_t pus_st03_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue)
 {
 	if (NULL == outValue)
 	{
@@ -659,7 +659,7 @@ pusError_t pus_st03_paramToInt32(int32_t* outValue, pusInternalParam_t paramValu
 	}
 }
 
-pusError_t pus_st03_paramToReal64(double* outValue, pusInternalParam_t paramValue)
+pusError_t pus_st03_paramToReal64(double* outValue, pusStoredParam_t paramValue)
 {
 	if (NULL == outValue)
 	{
@@ -672,7 +672,7 @@ pusError_t pus_st03_paramToReal64(double* outValue, pusInternalParam_t paramValu
 	}
 }
 
-pusError_t pus_st03_paramToBool(bool* outValue, pusInternalParam_t paramValue)
+pusError_t pus_st03_paramToBool(bool* outValue, pusStoredParam_t paramValue)
 {
 	if (NULL == outValue)
 	{
@@ -685,7 +685,7 @@ pusError_t pus_st03_paramToBool(bool* outValue, pusInternalParam_t paramValue)
 	}
 }
 
-pusError_t pus_st03_paramToByte(uint8_t* outValue, pusInternalParam_t paramValue)
+pusError_t pus_st03_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue)
 {
 	if (NULL == outValue)
 	{

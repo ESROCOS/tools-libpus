@@ -141,7 +141,7 @@ void test_params()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st03_initialize(NULL));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
-	extern pusInternalParam_t pus_st03_params[];
+	extern pusStoredParam_t pus_st03_params[];
 
 	pus_st03_params[HK_PARAM_UINT01] = (uint64_t)UINT32_MAX + 1;
 	CU_ASSERT_EQUAL(PUS_ERROR_LIMIT, pus_st03_getUInt32Param(HK_PARAM_UINT01, &ui1)); pus_clearError();
@@ -173,7 +173,7 @@ void test_st03()
 	bool b1 = false;
 	pusTime_t tv, now;
 	size_t len;
-	pusInternalParam_t val;
+	pusStoredParam_t val;
 	pusSt03ParamId_t paramIds[3] = {HK_PARAM_REAL01, HK_PARAM_INT01, HK_PARAM_INT02};
 
 	CU_ASSERT_TRUE(pus_mutexInitOk(&mutexHk));
