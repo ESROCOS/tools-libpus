@@ -193,26 +193,6 @@ pusError_t pus_tm_3_25_getNumParameters(const pusPacket_t* tm, size_t* outNumPar
 
 
 //
-// Cast parameter to type
-//
-
-//! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_hk_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue);
-
-//! Convert a value from the internal parameter format to int32_t
-pusError_t pus_hk_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue);
-
-//! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_hk_paramToReal64(double* outValue, pusStoredParam_t paramValue);
-
-//! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_hk_paramToBool(bool* outValue, pusStoredParam_t paramValue);
-
-//! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_hk_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
-
-
-//
 // Parameter checking
 //
 

@@ -18,6 +18,7 @@
 #include "asn1/pus_config.h"
 #include "asn1/pus_st01.h"
 #include "asn1/pus_st03.h"
+#include "asn1/pus_st05.h"
 #include "asn1/pus_services.h"
 
 
@@ -48,7 +49,12 @@ typedef asn1SccPusInt32 pusInt32_t; //!< Type of int32 fields
 typedef asn1SccPusMemAddr pusMemAddr_t; //!< Type of memory address fields
 typedef asn1SccPusSt03HousekeepingReportId pusSt03HousekeepingReportId_t; //!< Type of the ST[03] housekeeping report identifier field
 typedef asn1SccPusSt03ParameterId pusSt03ParamId_t; //!< Type of the ST[03] parameter identifiers
-typedef asn1SccPusSt05Event pusSt03Event_t; //!< Type of the ST[05] event with data
+
+typedef asn1SccPusSt05Event pusSt05Event_t; //!< Type of the ST[05] event with data
+typedef asn1SccPusSt05EventId pusSt05EventId_t; //!< Type of the ST[05] event ID
+typedef asn1SccPusSt05EventAuxData pusSt05EventAuxData_t; //!< Type of the ST[05] event AuxData
+
+
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
 typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
@@ -82,14 +88,17 @@ typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union dis
 #define pus_TM_DATA_NONE 		((pusTmDataKind_t) PusTmSourceData_NONE)
 #define pus_TM_DATA_ST_1_X		((pusTmDataKind_t) st_1_X_PRESENT)
 #define pus_TM_DATA_ST_3_25		((pusTmDataKind_t) st_3_25_PRESENT)
+#define pus_TM_DATA_ST_5_X		((pusTmDataKind_t) st_5_X_PRESENT)
 
 
-
+// pusSt05EventId_t
+//#define pus_EVENT_ID_NONE			((pusSt05EventId_t) pus_EVENT_ID_NONE) //duda, crea constante no define con asn1Scc...
+//#define pus_EVENT_AUXDATA_NONE		((pusSt05EventAuxData_t) pus_EVENT_AUXDATA_NONE) //duda, crea constante no define con asn1Scc...
+//#define pus_EVENT_DATASTORED_NONE	((uint64_t) pus_EVENT_DATASTORED_NONE)
 
 //
 // Type limits
 //
-
 #define pusUInt3_LIMIT  ((const unsigned int) 8)
 #define pusUInt4_LIMIT  ((const unsigned int) 16)
 #define pusUInt8_LIMIT  ((const unsigned int) 256)

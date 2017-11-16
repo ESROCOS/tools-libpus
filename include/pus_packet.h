@@ -230,7 +230,7 @@ pusPacketDataKind_t pus_getPacketDataKind(const pusPacket_t* packet);
 void pus_setPacketDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);
 
 //! Getter for the kind of TM data field, for packets with secondary header
-pusTmDataKind_t pus_getTmDataKind(const pusPacket_t* packet);
+pusTmDataKind_t pus_getTmDataKind(const pusPacket_t* packet); //duda, cual usar?
 
 //! Setter for the kind of TM data field, for packets with secondary header
 void pus_setTmDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);

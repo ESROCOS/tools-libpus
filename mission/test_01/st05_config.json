@@ -1,0 +1,26 @@
+{
+    "events": [
+        {
+            "label": "EVENT_INFO_01",
+            "defaultSeverity": "INFO",
+            "data": ["UINT32", "INT32"]
+        },
+        {
+            "label": "EVENT_LOW_02",
+            "defaultSeverity": "LOW",
+            "data": ["REAL64", "INT32"]
+        },
+        {
+            "label": "EVENT_MEDIUM_03",
+            "defaultSeverity": "MEDIUM",
+            "data": ["BOOL", "BYTE"]
+        },
+        {
+            "label": "EVENT_HIGH_04",
+            "defaultSeverity": "HIGH",
+            "data": ["UINT32", "INT32"]
+        }
+    ],
+    "eventBufferLength": 5
+}
+

@@ -15,6 +15,9 @@ BEGIN
     
     -- Event definition identifier
     PusSt05EventId ::= PusUInt32
+    
+    -- EventId none
+    pus-EVENT-ID-NONE PusSt05EventId ::= 0
 
 	-- Event auxiliary data
 	PusSt05EventAuxData ::= SEQUENCE
@@ -22,6 +25,15 @@ BEGIN
 		data1 PusUInt64,
 		data2 PusUInt64
 	}
+	
+	-- AuxData none
+	pus-EVENT-AUXDATA-NONE PusSt05EventAuxData ::= 
+	{
+		data1 0, 
+		data2 0
+	}
+	
+	pus-EVENT-DATASTORED-NONE PusUInt64 ::= 0
 	
 	-- Event and data
 	PusSt05Event ::= SEQUENCE

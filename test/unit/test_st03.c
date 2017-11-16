@@ -8,6 +8,7 @@
 #include "pus_packet.h"
 #include "pus_time.h"
 #include "pus_st03_config.h"
+#include "pus_stored_param.h"
 
 #include <stdio.h>
 #include <math.h>
@@ -236,23 +237,23 @@ void test_st03()
 	CU_ASSERT_EQUAL(len, pus_st03_defaultHkReportInfo.numParams);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 0, &val));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_paramToReal64(&d1, val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToReal64(&d1, val));
 	CU_ASSERT_EQUAL(5.4321, d1);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 1, &val));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_paramToInt32(&i1, val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToInt32(&i1, val));
 	CU_ASSERT_EQUAL(-1001, i1);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 2, &val));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_paramToUInt32(&ui1, val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToUInt32(&ui1, val));
 	CU_ASSERT_EQUAL(1001, ui1);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 3, &val));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_paramToByte(&c1, val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToByte(&c1, val));
 	CU_ASSERT_EQUAL(0xc1, c1);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 4, &val));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_paramToBool(&b1, val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToBool(&b1, val));
 	CU_ASSERT_EQUAL(true, b1);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_finalize());
@@ -280,15 +281,15 @@ void test_st03()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_getNumParameters(&tm, NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_hk_paramToUInt32(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToUInt32(NULL, 0));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_hk_paramToInt32(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToInt32(NULL, 0));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_hk_paramToReal64(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToReal64(NULL, 0));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_hk_paramToByte(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToByte(NULL, 0));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_hk_paramToBool(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToBool(NULL, 0));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_createHousekeepingReport(NULL, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();

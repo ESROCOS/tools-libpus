@@ -2,10 +2,13 @@
 #include "pus_error.h"
 #include "pus_packet.h"
 #include <string.h>
+
+#include "pus_stored_param.h"
 #include "pus_housekeeping.h"
 
+
 // Mutex to lock access to the housekeeping parameter tables
-pusMutex_t* pus_st03_mutex = NULL;
+pusMutex_t* pus_events_mutex = NULL;
 
 // Initialized flag
 bool pus_st03_initializedFlag = false;
@@ -21,30 +24,28 @@ extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
 
 pusError_t pus_hk_initialize(pusMutex_t* mutex)
 {
-	size_t numParams = 0;
-
 	if (pus_hk_isInitialized())
 	{
 		return PUS_SET_ERROR(PUS_ERROR_ALREADY_INITIALIZED);
 	}
 
-	pus_st03_mutex = mutex;
+	pus_events_mutex = mutex;
 
-	if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+	if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 	{
 		return PUS_ERROR_INITIALIZATION;
 	}
 
-	if (PUS_NO_ERROR != pus_hk_configure(&numParams))
+	if (PUS_NO_ERROR != pus_hk_configure())
 	{
-		if (NULL != pus_st03_mutex)
+		if (NULL != pus_events_mutex)
 		{
-			(void) pus_mutexUnlockOk(pus_st03_mutex);
+			(void) pus_mutexUnlockOk(pus_events_mutex);
 		}
 		return PUS_SET_ERROR(PUS_ERROR_INITIALIZATION);
 	}
 
-	if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+	if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 	{
 		return PUS_ERROR_INITIALIZATION;
 	}
@@ -61,7 +62,7 @@ pusError_t pus_hk_finalize()
 	}
 	else
 	{
-		pus_st03_mutex = NULL;
+		pus_events_mutex = NULL;
 		pus_st03_initializedFlag = false;
 		return PUS_NO_ERROR;
 	}
@@ -85,7 +86,7 @@ pusError_t pus_hk_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -98,10 +99,10 @@ pusError_t pus_hk_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 		}
 		else
 		{
-			result = pus_hk_paramToUInt32(outValue, pus_st03_params[param]);
+			result = pus_paramToUInt32(outValue, pus_st03_params[param]);
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -118,7 +119,7 @@ pusError_t pus_hk_setUInt32Param(pusSt03ParamId_t param, uint32_t value)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -135,7 +136,7 @@ pusError_t pus_hk_setUInt32Param(pusSt03ParamId_t param, uint32_t value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -156,7 +157,7 @@ pusError_t pus_hk_getInt32Param(pusSt03ParamId_t param, int32_t* outValue)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -169,10 +170,10 @@ pusError_t pus_hk_getInt32Param(pusSt03ParamId_t param, int32_t* outValue)
 		}
 		else
 		{
-			result = pus_hk_paramToInt32(outValue, pus_st03_params[param]);
+			result = pus_paramToInt32(outValue, pus_st03_params[param]);
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -189,7 +190,7 @@ pusError_t pus_hk_setInt32Param(pusSt03ParamId_t param, int32_t value)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -207,7 +208,7 @@ pusError_t pus_hk_setInt32Param(pusSt03ParamId_t param, int32_t value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -228,7 +229,7 @@ pusError_t pus_hk_getReal64Param(pusSt03ParamId_t param, double* outValue)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -241,10 +242,10 @@ pusError_t pus_hk_getReal64Param(pusSt03ParamId_t param, double* outValue)
 		}
 		else
 		{
-			result = pus_hk_paramToReal64(outValue, pus_st03_params[param]);
+			result = pus_paramToReal64(outValue, pus_st03_params[param]);
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -261,7 +262,7 @@ pusError_t pus_hk_setReal64Param(pusSt03ParamId_t param, double value)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -279,7 +280,7 @@ pusError_t pus_hk_setReal64Param(pusSt03ParamId_t param, double value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -300,7 +301,7 @@ pusError_t pus_hk_getBoolParam(pusSt03ParamId_t param, bool* outValue)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -313,10 +314,10 @@ pusError_t pus_hk_getBoolParam(pusSt03ParamId_t param, bool* outValue)
 		}
 		else
 		{
-			result = pus_hk_paramToBool(outValue, pus_st03_params[param]);
+			result = pus_paramToBool(outValue, pus_st03_params[param]);
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -333,7 +334,7 @@ pusError_t pus_hk_setBoolParam(pusSt03ParamId_t param, bool value)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -350,7 +351,7 @@ pusError_t pus_hk_setBoolParam(pusSt03ParamId_t param, bool value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -371,7 +372,7 @@ pusError_t pus_hk_getByteParam(pusSt03ParamId_t param, uint8_t* outValue)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -384,10 +385,10 @@ pusError_t pus_hk_getByteParam(pusSt03ParamId_t param, uint8_t* outValue)
 		}
 		else
 		{
-			result = pus_hk_paramToByte(outValue, pus_st03_params[param]);
+			result = pus_paramToByte(outValue, pus_st03_params[param]);
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -404,7 +405,7 @@ pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value)
 	}
 	else
 	{
-		if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -421,7 +422,7 @@ pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value)
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -430,91 +431,5 @@ pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value)
 	}
 }
 
-//
-// Cast parameter to type
-//
-
-pusError_t pus_hk_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue)
-{
-	if (NULL == outValue)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else if (paramValue > UINT32_MAX)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_LIMIT);
-	}
-	else
-	{
-		*outValue = (uint32_t)paramValue;
-		return PUS_NO_ERROR;
-	}
-}
-
-pusError_t pus_hk_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue)
-{
-	if (NULL == outValue)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else
-	{
-		int64_t i64 = 0;
-		memcpy(&i64, &paramValue, sizeof(int64_t));
-
-		if (i64 < INT32_MIN || i64 > INT32_MAX)
-		{
-			return PUS_SET_ERROR(PUS_ERROR_LIMIT);
-		}
-		else
-		{
-			*outValue = (int32_t)i64;
-			return PUS_NO_ERROR;
-		}
-	}
-}
-
-pusError_t pus_hk_paramToReal64(double* outValue, pusStoredParam_t paramValue)
-{
-	if (NULL == outValue)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else
-	{
-		memcpy(outValue, &paramValue, sizeof(double));
-		return PUS_NO_ERROR;
-	}
-}
-
-pusError_t pus_hk_paramToBool(bool* outValue, pusStoredParam_t paramValue)
-{
-	if (NULL == outValue)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else
-	{
-		*outValue = (bool)paramValue;
-		return PUS_NO_ERROR;
-	}
-}
-
-pusError_t pus_hk_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue)
-{
-	if (NULL == outValue)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else if (paramValue > UINT8_MAX)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_LIMIT);
-	}
-	else
-	{
-		*outValue = (uint8_t)paramValue;
-		return PUS_NO_ERROR;
-	}
-}
 
 

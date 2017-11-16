@@ -5,7 +5,7 @@
 #include "pus_st03_packets.h"
 
 // Mutex defined in pus_housekeeping.c
-extern pusMutex_t* pus_st03_mutex;
+extern pusMutex_t* pus_events_mutex;
 
 // Array for parameters values (all stored in 64 bits)
 extern pusStoredParam_t pus_st03_params[];
@@ -140,7 +140,7 @@ pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, const pusSt03Param
 	}
 
 	// Lock access parameters array
-	if (NULL != pus_st03_mutex && !pus_mutexLockOk(pus_st03_mutex))
+	if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
 	{
 		return PUS_ERROR_THREADS;
 	}
@@ -155,7 +155,7 @@ pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, const pusSt03Param
 	outTm->data.u.tmData.data.u.st_3_25.parameters.nCount = numParams;
 
 	// Unlock access to parameters array
-	if (NULL != pus_st03_mutex && !pus_mutexUnlockOk(pus_st03_mutex))
+	if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 	{
 		return PUS_ERROR_THREADS;
 	}

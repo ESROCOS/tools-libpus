@@ -163,24 +163,7 @@ pusError_t pus_hk_getByteParam(pusSt03ParamId_t param, uint8_t* outValue);
 pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value);
 
 
-//
-// Cast parameter to type
-//
 
-//! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_hk_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue);
-
-//! Convert a value from the internal parameter format to int32_t
-pusError_t pus_hk_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue);
-
-//! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_hk_paramToReal64(double* outValue, pusStoredParam_t paramValue);
-
-//! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_hk_paramToBool(bool* outValue, pusStoredParam_t paramValue);
-
-//! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_hk_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
 
 
 #endif // PUS_HOUSEKEEPING_H
