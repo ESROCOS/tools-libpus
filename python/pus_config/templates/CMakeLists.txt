@@ -2,6 +2,8 @@
 set(MAKO_TEMPLATES
     pus_st03_config.c.mako
     pus_st03_config.h.mako
+    pus_st05_config.c.mako
+    pus_st05_config.h.mako
 )
 
 # Target to add dependencies on the templates

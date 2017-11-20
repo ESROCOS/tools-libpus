@@ -226,7 +226,7 @@ void pus_tm_5_X_setEventAuxData2(pusSt05EventAuxData_t* data, pusStoredParam_t d
 }
 
 
-pusError_t pus_tm_5_X_setTmEventReportData(pusPacket_t* outTm, pusSt05Event_t* event)
+pusError_t pus_tm_5_X_setTmEventReportData(pusPacket_t* outTm, const pusSt05Event_t* event)
 {
 	if (NULL == outTm|| NULL == event)
 	{

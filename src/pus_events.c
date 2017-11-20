@@ -19,11 +19,11 @@ bool pus_events_initializedFlag = false;
 // First invalid parameter ID
 //extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
 
-pusError_t pus_events_configure() //duda
+/*pusError_t pus_events_configure()
 {
 	return PUS_NO_ERROR;
 }
-
+*/
 
 pusError_t pus_events_initialize(pusMutex_t* mutex)
 {

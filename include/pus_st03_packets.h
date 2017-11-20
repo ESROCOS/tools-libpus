@@ -56,7 +56,7 @@ bool pus_hk_isInitialized();
 //
 
 //! Build the default housekeeping parameter report
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[3_25] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID
@@ -65,7 +65,7 @@ bool pus_hk_isInitialized();
 pusError_t pus_tm_3_25_createHousekeepingReportDefault(pusPacket_t* outTm, pusApidInfo_t* apid, pusApid_t destination);
 
 //! Build a housekeeping parameter report
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[3,25 packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID

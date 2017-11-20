@@ -14,11 +14,18 @@
 #include "pus_error.h"
 #include "pus_packet.h"
 
-typedef uint64_t pusStoredParam_t;
+typedef enum
+{
+	PUS_INT32,
+	PUS_UINT32,
+	PUS_REAL64,
+	PUS_BYTE,
+	PUS_BOOL
+} pusParamType_t;
 
-//
-// Cast parameter to type
-//
+
+
+typedef uint64_t pusStoredParam_t;
 
 //! Convert a value from the internal parameter format to uint32_t
 pusError_t pus_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue);

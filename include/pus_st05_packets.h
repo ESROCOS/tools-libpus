@@ -85,7 +85,7 @@ pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApidI
 
 // get/set Event report data
 //! Set packet data field with the event information for a TM(5,X) event report
-pusError_t pus_tm_5_X_setTmEventReportData(pusPacket_t* outTm, pusSt05Event_t* event); //duda, const a event?
+pusError_t pus_tm_5_X_setTmEventReportData(pusPacket_t* outTm, const pusSt05Event_t* event);
 
 //! Get packet data field with the event information for a TM(5,X) event report
 pusError_t pus_tm_5_X_getTmEventReportData(const pusPacket_t* outTm, pusSt05Event_t* event);

@@ -91,11 +91,6 @@ typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union dis
 #define pus_TM_DATA_ST_5_X		((pusTmDataKind_t) st_5_X_PRESENT)
 
 
-// pusSt05EventId_t
-//#define pus_EVENT_ID_NONE			((pusSt05EventId_t) pus_EVENT_ID_NONE) //duda, crea constante no define con asn1Scc...
-//#define pus_EVENT_AUXDATA_NONE		((pusSt05EventAuxData_t) pus_EVENT_AUXDATA_NONE) //duda, crea constante no define con asn1Scc...
-//#define pus_EVENT_DATASTORED_NONE	((uint64_t) pus_EVENT_DATASTORED_NONE)
-
 //
 // Type limits
 //

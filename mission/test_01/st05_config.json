@@ -21,6 +21,7 @@
             "data": ["UINT32", "INT32"]
         }
     ],
-    "eventBufferLength": 5
+    "eventBufferLength": 5,
+    "eventReportDestination": 2
 }
 

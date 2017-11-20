@@ -31,11 +31,7 @@ def generate_st05_config(jsonDir, outDir):
     except Exception as err:
         perror('Error in ST[05] service configuration {}:\n{}'.format(missionFile, err))
         raise
-    
-    
-    
-    return
-    
+       
     
     
         
@@ -47,7 +43,7 @@ def generate_st05_config(jsonDir, outDir):
         perror('Error generating {}:'.format(headerTemplate))
         perror(text_error_template().render())
         raise
-
+        
     try:
         template = Template(filename=srcTemplate)
         outSrc = template.render(config=configData,tempvars=dict())

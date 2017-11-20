@@ -16,7 +16,7 @@ tempvars['defaultReportCount'] = -1
 # Indices assigned to the parameters
 tempvars['paramIndex'] = dict()
 
-# Get the C enum string for a data type identifier
+# Get the C enum string for a data type identifier   DUDA
 def typeEnum(str):
     if str == 'INT32':
         return 'PUS_ST03_INT32'

@@ -16,6 +16,7 @@
 #include "pus_error.h"
 #include "pus_apid.h"
 #include "pus_threads.h"
+#include "pus_stored_param.h"
 
 
 //
@@ -40,7 +41,7 @@ typedef struct
 } pusSt03ParamInfo_t;
 
 //! Type used for the internal storage of parameters in an array
-typedef uint64_t pusStoredParam_t;
+//typedef uint64_t pusStoredParam_t;
 
 //! Type to define the structure of a housekeeping report
 typedef struct

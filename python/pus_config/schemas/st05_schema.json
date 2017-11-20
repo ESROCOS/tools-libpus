@@ -38,6 +38,12 @@
         "eventBufferLength":  {
             "type": "integer",
             "minimum": 1
+        },
+        "eventReportDestination": {
+        	"type": "integer",
+        	"minimum": 0,
+        	"maximum": 2047        	
         }
-    }
+    },
+    "required": ["events", "eventBufferLength", "eventReportDestination"]
 }
