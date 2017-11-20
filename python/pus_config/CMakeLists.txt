@@ -3,6 +3,7 @@ set(PYTHON_SCRIPTS
     __init__.py
     mission_config.py
     st03_config.py
+    st05_config.py
 )
 
 # Subdirectories

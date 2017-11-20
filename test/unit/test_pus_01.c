@@ -176,6 +176,8 @@ void test_packetVerification(void)
 	pus_setPacketDefaults(&packet);
 	packet.packetType = 2;
 	CU_ASSERT_EQUAL(PUS_ERROR_PACKET_TYPE, pus_verifyPacketDataKind(&packet));
+
+
 }
 
 void test_error()
@@ -314,6 +316,9 @@ void test_packetErrors()
 	CU_ASSERT_EQUAL(0, pus_getPacketVersion(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
+	CU_ASSERT_EQUAL(0, pus_getPacketDataLength(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
+
 	pus_setPacketVersion(NULL, 0);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
@@ -337,9 +342,6 @@ void test_packetErrors()
 
 	CU_ASSERT_EQUAL(0, pus_setSequenceCount(&packet, pusPacketDataLength_LIMIT));
 	CU_ASSERT_EQUAL(PUS_ERROR_COUNT_WRAP, PUS_GET_ERROR()); pus_clearError();
-
-	CU_ASSERT_EQUAL(0, pus_getPacketDataLength(NULL));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
 	pus_setPacketDataLength(NULL, 100);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
