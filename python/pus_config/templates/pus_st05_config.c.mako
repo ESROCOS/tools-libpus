@@ -8,9 +8,10 @@ tempvars['reportsDestination'] = config['eventReportDestination']
 tempvars['eventBufferLength'] = config['eventBufferLength']
 
 # Counters for adding to arrays
-tempvars['eventCount'] = len(config['events'])
+tempvars['eventListLength'] = len(config['events'])
 tempvars['eventList'] = config['events']
 
+tempvars['eventCount'] = 0
 %>
 
 
@@ -26,11 +27,20 @@ const pusApid_t eventReportDestination = ${tempvars['reportsDestination']};
 
 const size_t eventBufferLength = ${tempvars['eventBufferLength']};
 
-// countEvent: ${tempvars['eventCount']},  
+pusSt05EventInfo_t pus_st05_eventInfo[${tempvars['eventListLength']}];
+
 
 pusError_t pus_events_configure()
 {
-
-
+	% for event in tempvars['eventList']:
+    pus_st05_eventInfo[${tempvars['eventCount']}].label = "${event['label']}";
+    pus_st05_eventInfo[${tempvars['eventCount']}].defaultSeverity = PUS_ST05_SEVERITY_${event['defaultSeverity']};
+    pus_st05_eventInfo[${tempvars['eventCount']}].data.dataType1 = PUS_${event['data'][0]};
+    pus_st05_eventInfo[${tempvars['eventCount']}].data.dataType2 = PUS_${event['data'][1]};
+    <%
+    tempvars['eventCount'] = tempvars['eventCount'] + 1 
+	%>
+	% endfor
+	
 	return PUS_NO_ERROR;
 }

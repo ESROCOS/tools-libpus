@@ -41,7 +41,7 @@
  *  \param[in] subtype The TM service subtype to be created
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination, pusSubservice_t subtype);
+pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination, pusSubservice_t subtype);
 
 //! Build the common part of the ST[05] reports
 /*! Builds a TM[5,1] packet in the packet passed as parameter.
@@ -51,7 +51,7 @@ pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid,
  *  \param[in] destination
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination);
+pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination);
 
 //! Build the common part of the ST[05] reports
 /*! Builds a TM[5,2] packet in the packet passed as parameter.
@@ -60,7 +60,7 @@ pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApidIn
  *  \param[in] event Information about the event which generate the event report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination);
+pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination);
 
 //! Build the common part of the ST[05] reports
 /*! Builds a TM[5,3] packet in the packet passed as parameter.
@@ -70,7 +70,7 @@ pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApidIn
  *  \param[in] destination
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination);
+pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination);
 
 //! Build the common part of the ST[05] reports
 /*! Builds a TM[5,4] packet in the packet passed as parameter.
@@ -80,7 +80,7 @@ pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApi
  *  \param[in] destination
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination);
+pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination);
 
 
 // get/set Event report data

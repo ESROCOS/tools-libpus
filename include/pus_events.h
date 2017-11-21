@@ -28,10 +28,10 @@
 // Severity Type enum
 typedef enum
 {
-	PUS_ST05_INFO,
-	PUS_ST05_LOW,
-	PUS_ST05_MEDIUM,
-	PUS_ST05_HIGH
+	PUS_ST05_SEVERITY_INFO,
+	PUS_ST05_SEVERITY_LOW,
+	PUS_ST05_SEVERITY_MEDIUM,
+	PUS_ST05_SEVERITY_HIGH
 } pusSt05SeverityType_t;
 
 
@@ -41,27 +41,15 @@ typedef struct
 	pusParamType_t dataType2; //!< Severity type
 } pusSt05EventReportData_t;
 
-//! Type to describe a parameter: type, label, etc. (the parameter ID gives its location in the array)
+//! Type to describe a event: label, severity, dataTypes (the parameter ID gives its location in the array)
 typedef struct
 {
 	const char* label; //!< Name of the event, for debugging purposes
-	pusSt05SeverityType_t severity; //!< Severity type
+	pusSt05SeverityType_t defaultSeverity; //!< Severity type
 	pusSt05EventReportData_t data; //!< Data type
 } pusSt05EventInfo_t;
 
 
-/*
-//! Type used for the internal storage of parameters in an array
-typedef uint64_t pusStoredParam_t;
-
-//! Type to define the structure of a housekeeping report
-typedef struct
-{
-	size_t numParams;			//!< Number of parameters in the report
-	pusSt03ParamId_t* paramIds;	//!< IDs of the parameters in the report
-} pusSt03ReportInfo_t;
-
-*/
 
 
 //

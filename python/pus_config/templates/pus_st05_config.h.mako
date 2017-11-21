@@ -20,6 +20,9 @@ extern const pusApid_t eventDestination;
 //! Size of the event buffer
 extern const size_t eventBufferLength;
 
+//! Event information list
+extern const pusSt05EventInfo_t eventInfoList[];
+
 //! Initialize the configuration of the ST[05] service from the mission database
 pusError_t pus_events_configure();
 

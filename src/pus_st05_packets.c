@@ -11,7 +11,7 @@
 #include "pus_events.h"
 
 
-pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination, pusSubservice_t subtype)
+pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination, pusSubservice_t subtype)
 {
 
 	if (NULL == outTm || NULL == apid || NULL == event)
@@ -56,7 +56,7 @@ pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid,
 }
 
 
-pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination)
+pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination)
 {
 	if (NULL == outTm || NULL == apid || NULL == event)
 	{
@@ -72,7 +72,7 @@ pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApidIn
 	}
 }
 
-pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination)
+pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination)
 {
 	if (NULL == outTm || NULL == apid || NULL == event)
 	{
@@ -89,7 +89,7 @@ pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApidIn
 }
 
 
-pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination)
+pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination)
 {
 	if (NULL == outTm || NULL == apid || NULL == event)
 	{
@@ -105,7 +105,7 @@ pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApi
 	}
 }
 
-pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt05Event_t* event, pusApid_t destination)
+pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination)
 {
 	if (NULL == outTm || NULL == apid || NULL == event)
 	{
