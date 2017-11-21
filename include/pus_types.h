@@ -91,6 +91,9 @@ typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union dis
 #define pus_TM_DATA_ST_5_X		((pusTmDataKind_t) st_5_X_PRESENT)
 
 
+// pusPacketTcDataKind_t
+
+
 //
 // Type limits
 //

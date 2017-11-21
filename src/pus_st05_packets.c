@@ -1,13 +1,10 @@
 #include "pus_threads.h"
 #include "pus_error.h"
 #include "pus_packet.h"
-//#include "pus_types.h"
 #include "pus_stored_param.h"
-//#include <string.h>
 #include "pus_st05_packets.h"
 
 
-//idk
 #include "pus_events.h"
 
 

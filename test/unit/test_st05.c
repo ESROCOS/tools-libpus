@@ -9,6 +9,7 @@
 #include "pus_events.h"
 #include "pus_stored_param.h"
 #include "pus_types.h"
+#include "pus_st05_config.h"
 
 #include <stdio.h>
 #include <math.h>
@@ -150,7 +151,46 @@ void test_reports()
 	CU_ASSERT_EQUAL(pus_tm_5_X_getEventId(&event), pus_tm_5_X_getEventId(&event2));
 	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data1, pus_tm_5_X_getEventAuxData(&event2).data1);
 	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data2, pus_tm_5_X_getEventAuxData(&event2).data2);
+	pus_clearError();
+}
 
+
+void test_buffer()
+{
+	pus_events_finalize(); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_NO_ERROR , pus_events_initialize(NULL));
+	CU_ASSERT_TRUE(pus_events_isInitialized());
+
+	CU_ASSERT_EQUAL(0, pus_st05_getEventBufferCounter());
+	CU_ASSERT_EQUAL(0, pus_st05_getEventBufferIn());
+
+	pusSt05Event_t event;
+	event.eventId = 1;
+	event.data.data1 = 1;
+	event.data.data2 = 2;
+
+	for(size_t i = 0; i < 20; i++)
+	{
+		CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st05_putBufferEvent(&event));
+	}
+	pus_clearError();
+
+	size_t actualCounter = 14;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st05_getNextBufferEvent(&event, &actualCounter));
+	CU_ASSERT_EQUAL(15, actualCounter);
+
+	actualCounter = 15;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st05_getNextBufferEvent(&event, &actualCounter));
+	CU_ASSERT_EQUAL(16, actualCounter);
+
+	actualCounter = 19;
+	CU_ASSERT_EQUAL(PUS_ERROR_NEXT_EVENT_NOT_FOUND, pus_st05_getNextBufferEvent(&event, &actualCounter));
+	CU_ASSERT_EQUAL(19, actualCounter);
+
+	actualCounter = 50;
+	CU_ASSERT_EQUAL(PUS_ERROR_NEXT_EVENT_NOT_FOUND, pus_st05_getNextBufferEvent(&event, &actualCounter)); pus_clearError();
+
+	pus_clearError();
 }
 
 void test_st05()
@@ -294,6 +334,7 @@ int main()
     if ((NULL == CU_add_test(pSuite, "test_st05", test_st05)) ||
     	(NULL == CU_add_test(pSuite, "test_event", test_event)) ||
 		(NULL == CU_add_test(pSuite, "test_reports", test_reports)) ||
+		(NULL == CU_add_test(pSuite, "test_buffer", test_buffer)) ||
 		0)
     {
       CU_cleanup_registry();

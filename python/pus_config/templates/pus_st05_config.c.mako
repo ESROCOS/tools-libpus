@@ -23,20 +23,20 @@ tempvars['eventCount'] = 0
 
 #include "pus_st05_config.h"
 
-const pusApid_t eventReportDestination = ${tempvars['reportsDestination']};
+const pusApid_t pus_st05_eventReportDestination = ${tempvars['reportsDestination']};
 
-const size_t eventBufferLength = ${tempvars['eventBufferLength']};
+size_t pus_st05_eventBufferLength = ${tempvars['eventBufferLength']};
 
-pusSt05EventInfo_t pus_st05_eventInfo[${tempvars['eventListLength']}];
+pusSt05EventInfo_t pus_st05_eventInfoList[${tempvars['eventListLength']}];
 
 
 pusError_t pus_events_configure()
 {
 	% for event in tempvars['eventList']:
-    pus_st05_eventInfo[${tempvars['eventCount']}].label = "${event['label']}";
-    pus_st05_eventInfo[${tempvars['eventCount']}].defaultSeverity = PUS_ST05_SEVERITY_${event['defaultSeverity']};
-    pus_st05_eventInfo[${tempvars['eventCount']}].data.dataType1 = PUS_${event['data'][0]};
-    pus_st05_eventInfo[${tempvars['eventCount']}].data.dataType2 = PUS_${event['data'][1]};
+    pus_st05_eventInfoList[${tempvars['eventCount']}].label = "${event['label']}";
+    pus_st05_eventInfoList[${tempvars['eventCount']}].defaultSeverity = PUS_ST05_SEVERITY_${event['defaultSeverity']};
+    pus_st05_eventInfoList[${tempvars['eventCount']}].data.dataType1 = PUS_${event['data'][0]};
+    pus_st05_eventInfoList[${tempvars['eventCount']}].data.dataType2 = PUS_${event['data'][1]};
     <%
     tempvars['eventCount'] = tempvars['eventCount'] + 1 
 	%>

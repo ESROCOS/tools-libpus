@@ -23,7 +23,9 @@
 #include "pus_types.h"
 
 
-pusError_t pus_tm_17_2_ConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusApid_t destination);
+pusError_t pus_tc_17_1_ConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid);
+
+pusError_t pus_tm_17_2_ConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid);
 
 
 

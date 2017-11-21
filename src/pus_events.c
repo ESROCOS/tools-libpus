@@ -10,20 +10,16 @@ pusMutex_t* pus_events_mutex = NULL;
 // Initialized flag
 bool pus_events_initializedFlag = false;
 
-// Array with the parameters information, declared in pus_st03_config.c
-//extern pusSt03ParamInfo_t pus_st03_paramInfo[];
+//! Destination for ST05 reports
+/*extern const pusApid_t pus_st05_eventDestination;
 
-// Array for parameters values (all stored in 64 bits)
-//extern pusStoredParam_t pus_st03_params[];
+//! Size of the event buffer
+extern const size_t pus_st05_eventBufferLength;
 
-// First invalid parameter ID
-//extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
+//! Event information list
+extern pusSt05EventInfo_t pus_st05_eventInfoList[];*/
 
-/*pusError_t pus_events_configure()
-{
-	return PUS_NO_ERROR;
-}
-*/
+
 
 pusError_t pus_events_initialize(pusMutex_t* mutex)
 {
@@ -53,6 +49,22 @@ pusError_t pus_events_initialize(pusMutex_t* mutex)
 		return PUS_ERROR_INITIALIZATION;
 	}
 
+	// Initialize buffer controller
+	pus_st05_eventBufferCounter = 0;
+	pus_st05_eventBufferIn = 0;
+
+	// Initialize buffer with default values
+	pusSt05Event_t aux;
+	aux.eventId = 0;
+	aux.data.data1 = 0;
+	aux.data.data2 = 0;
+	for(size_t i; i < pus_st05_eventBufferLength; i++)
+	{
+		pus_st05_eventBuffer[i].event = aux;
+		pus_st05_eventBuffer[i].eventBufferCounter = 0;
+	}
+
+	// Flag service initialized = true
 	pus_events_initializedFlag = true;
 	return PUS_NO_ERROR;
 }
@@ -76,6 +88,100 @@ bool pus_events_isInitialized()
 {
 	return pus_events_initializedFlag;
 }
+
+
+pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)
+{
+	if( NULL == event)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+
+	pus_st05_eventBuffer[pus_st05_eventBufferIn].event = *event;
+	pus_st05_eventBuffer[pus_st05_eventBufferIn].eventBufferCounter = pus_st05_eventBufferCounter;
+
+	pus_st05_eventBufferIn = (pus_st05_eventBufferIn + 1) % pus_st05_eventBufferLength;
+	pus_st05_eventBufferCounter = (pus_st05_eventBufferCounter + 1) % PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT;
+
+	return PUS_NO_ERROR;
+}
+
+//#include <stdio.h>
+
+pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t *next, uint64_t *actualCounter)
+{
+	if( NULL == next || NULL == actualCounter)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+
+	if( *actualCounter >= PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT )
+	{
+		return PUS_ERROR_OUT_OF_RANGE;
+	}
+
+	if( 0 == pus_st05_eventBufferCounter )
+	{
+		return PUS_ERROR_EMPTY_BUFFER;
+	}
+
+	// Comprobación para no entrar en el bucle
+	/*if( pus_st05_eventBufferCounter <= QUEUE_SIZE )
+	{
+		if( (*actualCounter+1 < ( pus_st05_eventBufferCounter - QUEUE_SIZE + LIMIT_EVENT_COUNT)) && (*actualCounter+1 >= eventCounter))
+		{
+			return PUS_ERROR_NEXT_EVENT_NOT_FOUND;
+		}
+	}
+	else if(*actualCounter+1 >= eventCounter)
+	{
+		return PUS_ERROR_NEXT_EVENT_NOT_FOUND;
+	}
+	else if(*actualCounter+1 < eventCounter-QUEUE_SIZE)
+	{
+		return PUS_ERROR_NEXT_EVENT_NOT_FOUND;
+	}*/
+
+
+	for(size_t i = 0; i < pus_st05_eventBufferLength; i++)
+	{
+		if( pus_st05_eventBuffer[i].eventBufferCounter == ((*actualCounter+1) % PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT) )
+		{
+			*next = pus_st05_eventBuffer[i].event;
+			*actualCounter = pus_st05_eventBuffer[i].eventBufferCounter;
+			return PUS_NO_ERROR; // NO_ERROR
+		}
+	}
+
+	return PUS_ERROR_NEXT_EVENT_NOT_FOUND; // ERROR NOT_FOUND
+}
+
+
+//! getter pus_st05_eventBufferIn
+size_t pus_st05_getEventBufferIn()
+{
+	return pus_st05_eventBufferIn;
+}
+
+//! setter pus_st05_eventBufferIn
+void pus_st05_setEventBufferIn(size_t bufferIn)
+{
+	pus_st05_eventBufferIn = bufferIn;
+}
+
+//! getter pus_st05_eventBufferIn
+size_t pus_st05_getEventBufferCounter()
+{
+	return pus_st05_eventBufferCounter;
+}
+
+//! setter pus_st05_eventBufferIn
+void pus_st05_setEventBufferCounter(size_t counter)
+{
+	pus_st05_eventBufferCounter = counter;
+}
+
+
 
 
 // get y set para los parametors de pusSt05Event_t
