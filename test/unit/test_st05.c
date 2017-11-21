@@ -191,6 +191,29 @@ void test_buffer()
 	CU_ASSERT_EQUAL(PUS_ERROR_NEXT_EVENT_NOT_FOUND, pus_st05_getNextBufferEvent(&event, &actualCounter)); pus_clearError();
 
 	pus_clearError();
+
+
+	//ERROR NULL PTR
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st05_getNextBufferEvent(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st05_putBufferEvent(NULL));
+
+	//getters/setters
+	pus_st05_setEventBufferIn(3);
+	CU_ASSERT_EQUAL(3, pus_st05_getEventBufferIn());
+
+	pus_st05_setEventBufferCounter(300);
+	CU_ASSERT_EQUAL(300, pus_st05_getEventBufferCounter());
+	pus_clearError();
+
+	//others
+	pus_st05_setEventBufferCounter(0);
+	CU_ASSERT_EQUAL(PUS_ERROR_EMPTY_BUFFER, pus_st05_getNextBufferEvent(&event, &actualCounter));
+
+
+
+
+
+
 }
 
 void test_st05()

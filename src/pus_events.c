@@ -4,6 +4,7 @@
 #include <string.h>
 #include "pus_events.h"
 
+
 // Mutex to lock access to the housekeeping parameter tables
 pusMutex_t* pus_events_mutex = NULL;
 
@@ -11,14 +12,18 @@ pusMutex_t* pus_events_mutex = NULL;
 bool pus_events_initializedFlag = false;
 
 //! Destination for ST05 reports
-/*extern const pusApid_t pus_st05_eventDestination;
+//extern const pusApid_t pus_st05_eventDestination;
 
 //! Size of the event buffer
 extern const size_t pus_st05_eventBufferLength;
 
-//! Event information list
-extern pusSt05EventInfo_t pus_st05_eventInfoList[];*/
+//#define EVENT_BUFFER_LENGth 5
 
+//! Event information list
+//extern pusSt05EventInfo_t pus_st05_eventInfoList[];
+
+
+pus_st05_eventInBuffer_t pus_st05_eventBuffer[465];
 
 
 pusError_t pus_events_initialize(pusMutex_t* mutex)
@@ -94,7 +99,7 @@ pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)
 {
 	if( NULL == event)
 	{
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
 	pus_st05_eventBuffer[pus_st05_eventBufferIn].event = *event;
@@ -103,7 +108,7 @@ pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)
 	pus_st05_eventBufferIn = (pus_st05_eventBufferIn + 1) % pus_st05_eventBufferLength;
 	pus_st05_eventBufferCounter = (pus_st05_eventBufferCounter + 1) % PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT;
 
-	return PUS_NO_ERROR;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
 //#include <stdio.h>
@@ -112,17 +117,17 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t *next, uint64_t *actualCou
 {
 	if( NULL == next || NULL == actualCounter)
 	{
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
 	if( *actualCounter >= PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT )
 	{
-		return PUS_ERROR_OUT_OF_RANGE;
+		return PUS_SET_ERROR(PUS_ERROR_OUT_OF_RANGE);
 	}
 
 	if( 0 == pus_st05_eventBufferCounter )
 	{
-		return PUS_ERROR_EMPTY_BUFFER;
+		return PUS_SET_ERROR(PUS_ERROR_EMPTY_BUFFER);
 	}
 
 	// Comprobación para no entrar en el bucle
@@ -149,11 +154,11 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t *next, uint64_t *actualCou
 		{
 			*next = pus_st05_eventBuffer[i].event;
 			*actualCounter = pus_st05_eventBuffer[i].eventBufferCounter;
-			return PUS_NO_ERROR; // NO_ERROR
+			return PUS_SET_ERROR(PUS_NO_ERROR); // NO_ERROR
 		}
 	}
 
-	return PUS_ERROR_NEXT_EVENT_NOT_FOUND; // ERROR NOT_FOUND
+	return PUS_SET_ERROR(PUS_ERROR_NEXT_EVENT_NOT_FOUND); // ERROR NOT_FOUND
 }
 
 

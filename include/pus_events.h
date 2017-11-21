@@ -54,7 +54,7 @@ typedef struct
 extern const pusApid_t pus_st05_eventDestination;
 
 //! Size of the event buffer
-extern size_t pus_st05_eventBufferLength;
+//extern const size_t pus_st05_eventBufferLength;
 //define PUS_ST05_EVENT_BUFFER_LENGHT ((size_t) pus_st05_eventBufferLength)
 
 //! Event information list
@@ -69,12 +69,14 @@ typedef struct {
 
 
 //! Events circular buffer
-pus_st05_eventInBuffer_t pus_st05_eventBuffer[5];
+//extern pus_st05_eventInBuffer_t pus_st05_eventBuffer[];
 
-size_t pus_st05_eventBufferIn; //!< Pointer for buffer in
+//! Pointer for buffer in
+size_t pus_st05_eventBufferIn;
 
-//! Counter of the events that has been inserted
+
 #define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT ((size_t) 1000) //DUDA QUITAR
+//! Counter of the events that has been inserted
 size_t pus_st05_eventBufferCounter;
 
 
@@ -121,9 +123,11 @@ bool pus_events_isInitialized();
 pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event);
 
 
-//! Function to initialize the event manager used by service ST[05] and several others
-/*! This function is generated from the mission database, and it should be declared
- *  in \ref pus_st05_config.h
+//! Function that return the next event in buffer.
+/*! Look for the next event in buffer
+ * \param[out] event The next event in buffer.
+ * \param[inout] event Event that is going to be inserted into the buffer
+ *  \return Error code (PUS_NO_ERROR if success)
  */
 pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t *next, uint64_t *actualCounter);
 

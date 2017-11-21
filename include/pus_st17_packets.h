@@ -19,16 +19,34 @@
 
 #include "pus_apid.h"
 #include "pus_error.h"
-#include "pus_threads.h"
 #include "pus_types.h"
 
 
-pusError_t pus_tc_17_1_ConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid);
+pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTm, pusApidInfo_t* apid);
 
-pusError_t pus_tm_17_2_ConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid);
-
-
+pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid);
 
 
+//! Check that a packet is of a PUS ST[17] kind
+/*! \param[in] packet The PUS packet
+ *  \param[in] expectedSubtype Check that the TM has this subtype; use pusSubtype_NONE to check for all TC types in ST[17]
+ *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST17 to include the caller function's name)
+ *  \return If valid TC, PUS_NO_ERROR; otherwise, an error code
+ */
+pusError_t pus_expectSt17Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function); //DUDA
+
+
+//! Check that a packet is of a PUS ST[17] kind
+/*! \param[in] packet The PUS packet
+ *  \param[in] expectedSubtype Check that the TM has this subtype; use pusSubtype_NONE to check for all TM types in ST[05]
+ *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST17 to include the caller function's name)
+ *  \return If valid TM, PUS_NO_ERROR; otherwise, an error code
+ */
+pusError_t pus_expectSt17Tm(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
+
+
+//! Helper macro for pus_expectSt17; adds function name
+#define PUS_EXPECT_ST17TM(packet, subtype) pus_expectSt17Tm((packet), (subtype), __func__)
+#define PUS_EXPECT_ST17TC(packet, subtype) pus_expectSt17Tc((packet), (subtype), __func__)
 
 #endif
