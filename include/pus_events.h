@@ -49,18 +49,6 @@ typedef struct
 	pusSt05EventReportData_t data; //!< Data type
 } pusSt05EventInfo_t;
 
-
-//! Destination for ST05 reports
-extern const pusApid_t pus_st05_eventDestination;
-
-//! Size of the event buffer
-//extern const size_t pus_st05_eventBufferLength;
-//define PUS_ST05_EVENT_BUFFER_LENGHT ((size_t) pus_st05_eventBufferLength)
-
-//! Event information list
-extern pusSt05EventInfo_t pus_st05_eventInfoList[];
-
-
 //! Buffer list
 typedef struct {
 	pusSt05Event_t event;
@@ -68,8 +56,18 @@ typedef struct {
 } pus_st05_eventInBuffer_t;
 
 
-//! Events circular buffer
-//extern pus_st05_eventInBuffer_t pus_st05_eventBuffer[];
+//! Event information list
+extern pusSt05EventInfo_t pus_st05_eventInfoList[];
+
+//! Destination for ST05 reports
+extern const pusApid_t pus_st05_eventDestination;
+
+//! Size of the event buffer
+extern const size_t pus_st05_eventBufferLength;
+
+//! Event circular buffer
+extern pus_st05_eventInBuffer_t pus_st05_eventBuffer[];
+
 
 //! Pointer for buffer in
 size_t pus_st05_eventBufferIn;
@@ -143,6 +141,14 @@ size_t pus_st05_getEventBufferCounter();
 //! setter pus_st05_eventBufferIn
 void pus_st05_setEventBufferCounter(size_t counter);
 
+//! getter pus_st05_eventBufferLength
+size_t pus_st05_getEventBufferLength();
+
+//! getter pus_st05_eventDestination
+pusApid_t pus_st05_getEventDestination() ;
+
+//! getter pus_st05_eventInfoListLength
+size_t pus_st05_getEventInfoListLength();
 
 
 ////

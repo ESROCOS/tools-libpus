@@ -23,21 +23,11 @@
 // Data types
 //
 
-//! Type of supported parameter types
-typedef enum
-{
-	PUS_ST03_INT32,
-	PUS_ST03_UINT32,
-	PUS_ST03_REAL64,
-	PUS_ST03_BYTE,
-	PUS_ST03_BOOL
-} pusSt03ParamType_t;
-
 //! Type to describe a parameter: type, label, etc. (the parameter ID gives its location in the array)
 typedef struct
 {
 	const char* label; //!< Name of the parameter, for debugging purposes
-	pusSt03ParamType_t type; //!< Data type
+	pusParamType_t type; //!< Data type
 } pusSt03ParamInfo_t;
 
 //! Type used for the internal storage of parameters in an array

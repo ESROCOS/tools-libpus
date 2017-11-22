@@ -12,18 +12,22 @@ pusMutex_t* pus_events_mutex = NULL;
 bool pus_events_initializedFlag = false;
 
 //! Destination for ST05 reports
-//extern const pusApid_t pus_st05_eventDestination;
-
-//! Size of the event buffer
-extern const size_t pus_st05_eventBufferLength;
-
-//#define EVENT_BUFFER_LENGth 5
+extern const pusApid_t pus_st05_eventReportDestination;
 
 //! Event information list
-//extern pusSt05EventInfo_t pus_st05_eventInfoList[];
+extern pusSt05EventInfo_t pus_st05_eventInfoList[];
+
+//! Size of the event information list
+extern const size_t pus_st05_eventInfoListLength;
+
+//! Event circular buffer
+extern pus_st05_eventInBuffer_t pus_st05_eventBuffer[];
+
+//! Size of the event circular buffer
+extern const size_t pus_st05_eventBufferLength;
 
 
-pus_st05_eventInBuffer_t pus_st05_eventBuffer[465];
+
 
 
 pusError_t pus_events_initialize(pusMutex_t* mutex)
@@ -174,18 +178,33 @@ void pus_st05_setEventBufferIn(size_t bufferIn)
 	pus_st05_eventBufferIn = bufferIn;
 }
 
-//! getter pus_st05_eventBufferIn
+//! getter pus_st05_eventBufferCounter
 size_t pus_st05_getEventBufferCounter()
 {
 	return pus_st05_eventBufferCounter;
 }
 
-//! setter pus_st05_eventBufferIn
+//! setter pus_st05_eventBufferCounter
 void pus_st05_setEventBufferCounter(size_t counter)
 {
 	pus_st05_eventBufferCounter = counter;
 }
 
+//! getter pus_st05_eventBufferLength
+size_t pus_st05_getEventBufferLength()
+{
+	return pus_st05_eventBufferLength;
+}
+
+pusApid_t pus_st05_getEventDestination()
+{
+	return pus_st05_eventReportDestination;
+}
+
+size_t pus_st05_getEventInfoListLength()
+{
+	return pus_st05_eventInfoListLength;
+}
 
 
 

@@ -21,10 +21,22 @@
 #include "pus_error.h"
 #include "pus_types.h"
 
+/*! Builds a TC[17,1] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidInfo_t* apid);
 
-pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTm, pusApidInfo_t* apid);
-
+/*! Builds a TM[17,2] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid);
+
+
+pusError_t pus_st17_createTestResponse(pusPacket_t* outTm, const pusPacket_t* tc);
 
 
 //! Check that a packet is of a PUS ST[17] kind

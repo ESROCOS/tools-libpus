@@ -93,7 +93,7 @@ pusError_t pus_hk_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_UINT32 != pus_st03_paramInfo[param].type)
+		if (PUS_UINT32 != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -126,7 +126,7 @@ pusError_t pus_hk_setUInt32Param(pusSt03ParamId_t param, uint32_t value)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_UINT32 != pus_st03_paramInfo[param].type)
+		if (PUS_UINT32 != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -164,7 +164,7 @@ pusError_t pus_hk_getInt32Param(pusSt03ParamId_t param, int32_t* outValue)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_INT32 != pus_st03_paramInfo[param].type)
+		if (PUS_INT32 != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -197,7 +197,7 @@ pusError_t pus_hk_setInt32Param(pusSt03ParamId_t param, int32_t value)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_INT32 != pus_st03_paramInfo[param].type)
+		if (PUS_INT32 != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -236,7 +236,7 @@ pusError_t pus_hk_getReal64Param(pusSt03ParamId_t param, double* outValue)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_REAL64 != pus_st03_paramInfo[param].type)
+		if (PUS_REAL64 != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -269,7 +269,7 @@ pusError_t pus_hk_setReal64Param(pusSt03ParamId_t param, double value)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_REAL64 != pus_st03_paramInfo[param].type)
+		if (PUS_REAL64 != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -308,7 +308,7 @@ pusError_t pus_hk_getBoolParam(pusSt03ParamId_t param, bool* outValue)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_BOOL != pus_st03_paramInfo[param].type)
+		if (PUS_BOOL != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -341,7 +341,7 @@ pusError_t pus_hk_setBoolParam(pusSt03ParamId_t param, bool value)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_BOOL != pus_st03_paramInfo[param].type)
+		if (PUS_BOOL != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -379,7 +379,7 @@ pusError_t pus_hk_getByteParam(pusSt03ParamId_t param, uint8_t* outValue)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_BYTE != pus_st03_paramInfo[param].type)
+		if (PUS_BYTE != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}
@@ -412,7 +412,7 @@ pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value)
 
 		pusError_t result = PUS_NO_ERROR;
 
-		if (PUS_ST03_BYTE != pus_st03_paramInfo[param].type)
+		if (PUS_BYTE != pus_st03_paramInfo[param].type)
 		{
 			result = PUS_SET_ERROR(PUS_ERROR_INVALID_TYPE);
 		}

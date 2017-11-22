@@ -16,22 +16,8 @@ tempvars['defaultReportCount'] = -1
 # Indices assigned to the parameters
 tempvars['paramIndex'] = dict()
 
-# Get the C enum string for a data type identifier   DUDA
-def typeEnum(str):
-    if str == 'INT32':
-        return 'PUS_ST03_INT32'
-    elif str == 'UINT32':
-        return 'PUS_ST03_UINT32'
-    elif str == 'REAL64':
-        return 'PUS_ST03_REAL64'
-    elif str == 'BYTE':
-        return 'PUS_ST03_BYTE'
-    elif str == 'BOOL':
-        return 'PUS_ST03_BOOL'
-    else:
-        raise Exception('Unknown PUS ST[03] parameter data type {}.'.format(str))
 %>
-##
+
 // PUS service ST[03] configuration
 // 
 // File automatically generated from the pus_st30_config.h.mako template
@@ -62,8 +48,8 @@ pusError_t pus_hk_configure()
     tempvars['paramsCount'] = tempvars['paramsCount'] + 1
     tempvars['paramIndex'][param['label']] = tempvars['paramsCount']
 %>
-    pus_st03_paramInfo[${tempvars['paramsCount']}].label = "${param['label']}";
-    pus_st03_paramInfo[${tempvars['paramsCount']}].type = ${typeEnum(param['type'])};
+    pus_st03_paramInfo[${param['label']}].label = "${param['label']}";
+    pus_st03_paramInfo[${param['label']}].type = PUS_${param['type']};
 % endfor
 
 	// Default HK report
