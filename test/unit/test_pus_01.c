@@ -97,6 +97,13 @@ void test_tcHeader(void)
     CU_ASSERT_EQUAL(pus_APID_IDLE, pus_getTcSource(&packet));
 
     CU_ASSERT_EQUAL(pus_TC_DATA, pus_getPacketDataKind(&packet));
+
+    //failures
+    pusPacket_t packet2;
+    CU_ASSERT_FALSE(pus_getTcAckFlagAcceptance(&packet2));
+    CU_ASSERT_FALSE(pus_getTcAckFlagStart(&packet2));
+    CU_ASSERT_FALSE(pus_getTcAckFlagProgress(&packet2));
+    CU_ASSERT_FALSE(pus_getTcAckFlagCompletion(&packet2));
 }
 
 void test_packetVerification(void)

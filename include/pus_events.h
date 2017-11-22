@@ -56,18 +56,6 @@ typedef struct {
 } pus_st05_eventInBuffer_t;
 
 
-//! Event information list
-extern pusSt05EventInfo_t pus_st05_eventInfoList[];
-
-//! Destination for ST05 reports
-extern const pusApid_t pus_st05_eventDestination;
-
-//! Size of the event buffer
-extern const size_t pus_st05_eventBufferLength;
-
-//! Event circular buffer
-extern pus_st05_eventInBuffer_t pus_st05_eventBuffer[];
-
 
 //! Pointer for buffer in
 size_t pus_st05_eventBufferIn;
@@ -108,6 +96,9 @@ pusError_t pus_events_finalize();
 //! Check if the event manager is initialized
 bool pus_events_isInitialized();
 
+
+
+bool pus_evens_isInInfoList(pusSt05Event_t * event);
 
 //
 // Buffer control

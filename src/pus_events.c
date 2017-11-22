@@ -29,7 +29,6 @@ extern const size_t pus_st05_eventBufferLength;
 
 
 
-
 pusError_t pus_events_initialize(pusMutex_t* mutex)
 {
 	if (pus_events_isInitialized())
@@ -96,6 +95,38 @@ pusError_t pus_events_finalize()
 bool pus_events_isInitialized()
 {
 	return pus_events_initializedFlag;
+}
+
+
+bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity */) //DUDA, devolver severity?
+{
+	if( NULL == event)
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return false;
+	}else
+	{
+		if( event->eventId < pus_st05_getEventInfoListLength() && pus_st05_getEventInfoListLength() >= 0 )
+		{
+			// DUDA; como comprobar tipo datos
+			//*severity = pus_st05_eventInfoList[event->eventId].defaultSeverity;
+			PUS_SET_ERROR(PUS_NO_ERROR);
+			return true;
+		}
+
+		/*for(size_t i = 0; i < pus_st05_getEventInfoListLength(); i++)
+		{
+			if(event->eventId == i)  //DUDA
+			{
+				// DUDA; como comprobar tipo datos
+				PUS_SET_ERROR(PUS_NO_ERROR);
+				return true;
+			}
+		}*/
+
+		PUS_SET_ERROR(PUS_ERROR_EVENT_NOT_FOUND);
+		return false;
+	}
 }
 
 

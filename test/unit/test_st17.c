@@ -39,15 +39,22 @@ void test_st17()
 	pus_clearError();
 
 	//TM[17,2]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_17_2_createConnectionTestReport(&tm, &apid));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_17_2_createConnectionTestReport(&tm, &apid, 2));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST17TM(&tm, pus_TM_17_2_connectionTest));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
 	CU_ASSERT_EQUAL(1, pus_getSequenceCount(&tm));
+	CU_ASSERT_EQUAL(2, pus_getTmDestination(&tm));
 	pus_clearError();
 
+	//response
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_17_1_createConnectionTestRequest(&tc, &apid));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st17_createTestResponse(&tm, &apid, &tc));
+	CU_ASSERT_EQUAL(pus_getTmDestination(&tm), tc.apid);
+
+	pus_clearError();
 	// ERROR_NULL_PTR
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_17_1_createConnectionTestRequest(NULL, NULL));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_17_2_createConnectionTestReport(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_17_2_createConnectionTestReport(NULL, NULL, 2));
 
 	pus_clearError();
 

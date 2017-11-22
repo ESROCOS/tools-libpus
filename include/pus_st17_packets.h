@@ -33,22 +33,27 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidIn
  *  \param[in] apid APID of the process sending the report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid);
+pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusApid_t destination);
+
+/*! Calla a function that builds a TM[17,2] packet in the packet passed as parameter with the TC information.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] inTc TC packet to get the destination of the response
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_st17_createTestResponse(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* inTc);
 
 
-pusError_t pus_st17_createTestResponse(pusPacket_t* outTm, const pusPacket_t* tc);
-
-
-//! Check that a packet is of a PUS ST[17] kind
+//! Check that a packet is of a PUS ST[17] TC kind
 /*! \param[in] packet The PUS packet
- *  \param[in] expectedSubtype Check that the TM has this subtype; use pusSubtype_NONE to check for all TC types in ST[17]
+ *  \param[in] expectedSubtype Check that the TC has this subtype; use pusSubtype_NONE to check for all TC types in ST[17]
  *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST17 to include the caller function's name)
  *  \return If valid TC, PUS_NO_ERROR; otherwise, an error code
  */
 pusError_t pus_expectSt17Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function); //DUDA
 
 
-//! Check that a packet is of a PUS ST[17] kind
+//! Check that a packet is of a PUS ST[17] TM kind
 /*! \param[in] packet The PUS packet
  *  \param[in] expectedSubtype Check that the TM has this subtype; use pusSubtype_NONE to check for all TM types in ST[05]
  *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST17 to include the caller function's name)

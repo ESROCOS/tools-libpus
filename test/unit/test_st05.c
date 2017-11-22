@@ -169,6 +169,19 @@ void test_buffer()
 	event.data.data1 = 1;
 	event.data.data2 = 2;
 
+	CU_ASSERT_EQUAL(false, pus_evens_isInInfoList(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+
+
+	CU_ASSERT_EQUAL(true, pus_evens_isInInfoList(&event));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_GET_ERROR());
+
+	event.eventId = 15;
+	CU_ASSERT_EQUAL(false, pus_evens_isInInfoList(&event));
+	CU_ASSERT_EQUAL(PUS_ERROR_EVENT_NOT_FOUND, PUS_GET_ERROR());
+
+
+	//some insert
 	for(size_t i = 0; i < 20; i++)
 	{
 		CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st05_putBufferEvent(&event));
@@ -208,6 +221,11 @@ void test_buffer()
 	//others
 	pus_st05_setEventBufferCounter(0);
 	CU_ASSERT_EQUAL(PUS_ERROR_EMPTY_BUFFER, pus_st05_getNextBufferEvent(&event, &actualCounter));
+
+
+	CU_ASSERT_EQUAL(pus_st05_eventBufferLength, pus_st05_getEventBufferLength());
+	CU_ASSERT_EQUAL(pus_st05_eventReportDestination, pus_st05_getEventDestination());
+	CU_ASSERT_EQUAL(pus_st05_eventInfoListLength, pus_st05_getEventInfoListLength());
 
 
 

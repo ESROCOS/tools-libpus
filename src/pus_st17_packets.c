@@ -40,7 +40,7 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTm, pusApidIn
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid)
+pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusApid_t destination)
 {
 	if (NULL == outTm || NULL == apid)
 	{
@@ -62,16 +62,38 @@ pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInf
 		pus_setTmService(outTm, pus_ST17_test);
 		pus_setTmSubtype(outTm, pus_TM_17_2_connectionTest);
 
-		//pus_setTmDestination(outTm, pus_APID_IDLE);
+		pus_setTmDestination(outTm, destination);
 
 		// Timestamp
 		pus_setTmPacketTimeNow(outTm);
-
 
 		return PUS_GET_ERROR();
 	}
 
 	return PUS_NO_ERROR;
+}
+
+pusError_t pus_st17_createTestResponse(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* inTc)
+{
+	if( NULL == outTm || NULL == apid || NULL == inTc )
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+	else
+	{
+		if( PUS_NO_ERROR != PUS_EXPECT_ST17TC( inTc, pusSubtype_NONE))
+		{
+			return PUS_GET_ERROR();
+		}
+		else
+		{
+			pusApid_t destination;
+			destination = inTc->apid;
+
+			pus_tm_17_2_createConnectionTestReport(outTm, apid, destination);
+			return PUS_NO_ERROR;
+		}
+	}
 }
 
 
