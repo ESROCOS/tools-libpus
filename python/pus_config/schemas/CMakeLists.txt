@@ -2,6 +2,7 @@
 set(JSON_SCHEMAS
     st03_schema.json
     st05_schema.json
+    packet_queues_schema.json
 )
 
 # Target to add dependencies on the schemas

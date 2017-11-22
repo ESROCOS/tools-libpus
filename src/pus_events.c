@@ -21,7 +21,7 @@ extern pusSt05EventInfo_t pus_st05_eventInfoList[];
 extern const size_t pus_st05_eventInfoListLength;
 
 //! Event circular buffer
-extern pus_st05_eventInBuffer_t pus_st05_eventBuffer[];
+extern pusSt05EventInBuffer_t pus_st05_eventBuffer[];
 
 //! Size of the event circular buffer
 extern const size_t pus_st05_eventBufferLength;
@@ -98,7 +98,7 @@ bool pus_events_isInitialized()
 }
 
 
-bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity */) //DUDA, devolver severity?
+bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity */) //TODO, devolver severity?
 {
 	if( NULL == event)
 	{
@@ -106,9 +106,9 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity 
 		return false;
 	}else
 	{
-		if( event->eventId < pus_st05_getEventInfoListLength() && pus_st05_getEventInfoListLength() >= 0 )
+		if( event->eventId < pus_st05_getEventInfoListLength() )
 		{
-			// DUDA; como comprobar tipo datos
+			// TODO; como comprobar tipo datos
 			//*severity = pus_st05_eventInfoList[event->eventId].defaultSeverity;
 			PUS_SET_ERROR(PUS_NO_ERROR);
 			return true;
@@ -116,9 +116,8 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity 
 
 		/*for(size_t i = 0; i < pus_st05_getEventInfoListLength(); i++)
 		{
-			if(event->eventId == i)  //DUDA
+			if(event->eventId == i)
 			{
-				// DUDA; como comprobar tipo datos
 				PUS_SET_ERROR(PUS_NO_ERROR);
 				return true;
 			}

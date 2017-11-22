@@ -30,7 +30,7 @@ pusSt05EventInfo_t pus_st05_eventInfoList[${tempvars['eventListLength']}];
 const size_t pus_st05_eventInfoListLength = PUS_ST05_EVENT_BUFFER_LIMIT;
 
 
-pus_st05_eventInBuffer_t pus_st05_eventBuffer[${tempvars['eventBufferLength']}];
+pusSt05EventInBuffer_t pus_st05_eventBuffer[${tempvars['eventBufferLength']}];
 
 const size_t pus_st05_eventBufferLength = ${tempvars['eventBufferLength']};
 

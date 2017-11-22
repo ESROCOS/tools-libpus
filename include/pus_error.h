@@ -71,6 +71,8 @@ typedef enum
 	PUS_ERROR_NEXT_EVENT_NOT_FOUND, //st05
 	PUS_ERROR_OUT_OF_RANGE, //st05
 	PUS_ERROR_EMPTY_BUFFER, //ST05
+	PUS_ERROR_FULL_QUEUE, //packets_queue
+	PUS_ERROR_EMPTY_QUEUE, //packets_queue
     
     // Limit
     PUS_LAST_ERROR

@@ -29,7 +29,7 @@ extern pusSt05EventInfo_t pus_st05_eventInfoList[];
 extern const size_t pus_st05_eventInfoListLength;
 
 //! Event circular buffer
-extern pus_st05_eventInBuffer_t pus_st05_eventBuffer[];
+extern pusSt05EventInBuffer_t pus_st05_eventBuffer[];
 
 //! Size of the event circular buffer
 extern const size_t pus_st05_eventBufferLength;

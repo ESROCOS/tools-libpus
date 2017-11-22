@@ -4,6 +4,7 @@ set(PYTHON_SCRIPTS
     mission_config.py
     st03_config.py
     st05_config.py
+    packet_queues_config.py
 )
 
 # Subdirectories

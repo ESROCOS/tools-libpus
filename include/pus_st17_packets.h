@@ -50,7 +50,7 @@ pusError_t pus_st17_createTestResponse(pusPacket_t* outTm, pusApidInfo_t* apid, 
  *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST17 to include the caller function's name)
  *  \return If valid TC, PUS_NO_ERROR; otherwise, an error code
  */
-pusError_t pus_expectSt17Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function); //DUDA
+pusError_t pus_expectSt17Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
 
 
 //! Check that a packet is of a PUS ST[17] TM kind
