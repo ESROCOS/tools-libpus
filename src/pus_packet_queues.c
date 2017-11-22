@@ -17,6 +17,9 @@ extern pusPacketQueue_t pus_packetQueue_tc;
 //! PacketQueue for TM packets
 extern pusPacketQueue_t pus_packetQueue_tm;
 
+//! Flag to check if the
+bool pus_packetQueues_initializedFlag = false;
+
 
 pusError_t pus_packetQueues_initialize() {
 
@@ -62,9 +65,9 @@ pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueue_t 
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_packetQueues_pop(pusPacket_t * inPacket, pusPacketQueue_t * queue)
+pusError_t pus_packetQueues_pop(pusPacket_t * outPacket, pusPacketQueue_t * queue)
 {
-	if( NULL == inPacket || NULL == queue )
+	if( NULL == outPacket || NULL == queue )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -79,7 +82,7 @@ pusError_t pus_packetQueues_pop(pusPacket_t * inPacket, pusPacketQueue_t * queue
 		return PUS_SET_ERROR(PUS_ERROR_EMPTY_QUEUE);
 	}
 
-	*inPacket = queue->buffer[queue->out];
+	*outPacket = queue->buffer[queue->out];
 	queue->out = (queue->out + 1) % queue->length;
 
 	return PUS_NO_ERROR;

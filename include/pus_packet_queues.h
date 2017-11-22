@@ -6,8 +6,8 @@
  *  \author GMV
  */
 
-#ifndef PUS_PACKET_QUEUES
-#define PUS_PACKET_QUEUES
+#ifndef PUS_PACKET_QUEUES_H
+#define PUS_PACKET_QUEUES_H
 
 
 #include "pus_apid.h"
@@ -23,8 +23,7 @@ typedef struct{
 	size_t out;
 }pusPacketQueue_t;
 
-//! Flag to check if the
-bool pus_packetQueues_initializedFlag = false;
+
 
 extern pusError_t pus_packetQueues_configure(); //TODO necesario
 

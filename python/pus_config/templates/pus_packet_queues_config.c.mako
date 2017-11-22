@@ -18,13 +18,13 @@ pusPacket_t pus_packetQueue_buffer_tm[${config['tmPacketQueueLength']}];
 pusError_t pus_packetQueues_configure()
 {
 	pus_packetQueue_tc.buffer = pus_packetQueue_buffer_tc;
-	pus_packetQueue_tc.length = ${config['tcPacketQueueLength']};
+	pus_packetQueue_tc.length = ${config['tcPacketQueueLength']+1};
 	pus_packetQueue_tc.in = 0;
 	pus_packetQueue_tc.out = 0;
 	
 	
 	pus_packetQueue_tm.buffer = pus_packetQueue_buffer_tm;
-	pus_packetQueue_tm.length = ${config['tmPacketQueueLength']};
+	pus_packetQueue_tm.length = ${config['tmPacketQueueLength']+1};
 	pus_packetQueue_tm.in = 0;
 	pus_packetQueue_tm.out = 0;
     

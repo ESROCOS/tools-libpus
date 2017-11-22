@@ -61,7 +61,7 @@ typedef struct {
 size_t pus_st05_eventBufferIn;
 
 
-#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT ((size_t) 1000) //TODO QUITAR define
+#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT ((size_t) 1000) //TODO quitar define
 //! Counter of the events that has been inserted
 size_t pus_st05_eventBufferCounter;
 
