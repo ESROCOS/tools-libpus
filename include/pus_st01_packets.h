@@ -22,7 +22,7 @@
 //
 
 //! Build the common part of the ST[01] reports
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[1,X] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID
@@ -41,7 +41,7 @@ pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, cons
 pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
 
 //! Build an acceptance report for a TC
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[1,2] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID
@@ -53,7 +53,7 @@ pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApidI
 		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
 
 //! Build an acceptance report for a TC
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[1,3] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID
@@ -62,7 +62,7 @@ pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApidI
 pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
 
 //! Build an acceptance report for a TC
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[1,4] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID
@@ -74,7 +74,7 @@ pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApidInfo_t
 		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
 
 //! Build an acceptance report for a TC
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[1,5] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID
@@ -84,7 +84,7 @@ pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApidInfo_t
 pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc, pusStepId_t step);
 
 //! Build an acceptance report for a TC
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[1,6] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID
@@ -97,7 +97,7 @@ pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApidInf
 		pusStepId_t step, pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
 
 //! Build an acceptance report for a TC
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[1,7] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID
@@ -106,7 +106,7 @@ pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApidInf
 pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
 
 //! Build an acceptance report for a TC
-/*! Builds a TM[1,1] packet in the packet passed as parameter.
+/*! Builds a TM[1,8] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \param[in] count TM sequence counter for the source APID

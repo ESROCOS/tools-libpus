@@ -98,7 +98,7 @@ bool pus_events_isInitialized()
 }
 
 
-bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity */) //TODO, devolver severity?
+bool pus_evens_isInInfoList(pusSt05Event_t* event)
 {
 	if( NULL == event)
 	{
@@ -115,19 +115,9 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity 
 		if( event->eventId < pus_st05_getEventInfoListLength() )
 		{
 			// TODO; como comprobar tipo datos
-			//*severity = pus_st05_eventInfoList[event->eventId].defaultSeverity;
 			PUS_SET_ERROR(PUS_NO_ERROR);
 			return true;
 		}
-
-		/*for(size_t i = 0; i < pus_st05_getEventInfoListLength(); i++)
-		{
-			if(event->eventId == i)
-			{
-				PUS_SET_ERROR(PUS_NO_ERROR);
-				return true;
-			}
-		}*/
 
 		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 		{
@@ -138,6 +128,7 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity 
 		return false;
 	}
 }
+
 
 
 pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)

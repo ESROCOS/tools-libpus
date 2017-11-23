@@ -25,8 +25,7 @@ typedef struct{
 }pusPacketQueue_t;
 
 
-
-extern pusError_t pus_packetQueues_configure(); //TODO necesario
+extern pusError_t pus_packetQueues_configure();
 
 
 //! Initialize the packet queues (TM and TC)
