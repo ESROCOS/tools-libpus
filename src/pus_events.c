@@ -66,7 +66,7 @@ pusError_t pus_events_initialize(pusMutex_t* mutex)
 	aux.eventId = 0;
 	aux.data.data1 = 0;
 	aux.data.data2 = 0;
-	for(size_t i; i < pus_st05_eventBufferLength; i++)
+	for(size_t i; i < pus_st05_eventBufferLength; i++) //TODO default values
 	{
 		pus_st05_eventBuffer[i].event = aux;
 		pus_st05_eventBuffer[i].eventBufferCounter = 0;
@@ -107,6 +107,11 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity 
 	}
 	else
 	{
+		if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
+		{
+			return PUS_ERROR_THREADS;
+		}
+
 		if( event->eventId < pus_st05_getEventInfoListLength() )
 		{
 			// TODO; como comprobar tipo datos
@@ -124,6 +129,11 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity 
 			}
 		}*/
 
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
+		{
+			return PUS_ERROR_THREADS;
+		}
+
 		PUS_SET_ERROR(PUS_ERROR_EVENT_NOT_FOUND);
 		return false;
 	}
@@ -136,12 +146,21 @@ pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
+	if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
+	{
+		return PUS_ERROR_THREADS;
+	}
 
 	pus_st05_eventBuffer[pus_st05_eventBufferIn].event = *event;
 	pus_st05_eventBuffer[pus_st05_eventBufferIn].eventBufferCounter = pus_st05_eventBufferCounter;
 
 	pus_st05_eventBufferIn = (pus_st05_eventBufferIn + 1) % pus_st05_eventBufferLength;
 	pus_st05_eventBufferCounter = (pus_st05_eventBufferCounter + 1) % PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT;
+
+	if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
+	{
+		return PUS_ERROR_THREADS;
+	}
 
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
@@ -152,6 +171,11 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t *next, uint64_t *actualCou
 	if( NULL == next || NULL == actualCounter )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+
+	if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
+	{
+		return PUS_ERROR_THREADS;
 	}
 
 	if( *actualCounter >= PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT )
@@ -190,6 +214,11 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t *next, uint64_t *actualCou
 			*actualCounter = pus_st05_eventBuffer[i].eventBufferCounter;
 			return PUS_SET_ERROR(PUS_NO_ERROR); // NO_ERROR
 		}
+	}
+
+	if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
+	{
+		return PUS_ERROR_THREADS;
 	}
 
 	return PUS_SET_ERROR(PUS_ERROR_NEXT_EVENT_NOT_FOUND); // ERROR NOT_FOUND
