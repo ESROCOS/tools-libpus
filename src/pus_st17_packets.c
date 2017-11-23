@@ -87,10 +87,8 @@ pusError_t pus_st17_createTestResponse(pusPacket_t* outTm, pusApidInfo_t* apid, 
 		}
 		else
 		{
-			pusApid_t destination;
-			destination = inTc->apid; //TODO destino?
 
-			pus_tm_17_2_createConnectionTestReport(outTm, apid, destination);
+			pus_tm_17_2_createConnectionTestReport(outTm, apid, inTc->apid);
 			return PUS_NO_ERROR;
 		}
 	}

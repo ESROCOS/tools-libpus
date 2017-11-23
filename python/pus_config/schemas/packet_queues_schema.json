@@ -14,7 +14,11 @@
         	"type": "integer",
         	"minimum": 0,
         	"maximum": 2047        	
+        },
+        "isTasteFlag": {
+        	"type": "integer",
+        	"enum": [0, 1]    	
         }
     },
-    "required": ["tcPacketQueueLength", "tmPacketQueueLength"]
+    "required": ["tcPacketQueueLength", "tmPacketQueueLength", "isTasteFlag"]
 }

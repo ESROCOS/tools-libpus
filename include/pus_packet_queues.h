@@ -19,8 +19,9 @@
 typedef struct{
 	pusPacket_t * buffer;
 	size_t length;
-	size_t in;
 	size_t out;
+	size_t nPacketInside;
+	pusMutex_t* mutex;
 }pusPacketQueue_t;
 
 

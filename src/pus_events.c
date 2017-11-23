@@ -104,7 +104,8 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity 
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return false;
-	}else
+	}
+	else
 	{
 		if( event->eventId < pus_st05_getEventInfoListLength() )
 		{
@@ -131,7 +132,7 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event/*,  pusSubservice_t* severity 
 
 pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)
 {
-	if( NULL == event)
+	if( NULL == event )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -145,11 +146,10 @@ pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-//#include <stdio.h>
 
 pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t *next, uint64_t *actualCounter)
 {
-	if( NULL == next || NULL == actualCounter)
+	if( NULL == next || NULL == actualCounter )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}

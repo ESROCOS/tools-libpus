@@ -9,6 +9,7 @@
 
 #include "pus_apid.h"
 #include "pus_error.h"
+#include "pus_threads.h"
 #include "pus_packet.h"
 #include "pus_time.h"
 #include "pus_packet_queues.h"
@@ -86,13 +87,18 @@ void test_mutex()
 void test_packetQueue()
 {
 	pusPacket_t packet;
-	pusPacket_t buffer[6];
+	pusPacket_t buffer[5];
 	pusPacketQueue_t queue;
 
 	queue.buffer = buffer;
-	queue.length = 6;
-	queue.in = 0;
+	queue.length = 5;
+	queue.nPacketInside = 0;
 	queue.out = 0;
+
+	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, pus_packetQueues_push(&packet, &queue));
+	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, pus_packetQueues_pop(&packet, &queue));
+
+	queue.mutex = NULL;
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_packetQueues_push(&packet, &queue));
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_packetQueues_pop(&packet, &queue));
@@ -104,10 +110,11 @@ void test_packetQueue()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_initialize());
 	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_packetQueues_initialize());
 	CU_ASSERT_TRUE(pus_packetQueues_isInitialized());
-	CU_ASSERT_EQUAL(0, pus_packetQueue_tc.in);
+	CU_ASSERT_EQUAL(0, pus_packetQueue_tc.nPacketInside);
 	CU_ASSERT_EQUAL(0, pus_packetQueue_tc.out);
-	CU_ASSERT_EQUAL(0, pus_packetQueue_tm.in);
+	CU_ASSERT_EQUAL(0, pus_packetQueue_tm.nPacketInside);
 	CU_ASSERT_EQUAL(0, pus_packetQueue_tm.out);
+
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_push(&packet, &queue));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_push(&packet, &queue));
@@ -119,6 +126,12 @@ void test_packetQueue()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, &queue));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_push(&packet, &queue));
 	CU_ASSERT_EQUAL(PUS_ERROR_FULL_QUEUE, pus_packetQueues_push(&packet, &queue));
+	CU_ASSERT_EQUAL(1, queue.out);
+
+	/*pusMutex_t mutex;
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutex));
+	printf("\nerror: %d\n", PUS_GET_ERROR());
+	queue.mutex = mutex;*/
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, &queue));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, &queue));
@@ -127,7 +140,8 @@ void test_packetQueue()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, &queue));
 	CU_ASSERT_EQUAL(PUS_ERROR_EMPTY_QUEUE, pus_packetQueues_pop(&packet, &queue));
 
-	CU_ASSERT_EQUAL(queue.in, queue.out);
+	CU_ASSERT_EQUAL(0, queue.nPacketInside);
+
 	pus_clearError();
 }
 
