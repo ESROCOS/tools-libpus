@@ -76,7 +76,7 @@ int main()
 			case 17:
 				printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
 
-				pus_st05(&apid, &tcRead);
+				pus_st17_processPacket(&tcRead, &apid);
 
 				break;
 
@@ -133,7 +133,7 @@ int main()
 }
 
 
-pusError_t pus_st05(pusApidInfo_t* apid, pusPacket_t* tcRead)
+pusError_t pus_st17_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 {
 	bool isST07TcFlag = false;
 	pusError_t errorExpect;
@@ -143,21 +143,7 @@ pusError_t pus_st05(pusApidInfo_t* apid, pusPacket_t* tcRead)
 		isST07TcFlag = true;
 	}
 
-	if(pus_getTcAckFlagAcceptance(tcRead)) //todo cambiar por funcion (paquete, flag, error)
-	{
-		pusPacket_t tmAcceptance;
-		if( isST07TcFlag )
-		{
-			//generate ACCEPTANCE SUCCES
-			pus_tm_1_1_createAcceptanceReportSuccess(&tmAcceptance, apid, tcRead);
-		}
-		else
-		{
-			//generate ACCEPTANCE FAIL
-			pus_tm_1_2_createAcceptanceReportFailure(&tmAcceptance, apid, tcRead, errorExpect, NULL); //TODO error info Null
-		}
-		pus_packetQueues_push(&tmAcceptance, &pus_packetQueue_tm);
-	}
+	pus_pushTmAceptanceReportIfNeeded(tcRead, apid, isST07TcFlag, errorExpect);
 
 	if( isST07TcFlag )
 	{
@@ -171,7 +157,33 @@ pusError_t pus_st05(pusApidInfo_t* apid, pusPacket_t* tcRead)
 		return PUS_ERROR_TC_SERVICE;
 	}
 
-	//pusError_t pus_createCompletionReport(pusPacket_t* tc, pusAp);
+	pus_pushTmCompletionReportIfNeeded(tcRead, apid, isST07TcFlag, errorExpect);
+
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_pushTmAceptanceReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isST07TcFlag, pusError_t error)
+{
+	if(pus_getTcAckFlagAcceptance(tcRead))
+	{
+		pusPacket_t tmAcceptance;
+		if( isST07TcFlag )
+		{
+			//generate ACCEPTANCE SUCCES
+			pus_tm_1_1_createAcceptanceReportSuccess(&tmAcceptance, apid, tcRead);
+		}
+		else
+		{
+			//generate ACCEPTANCE FAIL
+			pus_tm_1_2_createAcceptanceReportFailure(&tmAcceptance, apid, tcRead, error, NULL); //TODO error info Null
+		}
+		return pus_packetQueues_push(&tmAcceptance, &pus_packetQueue_tm);
+	}
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_pushTmCompletionReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isST07TcFlag, pusError_t error)
+{
 	if(pus_getTcAckFlagCompletion(tcRead))
 	{
 		pusPacket_t tmCompletion;
@@ -183,11 +195,9 @@ pusError_t pus_st05(pusApidInfo_t* apid, pusPacket_t* tcRead)
 		else
 		{
 			//generate Completion FAIL
-			pus_tm_1_8_createCompletionReportFailure(&tmCompletion, apid, tcRead, errorExpect, NULL);
+			pus_tm_1_8_createCompletionReportFailure(&tmCompletion, apid, tcRead, error, NULL);
 		}
-		pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
+		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
 	}
-
 	return PUS_NO_ERROR;
 }
-

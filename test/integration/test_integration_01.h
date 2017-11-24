@@ -26,7 +26,14 @@
 #include "pus_st05_config.h"
 
 
-pusError_t pus_st05(pusApidInfo_t* apid, pusPacket_t* tcRead);
+//st08
+pusError_t pus_st17_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
+
+
+
+//st01 ?
+pusError_t pus_pushTmAceptanceReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isST07TcFlag, pusError_t error);
+pusError_t pus_pushTmCompletionReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isST07TcFlag, pusError_t error);
 
 
 #endif

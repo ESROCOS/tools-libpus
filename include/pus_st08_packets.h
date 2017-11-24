@@ -26,6 +26,8 @@ extern pusError_t pus_st08_configure();
 pusError_t pus_tc_8_2_createPerformFuctionRequest(pusPacket_t* outTc, pusApidInfo_t* apid/*, pusApid_t destination*/, pusSt08FunctiontId_t functionId);
 
 void pus_tc_8_2_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionId);
+void pus_tc_8_2_getFunctionId(pusSt08FunctiontId_t* functionId, pusPacket_t* outTc);
+
 
 bool pus_st08_inInFunctionTable(pusSt08FunctiontId_t functionId);
 
