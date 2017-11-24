@@ -19,7 +19,6 @@
 #include "../../include/pus_st17_packets.h"
 
 
-//Test Event struct (pusSt05Event_t)
 
 void test_st17()
 {

@@ -16,6 +16,7 @@ BEGIN
     PusTM-1-X-Data FROM PUS-ST01
     PusTM-3-25-Data FROM PUS-ST03
     PusTM-5-X-Data FROM PUS-ST05
+  	PusTC-8-1-Data FROM PUS-ST08
     ;
 
 
@@ -38,6 +39,7 @@ BEGIN
         st-1-X PusTM-1-X-Data,
         st-3-25 PusTM-3-25-Data,
         st-5-X PusTM-5-X-Data
+       -- st-17-2 PusTM-5-2-Data
     }
     
     -- TC secondary header
@@ -52,7 +54,10 @@ BEGIN
     }
     
     -- TC actual data
-    PusTcApplicationData ::= INTEGER -- TBD
+    PusTcApplicationData ::= CHOICE
+    {
+    	st-8-1 PusTC-8-1-Data
+    }
     
     -- TM/TC header + data
     PusTmHeaderData ::= SEQUENCE

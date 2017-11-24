@@ -1,5 +1,5 @@
 /*! \file pus_st17_packets.h
- *  \brief PUS service ST[15] Test Connection
+ *  \brief PUS service ST[17] Test Connection
  *
  *  This module provides the functions to generate reports of the service ST[17],
  *  as well as getter/setter and checking functions.

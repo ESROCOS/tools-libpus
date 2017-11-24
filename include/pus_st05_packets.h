@@ -26,12 +26,6 @@
 
 
 
-// severity level is indicated by the message type of the generated report; informative, low, medium, high
-// event definition identifier that is unique within the application process that generates the corresponding event reports
-// Auxiliary data can be associated to each event definition to report the context and the cause of the event occurrence.
-// The event reporting subservice type includes optional capability to selectively enable and disable the generation of its event reports.
-// necesita 2º cabecera
-
 //! Build the common part of the ST[05] event reports
 /*! Builds a TM[5,X] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM

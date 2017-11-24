@@ -12,8 +12,8 @@
 #include "pus_events.h"
 
 <% count = 0 %>
-% for param in config['events']:
-#define ${param['label']} ((pusSt05EventId_t) ${count}) \
+% for event in config['events']:
+#define ${event['label']} ((pusSt05EventId_t) ${count}) \
 <% count = count + 1 %>
 % endfor
 #define PUS_ST05_EVENT_BUFFER_LIMIT ((pusSt05EventId_t) ${count})

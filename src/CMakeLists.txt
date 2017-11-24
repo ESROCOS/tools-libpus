@@ -9,6 +9,7 @@ set(SOURCES
     pus_st01_packets.c
     pus_st03_packets.c
     pus_st05_packets.c
+    pus_st08_packets.c
     pus_st17_packets.c
     pus_stored_param.c
     pus_threads.c

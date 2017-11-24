@@ -33,6 +33,7 @@ BEGIN
 		data2 0
 	}
 	
+	-- Event dataStored none
 	pus-EVENT-DATASTORED-NONE PusUInt64 ::= 0
 	
 	-- Event and data

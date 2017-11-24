@@ -183,7 +183,7 @@ pusError_t pus_st05(pusApidInfo_t* apid, pusPacket_t* tcRead)
 		else
 		{
 			//generate Completion FAIL
-			pus_tm_1_8_createCompletionReportFailure(&tmCompletion, apid, tcRead, errorExpect, NULL); //TODO error info Null ¿
+			pus_tm_1_8_createCompletionReportFailure(&tmCompletion, apid, tcRead, errorExpect, NULL);
 		}
 		pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
 	}

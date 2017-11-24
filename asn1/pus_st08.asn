@@ -1,0 +1,27 @@
+-- ASN.1 definitions for service ST[8] Connection test
+-- (cf. ECSS-E-ST-70-41C sections 6.8, 8.8)
+--
+
+
+--TODO
+
+PUS-ST08 DEFINITIONS ::= 
+BEGIN
+
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+    ;
+    
+    -- Event definition identifier
+    PusSt08FunctionId ::= PusUInt32
+        
+
+    
+    -- Data for TM[3,25], housekeeping parameter report
+    PusTC-8-1-Data  ::= SEQUENCE
+    {
+    	functionId PusSt08FunctionId
+    }
+    
+END
