@@ -29,16 +29,18 @@
 #include "pus_st08_config.h"
 
 //st08
-pusError_t pus_st08_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
+pusError_t pus_st08_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
 
 //st17
-pusError_t pus_st17_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
+pusError_t pus_st17_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
 
 
 
 //st01 ?
 pusError_t pus_pushTmAceptanceReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isST07TcFlag, pusError_t error);
 pusError_t pus_pushTmCompletionReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isST07TcFlag, pusError_t error);
+pusError_t pus_pushTmProgressReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error, pusStepId_t step);
+pusError_t pus_pushTmCompletionReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error);
 
 
 #endif

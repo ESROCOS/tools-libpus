@@ -1,0 +1,18 @@
+-- ASN.1 definitions for service ST[19] event-Action
+-- (cf. ECSS-E-ST-70-41C sections 6.19, 8.19)
+--
+-- Limitations:
+-- * Only the minimal services are implemented
+
+
+PUS-ST19 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+    ;
+    
+    -- Event definition identifier
+    PusSt19DefinitionId ::= PusUInt32
+    
+END

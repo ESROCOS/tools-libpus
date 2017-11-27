@@ -3,6 +3,7 @@ set(JSON_SCHEMAS
     st03_schema.json
     st05_schema.json
     st08_schema.json
+    st19_schema.json
     packet_queues_schema.json
 )
 

@@ -5,6 +5,7 @@ from .packet_queues_config import generate_packet_queues_config
 from .st03_config import generate_st03_config
 from .st05_config import generate_st05_config
 from .st08_config import generate_st08_config
+from .st19_config import generate_st19_config
 
 def generate(jsonDir, outDir):
     print('Generate mission configuration for {} in {}:'.format(jsonDir,outDir))
@@ -12,5 +13,6 @@ def generate(jsonDir, outDir):
     generate_st03_config(jsonDir, outDir)
     generate_st05_config(jsonDir, outDir)
     generate_st08_config(jsonDir, outDir)
+    generate_st19_config(jsonDir, outDir)
     
 

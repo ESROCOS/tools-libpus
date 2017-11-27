@@ -6,6 +6,7 @@ set(PYTHON_SCRIPTS
     st03_config.py
     st05_config.py
     st08_config.py  
+    st19_config.py  
 )
 
 # Subdirectories

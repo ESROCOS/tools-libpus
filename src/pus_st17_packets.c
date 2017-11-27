@@ -5,28 +5,28 @@
 //#include "pus_stored_param.h"
 
 
-pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTm, pusApidInfo_t* apid)
+pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidInfo_t* apid)
 {
 
-	if (NULL == outTm || NULL == apid)
+	if (NULL == outTc || NULL == apid)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else
 	{
-		pus_initTcPacket(outTm);
+		pus_initTcPacket(outTc);
 		//pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
 
 		// Source information
-		pus_setApid(outTm, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTm, pus_getNextPacketCount(apid));
+		pus_setApid(outTc, pus_getInfoApid(apid));
+		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
 
 		// Data length
-		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
 
 		// Service identification
-		pus_setTcService(outTm, pus_ST17_test);
-		pus_setTcSubtype(outTm, pus_TC_17_1_connectionTest);
+		pus_setTcService(outTc, pus_ST17_test);
+		pus_setTcSubtype(outTc, pus_TC_17_1_connectionTest);
 
 		//pus_setTmDestination(outTm, pus_APID_IDLE);
 
