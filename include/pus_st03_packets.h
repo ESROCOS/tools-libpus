@@ -204,7 +204,7 @@ pusError_t pus_tm_3_25_getNumParameters(const pusPacket_t* tm, size_t* outNumPar
  */
 pusError_t pus_expectSt03Tm(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
 
-//! Helper macro for pus_expectSt01; adds function name
+//! Helper macro for pus_expectSt03; adds function name
 #define PUS_EXPECT_ST03(packet, subtype) pus_expectSt03Tm((packet), (subtype), __func__)
 
 

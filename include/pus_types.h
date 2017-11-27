@@ -61,6 +61,7 @@ typedef asn1SccPusSt08FunctionId pusSt08FunctiontId_t;
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
 typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
 typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
+typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
 
 
 
@@ -93,8 +94,9 @@ typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union dis
 #define pus_TM_DATA_ST_5_X		((pusTmDataKind_t) st_5_X_PRESENT)
 
 
-
 // pusPacketTcDataKind_t
+#define pus_TC_DATA_NONE 		((pusTcDataKind_t) PusTcApplicationData_NONE)
+#define pus_TC_DATA_ST_8_1 		((pusTcDataKind_t) st_8_1_PRESENT)
 
 
 //

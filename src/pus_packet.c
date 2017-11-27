@@ -577,6 +577,45 @@ void pus_setTmNoHeaderDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
 }
 
 
+pusTcDataKind_t pus_getTcDataKind(const pusPacket_t* packet)
+{
+    if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER(packet))
+    {
+    	return packet->data.u.tcData.data.kind;
+    }
+    else
+    {
+    	return pus_TC_DATA_NONE;
+    }
+}
+
+void pus_setTcDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
+{
+    if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_INT(packet, kind))
+    {
+    	packet->data.u.tcData.data.kind = kind;
+    }
+}
+
+pusTcDataKind_t pus_getTcNoHeaderDataKind(const pusPacket_t* packet)
+{
+    if (PUS_NO_ERROR == PUS_EXPECT_TC_NO_HEADER(packet))
+    {
+    	return packet->data.u.tcDataNoHeader.kind;
+    }
+    else
+    {
+    	return pus_TC_DATA_NONE;
+    }
+}
+
+void pus_setTcNoHeaderDataKind(pusPacket_t* packet, pusPacketDataKind_t kind)
+{
+    if (PUS_NO_ERROR == PUS_EXPECT_TC_NO_HEADER_INT(packet, kind))
+    {
+    	packet->data.u.tcDataNoHeader.kind = kind;
+    }
+}
 
 //
 // Utility functions for packet header types

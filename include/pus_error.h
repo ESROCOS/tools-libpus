@@ -73,6 +73,7 @@ typedef enum
 	PUS_ERROR_EMPTY_BUFFER, //ST05
 	PUS_ERROR_FULL_QUEUE, //packets_queue
 	PUS_ERROR_EMPTY_QUEUE, //packets_queue
+	PUS_ERROR_UNEXPECTED_FUNCTION_ID,
     
     // Limit
     PUS_LAST_ERROR

@@ -21,7 +21,7 @@ typedef enum
 	PUS_REAL64,
 	PUS_BYTE,
 	PUS_BOOL
-} pusParamType_t;
+} pusParamType_t; //!< Param type that shall be stored in packets.
 
 
 

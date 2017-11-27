@@ -22,8 +22,6 @@
 #include "pus_error.h"
 #include "pus_apid.h"
 
-// Declarar lista de eventos
-
 
 
 //! Build the common part of the ST[05] event reports

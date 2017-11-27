@@ -9,14 +9,21 @@ int main()
 	// Initializations
 	pusMutex_t mutexApid;
 	pusMutex_t mutexEvents;
+	pusMutex_t mutexHk;
+	pusMutex_t mutexSt08;
 	pus_mutexInitOk(&mutexApid);
 	pus_mutexInitOk(&mutexEvents);
+	pus_mutexInitOk(&mutexHk);
+	pus_mutexInitOk(&mutexSt08);
+
 
 	pusApidInfo_t apid;
 	pus_initApidInfo(&apid, 23, &mutexApid);
 
 	pus_packetQueues_initialize();
 	pus_events_initialize(&mutexEvents);
+	pus_hk_initialize(&mutexHk);
+	pus_st08_initialize(&mutexSt08);
 
 	//TC creation + push on queue
 	pusPacket_t tc;
@@ -24,6 +31,10 @@ int main()
 	pus_setTcAckFlags(&tc, true, false, false, true);
 	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
 	printf("TC_17_1 pushed in TCqueue.\n");
+
+	pus_tc_8_1_createPerformFuctionRequest(&tc, &apid, EXAMPLE_FUNCTION_01);
+	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
+	printf("TC_8_1 pushed in TCqueue.\n");
 
 	pusSt05Event_t eventInfo, eventLow, eventMid, eventHi;
 	pus_tm_5_X_setEventId(&eventInfo, EVENT_INFO_01);
@@ -71,6 +82,13 @@ int main()
 		{
 			case 0:
 				printf("Packet in TCqueue which is not a TCpacket.\n");
+				break;
+
+			case 8:
+				printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
+
+				pus_st08_processPacket(&tcRead, &apid);
+
 				break;
 
 			case 17:
@@ -132,20 +150,75 @@ int main()
 	return 0;
 }
 
+pusError_t example_function() //TODO crear un .h para las funciones en ...¿?
+{
+	pusApidInfo_t apid;
+	pus_initApidInfo(&apid, 12, NULL); //TODO param
+
+	pusSt05Event_t eventInfo;
+	pus_tm_5_X_setEventId(&eventInfo, EVENT_INFO_01);
+	pus_tm_5_X_setEventAuxData1(&eventInfo.data, 10);
+	pus_tm_5_X_setEventAuxData2(&eventInfo.data, 20);
+
+	pusPacket_t tm;
+
+	pus_tm_5_1_createInformativeEventReport(&tm, &apid, &eventInfo, pus_st05_getEventDestination());
+	pus_packetQueues_push(&tm, &pus_packetQueue_tm);
+	printf("TM_5_1 pushed in TMqueue FROM function.\n");
+
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_st08_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
+{
+	bool isST08TcFlag = false;
+	pusError_t errorExpect;
+
+	if(PUS_NO_ERROR == (errorExpect = PUS_EXPECT_ST08(tcRead, pus_TC_8_1_performFunction)) )
+	{
+		isST08TcFlag = true;
+	}
+
+	pus_pushTmAceptanceReportIfNeeded(tcRead, apid, isST08TcFlag, errorExpect);
+
+	if( isST08TcFlag )
+	{
+		if( pus_st08_isInitialized() )
+		{
+			printf("Processing st08\n");
+			//pusSt08FunctiontId_t functionId;
+			//pus_tc_8_1_getFunctionId(&functionId, tcRead);
+			pus_st08_functionTable[0]();
+		}
+		else
+		{
+			printf("ST08 not initialized\n");
+		}
+
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_ERROR_TC_SERVICE);
+	}
+
+	pus_pushTmCompletionReportIfNeeded(tcRead, apid, isST08TcFlag, errorExpect);
+
+	return PUS_GET_ERROR();
+}
 
 pusError_t pus_st17_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 {
-	bool isST07TcFlag = false;
+	bool isST17TcFlag = false;
 	pusError_t errorExpect;
 
 	if(PUS_NO_ERROR == (errorExpect = PUS_EXPECT_ST17TC(tcRead, pus_TC_17_1_connectionTest)) )
 	{
-		isST07TcFlag = true;
+		isST17TcFlag = true;
 	}
 
-	pus_pushTmAceptanceReportIfNeeded(tcRead, apid, isST07TcFlag, errorExpect);
+	pus_pushTmAceptanceReportIfNeeded(tcRead, apid, isST17TcFlag, errorExpect);
 
-	if( isST07TcFlag )
+	if( isST17TcFlag )
 	{
 		pusPacket_t tmResponse;
 		pus_st17_createTestResponse(&tmResponse, apid, tcRead);
@@ -157,7 +230,7 @@ pusError_t pus_st17_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 		return PUS_ERROR_TC_SERVICE;
 	}
 
-	pus_pushTmCompletionReportIfNeeded(tcRead, apid, isST07TcFlag, errorExpect);
+	pus_pushTmCompletionReportIfNeeded(tcRead, apid, isST17TcFlag, errorExpect);
 
 	return PUS_NO_ERROR;
 }

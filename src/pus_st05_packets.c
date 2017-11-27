@@ -27,7 +27,7 @@ pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid,
 
 		// Source information
 		pus_setApid(outTm, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTm, pus_getNextTmCount(apid));
+		pus_setSequenceCount(outTm, pus_getNextPacketCount(apid));
 
 		// Data length
 		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));

@@ -28,7 +28,7 @@ typedef struct{
 extern pusError_t pus_packetQueues_configure();
 
 
-//! Initialize the packet queues (TM and TC)
+//the packet queues (TM and TC)
 /*! Initialize the packet queues (TM and TC)
  *  \return Error code (PUS_NO_ERROR if success)
  */

@@ -67,7 +67,7 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApidInfo_
 
 	// Source information
 	pus_setApid(outTm, pus_getInfoApid(apid));
-	pus_setSequenceCount(outTm, pus_getNextTmCount(apid));
+	pus_setSequenceCount(outTm, pus_getNextPacketCount(apid));
 
 	// Data length
 	pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));

@@ -18,7 +18,7 @@
 typedef struct
 {
 	pusApid_t apid; 			//!< The APID
-	pusSequenceCount_t tmCount; //!< Count of TM messages sent
+	pusSequenceCount_t packetCount; //!< Count of TM messages sent
 	pusMutex_t* mutex;			//!< Mutex for access control (may be NULL if not needed)
 } pusApidInfo_t;
 
@@ -34,7 +34,7 @@ pusError_t pus_initApidInfo(pusApidInfo_t* obj, pusApid_t apid, pusMutex_t* mute
 pusApid_t pus_getInfoApid(const pusApidInfo_t* obj);
 
 //! Get the count value for the next TM packet
-pusSequenceCount_t pus_getNextTmCount(pusApidInfo_t* obj);
+pusSequenceCount_t pus_getNextPacketCount(pusApidInfo_t* obj);
 
 
 #endif // PUS_APID_H

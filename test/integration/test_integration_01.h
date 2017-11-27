@@ -17,16 +17,21 @@
 #include "pus_st01_packets.h"
 #include "pus_st03_packets.h"
 #include "pus_st05_packets.h"
+#include "pus_st08_packets.h"
 #include "pus_st17_packets.h"
 
 #include "pus_events.h"
+#include "pus_housekeeping.h"
 
 #include "pus_packet_queues_config.h"
 #include "pus_st03_config.h"
 #include "pus_st05_config.h"
-
+#include "pus_st08_config.h"
 
 //st08
+pusError_t pus_st08_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
+
+//st17
 pusError_t pus_st17_processPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
 
 

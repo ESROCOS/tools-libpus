@@ -11,7 +11,7 @@ pusError_t pus_initApidInfo(pusApidInfo_t* obj, pusApid_t apid, pusMutex_t* mute
 	else
 	{
 		obj->apid = apid;
-		obj->tmCount = 0;
+		obj->packetCount = 0;
 		obj->mutex = mutex;
 
 		return PUS_NO_ERROR;
@@ -31,7 +31,7 @@ pusApid_t pus_getInfoApid(const pusApidInfo_t* obj)
 	}
 }
 
-pusSequenceCount_t pus_getNextTmCount(pusApidInfo_t* obj)
+pusSequenceCount_t pus_getNextPacketCount(pusApidInfo_t* obj)
 {
 	if (NULL == obj)
 	{
@@ -49,8 +49,8 @@ pusSequenceCount_t pus_getNextTmCount(pusApidInfo_t* obj)
 		}
 
 		// Get next and increment with function to wrap counter if needed
-		next = obj->tmCount;
-		obj->tmCount = pus_incrementSequenceCount(obj->tmCount);
+		next = obj->packetCount;
+		obj->packetCount = pus_incrementSequenceCount(obj->packetCount);
 
 		if (NULL != obj->mutex)
 		{

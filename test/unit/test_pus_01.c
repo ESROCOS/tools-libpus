@@ -218,26 +218,26 @@ void test_apid()
 	// Valid, no mutex
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&obj, 33, NULL));
 	CU_ASSERT_EQUAL(33, pus_getInfoApid(&obj));
-	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
-	CU_ASSERT_EQUAL(1, pus_getNextTmCount(&obj));
-	CU_ASSERT_EQUAL(2, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(0, pus_getNextPacketCount(&obj));
+	CU_ASSERT_EQUAL(1, pus_getNextPacketCount(&obj));
+	CU_ASSERT_EQUAL(2, pus_getNextPacketCount(&obj));
 
 	// Valid, mutex
 	CU_ASSERT_TRUE(pus_mutexInitOk(&mutex));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&obj, 44, &mutex));
 	CU_ASSERT_EQUAL(44, pus_getInfoApid(&obj));
-	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(0, pus_getNextPacketCount(&obj));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
-	CU_ASSERT_EQUAL(1, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(1, pus_getNextPacketCount(&obj));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
-	CU_ASSERT_EQUAL(2, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(2, pus_getNextPacketCount(&obj));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
 	// Wrap
-	obj.tmCount = 16383;
-	CU_ASSERT_EQUAL(16383, pus_getNextTmCount(&obj));
-	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
+	obj.packetCount = 16383;
+	CU_ASSERT_EQUAL(16383, pus_getNextPacketCount(&obj));
+	CU_ASSERT_EQUAL(0, pus_getNextPacketCount(&obj));
 	pus_clearError();
 
 	// Errors
@@ -249,14 +249,14 @@ void test_apid()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
 	pus_clearError();
 
-	CU_ASSERT_EQUAL(0, pus_getNextTmCount(NULL));
+	CU_ASSERT_EQUAL(0, pus_getNextPacketCount(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
 	pus_clearError();
 
 	pus_mutexDestroyOk(&mutex);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initApidInfo(&obj, 66, &mutex));
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
-	CU_ASSERT_EQUAL(0, pus_getNextTmCount(&obj));
+	CU_ASSERT_EQUAL(0, pus_getNextPacketCount(&obj));
 	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, PUS_GET_ERROR());
 	pus_clearError();
 

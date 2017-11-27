@@ -29,10 +29,40 @@ pusError_t example_function()
 void test_st08()
 {
 
-	pus_st08_configure();
+	pusMutex_t mutex;
+
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutex));
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+	// Initialization
+	CU_ASSERT_FALSE(pus_st08_isInitialized());
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_initialize(&mutex));
+	CU_ASSERT_TRUE(pus_st08_isInitialized());
+	CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_st08_initialize(NULL));
+	pus_clearError();
+
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_functionTable[EXAMPLE_FUNCTION_01]());
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_functionTable[EXAMPLE_FUNCTION_02]());
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_functionTable[EXAMPLE_FUNCTION_03]());
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_8_1_createPerformFuctionRequest(NULL, NULL, EXAMPLE_FUNCTION_01));
+	pus_clearError();
+
+	pusPacket_t tc;
+	pusApidInfo_t apid;
+	pus_initApidInfo(&apid, 5, NULL); CU_ASSERT_FALSE(PUS_IS_ERROR());
+	pus_clearError();
+
+
+	CU_ASSERT_EQUAL(PUS_ERROR_UNEXPECTED_FUNCTION_ID, pus_tc_8_1_createPerformFuctionRequest(&tc, &apid, 45));
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tc, &apid, EXAMPLE_FUNCTION_01));
+	CU_ASSERT_EQUAL(pus_TC_DATA, pus_getPacketDataKind(&tc));
+	CU_ASSERT_EQUAL(pus_TC_DATA_ST_8_1, pus_getTcDataKind(&tc));
+
 }
 
 
