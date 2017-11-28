@@ -71,7 +71,6 @@ size_t pus_st05_eventBufferCounter;
 
 
 
-
 //
 // Service initialization and tear down
 //
