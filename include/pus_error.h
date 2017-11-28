@@ -77,6 +77,7 @@ typedef enum
 	PUS_ERROR_FULL_QUEUE, //packets_queue
 	PUS_ERROR_EMPTY_QUEUE, //packets_queue
 	PUS_ERROR_UNEXPECTED_FUNCTION_ID,
+	PUS_ERROR_FULL_EVENT_ACTION_LIST,
     
     // Limit
     PUS_LAST_ERROR

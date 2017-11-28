@@ -10,6 +10,11 @@
 #include "pus_error.h"
 #include "pus_types.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 <% count = 0 %>
 % for function in config['functions']:
 #define ${function['label']} ((pusSt08FunctiontId_t) ${count}) \
@@ -23,5 +28,10 @@ extern pusError_t (*pus_st08_functionTable[])();
  
 extern pusError_t pus_st08_configure(); 
  
+ 
+#ifdef __cplusplus
+}
+#endif
+
  
  #endif

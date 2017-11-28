@@ -7,6 +7,11 @@
 #ifndef PUS_ST05_CONFIG_H
 #define PUS_ST05_CONFIG_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "pus_error.h"
 #include "pus_types.h"
 #include "pus_events.h"
@@ -38,7 +43,9 @@ extern const size_t pus_st05_eventBufferLength;
 pusError_t pus_events_configure();
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 
 

@@ -18,7 +18,7 @@ typedef struct
 {
 	pusSt05EventId_t eventID;
 	bool definitionStatus;
-	pusPacket_t tcAction; //action TC?
+	pusPacket_t tcAction; //action TC? or reduced
 	bool deleted;
 }pusSt19EventActionDefinition_t;
 
@@ -28,7 +28,7 @@ extern const size_t pus_st19_EventActionDefinitionListMaximum;
 
 extern pusError_t pus_eventAction_configure();
 
-pusError_t pus_eventAction_addEventActionDefinition()
+pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pusPacket_t* tcAction)
 {
 	//reject if
 	// 	- same event/action
@@ -42,11 +42,27 @@ pusError_t pus_eventAction_addEventActionDefinition()
 
 	//accept if
 	//  -
-	for(int i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
+
+	int i;
+	for(i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
 	{
 		//check if exist
-		//if()
+
+		if( false == pus_st19_EventActionDefinitionList[i].deleted )
+		{
+			pus_st19_EventActionDefinitionList[i].eventID = eventID;
+			pus_st19_EventActionDefinitionList[i].definitionStatus = true;
+			pus_st19_EventActionDefinitionList[i].tcAction = *tcAction;
+			pus_st19_EventActionDefinitionList[i].deleted = false;
+
+		}
 	}
+
+	if(i == pus_st19_EventActionDefinitionListMaximum)
+	{
+		return PUS_ERROR_FULL_EVENT_ACTION_LIST;
+	}
+
 	return PUS_NO_ERROR;
 }
 

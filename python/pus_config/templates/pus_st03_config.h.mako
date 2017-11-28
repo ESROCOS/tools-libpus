@@ -15,6 +15,11 @@
 #ifndef PUS_ST03_CONFIG_H
 #define PUS_ST03_CONFIG_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "pus_error.h"
 #include "pus_types.h"
 #include "pus_housekeeping.h"
@@ -43,6 +48,11 @@ extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
 
 //! Initialize the configuration of the ST[03] service from the mission database
 pusError_t pus_hk_configure();
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif // PUS_ST03_CONFIG_H

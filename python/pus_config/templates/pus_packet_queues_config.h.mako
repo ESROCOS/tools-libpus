@@ -7,6 +7,11 @@
 #ifndef PUS_PACKET_QUEUES_CONFIG_H
 #define PUS_PACKET_QUEUES_CONFIG_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "pus_error.h"
 #include "pus_types.h"
 #include "pus_packet_queues.h"
@@ -24,8 +29,9 @@ extern pusPacket_t pus_packetQueue_buffer_tm[];
 pusError_t pus_packetQueues_configure();
 
 
-
-
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif
