@@ -14,6 +14,10 @@
 #include "pus_error.h"
 #include "pus_packet.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
+
 typedef enum
 {
 	PUS_INT32,
@@ -42,5 +46,8 @@ pusError_t pus_paramToBool(bool* outValue, pusStoredParam_t paramValue);
 //! Convert a value from the internal parameter format to uint32_t
 pusError_t pus_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif

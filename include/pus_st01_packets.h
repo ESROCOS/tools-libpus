@@ -17,6 +17,9 @@
 #include "pus_error.h"
 #include "pus_apid.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
 //
 // Creation of TC acceptance report
 //
@@ -217,5 +220,8 @@ pusError_t pus_expectSt01Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 //! Helper macro for pus_expectSt01; adds function name
 #define PUS_EXPECT_ST01(packet, subtype) pus_expectSt01Tm((packet), (subtype), __func__)
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_ST01_PACKETS_H

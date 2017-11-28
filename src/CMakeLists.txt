@@ -21,12 +21,14 @@ set(SOURCES
 # Define the PUS library
 add_library(esrocos_pus STATIC ${SOURCES})
 set_target_properties(esrocos_pus PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(esrocos_pus PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 add_dependencies(esrocos_pus esrocos_pus_asn1)
 add_coverage(esrocos_pus)
 
 # Define the PUS library with threads disabled
 add_library(esrocos_pus_nothreads STATIC ${SOURCES})
 set_target_properties(esrocos_pus_nothreads PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(esrocos_pus_nothreads PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 target_compile_options(esrocos_pus_nothreads PUBLIC -DPUS_DISABLE_THREADS)
 add_dependencies(esrocos_pus_nothreads esrocos_pus_asn1)
 add_coverage(esrocos_pus_nothreads)

@@ -10,6 +10,10 @@
 #include "pus_threads.h"
 #include "pus_events.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
+
 typedef struct
 {
 	pusSt05EventId_t eventID;
@@ -20,5 +24,8 @@ typedef struct
 //from config TODO
 extern pusSt19EventActionDefinition_t pus_st19_EventActionDefinitionList[];
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif

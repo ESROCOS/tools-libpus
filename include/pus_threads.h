@@ -21,6 +21,10 @@
 
 #include <stdbool.h>
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
+
 #ifdef PUS_DISABLE_THREADS
 
 typedef void* pusMutex_t;
@@ -52,5 +56,9 @@ bool pus_mutexLockOk(pusMutex_t* mutex);
 /*! Returns true if success. Otherwise, returns false and sets error condition with \ref pus_setError
  */
 bool pus_mutexUnlockOk(pusMutex_t* mutex);
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_THREADS_H

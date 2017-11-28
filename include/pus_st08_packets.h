@@ -20,6 +20,10 @@
 #include "pus_packet.h"
 #include "pus_apid.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
+
 //! Function to initialize the service ST[08] configuration
 /*! This function is generated from the mission database, and it should be declared
  *  in \ref pus_st08_config.h
@@ -67,6 +71,8 @@ pusError_t pus_expectSt08(const pusPacket_t* packet, pusSubservice_t expectedSub
 //! Helper macro for pus_expectSt08; adds function name
 #define PUS_EXPECT_ST08(packet, subtype) pus_expectSt08((packet), (subtype), __func__)
 
-
+#ifdef  __cplusplus
+}
+#endif
 
 #endif

@@ -19,6 +19,9 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 //! Macro to set the error code, including the function name
 #define PUS_SET_ERROR(code) pus_setError((code), __func__, (pusErrorData_t){.integer=0})
@@ -110,5 +113,9 @@ pusError_t pus_getError(pusError_t* outError, pusErrorFunction_t* outFunction, p
 /*! \warning Not thread-safe
  */
 void pus_clearError();
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_ERROR_H

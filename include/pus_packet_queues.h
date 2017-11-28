@@ -16,6 +16,10 @@
 #include "pus_stored_param.h"
 #include "pus_types.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
+
 typedef struct{
 	pusPacket_t * buffer;
 	size_t length;
@@ -55,5 +59,9 @@ pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueue_t 
  *  \return Error code (PUS_NO_ERROR if success)
  */
 pusError_t pus_packetQueues_pop(pusPacket_t *outPacket, pusPacketQueue_t * queue);
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif

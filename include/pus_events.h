@@ -24,6 +24,9 @@
 #include "pus_threads.h"
 #include "pus_stored_param.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 // Severity Type enum
 typedef enum
@@ -246,5 +249,8 @@ size_t pus_st05_getEventInfoListLength();
 ////! Convert a value from the internal parameter format to uint32_t
 //pusError_t pus_hk_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_EVENTS_H
