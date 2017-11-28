@@ -7,11 +7,15 @@
 
 #include "pus_st19_config.h"
 
+extern const size_t pus_st19_EventActionDefinitionListMaximum = ${config['maximumDefinitions']};
 
+pusSt19EventActionDefinition_t pus_st19_EventActionDefinitionList[${config['maximumDefinitions']}];
 
-pusError_t pus_st19_configure()
+pusError_t pus_eventAction_configure()
 {
-
+	%for i in range(0, config['maximumDefinitions']):
+	pus_st19_EventActionDefinitionList[${i}].deleted = true;
+	% endfor
 			
 	return PUS_NO_ERROR;
 }

@@ -11,6 +11,11 @@
 
 #include "pus_error.h"
 #include "pus_types.h"
+#include "pus_event_action.h"
+
+extern pusSt19EventActionDefinition_t pus_st19_EventActionDefinitionList[];
+
+extern const size_t pus_st19_EventActionDefinitionListMaximum = ${config['']};
 
  
  #endif
