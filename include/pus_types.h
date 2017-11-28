@@ -19,6 +19,8 @@
 #include "asn1/pus_st01.h"
 #include "asn1/pus_st03.h"
 #include "asn1/pus_st05.h"
+#include "asn1/pus_st08.h"
+#include "asn1/pus_st19.h"
 #include "asn1/pus_services.h"
 
 
@@ -54,9 +56,11 @@ typedef asn1SccPusSt05Event pusSt05Event_t; //!< Type of the ST[05] event with d
 typedef asn1SccPusSt05EventId pusSt05EventId_t; //!< Type of the ST[05] event ID
 typedef asn1SccPusSt05EventAuxData pusSt05EventAuxData_t; //!< Type of the ST[05] event AuxData
 
-typedef asn1SccPusSt08FunctionId pusSt08FunctiontId_t;
+typedef asn1SccPusSt08FunctionId pusSt08FunctiontId_t; //!< Type of the ST[08] function ID
 
+typedef asn1SccPusPacketReduced pusPacketReduced_t;
 
+typedef asn1SccPusSt19EventActionDefinitionStatus pusSt19EventActionStatus_t;
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
 typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
@@ -82,10 +86,10 @@ typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the uni
 
 // packetDataKind_t
 #define pus_PACKET_DATA_NONE 	((pusPacketDataKind_t) PusPacketData_NONE)
-#define pus_TM_DATA 			((pusPacketDataKind_t) tmData_PRESENT)
-#define pus_TM_DATA_NO_HEADER 	((pusPacketDataKind_t) tmDataNoHeader_PRESENT)
-#define pus_TC_DATA 			((pusPacketDataKind_t) tcData_PRESENT)
-#define pus_TC_DATA_NO_HEADER 	((pusPacketDataKind_t) tcDataNoHeader_PRESENT)
+#define pus_TM_DATA 			((pusPacketDataKind_t) PusPacketData_tmData_PRESENT)
+#define pus_TM_DATA_NO_HEADER 	((pusPacketDataKind_t) PusPacketData_tmDataNoHeader_PRESENT)
+#define pus_TC_DATA 			((pusPacketDataKind_t) PusPacketData_tcData_PRESENT)
+#define pus_TC_DATA_NO_HEADER 	((pusPacketDataKind_t) PusPacketData_tcDataNoHeader_PRESENT)
 
 // pusPacketTmDataKind_t
 #define pus_TM_DATA_NONE 		((pusTmDataKind_t) PusTmSourceData_NONE)
@@ -96,8 +100,8 @@ typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the uni
 
 // pusPacketTcDataKind_t
 #define pus_TC_DATA_NONE 		((pusTcDataKind_t) PusTcApplicationData_NONE)
-#define pus_TC_DATA_ST_8_1 		((pusTcDataKind_t) st_8_1_PRESENT)
-
+#define pus_TC_DATA_ST_8_1 		((pusTcDataKind_t) PusTcApplicationData_st_8_1_PRESENT)
+//TODO st19
 
 //
 // Type limits

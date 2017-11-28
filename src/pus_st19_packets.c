@@ -31,9 +31,46 @@ pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusAp
 	return PUS_NO_ERROR;
 }
 
+pusError_t pus_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* inTc)
+{
+	outTcR->apid = inTc->apid;
+	outTcR->dataLength = inTc->dataLength; //TODO ?
+	outTcR->packetType = inTc->packetType;
+	outTcR->packetVersion = inTc->packetVersion;
+	outTcR->secondaryHeaderFlag = inTc->secondaryHeaderFlag;
+	outTcR->sequenceCount = inTc->sequenceCount;
+	outTcR->sequenceFlags = inTc->sequenceFlags;
+
+	outTcR->data.kind = inTc->data.kind;
+	outTcR->data.u.tcData.header = inTc->data.u.tcData.header;
 
 
-pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid)
+	/*switch( inTc->data.u.tcData.data.kind ) //TODO memcpy
+	{
+		case PusTcApplicationData_NONE:
+
+			break;
+		case PusTcApplicationData_st_8_1_PRESENT:
+			outTcR->data.u.tcData.data.u.st_8_1 = inTc->data.u.tcData.data.u.st_8_1;
+			break;
+		case st_19_x_PRESENT:
+			return PUS_ERROR_TC_KIND;
+			break;
+		default:
+			return PUS_ERROR_TC_KIND;
+			break;
+
+	}*/
+	//outTcR->data.u.tcData.data = (asn1SccPusTcApplicationDataReduced)inTc->data.u.tcData.data; //no va
+
+	//outTcR->data.u.tcData.data.kind = inTc->data.u.tcData.data.kind; //TODO problem enum
+
+	return PUS_NO_ERROR;
+}
+
+
+
+pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid /*TODO param packet*/)
 {
 	if (NULL == outTc || NULL == apid)
 	{
@@ -47,7 +84,10 @@ pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc
 
 	pus_setTcSubtype(outTc, pus_TC_19_1_addEventActionDefinitions);
 
-	//TODO set data
+
+
+	//TODO set data, A partir de qué crear el paquete.
+
 
 	return PUS_NO_ERROR;
 }

@@ -2,6 +2,7 @@
 set(SOURCES
 	pus_apid.c
     pus_error.c
+    pus_event_action.c
     pus_events.c
     pus_housekeeping.c
     pus_packet_queues.c

@@ -17,6 +17,7 @@ BEGIN
     PusTM-3-25-Data FROM PUS-ST03
     PusTM-5-X-Data FROM PUS-ST05
   	PusTC-8-1-Data FROM PUS-ST08
+  	PusTC-19-X-Data FROM PUS-ST19
     ;
 
 
@@ -56,37 +57,49 @@ BEGIN
     -- TC actual data
     PusTcApplicationData ::= CHOICE
     {
+    	st-8-1 PusTC-8-1-Data,
+    	st-19-x PusTC-19-X-Data
+    }
+    
+    PusTcApplicationDataReduced ::= CHOICE
+    {
     	st-8-1 PusTC-8-1-Data
     }
     
     -- TM/TC header + data
     PusTmHeaderData ::= SEQUENCE
     {
-        header  PusTmHeader,
+       header  PusTmHeader,
         data    PusTmSourceData
     }
-    PusTcHeaderData ::= SEQUENCE
+    PusTcHeaderDataTemplate{T} ::= SEQUENCE
     {
         header  PusTcHeader,
-        data    PusTcApplicationData
+        data    T
     }
+    
+    PusTcHeaderData ::= PusTcHeaderDataTemplate{PusTcApplicationData}
+    PusTcHeaderDataReduced ::= PusTcHeaderDataTemplate{PusTcApplicationDataReduced}
 
 
     -- Packet data
-    PusPacketData ::= CHOICE
+    PusPacketDataTemplate{T} ::= CHOICE
     {
         tmData          PusTmHeaderData,
         tmDataNoHeader  PusTmSourceData,
-        tcData          PusTcHeaderData,
+        tcData          T,
         tcDataNoHeader  PusTcApplicationData
     }
+    PusPacketData ::= PusPacketDataTemplate{PusTcHeaderData}
+    PusPacketDataReduced ::= PusPacketDataTemplate{PusTcHeaderDataReduced}
+    
 
     -- CCSDS packet
     -- TM/TC user data contains only the source/application data. No spare bits or checksum is used.
     -- Spare bits are not needed because TASTE handles the packing of the fields.
     -- Checksum is not used because TASTE handles encoding/decoding, and there might be 
     -- mismatched checksums if a message is transmitted between hosts with different endianness. 
-    PusPacket ::= SEQUENCE
+    PusPacketTemplate{T} ::= SEQUENCE
     {
         packetVersion       PusPacketVersion,
         packetType          PusPacketType,
@@ -95,8 +108,11 @@ BEGIN
         sequenceFlags       PusSequenceFlags,
         sequenceCount       PusSequenceCount,
         dataLength          PusPacketDataLength,
-        data                PusPacketData
+        data                T
     }
+    
+    PusPacket ::= PusPacketTemplate {PusPacketData}
+	PusPacketReduced ::= PusPacketTemplate {PusPacketDataReduced}
 
 
 END
