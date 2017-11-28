@@ -270,7 +270,7 @@ pusSequenceCount_t pus_incrementSequenceCount(pusSequenceCount_t count);
 //! Set the TM packet time field to now
 /*! Must be called for a TM packet with header
  */
-void pus_setPacketTimeNow(pusPacket_t* packet);
+void pus_setPacketTimeNow(pusPacket_t* packet); //TODO nod defined
 
 
 //

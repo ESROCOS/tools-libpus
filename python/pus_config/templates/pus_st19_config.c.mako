@@ -7,7 +7,7 @@
 
 #include "pus_st19_config.h"
 
-extern const size_t pus_st19_EventActionDefinitionListMaximum = ${config['maximumDefinitions']};
+const size_t pus_st19_EventActionDefinitionListMaximum = ${config['maximumDefinitions']};
 
 pusSt19EventActionDefinition_t pus_st19_EventActionDefinitionList[${config['maximumDefinitions']}];
 
