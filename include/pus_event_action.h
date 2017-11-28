@@ -28,6 +28,12 @@ extern const size_t pus_st19_EventActionDefinitionListMaximum;
 
 extern pusError_t pus_eventAction_configure();
 
+pusError_t pus_eventAction_initialize(pusMutex_t* mutex);
+
+bool pus_eventAction_isInitialized();
+
+
+
 
 
 

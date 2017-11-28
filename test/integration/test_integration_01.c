@@ -153,7 +153,7 @@ int main()
 pusError_t example_function() //TODO crear un .h para las funciones en ...¿?
 {
 	pusApidInfo_t apid;
-	pus_initApidInfo(&apid, 12, NULL); //TODO param
+	pus_initApidInfo(&apid, 12, NULL);
 
 	pusSt05Event_t eventInfo;
 	pus_tm_5_X_setEventId(&eventInfo, EVENT_INFO_01);

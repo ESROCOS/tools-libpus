@@ -11,7 +11,7 @@
 namespace py = pybind11;
 
 PYBIND11_MODULE(pusbinding, m) {
-	m.doc() = "pus_packet binding"
+	m.doc() = "pus_packet binding";
 	py::class_<pusPacket_t>(m, "pusPacket_t")
 		.def(py::init<>());
 	m.def("pus_getPacketVersion", &pus_getPacketVersion, "Binding for pus_getPacketVersion");
@@ -87,14 +87,14 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_expectTcHeader", &pus_expectTcHeader, "Binding for pus_expectTcHeader");
 	m.def("pus_expectTcNoHeader", &pus_expectTcNoHeader, "Binding for pus_expectTcNoHeader");
 
-	m.doc() = "pus_apid binding"
+	m.doc() = "pus_apid binding";
 	py::class_<pusApid_t>(m, "pusApid_t")
 		.def(py::init<>());
 	m.def("pus_initApidInfo", &pus_initApidInfo, "Binding for pus_initApidInfo");
 	m.def("pus_getInfoApid", &pus_getInfoApid, "Binding for pus_getInfoApid");
 	m.def("pus_getNextPacketCount", &pus_getNextPacketCount, "Binding for pus_getNextPacketCount");
 
-	m.doc() = "pus_st01_packets binding"
+	m.doc() = "pus_st01_packets binding";
 	m.def("pus_tm_1_X_createReport", &pus_tm_1_X_createReport, "Binding for pus_tm_1_X_createReport");
 	m.def("pus_tm_1_1_createAcceptanceReportSuccess", &pus_tm_1_1_createAcceptanceReportSuccess, "Binding for pus_tm_1_1_createAcceptanceReportSuccess");
 	m.def("pus_tm_1_2_createAcceptanceReportFailure", &pus_tm_1_2_createAcceptanceReportFailure, "Binding for pus_tm_1_2_createAcceptanceReportFailure");
@@ -128,7 +128,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_getSt01FailureAddress", &pus_getSt01FailureAddress, "Binding for pus_getSt01FailureAddress");
 	m.def("pus_expectSt01Tm", &pus_expectSt01Tm, "Binding for pus_expectSt01Tm");
 
-	m.doc() = "pus_st03_packets binding"
+	m.doc() = "pus_st03_packets binding";
 	m.def("pus_hk_initialize", &pus_hk_initialize, "Binding for pus_hk_initialize");
 	m.def("pus_hk_finalize", &pus_hk_finalize, "Binding for pus_hk_finalize");
 	m.def("pus_hk_isInitialized", &pus_hk_isInitialized, "Binding for pus_hk_isInitialized");
@@ -151,9 +151,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_3_25_getNumParameters", &pus_tm_3_25_getNumParameters, "Binding for pus_tm_3_25_getNumParameters");
 	m.def("pus_expectSt03Tm", &pus_expectSt03Tm, "Binding for pus_expectSt03Tm");
 
-	m.doc() = "pus_st05_packets binding"
-	py::class_<pusSt05packets_t>(m, "pusSt05packets_t")
-		.def(py::init<>());
+	m.doc() = "pus_st05_packets binding";
+	//py::class_<pusSt05packets_t>(m, "pusSt05packets_t")
+	//	.def(py::init<>()); //TODO javi
 	m.def("pus_tm_5_X_createEventReport", &pus_tm_5_X_createEventReport, "Binding for pus_tm_5_X_createEventReport");
 	m.def("pus_tm_5_1_createInformativeEventReport", &pus_tm_5_1_createInformativeEventReport, "Binding for pus_tm_5_1_createInformativeEventReport");
 	m.def("pus_tm_5_2_createLowSeverityEventReport", &pus_tm_5_2_createLowSeverityEventReport, "Binding for pus_tm_5_2_createLowSeverityEventReport");
@@ -171,7 +171,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_5_X_setEventAuxData2", &pus_tm_5_X_setEventAuxData2, "Binding for pus_tm_5_X_setEventAuxData2");
 	m.def("pus_expectSt05Tm", &pus_expectSt05Tm, "Binding for pus_expectSt05Tm");
 
-	m.doc() = "pus_st08_packets binding"
+	m.doc() = "pus_st08_packets binding";
 	m.def("pus_st08_initialize", &pus_st08_initialize, "Binding for pus_st08_initialize");
 	m.def("pus_st08_isInitialized", &pus_st08_isInitialized, "Binding for pus_st08_isInitialized");
 	m.def("pus_tc_8_1_createPerformFuctionRequest", &pus_tc_8_1_createPerformFuctionRequest, "Binding for pus_tc_8_1_createPerformFuctionRequest");
@@ -180,14 +180,14 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_st08_isInFunctionTable", &pus_st08_isInFunctionTable, "Binding for pus_st08_isInFunctionTable");
 	m.def("pus_expectSt08", &pus_expectSt08, "Binding for pus_expectSt08");
 
-	m.doc() = "pus_st17_packets binding"
+	m.doc() = "pus_st17_packets binding";
 	m.def("pus_tc_17_1_createConnectionTestRequest", &pus_tc_17_1_createConnectionTestRequest, "Binding for pus_tc_17_1_createConnectionTestRequest");
 	m.def("pus_tm_17_2_createConnectionTestReport", &pus_tm_17_2_createConnectionTestReport, "Binding for pus_tm_17_2_createConnectionTestReport");
 	m.def("pus_st17_createTestResponse", &pus_st17_createTestResponse, "Binding for pus_st17_createTestResponse");
 	m.def("pus_expectSt17Tc", &pus_expectSt17Tc, "Binding for pus_expectSt17Tc");
 	m.def("pus_expectSt17Tm", &pus_expectSt17Tm, "Binding for pus_expectSt17Tm");
 
-	m.doc() = "pus_st19_packets binding"
+	m.doc() = "pus_st19_packets binding";
 	m.def("pus_tc_19_X_createDefaultEventActionRequest", &pus_tc_19_X_createDefaultEventActionRequest, "Binding for pus_tc_19_X_createDefaultEventActionRequest");
 	m.def("pus_tc_19_1_createAddEventActionDefinitionsRequest", &pus_tc_19_1_createAddEventActionDefinitionsRequest, "Binding for pus_tc_19_1_createAddEventActionDefinitionsRequest");
 	m.def("pus_tc_19_2_createDeleteEventActionDefinitionsRequest", &pus_tc_19_2_createDeleteEventActionDefinitionsRequest, "Binding for pus_tc_19_2_createDeleteEventActionDefinitionsRequest");

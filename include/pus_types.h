@@ -62,8 +62,6 @@ typedef asn1SccPusSt08FunctionId pusSt08FunctiontId_t; //!< Type of the ST[08] f
 
 typedef asn1SccPusPacketReduced pusPacketReduced_t;
 
-typedef asn1SccPusSt19EventActionDefinitionStatus pusSt19EventActionStatus_t;
-
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
 #ifdef __cplusplus
 typedef decltype(asn1SccPusPacketData::PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData

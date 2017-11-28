@@ -1,9 +1,52 @@
 #include "pus_event_action.h"
 
 
+
+pusMutex_t* pus_eventAction_mutex;
+
+bool pus_eventAction_initializedFlag = false;
+
+pusError_t pus_eventAction_initialize(pusMutex_t* mutex)
+{
+	if (pus_eventAction_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_ALREADY_INITIALIZED);
+	}
+
+	pus_eventAction_mutex = mutex;
+
+	if (NULL != pus_eventAction_mutex && !pus_mutexLockOk(pus_eventAction_mutex))
+	{
+		return PUS_ERROR_INITIALIZATION;
+	}
+
+	if (PUS_NO_ERROR != pus_events_configure())
+	{
+		if (NULL != pus_eventAction_mutex)
+		{
+			(void) pus_mutexUnlockOk(pus_eventAction_mutex);
+		}
+		return PUS_SET_ERROR(PUS_ERROR_INITIALIZATION);
+	}
+
+	if (NULL != pus_eventAction_mutex && !pus_mutexUnlockOk(pus_eventAction_mutex))
+	{
+		return PUS_ERROR_INITIALIZATION;
+	}
+
+	// Flag service initialized = true
+	pus_eventAction_initializedFlag = true;
+	return PUS_NO_ERROR;
+}
+
+bool pus_eventAction_isInitialized()
+{
+	return pus_eventAction_initializedFlag;
+}
+
 bool pus_eventAction_checkIfDefinitionExist(pusSt05EventId_t eventID, const pusPacket_t* tcAction)
 {
-	for(int i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
+	for(size_t i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
 	{
 		if( (eventID == pus_st19_EventActionDefinitionList[i].eventID) && (false == pus_st19_EventActionDefinitionList[i].deleted) )
 		{
@@ -11,7 +54,7 @@ bool pus_eventAction_checkIfDefinitionExist(pusSt05EventId_t eventID, const pusP
 			{
 				/*if(pus_st19_EventActionDefinitionList[i].tcAction.sequenceCount == tcAction->sequenceCount){
 					return true;
-				}*/ //TODO
+				}*/ //TODO comparar accion tipo,subtipo
 			}
 		}
 	}
@@ -41,7 +84,7 @@ pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pu
 	}
 
 
-	for(int i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
+	for(size_t i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
 	{
 		//check if exist
 
@@ -62,7 +105,7 @@ pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pu
 
 pusError_t pus_eventAction_deleteEventActionDefinition(pusSt05EventId_t eventID, pusPacket_t* tcAction)
 {
-	for(int i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
+	for(size_t i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
 	{
 		//check if exist
 
@@ -79,7 +122,7 @@ pusError_t pus_eventAction_deleteEventActionDefinition(pusSt05EventId_t eventID,
 pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID, pusPacket_t* tcAction)
 {
 
-	for(int i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
+	for(size_t i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
 	{
 		//check if exist
 
@@ -95,7 +138,7 @@ pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID,
 pusError_t pus_eventAction_disableEventActionDefinition(pusSt05EventId_t eventID, pusPacket_t* tcAction)
 {
 
-	for(int i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
+	for(size_t i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
 	{
 		//check if exist
 

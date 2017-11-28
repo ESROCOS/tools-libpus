@@ -17,8 +17,10 @@ BEGIN
     PusTM-3-25-Data FROM PUS-ST03
     PusTM-5-X-Data FROM PUS-ST05
   	PusTC-8-1-Data FROM PUS-ST08
-  	PusTC-19-X-Data FROM PUS-ST19
-    ;
+  	--PusTC-19-X-Data FROM PUS-ST19
+  	
+  	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
+  	;
 
 
     -- TM secondary header
@@ -54,15 +56,27 @@ BEGIN
         -- no spare bits
     }
     
+    
+    -- Data for TM[19,X], event action
+    PusTC-19-X-Data  ::= SEQUENCE
+    {
+    	-- Just 1 action-event per TC
+    	-- No Aplication Process ID in TC packet
+    	eventActionDefinitionId PusSt05EventId,
+    	packetReduced PusPacketReduced
+    }
+    
+    
+    
     -- TC actual data
     PusTcApplicationData ::= CHOICE
-    {
+    { -- The same order as the reduced
     	st-8-1 PusTC-8-1-Data,
     	st-19-x PusTC-19-X-Data
     }
     
     PusTcApplicationDataReduced ::= CHOICE
-    {
+    { 
     	st-8-1 PusTC-8-1-Data
     }
     
@@ -78,8 +92,8 @@ BEGIN
         data    T
     }
     
-    PusTcHeaderData ::= PusTcHeaderDataTemplate{PusTcApplicationData}
-    PusTcHeaderDataReduced ::= PusTcHeaderDataTemplate{PusTcApplicationDataReduced}
+   -- PusTcHeaderData ::= PusTcHeaderDataTemplate{PusTcApplicationData}
+   -- PusTcHeaderDataReduced ::= PusTcHeaderDataTemplate{PusTcApplicationDataReduced}
 
 
     -- Packet data
@@ -87,11 +101,11 @@ BEGIN
     {
         tmData          PusTmHeaderData,
         tmDataNoHeader  PusTmSourceData,
-        tcData          T,
-        tcDataNoHeader  PusTcApplicationData
+        tcData          PusTcHeaderDataTemplate{T},
+        tcDataNoHeader  T
     }
-    PusPacketData ::= PusPacketDataTemplate{PusTcHeaderData}
-    PusPacketDataReduced ::= PusPacketDataTemplate{PusTcHeaderDataReduced}
+    PusPacketData ::= PusPacketDataTemplate{PusTcApplicationData}
+    PusPacketDataReduced ::= PusPacketDataTemplate{PusTcApplicationDataReduced}
     
 
     -- CCSDS packet

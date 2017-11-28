@@ -245,7 +245,7 @@ pusTmDataKind_t pus_getTmNoHeaderDataKind(const pusPacket_t* packet);
 void pus_setTmNoHeaderDataKind(pusPacket_t* packet, pusPacketDataKind_t kind);
 
 
-//TODO getter/setter Tc
+//getter/setter Tc
 
 //! Getter for the kind of TC data field, for packets with secondary header
 pusTmDataKind_t pus_getTcDataKind(const pusPacket_t* packet);

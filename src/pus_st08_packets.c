@@ -67,6 +67,7 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApidInf
 		// Service identification
 		pus_setTcService(outTc, pus_ST08_functionManagement);
 		pus_setTcSubtype(outTc, pus_TC_8_1_performFunction);
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_8_1);
 
 		//pus_setTmDestination(outTm, pus_APID_IDLE);
 
@@ -75,7 +76,6 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApidInf
 
 		pus_tc_8_1_setFunctionId(outTc, functionId);
 		//outTc->data.u.tcData.data.u.st_8_1.functionId = functionId;
-		pus_setTcDataKind(outTc, pus_TC_DATA_ST_8_1);
 
 
 		return PUS_GET_ERROR();
