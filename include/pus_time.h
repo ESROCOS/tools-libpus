@@ -18,6 +18,9 @@
 #include <time.h>
 #include "pus_types.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
 //! Get the current time
 void pus_now(pusTime_t* outNow);
 
@@ -27,5 +30,8 @@ void pus_time2posix(struct timespec* outPosixTime, const pusTime_t* pusTime);
 //! Convert from POSIX timespec
 void pus_posix2time(pusTime_t* outPusTime, const struct timespec* posixTime);
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_TIME_H

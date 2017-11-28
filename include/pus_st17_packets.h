@@ -21,6 +21,10 @@
 #include "pus_error.h"
 #include "pus_types.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
+
 /*! Builds a TC[17,1] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
@@ -65,5 +69,9 @@ pusError_t pus_expectSt17Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 //! Helper macro for pus_expectSt17; adds function name
 #define PUS_EXPECT_ST17TM(packet, subtype) pus_expectSt17Tm((packet), (subtype), __func__)
 #define PUS_EXPECT_ST17TC(packet, subtype) pus_expectSt17Tc((packet), (subtype), __func__)
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif

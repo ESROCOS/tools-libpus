@@ -22,6 +22,9 @@
 #include "pus_threads.h"
 #include "pus_types.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 //
 // Service initialization and tear down
@@ -207,5 +210,8 @@ pusError_t pus_expectSt03Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 //! Helper macro for pus_expectSt03; adds function name
 #define PUS_EXPECT_ST03(packet, subtype) pus_expectSt03Tm((packet), (subtype), __func__)
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_ST03_PACKETS_H

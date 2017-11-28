@@ -21,6 +21,9 @@
 #include "pus_types.h"
 #include "pus_error.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 //
 // Getters and setters
@@ -422,5 +425,9 @@ pusError_t pus_expectTcNoHeader(const pusPacket_t* packet, const char* funcname,
 
 //! Helper macro for pus_expectTcNoHeader; adds caller function's name
 #define PUS_EXPECT_TC_NO_HEADER_INT(packet, data) pus_expectTcNoHeader((packet), __func__, (pusErrorData_t){.integer=(int32_t)(data)})
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_PACKET_H

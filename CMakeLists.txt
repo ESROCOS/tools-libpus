@@ -22,7 +22,7 @@ cmake_minimum_required(VERSION 3.3)
 ###########################################
 
 
-project(ESROCOS_PUS LANGUAGES C)
+project(ESROCOS_PUS LANGUAGES C CXX)
 
 #
 # CMake modules
@@ -30,7 +30,7 @@ project(ESROCOS_PUS LANGUAGES C)
 
 # Local directory with CMake modules
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules;${CMAKE_MODULE_PATH}")
-
+set(pybind11_DIR ${CMAKE_SOURCE_DIR}/cmake/PyBind11)
 # codecov module
 find_package(codecov REQUIRED)
 if (NOT ENABLE_COVERAGE)
@@ -42,6 +42,7 @@ include(CTest)
 
 # Find libpthread
 find_package(Threads REQUIRED)
+find_package(pybind11 CONFIG)
 
 add_compile_options(-Wall -Wextra)
 
@@ -54,7 +55,7 @@ add_subdirectory(python)
 add_subdirectory(mission)
 add_subdirectory(src)
 add_subdirectory(test)
-
+add_subdirectory(pylib)
 
 ### Install stuff commented ###
 

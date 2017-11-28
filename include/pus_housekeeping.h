@@ -18,6 +18,9 @@
 #include "pus_threads.h"
 #include "pus_stored_param.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 //
 // Data types
@@ -153,8 +156,8 @@ pusError_t pus_hk_getByteParam(pusSt03ParamId_t param, uint8_t* outValue);
  */
 pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value);
 
-
-
-
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_HOUSEKEEPING_H

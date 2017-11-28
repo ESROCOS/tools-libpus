@@ -13,7 +13,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-}
+
 typedef struct
 {
 	pusSt05EventId_t eventID;
@@ -45,7 +45,7 @@ pusError_t pus_eventAction_addEventActionDefinition()
 	for(int i = 0; i < pus_st19_EventActionDefinitionListMaximum; i++)
 	{
 		//check if exist
-		if()
+		//if()
 	}
 	return PUS_NO_ERROR;
 }

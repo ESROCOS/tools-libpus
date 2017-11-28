@@ -23,7 +23,9 @@
 #include "asn1/pus_st19.h"
 #include "asn1/pus_services.h"
 
-
+#ifdef  __cplusplus
+extern "C" {
+#endif
 //
 // Aliases for the generated PUS types
 //
@@ -63,10 +65,15 @@ typedef asn1SccPusPacketReduced pusPacketReduced_t;
 typedef asn1SccPusSt19EventActionDefinitionStatus pusSt19EventActionStatus_t;
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
+#ifdef __cplusplus
+typedef decltype(asn1SccPusPacketData::PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
+typedef decltype(asn1SccPusTmSourceData::PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
+typedef decltype(asn1SccPusTcApplicationData::PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
+#else
 typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
 typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
 typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
-
+#endif
 
 
 //
@@ -119,6 +126,9 @@ typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the uni
 //! First value not representable by the pusPacketDataLength_t type
 #define pusPacketDataLength_LIMIT pusUInt16_LIMIT
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif //PUS_TYPES_H
 

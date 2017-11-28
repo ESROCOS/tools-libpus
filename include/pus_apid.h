@@ -13,6 +13,9 @@
 #include "pus_types.h"
 #include "pus_threads.h"
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 //! Type to keep the information (e.g., packet counts) for a given APID
 typedef struct
@@ -36,5 +39,8 @@ pusApid_t pus_getInfoApid(const pusApidInfo_t* obj);
 //! Get the count value for the next TM packet
 pusSequenceCount_t pus_getNextPacketCount(pusApidInfo_t* obj);
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_APID_H

@@ -22,7 +22,9 @@
 #include "pus_error.h"
 #include "pus_apid.h"
 
-
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 //! Build the common part of the ST[05] event reports
 /*! Builds a TM[5,X] packet in the packet passed as parameter.
@@ -119,5 +121,8 @@ pusError_t pus_expectSt05Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 //! Helper macro for pus_expectSt01; adds function name
 #define PUS_EXPECT_ST05(packet, subtype) pus_expectSt05Tm((packet), (subtype), __func__)
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif // PUS_ST05_PACKETS_H
