@@ -70,6 +70,11 @@ bool pus_eventAction_checkIfDefinitionExist(pusSt05EventId_t eventID, const pusP
 
 pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pusPacket_t* tcAction)
 {
+	if( ! pus_eventAction_isInitialized() )
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
 	if( pus_eventAction_checkIfDefinitionExist(eventID, tcAction) == true )
 	{
 		return PUS_ERROR_DEFINITION_ALREADY_EXIST;
@@ -90,6 +95,11 @@ pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pu
 
 pusError_t pus_eventAction_deleteEventActionDefinition(pusSt05EventId_t eventID)
 {
+	if( ! pus_eventAction_isInitialized() )
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
 	if( false == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
 		pus_st19_EventActionDefinitionList[eventID].deleted = true;
@@ -101,6 +111,10 @@ pusError_t pus_eventAction_deleteEventActionDefinition(pusSt05EventId_t eventID)
 
 pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID)
 {
+	if( ! pus_eventAction_isInitialized() )
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
 
 	if( false == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
@@ -113,6 +127,11 @@ pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID)
 
 pusError_t pus_eventAction_disableEventActionDefinition(pusSt05EventId_t eventID)
 {
+	if( ! pus_eventAction_isInitialized() )
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
 	if( false == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
 		pus_st19_EventActionDefinitionList[eventID].definitionStatus = false;

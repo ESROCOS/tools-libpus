@@ -15,7 +15,6 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidIn
 	else
 	{
 		pus_initTcPacket(outTc);
-		//pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
 
 		// Source information
 		pus_setApid(outTc, pus_getInfoApid(apid));

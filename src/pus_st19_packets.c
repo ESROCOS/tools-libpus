@@ -33,9 +33,7 @@ pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusAp
 
 
 
-
-
-pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId, pusPacket_t tcAction)
+pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId, pusPacket_t* tcAction)
 {
 	if (NULL == outTc || NULL == apid)
 	{
@@ -48,15 +46,19 @@ pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc
 	}
 
 	pus_setTcSubtype(outTc, pus_TC_19_1_addEventActionDefinitions);
+	pus_setTcDataKind(outTc, pus_TC_DATA_ST_19_1);
 
 	pusPacketReduced_t tcActionR;
 
-	pus_createPusPacketReduced(&tcActionR, &tcAction);
+	pus_createPusPacketReduced(&tcActionR, tcAction);
 
-	tcAction.data.u.tcData.data.u.st_19_1.packetReduced = tcActionR; //todo setter
+	 //todo setter
+	pus_tc_19_1_setAction(outTc, &tcActionR);
+	pus_tc_19_x_setEventId(outTc, eventId);
 
 	return PUS_NO_ERROR;
 }
+
 
 pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId)
 {
@@ -71,8 +73,9 @@ pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* ou
 	}
 
 	pus_setTcSubtype(outTc, pus_TC_19_2_deleteEventActionDefinitions);
+	pus_setTcDataKind(outTc, pus_TC_DATA_ST_19_X);
 
-	//TODO set data
+	pus_tc_19_x_setEventId(outTc, eventId);
 
 	return PUS_NO_ERROR;
 }
@@ -90,8 +93,9 @@ pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pu
 	}
 
 	pus_setTcSubtype(outTc, pus_TC_19_4_enableEventActionDefinitions);
+	pus_setTcDataKind(outTc, pus_TC_DATA_ST_19_X);
 
-	//TODO set data
+	pus_tc_19_x_setEventId(outTc, eventId);
 
 	return PUS_NO_ERROR;
 }
@@ -109,8 +113,9 @@ pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, p
 	}
 
 	pus_setTcSubtype(outTc, pus_TC_19_5_disableEventActionDefinitions);
+	pus_setTcDataKind(outTc, pus_TC_DATA_ST_19_X);
 
-	//TODO set data
+	pus_tc_19_x_setEventId(outTc, eventId);
 
 	return PUS_NO_ERROR;
 }
@@ -129,7 +134,7 @@ pusError_t pus_packetReducedSetTcData(pusPacketReduced_t* outPacket, pusPacket_t
 		case pus_TC_DATA_ST_19_1:
 			return PUS_ERROR_TC_KIND;
 			break;
-		case pus_TC_DATA_ST_19_x:
+		case pus_TC_DATA_ST_19_X:
 			return PUS_ERROR_TC_KIND;
 			break;
 		default:
@@ -157,3 +162,88 @@ pusError_t pus_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* i
 	return pus_packetReducedSetTcData(outTcR, inTc);
 }
 
+void pus_tc_19_1_setAction(pusPacket_t* outTc, pusPacketReduced_t* actionR)
+{
+    if ( NULL == outTc || NULL == actionR )
+    {
+    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    	return;
+    }
+    else
+    {
+    	outTc->data.u.tcData.data.u.st_19_1.packetReduced = *actionR;
+    }
+}
+
+void pus_tc_19_x_setEventId(pusPacket_t* outTc, pusSt05EventId_t eventId)
+{
+	if ( NULL == outTc )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return;
+	}
+
+	if( pus_getTcDataKind(outTc) == pus_TC_DATA_ST_19_1)
+	{
+		outTc->data.u.tcData.data.u.st_19_1.eventId = eventId;
+	}
+	else if( pus_TC_DATA_NONE != pus_getTcDataKind(outTc) )
+	{
+		outTc->data.u.tcData.data.u.st_19_X.eventId = eventId;
+	}
+}
+
+//
+// Parameter checking
+//
+pusError_t pus_expectSt19Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
+{
+	pusError_t expectResult = pus_expectTcHeader(packet, function, (pusErrorData_t){.integer=0});
+	if (PUS_NO_ERROR == expectResult)
+	{
+		pusService_t service = pus_getTcService(packet);
+		pusSubservice_t subtype = pus_getTcSubtype(packet);
+
+		if (service != pus_ST19_eventAction)
+		{
+			pus_setError(PUS_ERROR_TC_SERVICE, function, (pusErrorData_t){.integer=service});
+			return PUS_ERROR_TC_SERVICE;
+		}
+
+		if (expectedSubtype == pusSubtype_NONE)
+		{
+			// Check that subtype corresponds to ST[01]
+			if ((subtype != pus_TC_19_1_addEventActionDefinitions) &&
+				(subtype != pus_TC_19_2_deleteEventActionDefinitions) &&
+				(subtype != pus_TC_19_4_enableEventActionDefinitions) &&
+				(subtype != pus_TC_19_5_disableEventActionDefinitions))
+			{
+				pus_setError(PUS_ERROR_TC_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
+				return PUS_ERROR_TC_SUBTYPE;
+			}
+		}
+		else
+		{
+			// Check that subtype is as expected
+			if (subtype != expectedSubtype)
+			{
+				pus_setError(PUS_ERROR_TC_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
+				return PUS_ERROR_TC_SUBTYPE;
+
+			}
+		}
+
+		pusPacketDataKind_t kind = pus_getTcDataKind(packet);
+		if (kind != pus_TC_DATA_ST_19_1 && kind != pus_TC_DATA_ST_19_X)
+		{
+			pus_setError(PUS_ERROR_TC_KIND, function, (pusErrorData_t){.integer=kind});
+			return PUS_ERROR_TC_KIND;
+		}
+
+		return PUS_NO_ERROR;
+	}
+	else
+	{
+		return expectResult;
+	}
+}

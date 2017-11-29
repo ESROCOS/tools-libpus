@@ -36,7 +36,7 @@ pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusAp
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId, pusPacket_t tcAction);
+pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId, pusPacket_t* tcAction);
 
 //! Build an acceptance report for a TC
 /*! Builds a TC[19,2] packet in the packet passed as parameter.
@@ -70,6 +70,27 @@ pusError_t pus_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* i
 
 //! Function that set the Tc.data field from a pusPacket_t to a pusPacketReduced_t
 pusError_t pus_packetReducedSetTcData(pusPacketReduced_t* outPacket, pusPacket_t* inTc);
+
+//! Function that set the eventId to the data field of tc[19,X]
+void pus_tc_19_x_setEventId(pusPacket_t* outTc, pusSt05EventId_t eventId);
+
+//! Function that set an action to a TC packet
+void pus_tc_19_1_setAction(pusPacket_t* outTc, pusPacketReduced_t* actionR);
+
+//
+// Parameter checking
+//
+
+//! Check that a packet is of a PUS ST[19] TC kind
+/*! \param[in] packet The PUS packet
+ *  \param[in] expectedSubtype Check that the TC has this subtype; use pusSubtype_NONE to check for all TC types in ST[19]
+ *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST19 to include the caller function's name)
+ *  \return If valid TC, PUS_NO_ERROR; otherwise, an error code
+ */
+pusError_t pus_expectSt19Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
+
+//! Helper macro for pus_expectSt19Tc; adds function name
+#define PUS_EXPECT_ST19(packet, subtype) pus_expectSt19Tc((packet), (subtype), __func__)
 
 
 
