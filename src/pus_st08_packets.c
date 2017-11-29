@@ -59,7 +59,7 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApidInf
 
 		// Source information
 		pus_setApid(outTc, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid)); //TODO tmCount
+		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
 
 		// Data length
 		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));

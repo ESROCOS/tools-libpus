@@ -114,7 +114,7 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event)
 
 		if( event->eventId < pus_st05_getEventInfoListLength() )
 		{
-			// TODO; como comprobar tipo datos
+			// TODO; check datatype
 			PUS_SET_ERROR(PUS_NO_ERROR);
 			return true;
 		}

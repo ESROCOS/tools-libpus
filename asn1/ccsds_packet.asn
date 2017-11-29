@@ -72,8 +72,8 @@ BEGIN
     PusTcApplicationData ::= CHOICE
     { -- The same order as the reduced
     	st-8-1 PusTC-8-1-Data,
-    	st-19-1 PusTC-19-1-Data,
-    	st-19-X PusTC-19-X-Data
+    	st-19-X PusTC-19-X-Data,
+    	st-19-1 PusTC-19-1-Data
     }
     
     PusTcApplicationDataReduced ::= CHOICE

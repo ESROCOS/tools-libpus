@@ -45,7 +45,6 @@ void packets_st19()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_1_addEventActionDefinitions));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pusSubtype_NONE));
 
-	//TODO check tcAction
 	CU_ASSERT_EQUAL(tc.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.data.kind, tcAction.data.u.tcData.data.kind);
 	CU_ASSERT_EQUAL(tc.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.data.u.st_8_1.functionId, tcAction.data.u.tcData.data.u.st_8_1.functionId);
 
@@ -92,21 +91,21 @@ void packets_st19()
 
 
 	pusPacketReduced_t tcRed, aux;
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_createPusPacketReduced(&tcRed, &tcAction));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_X_createPusPacketReduced(&tcRed, &tcAction));
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReducedSetTcData(&tcRed, &tcAction));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_X_setPacketReducedTcData(&tcRed, &tcAction));
 
 	pus_setTcDataKind(&tcAction, pus_TC_DATA_NONE);
-	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_packetReducedSetTcData(&tcRed, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_tc_19_X_setPacketReducedTcData(&tcRed, &tcAction));
 
 	pus_setTcDataKind(&tcAction, pus_TC_DATA_ST_19_1);
-	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_packetReducedSetTcData(&tcRed, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_tc_19_X_setPacketReducedTcData(&tcRed, &tcAction));
 
 	pus_setTcDataKind(&tcAction, pus_TC_DATA_ST_19_X);
-	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_packetReducedSetTcData(&tcRed, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_tc_19_X_setPacketReducedTcData(&tcRed, &tcAction));
 
 	pus_setTcDataKind(&tcAction, 23);
-	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_packetReducedSetTcData(&tcRed, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_tc_19_X_setPacketReducedTcData(&tcRed, &tcAction));
 
 	pus_setTcDataKind(&tcAction, pus_TC_DATA_ST_8_1);
 	pus_tc_19_1_getAction(NULL, NULL);

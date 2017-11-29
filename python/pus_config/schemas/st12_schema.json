@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "id": "https://github.com/esrocos/TBD",
+    "title": "On-board events",
+    "description": "Events configuration for PUS service ST[05]",
+    "type": "object",
+    "properties": {
+        "events": {
+            "type": "array",
+            "items": {
+                "title": "Event",
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "description": "Textual label for the event",
+                        "type": "string"
+                    },
+                    "defaultSeverity": {
+                        "description": "Severity level assigned to the event by default",
+                        "type": "string",
+                        "enum": ["INFO", "LOW", "MEDIUM", "HIGH"]
+                    },
+                    "data": {
+                        "description": "Types of the data elements associated to the event",
+                        "type": "array",
+                        "items": {
+                        	"type": "string",
+	                        "enum": ["INT32", "UINT32", "REAL64", "BYTE", "BOOL"],
+	                        "minItems": 2,
+	                        "maxItems": 2
+                        }
+                        
+                    }
+                },
+                "required": ["label", "defaultSeverity", "data"]
+            }
+        },
+        "maximumParametersPMON":  {
+            "type": "integer",
+            "minimum": 0
+        },
+        "eventReportDestination": {
+        	"type": "integer",
+        	"minimum": 0,
+        	"maximum": 2047        	
+        }
+    },
+    "required": ["events", "eventBufferLength", "eventReportDestination"]
+}

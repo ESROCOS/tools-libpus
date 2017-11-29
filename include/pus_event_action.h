@@ -51,10 +51,13 @@ pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID)
 pusError_t pus_eventAction_disableEventActionDefinition(pusSt05EventId_t eventID);
 
 //! Function that check if an event-action definition is in the list
-bool pus_eventAction_checkIfDefinitionExist(pusSt05EventId_t eventID, const pusPacket_t* tcAction);
+bool pus_eventAction_isEventActionDefinitionRegistered(pusSt05EventId_t eventID, const pusPacket_t* tcAction);
 
+//! Function that check if the action for an event is enabled.
+bool pus_eventAction_isEventActionEnabled(pusSt05EventId_t eventID);
 
-
+//! Get the TC action of an event if possible.
+pusError_t pus_eventAction_getAction(pusPacket_t* tcAction , pusSt05EventId_t eventID);
 
 
 #ifdef __cplusplus

@@ -50,9 +50,8 @@ pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc
 
 	pusPacketReduced_t tcActionR;
 
-	pus_createPusPacketReduced(&tcActionR, tcAction);
+	pus_tc_19_X_createPusPacketReduced(&tcActionR, tcAction);
 
-	 //todo setter
 	pus_tc_19_1_setAction(outTc, &tcActionR);
 	pus_tc_19_x_setEventId(outTc, eventId);
 
@@ -120,7 +119,7 @@ pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, p
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_packetReducedSetTcData(pusPacketReduced_t* outPacket, pusPacket_t* inTc)
+pusError_t pus_tc_19_X_setPacketReducedTcData(pusPacketReduced_t* outPacket, pusPacket_t* inTc)
 {
 	switch( inTc->data.u.tcData.data.kind )
 	{
@@ -141,10 +140,9 @@ pusError_t pus_packetReducedSetTcData(pusPacketReduced_t* outPacket, pusPacket_t
 			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 			break;
 	}
-
 }
 
-pusError_t pus_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* inTc)
+pusError_t pus_tc_19_X_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* inTc)
 {
 	outTcR->apid = inTc->apid;
 	outTcR->dataLength = inTc->dataLength;
@@ -157,9 +155,49 @@ pusError_t pus_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* i
 	outTcR->data.kind = inTc->data.kind;
 	outTcR->data.u.tcData.header = inTc->data.u.tcData.header;
 
-	if ( PUS_NO_ERROR == pus_packetReducedSetTcData(outTcR, inTc) )
+	if ( PUS_NO_ERROR == pus_tc_19_X_setPacketReducedTcData(outTcR, inTc) )
 	{
 		outTcR->data.u.tcData.data.kind = inTc->data.u.tcData.data.kind;
+	}
+	return PUS_GET_ERROR();
+}
+
+pusError_t pus_tc_19_X_setPacketTcData(pusPacket_t* outTc, pusPacketReduced_t* inTcR)
+{
+	switch( inTcR->data.u.tcData.data.kind )
+	{
+		case pus_TC_DATA_NONE:
+			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+			break;
+		case pus_TC_DATA_ST_8_1:
+			outTc->data.u.tcData.data.u.st_8_1 = inTcR->data.u.tcData.data.u.st_8_1;
+			return PUS_SET_ERROR(PUS_NO_ERROR);
+			break;
+		case pus_TC_DATA_ST_19_X:
+			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+			break;
+		default:
+			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+			break;
+	}
+}
+
+pusError_t pus_tc_19_X_getPacketFromPacketReduced(pusPacket_t* outTc, pusPacketReduced_t* inTcR)
+{
+	outTc->apid = inTcR->apid;
+	outTc->dataLength = inTcR->dataLength;
+	outTc->packetType = inTcR->packetType;
+	outTc->packetVersion = inTcR->packetVersion;
+	outTc->secondaryHeaderFlag = inTcR->secondaryHeaderFlag;
+	outTc->sequenceCount = inTcR->sequenceCount;
+	outTc->sequenceFlags = inTcR->sequenceFlags;
+
+	outTc->data.kind = inTcR->data.kind;
+	outTc->data.u.tcData.header = inTcR->data.u.tcData.header;
+
+	if ( PUS_NO_ERROR == pus_tc_19_X_setPacketTcData(outTc, inTcR) )
+	{
+		outTc->data.u.tcData.data.kind = inTcR->data.u.tcData.data.kind;
 	}
 	return PUS_GET_ERROR();
 }
