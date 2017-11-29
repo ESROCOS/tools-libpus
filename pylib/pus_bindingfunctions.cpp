@@ -32,17 +32,21 @@ uint pus_getTcPusVersion_(const pusPacket_t* packet)
 	return (uint) pus_getTcPusVersion(packet);
 }
 
-struct timespec *pus_getTmPacketTime_(const pusPacket_t* packet)
+struct timespec pus_getTmPacketTime_(const pusPacket_t* packet)
 {
 	pusTime_t time;
 	struct timespec ts;
 	pus_getTmPacketTime(&time, packet);
 	if (NULL == time)
 	{
-		return NULL;
+		ts.tv_sec = 0;
+		ts.tv_nsec = 0;
 	}
-	ts.tv_sec = (time_t) time.tv_sec;
-	ts.tv_nsec = time.tv_nsec;
+	else
+	{
+		ts.tv_sec = (time_t) time.tv_sec;
+		ts.tv_nsec = time.tv_nsec;
+	}
 
 	return ts;
 }
