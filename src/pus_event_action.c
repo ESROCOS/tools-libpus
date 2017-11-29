@@ -39,6 +39,20 @@ pusError_t pus_eventAction_initialize(pusMutex_t* mutex)
 	return PUS_NO_ERROR;
 }
 
+pusError_t pus_eventAction_finalize()
+{
+	if (!pus_eventAction_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else
+	{
+		pus_eventAction_mutex = NULL;
+		pus_eventAction_initializedFlag = false;
+		return PUS_NO_ERROR;
+	}
+}
+
 bool pus_eventAction_isInitialized()
 {
 	return pus_eventAction_initializedFlag;
@@ -46,10 +60,6 @@ bool pus_eventAction_isInitialized()
 
 bool pus_eventAction_checkIfDefinitionExist(pusSt05EventId_t eventID, const pusPacket_t* tcAction)
 {
-	if( eventID >= pus_st19_EventActionDefinitionListMaximum )
-	{
-		return false;
-	}
 	if( false == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
 		if( pus_st19_EventActionDefinitionList[eventID].tcAction.apid == tcAction->apid )
@@ -70,9 +80,19 @@ bool pus_eventAction_checkIfDefinitionExist(pusSt05EventId_t eventID, const pusP
 
 pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pusPacket_t* tcAction)
 {
+	if ( NULL == tcAction)
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+
 	if( ! pus_eventAction_isInitialized() )
 	{
 		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( eventID >= pus_st19_EventActionDefinitionListMaximum )
+	{
+		return PUS_ERROR_OUT_OF_RANGE;
 	}
 
 	if( pus_eventAction_checkIfDefinitionExist(eventID, tcAction) == true )
@@ -83,7 +103,7 @@ pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pu
 
 	if( true == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
-		pus_st19_EventActionDefinitionList[eventID].definitionStatus = true;
+		pus_st19_EventActionDefinitionList[eventID].definitionStatus = false;
 		pus_st19_EventActionDefinitionList[eventID].tcAction = *tcAction;
 		pus_st19_EventActionDefinitionList[eventID].deleted = false;
 
@@ -98,6 +118,11 @@ pusError_t pus_eventAction_deleteEventActionDefinition(pusSt05EventId_t eventID)
 	if( ! pus_eventAction_isInitialized() )
 	{
 		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( eventID >= pus_st19_EventActionDefinitionListMaximum )
+	{
+		return PUS_ERROR_OUT_OF_RANGE;
 	}
 
 	if( false == pus_st19_EventActionDefinitionList[eventID].deleted )
@@ -116,6 +141,11 @@ pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID)
 		return PUS_ERROR_NOT_INITIALIZED;
 	}
 
+	if( eventID >= pus_st19_EventActionDefinitionListMaximum )
+	{
+		return PUS_ERROR_OUT_OF_RANGE;
+	}
+
 	if( false == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
 		pus_st19_EventActionDefinitionList[eventID].definitionStatus = true;
@@ -130,6 +160,11 @@ pusError_t pus_eventAction_disableEventActionDefinition(pusSt05EventId_t eventID
 	if( ! pus_eventAction_isInitialized() )
 	{
 		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( eventID >= pus_st19_EventActionDefinitionListMaximum )
+	{
+		return PUS_ERROR_OUT_OF_RANGE;
 	}
 
 	if( false == pus_st19_EventActionDefinitionList[eventID].deleted )

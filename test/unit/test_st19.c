@@ -45,22 +45,24 @@ void packets_st19()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_1_addEventActionDefinitions));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pusSubtype_NONE));
 
-
-		//PusExpect fails
-		CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_EXPECT_ST19(NULL, 0));
-
-		pus_setTcDataKind(&tc, 1);
-		CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, PUS_EXPECT_ST19(&tc, 0));
-		CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, PUS_EXPECT_ST19(&tc, 1));
-
-		pus_setTcSubtype(&tc, 6); pus_clearError();
-		CU_ASSERT_EQUAL(PUS_ERROR_TC_SUBTYPE, PUS_EXPECT_ST19(&tc, 0));
-		CU_ASSERT_EQUAL(PUS_ERROR_TC_SUBTYPE, PUS_EXPECT_ST19(&tc, 1));
-
-		pus_setTcService(&tc, 2); pus_clearError();
-		CU_ASSERT_EQUAL(PUS_ERROR_TC_SERVICE, PUS_EXPECT_ST19(&tc, 0));
 	//TODO check tcAction
+	CU_ASSERT_EQUAL(tc.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.data.kind, tcAction.data.u.tcData.data.kind);
+	CU_ASSERT_EQUAL(tc.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.data.u.st_8_1.functionId, tcAction.data.u.tcData.data.u.st_8_1.functionId);
 
+
+	//PusExpect fails
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_EXPECT_ST19(NULL, 0));
+
+	pus_setTcDataKind(&tc, 1);
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, PUS_EXPECT_ST19(&tc, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, PUS_EXPECT_ST19(&tc, 1));
+
+	pus_setTcSubtype(&tc, 6); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_SUBTYPE, PUS_EXPECT_ST19(&tc, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_SUBTYPE, PUS_EXPECT_ST19(&tc, 1));
+
+	pus_setTcService(&tc, 2); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_SERVICE, PUS_EXPECT_ST19(&tc, 0));
 	pus_clearError();
 
 	//TM[19,2]
@@ -89,9 +91,7 @@ void packets_st19()
 	pus_tc_19_x_setEventId(NULL, 2); CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
 
 
-
-
-	pusPacketReduced_t tcRed;
+	pusPacketReduced_t tcRed, aux;
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_createPusPacketReduced(&tcRed, &tcAction));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReducedSetTcData(&tcRed, &tcAction));
@@ -108,15 +108,74 @@ void packets_st19()
 	pus_setTcDataKind(&tcAction, 23);
 	CU_ASSERT_EQUAL(PUS_ERROR_TC_KIND, pus_packetReducedSetTcData(&tcRed, &tcAction));
 
+	pus_setTcDataKind(&tcAction, pus_TC_DATA_ST_8_1);
+	pus_tc_19_1_getAction(NULL, NULL);
+	pus_tc_19_1_getAction(&aux, &tcAction);
 
+	CU_ASSERT_EQUAL(aux.apid, tcAction.data.u.tcData.data.u.st_19_1.packetReduced.apid);
+	CU_ASSERT_EQUAL(aux.data.u.tcData.header.service, tcAction.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.service);
+	CU_ASSERT_EQUAL(aux.data.u.tcData.header.subtype, tcAction.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.subtype);
+	pus_clearError();
 }
 
 
 void test_st19()
 {
+	pusPacket_t tcAction;
+	pusApidInfo_t apid;
+	pus_initApidInfo(&apid, 5, NULL); CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tcAction, &apid, EXAMPLE_FUNCTION_01));
+
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_eventAction_finalize());
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_eventAction_initialize(NULL));
+	CU_ASSERT_TRUE(pus_eventAction_isInitialized());
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_eventAction_initialize(NULL));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_eventAction_finalize());
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_eventAction_addEventActionDefinition(1, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_eventAction_deleteEventActionDefinition(1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_eventAction_enableEventActionDefinition(1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_eventAction_disableEventActionDefinition(1));
+
+	pusMutex_t mutex;
+	pus_mutexInitOk(&mutex);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR , pus_eventAction_initialize(&mutex));
+
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(true, pus_st19_EventActionDefinitionList[1].deleted);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_eventAction_addEventActionDefinition(1, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_ALREADY_EXIST, pus_eventAction_addEventActionDefinition(1, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_eventAction_addEventActionDefinition(1, NULL));
+
+	CU_ASSERT_EQUAL(false, pus_st19_EventActionDefinitionList[1].definitionStatus);
+	CU_ASSERT_EQUAL(false, pus_st19_EventActionDefinitionList[1].deleted);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_eventAction_enableEventActionDefinition(1));
+	CU_ASSERT_EQUAL(true, pus_st19_EventActionDefinitionList[1].definitionStatus);
+	CU_ASSERT_EQUAL(false, pus_st19_EventActionDefinitionList[1].deleted);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_eventAction_disableEventActionDefinition(1));
+	CU_ASSERT_EQUAL(false, pus_st19_EventActionDefinitionList[1].definitionStatus);
+	CU_ASSERT_EQUAL(false, pus_st19_EventActionDefinitionList[1].deleted);
+
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_eventAction_deleteEventActionDefinition(1));
+	CU_ASSERT_EQUAL(true, pus_st19_EventActionDefinitionList[1].deleted);
+
+
+	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_eventAction_enableEventActionDefinition(1));
+	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_eventAction_disableEventActionDefinition(1));
 
 
 
+	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_eventAction_addEventActionDefinition(50, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_eventAction_deleteEventActionDefinition(50));
+	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_eventAction_enableEventActionDefinition(50));
+	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_eventAction_disableEventActionDefinition(50));
 }
 
 

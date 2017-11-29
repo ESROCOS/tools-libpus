@@ -77,6 +77,8 @@ void pus_tc_19_x_setEventId(pusPacket_t* outTc, pusSt05EventId_t eventId);
 //! Function that set an action to a TC packet
 void pus_tc_19_1_setAction(pusPacket_t* outTc, pusPacketReduced_t* actionR);
 
+void pus_tc_19_1_getAction(pusPacketReduced_t* action, pusPacket_t* tc);
+
 //
 // Parameter checking
 //

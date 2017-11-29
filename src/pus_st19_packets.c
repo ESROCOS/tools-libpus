@@ -125,22 +125,21 @@ pusError_t pus_packetReducedSetTcData(pusPacketReduced_t* outPacket, pusPacket_t
 	switch( inTc->data.u.tcData.data.kind )
 	{
 		case pus_TC_DATA_NONE:
-			return PUS_ERROR_TC_KIND;
+			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 			break;
 		case pus_TC_DATA_ST_8_1:
 			outPacket->data.u.tcData.data.u.st_8_1 = inTc->data.u.tcData.data.u.st_8_1;
-			return PUS_NO_ERROR;
+			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		case pus_TC_DATA_ST_19_1:
-			return PUS_ERROR_TC_KIND;
+			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 			break;
 		case pus_TC_DATA_ST_19_X:
-			return PUS_ERROR_TC_KIND;
+			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 			break;
 		default:
-			return PUS_ERROR_TC_KIND;
+			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 			break;
-
 	}
 
 }
@@ -158,8 +157,11 @@ pusError_t pus_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* i
 	outTcR->data.kind = inTc->data.kind;
 	outTcR->data.u.tcData.header = inTc->data.u.tcData.header;
 
-
-	return pus_packetReducedSetTcData(outTcR, inTc);
+	if ( PUS_NO_ERROR == pus_packetReducedSetTcData(outTcR, inTc) )
+	{
+		outTcR->data.u.tcData.data.kind = inTc->data.u.tcData.data.kind;
+	}
+	return PUS_GET_ERROR();
 }
 
 void pus_tc_19_1_setAction(pusPacket_t* outTc, pusPacketReduced_t* actionR)
@@ -172,6 +174,19 @@ void pus_tc_19_1_setAction(pusPacket_t* outTc, pusPacketReduced_t* actionR)
     else
     {
     	outTc->data.u.tcData.data.u.st_19_1.packetReduced = *actionR;
+    }
+}
+
+void pus_tc_19_1_getAction(pusPacketReduced_t* action, pusPacket_t* tc)
+{
+    if ( NULL == tc)
+    {
+    	PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    	return;
+    }
+    else
+    {
+    	*action = tc->data.u.tcData.data.u.st_19_1.packetReduced;
     }
 }
 
