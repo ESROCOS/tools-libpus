@@ -48,7 +48,7 @@ def bind_header(_route, _file, _ofile):
     
 
 def bind_module(route, _file, _ofile):
-    _ofile.write("\tm.doc() = \"" + _file[:-2] + " binding\"\n")
+    _ofile.write("\tm.doc() = \"" + _file[:-2] + " binding\";\n")
     # bind_class(route, _file, _ofile)
     bind_fun(route, _file, _ofile)
 
