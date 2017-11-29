@@ -1,6 +1,7 @@
 # Source files
 set(SOURCES
 	pus_binding.cpp
+	pus_bindingfunctions.cpp
 ) # Duda he de poner aqui
 
 

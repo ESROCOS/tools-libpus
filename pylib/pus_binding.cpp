@@ -7,8 +7,10 @@
 #include "pus_st08_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
+#include "pus_bindingfunctions.hpp"
 
 namespace py = pybind11;
+
 
 PYBIND11_MODULE(pusbinding, m) {
 	m.doc() = "pus_packet binding";
@@ -49,24 +51,24 @@ PYBIND11_MODULE(pusbinding, m) {
 
 	py::class_<pusPacket_t>(m, "pusPacket_t")
 		.def(py::init<>());
-	m.def("pus_getPacketVersion", &pus_getPacketVersion, "Binding for pus_getPacketVersion");
+	m.def("pus_getPacketVersion", &pus_getPacketVersion_, "Binding for pus_getPacketVersion");
 	m.def("pus_setPacketVersion", &pus_setPacketVersion, "Binding for pus_setPacketVersion");
-	m.def("pus_getPacketType", &pus_getPacketType, "Binding for pus_getPacketType");
+	m.def("pus_getPacketType", &pus_getPacketType_, "Binding for pus_getPacketType");
 	m.def("pus_setPacketType", &pus_setPacketType, "Binding for pus_setPacketType");
 	m.def("pus_getApid", &pus_getApid, "Binding for pus_getApid");
 	m.def("pus_setApid", &pus_setApid, "Binding for pus_setApid");
 	m.def("pus_getSecondaryHeaderFlag", &pus_getSecondaryHeaderFlag, "Binding for pus_getSecondaryHeaderFlag");
 	m.def("pus_setSecondaryHeaderFlag", &pus_setSecondaryHeaderFlag, "Binding for pus_setSecondaryHeaderFlag");
-	m.def("pus_getSequenceFlags", &pus_getSequenceFlags, "Binding for pus_getSequenceFlags");
+	m.def("pus_getSequenceFlags", &pus_getSequenceFlags_, "Binding for pus_getSequenceFlags");
 	m.def("pus_setSequenceFlags", &pus_setSequenceFlags, "Binding for pus_setSequenceFlags");
 	m.def("pus_getSequenceCount", &pus_getSequenceCount, "Binding for pus_getSequenceCount");
 	m.def("pus_setSequenceCount", &pus_setSequenceCount, "Binding for pus_setSequenceCount");
 	m.def("pus_getPacketDataLength", &pus_getPacketDataLength, "Binding for pus_getPacketDataLength");
 	m.def("pus_setPacketDataLength", &pus_setPacketDataLength, "Binding for pus_setPacketDataLength");
 	m.def("pus_setPacketDataNone", &pus_setPacketDataNone, "Binding for pus_setPacketDataNone");
-	m.def("pus_getTmPusVersion", &pus_getTmPusVersion, "Binding for pus_getTmPusVersion");
+	m.def("pus_getTmPusVersion", &pus_getTmPusVersion_, "Binding for pus_getTmPusVersion");
 	m.def("pus_setTmPusVersion", &pus_setTmPusVersion, "Binding for pus_setTmPusVersion");
-	m.def("pus_getTcPusVersion", &pus_getTcPusVersion, "Binding for pus_getTcPusVersion");
+	m.def("pus_getTcPusVersion", &pus_getTcPusVersion_, "Binding for pus_getTcPusVersion");
 	m.def("pus_setTcPusVersion", &pus_setTcPusVersion, "Binding for pus_setTcPusVersion");
 	m.def("pus_getTmService", &pus_getTmService, "Binding for pus_getTmService");
 	m.def("pus_setTmService", &pus_setTmService, "Binding for pus_setTmService");
@@ -84,7 +86,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_setTmDestination", &pus_setTmDestination, "Binding for pus_setTmDestination");
 	m.def("pus_getTcSource", &pus_getTcSource, "Binding for pus_getTcSource");
 	m.def("pus_setTcSource", &pus_setTcSource, "Binding for pus_setTcSource");
-	m.def("pus_getTmPacketTime", &pus_getTmPacketTime, "Binding for pus_getTmPacketTime");
+	m.def("pus_getTmPacketTime", &pus_getTmPacketTime_, "Binding for pus_getTmPacketTime");
 	m.def("pus_setTmPacketTime", &pus_setTmPacketTime, "Binding for pus_setTmPacketTime");
 	m.def("pus_setTmPacketTimeNow", &pus_setTmPacketTimeNow, "Binding for pus_setTmPacketTimeNow");
 	m.def("pus_getTcAckFlagAcceptance", &pus_getTcAckFlagAcceptance, "Binding for pus_getTcAckFlagAcceptance");
@@ -126,6 +128,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	py::class_<pusApidInfo_t>(m, "pusApidInfo_t")
 		.def(py::init<>());
 	m.def("pus_initApidInfo", &pus_initApidInfo, "Binding for pus_initApidInfo");
+	m.def("pus_initApidInfo_", &pus_initApidInfo_, "Binding for pus_initApidInfo with null in mutex");
 	m.def("pus_getInfoApid", &pus_getInfoApid, "Binding for pus_getInfoApid");
 	m.def("pus_getNextPacketCount", &pus_getNextPacketCount, "Binding for pus_getNextPacketCount");
 
@@ -230,4 +233,3 @@ PYBIND11_MODULE(pusbinding, m) {
 //	m.def("pus_packetReducedSetTcData", &pus_packetReducedSetTcData, "Binding for pus_packetReducedSetTcData");
 
 }
-
