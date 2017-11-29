@@ -37,16 +37,8 @@ struct timespec pus_getTmPacketTime_(const pusPacket_t* packet)
 	pusTime_t time;
 	struct timespec ts;
 	pus_getTmPacketTime(&time, packet);
-	if (NULL == time)
-	{
-		ts.tv_sec = 0;
-		ts.tv_nsec = 0;
-	}
-	else
-	{
-		ts.tv_sec = (time_t) time.tv_sec;
-		ts.tv_nsec = time.tv_nsec;
-	}
+	ts.tv_sec = (time_t) time.tv_sec;
+	ts.tv_nsec = time.tv_nsec;
 
 	return ts;
 }
