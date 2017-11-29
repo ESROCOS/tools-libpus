@@ -8,19 +8,18 @@
 PUS-ST19 DEFINITIONS ::=
 BEGIN
 
- -- IMPORTS 
- -- PusUInt32, PusUInt64 FROM PUS-NbitIntegers
- -- PusSt05EventId FROM PUS-ST05
- -- ;
+  IMPORTS 
+  PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+  PusSt05EventId FROM PUS-ST05
+  ;
     
     
-    -- Data for TM[19,X], event action
- -- PusTC-19-X-Data  ::= SEQUENCE
- -- {
+    -- Data for TC[19,X] (except for tC[19,1], event action
+  PusTC-19-X-Data  ::= SEQUENCE
+  {
  -- 	-- Just 1 action-event per TC
  -- 	-- No Aplication Process ID in TC packet
- --   	eventActionDefinitionId PusSt05EventId,
- --  	packetReduced PusPacketReduced
- --   }
+    	eventActionDefinitionId PusSt05EventId
+  }
     
 END

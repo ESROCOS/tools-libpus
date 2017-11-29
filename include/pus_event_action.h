@@ -16,23 +16,40 @@ extern "C" {
 
 typedef struct
 {
-	pusSt05EventId_t eventID;
+	//pusSt05EventId_t eventID; //Index in array will be eventID
 	bool definitionStatus;
 	pusPacket_t tcAction; //action TC? or reduced
 	bool deleted;
 }pusSt19EventActionDefinition_t;
 
-//from config TODO
+//! List to manage the event-action definitions status
 extern pusSt19EventActionDefinition_t pus_st19_EventActionDefinitionList[];
+
+//! Maximun size of the definitions list
 extern const size_t pus_st19_EventActionDefinitionListMaximum;
 
+//! Function that configure the basic parameters for the service
 extern pusError_t pus_eventAction_configure();
 
+//! Function that initialize the service
 pusError_t pus_eventAction_initialize(pusMutex_t* mutex);
 
+//!
 bool pus_eventAction_isInitialized();
 
 
+
+
+pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pusPacket_t* tcAction);
+
+pusError_t pus_eventAction_deleteEventActionDefinition(pusSt05EventId_t eventID);
+
+pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID);
+
+pusError_t pus_eventAction_disableEventActionDefinition(pusSt05EventId_t eventID);
+
+//! Function that check if an event-action definition is in the list
+bool pus_eventAction_checkIfDefinitionExist(pusSt05EventId_t eventID, const pusPacket_t* tcAction);
 
 
 

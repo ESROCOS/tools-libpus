@@ -36,31 +36,41 @@ pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusAp
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId, pusPacket_t tcAction);
 
 //! Build an acceptance report for a TC
 /*! Builds a TC[19,2] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId);
 
 //! Build an acceptance report for a TC
 /*! Builds a TC[19,4] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId);
 
 //! Build an acceptance report for a TC
 /*! Builds a TC[19,5] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId);
 
 
+//! Create a pusPacketReduced
+/*! Set parameters to a pusPacketReduced from a pusPacket
+ *  \param[out] outTcR PacketReduced that is going to be created
+ *  \param[in] inTc Packet to get parameters for PacketReduced.
+ */
 pusError_t pus_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* inTc);
+
+
+//! Function that set the Tc.data field from a pusPacket_t to a pusPacketReduced_t
+pusError_t pus_packetReducedSetTcData(pusPacketReduced_t* outPacket, pusPacket_t* inTc);
+
 
 
 #ifdef  __cplusplus

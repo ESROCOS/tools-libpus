@@ -17,7 +17,7 @@ BEGIN
     PusTM-3-25-Data FROM PUS-ST03
     PusTM-5-X-Data FROM PUS-ST05
   	PusTC-8-1-Data FROM PUS-ST08
-  	--PusTC-19-X-Data FROM PUS-ST19
+  	PusTC-19-X-Data FROM PUS-ST19
   	
   	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
   	;
@@ -58,7 +58,7 @@ BEGIN
     
     
     -- Data for TM[19,X], event action
-    PusTC-19-X-Data  ::= SEQUENCE
+    PusTC-19-1-Data  ::= SEQUENCE
     {
     	-- Just 1 action-event per TC
     	-- No Aplication Process ID in TC packet
@@ -72,12 +72,14 @@ BEGIN
     PusTcApplicationData ::= CHOICE
     { -- The same order as the reduced
     	st-8-1 PusTC-8-1-Data,
-    	st-19-x PusTC-19-X-Data
+    	st-19-1 PusTC-19-1-Data,
+    	st-19-X PusTC-19-X-Data
     }
     
     PusTcApplicationDataReduced ::= CHOICE
     { 
-    	st-8-1 PusTC-8-1-Data
+    	st-8-1 PusTC-8-1-Data,
+    	st-19-X PusTC-19-X-Data
     }
     
     -- TM/TC header + data
