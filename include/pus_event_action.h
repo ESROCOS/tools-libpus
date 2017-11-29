@@ -34,6 +34,8 @@ extern pusError_t pus_eventAction_configure();
 //! Function that initialize the service
 pusError_t pus_eventAction_initialize(pusMutex_t* mutex);
 
+pusError_t pus_eventAction_finalize();
+
 //!
 bool pus_eventAction_isInitialized();
 

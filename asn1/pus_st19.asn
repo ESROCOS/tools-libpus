@@ -14,12 +14,12 @@ BEGIN
   ;
     
     
-    -- Data for TC[19,X] (except for tC[19,1], event action
-  PusTC-19-X-Data  ::= SEQUENCE
+    -- Data for TC[19,X] (except for TC[19,1]), event action
+  PusTC-19-X-Data ::= SEQUENCE
   {
  -- 	-- Just 1 action-event per TC
  -- 	-- No Aplication Process ID in TC packet
-    	eventActionDefinitionId PusSt05EventId
+    	eventId PusSt05EventId
   }
     
 END
