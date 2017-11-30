@@ -161,7 +161,7 @@ void test_buffer()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR , pus_events_initialize(NULL));
 	CU_ASSERT_TRUE(pus_events_isInitialized());
 
-	CU_ASSERT_EQUAL(0, pus_st05_getEventBufferCounter());
+	CU_ASSERT_EQUAL(1, pus_st05_getEventBufferCounter());
 	CU_ASSERT_EQUAL(0, pus_st05_getEventBufferIn());
 
 	pusSt05Event_t event;
@@ -182,9 +182,9 @@ void test_buffer()
 
 
 	//some insert
-	for(size_t i = 0; i < 20; i++)
+	for(size_t i = 0; i < 19; i++)
 	{
-		CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st05_putBufferEvent(&event));
+		CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st05_pushBufferEvent(&event));
 	}
 	pus_clearError();
 
@@ -208,7 +208,7 @@ void test_buffer()
 
 	//ERROR NULL PTR
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st05_getNextBufferEvent(NULL, NULL));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st05_putBufferEvent(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_st05_pushBufferEvent(NULL));
 
 	//getters/setters
 	pus_st05_setEventBufferIn(3);

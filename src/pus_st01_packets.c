@@ -3,6 +3,13 @@
 
 #include "pus_st01_packets.h"
 #include "pus_packet.h"
+#include "pus_packet_queues.h"
+
+//! PacketQueue for TC packets
+extern pusPacketQueue_t pus_packetQueue_tc;
+
+//! PacketQueue for TM packets
+extern pusPacketQueue_t pus_packetQueue_tm;
 
 
 //
@@ -483,6 +490,83 @@ pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApidI
 			return PUS_GET_ERROR();
 		}
 	}
+}
+
+
+//push to queue
+pusError_t pus_st01_pushTmAceptanceReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
+{
+	if(pus_getTcAckFlagAcceptance(tcRead))
+	{
+		pusPacket_t tmAcceptance;
+		if( isCorrect )
+		{
+			pus_tm_1_1_createAcceptanceReportSuccess(&tmAcceptance, apid, tcRead);
+		}
+		else
+		{
+			pus_tm_1_2_createAcceptanceReportFailure(&tmAcceptance, apid, tcRead, error, NULL); //TODO error info Null
+		}
+		return pus_packetQueues_push(&tmAcceptance, &pus_packetQueue_tm);
+	}
+	return PUS_NO_ERROR;
+}
+
+
+pusError_t pus_st01_pushTmStartReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
+{
+	if(pus_getTcAckFlagStart(tcRead))
+	{
+		pusPacket_t tmCompletion;
+		if( isCorrect )
+		{
+			pus_tm_1_3_createStartReportSuccess(&tmCompletion, apid, tcRead);
+		}
+		else
+		{
+			pus_tm_1_4_createStartReportFailure(&tmCompletion, apid, tcRead, error, NULL);
+		}
+		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
+	}
+	return PUS_NO_ERROR;
+}
+
+
+pusError_t pus_st01_pushTmProgressReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error, pusStepId_t step)
+{
+	if(pus_getTcAckFlagProgress(tcRead))
+	{
+		pusPacket_t tmCompletion;
+		if( isCorrect )
+		{
+			pus_tm_1_5_createProgressReportSuccess(&tmCompletion, apid, tcRead, step);
+		}
+		else
+		{
+			pus_tm_1_6_createProgressReportFailure(&tmCompletion, apid, tcRead, step, error, NULL);
+		}
+		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
+	}
+	return PUS_NO_ERROR;
+}
+
+
+pusError_t pus_st01_pushTmCompletionReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
+{
+	if(pus_getTcAckFlagCompletion(tcRead))
+	{
+		pusPacket_t tmCompletion;
+		if( isCorrect )
+		{
+			pus_tm_1_7_createCompletionReportSuccess(&tmCompletion, apid, tcRead);
+		}
+		else
+		{
+			pus_tm_1_8_createCompletionReportFailure(&tmCompletion, apid, tcRead, error, NULL);
+		}
+		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
+	}
+	return PUS_NO_ERROR;
 }
 
 

@@ -65,7 +65,7 @@ pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, p
  *  \param[out] outTcR PacketReduced that is going to be created
  *  \param[in] inTc Packet to get parameters for PacketReduced.
  */
-pusError_t pus_tc_19_X_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* inTc);
+pusError_t pus_tc_19_X_createPacketReducedFromPacket(pusPacketReduced_t* outTcR, pusPacket_t* inTc);
 
 
 //! Function that set the Tc.data field from a pusPacket_t to a pusPacketReduced_t
@@ -75,12 +75,15 @@ pusError_t pus_tc_19_X_setPacketReducedTcData(pusPacketReduced_t* outPacket, pus
 pusError_t pus_tc_19_X_setPacketTcData(pusPacket_t* outTc, pusPacketReduced_t* inTcR);
 
 //TODO comment
-pusError_t pus_tc_19_X_getPacketFromPacketReduced(pusPacket_t* outTc, pusPacketReduced_t* inTcR);
+pusError_t pus_tc_19_X_createPacketFromPacketReduced(pusPacket_t* outTc, pusPacketReduced_t* inTcR);
 
 
 
-//! Function that set the eventId to the data field of tc[19,X]
-void pus_tc_19_x_setEventId(pusPacket_t* outTc, pusSt05EventId_t eventId);
+//! Function that set the eventId to the data field of tC[19,X]
+pusError_t pus_tc_19_X_setEventId(pusPacket_t* packet, pusSt05EventId_t eventId);
+
+//! Function that return the eventId from the data field of tC[19,X]
+pusError_t pus_tc_19_X_getEventId(pusSt05EventId_t* eventID, pusPacket_t* packet);
 
 //! Function that set an action to a TC packet
 void pus_tc_19_1_setAction(pusPacket_t* outTc, pusPacketReduced_t* actionR);

@@ -106,12 +106,12 @@ bool pus_evens_isInInfoList(pusSt05Event_t * event);
 // Buffer control
 //
 
-//! Function to put an event into the buffer
+//! Function to push an event into the buffer
 /*! Insert an event into the buffer, preparing the pointer and counter for the next insert.
  * \param[in] event Event that is going to be inserted into the buffer
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event);
+pusError_t pus_st05_pushBufferEvent(pusSt05Event_t * event);
 
 
 //! Function that return the next event in buffer.

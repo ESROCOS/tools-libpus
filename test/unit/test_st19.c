@@ -31,6 +31,18 @@ pusError_t example_function()
 	return PUS_NO_ERROR;
 }
 
+pusError_t example_function2()
+{
+	printf("Hello from function2\n");
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function3()
+{
+	printf("Hello from function3\n");
+	return PUS_NO_ERROR;
+}
+
 void packets_st19()
 {
 	pusPacket_t tc, tcAction;
@@ -87,11 +99,11 @@ void packets_st19()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_5_createDisableEventActionDefinitions(NULL, &apid, 1));
 
 	pus_tc_19_1_setAction(NULL, NULL); CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
-	pus_tc_19_x_setEventId(NULL, 2); CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	pus_tc_19_X_setEventId(NULL, 2); CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
 
 
 	pusPacketReduced_t tcRed, aux;
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_X_createPusPacketReduced(&tcRed, &tcAction));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_X_createPacketReducedFromPacket(&tcRed, &tcAction));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_X_setPacketReducedTcData(&tcRed, &tcAction));
 

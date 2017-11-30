@@ -50,10 +50,10 @@ pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc
 
 	pusPacketReduced_t tcActionR;
 
-	pus_tc_19_X_createPusPacketReduced(&tcActionR, tcAction);
+	pus_tc_19_X_createPacketReducedFromPacket(&tcActionR, tcAction);
 
 	pus_tc_19_1_setAction(outTc, &tcActionR);
-	pus_tc_19_x_setEventId(outTc, eventId);
+	pus_tc_19_X_setEventId(outTc, eventId);
 
 	return PUS_NO_ERROR;
 }
@@ -74,7 +74,7 @@ pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* ou
 	pus_setTcSubtype(outTc, pus_TC_19_2_deleteEventActionDefinitions);
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_19_X);
 
-	pus_tc_19_x_setEventId(outTc, eventId);
+	pus_tc_19_X_setEventId(outTc, eventId);
 
 	return PUS_NO_ERROR;
 }
@@ -94,7 +94,7 @@ pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pu
 	pus_setTcSubtype(outTc, pus_TC_19_4_enableEventActionDefinitions);
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_19_X);
 
-	pus_tc_19_x_setEventId(outTc, eventId);
+	pus_tc_19_X_setEventId(outTc, eventId);
 
 	return PUS_NO_ERROR;
 }
@@ -114,7 +114,7 @@ pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, p
 	pus_setTcSubtype(outTc, pus_TC_19_5_disableEventActionDefinitions);
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_19_X);
 
-	pus_tc_19_x_setEventId(outTc, eventId);
+	pus_tc_19_X_setEventId(outTc, eventId);
 
 	return PUS_NO_ERROR;
 }
@@ -142,7 +142,7 @@ pusError_t pus_tc_19_X_setPacketReducedTcData(pusPacketReduced_t* outPacket, pus
 	}
 }
 
-pusError_t pus_tc_19_X_createPusPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* inTc)
+pusError_t pus_tc_19_X_createPacketReducedFromPacket(pusPacketReduced_t* outTcR, pusPacket_t* inTc)
 {
 	outTcR->apid = inTc->apid;
 	outTcR->dataLength = inTc->dataLength;
@@ -182,7 +182,7 @@ pusError_t pus_tc_19_X_setPacketTcData(pusPacket_t* outTc, pusPacketReduced_t* i
 	}
 }
 
-pusError_t pus_tc_19_X_getPacketFromPacketReduced(pusPacket_t* outTc, pusPacketReduced_t* inTcR)
+pusError_t pus_tc_19_X_createPacketFromPacketReduced(pusPacket_t* outTc, pusPacketReduced_t* inTcR)
 {
 	outTc->apid = inTcR->apid;
 	outTc->dataLength = inTcR->dataLength;
@@ -228,22 +228,40 @@ void pus_tc_19_1_getAction(pusPacketReduced_t* action, pusPacket_t* tc)
     }
 }
 
-void pus_tc_19_x_setEventId(pusPacket_t* outTc, pusSt05EventId_t eventId)
+pusError_t pus_tc_19_X_setEventId(pusPacket_t* packet, pusSt05EventId_t eventId)
 {
-	if ( NULL == outTc )
+	if ( NULL == packet )
 	{
-		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
-	if( pus_getTcDataKind(outTc) == pus_TC_DATA_ST_19_1)
+	if( pus_getTcDataKind(packet) == pus_TC_DATA_ST_19_1)
 	{
-		outTc->data.u.tcData.data.u.st_19_1.eventId = eventId;
+		packet->data.u.tcData.data.u.st_19_1.eventId = eventId;
 	}
-	else if( pus_TC_DATA_NONE != pus_getTcDataKind(outTc) )
+	else if( pus_TC_DATA_NONE != pus_getTcDataKind(packet) )
 	{
-		outTc->data.u.tcData.data.u.st_19_X.eventId = eventId;
+		packet->data.u.tcData.data.u.st_19_X.eventId = eventId;
 	}
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_19_X_getEventId(pusSt05EventId_t* eventID, pusPacket_t* packet)
+{
+	if ( NULL == packet )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+
+	if( pus_getTcDataKind(packet) == pus_TC_DATA_ST_19_1)
+	{
+		*eventID = packet->data.u.tcData.data.u.st_19_1.eventId;
+	}
+	else if( pus_TC_DATA_NONE != pus_getTcDataKind(packet) )
+	{
+		*eventID = packet->data.u.tcData.data.u.st_19_X.eventId;
+	}
+	return PUS_NO_ERROR;
 }
 
 //

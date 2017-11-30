@@ -11,10 +11,12 @@ int main()
 	pusMutex_t mutexEvents;
 	pusMutex_t mutexHk;
 	pusMutex_t mutexSt08;
+	pusMutex_t mutexEventAction;
 	pus_mutexInitOk(&mutexApid);
 	pus_mutexInitOk(&mutexEvents);
 	pus_mutexInitOk(&mutexHk);
 	pus_mutexInitOk(&mutexSt08);
+	pus_mutexInitOk(&mutexEventAction);
 
 
 	pusApidInfo_t apid;
@@ -24,6 +26,7 @@ int main()
 	pus_events_initialize(&mutexEvents);
 	pus_hk_initialize(&mutexHk);
 	pus_st08_initialize(&mutexSt08);
+	pus_eventAction_initialize(&mutexEventAction);
 
 	//TC creation + push on queue
 	pusPacket_t tc;
@@ -36,23 +39,38 @@ int main()
 	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
 	printf("TC_8_1 pushed in TCqueue.\n");
 
+
+
 	pusSt05Event_t eventInfo, eventLow, eventMid, eventHi;
 	pus_tm_5_X_setEventId(&eventInfo, EVENT_INFO_01);
 	pus_tm_5_X_setEventAuxData1(&eventInfo.data, 10);
 	pus_tm_5_X_setEventAuxData2(&eventInfo.data, 20);
+	pus_st05_pushBufferEvent(&eventInfo);
 
 	pus_tm_5_X_setEventId(&eventLow, EVENT_LOW_02);
 	pus_tm_5_X_setEventAuxData1(&eventLow.data, 10);
 	pus_tm_5_X_setEventAuxData2(&eventLow.data, 20);
+	pus_st05_pushBufferEvent(&eventLow);
 
 	pus_tm_5_X_setEventId(&eventMid, EVENT_MEDIUM_03);
 	pus_tm_5_X_setEventAuxData1(&eventMid.data, 10);
 	pus_tm_5_X_setEventAuxData2(&eventMid.data, 20);
+	pus_st05_pushBufferEvent(&eventHi);
 
 	pus_tm_5_X_setEventId(&eventHi, EVENT_HIGH_04);
 	pus_tm_5_X_setEventAuxData1(&eventHi.data, 10);
 	pus_tm_5_X_setEventAuxData2(&eventHi.data, 20);
+	pus_st05_pushBufferEvent(&eventHi);
 
+	pusPacket_t tcAction;
+	pus_tc_8_1_createPerformFuctionRequest(&tcAction, &apid, EXAMPLE_FUNCTION_02);
+	pus_tc_19_1_createAddEventActionDefinitionsRequest(&tc, &apid, eventInfo.eventId, &tcAction);
+	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
+	printf("TC_19_1 pushed in TCqueue.\n");
+
+	pus_tc_19_4_createEnableEventActionDefinitions(&tc, &apid, eventInfo.eventId);
+	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
+	printf("TC_19_4 pushed in TCqueue.\n");
 
 	//Event TM packets to TMqueue
 	pusPacket_t tm;
@@ -74,75 +92,95 @@ int main()
 	printf("TM_5_4 pushed in TMqueue.\n");
 
 
+
+
 	//TC read from queue
 	pusPacket_t tcRead;
-	while ( PUS_NO_ERROR == pus_packetQueues_pop(&tcRead, &pus_packetQueue_tc) )
-	{
-		switch(pus_getTcService(&tcRead))
-		{
-			case 0:
-				printf("Packet in TCqueue which is not a TCpacket.\n");
-				break;
-
-			case 8:
-				printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
-
-				pus_st08_processTcPacket(&tcRead, &apid);
-
-				break;
-
-			case 17:
-				printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
-
-				pus_st17_processTcPacket(&tcRead, &apid);
-
-				break;
-
-			default:
-				printf("Exception.\n");
-				break;
-		}
-	}
-
-
-
-
 	//TM read from queue;
 	pusPacket_t tmRead;
-	while ( PUS_NO_ERROR == pus_packetQueues_pop(&tmRead, &pus_packetQueue_tm) )
+
+	int noTc = 0;
+	int noTm = 0;
+
+	while (noTc<2 || noTm<2)
 	{
-		//printf("pus_getTcService(&tmRead): %d", pus_getTmService(&tmRead))
-		switch(pus_getTmService(&tmRead))
+		if ( PUS_NO_ERROR == pus_packetQueues_pop(&tcRead, &pus_packetQueue_tc) )
 		{
-			case 0:
-				printf("Packet in TMqueue which is not a TMpacket.\n");
-				break;
+			noTc = 0;
 
-			case 1:
-				printf("TM%llu_%llu received.\n", pus_getTmService(&tmRead), pus_getTmSubtype(&tmRead));
+			switch(pus_getTcService(&tcRead))
+			{
+				case 0:
+					printf("Packet in TCqueue which is not a TCpacket.\n");
+					break;
 
-				break;
+				case 8:
+					printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
 
-			case 3:
-				printf("TM%llu_%llu received.\n", pus_getTmService(&tmRead), pus_getTmSubtype(&tmRead));
+					pus_st08_processTcPacket(&tcRead, &apid);
 
-				break;
+					break;
 
-			case 5:
-				printf("TM%llu_%llu received.\n", pus_getTmService(&tmRead), pus_getTmSubtype(&tmRead));
+				case 17:
+					printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
 
-				break;
+					pus_st17_processTcPacket(&tcRead, &apid);
 
-			case 17:
-				printf("TM%llu_%llu received.\n", pus_getTmService(&tmRead), pus_getTmSubtype(&tmRead));
+					break;
+				case 19:
+					printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
+					pus_st19_processEventActionPacket(&tcRead, &apid);
+					break;
+				default:
+					printf("Exception TC service.\n");
+					break;
+			}
+		}else{
+			noTc++;
+		}
 
-				break;
 
-			default:
-				printf("Exception.\n");
-				break;
+
+		if ( PUS_NO_ERROR == pus_packetQueues_pop(&tmRead, &pus_packetQueue_tm) )
+		{
+			noTm = 0;
+			//printf("pus_getTcService(&tmRead): %d", pus_getTmService(&tmRead))
+			switch(pus_getTmService(&tmRead))
+			{
+				case 0:
+					printf("Packet in TMqueue which is not a TMpacket.\n");
+					break;
+
+				case 1:
+					printf("TM%llu_%llu received.\n", pus_getTmService(&tmRead), pus_getTmSubtype(&tmRead));
+
+					break;
+
+				case 3:
+					printf("TM%llu_%llu received.\n", pus_getTmService(&tmRead), pus_getTmSubtype(&tmRead));
+
+					break;
+
+				case 5:
+					printf("TM%llu_%llu received.\n", pus_getTmService(&tmRead), pus_getTmSubtype(&tmRead));
+
+					break;
+
+				case 17:
+					printf("TM%llu_%llu received.\n", pus_getTmService(&tmRead), pus_getTmSubtype(&tmRead));
+
+					break;
+
+				default:
+					printf("Exception.\n");
+					break;
+			}
+		}
+		else{
+			noTm++;
 		}
 	}
+
 
 
 
@@ -169,9 +207,22 @@ pusError_t example_function() //TODO crear un .h para las funciones en ...¿?
 	return PUS_NO_ERROR;
 }
 
+pusError_t example_function2()
+{
+	printf("Hello from function2\n");
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function3()
+{
+	printf("Hello from function3\n");
+	return PUS_NO_ERROR;
+}
+
 pusError_t pus_st08_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 {
 	bool isST08TcFlag = false;
+	bool completion_flag = true;
 	pusError_t errorExpect;
 
 	if(PUS_NO_ERROR == (errorExpect = PUS_EXPECT_ST08(tcRead, pus_TC_8_1_performFunction)) )
@@ -179,7 +230,7 @@ pusError_t pus_st08_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 		isST08TcFlag = true;
 	}
 
-	pus_pushTmAceptanceReportIfNeeded(tcRead, apid, isST08TcFlag, errorExpect);
+	pus_st01_pushTmAceptanceReportIfNeeded(tcRead, apid, isST08TcFlag, errorExpect);
 
 	if( isST08TcFlag )
 	{
@@ -193,13 +244,15 @@ pusError_t pus_st08_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 			}
 			else
 			{
-				pus_pushTmCompletionReportIfNeeded(tcRead, apid, isST08TcFlag, PUS_ERROR_UNEXPECTED_FUNCTION_ID);
+				errorExpect = PUS_ERROR_UNEXPECTED_FUNCTION_ID;
+				completion_flag = false;
+				PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_FUNCTION_ID);
 			}
 
 		}
 		else
 		{
-			printf("ST08 not initialized\n");
+			PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 		}
 
 	}
@@ -208,7 +261,7 @@ pusError_t pus_st08_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 		PUS_SET_ERROR(PUS_ERROR_TC_SERVICE);
 	}
 
-	pus_pushTmCompletionReportIfNeeded(tcRead, apid, isST08TcFlag, errorExpect);
+	pus_st01_pushTmCompletionReportIfNeeded(tcRead, apid, completion_flag, errorExpect);
 
 	return PUS_GET_ERROR();
 }
@@ -223,7 +276,7 @@ pusError_t pus_st17_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 		isST17TcFlag = true;
 	}
 
-	pus_pushTmAceptanceReportIfNeeded(tcRead, apid, isST17TcFlag, errorExpect);
+	pus_st01_pushTmAceptanceReportIfNeeded(tcRead, apid, isST17TcFlag, errorExpect);
 
 	if( isST17TcFlag )
 	{
@@ -237,84 +290,106 @@ pusError_t pus_st17_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 		return PUS_ERROR_TC_SERVICE;
 	}
 
-	pus_pushTmCompletionReportIfNeeded(tcRead, apid, isST17TcFlag, errorExpect);
+	pus_st01_pushTmCompletionReportIfNeeded(tcRead, apid, isST17TcFlag, errorExpect);
 
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_pushTmAceptanceReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
+
+uint64_t actualSt19Counter = 0;
+pusError_t pus_st19_processEventActionService()
 {
-	if(pus_getTcAckFlagAcceptance(tcRead))
+	if( pus_eventAction_isInitialized() )
 	{
-		pusPacket_t tmAcceptance;
-		if( isCorrect )
+		pusSt05Event_t event;
+		if ( PUS_NO_ERROR ==  pus_st05_getNextBufferEvent(&event, &actualSt19Counter) )
 		{
-			pus_tm_1_1_createAcceptanceReportSuccess(&tmAcceptance, apid, tcRead);
+			if(pus_eventAction_isEventActionEnabled(event.eventId))
+			{
+				pusPacket_t tcAction;
+				pus_eventAction_getAction(&tcAction, event.eventId);
+				pus_packetQueues_push(&tcAction, &pus_packetQueue_tc);
+			}
 		}
-		else
-		{
-			pus_tm_1_2_createAcceptanceReportFailure(&tmAcceptance, apid, tcRead, error, NULL); //TODO error info Null
-		}
-		return pus_packetQueues_push(&tmAcceptance, &pus_packetQueue_tm);
+
+		return PUS_NO_ERROR;
 	}
-	return PUS_NO_ERROR;
+	else
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+
+
 }
 
-
-pusError_t pus_pushTmStartReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
+pusError_t pus_st19_processEventActionPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 {
-	if(pus_getTcAckFlagStart(tcRead))
+	bool isST19TcFlag = false;
+	bool completion_flag = false;
+	pusError_t errorExpect;
+
+	if(PUS_NO_ERROR == (errorExpect = PUS_EXPECT_ST19(tcRead, pusSubtype_NONE)) )
 	{
-		pusPacket_t tmCompletion;
-		if( isCorrect )
+		isST19TcFlag = true;
+	}
+
+	pus_st01_pushTmAceptanceReportIfNeeded(tcRead, apid, isST19TcFlag, errorExpect);
+
+	if( isST19TcFlag )
+	{
+		if( pus_eventAction_isInitialized() )
 		{
-			pus_tm_1_3_createStartReportSuccess(&tmCompletion, apid, tcRead);
+			pusSt05EventId_t eventID;
+			if( PUS_NO_ERROR != pus_tc_19_X_getEventId(&eventID, tcRead))
+			{
+				errorExpect = PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+			}
+
+			pusSubservice_t subtype = pus_getTcSubtype(tcRead);
+			if( pus_TC_19_1_addEventActionDefinitions == subtype )
+			{
+				pusPacketReduced_t tcActionR;
+				pusPacket_t tcAction;
+				pus_tc_19_1_getAction(&tcActionR, tcRead);
+				pus_tc_19_X_createPacketFromPacketReduced(&tcAction, &tcActionR);
+				errorExpect =  pus_eventAction_addEventActionDefinition(eventID, &tcAction);
+			}
+			else if( pus_TC_19_2_deleteEventActionDefinitions == subtype )
+			{
+				errorExpect = pus_eventAction_deleteEventActionDefinition(eventID);
+			}
+			else if( pus_TC_19_4_enableEventActionDefinitions == subtype )
+			{
+				errorExpect = pus_eventAction_enableEventActionDefinition(eventID);
+
+				pus_st19_processEventActionService();//TODO no es el sitio
+
+			}
+			else if( pus_TC_19_5_disableEventActionDefinitions == subtype )
+			{
+				errorExpect = pus_eventAction_enableEventActionDefinition(eventID);
+			}
+
 		}
 		else
 		{
-			pus_tm_1_4_createStartReportFailure(&tmCompletion, apid, tcRead, error, NULL);
+			errorExpect = PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 		}
-		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
+
 	}
-	return PUS_NO_ERROR;
-}
-
-
-pusError_t pus_pushTmProgressReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error, pusStepId_t step)
-{
-	if(pus_getTcAckFlagProgress(tcRead))
+	else
 	{
-		pusPacket_t tmCompletion;
-		if( isCorrect )
-		{
-			pus_tm_1_5_createProgressReportSuccess(&tmCompletion, apid, tcRead, step);
-		}
-		else
-		{
-			pus_tm_1_6_createProgressReportFailure(&tmCompletion, apid, tcRead, step, error, NULL);
-		}
-		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
+		errorExpect = PUS_SET_ERROR(PUS_ERROR_TC_SERVICE);
 	}
-	return PUS_NO_ERROR;
-}
 
-
-pusError_t pus_pushTmCompletionReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
-{
-	if(pus_getTcAckFlagCompletion(tcRead))
+	if( PUS_NO_ERROR != errorExpect)
 	{
-		pusPacket_t tmCompletion;
-		if( isCorrect )
-		{
-			pus_tm_1_7_createCompletionReportSuccess(&tmCompletion, apid, tcRead);
-		}
-		else
-		{
-			pus_tm_1_8_createCompletionReportFailure(&tmCompletion, apid, tcRead, error, NULL);
-		}
-		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
+		completion_flag = false;
 	}
-	return PUS_NO_ERROR;
+	pus_st01_pushTmCompletionReportIfNeeded(tcRead, apid, completion_flag, errorExpect);
+
+	return PUS_GET_ERROR();
 }
 
 

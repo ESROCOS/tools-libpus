@@ -58,7 +58,7 @@ pusError_t pus_events_initialize(pusMutex_t* mutex)
 	}
 
 	// Initialize buffer controller
-	pus_st05_eventBufferCounter = 0;
+	pus_st05_eventBufferCounter = 1;
 	pus_st05_eventBufferIn = 0;
 
 	// Initialize buffer with default values
@@ -131,7 +131,7 @@ bool pus_evens_isInInfoList(pusSt05Event_t* event)
 
 
 
-pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)
+pusError_t pus_st05_pushBufferEvent(pusSt05Event_t * event)
 {
 	if( NULL == event )
 	{
@@ -157,7 +157,7 @@ pusError_t pus_st05_putBufferEvent(pusSt05Event_t * event)
 }
 
 
-pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t *next, uint64_t *actualCounter)
+pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t* next, uint64_t* actualCounter)
 {
 	if( NULL == next || NULL == actualCounter )
 	{
