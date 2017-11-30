@@ -1,0 +1,13 @@
+-- ASN.1 definitions for service ST[12] Connection test
+-- (cf. ECSS-E-ST-70-41C sections 6.12, 8.12)
+--
+
+
+--TODO
+
+PUS-ST12 DEFINITIONS ::= 
+BEGIN
+
+	-- TC-12-1/2 PMON-ID 
+    
+END

@@ -11,6 +11,7 @@ set(SOURCES
     pus_st03_packets.c
     pus_st05_packets.c
     pus_st08_packets.c
+    pus_st12_packets.c
     pus_st17_packets.c
     pus_st19_packets.c
     pus_stored_param.c
