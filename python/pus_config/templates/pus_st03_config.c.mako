@@ -25,7 +25,7 @@ tempvars['paramIndex'] = dict()
 //                     -- DO NOT MODIFY --
 
 #include "pus_st03_config.h"
-
+#include <string.h> //memcpy
 
 // ST[03] arrays
 pusSt03ParamInfo_t pus_st03_paramInfo[${tempvars['numParams']}];
@@ -75,4 +75,48 @@ pusError_t pus_hk_configure()
 
     return PUS_NO_ERROR;
 }
+
+//TODO void/type or error
+
+% for param in config['parameters']:
+pusError_t pus_hk_set${param['label']}(${param['type']} value)
+{
+	%if str(param['type']) == str("INT32"):
+	return pus_int32ToParam(&pus_st03_params[${param['label']}], value);
+	%elif str(param['type']) == str("UINT32"):
+	return pus_uint32ToParam(&pus_st03_params[${param['label']}], value);
+	%elif str(param['type']) == str("REAL64"):
+	return pus_real64ToParam(&pus_st03_params[${param['label']}], value);
+	%elif str(param['type']) == str("BYTE"):
+	return pus_byteToParam(&pus_st03_params[${param['label']}], value);
+	%elif str(param['type']) == str("BOOL"):
+	return pus_boolToParam(&pus_st03_params[${param['label']}], value);
+	%else:
+	return PUS_ERROR_NOT_IMPLEMENTED;
+	%endif
+	
+	return PUS_NO_ERROR;
+}
+
+
+pusError_t pus_hk_get${param['label']}(${param['type']}* value)
+{
+	%if str(param['type']) == str("INT32"):
+	return pus_paramToInt32(value, pus_st03_params[${param['label']}]);
+	%elif str(param['type']) == str("UINT32"):
+	return pus_paramToUint32(value, pus_st03_params[${param['label']}]);	
+	%elif str(param['type']) == str("REAL64"):
+	return pus_paramToReal64(value, pus_st03_params[${param['label']}]);	
+	%elif str(param['type']) == str("BYTE"):
+	return pus_paramToByte(value, pus_st03_params[${param['label']}]);	
+	%elif str(param['type']) == str("BOOL"):
+	return pus_paramToBool(value, pus_st03_params[${param['label']}]);	
+	%else:
+	return PUS_ERROR_NOT_IMPLEMENTED;
+	%endif
+	
+	return PUS_NO_ERROR;
+}
+
+% endfor
 

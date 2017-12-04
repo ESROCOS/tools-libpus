@@ -146,6 +146,77 @@ void test_packetQueue()
 }
 
 
+void test_storedParam()
+{
+	/*
+	pusError_t pus_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue);
+	pusError_t pus_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue);
+	pusError_t pus_paramToReal64(double* outValue, pusStoredParam_t paramValue);
+	pusError_t pus_paramToBool(bool* outValue, pusStoredParam_t paramValue);
+	pusError_t pus_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
+
+	pusError_t pus_uint32ToParam(pusStoredParam_t* outParam, uint32_t inValue);
+	pusError_t pus_int32ToParam(pusStoredParam_t* outParam, int32_t inValue);
+	pusError_t pus_real64ToParam(pusStoredParam_t* outParam, double inValue);
+	pusError_t pus_boolToParam(pusStoredParam_t* outParam, bool inValue);
+	pusError_t pus_byteToParam(pusStoredParam_t* outParam, uint8_t inValue);*/
+
+	pusStoredParam_t param;
+	uint32_t valueUint32;
+	int32_t valueInt32;
+	double valueReal64;
+	uint8_t valueByte;
+	bool valueBool;
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToUint32(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToInt32(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToReal64(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToBool(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToByte(NULL, 1));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_uint32ToParam(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_int32ToParam(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_real64ToParam(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_boolToParam(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_byteToParam(NULL, 1));
+
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_uint32ToParam(&param, 12345));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToUint32(&valueUint32, param));
+	CU_ASSERT_EQUAL(12345, valueUint32);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_int32ToParam(&param, 987));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToInt32(&valueInt32, param));
+	CU_ASSERT_EQUAL(987, valueInt32);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_int32ToParam(&param, -6452));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToInt32(&valueInt32, param));
+	CU_ASSERT_EQUAL(-6452, valueInt32);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_real64ToParam(&param, 645.645));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToReal64(&valueReal64, param));
+	CU_ASSERT_EQUAL(645.645, valueReal64);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_real64ToParam(&param, -645.645));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToReal64(&valueReal64, param));
+	CU_ASSERT_EQUAL(-645.645, valueReal64);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_byteToParam(&param, 0x23));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToByte(&valueByte, param));
+	CU_ASSERT_EQUAL(0x23, valueByte);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_boolToParam(&param, true));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToBool(&valueBool, param));
+	CU_ASSERT_EQUAL(true, valueBool);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_boolToParam(&param, false));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToBool(&valueBool, param));
+	CU_ASSERT_EQUAL(false, valueBool);
+
+	pus_clearError();
+}
+
 int main()
 {
     CU_pSuite pSuite = NULL;
@@ -168,6 +239,7 @@ int main()
     if ((NULL == CU_add_test(pSuite, "test_apid", test_apid)) ||
 		(NULL == CU_add_test(pSuite, "test_mutex", test_mutex)) ||
 		(NULL == CU_add_test(pSuite, "test_packetQueue", test_packetQueue)) ||
+		(NULL == CU_add_test(pSuite, "test_storedParam", test_storedParam)) ||
 		0)
     {
       CU_cleanup_registry();

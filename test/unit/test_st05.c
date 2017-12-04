@@ -31,45 +31,45 @@ void test_event()
 	//pusStoredParam_t auxData2 = 2;
 
 	// PUS_ERROR_NULLPTR TEST
-	pus_tm_5_X_setEventId(NULL, 1);
+	pus_events_setEventId(NULL, 1);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
-	CU_ASSERT_EQUAL(pus_EVENT_ID_NONE, pus_tm_5_X_getEventId(NULL));
+	CU_ASSERT_EQUAL(pus_EVENT_ID_NONE, pus_events_getEventId(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
-	pus_tm_5_X_setEventAuxData(NULL, auxData);
+	pus_events_setEventAuxData(NULL, auxData);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
-	pusSt05EventAuxData_t auxDataNoneTest = pus_tm_5_X_getEventAuxData(NULL);
+	pusSt05EventAuxData_t auxDataNoneTest = pus_events_getEventAuxData(NULL);
 	CU_ASSERT_EQUAL(pus_EVENT_AUXDATA_NONE.data1, auxDataNoneTest.data1);
 	CU_ASSERT_EQUAL(pus_EVENT_AUXDATA_NONE.data2, auxDataNoneTest.data2);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
-	pus_tm_5_X_setEventAuxData1(NULL, 1);
+	pus_events_setEventAuxData1(NULL, 1);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
-	CU_ASSERT_EQUAL(pus_EVENT_DATASTORED_NONE, pus_tm_5_X_getEventAuxData1(NULL));
+	CU_ASSERT_EQUAL(pus_EVENT_DATASTORED_NONE, pus_events_getEventAuxData1(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
-	pus_tm_5_X_setEventAuxData2(NULL, 2);
+	pus_events_setEventAuxData2(NULL, 2);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
-	CU_ASSERT_EQUAL(pus_EVENT_DATASTORED_NONE, pus_tm_5_X_getEventAuxData2(NULL));
+	CU_ASSERT_EQUAL(pus_EVENT_DATASTORED_NONE, pus_events_getEventAuxData2(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
 
-	pus_tm_5_X_setEventId(&event, 1);
-	CU_ASSERT_EQUAL(1, pus_tm_5_X_getEventId(&event));
+	pus_events_setEventId(&event, 1);
+	CU_ASSERT_EQUAL(1, pus_events_getEventId(&event));
 
-	pus_tm_5_X_setEventAuxData1(&auxData, auxData1);
-	CU_ASSERT_EQUAL(auxData1, pus_tm_5_X_getEventAuxData1(&auxData));
+	pus_events_setEventAuxData1(&auxData, auxData1);
+	CU_ASSERT_EQUAL(auxData1, pus_events_getEventAuxData1(&auxData));
 
-	pus_tm_5_X_setEventAuxData2(&auxData, 2);
-	CU_ASSERT_EQUAL(2, pus_tm_5_X_getEventAuxData2(&auxData));
+	pus_events_setEventAuxData2(&auxData, 2);
+	CU_ASSERT_EQUAL(2, pus_events_getEventAuxData2(&auxData));
 
-	pus_tm_5_X_setEventAuxData(&event, auxData);
-	CU_ASSERT_EQUAL(auxData.data1, pus_tm_5_X_getEventAuxData(&event).data1);
-	CU_ASSERT_EQUAL(auxData.data2, pus_tm_5_X_getEventAuxData(&event).data2);
+	pus_events_setEventAuxData(&event, auxData);
+	CU_ASSERT_EQUAL(auxData.data1, pus_events_getEventAuxData(&event).data1);
+	CU_ASSERT_EQUAL(auxData.data2, pus_events_getEventAuxData(&event).data2);
 
 
 
@@ -88,9 +88,9 @@ void test_reports()
 
 	pus_initApidInfo(&apid, 5, NULL); CU_ASSERT_FALSE(PUS_IS_ERROR());
 
-	pus_tm_5_X_setEventId(&event, 1); CU_ASSERT_FALSE(PUS_IS_ERROR());
-	pus_tm_5_X_setEventAuxData1(&event.data, 1); CU_ASSERT_FALSE(PUS_IS_ERROR());
-	pus_tm_5_X_setEventAuxData2(&event.data, 2); CU_ASSERT_FALSE(PUS_IS_ERROR());
+	pus_events_setEventId(&event, 1); CU_ASSERT_FALSE(PUS_IS_ERROR());
+	pus_events_setEventAuxData1(&event.data, 1); CU_ASSERT_FALSE(PUS_IS_ERROR());
+	pus_events_setEventAuxData2(&event.data, 2); CU_ASSERT_FALSE(PUS_IS_ERROR());
 
 	//TM[5,1]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_1_createInformativeEventReport(&tm, &apid, &event, 1)); pus_clearError();
@@ -103,9 +103,9 @@ void test_reports()
 	CU_ASSERT_EQUAL(pus_TM_DATA_ST_5_X, pus_getTmDataKind(&tm));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_getTmEventReportData(&tm, &event2));
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventId(&event), pus_tm_5_X_getEventId(&event2));
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data1, pus_tm_5_X_getEventAuxData(&event2).data1);
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data2, pus_tm_5_X_getEventAuxData(&event2).data2);
+	CU_ASSERT_EQUAL(pus_events_getEventId(&event), pus_events_getEventId(&event2));
+	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data1, pus_events_getEventAuxData(&event2).data1);
+	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data2, pus_events_getEventAuxData(&event2).data2);
 
 	//TM[5,2]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_2_createLowSeverityEventReport(&tm, &apid, &event, 2)); pus_clearError();
@@ -118,9 +118,9 @@ void test_reports()
 	CU_ASSERT_EQUAL(pus_TM_DATA_ST_5_X, pus_getTmDataKind(&tm));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_getTmEventReportData(&tm, &event2));
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventId(&event), pus_tm_5_X_getEventId(&event2));
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data1, pus_tm_5_X_getEventAuxData(&event2).data1);
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data2, pus_tm_5_X_getEventAuxData(&event2).data2);
+	CU_ASSERT_EQUAL(pus_events_getEventId(&event), pus_events_getEventId(&event2));
+	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data1, pus_events_getEventAuxData(&event2).data1);
+	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data2, pus_events_getEventAuxData(&event2).data2);
 
 	//TM[5,3]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_3_createMediumSeverityEventReport(&tm, &apid, &event, 3)); pus_clearError();
@@ -133,9 +133,9 @@ void test_reports()
 	CU_ASSERT_EQUAL(pus_TM_DATA_ST_5_X, pus_getTmDataKind(&tm));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_getTmEventReportData(&tm, &event2));
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventId(&event), pus_tm_5_X_getEventId(&event2));
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data1, pus_tm_5_X_getEventAuxData(&event2).data1);
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data2, pus_tm_5_X_getEventAuxData(&event2).data2);
+	CU_ASSERT_EQUAL(pus_events_getEventId(&event), pus_events_getEventId(&event2));
+	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data1, pus_events_getEventAuxData(&event2).data1);
+	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data2, pus_events_getEventAuxData(&event2).data2);
 
 	//TM[5,4]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_4_createHighSeverityEventReport(&tm, &apid, &event, 4)); pus_clearError();
@@ -148,9 +148,9 @@ void test_reports()
 	CU_ASSERT_EQUAL(pus_TM_DATA_ST_5_X, pus_getTmDataKind(&tm));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_getTmEventReportData(&tm, &event2));
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventId(&event), pus_tm_5_X_getEventId(&event2));
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data1, pus_tm_5_X_getEventAuxData(&event2).data1);
-	CU_ASSERT_EQUAL(pus_tm_5_X_getEventAuxData(&event).data2, pus_tm_5_X_getEventAuxData(&event2).data2);
+	CU_ASSERT_EQUAL(pus_events_getEventId(&event), pus_events_getEventId(&event2));
+	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data1, pus_events_getEventAuxData(&event2).data1);
+	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data2, pus_events_getEventAuxData(&event2).data2);
 	pus_clearError();
 }
 
@@ -169,15 +169,15 @@ void test_buffer()
 	event.data.data1 = 1;
 	event.data.data2 = 2;
 
-	CU_ASSERT_EQUAL(false, pus_evens_isInInfoList(NULL));
+	CU_ASSERT_EQUAL(false, pus_events_isInInfoList(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
 
 
-	CU_ASSERT_EQUAL(true, pus_evens_isInInfoList(&event));
+	CU_ASSERT_EQUAL(true, pus_events_isInInfoList(&event));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_GET_ERROR());
 
 	event.eventId = 15;
-	CU_ASSERT_EQUAL(false, pus_evens_isInInfoList(&event));
+	CU_ASSERT_EQUAL(false, pus_events_isInInfoList(&event));
 	CU_ASSERT_EQUAL(PUS_ERROR_EVENT_NOT_FOUND, PUS_GET_ERROR());
 
 

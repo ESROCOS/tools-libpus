@@ -86,28 +86,28 @@ pusError_t pus_tm_5_X_getTmEventReportData(const pusPacket_t* outTm, pusSt05Even
 
 // Getters/Setters pusSt05Event_t
 //! Getter for eventId in event structure
-pusSt05EventId_t pus_tm_5_X_getEventId(const pusSt05Event_t* event);
+pusSt05EventId_t pus_events_getEventId(const pusSt05Event_t* event);
 
 //! Setter for eventId in event structure
-void pus_tm_5_X_setEventId(pusSt05Event_t* event, pusSt05EventId_t eventId);
+void pus_events_setEventId(pusSt05Event_t* event, pusSt05EventId_t eventId);
 
 //! Getter for data in event structure
-pusSt05EventAuxData_t pus_tm_5_X_getEventAuxData(const pusSt05Event_t* event);
+pusSt05EventAuxData_t pus_events_getEventAuxData(const pusSt05Event_t* event);
 
 //! Setter for data in event structure
-void pus_tm_5_X_setEventAuxData(pusSt05Event_t* event, pusSt05EventAuxData_t data);
+void pus_events_setEventAuxData(pusSt05Event_t* event, pusSt05EventAuxData_t data);
 
 //! Getter for data1 in data structure
-pusStoredParam_t pus_tm_5_X_getEventAuxData1(const pusSt05EventAuxData_t* data);
+pusStoredParam_t pus_events_getEventAuxData1(const pusSt05EventAuxData_t* data);
 
 //! Setter for data1 in data structure
-void pus_tm_5_X_setEventAuxData1(pusSt05EventAuxData_t* data, pusStoredParam_t data1);
+void pus_events_setEventAuxData1(pusSt05EventAuxData_t* data, pusStoredParam_t data1);
 
 //! Getter for data2 in data structure
-pusStoredParam_t pus_tm_5_X_getEventAuxData2(const pusSt05EventAuxData_t* data);
+pusStoredParam_t pus_events_getEventAuxData2(const pusSt05EventAuxData_t* data);
 
 //! setter for data2 in data structure
-void pus_tm_5_X_setEventAuxData2(pusSt05EventAuxData_t* data, pusStoredParam_t data2);
+void pus_events_setEventAuxData2(pusSt05EventAuxData_t* data, pusStoredParam_t data2);
 
 
 //! Check that a packet is of a PUS ST[05] kind

@@ -8,6 +8,20 @@
 PUS-ST12 DEFINITIONS ::= 
 BEGIN
 
-	-- TC-12-1/2 PMON-ID 
+	
+	IMPORTS 
+	PusUInt32 FROM PUS-NbitIntegers
+	;
+	
+	 -- PMON identifier
+	PusSt19pmonId ::= PusUInt32
+	    
+	
+	
+	-- Data for TC[19,1] and TC[19,2], 
+	PusTC-12-1-2  ::= SEQUENCE
+	{
+		pmonId PusSt19pmonId
+	}
     
 END

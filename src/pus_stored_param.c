@@ -10,7 +10,7 @@
 // Cast parameter to type
 //
 
-pusError_t pus_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue)
+pusError_t pus_paramToUint32(uint32_t* outValue, pusStoredParam_t paramValue)
 {
 	if (NULL == outValue)
 	{
@@ -91,4 +91,57 @@ pusError_t pus_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue)
 		*outValue = (uint8_t)paramValue;
 		return PUS_NO_ERROR;
 	}
+}
+
+pusError_t pus_uint32ToParam(pusStoredParam_t* outParam, uint32_t inValue)
+{
+	if (NULL == outParam)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+
+	*outParam = (uint64_t)inValue;
+	return PUS_NO_ERROR;
+
+}
+
+pusError_t pus_int32ToParam(pusStoredParam_t* outParam, int32_t inValue)
+{
+	if (NULL == outParam)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	int64_t i64 = (int64_t)inValue;
+	memcpy(outParam, &i64, sizeof(int64_t));
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_real64ToParam(pusStoredParam_t* outParam, double inValue)
+{
+	if (NULL == outParam)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	memcpy(outParam, &inValue, sizeof(double));
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_boolToParam(pusStoredParam_t* outParam, bool inValue)
+{
+	if (NULL == outParam)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	*outParam = (uint64_t)inValue;
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_byteToParam(pusStoredParam_t* outParam, uint8_t inValue)
+{
+	if (NULL == outParam)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	*outParam = (uint64_t)inValue;
+	return PUS_NO_ERROR;
 }

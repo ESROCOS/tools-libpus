@@ -98,7 +98,7 @@ bool pus_events_isInitialized()
 }
 
 
-bool pus_evens_isInInfoList(pusSt05Event_t* event)
+bool pus_events_isInInfoList(pusSt05Event_t* event)
 {
 	if( NULL == event)
 	{

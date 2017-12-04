@@ -29,10 +29,10 @@ typedef enum
 
 
 
-typedef uint64_t pusStoredParam_t;
+typedef unsigned long long int pusStoredParam_t; //TODO ¿?
 
 //! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue);
+pusError_t pus_paramToUint32(uint32_t* outValue, pusStoredParam_t paramValue);
 
 //! Convert a value from the internal parameter format to int32_t
 pusError_t pus_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue);
@@ -45,6 +45,23 @@ pusError_t pus_paramToBool(bool* outValue, pusStoredParam_t paramValue);
 
 //! Convert a value from the internal parameter format to uint32_t
 pusError_t pus_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
+
+//! Convert a uint32_t value into an internal parameter format
+pusError_t pus_uint32ToParam(pusStoredParam_t* outParam, uint32_t inValue);
+
+//! Convert a int32_t value into an internal parameter format
+pusError_t pus_int32ToParam(pusStoredParam_t* outParam, int32_t inValue);
+
+//! Convert a double value into an internal parameter format
+pusError_t pus_real64ToParam(pusStoredParam_t* outParam, double inValue);
+
+//! Convert a double value into an internal parameter format
+pusError_t pus_boolToParam(pusStoredParam_t* outParam, bool inValue);
+
+//! Convert a double value into an internal parameter format
+pusError_t pus_byteToParam(pusStoredParam_t* outParam, uint8_t inValue);
+
+
 
 #ifdef  __cplusplus
 }

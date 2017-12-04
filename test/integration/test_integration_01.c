@@ -42,24 +42,24 @@ int main()
 
 
 	pusSt05Event_t eventInfo, eventLow, eventMid, eventHi;
-	pus_tm_5_X_setEventId(&eventInfo, EVENT_INFO_01);
-	pus_tm_5_X_setEventAuxData1(&eventInfo.data, 10);
-	pus_tm_5_X_setEventAuxData2(&eventInfo.data, 20);
+	pus_events_setEventId(&eventInfo, EVENT_INFO_01);
+	pus_events_setEventAuxData1(&eventInfo.data, 10);
+	pus_events_setEventAuxData2(&eventInfo.data, 20);
 	pus_st05_pushBufferEvent(&eventInfo);
 
-	pus_tm_5_X_setEventId(&eventLow, EVENT_LOW_02);
-	pus_tm_5_X_setEventAuxData1(&eventLow.data, 10);
-	pus_tm_5_X_setEventAuxData2(&eventLow.data, 20);
+	pus_events_setEventId(&eventLow, EVENT_LOW_02);
+	pus_events_setEventAuxData1(&eventLow.data, 10);
+	pus_events_setEventAuxData2(&eventLow.data, 20);
 	pus_st05_pushBufferEvent(&eventLow);
 
-	pus_tm_5_X_setEventId(&eventMid, EVENT_MEDIUM_03);
-	pus_tm_5_X_setEventAuxData1(&eventMid.data, 10);
-	pus_tm_5_X_setEventAuxData2(&eventMid.data, 20);
+	pus_events_setEventId(&eventMid, EVENT_MEDIUM_03);
+	pus_events_setEventAuxData1(&eventMid.data, 10);
+	pus_events_setEventAuxData2(&eventMid.data, 20);
 	pus_st05_pushBufferEvent(&eventHi);
 
-	pus_tm_5_X_setEventId(&eventHi, EVENT_HIGH_04);
-	pus_tm_5_X_setEventAuxData1(&eventHi.data, 10);
-	pus_tm_5_X_setEventAuxData2(&eventHi.data, 20);
+	pus_events_setEventId(&eventHi, EVENT_HIGH_04);
+	pus_events_setEventAuxData1(&eventHi.data, 10);
+	pus_events_setEventAuxData2(&eventHi.data, 20);
 	pus_st05_pushBufferEvent(&eventHi);
 
 	pusPacket_t tcAction;
@@ -194,9 +194,9 @@ pusError_t example_function() //TODO crear un .h para las funciones en ...¿?
 	pus_initApidInfo(&apid, 12, NULL);
 
 	pusSt05Event_t eventInfo;
-	pus_tm_5_X_setEventId(&eventInfo, EVENT_INFO_01);
-	pus_tm_5_X_setEventAuxData1(&eventInfo.data, 10);
-	pus_tm_5_X_setEventAuxData2(&eventInfo.data, 20);
+	pus_events_setEventId(&eventInfo, EVENT_INFO_01);
+	pus_events_setEventAuxData1(&eventInfo.data, 10);
+	pus_events_setEventAuxData2(&eventInfo.data, 20);
 
 	pusPacket_t tm;
 

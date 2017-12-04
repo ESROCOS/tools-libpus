@@ -163,7 +163,7 @@ BEGIN
 	-- pus-TM-12-9-reportParameterMonitoringDefinitions         PusSubserviceType ::=  9 -- NOT IMPLEMENTED
 	-- pus-TC-12-10-reportOutOfLimits                           PusSubserviceType ::= 10 -- NOT IMPLEMENTED
 	-- pus-TM-12-11-reportOutOfLimits                           PusSubserviceType ::= 11 -- NOT IMPLEMENTED
-	pus-TM-12-12-checkTransitionReport                       PusSubserviceType ::= 12
+	-- pus-TM-12-12-checkTransitionReport                       PusSubserviceType ::= 12 -- NOT IMPLEMENTED (LOW PRIORITY)
 	-- pus-TC-12-13-reportParameterMonitoringDefinitionsStatus  PusSubserviceType ::= 13 -- NOT IMPLEMENTED
 	-- pus-TM-12-14-reportParameterMonitoringDefinitionsStatus  PusSubserviceType ::= 14 -- NOT IMPLEMENTED
 	pus-TC-12-15-enableParameterMonitoring                   PusSubserviceType ::= 15

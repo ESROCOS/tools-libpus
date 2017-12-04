@@ -30,6 +30,10 @@ void test_packetHeader(void)
     CU_ASSERT_EQUAL(pus_STANDALONE_PACKET, pus_getSequenceFlags(&packet));
     CU_ASSERT_EQUAL(0, pus_getSequenceCount(&packet));
     CU_ASSERT_EQUAL(pus_PACKET_DATA_NONE, pus_getPacketDataKind(&packet));
+
+    printf("uint64_t %lu\n", sizeof(uint64_t));
+    printf("ul %lu\n", sizeof(unsigned long int));
+    printf("ull %lu\n", sizeof(unsigned long long int));
 }
 
 void test_setSequenceIncrement(void)

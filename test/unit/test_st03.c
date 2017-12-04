@@ -161,6 +161,46 @@ void test_params()
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_finalize());
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
+
+	pus_clearError();
+}
+
+void test_get_set()
+{
+	pus_hk_finalize();
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_initialize(NULL));
+
+	int32_t i;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT01(5));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_getHK_PARAM_INT01(&i));
+	CU_ASSERT_EQUAL(5, i);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT02(-5));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_getHK_PARAM_INT02(&i));
+	CU_ASSERT_EQUAL(-5, i);
+
+	bool b;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_BOOL01(true));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_getHK_PARAM_BOOL01(&b));
+	CU_ASSERT_EQUAL(true, b);
+
+	double d;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_REAL01(8.236));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_getHK_PARAM_REAL01(&d));
+	CU_ASSERT_EQUAL(8.236, d);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_REAL01(-8.236));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_getHK_PARAM_REAL01(&d));
+	CU_ASSERT_EQUAL(-8.236, d);
+
+	uint32_t u;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_UINT01(654));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_getHK_PARAM_UINT01(&u));
+	CU_ASSERT_EQUAL(654, u);
+
+	uint8_t by;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_BYTE01(0x32));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_getHK_PARAM_BYTE01(&by));
+	CU_ASSERT_EQUAL(0x32, by);
+
 }
 
 void test_st03()
@@ -245,7 +285,7 @@ void test_st03()
 	CU_ASSERT_EQUAL(-1001, i1);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 2, &val));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToUInt32(&ui1, val));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToUint32(&ui1, val));
 	CU_ASSERT_EQUAL(1001, ui1);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 3, &val));
@@ -281,7 +321,7 @@ void test_st03()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_getNumParameters(&tm, NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToUInt32(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToUint32(NULL, 0));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToInt32(NULL, 0));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
@@ -405,6 +445,7 @@ int main()
     if ((NULL == CU_add_test(pSuite, "test_init", test_init)) ||
 		(NULL == CU_add_test(pSuite, "test_params", test_params)) ||
 		(NULL == CU_add_test(pSuite, "test_st03", test_st03)) ||
+		(NULL == CU_add_test(pSuite, "test_get_set", test_get_set)) ||
 		0)
     {
       CU_cleanup_registry();

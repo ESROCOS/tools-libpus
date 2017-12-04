@@ -12,9 +12,13 @@ extern "C" {
 #endif
 
 
+
 #include "pus_error.h"
 #include "pus_types.h"
 #include "pus_events.h"
+
+#include "pus_st03_config.h" //TODO cambiar tipos
+#include "pus_stored_param.h" 
 
 <% count = 0 %>
 % for event in config['events']:
@@ -42,6 +46,12 @@ extern const size_t pus_st05_eventBufferLength;
 //! Initialize the configuration of the ST[05] service from the mission database
 pusError_t pus_events_configure();
 
+
+% for event in config['events']:
+//! Function that create a ${event['label']} event
+pusError_t pus_events_create${event['label']}(pusSt05Event_t* event, ${event['data'][0]} data1, ${event['data'][1]} data2);
+
+% endfor
 
 #ifdef __cplusplus
 }

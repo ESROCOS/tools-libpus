@@ -119,7 +119,7 @@ pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApidI
 }
 
 // Getters/Setters pusSt05Event_t
-pusSt05EventId_t pus_tm_5_X_getEventId(const pusSt05Event_t* event)
+pusSt05EventId_t pus_events_getEventId(const pusSt05Event_t* event)
 {
 	if (NULL == event)
 	{
@@ -132,7 +132,7 @@ pusSt05EventId_t pus_tm_5_X_getEventId(const pusSt05Event_t* event)
 	}
 }
 
-void pus_tm_5_X_setEventId(pusSt05Event_t* event, pusSt05EventId_t eventId)
+void pus_events_setEventId(pusSt05Event_t* event, pusSt05EventId_t eventId)
 {
 	if (NULL == event)
 	{
@@ -146,7 +146,7 @@ void pus_tm_5_X_setEventId(pusSt05Event_t* event, pusSt05EventId_t eventId)
 }
 
 
-pusSt05EventAuxData_t pus_tm_5_X_getEventAuxData(const pusSt05Event_t* event)
+pusSt05EventAuxData_t pus_events_getEventAuxData(const pusSt05Event_t* event)
 {
 	if (NULL == event)
 	{
@@ -159,7 +159,7 @@ pusSt05EventAuxData_t pus_tm_5_X_getEventAuxData(const pusSt05Event_t* event)
 	}
 }
 
-void pus_tm_5_X_setEventAuxData(pusSt05Event_t* event, pusSt05EventAuxData_t data)
+void pus_events_setEventAuxData(pusSt05Event_t* event, pusSt05EventAuxData_t data)
 {
 	if (NULL == event)
 	{
@@ -173,7 +173,7 @@ void pus_tm_5_X_setEventAuxData(pusSt05Event_t* event, pusSt05EventAuxData_t dat
 }
 
 
-pusStoredParam_t pus_tm_5_X_getEventAuxData1(const pusSt05EventAuxData_t* data)
+pusStoredParam_t pus_events_getEventAuxData1(const pusSt05EventAuxData_t* data)
 {
 	if (NULL == data)
 	{
@@ -186,7 +186,7 @@ pusStoredParam_t pus_tm_5_X_getEventAuxData1(const pusSt05EventAuxData_t* data)
 	}
 }
 
-void pus_tm_5_X_setEventAuxData1(pusSt05EventAuxData_t* data, pusStoredParam_t data1)
+void pus_events_setEventAuxData1(pusSt05EventAuxData_t* data, pusStoredParam_t data1)
 {
 	if (NULL == data)
 	{
@@ -199,7 +199,7 @@ void pus_tm_5_X_setEventAuxData1(pusSt05EventAuxData_t* data, pusStoredParam_t d
 	}
 }
 
-pusStoredParam_t pus_tm_5_X_getEventAuxData2(const pusSt05EventAuxData_t* data)
+pusStoredParam_t pus_events_getEventAuxData2(const pusSt05EventAuxData_t* data)
 {
 	if (NULL == data)
 	{
@@ -212,7 +212,7 @@ pusStoredParam_t pus_tm_5_X_getEventAuxData2(const pusSt05EventAuxData_t* data)
 	}
 }
 
-void pus_tm_5_X_setEventAuxData2(pusSt05EventAuxData_t* data, pusStoredParam_t data2)
+void pus_events_setEventAuxData2(pusSt05EventAuxData_t* data, pusStoredParam_t data2)
 {
 	if (NULL == data)
 	{
