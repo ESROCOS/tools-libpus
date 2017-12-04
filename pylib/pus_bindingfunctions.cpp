@@ -52,6 +52,11 @@ uint pus_tm_1_X_getSequenceFlags_(pusPacket_t* tm)
 	return (uint) pus_tm_1_X_getSequenceFlags(tm);
 }
 
+ll pus_tm_1_X_getFailureCode_(const pusPacket_t *tm)
+{
+	return pus_tm_1_X_getFailureInfo(tm, NULL);
+}
+
 ll pus_getSt01FailureSubcode_(const pusPacket_t *tm)
 {
 	const pusSt01FailureInfo_t failureInfo = tm->data.u.tmData.data.u.st_1_X.failure.info;

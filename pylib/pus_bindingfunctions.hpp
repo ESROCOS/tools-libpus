@@ -26,10 +26,9 @@ time_t pus_getTmPacketTime_(const pusPacket_t* packet);
 uint pus_tm_1_X_getPacketVersionNumber_(pusPacket_t *tm);
 uint pus_tm_1_X_getPacketType_(pusPacket_t* tm);
 uint pus_tm_1_X_getSequenceFlags_(pusPacket_t* tm);
+ll pus_tm_1_X_getFailureCode_(const pusPacket_t *tm);
 ll pus_getSt01FailureSubcode_(const pusPacket_t *tm);
 ll pus_getSt01FailureData_(const pusPacket_t *tm);
 ull pus_getSt01FailureAddress_(const pusPacket_t *tm);
-
-
 
 #endif
