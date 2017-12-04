@@ -2,27 +2,39 @@
     "parameters": [
         {
             "label": "HK_PARAM_INT01",
-            "type": "INT32"
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 10
         },
         {
             "label": "HK_PARAM_REAL01",
-            "type": "REAL64"
+            "type": "REAL64",
+            "low_limit": -23,
+            "high_limit": 23.23
         },
         {
             "label": "HK_PARAM_INT02",
-            "type": "INT32"
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 10
         },
         {
             "label": "HK_PARAM_UINT01",
-            "type": "UINT32"
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 10
         },
         {
             "label": "HK_PARAM_BYTE01",
-            "type": "BYTE"
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 10
         },
         {
             "label": "HK_PARAM_BOOL01",
-            "type": "BOOL"
+            "type": "BOOL",
+            "low_limit": 0,
+            "high_limit": 1
         }
     ],
     "defaultHkReport": ["HK_PARAM_REAL01", "HK_PARAM_INT01", "HK_PARAM_UINT01", "HK_PARAM_BYTE01", "HK_PARAM_BOOL01"]
