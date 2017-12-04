@@ -30,5 +30,6 @@ ll pus_tm_1_X_getFailureCode_(const pusPacket_t *tm);
 ll pus_getSt01FailureSubcode_(const pusPacket_t *tm);
 ll pus_getSt01FailureData_(const pusPacket_t *tm);
 ull pus_getSt01FailureAddress_(const pusPacket_t *tm);
+pusError_t pus_hk_initialize_null();
 
 #endif

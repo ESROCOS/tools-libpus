@@ -7,6 +7,7 @@
 #include "pus_st08_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
+
 #include "pus_bindingfunctions.hpp"
 
 namespace py = pybind11;
@@ -168,6 +169,7 @@ PYBIND11_MODULE(pusbinding, m) {
 
 	m.doc() = "pus_st03_packets binding";
 	m.def("pus_hk_initialize", &pus_hk_initialize, "Binding for pus_hk_initialize");
+	m.def("pus_hk_initialize_null", &pus_hk_initialize_null, "Binding for pus_hk_initialize");
 	m.def("pus_hk_finalize", &pus_hk_finalize, "Binding for pus_hk_finalize");
 	m.def("pus_hk_isInitialized", &pus_hk_isInitialized, "Binding for pus_hk_isInitialized");
 	m.def("pus_tm_3_25_createHousekeepingReportDefault", &pus_tm_3_25_createHousekeepingReportDefault, "Binding for pus_tm_3_25_createHousekeepingReportDefault");

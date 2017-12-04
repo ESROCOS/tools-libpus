@@ -74,3 +74,8 @@ ull pus_getSt01FailureAddress_(const pusPacket_t *tm)
 	const pusSt01FailureInfo_t failureInfo = tm->data.u.tmData.data.u.st_1_X.failure.info;
 	return pus_getSt01FailureAddress(&failureInfo);
 }
+
+pusError_t pus_hk_initialize_null()
+{
+	return pus_hk_initialize(NULL);
+}
