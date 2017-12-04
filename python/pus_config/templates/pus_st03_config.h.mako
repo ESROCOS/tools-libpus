@@ -50,6 +50,21 @@ extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
 pusError_t pus_hk_configure();
 
 
+//Param types
+typedef int32_t INT32;
+typedef uint32_t UINT32;
+typedef double REAL64;
+typedef uint8_t BYTE;
+typedef bool BOOL;
+
+//Param getters/setters
+% for param in config['parameters']:
+pusError_t pus_hk_set${param['label']}(${param['type']} value);
+pusError_t pus_hk_get${param['label']}(${param['type']}* value);
+
+% endfor
+ 
+
 #ifdef __cplusplus
 }
 #endif

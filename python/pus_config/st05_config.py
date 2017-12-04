@@ -30,10 +30,7 @@ def generate_st05_config(jsonDir, outDir):
         jsonschema.validate(configData, schema)
     except Exception as err:
         perror('Error in ST[05] service configuration {}:\n{}'.format(missionFile, err))
-        raise
-       
-    
-    
+        raise    
         
     # Render templates
     try:

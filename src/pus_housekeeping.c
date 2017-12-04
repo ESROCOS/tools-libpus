@@ -99,7 +99,7 @@ pusError_t pus_hk_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 		}
 		else
 		{
-			result = pus_paramToUInt32(outValue, pus_st03_params[param]);
+			result = pus_paramToUint32(outValue, pus_st03_params[param]);
 		}
 
 		if (NULL != pus_hk_mutex && !pus_mutexUnlockOk(pus_hk_mutex))

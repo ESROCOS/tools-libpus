@@ -64,7 +64,7 @@ typedef struct {
 size_t pus_st05_eventBufferIn;
 
 
-#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT ((size_t) 1000) //TODO quitar define
+#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT UINT64_MAX
 //! Counter of the events that has been inserted
 size_t pus_st05_eventBufferCounter;
 
@@ -100,7 +100,7 @@ bool pus_events_isInitialized();
 
 
 
-bool pus_evens_isInInfoList(pusSt05Event_t * event);
+bool pus_events_isInInfoList(pusSt05Event_t * event);
 
 //
 // Buffer control

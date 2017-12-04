@@ -1,6 +1,6 @@
 # JSON schema files
 set(JSON_SCHEMAS
-    st03_schema.json
+    st03_st12_schema.json
     st05_schema.json
     st08_schema.json
     st19_schema.json

@@ -30,7 +30,11 @@
                 "description": "Textual label for the parameter, matching the parameters array",
                 "type": "string"
             }
+        },
+        "hola":{
+        	"type": "string"
         }
+        
     },
     "required": ["parameters", "defaultHkReport"]
 }
