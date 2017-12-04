@@ -18,7 +18,7 @@ uint pus_getPacketType_(const pusPacket_t* packet);
 uint pus_getSequenceFlags_(const pusPacket_t* packet);
 uint pus_getTmPusVersion_(const pusPacket_t* packet);
 uint pus_getTcPusVersion_(const pusPacket_t* packet);
-struct timespec pus_getTmPacketTime_(const pusPacket_t* packet);
+time_t pus_getTmPacketTime_(const pusPacket_t* packet);
 
 
 #endif
