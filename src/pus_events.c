@@ -5,7 +5,7 @@
 #include "pus_events.h"
 
 
-// Mutex to lock access to the housekeeping parameter tables
+// Mutex to lock access to the event tables
 pusMutex_t* pus_events_mutex = NULL;
 
 // Initialized flag

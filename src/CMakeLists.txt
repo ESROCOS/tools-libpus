@@ -7,6 +7,7 @@ set(SOURCES
     pus_housekeeping.c
     pus_packet_queues.c
     pus_packet.c
+    pus_parameter_monitoring.c
     pus_st01_packets.c
     pus_st03_packets.c
     pus_st05_packets.c

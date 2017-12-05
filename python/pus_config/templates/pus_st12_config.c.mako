@@ -54,9 +54,8 @@ def getAliasName( configType ):
 
 
 
-
-// ST[113] constants
-const pusSt03ParamId_t pus_ST12_PARAM_LIMIT = PUS_ST12_PARAM_LIMIT;
+// ST[12] constants
+const pusSt12PmonId_t pus_ST12_PARAM_LIMIT = PUS_ST12_PARAM_LIMIT;
 
 pusSt12PmonDefinition pus_pmon_definitionList[PUS_ST12_PARAM_LIMIT];
 

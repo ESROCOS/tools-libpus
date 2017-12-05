@@ -12,14 +12,13 @@ extern "C" {
 #include "pus_threads.h"
 #include "pus_types.h"
 #include "pus_packet.h"
-#include "pus_stored_param.h"
 
 
 typedef struct{
 	//bool checking_status;
 	//int repetition; //repetition number
 	//int check_type; //limit, expect, delta //TODO ENUM?
-	union u2
+	union uLow
 	{
 		int32_t INT32;
 		uint32_t UINT32;
@@ -27,7 +26,7 @@ typedef struct{
 		bool BOOL;
 		byte BYTE;
 	}low_limit;
-	union u
+	union uHigh
 	{
 		int32_t INT32;
 		uint32_t UINT32;
@@ -47,11 +46,52 @@ typedef struct{
 }pusSt12PmonDefinition;
 
 
-bool pus_pmon_functionStatus = false;
 
 
-//from config
-extern pusSt12PmonDefinition pus_pmon_definitionList[];
+
+//! Function to initialize the monitored params used by service ST[12] and several others
+/*! This function is generated from the mission database, and it should be declared
+ *  in \ref pus_st12_config.h
+ */
+extern pusError_t pus_pmon_configure();
+
+//! Initialize the data structures of the PMON service
+/*! Create the parameter tables from the configuration and initializes a mutex.
+ *  Alternatively, can pass NULL as mutex if access protection is provided externally,
+ *  for instance, by TASTE.
+ *  \param[inout] mutex Mutex to be initialized; if NULL, access protection is disabled
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_pmon_initialize(pusMutex_t* mutex);
+
+//! Release the resources allocated by the event manager
+/*! \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_pmon_finalize();
+
+//! Check if the event manager is initialized
+bool pus_pmon_isInitialized();
+
+//
+// PMON behaviour
+//
+//! Enable a PMON definition
+pusError_t pus_pmon_enableDefinition(pusSt12PmonId_t id);
+
+//! disable a PMON definition
+pusError_t pus_pmon_disableDefinition(pusSt12PmonId_t id);
+
+//! Enable the PMON function
+pusError_t pus_pmon_enableFunction();
+
+//! Disable the PMON function
+pusError_t pus_pmon_disableFunction();
+
+//! Check if a PMON Id is in the param list
+bool pus_pmon_inInDefinitionList(pusSt12PmonId_t id);
+
+//! Check if a value is valid
+pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id, int value);
 
 
 

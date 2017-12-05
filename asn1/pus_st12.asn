@@ -14,14 +14,14 @@ BEGIN
 	;
 	
 	 -- PMON identifier
-	PusSt19pmonId ::= PusUInt32
+	PusSt12pmonId ::= PusUInt32
 	    
 	
 	
 	-- Data for TC[19,1] and TC[19,2], 
 	PusTC-12-1-2  ::= SEQUENCE
 	{
-		pmonId PusSt19pmonId
+		pmonId PusSt12pmonId
 	}
     
 END

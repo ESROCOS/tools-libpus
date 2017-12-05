@@ -20,6 +20,7 @@
 #include "asn1/pus_st03.h"
 #include "asn1/pus_st05.h"
 #include "asn1/pus_st08.h"
+#include "asn1/pus_st12.h"
 #include "asn1/pus_st19.h"
 #include "asn1/pus_services.h"
 
@@ -60,7 +61,9 @@ typedef asn1SccPusSt05EventAuxData pusSt05EventAuxData_t; //!< Type of the ST[05
 
 typedef asn1SccPusSt08FunctionId pusSt08FunctiontId_t; //!< Type of the ST[08] function ID
 
-typedef asn1SccPusPacketReduced pusPacketReduced_t;
+typedef asn1SccPusPacketReduced pusPacketReduced_t; //!< Packet reduced
+
+typedef asn1SccPusSt12pmonId pusSt12PmonId_t;
 
 
 
