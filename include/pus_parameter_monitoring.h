@@ -12,6 +12,8 @@ extern "C" {
 #include "pus_threads.h"
 #include "pus_types.h"
 #include "pus_packet.h"
+#include "pus_stored_param.h"
+#include "pus_housekeeping.h"
 
 
 typedef struct{
@@ -72,6 +74,15 @@ pusError_t pus_pmon_finalize();
 //! Check if the event manager is initialized
 bool pus_pmon_isInitialized();
 
+//! Check if the pmon function is activated
+bool pus_pmon_isFunctionActivated();
+
+//! Get for the definition status
+bool pus_pmon_getDefinitionStatus(pusSt12PmonId_t id);
+
+//! Set for the definition status
+pusError_t pus_pmon_setDefinitionStatus(pusSt12PmonId_t id, bool status);
+
 //
 // PMON behaviour
 //
@@ -88,11 +99,25 @@ pusError_t pus_pmon_enableFunction();
 pusError_t pus_pmon_disableFunction();
 
 //! Check if a PMON Id is in the param list
-bool pus_pmon_inInDefinitionList(pusSt12PmonId_t id);
+bool pus_pmon_isInDefinitionList(pusSt12PmonId_t id);
 
 //! Check if a value is valid
-pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id, int value);
+pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id);
 
+
+//
+// Checking limits.
+//
+
+pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id);
+
+pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id);
+
+pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id);
+
+pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id);
+
+pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id);
 
 
 #ifdef  __cplusplus

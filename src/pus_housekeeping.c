@@ -431,5 +431,31 @@ pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value)
 	}
 }
 
+pusError_t pus_hk_getParamType(pusSt03ParamId_t param, pusParamType_t* type)
+{
+	if (param >= pus_ST03_PARAM_LIMIT)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
+	}
+	else
+	{
+		if (NULL != pus_hk_mutex && !pus_mutexLockOk(pus_hk_mutex))
+		{
+			return PUS_ERROR_THREADS;
+		}
+
+		pusError_t result = PUS_NO_ERROR;
+
+		*type = pus_st03_paramInfo[param].type;
+
+
+		if (NULL != pus_hk_mutex && !pus_mutexUnlockOk(pus_hk_mutex))
+		{
+			result = PUS_ERROR_THREADS;
+		}
+
+		return result;
+	}
+}
 
 

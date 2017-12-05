@@ -82,15 +82,15 @@ pusError_t pus_hk_configure()
 pusError_t pus_hk_set${param['label']}(${param['type']} value)
 {
 	%if str(param['type']) == str("INT32"):
-	return pus_int32ToParam(&pus_st03_params[${param['label']}], value);
+	return pus_hk_setInt32Param(${param['label']}, value);
 	%elif str(param['type']) == str("UINT32"):
-	return pus_uint32ToParam(&pus_st03_params[${param['label']}], value);
+	return pus_hk_setUInt32Param(${param['label']}, value);
 	%elif str(param['type']) == str("REAL64"):
-	return pus_real64ToParam(&pus_st03_params[${param['label']}], value);
+	return pus_hk_setReal64Param(${param['label']}, value);
 	%elif str(param['type']) == str("BYTE"):
-	return pus_byteToParam(&pus_st03_params[${param['label']}], value);
+	return pus_hk_setByteParam(${param['label']}, value);
 	%elif str(param['type']) == str("BOOL"):
-	return pus_boolToParam(&pus_st03_params[${param['label']}], value);
+	return pus_hk_setBoolParam(${param['label']}, value);
 	%else:
 	return PUS_ERROR_NOT_IMPLEMENTED;
 	%endif
@@ -98,19 +98,19 @@ pusError_t pus_hk_set${param['label']}(${param['type']} value)
 	return PUS_NO_ERROR;
 }
 
-
 pusError_t pus_hk_get${param['label']}(${param['type']}* value)
 {
 	%if str(param['type']) == str("INT32"):
-	return pus_paramToInt32(value, pus_st03_params[${param['label']}]);
+	return pus_hk_getInt32Param(${param['label']}, value);
+	//return pus_paramToInt32(value, pus_st03_params[${param['label']}]);
 	%elif str(param['type']) == str("UINT32"):
-	return pus_paramToUint32(value, pus_st03_params[${param['label']}]);	
+	return pus_hk_getUInt32Param(${param['label']}, value);
 	%elif str(param['type']) == str("REAL64"):
-	return pus_paramToReal64(value, pus_st03_params[${param['label']}]);	
+	return pus_hk_getReal64Param(${param['label']}, value);
 	%elif str(param['type']) == str("BYTE"):
-	return pus_paramToByte(value, pus_st03_params[${param['label']}]);	
+	return pus_hk_getByteParam(${param['label']}, value);
 	%elif str(param['type']) == str("BOOL"):
-	return pus_paramToBool(value, pus_st03_params[${param['label']}]);	
+	return pus_hk_getBoolParam(${param['label']}, value);
 	%else:
 	return PUS_ERROR_NOT_IMPLEMENTED;
 	%endif

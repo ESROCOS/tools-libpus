@@ -81,8 +81,58 @@ void test_st12_packets()
 
 void test_st12()
 {
-	//CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_finalize());
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_finalize());
+	CU_ASSERT_FALSE(pus_pmon_isFunctionActivated());
+	CU_ASSERT_FALSE(pus_pmon_isInitialized());
 
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_disableDefinition(1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_enableDefinition(1));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_disableFunction());
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_enableFunction());
+	pus_pmon_getDefinitionStatus(1);
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, PUS_GET_ERROR());
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_setDefinitionStatus(1, false));
+
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_initialize(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_pmon_initialize(NULL));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_finalize());
+
+	pusMutex_t mutex;
+	CU_ASSERT_TRUE(pus_mutexInitOk(&mutex));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_initialize(&mutex));
+
+	CU_ASSERT_TRUE(pus_pmon_isFunctionActivated());
+	CU_ASSERT_TRUE(pus_pmon_isInitialized());
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_disableFunction());
+	CU_ASSERT_FALSE(pus_pmon_isFunctionActivated());
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_enableFunction());
+	CU_ASSERT_TRUE(pus_pmon_isFunctionActivated());
+
+
+	CU_ASSERT_TRUE(pus_pmon_getDefinitionStatus(1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR,pus_pmon_setDefinitionStatus(1, false));
+	CU_ASSERT_FALSE(pus_pmon_getDefinitionStatus(1));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_DISABLED, pus_pmon_disableDefinition(1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_enableDefinition(1));
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_ENABLED, pus_pmon_enableDefinition(1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_disableDefinition(1));
+
+	pus_pmon_getDefinitionStatus(13);
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, PUS_GET_ERROR());
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_setDefinitionStatus(13, false));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_disableDefinition(13));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_enableDefinition(13));
+
+
+
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_finalize());
 }
 
 
@@ -107,6 +157,7 @@ int main()
 
     /* add the tests to the suite */
     if ((NULL == CU_add_test(pSuite, "test_st12_packets", test_st12_packets)) ||
+    		(NULL == CU_add_test(pSuite, "test_st12", test_st12)) ||
 		0)
     {
       CU_cleanup_registry();

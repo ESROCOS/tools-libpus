@@ -156,6 +156,14 @@ pusError_t pus_hk_getByteParam(pusSt03ParamId_t param, uint8_t* outValue);
  */
 pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value);
 
+//! Get the type of the parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] type The parameter type
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_hk_getParamType(pusSt03ParamId_t param, pusParamType_t* type);
+
 #ifdef  __cplusplus
 }
 #endif

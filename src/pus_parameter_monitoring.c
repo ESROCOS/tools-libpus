@@ -65,15 +65,7 @@ pusError_t pus_pmon_finalize()
 	}
 }
 
-bool pus_pmon_isInitialized()
-{
-	return pus_pmon_initializedFlag;
-}
 
-bool pus_pmon_inInDefinitionList(pusSt12PmonId_t id)
-{
-	return (id < pus_ST12_PARAM_LIMIT);
-}
 
 pusError_t pus_pmon_enableDefinition(pusSt12PmonId_t id)
 {
@@ -82,7 +74,7 @@ pusError_t pus_pmon_enableDefinition(pusSt12PmonId_t id)
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
 
-	if( !pus_pmon_inInDefinitionList(id) )
+	if( !pus_pmon_isInDefinitionList(id) )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
@@ -103,7 +95,7 @@ pusError_t pus_pmon_disableDefinition(pusSt12PmonId_t id)
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
 
-	if( !pus_pmon_inInDefinitionList(id) )
+	if( !pus_pmon_isInDefinitionList(id) )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
@@ -139,5 +131,236 @@ pusError_t pus_pmon_disableFunction()
 	return PUS_NO_ERROR;
 }
 
+bool pus_pmon_isInitialized()
+{
+	return pus_pmon_initializedFlag;
+}
+
+bool pus_pmon_isFunctionActivated()
+{
+	return pus_pmon_functionStatus;
+}
+
+bool pus_pmon_getDefinitionStatus(pusSt12PmonId_t id)
+{
+	if( ! pus_pmon_isInitialized())
+	{
+		PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+		return false;
+	}
+
+	if( ! pus_pmon_isInDefinitionList(id) )
+	{
+		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
+		return false;
+	}
+
+	PUS_SET_ERROR(PUS_NO_ERROR);
+	return pus_pmon_definitionList[id].status;
+}
 
 
+pusError_t pus_pmon_setDefinitionStatus(pusSt12PmonId_t id, bool status)
+{
+	if( ! pus_pmon_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( ! pus_pmon_isInDefinitionList(id) )
+	{
+		return PUS_ERROR_INVALID_ID;
+	}
+
+	pus_pmon_definitionList[id].status = status;
+	return PUS_NO_ERROR;
+}
+
+bool pus_pmon_isInDefinitionList(pusSt12PmonId_t id)
+{
+	return (id < pus_ST12_PARAM_LIMIT);
+}
+
+//! Check if a value is valid
+pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id)
+{
+	if( ! pus_pmon_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( ! pus_pmon_isInDefinitionList(id) )
+	{
+		return PUS_ERROR_INVALID_ID;
+	}
+
+	pusParamType_t type;
+	pus_hk_getParamType(id, &type);
+	switch(type)
+	{
+		case PUS_INT32:
+			return pus_pmon_checkLimitInt32(id);
+			break;
+		case PUS_UINT32:
+			return pus_pmon_checkLimitUint32(id);
+			break;
+		case PUS_REAL64:
+			return pus_pmon_checkLimitReal64(id);
+			break;
+		case PUS_BYTE:
+			return pus_pmon_checkLimitByte(id);
+			break;
+		case PUS_BOOL:
+			return pus_pmon_checkLimitBool(id);
+			break;
+		default:
+			return PUS_ERROR_UNEXPECTED_PARAM_TYPE;
+			break;
+	}
+}
+
+pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id)
+{
+	if( ! pus_pmon_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( ! pus_pmon_isInDefinitionList(id) )
+	{
+		return PUS_ERROR_INVALID_ID;
+	}
+
+	int32_t value;
+	pus_hk_getInt32Param(id, &value);
+
+	if( value > pus_pmon_definitionList[id].check.high_limit.INT32 )
+	{
+		return PUS_ERROR_ABOVE_HIGH_LIMIT;
+	}
+	else if ( value < pus_pmon_definitionList[id].check.high_limit.INT32 )
+	{
+		return PUS_ERROR_BELOW_LOW_LIMIT;
+	}
+	else
+	{
+		return PUS_NO_ERROR;
+	}
+}
+
+pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id)
+{
+	if( ! pus_pmon_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( ! pus_pmon_isInDefinitionList(id) )
+	{
+		return PUS_ERROR_INVALID_ID;
+	}
+
+
+	uint32_t value;
+	pus_hk_getUInt32Param(id, &value);
+
+	if( value > pus_pmon_definitionList[id].check.high_limit.UINT32 )
+	{
+		return PUS_ERROR_ABOVE_HIGH_LIMIT;
+	}
+	else if ( value < pus_pmon_definitionList[id].check.high_limit.UINT32 )
+	{
+		return PUS_ERROR_BELOW_LOW_LIMIT;
+	}
+	else
+	{
+		return PUS_NO_ERROR;
+	}
+}
+
+pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id)
+{
+	if( ! pus_pmon_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( ! pus_pmon_isInDefinitionList(id) )
+	{
+		return PUS_ERROR_INVALID_ID;
+	}
+
+	double value;
+	pus_hk_getReal64Param(id, &value);
+
+	if( value > pus_pmon_definitionList[id].check.high_limit.REAL64 )
+	{
+		return PUS_ERROR_ABOVE_HIGH_LIMIT;
+	}
+	else if ( value < pus_pmon_definitionList[id].check.high_limit.REAL64 )
+	{
+		return PUS_ERROR_BELOW_LOW_LIMIT;
+	}
+	else
+	{
+		return PUS_NO_ERROR;
+	}
+}
+
+pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id)
+{
+	if( ! pus_pmon_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( ! pus_pmon_isInDefinitionList(id) )
+	{
+		return PUS_ERROR_INVALID_ID;
+	}
+
+	uint8_t value;
+	pus_hk_getByteParam(id, &value);
+
+	if( value > pus_pmon_definitionList[id].check.high_limit.BOOL )
+	{
+		return PUS_ERROR_ABOVE_HIGH_LIMIT;
+	}
+	else if ( value < pus_pmon_definitionList[id].check.high_limit.BOOL )
+	{
+		return PUS_ERROR_BELOW_LOW_LIMIT;
+	}
+	else
+	{
+		return PUS_NO_ERROR;
+	}
+}
+
+pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id)
+{
+	if( ! pus_pmon_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( ! pus_pmon_isInDefinitionList(id) )
+	{
+		return PUS_ERROR_INVALID_ID;
+	}
+
+	bool value;
+	pus_hk_getBoolParam(id, &value);
+
+	if( value > pus_pmon_definitionList[id].check.high_limit.BOOL )
+	{
+		return PUS_ERROR_ABOVE_HIGH_LIMIT;
+	}
+	else if ( value < pus_pmon_definitionList[id].check.high_limit.BOOL )
+	{
+		return PUS_ERROR_BELOW_LOW_LIMIT;
+	}
+	else
+	{
+		return PUS_NO_ERROR;
+	}
+}
