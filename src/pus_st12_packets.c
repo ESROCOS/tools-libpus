@@ -29,7 +29,7 @@ pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* ap
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt12PmonId_t pmon)
 {
 	if( NULL == outTc || NULL == apid )
 	{
@@ -41,11 +41,13 @@ pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* o
 		return PUS_GET_ERROR();
 	}
 
+	pus_setTcDataKind(outTc, pus_TC_DATA_ST_12_1_2);
+	pus_tc_12_1_2_setPmonId(outTc, pmon);
 
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt12PmonId_t pmon)
 {
 	if( NULL == outTc || NULL == apid )
 	{
@@ -55,6 +57,9 @@ pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* 
 	{
 		return PUS_GET_ERROR();
 	}
+
+	pus_setTcDataKind(outTc, pus_TC_DATA_ST_12_1_2);
+	pus_tc_12_1_2_setPmonId(outTc, pmon);
 
 	return PUS_NO_ERROR;
 }
@@ -93,8 +98,7 @@ pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusA
 	{
 		return PUS_GET_ERROR();
 	}
-
-	//no data kind, default nodata
+	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
 
 	return PUS_NO_ERROR;
 }
@@ -109,8 +113,41 @@ pusError_t pus_tc_12_16_createDisableParameterMonitoring(pusPacket_t* outTc, pus
 	{
 		return PUS_GET_ERROR();
 	}
-	//no data kind, default nodata
+	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
 
+	return PUS_NO_ERROR;
+}
+
+
+pusError_t pus_tc_12_1_2_setPmonId(pusPacket_t* outTc, pusSt12PmonId_t pmon)
+{
+	if( NULL == outTc )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+
+	if( PUS_NO_ERROR != PUS_EXPECT_ST12TC(outTc, pusSubtype_NONE) )
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTc->data.u.tcData.data.u.st_12_1_2.pmonId = pmon;
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_12_1_2_getPmonId(pusPacket_t* outTc, pusSt12PmonId_t* pmon)
+{
+	if( NULL == outTc || NULL == pmon )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+
+	if( PUS_NO_ERROR != PUS_EXPECT_ST12TC(outTc, pusSubtype_NONE) )
+	{
+		return PUS_GET_ERROR();
+	}
+
+	*pmon = outTc->data.u.tcData.data.u.st_12_1_2.pmonId;
 	return PUS_NO_ERROR;
 }
 
