@@ -113,7 +113,7 @@ typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the uni
 #define pus_TC_DATA_ST_8_1 		((pusTcDataKind_t) PusTcApplicationData_st_8_1_PRESENT)
 #define pus_TC_DATA_ST_19_1		((pusTcDataKind_t) st_19_1_PRESENT)
 #define pus_TC_DATA_ST_19_X		((pusTcDataKind_t) PusTcApplicationData_st_19_X_PRESENT)
-
+#define pus_TC_DATA_ST_12_1_2	((pusTcDataKind_t) PusTcApplicationData_st_12_1_2_PRESENT)
 
 //
 // Type limits

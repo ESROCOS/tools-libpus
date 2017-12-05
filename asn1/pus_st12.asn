@@ -19,7 +19,7 @@ BEGIN
 	
 	
 	-- Data for TC[19,1] and TC[19,2], 
-	PusTC-12-1-2  ::= SEQUENCE
+	PusTC-12-1-2-Data  ::= SEQUENCE
 	{
 		pmonId PusSt12pmonId
 	}
