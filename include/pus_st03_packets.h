@@ -27,34 +27,6 @@ extern "C" {
 #endif
 
 //
-// Service initialization and tear down
-//
-
-//! Function to initialize the service ST[03] configuration
-/*! This function is generated from the mission database, and it should be declared
- *  in \ref pus_st03_config.h
- */
-extern pusError_t pus_hk_configure();
-
-//! Initialize the data structures of the PUS ST[03] service
-/*! Create the parameter tables from the configuration and initializes a mutex.
- *  Alternatively, can pass NULL as mutex if access protection is provided externally,
- *  for instance, by TASTE.
- *  \param[inout] mutex Mutex to be initialized; if NULL, access protection is disabled
- *  \return Error code (PUS_NO_ERROR if success)
- */
-pusError_t pus_hk_initialize(pusMutex_t* mutex);
-
-//! Release the resources allocated by the PUS ST[03] service
-/*! \return Error code (PUS_NO_ERROR if success)
- */
-pusError_t pus_hk_finalize();
-
-//! Check if the service ST[03] is initialized
-bool pus_hk_isInitialized();
-
-
-//
 // Report creation
 //
 

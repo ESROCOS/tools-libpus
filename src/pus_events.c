@@ -11,6 +11,12 @@ pusMutex_t* pus_events_mutex = NULL;
 // Initialized flag
 bool pus_events_initializedFlag = false;
 
+//! Pointer for buffer in
+size_t pus_st05_eventBufferCounter;
+
+//! Counter of the events that has been inserted
+size_t pus_st05_eventBufferIn;
+
 //! Destination for ST05 reports
 extern const pusApid_t pus_st05_eventReportDestination;
 
