@@ -36,14 +36,14 @@ void test_st12_packets()
 	CU_ASSERT_EQUAL(pus_ST12_onBoardMonitoring, pus_getTcService(&tc));
 	CU_ASSERT_EQUAL(pus_TC_12_1_enableParameterMonitoringDefinitions, pus_getTcSubtype(&tc));
 	CU_ASSERT_EQUAL(pus_TC_DATA_ST_12_1_2, pus_getTcDataKind(&tc));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_1_2_getPmonId(&tc, &pmonId));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_1_2_getPmonId(&pmonId, &tc));
 	CU_ASSERT_EQUAL(1,pmonId);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_2_createDisableParameterMonitoringDefinitions(&tc, &apid, 2));
 	CU_ASSERT_EQUAL(pus_ST12_onBoardMonitoring, pus_getTcService(&tc));
 	CU_ASSERT_EQUAL(pus_TC_12_2_disableParameterMonitoringDefinitions, pus_getTcSubtype(&tc));
 	CU_ASSERT_EQUAL(pus_TC_DATA_ST_12_1_2, pus_getTcDataKind(&tc));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_1_2_getPmonId(&tc, &pmonId));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_1_2_getPmonId(&pmonId, &tc));
 	CU_ASSERT_EQUAL(2,pmonId);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_15_createEnableParameterMonitoring(&tc, &apid));
@@ -66,11 +66,11 @@ void test_st12_packets()
 
 	pus_clearError();
 	pus_setTcService(&tc, 1);
-	CU_ASSERT_EQUAL(PUS_ERROR_TC_SERVICE, pus_tc_12_1_2_getPmonId(&tc, &pmonId));
+	CU_ASSERT_EQUAL(PUS_ERROR_TC_SERVICE, pus_tc_12_1_2_getPmonId(&pmonId, &tc));
 	CU_ASSERT_EQUAL(PUS_ERROR_TC_SERVICE, pus_tc_12_1_2_setPmonId(&tc, 1));
 
 
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_1_2_getPmonId(NULL, &pmonId));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_1_2_getPmonId(NULL, NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_1_2_setPmonId(NULL, 1));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_X_createDefaultPacket(NULL, NULL, 1));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_1_createEnableParameterMonitoringDefinitions(NULL, &apid, 1));
@@ -130,9 +130,72 @@ void test_st12()
 	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_enableDefinition(13));
 
 
-
-
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_finalize());
+}
+
+void test_checks()
+{
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkParameter(HK_PARAM_INT01));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitInt32(0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitUint32(0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitBool(0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitReal64(0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitByte(0));
+
+	pus_pmon_finalize(); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_initialize(NULL));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkParameter(456));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitInt32(23));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitUint32(34));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitBool(23));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitReal64(23));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitByte(23));
+
+	pus_hk_finalize();
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_initialize(NULL));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT01(5));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_checkParameter(HK_PARAM_INT01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT01(15));
+	CU_ASSERT_EQUAL(PUS_ERROR_ABOVE_HIGH_LIMIT, pus_pmon_checkParameter(HK_PARAM_INT01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT01(2));
+	CU_ASSERT_EQUAL(PUS_ERROR_BELOW_LOW_LIMIT, pus_pmon_checkParameter(HK_PARAM_INT01));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT02(5));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_checkParameter(HK_PARAM_INT02));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT02(15));
+	CU_ASSERT_EQUAL(PUS_ERROR_ABOVE_HIGH_LIMIT, pus_pmon_checkParameter(HK_PARAM_INT02));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT02(-2));
+	CU_ASSERT_EQUAL(PUS_ERROR_BELOW_LOW_LIMIT, pus_pmon_checkParameter(HK_PARAM_INT02));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_REAL01(8.236));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_checkParameter(HK_PARAM_REAL01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_REAL01(63.24));
+	CU_ASSERT_EQUAL(PUS_ERROR_ABOVE_HIGH_LIMIT, pus_pmon_checkParameter(HK_PARAM_REAL01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_REAL01(-36.21));
+	CU_ASSERT_EQUAL(PUS_ERROR_BELOW_LOW_LIMIT, pus_pmon_checkParameter(HK_PARAM_REAL01));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_UINT01(5));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_checkParameter(HK_PARAM_UINT01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_UINT01(15));
+	CU_ASSERT_EQUAL(PUS_ERROR_ABOVE_HIGH_LIMIT, pus_pmon_checkParameter(HK_PARAM_UINT01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_UINT01(2));
+	CU_ASSERT_EQUAL(PUS_ERROR_BELOW_LOW_LIMIT, pus_pmon_checkParameter(HK_PARAM_UINT01));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_BOOL01(false));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_checkParameter(HK_PARAM_BOOL01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_BOOL01(true));
+	CU_ASSERT_NOT_EQUAL(PUS_NO_ERROR, pus_pmon_checkParameter(HK_PARAM_BOOL01));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_BYTE01(0x09));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_checkParameter(HK_PARAM_BYTE01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_BYTE01(0x0B));
+	CU_ASSERT_EQUAL(PUS_ERROR_ABOVE_HIGH_LIMIT, pus_pmon_checkParameter(HK_PARAM_BYTE01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_BYTE01(0x01));
+	CU_ASSERT_EQUAL(PUS_ERROR_BELOW_LOW_LIMIT, pus_pmon_checkParameter(HK_PARAM_BYTE01));
+
+	pus_clearError();
 }
 
 
@@ -158,7 +221,8 @@ int main()
     /* add the tests to the suite */
     if ((NULL == CU_add_test(pSuite, "test_st12_packets", test_st12_packets)) ||
     		(NULL == CU_add_test(pSuite, "test_st12", test_st12)) ||
-		0)
+			(NULL == CU_add_test(pSuite, "test_checks", test_checks)) ||
+			0)
     {
       CU_cleanup_registry();
       return CU_get_error();

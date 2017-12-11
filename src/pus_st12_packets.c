@@ -135,19 +135,19 @@ pusError_t pus_tc_12_1_2_setPmonId(pusPacket_t* outTc, pusSt12PmonId_t pmon)
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_12_1_2_getPmonId(pusPacket_t* outTc, pusSt12PmonId_t* pmon)
+pusError_t pus_tc_12_1_2_getPmonId(pusSt12PmonId_t* pmon, pusPacket_t* tcPacket)
 {
-	if( NULL == outTc || NULL == pmon )
+	if( NULL == tcPacket || NULL == pmon )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
-	if( PUS_NO_ERROR != PUS_EXPECT_ST12TC(outTc, pusSubtype_NONE) )
+	if( PUS_NO_ERROR != PUS_EXPECT_ST12TC(tcPacket, pusSubtype_NONE) )
 	{
 		return PUS_GET_ERROR();
 	}
 
-	*pmon = outTc->data.u.tcData.data.u.st_12_1_2.pmonId;
+	*pmon = tcPacket->data.u.tcData.data.u.st_12_1_2.pmonId;
 	return PUS_NO_ERROR;
 }
 
@@ -171,7 +171,7 @@ pusError_t pus_expectSt12Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 
 		if (expectedSubtype == pusSubtype_NONE)
 		{
-			// Check that subtype corresponds to ST[01]
+			// Check that subtype corresponds to ST[12]
 			if ((subtype != pus_TC_12_1_enableParameterMonitoringDefinitions) &&
 				(subtype != pus_TC_12_2_disableParameterMonitoringDefinitions) &&
 				(subtype != pus_TC_12_15_enableParameterMonitoring) &&

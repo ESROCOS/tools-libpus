@@ -120,7 +120,7 @@ BEGIN
     -- ST[09] Time management
     pus-TC-9-1-setTimeReportRate     PusSubserviceType ::= 1
     pus-TM-9-2-cucTimeReport         PusSubserviceType ::= 2
-    -- pus-TM-9-3-cdsTimeReport         PusSubserviceType ::= 3 -- NOT IMPLEMENTED (exclusive with TM[9,2]
+    -- pus-TM-9-3-cdsTimeReport         PusSubserviceType ::= 3 -- NOT IMPLEMENTED (exclusive with TM[9,2])
 
 	-- ST[11] Time-based scheduling
 	pus-TC-11-1-enableTimeBasedScheduling        PusSubserviceType ::=  1

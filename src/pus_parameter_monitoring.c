@@ -149,7 +149,7 @@ bool pus_pmon_getDefinitionStatus(pusSt12PmonId_t id)
 		return false;
 	}
 
-	if( ! pus_pmon_isInDefinitionList(id) )
+	if( ! pus_pmon_isInDefinitionList(id))
 	{
 		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 		return false;
@@ -167,7 +167,7 @@ pusError_t pus_pmon_setDefinitionStatus(pusSt12PmonId_t id, bool status)
 		return PUS_ERROR_NOT_INITIALIZED;
 	}
 
-	if( ! pus_pmon_isInDefinitionList(id) )
+	if( ! pus_pmon_isInDefinitionList(id))
 	{
 		return PUS_ERROR_INVALID_ID;
 	}
@@ -192,6 +192,11 @@ pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id)
 	if( ! pus_pmon_isInDefinitionList(id) )
 	{
 		return PUS_ERROR_INVALID_ID;
+	}
+
+	if ( ! pus_pmon_getDefinitionStatus(id) )
+	{
+		return PUS_ERROR_DEFINITION_DISABLED;
 	}
 
 	pusParamType_t type;
@@ -238,7 +243,7 @@ pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_ABOVE_HIGH_LIMIT;
 	}
-	else if ( value < pus_pmon_definitionList[id].check.high_limit.INT32 )
+	else if ( value < pus_pmon_definitionList[id].check.low_limit.INT32 )
 	{
 		return PUS_ERROR_BELOW_LOW_LIMIT;
 	}
@@ -268,7 +273,7 @@ pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_ABOVE_HIGH_LIMIT;
 	}
-	else if ( value < pus_pmon_definitionList[id].check.high_limit.UINT32 )
+	else if ( value < pus_pmon_definitionList[id].check.low_limit.UINT32 )
 	{
 		return PUS_ERROR_BELOW_LOW_LIMIT;
 	}
@@ -297,7 +302,7 @@ pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_ABOVE_HIGH_LIMIT;
 	}
-	else if ( value < pus_pmon_definitionList[id].check.high_limit.REAL64 )
+	else if ( value < pus_pmon_definitionList[id].check.low_limit.REAL64 )
 	{
 		return PUS_ERROR_BELOW_LOW_LIMIT;
 	}
@@ -326,7 +331,7 @@ pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_ABOVE_HIGH_LIMIT;
 	}
-	else if ( value < pus_pmon_definitionList[id].check.high_limit.BOOL )
+	else if ( value < pus_pmon_definitionList[id].check.low_limit.BOOL )
 	{
 		return PUS_ERROR_BELOW_LOW_LIMIT;
 	}
@@ -355,7 +360,7 @@ pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_ABOVE_HIGH_LIMIT;
 	}
-	else if ( value < pus_pmon_definitionList[id].check.high_limit.BOOL )
+	else if ( value < pus_pmon_definitionList[id].check.low_limit.BOOL )
 	{
 		return PUS_ERROR_BELOW_LOW_LIMIT;
 	}

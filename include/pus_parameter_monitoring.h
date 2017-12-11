@@ -47,7 +47,7 @@ typedef struct{
 	pusSt12CheckDefinition check;
 }pusSt12PmonDefinition;
 
-
+extern const pusSt12PmonId_t pus_ST12_PARAM_LIMIT;
 
 
 
@@ -74,7 +74,7 @@ pusError_t pus_pmon_finalize();
 //! Check if the event manager is initialized
 bool pus_pmon_isInitialized();
 
-//! Check if the pmon function is activated
+//! Check if the PMON function is activated
 bool pus_pmon_isFunctionActivated();
 
 //! Get for the definition status
@@ -108,15 +108,19 @@ pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id);
 //
 // Checking limits.
 //
-
+//! Check if a Int32 param is in its limits
 pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id);
 
+//! Check if a Uint32 param is in its limits
 pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id);
 
+//! Check if a Real64 param is in its limits
 pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id);
 
+//! Check if a Byte param is in its limits
 pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id);
 
+//! Check if a Bool param is in its limits
 pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id);
 
 

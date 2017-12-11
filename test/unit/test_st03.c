@@ -170,6 +170,8 @@ void test_get_set()
 	pus_hk_finalize();
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_initialize(NULL));
 
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_hk_getParamType(23, NULL));
+
 	int32_t i;
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_setHK_PARAM_INT01(5));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_getHK_PARAM_INT01(&i));

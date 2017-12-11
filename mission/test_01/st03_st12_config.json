@@ -3,7 +3,7 @@
         {
             "label": "HK_PARAM_INT01",
             "type": "INT32",
-            "low_limit": 0,
+            "low_limit": 4,
             "high_limit": 10
         },
         {
@@ -15,26 +15,26 @@
         {
             "label": "HK_PARAM_INT02",
             "type": "INT32",
-            "low_limit": 0,
+            "low_limit": 4,
             "high_limit": 10
         },
         {
             "label": "HK_PARAM_UINT01",
             "type": "UINT32",
-            "low_limit": 0,
+            "low_limit": 5,
             "high_limit": 10
         },
         {
             "label": "HK_PARAM_BYTE01",
             "type": "BYTE",
-            "low_limit": 0,
+            "low_limit": 2,
             "high_limit": 10
         },
         {
             "label": "HK_PARAM_BOOL01",
             "type": "BOOL",
             "low_limit": 0,
-            "high_limit": 1
+            "high_limit": 0
         }
     ],
     "defaultHkReport": ["HK_PARAM_REAL01", "HK_PARAM_INT01", "HK_PARAM_UINT01", "HK_PARAM_BYTE01", "HK_PARAM_BOOL01"]

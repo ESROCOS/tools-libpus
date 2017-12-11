@@ -94,15 +94,12 @@ pusError_t pus_hk_set${param['label']}(${param['type']} value)
 	%else:
 	return PUS_ERROR_NOT_IMPLEMENTED;
 	%endif
-	
-	return PUS_NO_ERROR;
 }
 
 pusError_t pus_hk_get${param['label']}(${param['type']}* value)
 {
 	%if str(param['type']) == str("INT32"):
 	return pus_hk_getInt32Param(${param['label']}, value);
-	//return pus_paramToInt32(value, pus_st03_params[${param['label']}]);
 	%elif str(param['type']) == str("UINT32"):
 	return pus_hk_getUInt32Param(${param['label']}, value);
 	%elif str(param['type']) == str("REAL64"):
@@ -114,8 +111,6 @@ pusError_t pus_hk_get${param['label']}(${param['type']}* value)
 	%else:
 	return PUS_ERROR_NOT_IMPLEMENTED;
 	%endif
-	
-	return PUS_NO_ERROR;
 }
 
 % endfor

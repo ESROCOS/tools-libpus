@@ -46,6 +46,7 @@ pusError_t pus_paramToBool(bool* outValue, pusStoredParam_t paramValue);
 //! Convert a value from the internal parameter format to uint32_t
 pusError_t pus_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
 
+
 //! Convert a uint32_t value into an internal parameter format
 pusError_t pus_uint32ToParam(pusStoredParam_t* outParam, uint32_t inValue);
 

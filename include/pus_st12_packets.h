@@ -45,7 +45,7 @@ pusError_t pus_tc_12_16_createDisableParameterMonitoring(pusPacket_t* outTc, pus
 pusError_t pus_tc_12_1_2_setPmonId(pusPacket_t* outTc, pusSt12PmonId_t pmon);
 
 //! Get pmonId from the data field of TC[12,1] and TC[17,2]
-pusError_t pus_tc_12_1_2_getPmonId(pusPacket_t* outTc, pusSt12PmonId_t* pmon);
+pusError_t pus_tc_12_1_2_getPmonId(pusSt12PmonId_t* pmon, pusPacket_t* tcPacket);
 
 
 //! Check that a packet is of a PUS ST[12] kind

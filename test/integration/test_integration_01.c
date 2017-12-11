@@ -12,12 +12,13 @@ int main()
 	pusMutex_t mutexHk;
 	pusMutex_t mutexSt08;
 	pusMutex_t mutexEventAction;
+	pusMutex_t mutexPmon;
 	pus_mutexInitOk(&mutexApid);
 	pus_mutexInitOk(&mutexEvents);
 	pus_mutexInitOk(&mutexHk);
 	pus_mutexInitOk(&mutexSt08);
 	pus_mutexInitOk(&mutexEventAction);
-
+	pus_mutexInitOk(&mutexPmon);
 
 	pusApidInfo_t apid;
 	pus_initApidInfo(&apid, 23, &mutexApid);
@@ -27,6 +28,7 @@ int main()
 	pus_hk_initialize(&mutexHk);
 	pus_st08_initialize(&mutexSt08);
 	pus_eventAction_initialize(&mutexEventAction);
+	pus_pmon_initialize(&mutexPmon);
 
 	//TC creation + push on queue
 	pusPacket_t tc;
@@ -120,7 +122,12 @@ int main()
 					pus_st08_processTcPacket(&tcRead, &apid);
 
 					break;
+				case 12:
+					printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
 
+					pus_st12_processTcPacket(&tcRead, &apid);
+
+					break;
 				case 17:
 					printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
 
@@ -129,7 +136,7 @@ int main()
 					break;
 				case 19:
 					printf("TC%llu_%llu received.\n", pus_getTcService(&tcRead), pus_getTcSubtype(&tcRead));
-					pus_st19_processEventActionPacket(&tcRead, &apid);
+					pus_st19_processTcPacket(&tcRead, &apid);
 					break;
 				default:
 					printf("Exception TC service.\n");
@@ -181,7 +188,13 @@ int main()
 		}
 	}
 
-
+	pus_hk_setHK_PARAM_INT01(500);
+	pus_hk_setHK_PARAM_REAL01(8.236);
+	pus_hk_setHK_PARAM_INT02(7);
+	pus_hk_setHK_PARAM_UINT01(7);
+	pus_hk_setHK_PARAM_BYTE01(2);
+	pus_hk_setHK_PARAM_BOOL01(false);
+	pus_st12_processPmonDefinitions();
 
 
 	printf("\n-- Test integration 01 end.\n");
@@ -318,12 +331,9 @@ pusError_t pus_st19_processEventActionService()
 	{
 		return PUS_ERROR_NOT_INITIALIZED;
 	}
-
-
-
 }
 
-pusError_t pus_st19_processEventActionPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
+pusError_t pus_st19_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 {
 	bool isST19TcFlag = false;
 	bool completion_flag = false;
@@ -370,6 +380,10 @@ pusError_t pus_st19_processEventActionPacket(pusPacket_t* tcRead, pusApidInfo_t*
 			{
 				errorExpect = pus_eventAction_enableEventActionDefinition(eventID);
 			}
+			else
+			{
+				errorExpect = PUS_SET_ERROR(PUS_ERROR_TC_SUBTYPE);
+			}
 
 		}
 		else
@@ -392,4 +406,93 @@ pusError_t pus_st19_processEventActionPacket(pusPacket_t* tcRead, pusApidInfo_t*
 	return PUS_GET_ERROR();
 }
 
+pusError_t pus_st12_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
+{
+	bool isST12TcFlag = false;
+	bool completion_flag = false;
+	pusError_t errorExpect;
 
+	if(PUS_NO_ERROR == (errorExpect = PUS_EXPECT_ST12TC(tcRead, pusSubtype_NONE)) )
+	{
+		isST12TcFlag = true;
+	}
+
+	pus_st01_pushTmAceptanceReportIfNeeded(tcRead, apid, isST12TcFlag, errorExpect);
+
+	if( isST12TcFlag )
+	{
+		if( pus_pmon_isInitialized() )
+		{
+			pusSubservice_t subtype = pus_getTcSubtype(tcRead);
+			if( pus_TC_12_1_enableParameterMonitoringDefinitions == subtype )
+			{
+				pusSt12PmonId_t pmonId;
+				pus_tc_12_1_2_getPmonId(&pmonId, tcRead);
+				pus_pmon_enableDefinition(pmonId);
+			}
+			else if ( pus_TC_12_2_disableParameterMonitoringDefinitions == subtype )
+			{
+				pusSt12PmonId_t pmonId;
+				pus_tc_12_1_2_getPmonId(&pmonId, tcRead);
+				pus_pmon_disableDefinition(pmonId);
+			}
+			else if ( pus_TC_12_15_enableParameterMonitoring == subtype )
+			{
+				pus_pmon_enableFunction();
+			}
+			else if ( pus_TC_12_16_disableParameterMonitoring == subtype )
+			{
+				pus_pmon_disableFunction();
+			}
+			else
+			{
+				errorExpect = PUS_SET_ERROR(PUS_ERROR_TC_SUBTYPE);
+			}
+		}
+		else
+		{
+			errorExpect = PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+		}
+
+	}
+	else
+	{
+		errorExpect = PUS_SET_ERROR(PUS_ERROR_TC_SERVICE);
+	}
+
+	if( PUS_NO_ERROR != errorExpect)
+	{
+		completion_flag = false;
+	}
+	pus_st01_pushTmCompletionReportIfNeeded(tcRead, apid, completion_flag, errorExpect);
+
+	return PUS_GET_ERROR();
+}
+
+pusError_t pus_st12_processPmonDefinitions()
+{
+	if( pus_pmon_isInitialized() )
+	{
+		if ( pus_pmon_isFunctionActivated())
+		{
+			for(pusSt12PmonId_t i = 0; i < pus_ST12_PARAM_LIMIT; i++)
+			{
+				if( PUS_NO_ERROR != pus_pmon_checkParameter(i))
+				{
+					//TODO create event, data? severity?
+					printf("Error in pmon %llu, error: %d\n", i, pus_pmon_checkParameter(i));
+				}
+			}
+		}
+		else
+		{
+			return PUS_ERROR_FUNCTION_NOT_ACTIVATED;
+		}
+
+		return PUS_NO_ERROR;
+	}
+	else
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+}
