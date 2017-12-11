@@ -58,9 +58,9 @@ else:
     route_to_h = ""
 
 files = ["pus_packet.h", "pus_apid.h", "pus_st01_packets.h", "pus_st03_packets.h", "pus_st05_packets.h", "pus_st08_packets.h",
-         "pus_st17_packets.h", "pus_st19_packets.h"]
+         "pus_st17_packets.h", "pus_st19_packets.h", "pus_st12_packets.h"]
 
-with open("pus_binding2" + ".cpp", "w") as outfile:
+with open("tempbinding" + ".cpp", "w") as outfile:
     outfile.write("#include \"pybind11/pybind11.h\"\n")
     for file_ in files:
         bind_header(route_to_h, file_, outfile)

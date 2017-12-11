@@ -6,6 +6,7 @@
 #include "pus_st05_packets.h"
 #include "pus_st08_packets.h"
 #include "pus_st08_config.h"
+#include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
 #include "pus_housekeeping.h"
@@ -240,7 +241,17 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_8_1_getFunctionId", &pus_tc_8_1_getFunctionId, "Binding for pus_tc_8_1_getFunctionId");
 	m.def("pus_st08_isInFunctionTable", &pus_st08_isInFunctionTable, "Binding for pus_st08_isInFunctionTable");
 	m.def("pus_expectSt08", &pus_expectSt08, "Binding for pus_expectSt08");
-//
+
+	m.doc() = "pus_st12_packets binding";
+	m.def("pus_tc_12_X_createDefaultPacket", &pus_tc_12_X_createDefaultPacket, "Binding for pus_tc_12_X_createDefaultPacket");
+	m.def("pus_tc_12_1_createEnableParameterMonitoringDefinitions", &pus_tc_12_1_createEnableParameterMonitoringDefinitions, "Binding for pus_tc_12_1_createEnableParameterMonitoringDefinitions");
+	m.def("pus_tc_12_2_createDisableParameterMonitoringDefinitions", &pus_tc_12_2_createDisableParameterMonitoringDefinitions, "Binding for pus_tc_12_2_createDisableParameterMonitoringDefinitions");
+	m.def("pus_tc_12_15_createEnableParameterMonitoring", &pus_tc_12_15_createEnableParameterMonitoring, "Binding for pus_tc_12_15_createEnableParameterMonitoring");
+	m.def("pus_tc_12_16_createDisableParameterMonitoring", &pus_tc_12_16_createDisableParameterMonitoring, "Binding for pus_tc_12_16_createDisableParameterMonitoring");
+	m.def("pus_tc_12_1_2_setPmonId", &pus_tc_12_1_2_setPmonId, "Binding for pus_tc_12_1_2_setPmonId");
+	m.def("pus_tc_12_1_2_getPmonId", &pus_tc_12_1_2_getPmonId, "Binding for pus_tc_12_1_2_getPmonId");
+	m.def("pus_expectSt12Tc", &pus_expectSt12Tc, "Binding for pus_expectSt12Tc");
+
 	m.doc() = "pus_st17_packets binding";
 	m.def("pus_tc_17_1_createConnectionTestRequest", &pus_tc_17_1_createConnectionTestRequest, "Binding for pus_tc_17_1_createConnectionTestRequest");
 	m.def("pus_tm_17_2_createConnectionTestReport", &pus_tm_17_2_createConnectionTestReport, "Binding for pus_tm_17_2_createConnectionTestReport");
@@ -254,7 +265,14 @@ PYBIND11_MODULE(pusbinding, m) {
 //	m.def("pus_tc_19_2_createDeleteEventActionDefinitionsRequest", &pus_tc_19_2_createDeleteEventActionDefinitionsRequest, "Binding for pus_tc_19_2_createDeleteEventActionDefinitionsRequest");
 //	m.def("pus_tc_19_4_createEnableEventActionDefinitions", &pus_tc_19_4_createEnableEventActionDefinitions, "Binding for pus_tc_19_4_createEnableEventActionDefinitions");
 //	m.def("pus_tc_19_5_createDisableEventActionDefinitions", &pus_tc_19_5_createDisableEventActionDefinitions, "Binding for pus_tc_19_5_createDisableEventActionDefinitions");
-//	m.def("pus_createPusPacketReduced", &pus_createPusPacketReduced, "Binding for pus_createPusPacketReduced");
-//	m.def("pus_packetReducedSetTcData", &pus_packetReducedSetTcData, "Binding for pus_packetReducedSetTcData");
+//	m.def("pus_tc_19_X_createPacketReducedFromPacket", &pus_tc_19_X_createPacketReducedFromPacket, "Binding for pus_tc_19_X_createPacketReducedFromPacket");
+//	m.def("pus_tc_19_X_setPacketReducedTcData", &pus_tc_19_X_setPacketReducedTcData, "Binding for pus_tc_19_X_setPacketReducedTcData");
+//	m.def("pus_tc_19_X_setPacketTcData", &pus_tc_19_X_setPacketTcData, "Binding for pus_tc_19_X_setPacketTcData");
+//	m.def("pus_tc_19_X_createPacketFromPacketReduced", &pus_tc_19_X_createPacketFromPacketReduced, "Binding for pus_tc_19_X_createPacketFromPacketReduced");
+//	m.def("pus_tc_19_X_setEventId", &pus_tc_19_X_setEventId, "Binding for pus_tc_19_X_setEventId");
+//	m.def("pus_tc_19_X_getEventId", &pus_tc_19_X_getEventId, "Binding for pus_tc_19_X_getEventId");
+//	m.def("pus_tc_19_1_setAction", &pus_tc_19_1_setAction, "Binding for pus_tc_19_1_setAction");
+//	m.def("pus_tc_19_1_getAction", &pus_tc_19_1_getAction, "Binding for pus_tc_19_1_getAction");
+//	m.def("pus_expectSt19Tc", &pus_expectSt19Tc, "Binding for pus_expectSt19Tc");
 
 }

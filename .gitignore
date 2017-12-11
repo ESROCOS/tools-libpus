@@ -9,6 +9,7 @@
 
 build/*
 pylib/bind.py
+pylib/tempbinding.cpp
 debug/*
 release/*
 CMakeFiles
