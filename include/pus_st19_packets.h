@@ -71,10 +71,10 @@ pusError_t pus_tc_19_X_createPacketReducedFromPacket(pusPacketReduced_t* outTcR,
 //! Function that set the Tc.data field from a pusPacket_t to a pusPacketReduced_t
 pusError_t pus_tc_19_X_setPacketReducedTcData(pusPacketReduced_t* outPacket, pusPacket_t* inTc);
 
-//TODO comment
+//! Set the data filed of a TC[19,X] packet
 pusError_t pus_tc_19_X_setPacketTcData(pusPacket_t* outTc, pusPacketReduced_t* inTcR);
 
-//TODO comment
+//! Create a Packet from a packetReduced
 pusError_t pus_tc_19_X_createPacketFromPacketReduced(pusPacket_t* outTc, pusPacketReduced_t* inTcR);
 
 

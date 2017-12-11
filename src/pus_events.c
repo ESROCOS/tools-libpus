@@ -72,7 +72,7 @@ pusError_t pus_events_initialize(pusMutex_t* mutex)
 	aux.eventId = 0;
 	aux.data.data1 = 0;
 	aux.data.data2 = 0;
-	for(size_t i; i < pus_st05_eventBufferLength; i++) //TODO default values
+	for(size_t i; i < pus_st05_eventBufferLength; i++)
 	{
 		pus_st05_eventBuffer[i].event = aux;
 		pus_st05_eventBuffer[i].eventBufferCounter = 0;
@@ -120,7 +120,6 @@ bool pus_events_isInInfoList(pusSt05Event_t* event)
 
 		if( event->eventId < pus_st05_getEventInfoListLength() )
 		{
-			// TODO; check datatype
 			PUS_SET_ERROR(PUS_NO_ERROR);
 			return true;
 		}

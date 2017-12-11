@@ -64,29 +64,6 @@ pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* 
 	return PUS_NO_ERROR;
 }
 
-/*pusError_t pus_tm_12_12_createCheckTransitionReport(pusPacket_t* outTm, pusApidInfo_t* apid)
-{
-	if( NULL == outTm || NULL == apid )
-	{
-		return PUS_ERROR_NULLPTR;
-	}
-
-	pus_initTmPacket(outTm);
-	// pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X); //TODO datakind st12
-
-	// Source information
-	pus_setApid(outTm, pus_getInfoApid(apid));
-	pus_setSequenceCount(outTm, pus_getNextPacketCount(apid));
-
-	// Data length
-	pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));
-
-	// Service identification
-	pus_setTmService(outTm, pus_ST12_onBoardMonitoring);
-	pus_setTmSubtype(outTm, pus_TM_12_12_checkTransitionReport);
-
-	return PUS_NO_ERROR;
-}*/
 
 pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusApidInfo_t* apid)
 {

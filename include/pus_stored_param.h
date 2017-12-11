@@ -29,7 +29,7 @@ typedef enum
 
 
 
-typedef unsigned long long int pusStoredParam_t; //TODO ¿?
+typedef unsigned long long int pusStoredParam_t;
 
 //! Convert a value from the internal parameter format to uint32_t
 pusError_t pus_paramToUint32(uint32_t* outValue, pusStoredParam_t paramValue);

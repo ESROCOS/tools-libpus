@@ -201,7 +201,7 @@ int main()
 	return 0;
 }
 
-pusError_t example_function() //TODO crear un .h para las funciones en ...¿?
+pusError_t example_function()
 {
 	pusApidInfo_t apid;
 	pus_initApidInfo(&apid, 12, NULL);

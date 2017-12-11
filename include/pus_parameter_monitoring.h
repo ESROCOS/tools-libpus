@@ -19,7 +19,7 @@ extern "C" {
 typedef struct{
 	//bool checking_status;
 	//int repetition; //repetition number
-	//int check_type; //limit, expect, delta //TODO ENUM?
+	//int check_type; //limit, expect, delta
 	union uLow
 	{
 		int32_t INT32;

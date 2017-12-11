@@ -85,7 +85,7 @@ pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pu
 	if( true == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
 		pus_st19_EventActionDefinitionList[eventID].definitionStatus = false;
-		pus_st19_EventActionDefinitionList[eventID].tcAction = *tcAction; //TODO !!!! packetReduced
+		pus_st19_EventActionDefinitionList[eventID].tcAction = *tcAction;
 		pus_st19_EventActionDefinitionList[eventID].deleted = false;
 
 		return PUS_NO_ERROR;
