@@ -10,6 +10,7 @@ BEGIN
 
   IMPORTS 
   PusUInt32 FROM PUS-NbitIntegers
+  PusTime FROM PUS-Time
   ;
     
   PusSt09ExponentialRate ::= PusUInt32
@@ -23,8 +24,8 @@ BEGIN
   -- Data for TM[9,2] CUC time report
   PusTM-9-2-Data ::= SEQUENCE
   {
-    exponentialRate PusSt09ExponentialRate
-    -- absolute time
+    exponentialRate PusSt09ExponentialRate,
+    time PusTime
     -- spacecraft time referenced status
   }
     
