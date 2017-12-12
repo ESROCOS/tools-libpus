@@ -82,21 +82,21 @@ void test_st09_packets()
 void test_st09()
 {
 	//printf("-- Error %d -- ", PUS_EXPECT_ST09TC(&tc, pus_TC_9_1_setTimeReportRate));
+	pusSt09ExponentialRate_t rate;
 
-	uint64_t rate;
+	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_time_setRerportGenerationExponentialRate(26));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_time_getReportGenerationExponentialRate(NULL));
 
-	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_time_setRerportGenerationRate(26));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_time_getReportGenerationRate(NULL));
-
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_setRerportGenerationRate(3));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationRate(&rate));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_setRerportGenerationExponentialRate(3));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationExponentialRate(&rate));
 	CU_ASSERT_EQUAL(3, rate);
 
-
+	uint64_t result;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationRate(&result));
+	CU_ASSERT_EQUAL(8, result);
 
 
 	pus_clearError();
-
 }
 
 int main()

@@ -12,8 +12,8 @@
  */
 
 
-#ifndef PUS_ST08_PACKETS_H
-#define PUS_ST08_PACKETS_H
+#ifndef PUS_ST09_PACKETS_H
+#define PUS_ST09_PACKETS_H
 
 #include "pus_time.h"
 #include "pus_types.h"
@@ -31,11 +31,8 @@ extern "C" {
 // 	The report generation rate is relative to the generation of telemetry transfer frames on virtual channel 0.
 // 	For example, if the report generation rate is 16, then every 16th transfer frame on virtual channel 0 causes the generation of a time report packet.
 
-//TODO P-field ¿?
 
-//TODO pusTime_t  ¿ CCSDS 301.0-B-4
-
-uint64_t pus_time_reportGenerationRate;
+pusSt09ExponentialRate_t pus_time_reportGenerationExponentialRate;
 
 
 //! Build a Set time report rate
@@ -62,16 +59,16 @@ pusError_t pus_tc_9_1_setExponentialRate(pusPacket_t* tc, pusSt09ExponentialRate
 //! Get the exponential rate from a TC[9,1] packet
 pusError_t pus_tc_9_1_getExponentialRate(pusSt09ExponentialRate_t* expRate, pusPacket_t* tc);
 
-// TODO
 //! Set the data field of a TM[9,2]
 pusError_t pus_tm_9_2_setDataField(pusPacket_t* tm);
 
 //! Getter for the time report generation rate of the service
-pusError_t pus_time_getReportGenerationRate(uint64_t * rate);
+pusError_t pus_time_getReportGenerationExponentialRate(pusSt09ExponentialRate_t* expRate);
 
 //! Setter for the time report generation rate of the service
-pusError_t pus_time_setRerportGenerationRate(pusSt09ExponentialRate_t expRate);
+pusError_t pus_time_setRerportGenerationExponentialRate(pusSt09ExponentialRate_t expRate);
 
+pusError_t pus_time_getReportGenerationRate(uint64_t* expRate);
 
 //! Check that a packet is of a PUS ST[09] TC kind
 /*! \param[in] packet The PUS packet

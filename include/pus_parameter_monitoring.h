@@ -1,4 +1,13 @@
-//TODO header
+//! \file pus_parameter_monitoring.h
+/*! \brief Management of the parameter monitoring table
+ *
+ *  Defines the parameters monitoring table used by the service ST[12].
+ *
+ *  Access to the table is optionally protected by a mutex. This allows implementing
+ *  the service using external synchronization (by TASTE) or not.
+ *
+ *  \author GMV
+ */
 
 #ifndef PUS_PARAMETER_MONITORING_H
 #define PUS_PARAMETER_MONITORING_H

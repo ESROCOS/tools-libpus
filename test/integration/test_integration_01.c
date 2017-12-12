@@ -279,6 +279,40 @@ pusError_t pus_st08_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 	return PUS_GET_ERROR();
 }
 
+
+pusError_t pus_st09_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
+{
+	bool isST09TcFlag = false;
+	bool completion_flag = false;
+	pusError_t errorExpect;
+
+	if(PUS_NO_ERROR == (errorExpect = PUS_EXPECT_ST09TC(tcRead, pusSubtype_NONE)) )
+	{
+		isST09TcFlag = true;
+	}
+
+	pus_st01_pushTmAceptanceReportIfNeeded(tcRead, apid, isST09TcFlag, errorExpect);
+
+	if( isST09TcFlag )
+	{
+		pusSt09ExponentialRate_t expRate;
+		pus_tc_9_1_getExponentialRate(&expRate, tcRead);
+		pus_time_setRerportGenerationExponentialRate(expRate);
+	}
+	else
+	{
+		errorExpect = PUS_SET_ERROR(PUS_ERROR_TC_SERVICE);
+	}
+
+	if( PUS_NO_ERROR != errorExpect)
+	{
+		completion_flag = false;
+	}
+	pus_st01_pushTmCompletionReportIfNeeded(tcRead, apid, completion_flag, errorExpect);
+
+	return PUS_GET_ERROR();
+}
+
 pusError_t pus_st17_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 {
 	bool isST17TcFlag = false;
@@ -362,7 +396,7 @@ pusError_t pus_st19_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 				pusPacketReduced_t tcActionR;
 				pusPacket_t tcAction;
 				pus_tc_19_1_getAction(&tcActionR, tcRead);
-				pus_tc_19_X_createPacketFromPacketReduced(&tcAction, &tcActionR);
+				pus_packetReduced_createPacketFromPacketReduced(&tcAction, &tcActionR);
 				errorExpect =  pus_eventAction_addEventActionDefinition(eventID, &tcAction);
 			}
 			else if( pus_TC_19_2_deleteEventActionDefinitions == subtype )
@@ -473,7 +507,7 @@ pusError_t pus_st12_processPmonDefinitions()
 {
 	if( pus_pmon_isInitialized() )
 	{
-		if ( pus_pmon_isFunctionActivated())
+		if ( pus_pmon_isFunctionActivated() )
 		{
 			for(pusSt12PmonId_t i = 0; i < pus_ST12_PARAM_LIMIT; i++)
 			{
