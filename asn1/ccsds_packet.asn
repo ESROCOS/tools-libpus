@@ -30,7 +30,7 @@ BEGIN
     {
         pusVersion      PusVersionNumber,
         timeRefStatus   PusTimeReferenceStatus,
-        service         PusServiceType,
+        serviceId       PusServiceType,
         subtype         PusSubserviceType,
         msgTypeCount    PusMessageTypeCounter,
         destination     PusApid,
@@ -52,7 +52,7 @@ BEGIN
     {
         pusVersion      PusVersionNumber,
         ackFlags        PusAcknowledgementFlags,
-        service         PusServiceType,
+        serviceId       PusServiceType,
         subtype         PusSubserviceType,
         source          PusApid
         -- no spare bits
