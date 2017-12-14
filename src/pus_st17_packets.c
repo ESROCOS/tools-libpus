@@ -18,6 +18,8 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidIn
 
 		// Source information
 		pus_setApid(outTc, pus_getInfoApid(apid));
+
+
 		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
 
 		// Data length

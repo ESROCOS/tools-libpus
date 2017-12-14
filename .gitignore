@@ -14,6 +14,14 @@ debug/*
 release/*
 CMakeFiles
 cmake_install.cmake
+taste/binary.c/*
+taste/*.zip
+taste/deployment.pro
+taste/__dv_1_3.aadl
+taste/groundtc.zip
+taste/groundtm.zip
+taste/interfaceview.pro
+taste/__iv_1_3.aadl
 
 __pycache__
 *.pyc

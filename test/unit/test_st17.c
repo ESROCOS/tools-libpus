@@ -26,12 +26,12 @@ void test_st17()
 	pusPacket_t tm, tc;
 	pusApidInfo_t apid;
 
-	pus_initApidInfo(&apid, 5, NULL); CU_ASSERT_FALSE(PUS_IS_ERROR());
+	pus_initApidInfo(&apid, 1, NULL); CU_ASSERT_FALSE(PUS_IS_ERROR());
 
 	//TC[17,1]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_17_1_createConnectionTestRequest(&tc, &apid));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST17TC(&tc, pus_TC_17_1_connectionTest));
-	CU_ASSERT_EQUAL(5, pus_getApid(&tc));
+	CU_ASSERT_EQUAL(1, pus_getApid(&tc));
 	CU_ASSERT_EQUAL(0, pus_getSequenceCount(&tc));
 
 
@@ -40,7 +40,7 @@ void test_st17()
 	//TM[17,2]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_17_2_createConnectionTestReport(&tm, &apid, 2));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST17TM(&tm, pus_TM_17_2_connectionTest));
-	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
+	CU_ASSERT_EQUAL(1, pus_getApid(&tm));
 	CU_ASSERT_EQUAL(1, pus_getSequenceCount(&tm));
 	CU_ASSERT_EQUAL(2, pus_getTmDestination(&tm));
 	pus_clearError();

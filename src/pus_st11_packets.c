@@ -89,6 +89,9 @@ pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusA
 	}
 
 	//TODO Data field
+	// n_packets
+	// pusPackets* array;
+
 
 	return PUS_NO_ERROR;
 }

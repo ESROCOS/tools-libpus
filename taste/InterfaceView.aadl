@@ -1,0 +1,857 @@
+---------------------------------------------------
+-- AADL2.1
+-- TASTE type interfaceview
+-- 
+-- generated code: do not edit
+---------------------------------------------------
+
+PACKAGE interfaceview::IV::Ground::GroundTc
+PUBLIC
+
+WITH interfaceview::IV::OnBoard::TC::TcQueue;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_GroundTcTrigger
+END PI_GroundTcTrigger;
+
+SUBPROGRAM IMPLEMENTATION PI_GroundTcTrigger.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_GroundTcTrigger.others;
+
+SUBPROGRAM RI_newTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTc;
+
+SUBPROGRAM IMPLEMENTATION RI_newTc.others
+END RI_newTc.others;
+
+SYSTEM GroundTc
+FEATURES
+  PI_GroundTcTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTc::PI_GroundTcTrigger.others {
+    Taste::coordinates => "85765 48687";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 10000 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "GroundTcTrigger";
+  };
+  RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_newTc.others {
+    Taste::coordinates => "90309 54546";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "newTc";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END GroundTc;
+
+SYSTEM IMPLEMENTATION GroundTc.others
+END GroundTc.others;
+
+END interfaceview::IV::Ground::GroundTc;
+
+PACKAGE interfaceview::IV::Ground::GroundTm
+PUBLIC
+
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_newTm;
+
+SUBPROGRAM IMPLEMENTATION PI_newTm.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTm.others;
+
+SYSTEM GroundTm
+FEATURES
+  PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTm::PI_newTm.others {
+    Taste::coordinates => "90487 60839";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "newTm";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END GroundTm;
+
+SYSTEM IMPLEMENTATION GroundTm.others
+END GroundTm.others;
+
+END interfaceview::IV::Ground::GroundTm;
+
+PACKAGE interfaceview::IV::Ground
+PUBLIC
+
+WITH interfaceview::IV::Ground::GroundTc;
+WITH interfaceview::IV::Ground::GroundTm;
+WITH interfaceview::IV::OnBoard::TC::TcQueue;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_newTm;
+
+SUBPROGRAM IMPLEMENTATION PI_newTm.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTm.others;
+
+SUBPROGRAM RI_newTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTc;
+
+SUBPROGRAM IMPLEMENTATION RI_newTc.others
+END RI_newTc.others;
+
+SYSTEM Ground
+FEATURES
+  PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTm::PI_newTm.others {
+    Taste::coordinates => "98259 60881";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "newTm";
+  };
+  RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_newTc.others {
+    Taste::coordinates => "98259 54578";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "newTc";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END Ground;
+
+SYSTEM IMPLEMENTATION Ground.others
+SUBCOMPONENTS
+  GroundTc : SYSTEM interfaceview::IV::Ground::GroundTc::GroundTc.others {
+    Taste::coordinates => "77589 48687 90309 56470";
+  };
+  GroundTm : SYSTEM interfaceview::IV::Ground::GroundTm::GroundTm.others {
+    Taste::coordinates => "77900 58986 90487 66147";
+  };
+CONNECTIONS
+  Ground_RI_newTc_GroundTc_RI_newTc : SUBPROGRAM ACCESS RI_newTc -> GroundTc.RI_newTc {
+    Taste::coordinates => "90309 54546 93547 54546 93547 54578 98259 54578";
+  };
+  GroundTm_PI_newTm_Ground_PI_newTm : SUBPROGRAM ACCESS GroundTm.PI_newTm -> PI_newTm {
+    Taste::coordinates => "98259 60881 94373 60881 94373 60839 90487 60839";
+  };
+END Ground.others;
+
+END interfaceview::IV::Ground;
+
+PACKAGE interfaceview::IV::OnBoard::TC::TcQueue
+PUBLIC
+
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_newTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_newTc;
+
+SUBPROGRAM IMPLEMENTATION PI_newTc.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTc.others;
+
+SUBPROGRAM PI_tcRequest
+FEATURES
+  tcPacket : OUT PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+END PI_tcRequest;
+
+SUBPROGRAM IMPLEMENTATION PI_tcRequest.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_tcRequest.others;
+
+SYSTEM TcQueue
+FEATURES
+  PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_newTc.others {
+    Taste::coordinates => "131825 35246";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "newTc";
+  };
+  PI_tcRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_tcRequest.others {
+    Taste::coordinates => "146519 35746";
+    Taste::RCMoperationKind => protected;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "tcRequest";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END TcQueue;
+
+SYSTEM IMPLEMENTATION TcQueue.others
+END TcQueue.others;
+
+END interfaceview::IV::OnBoard::TC::TcQueue;
+
+PACKAGE interfaceview::IV::OnBoard::TC::TcDispatch
+PUBLIC
+
+WITH interfaceview::IV::OnBoard::TC::TcQueue;
+WITH interfaceview::IV::OnBoard::ST17;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_tcTrigger
+END PI_tcTrigger;
+
+SUBPROGRAM IMPLEMENTATION PI_tcTrigger.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_tcTrigger.others;
+
+SUBPROGRAM RI_tcRequest
+FEATURES
+  tcPacket : OUT PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+END RI_tcRequest;
+
+SUBPROGRAM IMPLEMENTATION RI_tcRequest.others
+END RI_tcRequest.others;
+
+SUBPROGRAM RI_tc17
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_tc17;
+
+SUBPROGRAM IMPLEMENTATION RI_tc17.others
+END RI_tc17.others;
+
+SYSTEM TcDispatch
+FEATURES
+  PI_tcTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcDispatch::PI_tcTrigger.others {
+    Taste::coordinates => "160076 32594";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 1000 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "tcTrigger";
+  };
+  RI_tcRequest : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_tcRequest.others {
+    Taste::coordinates => "153475 35810";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "tcRequest";
+    Taste::labelInheritance => "true";
+  };
+  RI_tc17 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST17::PI_tc17.others {
+    Taste::coordinates => "167930 34199";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "tc17";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END TcDispatch;
+
+SYSTEM IMPLEMENTATION TcDispatch.others
+END TcDispatch.others;
+
+END interfaceview::IV::OnBoard::TC::TcDispatch;
+
+PACKAGE interfaceview::IV::OnBoard::TC
+PUBLIC
+
+WITH interfaceview::IV::OnBoard::TC::TcQueue;
+WITH interfaceview::IV::OnBoard::TC::TcDispatch;
+WITH interfaceview::IV::OnBoard::ST17;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_newTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_newTc;
+
+SUBPROGRAM IMPLEMENTATION PI_newTc.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTc.others;
+
+SUBPROGRAM RI_tc17
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_tc17;
+
+SUBPROGRAM IMPLEMENTATION RI_tc17.others
+END RI_tc17.others;
+
+SYSTEM TC
+FEATURES
+  PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_newTc.others {
+    Taste::coordinates => "126184 35297";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "newTc";
+  };
+  RI_tc17 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST17::PI_tc17.others {
+    Taste::coordinates => "173112 34029";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "tc17";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END TC;
+
+SYSTEM IMPLEMENTATION TC.others
+SUBCOMPONENTS
+  TcQueue : SYSTEM interfaceview::IV::OnBoard::TC::TcQueue::TcQueue.others {
+    Taste::coordinates => "131825 32595 146519 42168";
+  };
+  TcDispatch : SYSTEM interfaceview::IV::OnBoard::TC::TcDispatch::TcDispatch.others {
+    Taste::coordinates => "153475 32594 167930 42308";
+  };
+CONNECTIONS
+  TcQueue_PI_newTc_TC_PI_newTc : SUBPROGRAM ACCESS TcQueue.PI_newTc -> PI_newTc {
+    Taste::coordinates => "126184 35297 129029 35297 129029 35246 131825 35246";
+  };
+  TcQueue_PI_tcRequest_TcDispatch_RI_tcRequest : SUBPROGRAM ACCESS TcQueue.PI_tcRequest -> TcDispatch.RI_tcRequest {
+    Taste::coordinates => "153475 35810 148736 35810 148736 35746 146519 35746";
+  };
+  TC_RI_tc17_TcDispatch_RI_tc17 : SUBPROGRAM ACCESS RI_tc17 -> TcDispatch.RI_tc17 {
+    Taste::coordinates => "168231 34199 170555 34199 170555 34029 173112 34029";
+  };
+END TC.others;
+
+END interfaceview::IV::OnBoard::TC;
+
+PACKAGE interfaceview::IV::OnBoard::TM::TmDispatch
+PUBLIC
+
+WITH interfaceview::IV::Ground::GroundTm;
+WITH interfaceview::IV::OnBoard::TM::TmQueue;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_tmTrigger
+END PI_tmTrigger;
+
+SUBPROGRAM IMPLEMENTATION PI_tmTrigger.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_tmTrigger.others;
+
+SUBPROGRAM RI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTm;
+
+SUBPROGRAM IMPLEMENTATION RI_newTm.others
+END RI_newTm.others;
+
+SUBPROGRAM RI_tmRequest
+FEATURES
+  tmPacket : OUT PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+END RI_tmRequest;
+
+SUBPROGRAM IMPLEMENTATION RI_tmRequest.others
+END RI_tmRequest.others;
+
+SYSTEM TmDispatch
+FEATURES
+  PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TM::TmDispatch::PI_tmTrigger.others {
+    Taste::coordinates => "137956 88568";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 1000 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "tmTrigger";
+  };
+  RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTm::PI_newTm.others {
+    Taste::coordinates => "131109 82059";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "newTm";
+    Taste::labelInheritance => "true";
+  };
+  RI_tmRequest : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TM::TmQueue::PI_tmRequest.others {
+    Taste::coordinates => "145912 82588";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "tmRequest";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END TmDispatch;
+
+SYSTEM IMPLEMENTATION TmDispatch.others
+END TmDispatch.others;
+
+END interfaceview::IV::OnBoard::TM::TmDispatch;
+
+PACKAGE interfaceview::IV::OnBoard::TM::TmQueue
+PUBLIC
+
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_tmRequest
+FEATURES
+  tmPacket : OUT PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+END PI_tmRequest;
+
+SUBPROGRAM IMPLEMENTATION PI_tmRequest.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_tmRequest.others;
+
+SUBPROGRAM PI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END PI_newTm;
+
+SUBPROGRAM IMPLEMENTATION PI_newTm.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTm.others;
+
+SYSTEM TmQueue
+FEATURES
+  PI_tmRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TM::TmQueue::PI_tmRequest.others {
+    Taste::coordinates => "151640 82555";
+    Taste::RCMoperationKind => protected;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "tmRequest";
+  };
+  PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TM::TmQueue::PI_newTm.others {
+    Taste::coordinates => "165971 82742";
+    Taste::RCMoperationKind => protected;
+    Taste::InterfaceName => "newTm";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END TmQueue;
+
+SYSTEM IMPLEMENTATION TmQueue.others
+END TmQueue.others;
+
+END interfaceview::IV::OnBoard::TM::TmQueue;
+
+PACKAGE interfaceview::IV::OnBoard::TM
+PUBLIC
+
+WITH interfaceview::IV::OnBoard::TM::TmDispatch;
+WITH interfaceview::IV::OnBoard::TM::TmQueue;
+WITH interfaceview::IV::Ground::GroundTm;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM RI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTm;
+
+SUBPROGRAM IMPLEMENTATION RI_newTm.others
+END RI_newTm.others;
+
+SUBPROGRAM PI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END PI_newTm;
+
+SUBPROGRAM IMPLEMENTATION PI_newTm.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTm.others;
+
+SYSTEM TM
+FEATURES
+  RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTm::PI_newTm.others {
+    Taste::coordinates => "126990 82082";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "newTm";
+    Taste::labelInheritance => "true";
+  };
+  PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TM::TmQueue::PI_newTm.others {
+    Taste::coordinates => "173130 82659";
+    Taste::RCMoperationKind => protected;
+    Taste::InterfaceName => "newTm";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END TM;
+
+SYSTEM IMPLEMENTATION TM.others
+SUBCOMPONENTS
+  TmDispatch : SYSTEM interfaceview::IV::OnBoard::TM::TmDispatch::TmDispatch.others {
+    Taste::coordinates => "131109 79696 145912 88568";
+  };
+  TmQueue : SYSTEM interfaceview::IV::OnBoard::TM::TmQueue::TmQueue.others {
+    Taste::coordinates => "151640 79352 165971 88362";
+  };
+CONNECTIONS
+  TM_RI_newTm_TmDispatch_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> TmDispatch.RI_newTm {
+    Taste::coordinates => "131109 82059 129824 82059 129824 82082 126990 82082";
+  };
+  TmQueue_PI_tmRequest_TmDispatch_RI_tmRequest : SUBPROGRAM ACCESS TmQueue.PI_tmRequest -> TmDispatch.RI_tmRequest {
+    Taste::coordinates => "145912 82588 148879 82588 148879 82555 151640 82555";
+  };
+  TmQueue_PI_newTm_TM_PI_newTm : SUBPROGRAM ACCESS TmQueue.PI_newTm -> PI_newTm {
+    Taste::coordinates => "173130 82659 169550 82659 169550 82742 165971 82742";
+  };
+END TM.others;
+
+END interfaceview::IV::OnBoard::TM;
+
+PACKAGE interfaceview::IV::OnBoard::ST17
+PUBLIC
+
+WITH interfaceview::IV::OnBoard::TM::TmQueue;
+WITH interfaceview::IV::OnBoard::ST01;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_tc17
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_tc17;
+
+SUBPROGRAM IMPLEMENTATION PI_tc17.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_tc17.others;
+
+SUBPROGRAM RI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTm;
+
+SUBPROGRAM IMPLEMENTATION RI_newTm.others
+END RI_newTm.others;
+
+SUBPROGRAM RI_ACK
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+  apid : IN PARAMETER DataView::PusApid {
+    Taste::encoding => NATIVE;
+  };
+  packetCounter : IN PARAMETER DataView::PusSequenceCount {
+    Taste::encoding => NATIVE;
+  };
+  flag : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+  error : IN PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
+  errorInfo : IN PARAMETER DataView::PusSt01FailureInfo {
+    Taste::encoding => NATIVE;
+  };
+END RI_ACK;
+
+SUBPROGRAM IMPLEMENTATION RI_ACK.others
+END RI_ACK.others;
+
+SYSTEM ST17
+FEATURES
+  PI_tc17 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST17::PI_tc17.others {
+    Taste::coordinates => "181435 34020";
+    Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "tc17";
+  };
+  RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TM::TmQueue::PI_newTm.others {
+    Taste::coordinates => "181435 39161";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "newTm";
+    Taste::labelInheritance => "true";
+  };
+  RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST01::PI_ACK.others {
+    Taste::coordinates => "196544 35545";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "ACK";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END ST17;
+
+SYSTEM IMPLEMENTATION ST17.others
+END ST17.others;
+
+END interfaceview::IV::OnBoard::ST17;
+
+PACKAGE interfaceview::IV::OnBoard::ST01
+PUBLIC
+
+WITH interfaceview::IV::OnBoard::TM::TmQueue;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_ACK
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+  apid : IN PARAMETER DataView::PusApid {
+    Taste::encoding => NATIVE;
+  };
+  packetCounter : IN PARAMETER DataView::PusSequenceCount {
+    Taste::encoding => NATIVE;
+  };
+  flag : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+  error : IN PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
+  errorInfo : IN PARAMETER DataView::PusSt01FailureInfo {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_ACK;
+
+SUBPROGRAM IMPLEMENTATION PI_ACK.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_ACK.others;
+
+SUBPROGRAM RI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTm;
+
+SUBPROGRAM IMPLEMENTATION RI_newTm.others
+END RI_newTm.others;
+
+SYSTEM ST01
+FEATURES
+  PI_ACK : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST01::PI_ACK.others {
+    Taste::coordinates => "202959 54864";
+    Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "ACK";
+  };
+  RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TM::TmQueue::PI_newTm.others {
+    Taste::coordinates => "208510 60080";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "newTm";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END ST01;
+
+SYSTEM IMPLEMENTATION ST01.others
+END ST01.others;
+
+END interfaceview::IV::OnBoard::ST01;
+
+PACKAGE interfaceview::IV::OnBoard
+PUBLIC
+
+WITH interfaceview::IV::OnBoard::TC;
+WITH interfaceview::IV::OnBoard::TM;
+WITH interfaceview::IV::OnBoard::ST17;
+WITH interfaceview::IV::OnBoard::ST01;
+WITH interfaceview::IV::OnBoard::TC::TcQueue;
+WITH interfaceview::IV::Ground::GroundTm;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_newTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_newTc;
+
+SUBPROGRAM IMPLEMENTATION PI_newTc.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTc.others;
+
+SUBPROGRAM RI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTm;
+
+SUBPROGRAM IMPLEMENTATION RI_newTm.others
+END RI_newTm.others;
+
+SYSTEM OnBoard
+FEATURES
+  PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_newTc.others {
+    Taste::coordinates => "114398 38174";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "newTc";
+  };
+  RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTm::PI_newTm.others {
+    Taste::coordinates => "114398 60926";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "newTm";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END OnBoard;
+
+SYSTEM IMPLEMENTATION OnBoard.others
+SUBCOMPONENTS
+  TC : SYSTEM interfaceview::IV::OnBoard::TC::TC.others {
+    Taste::coordinates => "126184 25659 173112 48823";
+  };
+  TM : SYSTEM interfaceview::IV::OnBoard::TM::TM.others {
+    Taste::coordinates => "126990 71133 173130 96487";
+  };
+  ST17 : SYSTEM interfaceview::IV::OnBoard::ST17::ST17.others {
+    Taste::coordinates => "181435 30494 196544 40504";
+  };
+  ST01 : SYSTEM interfaceview::IV::OnBoard::ST01::ST01.others {
+    Taste::coordinates => "202959 52488 217602 60080";
+  };
+CONNECTIONS
+  TC_PI_newTc_OnBoard_PI_newTc : SUBPROGRAM ACCESS TC.PI_newTc -> PI_newTc {
+    Taste::coordinates => "114398 38174 120328 38174 120328 35297 126184 35297";
+  };
+  ST17_PI_tc17_TC_RI_tc17 : SUBPROGRAM ACCESS ST17.PI_tc17 -> TC.RI_tc17 {
+    Taste::coordinates => "173112 34029 177738 34029 177738 34020 181435 34020";
+  };
+  OnBoard_RI_newTm_TM_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> TM.RI_newTm {
+    Taste::coordinates => "126990 82082 121779 82082 121779 60926 114398 60926";
+  };
+  TM_PI_newTm_ST01_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> ST01.RI_newTm {
+    Taste::coordinates => "208510 60080 208510 82659 173130 82659";
+  };
+  TM_PI_newTm_ST17_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> ST17.RI_newTm {
+    Taste::coordinates => "181435 39161 178263 39161 178263 82659 173130 82659";
+  };
+  ST01_PI_ACK_ST17_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> ST17.RI_ACK {
+    Taste::coordinates => "196544 35545 199595 35545 199595 54864 202959 54864";
+  };
+END OnBoard.others;
+
+END interfaceview::IV::OnBoard;
+
+PACKAGE interfaceview::IV
+PUBLIC
+
+WITH interfaceview::IV::Ground;
+WITH interfaceview::IV::OnBoard;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SYSTEM interfaceview
+END interfaceview;
+
+SYSTEM IMPLEMENTATION interfaceview.others
+SUBCOMPONENTS
+  Ground : SYSTEM interfaceview::IV::Ground::Ground.others {
+    Taste::coordinates => "72978 45817 98259 68786";
+  };
+  OnBoard : SYSTEM interfaceview::IV::OnBoard::OnBoard.others {
+    Taste::coordinates => "114398 21469 219907 98210";
+  };
+CONNECTIONS
+  Ground_PI_newTm_OnBoard_RI_newTm : SUBPROGRAM ACCESS Ground.PI_newTm -> OnBoard.RI_newTm {
+    Taste::coordinates => "114398 60926 99746 60926 99746 60881 98259 60881";
+  };
+  OnBoard_PI_newTc_Ground_RI_newTc : SUBPROGRAM ACCESS OnBoard.PI_newTc -> Ground.RI_newTc {
+    Taste::coordinates => "98259 54578 103757 54578 103757 38174 114398 38174";
+  };
+END interfaceview.others;
+
+PROPERTIES
+  Taste::dataView => ("DataView");
+  Taste::dataViewPath => ("DataView.aadl");
+  Taste::coordinates => "0 0 297000 210000";
+  Taste::version => "2.0";
+END interfaceview::IV;
+

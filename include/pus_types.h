@@ -14,6 +14,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+// to prevent redefinition of types when it is used whith taste (dataview_unique.h)
+#ifndef GENERATED_ASN1SCC_DATAVIEW_UNIQ_H
 #include "asn1/ccsds_packet.h"
 #include "asn1/pus_config.h"
 #include "asn1/pus_st01.h"
@@ -24,6 +26,7 @@
 #include "asn1/pus_st12.h"
 #include "asn1/pus_st19.h"
 #include "asn1/pus_services.h"
+#endif
 
 #ifdef  __cplusplus
 extern "C" {
@@ -69,16 +72,31 @@ typedef asn1SccPusSt09ExponentialRate pusSt09ExponentialRate_t; //!< report gene
 
 
 
-
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
+/*#ifdef __cplusplus
+typedef decltype(asn1SccPusPacketData::PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
+typedef decltype(asn1SccPusTmSourceData::PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
+typedef decltype(asn1SccPusTcApplicationData::PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
+#else
+	#if (__STDC_VERSION__ == 199901L)
+	typedef int pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
+	typedef int pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
+	typedef int pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
+	#else
+	typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
+	typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
+	typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
+	#endif
+#endif*/
+
 #ifdef __cplusplus
 typedef decltype(asn1SccPusPacketData::PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
 typedef decltype(asn1SccPusTmSourceData::PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
 typedef decltype(asn1SccPusTcApplicationData::PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
 #else
-typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
-typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
-typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
+typedef __typeof__(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
+typedef __typeof__(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
+typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
 #endif
 
 
