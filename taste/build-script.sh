@@ -65,6 +65,8 @@ cd "$SKELS" && rm -f groundtc.zip && zip groundtc groundtc/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f groundtm.zip && zip groundtm groundtm/* && cd $OLDPWD
 
+cd "$SKELS" && rm -f groundapid.zip && zip groundapid groundapid/* && cd $OLDPWD
+
 cd "$SKELS" && rm -f tcqueue.zip && zip tcqueue tcqueue/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f tcdispatch.zip && zip tcdispatch tcdispatch/* && cd $OLDPWD
@@ -78,6 +80,8 @@ cd "$SKELS" && rm -f st17.zip && zip st17 st17/* && cd $OLDPWD
 cd "$SKELS" && rm -f st01.zip && zip st01 st01/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f st08.zip && zip st08 st08/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f onboardapid.zip && zip onboardapid onboardapid/* && cd $OLDPWD
 
 [ ! -z "$CLEANUP" ] && rm -rf binary*
 
@@ -121,6 +125,7 @@ cd "$CWD" && assert-builder-ocarina.py \
 	-o "$OUTPUTDIR" \
 	--subC groundtc:"$SKELS"/groundtc.zip \
 	--subC groundtm:"$SKELS"/groundtm.zip \
+	--subC groundapid:"$SKELS"/groundapid.zip \
 	--subC tcqueue:"$SKELS"/tcqueue.zip \
 	--subC tcdispatch:"$SKELS"/tcdispatch.zip \
 	--subC tmdispatch:"$SKELS"/tmdispatch.zip \
@@ -128,6 +133,7 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC st17:"$SKELS"/st17.zip \
 	--subC st01:"$SKELS"/st01.zip \
 	--subC st08:"$SKELS"/st08.zip \
+	--subC onboardapid:"$SKELS"/onboardapid.zip \
 	$ORCHESTRATOR_OPTIONS
 
 if [ -f user_init_last.sh ]

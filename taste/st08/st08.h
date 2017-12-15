@@ -21,8 +21,6 @@ extern void st08_RI_ACK(const asn1SccPusPacket *,
                         const asn1SccPusSt01FailureInfo *,
                         const asn1SccPusStepId *);
 
-extern void st08_RI_newTc(const asn1SccPusPacket *);
-
 #ifdef __cplusplus
 }
 #endif

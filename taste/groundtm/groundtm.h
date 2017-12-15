@@ -15,6 +15,10 @@ void groundtm_startup();
 
 void groundtm_PI_newTm(const asn1SccPusPacket *);
 
+extern void groundtm_RI_getApid(asn1SccPusApid *);
+
+extern void groundtm_RI_getSequenceCounter(asn1SccPusSequenceCount *);
+
 #ifdef __cplusplus
 }
 #endif

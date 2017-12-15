@@ -6,20 +6,14 @@
 #include "pus_apid.h"
 #include "pus_error.h"
 #include "pus_packet.h"
-#include "pus_time.h"
-#include "pus_stored_param.h"
 #include "pus_types.h"
-#include "pus_packet_queues.h"
 
-pusApidInfo_t apidSt01;
+#include "pus_st01_packets.h"
 
 void st01_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
-
-	pus_initApidInfo(&apidSt01, 3, NULL);
-
 }
 
 void st01_PI_ACK(const asn1SccPusPacket *IN_tcPacket,
@@ -35,21 +29,27 @@ void st01_PI_ACK(const asn1SccPusPacket *IN_tcPacket,
 		exit(-1);
 	}
 
-	printf(" - ST01 Packet TC%llu_%llu received, subtype: %d.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket), *IN_reportType);
+	printf(" - ST01 Packet TC%llu_%llu received, subtype: %llu.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket), *IN_reportType);
+
+	pusApid_t apid;
+	pusSequenceCount_t seqCount;
+	st01_RI_getApid(&apid);
 
 	if( pus_TM_1_1_successfulAcceptance == *IN_reportType )
 	{
 		pusPacket_t tm;
-		pus_tm_1_1_createAcceptanceReportSuccess(&tm, &apidSt01, IN_tcPacket);
+		st01_RI_getSequenceCount(&seqCount);
+		pus_tm_1_1_createAcceptanceReportSuccess(&tm, apid, seqCount, IN_tcPacket);
 		printf(" - ST01: successfulAcceptance from TC%llu_%llu send.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
-		st17_RI_newTm(&tm);
+		st01_RI_newTm(&tm);
 	}
 	else if( pus_TM_1_2_failedAcceptance == *IN_reportType )
 	{
 		pusPacket_t tm;
-		pus_tm_1_2_createAcceptanceReportFailure(&tm, &apidSt01, IN_tcPacket, *IN_error, *IN_errorInfo);
+		st01_RI_getSequenceCount(&seqCount);
+		pus_tm_1_2_createAcceptanceReportFailure(&tm, apid, seqCount, IN_tcPacket, *IN_error, IN_errorInfo);
 		printf(" - ST01: failedAcceptance from TC%llu_%llu send.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
-		st17_RI_newTm(&tm);
+		st01_RI_newTm(&tm);
 	}
 	else if( pus_TM_1_3_successfulStart == *IN_reportType )
 	{

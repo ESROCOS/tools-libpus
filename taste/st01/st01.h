@@ -21,6 +21,10 @@ void st01_PI_ACK(const asn1SccPusPacket *,
 
 extern void st01_RI_newTm(const asn1SccPusPacket *);
 
+extern void st01_RI_getSequenceCount(asn1SccPusSequenceCount *);
+
+extern void st01_RI_getApid(asn1SccPusApid *);
+
 #ifdef __cplusplus
 }
 #endif
