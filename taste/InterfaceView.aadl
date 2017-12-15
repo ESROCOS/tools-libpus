@@ -454,10 +454,6 @@ PROPERTIES
 END TcDispatch;
 
 SYSTEM IMPLEMENTATION TcDispatch.others
-SUBCOMPONENTS
-  apid : DATA DataView::PusApid {
-    Taste::FS_Default_Value => "1";
-  };
 END TcDispatch.others;
 
 END interfaceview::IV::OnBoard::TC::TcDispatch;

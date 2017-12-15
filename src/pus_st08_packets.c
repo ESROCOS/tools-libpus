@@ -107,7 +107,7 @@ void pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionI
 }
 
 
-void pus_tc_8_1_getFunctionId(pusSt08FunctiontId_t* functionId, pusPacket_t* outTc)
+void pus_tc_8_1_getFunctionId(pusSt08FunctiontId_t* functionId, const pusPacket_t* outTc)
 {
 	if (NULL == outTc)
 	{

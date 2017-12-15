@@ -50,7 +50,7 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApid_t 
 void pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionId);
 
 //! Getter for the functionID param
-void pus_tc_8_1_getFunctionId(pusSt08FunctiontId_t* functionId, pusPacket_t* outTc);
+void pus_tc_8_1_getFunctionId(pusSt08FunctiontId_t* functionId, const pusPacket_t* outTc);
 
 //! Function that check if the function ID is defined in the configuration options.
 bool pus_st08_isInFunctionTable(pusSt08FunctiontId_t functionId);

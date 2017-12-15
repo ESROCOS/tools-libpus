@@ -33,11 +33,11 @@ void tcqueue_PI_newTc(const asn1SccPusPacket *IN_tcPacket)
 	error = pus_packetQueues_push(IN_tcPacket, &pus_packetQueue_tc);
 	if( PUS_NO_ERROR == error )
 	{
-		printf("TC%llu_%llu inserted in TcQueue.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
+		printf("TcQUEUE: TC%llu_%llu inserted in TcQueue.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
 	}
 	else if (PUS_ERROR_FULL_QUEUE == error )
 	{
-		printf("Error in tcqueue_PI_newTc PUS_ERROR_FULL_QUEUE, %d (no exit)\n", error);
+		printf("TcQUEUE: PUS_ERROR_FULL_QUEUE, %d\n", error);
 	}
 	else
 	{
@@ -54,7 +54,7 @@ void tcqueue_PI_tcRequest(asn1SccPusPacket *OUT_tcPacket, asn1SccT_Boolean *OUT_
 	pusError_t error = pus_packetQueues_pop(OUT_tcPacket, &pus_packetQueue_tc);
 	if ( PUS_NO_ERROR == error )
 	{
-		printf("TC%llu_%llu to TcDispatch.\n", pus_getTcService(OUT_tcPacket), pus_getTcSubtype(OUT_tcPacket));
+		//printf("TC%llu_%llu to TcDispatch.\n", pus_getTcService(OUT_tcPacket), pus_getTcSubtype(OUT_tcPacket));
 		*OUT_isAvailable = true;
 	}
 	else if ( PUS_ERROR_EMPTY_QUEUE == error)

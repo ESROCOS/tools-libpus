@@ -53,8 +53,10 @@ void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
 	}
 	else
 	{
-		//create tm1.2 if needed
-
+		//
+		subtype = pus_TM_1_2_failedAcceptance;
+		errorCode = error;
+		st17_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		printf(" - ST17: Error in st17_PI_tc17, %d (no exit)\n", error);
 	}
 
