@@ -41,7 +41,7 @@ pusSt09ExponentialRate_t pus_time_reportGenerationExponentialRate;
  *  \param[in] apid APID of the process that send the packet
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt09ExponentialRate_t expRate);
+pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt09ExponentialRate_t expRate);
 
 //! Build a CUC time report
 /*! Builds a TM[9,2] packet in the packet passed as parameter.
@@ -50,7 +50,7 @@ pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApidInfo_t*
  *  \param[in] destination Destination of the packet
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApidInfo_t* apid);
+pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 
 //! Set the exponential rate to a TC[9,1] packet

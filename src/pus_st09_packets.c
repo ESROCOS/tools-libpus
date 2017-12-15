@@ -3,9 +3,9 @@
 #include <math.h>
 
 
-pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt09ExponentialRate_t expRate)
+pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt09ExponentialRate_t expRate)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -14,8 +14,8 @@ pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApidInfo_t*
 		pus_initTcPacket(outTc);
 
 		// Source information
-		pus_setApid(outTc, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
@@ -33,9 +33,9 @@ pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApidInfo_t*
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApidInfo_t* apid)
+pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount/*, pusApid_t destination*/)
 {
-	if ( NULL == outTm || NULL == apid )
+	if ( NULL == outTm )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -45,8 +45,8 @@ pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApidInfo_t* api
 		pus_initTmPacketNoHeader(outTm);
 
 		// Source information
-		pus_setApid(outTm, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTm, pus_getNextPacketCount(apid));
+		pus_setApid(outTm, apid);
+		pus_setSequenceCount(outTm, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));

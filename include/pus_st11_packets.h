@@ -67,7 +67,7 @@ extern "C" {
  *  \param[in] apid APID of the process sending the report
  *  \param[in] subtype The TM service subtype to be created
  */
-pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* apid, pusSubservice_t subtype);
+pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype);
 
 
 //! Build a TC to enable the time-based schedule function
@@ -75,7 +75,7 @@ pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* ap
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_11_1_createEnableTimeBasedSchedule(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_11_1_createEnableTimeBasedSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 
 //! Build a TC to disable the time-based schedule function
@@ -83,7 +83,7 @@ pusError_t pus_tc_11_1_createEnableTimeBasedSchedule(pusPacket_t* outTc, pusApid
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_11_2_createDisableTimeBasedSchedule(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_11_2_createDisableTimeBasedSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 
 //! Build a TC to reset the time-based schedule
@@ -91,7 +91,7 @@ pusError_t pus_tc_11_2_createDisableTimeBasedSchedule(pusPacket_t* outTc, pusApi
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 
 //! Build a TC to insert activities into the time-based schedule
@@ -99,7 +99,7 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApidI
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 
 //! Check that a packet is of a PUS ST[11] kind

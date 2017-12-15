@@ -26,7 +26,7 @@ void test_st09_packets()
 	pus_clearError();
 
 	//TC[9,1]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_9_1_createSetTimeReportRate(&tc, &apid, 3));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_9_1_createSetTimeReportRate(&tc, apid.apid, pus_getNextPacketCount(&apid), 3));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST09TC(&tc, pus_TC_9_1_setTimeReportRate));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tc));
 	CU_ASSERT_EQUAL(0, pus_getSequenceCount(&tc));
@@ -43,7 +43,7 @@ void test_st09_packets()
 	pus_clearError();
 
 	//TM[9,2]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_9_2_createCucTimeReport(&tm, &apid));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_9_2_createCucTimeReport(&tm, apid.apid, pus_getNextPacketCount(&apid)));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST09TM(&tm));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
 	CU_ASSERT_EQUAL(1, pus_getSequenceCount(&tm));
@@ -51,8 +51,8 @@ void test_st09_packets()
 
 
 	// ERROR_NULL_PTR
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_9_1_createSetTimeReportRate(NULL, NULL, 2));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_9_2_createCucTimeReport(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_9_1_createSetTimeReportRate(NULL, 1, 1, 2));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_9_2_createCucTimeReport(NULL, 1,1));
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_9_1_setExponentialRate(NULL, 4));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_9_1_getExponentialRate(NULL, NULL));

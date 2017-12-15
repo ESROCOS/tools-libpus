@@ -1,20 +1,19 @@
 #include "pus_st11_packets.h"
 
 
-pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* apid, pusSubservice_t subtype)
+pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else
 	{
 		pus_initTcPacket(outTc);
-		//pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
 
 		// Source information
-		pus_setApid(outTc, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
@@ -29,14 +28,14 @@ pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* ap
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_11_1_createEnableTimeBasedSchedule(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_11_1_createEnableTimeBasedSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
-	if( NULL == outTc || NULL == apid )
+	if( NULL == outTc)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
 
-	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, pus_TC_11_1_enableTimeBasedScheduling) )
+	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_11_1_enableTimeBasedScheduling) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -45,13 +44,13 @@ pusError_t pus_tc_11_1_createEnableTimeBasedSchedule(pusPacket_t* outTc, pusApid
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_11_2_createDisableTimeBasedSchedule(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_11_2_createDisableTimeBasedSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
-	if( NULL == outTc || NULL == apid )
+	if( NULL == outTc)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
-	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, pus_TC_11_2_disableTimeBasedScheduling) )
+	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_11_2_disableTimeBasedScheduling) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -62,13 +61,13 @@ pusError_t pus_tc_11_2_createDisableTimeBasedSchedule(pusPacket_t* outTc, pusApi
 }
 
 
-pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
-	if( NULL == outTc || NULL == apid )
+	if( NULL == outTc)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
-	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, pus_TC_11_3_resetTimeBasedSchedule) )
+	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_11_3_resetTimeBasedSchedule) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -77,13 +76,13 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApidI
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
-	if( NULL == outTc || NULL == apid )
+	if( NULL == outTc)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
-	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, pus_TC_11_4_insertActivity) )
+	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_11_4_insertActivity) )
 	{
 		return PUS_GET_ERROR();
 	}
