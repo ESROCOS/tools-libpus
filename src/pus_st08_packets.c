@@ -94,24 +94,26 @@ bool pus_st08_isInFunctionTable(pusSt08FunctiontId_t functionId)
 	}
 }
 
-void pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionId)
+int pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionId)
 {
 	if (NULL == outTc)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return;
+		return 1;
 	}
 
 	if( !pus_st08_isInFunctionTable(functionId))
 	{
 		PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_FUNCTION_ID);
-		return;
+		return 100;
 	}
 
 	if (PUS_NO_ERROR == PUS_EXPECT_ST08(outTc, pus_TC_8_1_performFunction))
 	{
 		outTc->data.u.tcData.data.u.st_8_1.functionId = functionId;
+		return outTc->data.u.tcData.data.u.st_8_1.functionId;
 	}
+	return 500;
 }
 
 

@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include "pus_packet.h"
 #include "pus_apid.h"
+#include "pus_time.h"
 #include "pus_st01_packets.h"
 #include "pus_st03_packets.h"
 #include "pus_st05_packets.h"
@@ -12,6 +13,7 @@
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
 #include "pus_events.h"
+#include <time.h>
 
 typedef unsigned int uint;
 typedef unsigned long long ull;
@@ -20,20 +22,30 @@ typedef long long ll;
 
 pusError_t pus_initApidInfo_(pusApidInfo_t* obj, pusApid_t apid);
 uint pus_getPacketVersion_(const pusPacket_t* packet);
+void pus_setPacketVersion_(pusPacket_t* packet, uint version);
 uint pus_getPacketType_(const pusPacket_t* packet);
+void pus_setPacketType_(pusPacket_t *packet, uint type_);
 uint pus_getSequenceFlags_(const pusPacket_t* packet);
+void pus_setSequenceFlags_(pusPacket_t *packet, uint seqflags);
 uint pus_getTmPusVersion_(const pusPacket_t* packet);
+void pus_setTmPusVersion_(pusPacket_t *packet, uint version);
 uint pus_getTcPusVersion_(const pusPacket_t* packet);
+void pus_setTcPusVersion_(pusPacket_t *packet, uint version);
 time_t pus_getTmPacketTime_(const pusPacket_t* packet);
+void pus_setTmPacketTime_(pusPacket_t *packet, time_t time_);
+
 uint pus_tm_1_X_getPacketVersionNumber_(pusPacket_t *tm);
+void pus_tm_1_X_setPacketVersionNumber_(pusPacket_t *tm, uint version);
 uint pus_tm_1_X_getPacketType_(pusPacket_t* tm);
+void pus_tm_1_X_setPacketType_(pusPacket_t* tm, uint type);
 uint pus_tm_1_X_getSequenceFlags_(pusPacket_t* tm);
-ll pus_tm_1_X_getFailureCode_(const pusPacket_t *tm);
-
-
+void pus_tm_1_X_setSequenceFlags_(pusPacket_t* tm, uint seq_flags);
+ull pus_tm_1_X_getFailureCode_(const pusPacket_t *tm);
 ll pus_getSt01FailureSubcode_(const pusPacket_t *tm);
 ll pus_getSt01FailureData_(const pusPacket_t *tm);
 ull pus_getSt01FailureAddress_(const pusPacket_t *tm);
+void pus_setSt01FailureInfo_(pusPacket_t *tm, ull code, ll subcode, ll data, ull address);
+
 pusError_t pus_hk_initialize_null_();
 
 
