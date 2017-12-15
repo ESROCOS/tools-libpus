@@ -77,19 +77,19 @@ int main()
 	//Event TM packets to TMqueue
 	pusPacket_t tm;
 
-	pus_tm_5_1_createInformativeEventReport(&tm, &apid, &eventInfo, pus_st05_getEventDestination());
+	pus_tm_5_1_createInformativeEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventInfo, pus_st05_getEventDestination());
 	pus_packetQueues_push(&tm, &pus_packetQueue_tm);
 	printf("TM_5_1 pushed in TMqueue.\n");
 
-	pus_tm_5_2_createLowSeverityEventReport(&tm, &apid, &eventLow, pus_st05_getEventDestination());
+	pus_tm_5_2_createLowSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventLow, pus_st05_getEventDestination());
 	pus_packetQueues_push(&tm, &pus_packetQueue_tm);
 	printf("TM_5_2 pushed in TMqueue.\n");
 
-	pus_tm_5_3_createMediumSeverityEventReport(&tm, &apid, &eventMid, pus_st05_getEventDestination());
+	pus_tm_5_3_createMediumSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventMid, pus_st05_getEventDestination());
 	pus_packetQueues_push(&tm, &pus_packetQueue_tm);
 	printf("TM_5_3 pushed in TMqueue.\n");
 
-	pus_tm_5_4_createHighSeverityEventReport(&tm, &apid, &eventHi, pus_st05_getEventDestination());
+	pus_tm_5_4_createHighSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventHi, pus_st05_getEventDestination());
 	pus_packetQueues_push(&tm, &pus_packetQueue_tm);
 	printf("TM_5_4 pushed in TMqueue.\n");
 
@@ -145,7 +145,6 @@ int main()
 		}else{
 			noTc++;
 		}
-
 
 
 		if ( PUS_NO_ERROR == pus_packetQueues_pop(&tmRead, &pus_packetQueue_tm) )
@@ -213,7 +212,7 @@ pusError_t example_function()
 
 	pusPacket_t tm;
 
-	pus_tm_5_1_createInformativeEventReport(&tm, &apid, &eventInfo, pus_st05_getEventDestination());
+	pus_tm_5_1_createInformativeEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventInfo, pus_st05_getEventDestination());
 	pus_packetQueues_push(&tm, &pus_packetQueue_tm);
 	printf("TM_5_1 pushed in TMqueue FROM function.\n");
 

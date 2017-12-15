@@ -20,6 +20,8 @@ extern void tcdispatch_RI_tcRequest(asn1SccPusPacket *,
 
 extern void tcdispatch_RI_tc17(const asn1SccPusPacket *);
 
+extern void tcdispatch_RI_tc08(const asn1SccPusPacket *);
+
 #ifdef __cplusplus
 }
 #endif

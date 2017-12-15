@@ -18,17 +18,17 @@ extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
 // Packet creation
 //
 
-pusError_t pus_tm_3_25_createHousekeepingReportDefault(pusPacket_t* outTm, pusApidInfo_t* apid, pusApid_t destination)
+pusError_t pus_tm_3_25_createHousekeepingReportDefault(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination)
 {
-	return pus_tm_3_25_createHousekeepingReport(outTm, apid, pus_ST03_DEFAULT_HK_REPORT, destination);
+	return pus_tm_3_25_createHousekeepingReport(outTm, apid, sequenceCount, pus_ST03_DEFAULT_HK_REPORT, destination);
 }
 
-pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt03HousekeepingReportId_t reportId, pusApid_t destination)
+pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt03HousekeepingReportId_t reportId, pusApid_t destination)
 {
 	size_t numParams = 0;
 	pusSt03ParamId_t* paramIds;
 
-	if (NULL == outTm || NULL == apid)
+	if (NULL == outTm)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -66,8 +66,8 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApidInfo_
 	pus_setTmDataKind(outTm, pus_TM_DATA_ST_3_25);
 
 	// Source information
-	pus_setApid(outTm, pus_getInfoApid(apid));
-	pus_setSequenceCount(outTm, pus_getNextPacketCount(apid));
+	pus_setApid(outTm, apid);
+	pus_setSequenceCount(outTm, sequenceCount);
 
 	// Data length
 	pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));

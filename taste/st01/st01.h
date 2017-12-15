@@ -14,11 +14,10 @@ extern "C" {
 void st01_startup();
 
 void st01_PI_ACK(const asn1SccPusPacket *,
-                 const asn1SccPusApid *,
-                 const asn1SccPusSequenceCount *,
-                 const asn1SccT_Boolean *,
+                 const asn1SccPusSubserviceType *,
                  const asn1SccPusSt01FailureCode *,
-                 const asn1SccPusSt01FailureInfo *);
+                 const asn1SccPusSt01FailureInfo *,
+                 const asn1SccPusStepId *);
 
 extern void st01_RI_newTm(const asn1SccPusPacket *);
 

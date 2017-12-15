@@ -239,7 +239,7 @@ void test_st03()
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
 	// Create and check default report
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReportDefault(&tm, &apid, 55));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReportDefault(&tm, apid.apid, pus_getNextPacketCount(&apid), 55));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST03(&tm, pusSubtype_NONE));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST03(&tm, pus_TM_3_25_housekeepingReport));
@@ -333,14 +333,15 @@ void test_st03()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_paramToBool(NULL, 0));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_createHousekeepingReport(NULL, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_createHousekeepingReport(&tm, NULL, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_createHousekeepingReport(NULL, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
+
 	// Not initialized
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_tm_3_25_createHousekeepingReport(&tm, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, PUS_GET_ERROR()); pus_clearError();
+	apid.mutex = NULL;
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, PUS_GET_ERROR());
+	pus_clearError();
 
 	// Reinitialize
 	CU_ASSERT_TRUE(pus_mutexInitOk(&mutexHk));
@@ -351,7 +352,7 @@ void test_st03()
 
 
 	// Wrong packet
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReport(&tm2, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReport(&tm2, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
 
 	pus_setTmService(&tm2, pusService_NONE);
 	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_EXPECT_ST03(&tm2, pus_TM_3_25_housekeepingReport));
@@ -369,7 +370,7 @@ void test_st03()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacketNoHeader(&tm2));
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TM, PUS_EXPECT_ST03(&tm2, pus_TM_3_25_housekeepingReport)); pus_clearError();
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReport(&tm2, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReport(&tm2, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
 	pus_setTmService(&tm2, pusService_NONE);
 
 	CU_ASSERT_EQUAL(0, pus_tm_3_25_getReportId(&tm2));
@@ -386,17 +387,17 @@ void test_st03()
 
 	// pus_tm_3_25_createHousekeepingReport
 	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
-	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_3_25_createHousekeepingReport(&tm, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
 	pus_clearError();
 
-	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, pus_tm_3_25_createHousekeepingReport(&tm, &apid, 1234, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), 1234, pus_APID_IDLE));
 	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, PUS_GET_ERROR()); pus_clearError();
 
 	extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
 	size_t oldNumParams = pus_st03_defaultHkReportInfo.numParams;
 
 	pus_st03_defaultHkReportInfo.numParams = 1000;
-	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, pus_tm_3_25_createHousekeepingReport(&tm, &apid, pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
 	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, PUS_GET_ERROR()); pus_clearError();
 	pus_st03_defaultHkReportInfo.numParams = oldNumParams;
 

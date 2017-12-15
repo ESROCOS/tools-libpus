@@ -26,10 +26,20 @@ void st17_startup()
 void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
 {
     /* Write your code here! */
+	pusSubservice_t subtype;
+	pusSt01FailureCode_t errorCode = PUS_NO_ERROR;
+	pusSt01FailureInfo_t info;
+	pusStepId_t step = 0;
+
 	pusError_t error = PUS_EXPECT_ST17TC(IN_tcPacket, pusSubtype_NONE);
 	if( PUS_NO_ERROR == error )
 	{
 		printf(" - ST17: TC%llu_%llu received.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
+
+		printf(" - ST17: sending packet to ST01 Acceptance success\n");
+		subtype = pus_TM_1_1_successfulAcceptance;
+		st17_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+
 
 		printf(" - ST17: processing packet\n");
 		pusPacket_t tmResponse;
@@ -38,13 +48,7 @@ void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
 		st17_RI_newTm(&tmResponse);
 
 
-		printf(" - ST17: sending packet to ST01\n");
-		asn1SccPusApid apid = 1;
-		asn1SccPusSequenceCount count = 0;
-		asn1SccT_Boolean flagError = false;
-		asn1SccPusSt01FailureCode errorCode = 0;
-		asn1SccPusSt01FailureInfo info;
-		st17_RI_ACK(IN_tcPacket, &apid, &count, &flagError, &errorCode, &info);
+
 	}
 	else
 	{
@@ -53,8 +57,5 @@ void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
 		printf(" - ST17: Error in st17_PI_tc17, %d (no exit)\n", error);
 	}
 
-
-
-	//pus_st17_processTcPacket(&tcRead, &apid);
 }
 

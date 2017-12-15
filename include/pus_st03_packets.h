@@ -37,7 +37,7 @@ extern "C" {
  *  \param[in] count TM sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_3_25_createHousekeepingReportDefault(pusPacket_t* outTm, pusApidInfo_t* apid, pusApid_t destination);
+pusError_t pus_tm_3_25_createHousekeepingReportDefault(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination);
 
 //! Build a housekeeping parameter report
 /*! Builds a TM[3,25 packet in the packet passed as parameter.
@@ -47,7 +47,7 @@ pusError_t pus_tm_3_25_createHousekeepingReportDefault(pusPacket_t* outTm, pusAp
  *  \param[in] reportId The report ID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusSt03HousekeepingReportId_t reportId, pusApid_t destination);
+pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt03HousekeepingReportId_t reportId, pusApid_t destination);
 
 
 

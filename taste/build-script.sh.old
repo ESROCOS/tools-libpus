@@ -77,6 +77,8 @@ cd "$SKELS" && rm -f st17.zip && zip st17 st17/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f st01.zip && zip st01 st01/* && cd $OLDPWD
 
+cd "$SKELS" && rm -f st08.zip && zip st08 st08/* && cd $OLDPWD
+
 [ ! -z "$CLEANUP" ] && rm -rf binary*
 
 if [ -f ConcurrencyView.pro ]
@@ -125,6 +127,7 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC tmqueue:"$SKELS"/tmqueue.zip \
 	--subC st17:"$SKELS"/st17.zip \
 	--subC st01:"$SKELS"/st01.zip \
+	--subC st08:"$SKELS"/st08.zip \
 	$ORCHESTRATOR_OPTIONS
 
 if [ -f user_init_last.sh ]

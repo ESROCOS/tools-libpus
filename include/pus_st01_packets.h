@@ -32,7 +32,7 @@ extern "C" {
  *  \param[in] receivedTc The TC acknowledged in the report
  *  \param[in] subtype The TM service subtype to be created
  */
-pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc, pusSubservice_t subtype);
+pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc, pusSubservice_t subtype);
 
 //! Build an acceptance report for a TC
 /*! Builds a TM[1,1] packet in the packet passed as parameter.
@@ -41,7 +41,7 @@ pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApidInfo_t* apid, cons
  *  \param[in] count TM sequence counter for the source APID
  *  \param[in] receivedTc The TC acknowledged in the report
  */
-pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
+pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc);
 
 //! Build an acceptance report for a TC
 /*! Builds a TM[1,2] packet in the packet passed as parameter.
@@ -52,7 +52,7 @@ pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApidI
  *  \param[in] code Failure code
  *  \param[in] info Failure info; pass NULL to leave default
  */
-pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
+pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc,
 		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
 
 //! Build an acceptance report for a TC
@@ -62,7 +62,7 @@ pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApidI
  *  \param[in] count TM sequence counter for the source APID
  *  \param[in] receivedTc The TC acknowledged in the report
  */
-pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
+pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc);
 
 //! Build an acceptance report for a TC
 /*! Builds a TM[1,4] packet in the packet passed as parameter.
@@ -73,7 +73,7 @@ pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApidInfo_t
  *  \param[in] code Failure code
  *  \param[in] info Failure info; pass NULL to leave default
  */
-pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
+pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc,
 		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
 
 //! Build an acceptance report for a TC
@@ -84,7 +84,7 @@ pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApidInfo_t
  *  \param[in] receivedTc The TC acknowledged in the report
  *  \param[in] step The procedure step
  */
-pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc, pusStepId_t step);
+pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc, pusStepId_t step);
 
 //! Build an acceptance report for a TC
 /*! Builds a TM[1,6] packet in the packet passed as parameter.
@@ -96,7 +96,7 @@ pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApidInf
  *  \param[in] code Failure code
  *  \param[in] info Failure info; pass NULL to leave default
  */
-pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
+pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc,
 		pusStepId_t step, pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
 
 //! Build an acceptance report for a TC
@@ -106,7 +106,7 @@ pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApidInf
  *  \param[in] count TM sequence counter for the source APID
  *  \param[in] receivedTc The TC acknowledged in the report
  */
-pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc);
+pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc);
 
 //! Build an acceptance report for a TC
 /*! Builds a TM[1,8] packet in the packet passed as parameter.
@@ -117,7 +117,7 @@ pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApidI
  *  \param[in] code Failure code
  *  \param[in] info Failure info; pass NULL to leave default
  */
-pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApidInfo_t* apid, const pusPacket_t* receivedTc,
+pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusPacket_t* receivedTc,
 		pusSt01FailureCode_t code, const pusSt01FailureInfo_t* info);
 
 

@@ -30,6 +30,7 @@ WITH interfaceview::IV::OnBoard::TM::TmDispatch;
 WITH interfaceview::IV::OnBoard::TM::TmQueue;
 WITH interfaceview::IV::OnBoard::ST17;
 WITH interfaceview::IV::OnBoard::ST01;
+WITH interfaceview::IV::OnBoard::ST08;
 WITH ocarina_processors_x86;
 WITH deploymentview::DV::Node1;
 WITH Taste;
@@ -65,6 +66,9 @@ SUBCOMPONENTS
   IV_ST01 : SYSTEM interfaceview::IV::OnBoard::ST01::ST01.others {
     Taste::FunctionName => "ST01";
   };
+  IV_ST08 : SYSTEM interfaceview::IV::OnBoard::ST08::ST08.others {
+    Taste::FunctionName => "ST08";
+  };
   x86_partition : PROCESS deploymentview::DV::Node1::x86_partition.others {
     Taste::coordinates => "112215 76540 165731 134957";
     Deployment::Port_Number => 0;
@@ -81,6 +85,7 @@ PROPERTIES
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_TmQueue;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST17;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST01;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST08;
   Actual_Processor_Binding => (reference (x86_linux)) APPLIES TO x86_partition;
 END Node1.others;
 
