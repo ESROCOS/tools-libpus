@@ -32,26 +32,26 @@ void test_st12_packets()
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, PUS_EXPECT_ST12TC(&tc, pusSubtype_NONE));
 	pus_clearError();
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_1_createEnableParameterMonitoringDefinitions(&tc, &apid, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_1_createEnableParameterMonitoringDefinitions(&tc, apid.apid, pus_getNextPacketCount(&apid), 1));
 	CU_ASSERT_EQUAL(pus_ST12_onBoardMonitoring, pus_getTcService(&tc));
 	CU_ASSERT_EQUAL(pus_TC_12_1_enableParameterMonitoringDefinitions, pus_getTcSubtype(&tc));
 	CU_ASSERT_EQUAL(pus_TC_DATA_ST_12_1_2, pus_getTcDataKind(&tc));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_1_2_getPmonId(&pmonId, &tc));
 	CU_ASSERT_EQUAL(1,pmonId);
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_2_createDisableParameterMonitoringDefinitions(&tc, &apid, 2));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_2_createDisableParameterMonitoringDefinitions(&tc, apid.apid, pus_getNextPacketCount(&apid), 2));
 	CU_ASSERT_EQUAL(pus_ST12_onBoardMonitoring, pus_getTcService(&tc));
 	CU_ASSERT_EQUAL(pus_TC_12_2_disableParameterMonitoringDefinitions, pus_getTcSubtype(&tc));
 	CU_ASSERT_EQUAL(pus_TC_DATA_ST_12_1_2, pus_getTcDataKind(&tc));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_1_2_getPmonId(&pmonId, &tc));
 	CU_ASSERT_EQUAL(2,pmonId);
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_15_createEnableParameterMonitoring(&tc, &apid));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_15_createEnableParameterMonitoring(&tc, apid.apid, pus_getNextPacketCount(&apid)));
 	CU_ASSERT_EQUAL(pus_ST12_onBoardMonitoring, pus_getTcService(&tc));
 	CU_ASSERT_EQUAL(pus_TC_12_15_enableParameterMonitoring, pus_getTcSubtype(&tc));
 	CU_ASSERT_EQUAL(pus_TC_DATA_NONE, pus_getTcDataKind(&tc));
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_16_createDisableParameterMonitoring(&tc, &apid));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_12_16_createDisableParameterMonitoring(&tc, apid.apid, pus_getNextPacketCount(&apid)));
 	CU_ASSERT_EQUAL(pus_ST12_onBoardMonitoring, pus_getTcService(&tc));
 	CU_ASSERT_EQUAL(pus_TC_12_16_disableParameterMonitoring, pus_getTcSubtype(&tc));
 	CU_ASSERT_EQUAL(pus_TC_DATA_NONE, pus_getTcDataKind(&tc));
@@ -72,11 +72,11 @@ void test_st12_packets()
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_1_2_getPmonId(NULL, NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_1_2_setPmonId(NULL, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_X_createDefaultPacket(NULL, NULL, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_1_createEnableParameterMonitoringDefinitions(NULL, &apid, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_2_createDisableParameterMonitoringDefinitions(NULL, &apid, 2));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_15_createEnableParameterMonitoring(NULL, &apid));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_16_createDisableParameterMonitoring(NULL, &apid));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_X_createDefaultPacket(NULL, 1, 1, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_1_createEnableParameterMonitoringDefinitions(NULL, apid.apid, pus_getNextPacketCount(&apid), 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_2_createDisableParameterMonitoringDefinitions(NULL, apid.apid, pus_getNextPacketCount(&apid), 2));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_15_createEnableParameterMonitoring(NULL, apid.apid, pus_getNextPacketCount(&apid)));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_12_16_createDisableParameterMonitoring(NULL, apid.apid, pus_getNextPacketCount(&apid)));
 }
 
 void test_st12()

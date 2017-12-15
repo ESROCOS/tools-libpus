@@ -29,35 +29,35 @@ extern "C" {
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 //! Build an acceptance report for a TC
 /*! Builds a TC[19,1] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId, pusPacket_t* tcAction);
+pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId, pusPacket_t* tcAction);
 
 //! Build an acceptance report for a TC
 /*! Builds a TC[19,2] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId);
+pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId);
 
 //! Build an acceptance report for a TC
 /*! Builds a TC[19,4] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId);
+pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId);
 
 //! Build an acceptance report for a TC
 /*! Builds a TC[19,5] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId);
+pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId);
 
 
 //TODO Move to a particular file ¿name?

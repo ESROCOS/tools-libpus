@@ -2,20 +2,19 @@
 
 
 
-pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else
 	{
 		pus_initTcPacket(outTc);
-		//pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
 
 		// Source information
-		pus_setApid(outTc, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
@@ -33,14 +32,14 @@ pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusAp
 
 
 
-pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId, pusPacket_t* tcAction)
+pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId, pusPacket_t* tcAction)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
-	if( PUS_NO_ERROR !=  pus_tc_19_X_createDefaultEventActionRequest(outTc, apid) )
+	if( PUS_NO_ERROR !=  pus_tc_19_X_createDefaultEventActionRequest(outTc, apid, sequenceCount) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -59,14 +58,14 @@ pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc
 }
 
 
-pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId)
+pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
-	if( PUS_NO_ERROR !=  pus_tc_19_X_createDefaultEventActionRequest(outTc, apid) )
+	if( PUS_NO_ERROR !=  pus_tc_19_X_createDefaultEventActionRequest(outTc, apid, sequenceCount) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -79,14 +78,14 @@ pusError_t pus_tc_19_2_createDeleteEventActionDefinitionsRequest(pusPacket_t* ou
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId)
+pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
-	if( PUS_NO_ERROR !=  pus_tc_19_X_createDefaultEventActionRequest(outTc, apid) )
+	if( PUS_NO_ERROR !=  pus_tc_19_X_createDefaultEventActionRequest(outTc, apid, sequenceCount) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -99,14 +98,14 @@ pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pu
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt05EventId_t eventId)
+pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
-	if( PUS_NO_ERROR !=  pus_tc_19_X_createDefaultEventActionRequest(outTc, apid) )
+	if( PUS_NO_ERROR !=  pus_tc_19_X_createDefaultEventActionRequest(outTc, apid, sequenceCount) )
 	{
 		return PUS_GET_ERROR();
 	}

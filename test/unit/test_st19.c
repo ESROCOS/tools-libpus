@@ -53,7 +53,7 @@ void packets_st19()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tcAction, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_01));
 
 	//TC[19,1]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_1_createAddEventActionDefinitionsRequest(&tc, &apid, 1, &tcAction));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_1_createAddEventActionDefinitionsRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), 1, &tcAction));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_1_addEventActionDefinitions));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pusSubtype_NONE));
 
@@ -77,26 +77,26 @@ void packets_st19()
 	pus_clearError();
 
 	//TM[19,2]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_2_createDeleteEventActionDefinitionsRequest(&tc, &apid, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_2_createDeleteEventActionDefinitionsRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_2_deleteEventActionDefinitions));
 	pus_clearError();
 
 	//TM[19,4]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_4_createEnableEventActionDefinitions(&tc, &apid, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_4_createEnableEventActionDefinitions(&tc, apid.apid, pus_getNextPacketCount(&apid), 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_4_enableEventActionDefinitions));
 	pus_clearError();
 
 	//TM[19,5]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_5_createDisableEventActionDefinitions(&tc, &apid, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_5_createDisableEventActionDefinitions(&tc, apid.apid, pus_getNextPacketCount(&apid), 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_5_disableEventActionDefinitions));
 	pus_clearError();
 
 	//NULL PTR
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_X_createDefaultEventActionRequest(NULL, NULL));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_1_createAddEventActionDefinitionsRequest(NULL, &apid, 1, &tcAction));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_2_createDeleteEventActionDefinitionsRequest(NULL, &apid, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_4_createEnableEventActionDefinitions(NULL, &apid, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_5_createDisableEventActionDefinitions(NULL, &apid, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_X_createDefaultEventActionRequest(NULL, 1,1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_1_createAddEventActionDefinitionsRequest(NULL, apid.apid, pus_getNextPacketCount(&apid), 1, &tcAction));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_2_createDeleteEventActionDefinitionsRequest(NULL, apid.apid, pus_getNextPacketCount(&apid), 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_4_createEnableEventActionDefinitions(NULL, apid.apid, pus_getNextPacketCount(&apid), 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_19_5_createDisableEventActionDefinitions(NULL, apid.apid, pus_getNextPacketCount(&apid), 1));
 
 	pus_tc_19_1_setAction(NULL, NULL); CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
 	pus_tc_19_X_setEventId(NULL, 2); CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());

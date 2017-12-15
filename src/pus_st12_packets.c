@@ -1,9 +1,9 @@
 #include "pus_st12_packets.h"
 
 
-pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* apid, pusSubservice_t subtype)
+pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -13,8 +13,8 @@ pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* ap
 		//pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
 
 		// Source information
-		pus_setApid(outTc, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
@@ -29,14 +29,14 @@ pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* ap
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt12PmonId_t pmon)
+pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt12PmonId_t pmon)
 {
-	if( NULL == outTc || NULL == apid )
+	if( NULL == outTc)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
 
-	if( PUS_NO_ERROR != pus_tc_12_X_createDefaultPacket(outTc, apid, pus_TC_12_1_enableParameterMonitoringDefinitions) )
+	if( PUS_NO_ERROR != pus_tc_12_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_12_1_enableParameterMonitoringDefinitions) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -47,13 +47,13 @@ pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* o
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt12PmonId_t pmon)
+pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt12PmonId_t pmon)
 {
-	if( NULL == outTc || NULL == apid )
+	if( NULL == outTc)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
-	if( PUS_NO_ERROR != pus_tc_12_X_createDefaultPacket(outTc, apid, pus_TC_12_2_disableParameterMonitoringDefinitions) )
+	if( PUS_NO_ERROR != pus_tc_12_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_12_2_disableParameterMonitoringDefinitions) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -65,13 +65,13 @@ pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* 
 }
 
 
-pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
-	if( NULL == outTc || NULL == apid )
+	if( NULL == outTc)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
-	if( PUS_NO_ERROR != pus_tc_12_X_createDefaultPacket(outTc, apid, pus_TC_12_15_enableParameterMonitoring) )
+	if( PUS_NO_ERROR != pus_tc_12_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_12_15_enableParameterMonitoring) )
 	{
 		return PUS_GET_ERROR();
 	}
@@ -80,13 +80,13 @@ pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusA
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_12_16_createDisableParameterMonitoring(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_12_16_createDisableParameterMonitoring(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
-	if( NULL == outTc || NULL == apid )
+	if( NULL == outTc)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
-	if( PUS_NO_ERROR != pus_tc_12_X_createDefaultPacket(outTc, apid, pus_TC_12_16_disableParameterMonitoring) )
+	if( PUS_NO_ERROR != pus_tc_12_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_12_16_disableParameterMonitoring) )
 	{
 		return PUS_GET_ERROR();
 	}

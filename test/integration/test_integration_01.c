@@ -66,11 +66,11 @@ int main()
 
 	pusPacket_t tcAction;
 	pus_tc_8_1_createPerformFuctionRequest(&tcAction, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_02);
-	pus_tc_19_1_createAddEventActionDefinitionsRequest(&tc, &apid, eventInfo.eventId, &tcAction);
+	pus_tc_19_1_createAddEventActionDefinitionsRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), eventInfo.eventId, &tcAction);
 	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
 	printf("TC_19_1 pushed in TCqueue.\n");
 
-	pus_tc_19_4_createEnableEventActionDefinitions(&tc, &apid, eventInfo.eventId);
+	pus_tc_19_4_createEnableEventActionDefinitions(&tc, apid.apid, pus_getNextPacketCount(&apid), eventInfo.eventId);
 	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
 	printf("TC_19_4 pushed in TCqueue.\n");
 

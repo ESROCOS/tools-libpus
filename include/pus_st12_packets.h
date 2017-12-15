@@ -29,17 +29,17 @@ extern "C" {
 
 
 
-pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApidInfo_t* apid, pusSubservice_t subtype);
+pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype);
 
-pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt12PmonId_t pmon);
+pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt12PmonId_t pmon);
 
-pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApidInfo_t* apid, pusSt12PmonId_t pmon);
+pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt12PmonId_t pmon);
 
 //pusError_t pus_tm_12_12_createCheckTransitionReport(pusPacket_t* outTm, pusApidInfo_t* apid);
 
-pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
-pusError_t pus_tc_12_16_createDisableParameterMonitoring(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_12_16_createDisableParameterMonitoring(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 //! Set pmonId to the data field of TC[12,1] and TC[17,2]
 pusError_t pus_tc_12_1_2_setPmonId(pusPacket_t* outTc, pusSt12PmonId_t pmon);
