@@ -14,13 +14,11 @@
 #include "pus_st17_packets.h"
 
 
-pusApidInfo_t apidSt17; //TODO or general for On-Board Services
 
 void st17_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
-	pus_initApidInfo(&apidSt17, 1, NULL);
 }
 
 void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
@@ -42,13 +40,16 @@ void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
 
 
 		printf(" - ST17: processing packet\n");
-		pusPacket_t tmResponse;
-		pus_st17_createTestResponse(&tmResponse, &apidSt17, IN_tcPacket);
+
+		pusPacket_t outTm;
+		pusApid_t apid;
+		pusSequenceCount_t seqCount;
+		st17_RI_getApid(&apid);
+		st17_RI_getSequenceCount(&seqCount);
+		pus_tm_17_2_createConnectionTestReport(&outTm, apid, seqCount, IN_tcPacket->apid);
+
 		printf(" - ST17: Sending TM17.2\n");
-		st17_RI_newTm(&tmResponse);
-
-
-
+		st17_RI_newTm(&outTm);
 	}
 	else
 	{

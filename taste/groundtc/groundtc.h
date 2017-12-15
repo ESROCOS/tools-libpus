@@ -17,6 +17,10 @@ void groundtc_PI_GroundTcTrigger();
 
 extern void groundtc_RI_newTc(const asn1SccPusPacket *);
 
+extern void groundtc_RI_getApid(asn1SccPusApid *);
+
+extern void groundtc_RI_getSequenceCounter(asn1SccPusSequenceCount *);
+
 #ifdef __cplusplus
 }
 #endif

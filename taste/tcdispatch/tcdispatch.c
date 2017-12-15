@@ -25,11 +25,12 @@ void tcdispatch_PI_tcTrigger()
     /* Write your code here! */
 	pusPacket_t tc;
 	asn1SccT_Boolean isAvailable;
+	printf("tcdispatch_PI_tcTrigger: ");
 
 	tcdispatch_RI_tcRequest(&tc, &isAvailable);
 	if( false == isAvailable )
 	{
-		printf("tcdispatch_PI_tcTrigger NO DATA READ\n");
+		printf(" NO DATA READ\n");
 		pus_clearError();
 		return;
 	}
@@ -37,7 +38,7 @@ void tcdispatch_PI_tcTrigger()
 	pusError_t error = PUS_EXPECT_TC(&tc);
 	if ( PUS_NO_ERROR == error)
 	{
-		printf("TC%llu_%llu in TcDispatch.\n", pus_getTcService(&tc), pus_getTcSubtype(&tc));
+		printf(" - TC%llu_%llu in TcDispatch.\n", pus_getTcService(&tc), pus_getTcSubtype(&tc));
 
 		switch(pus_getTcService(&tc))
 		{
