@@ -32,12 +32,12 @@ int main()
 
 	//TC creation + push on queue
 	pusPacket_t tc;
-	pus_tc_17_1_createConnectionTestRequest(&tc, &apid);
+	pus_tc_17_1_createConnectionTestRequest(&tc, apid.apid, pus_getNextPacketCount(&apid));
 	pus_setTcAckFlags(&tc, true, false, false, true);
 	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
 	printf("TC_17_1 pushed in TCqueue.\n");
 
-	pus_tc_8_1_createPerformFuctionRequest(&tc, &apid, EXAMPLE_FUNCTION_01);
+	pus_tc_8_1_createPerformFuctionRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_01);
 	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
 	printf("TC_8_1 pushed in TCqueue.\n");
 
@@ -65,7 +65,7 @@ int main()
 	pus_st05_pushBufferEvent(&eventHi);
 
 	pusPacket_t tcAction;
-	pus_tc_8_1_createPerformFuctionRequest(&tcAction, &apid, EXAMPLE_FUNCTION_02);
+	pus_tc_8_1_createPerformFuctionRequest(&tcAction, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_02);
 	pus_tc_19_1_createAddEventActionDefinitionsRequest(&tc, &apid, eventInfo.eventId, &tcAction);
 	pus_packetQueues_push(&tc, &pus_packetQueue_tc);
 	printf("TC_19_1 pushed in TCqueue.\n");

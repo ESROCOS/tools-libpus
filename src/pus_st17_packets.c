@@ -5,10 +5,10 @@
 //#include "pus_stored_param.h"
 
 
-pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidInfo_t* apid)
+pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
 
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -17,10 +17,8 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidIn
 		pus_initTcPacket(outTc);
 
 		// Source information
-		pus_setApid(outTc, pus_getInfoApid(apid));
-
-
-		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
@@ -41,20 +39,19 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidIn
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusApid_t destination)
+pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination)
 {
-	if (NULL == outTm || NULL == apid)
+	if (NULL == outTm )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else
 	{
 		pus_initTmPacket(outTm);
-		//pus_setTMDataKind(outTm, pus_TM_DATA_ST_1_X);
 
 		// Source information
-		pus_setApid(outTm, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTm, pus_getNextPacketCount(apid));
+		pus_setApid(outTm, apid);
+		pus_setSequenceCount(outTm, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));
@@ -89,7 +86,7 @@ pusError_t pus_st17_createTestResponse(pusPacket_t* outTm, pusApidInfo_t* apid, 
 		else
 		{
 
-			pus_tm_17_2_createConnectionTestReport(outTm, apid, inTc->apid);
+			pus_tm_17_2_createConnectionTestReport(outTm, apid->apid, pus_getNextPacketCount(apid), inTc->apid);
 			return PUS_NO_ERROR;
 		}
 	}

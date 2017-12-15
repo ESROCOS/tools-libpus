@@ -50,7 +50,7 @@ void packets_st19()
 
 	pus_initApidInfo(&apid, 5, NULL); CU_ASSERT_FALSE(PUS_IS_ERROR());
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tcAction, &apid, EXAMPLE_FUNCTION_01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tcAction, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_01));
 
 	//TC[19,1]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_1_createAddEventActionDefinitionsRequest(&tc, &apid, 1, &tcAction));
@@ -136,7 +136,7 @@ void test_st19()
 	pusApidInfo_t apid;
 	pus_initApidInfo(&apid, 5, NULL); CU_ASSERT_FALSE(PUS_IS_ERROR());
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tcAction, &apid, EXAMPLE_FUNCTION_01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tcAction, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_01));
 
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_eventAction_finalize());
