@@ -31,6 +31,12 @@ extern "C" {
 	}
 }
 
+pusError_t getError()
+{	pusError_t error = pusError_t::PUS_NO_ERROR;
+	pus_getError(&error, NULL, NULL);
+	return error;
+}
+
 namespace py = pybind11;
 
 
@@ -70,6 +76,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	        .value("PUS_ERROR_REPORT_LENGTH",pusError_t::PUS_ERROR_REPORT_LENGTH)
 	        .value("PUS_LAST_ERROR",pusError_t::PUS_LAST_ERROR)
 	        .export_values();
+	m.def("getError", getError, "");
 
 	py::class_<pusMutex_t>(m, "pusMutex_t")
 		.def(py::init<>());
@@ -80,24 +87,24 @@ PYBIND11_MODULE(pusbinding, m) {
 	py::class_<pusPacket_t>(m, "pusPacket_t")
 		.def(py::init<>());
 	m.def("pus_getPacketVersion", &pus_getPacketVersion_, "Binding for pus_getPacketVersion");
-	m.def("pus_setPacketVersion", &pus_setPacketVersion, "Binding for pus_setPacketVersion");
+	m.def("pus_setPacketVersion", &pus_setPacketVersion_, "Binding for pus_setPacketVersion");
 	m.def("pus_getPacketType", &pus_getPacketType_, "Binding for pus_getPacketType");
-	m.def("pus_setPacketType", &pus_setPacketType, "Binding for pus_setPacketType");
+	m.def("pus_setPacketType", &pus_setPacketType_, "Binding for pus_setPacketType");
 	m.def("pus_getApid", &pus_getApid, "Binding for pus_getApid");
 	m.def("pus_setApid", &pus_setApid, "Binding for pus_setApid");
 	m.def("pus_getSecondaryHeaderFlag", &pus_getSecondaryHeaderFlag, "Binding for pus_getSecondaryHeaderFlag");
 	m.def("pus_setSecondaryHeaderFlag", &pus_setSecondaryHeaderFlag, "Binding for pus_setSecondaryHeaderFlag");
 	m.def("pus_getSequenceFlags", &pus_getSequenceFlags_, "Binding for pus_getSequenceFlags");
-	m.def("pus_setSequenceFlags", &pus_setSequenceFlags, "Binding for pus_setSequenceFlags");
+	m.def("pus_setSequenceFlags", &pus_setSequenceFlags_, "Binding for pus_setSequenceFlags");
 	m.def("pus_getSequenceCount", &pus_getSequenceCount, "Binding for pus_getSequenceCount");
 	m.def("pus_setSequenceCount", &pus_setSequenceCount, "Binding for pus_setSequenceCount");
 	m.def("pus_getPacketDataLength", &pus_getPacketDataLength, "Binding for pus_getPacketDataLength");
 	m.def("pus_setPacketDataLength", &pus_setPacketDataLength, "Binding for pus_setPacketDataLength");
 	m.def("pus_setPacketDataNone", &pus_setPacketDataNone, "Binding for pus_setPacketDataNone");
 	m.def("pus_getTmPusVersion", &pus_getTmPusVersion_, "Binding for pus_getTmPusVersion");
-	m.def("pus_setTmPusVersion", &pus_setTmPusVersion, "Binding for pus_setTmPusVersion");
+	m.def("pus_setTmPusVersion", &pus_setTmPusVersion_, "Binding for pus_setTmPusVersion");
 	m.def("pus_getTcPusVersion", &pus_getTcPusVersion_, "Binding for pus_getTcPusVersion");
-	m.def("pus_setTcPusVersion", &pus_setTcPusVersion, "Binding for pus_setTcPusVersion");
+	m.def("pus_setTcPusVersion", &pus_setTcPusVersion_, "Binding for pus_setTcPusVersion");
 	m.def("pus_getTmService", &pus_getTmService, "Binding for pus_getTmService");
 	m.def("pus_setTmService", &pus_setTmService, "Binding for pus_setTmService");
 	m.def("pus_getTmSubtype", &pus_getTmSubtype, "Binding for pus_getTmSubtype");
@@ -115,8 +122,8 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_getTcSource", &pus_getTcSource, "Binding for pus_getTcSource");
 	m.def("pus_setTcSource", &pus_setTcSource, "Binding for pus_setTcSource");
 	m.def("pus_getTmPacketTime", &pus_getTmPacketTime_, "Binding for pus_getTmPacketTime");
-	m.def("pus_setTmPacketTime", &pus_setTmPacketTime, "Binding for pus_setTmPacketTime");
-	m.def("pus_setTmPacketTimeNow", &pus_setTmPacketTimeNow, "Binding for pus_setTmPacketTimeNow");
+	m.def("pus_setTmPacketTime", &pus_setTmPacketTime_, "Binding for pus_setTmPacketTime");
+	//m.def("pus_setTmPacketTimeNow", &pus_setTmPacketTimeNow, "Binding for pus_setTmPacketTimeNow");
 	m.def("pus_getTcAckFlagAcceptance", &pus_getTcAckFlagAcceptance, "Binding for pus_getTcAckFlagAcceptance");
 	m.def("pus_getTcAckFlagStart", &pus_getTcAckFlagStart, "Binding for pus_getTcAckFlagStart");
 	m.def("pus_getTcAckFlagProgress", &pus_getTcAckFlagProgress, "Binding for pus_getTcAckFlagProgress");
@@ -156,7 +163,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	py::class_<pusApidInfo_t>(m, "pusApidInfo_t")
 		.def(py::init<>());
 	m.def("pus_initApidInfo", &pus_initApidInfo, "Binding for pus_initApidInfo");
-	m.def("pus_initApidInfo_", &pus_initApidInfo_, "Binding for pus_initApidInfo with null in mutex");
+	m.def("pus_initApidInfo_null", &pus_initApidInfo_null, "Binding for pus_initApidInfo with null in mutex");
 	m.def("pus_getInfoApid", &pus_getInfoApid, "Binding for pus_getInfoApid");
 	m.def("pus_getNextPacketCount", &pus_getNextPacketCount, "Binding for pus_getNextPacketCount");
 
@@ -188,7 +195,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_1_X_getFailureCode", &pus_tm_1_X_getFailureCode_, "Binding for pus_tm_1_X_getFailureInfo");
 	m.def("pus_tm_1_X_setFailureInfo", &pus_tm_1_X_setFailureInfo, "Binding for pus_tm_1_X_setFailureInfo");
 	m.def("pus_initSt01FailureInfo", &pus_initSt01FailureInfo, "Binding for pus_initSt01FailureInfo");
-	m.def("pus_setSt01FailureInfo", &pus_setSt01FailureInfo, "Binding for pus_setSt01FailureInfo");
+	m.def("pus_setSt01FailureInfo", &pus_setSt01FailureInfo_, "Binding for pus_setSt01FailureInfo");
 	m.def("pus_getSt01FailureSubcode", &pus_getSt01FailureSubcode_, "Binding for pus_getSt01FailureSubcode");
 	m.def("pus_getSt01FailureData", &pus_getSt01FailureData_, "Binding for pus_getSt01FailureData");
 	m.def("pus_getSt01FailureAddress", &pus_getSt01FailureAddress_, "Binding for pus_getSt01FailureAddress");
@@ -241,7 +248,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_st08_isInitialized", &pus_st08_isInitialized, "Binding for pus_st08_isInitialized");
 	m.def("pus_tc_8_1_createPerformFuctionRequest", &pus_tc_8_1_createPerformFuctionRequest, "Binding for pus_tc_8_1_createPerformFuctionRequest");
 	m.def("pus_tc_8_1_setFunctionId", &pus_tc_8_1_setFunctionId, "Binding for pus_tc_8_1_setFunctionId");
-	m.def("pus_tc_8_1_getFunctionId", &pus_tc_8_1_getFunctionId, "Binding for pus_tc_8_1_getFunctionId");
+	m.def("pus_tc_8_1_getFunctionId", &pus_tc_8_1_getFunctionId_, "Binding for pus_tc_8_1_getFunctionId");
 	m.def("pus_st08_isInFunctionTable", &pus_st08_isInFunctionTable, "Binding for pus_st08_isInFunctionTable");
 	m.def("pus_expectSt08", &pus_expectSt08, "Binding for pus_expectSt08");
 
@@ -252,7 +259,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_12_15_createEnableParameterMonitoring", &pus_tc_12_15_createEnableParameterMonitoring, "Binding for pus_tc_12_15_createEnableParameterMonitoring");
 	m.def("pus_tc_12_16_createDisableParameterMonitoring", &pus_tc_12_16_createDisableParameterMonitoring, "Binding for pus_tc_12_16_createDisableParameterMonitoring");
 	m.def("pus_tc_12_1_2_setPmonId", &pus_tc_12_1_2_setPmonId, "Binding for pus_tc_12_1_2_setPmonId");
-	m.def("pus_tc_12_1_2_getPmonId", &pus_tc_12_1_2_getPmonId, "Binding for pus_tc_12_1_2_getPmonId");
+	m.def("pus_tc_12_1_2_getPmonId", &pus_tc_12_1_2_getPmonId_, "Binding for pus_tc_12_1_2_getPmonId");
 	m.def("pus_expectSt12Tc", &pus_expectSt12Tc, "Binding for pus_expectSt12Tc");
 
 	m.doc() = "pus_st17_packets binding";
@@ -268,10 +275,10 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_19_2_createDeleteEventActionDefinitionsRequest", &pus_tc_19_2_createDeleteEventActionDefinitionsRequest, "Binding for pus_tc_19_2_createDeleteEventActionDefinitionsRequest");
 	m.def("pus_tc_19_4_createEnableEventActionDefinitions", &pus_tc_19_4_createEnableEventActionDefinitions, "Binding for pus_tc_19_4_createEnableEventActionDefinitions");
 	m.def("pus_tc_19_5_createDisableEventActionDefinitions", &pus_tc_19_5_createDisableEventActionDefinitions, "Binding for pus_tc_19_5_createDisableEventActionDefinitions");
-	//m.def("pus_tc_19_X_createPacketReducedFromPacket", &pus_tc_19_X_createPacketReducedFromPacket, "Binding for pus_tc_19_X_createPacketReducedFromPacket");
+	m.def("pus_packetReduced_createPacketReducedFromPacket", &pus_packetReduced_createPacketReducedFromPacket, "Binding for pus_tc_19_X_createPacketReducedFromPacket");
 	//m.def("pus_tc_19_X_setPacketReducedTcData", &pus_tc_19_X_setPacketReducedTcData, "Binding for pus_tc_19_X_setPacketReducedTcData");
 	//m.def("pus_tc_19_X_setPacketTcData", &pus_tc_19_X_setPacketTcData, "Binding for pus_tc_19_X_setPacketTcData");
-	//m.def("pus_tc_19_X_createPacketFromPacketReduced", &pus_tc_19_X_createPacketFromPacketReduced, "Binding for pus_tc_19_X_createPacketFromPacketReduced");
+	m.def("pus_packetReduced_createPacketFromPacketReduced", &pus_packetReduced_createPacketFromPacketReduced, "Binding for pus_tc_19_X_createPacketFromPacketReduced");
 	m.def("pus_tc_19_X_setEventId", &pus_tc_19_X_setEventId, "Binding for pus_tc_19_X_setEventId");
 	m.def("pus_tc_19_X_getEventId", &pus_tc_19_X_getEventId, "Binding for pus_tc_19_X_getEventId");
 	m.def("pus_tc_19_1_setAction", &pus_tc_19_1_setAction, "Binding for pus_tc_19_1_setAction");

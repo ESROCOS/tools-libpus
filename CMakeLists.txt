@@ -55,7 +55,7 @@ add_subdirectory(python)
 add_subdirectory(mission)
 add_subdirectory(src)
 add_subdirectory(test)
-#add_subdirectory(pylib)
+add_subdirectory(pylib)
 
 ### Install stuff commented ###
 

@@ -91,13 +91,11 @@ void pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionI
 	if (NULL == outTc)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-		return;
 	}
 
 	if( !pus_st08_isInFunctionTable(functionId))
 	{
 		PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_FUNCTION_ID);
-		return;
 	}
 
 	if (PUS_NO_ERROR == PUS_EXPECT_ST08(outTc, pus_TC_8_1_performFunction))
