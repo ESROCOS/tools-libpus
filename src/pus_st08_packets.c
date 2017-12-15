@@ -45,21 +45,19 @@ bool pus_st08_isInitialized()
 	return pus_st08_initializedFlag;
 }
 
-pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApidInfo_t* apid,/* pusApid_t destination, */pusSt08FunctiontId_t functionId)
+pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt08FunctiontId_t functionId)
 {
-	if (NULL == outTc || NULL == apid)
+	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	else
 	{
 		pus_initTcPacket(outTc);
-		//pus_setTcDataKind(outTm, pus_TM_DATA_ST_1_X);
-		//pus_setTc
 
 		// Source information
-		pus_setApid(outTc, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTc, pus_getNextPacketCount(apid));
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
@@ -69,14 +67,8 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApidInf
 		pus_setTcSubtype(outTc, pus_TC_8_1_performFunction);
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_8_1);
 
-		//pus_setTmDestination(outTm, pus_APID_IDLE);
-
-		// Timestamp
-		//pus_setTmPacketTimeNow(outTm);
-
+		// Data field
 		pus_tc_8_1_setFunctionId(outTc, functionId);
-		//outTc->data.u.tcData.data.u.st_8_1.functionId = functionId;
-
 
 		return PUS_GET_ERROR();
 	}

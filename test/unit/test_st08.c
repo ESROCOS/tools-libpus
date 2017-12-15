@@ -58,7 +58,7 @@ void test_st08()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_functionTable[EXAMPLE_FUNCTION_02]());
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_functionTable[EXAMPLE_FUNCTION_03]());
 
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_8_1_createPerformFuctionRequest(NULL, NULL, EXAMPLE_FUNCTION_01));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_8_1_createPerformFuctionRequest(NULL, 1, 1, EXAMPLE_FUNCTION_01));
 	pus_clearError();
 
 
@@ -68,10 +68,10 @@ void test_st08()
 	pus_clearError();
 
 
-	CU_ASSERT_EQUAL(PUS_ERROR_UNEXPECTED_FUNCTION_ID, pus_tc_8_1_createPerformFuctionRequest(&tc, &apid, 45));
+	CU_ASSERT_EQUAL(PUS_ERROR_UNEXPECTED_FUNCTION_ID, pus_tc_8_1_createPerformFuctionRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), 45));
 	pus_clearError();
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tc, &apid, EXAMPLE_FUNCTION_01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_01));
 	CU_ASSERT_EQUAL(pus_TC_DATA, pus_getPacketDataKind(&tc));
 	CU_ASSERT_EQUAL(pus_TC_DATA_ST_8_1, pus_getTcDataKind(&tc));
 	pusSt08FunctiontId_t functionID;
@@ -88,7 +88,7 @@ void test_st08()
 	pusPacket_t tc2;
 	CU_ASSERT_NOT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST08(&tc2, pusSubtype_NONE));
 	pus_clearError();
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tc2, &apid, EXAMPLE_FUNCTION_01));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_8_1_createPerformFuctionRequest(&tc2, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_01));
 
 
 	pus_setTcSubtype(&tc2, 6); pus_clearError();
@@ -98,10 +98,7 @@ void test_st08()
 	pus_setTcService(&tc, 2); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_ERROR_TC_SERVICE, PUS_EXPECT_ST08(&tc, 0));
 
-
-
-
-
+	pus_clearError();
 }
 
 

@@ -30,14 +30,14 @@ extern "C" {
  *  \param[in] apid APID of the process sending the report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApidInfo_t* apid);
+pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 /*! Builds a TM[17,2] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApidInfo_t* apid, pusApid_t destination);
+pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination);
 
 /*! Calla a function that builds a TM[17,2] packet in the packet passed as parameter with the TC information.
  *  \param[out] outTm Packet variable to build the TM

@@ -257,7 +257,7 @@ pusService_t pus_getTmService(const pusPacket_t* packet)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER(packet))
 	{
-        return packet->data.u.tmData.header.service;
+        return packet->data.u.tmData.header.serviceId;
 	}
     else
     {
@@ -269,7 +269,7 @@ void pus_setTmService(pusPacket_t* packet, pusService_t service)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_INT(packet, service))
 	{
-        packet->data.u.tmData.header.service = service;
+        packet->data.u.tmData.header.serviceId = service;
 	}
 }
 
@@ -297,7 +297,7 @@ pusService_t pus_getTcService(const pusPacket_t* packet)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER(packet))
 	{
-        return packet->data.u.tcData.header.service;
+        return packet->data.u.tcData.header.serviceId;
 	}
     else
     {
@@ -309,7 +309,7 @@ void pus_setTcService(pusPacket_t* packet, pusService_t service)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_INT(packet, service))
 	{
-        packet->data.u.tcData.header.service = service;
+        packet->data.u.tcData.header.serviceId = service;
 	}
 }
 

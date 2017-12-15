@@ -28,6 +28,12 @@ typedef struct{
 	pusMutex_t* mutex;
 }pusPacketQueue_t;
 
+//from config
+//! PacketQueue for TC packets
+extern pusPacketQueue_t pus_packetQueue_tc;
+
+//! PacketQueue for TM packets
+extern pusPacketQueue_t pus_packetQueue_tm;
 
 
 extern pusError_t pus_packetQueues_configure();

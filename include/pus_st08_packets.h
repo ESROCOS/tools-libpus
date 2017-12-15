@@ -44,7 +44,7 @@ bool pus_st08_isInitialized();
  *  \param[in] functionId The function that shall be performed
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApidInfo_t* apid/*, pusApid_t destination*/, pusSt08FunctiontId_t functionId);
+pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt08FunctiontId_t functionId);
 
 //! Setter for the functionID param
 void pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionId);

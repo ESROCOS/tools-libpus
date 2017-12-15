@@ -8,10 +8,10 @@
 #include "pus_events.h"
 
 
-pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination, pusSubservice_t subtype)
+pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt05Event_t* event, pusApid_t destination, pusSubservice_t subtype)
 {
 
-	if (NULL == outTm || NULL == apid || NULL == event)
+	if (NULL == outTm || NULL == event)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -26,8 +26,8 @@ pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid,
 		pus_setTmDataKind(outTm, pus_TM_DATA_ST_5_X);
 
 		// Source information
-		pus_setApid(outTm, pus_getInfoApid(apid));
-		pus_setSequenceCount(outTm, pus_getNextPacketCount(apid));
+		pus_setApid(outTm, apid);
+		pus_setSequenceCount(outTm, sequenceCount);
 
 		// Data length
 		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));
@@ -53,9 +53,9 @@ pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApidInfo_t* apid,
 }
 
 
-pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination)
+pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt05Event_t* event, pusApid_t destination)
 {
-	if (NULL == outTm || NULL == apid || NULL == event)
+	if (NULL == outTm || NULL == event)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -65,13 +65,13 @@ pusError_t pus_tm_5_1_createInformativeEventReport(pusPacket_t* outTm, pusApidIn
 	}
 	else
 	{
-		return pus_tm_5_X_createEventReport(outTm, apid, event, destination, pus_TM_5_1_eventInformative);
+		return pus_tm_5_X_createEventReport(outTm, apid, sequenceCount, event, destination, pus_TM_5_1_eventInformative);
 	}
 }
 
-pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination)
+pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt05Event_t* event, pusApid_t destination)
 {
-	if (NULL == outTm || NULL == apid || NULL == event)
+	if (NULL == outTm || NULL == event)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -81,14 +81,14 @@ pusError_t pus_tm_5_2_createLowSeverityEventReport(pusPacket_t* outTm, pusApidIn
 	}
 	else
 	{
-		return pus_tm_5_X_createEventReport(outTm, apid, event, destination, pus_TM_5_2_anomalyLowSeverity);
+		return pus_tm_5_X_createEventReport(outTm, apid, sequenceCount, event, destination, pus_TM_5_2_anomalyLowSeverity);
 	}
 }
 
 
-pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination)
+pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt05Event_t* event, pusApid_t destination)
 {
-	if (NULL == outTm || NULL == apid || NULL == event)
+	if (NULL == outTm || NULL == event)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -98,13 +98,13 @@ pusError_t pus_tm_5_3_createMediumSeverityEventReport(pusPacket_t* outTm, pusApi
 	}
 	else
 	{
-		return pus_tm_5_X_createEventReport(outTm, apid, event, destination, pus_TM_5_3_anomalyMediumSeverity);
+		return pus_tm_5_X_createEventReport(outTm, apid, sequenceCount, event, destination, pus_TM_5_3_anomalyMediumSeverity);
 	}
 }
 
-pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApidInfo_t* apid, const pusSt05Event_t* event, pusApid_t destination)
+pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt05Event_t* event, pusApid_t destination)
 {
-	if (NULL == outTm || NULL == apid || NULL == event)
+	if (NULL == outTm || NULL == event)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -114,7 +114,7 @@ pusError_t pus_tm_5_4_createHighSeverityEventReport(pusPacket_t* outTm, pusApidI
 	}
 	else
 	{
-		return pus_tm_5_X_createEventReport(outTm, apid, event, destination, pus_TM_5_4_anomalyHighSeverity);
+		return pus_tm_5_X_createEventReport(outTm, apid, sequenceCount, event, destination, pus_TM_5_4_anomalyHighSeverity);
 	}
 }
 

@@ -96,7 +96,7 @@ void test_reports()
 	pus_events_setEventAuxData2(&event.data, 2); CU_ASSERT_FALSE(PUS_IS_ERROR());
 
 	//TM[5,1]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_1_createInformativeEventReport(&tm, &apid, &event, 1)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_1_createInformativeEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1)); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST05(&tm, pus_TM_5_1_eventInformative));
 	CU_ASSERT_EQUAL(1, pus_getTmDestination(&tm));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
@@ -111,7 +111,7 @@ void test_reports()
 	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data2, pus_events_getEventAuxData(&event2).data2);
 
 	//TM[5,2]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_2_createLowSeverityEventReport(&tm, &apid, &event, 2)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_2_createLowSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 2)); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST05(&tm, pus_TM_5_2_anomalyLowSeverity));
 	CU_ASSERT_EQUAL(2, pus_getTmDestination(&tm));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
@@ -126,7 +126,7 @@ void test_reports()
 	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data2, pus_events_getEventAuxData(&event2).data2);
 
 	//TM[5,3]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_3_createMediumSeverityEventReport(&tm, &apid, &event, 3)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_3_createMediumSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 3)); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST05(&tm, pus_TM_5_3_anomalyMediumSeverity));
 	CU_ASSERT_EQUAL(3, pus_getTmDestination(&tm));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
@@ -141,7 +141,7 @@ void test_reports()
 	CU_ASSERT_EQUAL(pus_events_getEventAuxData(&event).data2, pus_events_getEventAuxData(&event2).data2);
 
 	//TM[5,4]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_4_createHighSeverityEventReport(&tm, &apid, &event, 4)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_4_createHighSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 4)); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST05(&tm, pus_TM_5_4_anomalyHighSeverity));
 	CU_ASSERT_EQUAL(4, pus_getTmDestination(&tm));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
@@ -230,11 +230,6 @@ void test_buffer()
 	CU_ASSERT_EQUAL(pus_st05_eventReportDestination, pus_st05_getEventDestination());
 	CU_ASSERT_EQUAL(pus_st05_eventInfoListLength, pus_st05_getEventInfoListLength());
 
-
-
-
-
-
 }
 
 void test_st05()
@@ -263,11 +258,11 @@ void test_st05()
 
 
 	//NULLPTR eventReport
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_X_createEventReport(NULL, NULL, NULL, 1, 1)); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_1_createInformativeEventReport(NULL, NULL, NULL, 1)); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_2_createLowSeverityEventReport(NULL, NULL, NULL, 1)); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_3_createMediumSeverityEventReport(NULL, NULL, NULL, 1)); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_4_createHighSeverityEventReport(NULL, NULL, NULL, 1)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_X_createEventReport(NULL, 1, 1, NULL, 1, 1)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_1_createInformativeEventReport(NULL, 1, 1, NULL, 1)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_2_createLowSeverityEventReport(NULL, 1, 1, NULL, 1)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_3_createMediumSeverityEventReport(NULL, 1, 1, NULL, 1)); pus_clearError();
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_4_createHighSeverityEventReport(NULL, 1, 1, NULL, 1)); pus_clearError();
 
 	pusPacket_t tm;
 	pusApidInfo_t apid;
@@ -277,22 +272,22 @@ void test_st05()
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
 
 	pus_events_finalize(); pus_clearError();
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_tm_5_X_createEventReport(&tm, &apid, &event, 1, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_tm_5_X_createEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1, 1));
 	pus_clearError();
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_events_initialize(NULL));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_createEventReport(&tm, &apid, &event, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_1_createInformativeEventReport(&tm, &apid, &event, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_2_createLowSeverityEventReport(&tm, &apid, &event, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_3_createMediumSeverityEventReport(&tm, &apid, &event, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_4_createHighSeverityEventReport(&tm, &apid, &event, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_createEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_1_createInformativeEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_2_createLowSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_3_createMediumSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_4_createHighSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1));
 
 
 	PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
-	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_5_1_createInformativeEventReport(&tm, &apid, &event, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_5_2_createLowSeverityEventReport(&tm, &apid, &event, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_5_3_createMediumSeverityEventReport(&tm, &apid, &event, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_5_4_createHighSeverityEventReport(&tm, &apid, &event, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_5_1_createInformativeEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_5_2_createLowSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_5_3_createMediumSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_5_4_createHighSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1));
 	pus_events_finalize(); pus_clearError();
 
 	//Event report data
@@ -300,7 +295,7 @@ void test_st05()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_5_X_setTmEventReportData(NULL, NULL));
 	pus_clearError();
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_createEventReport(&tm, &apid, &event, 1, 2));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_createEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1, 2));
 	pus_setTmService(&tm, pusService_NONE); pus_clearError();
 	CU_ASSERT_NOT_EQUAL(PUS_NO_ERROR, pus_tm_5_X_setTmEventReportData(&tm, &event));
 	pus_setTmService(&tm, pus_ST05_eventReporting); pus_clearError();

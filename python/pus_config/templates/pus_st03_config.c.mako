@@ -76,8 +76,6 @@ pusError_t pus_hk_configure()
     return PUS_NO_ERROR;
 }
 
-//TODO void/type or error
-
 % for param in config['parameters']:
 pusError_t pus_hk_set${param['label']}(${param['type']} value)
 {

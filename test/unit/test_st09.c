@@ -26,7 +26,7 @@ void test_st09_packets()
 	pus_clearError();
 
 	//TC[9,1]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_9_1_createSetTimeReportRate(&tc, &apid, 3));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_9_1_createSetTimeReportRate(&tc, apid.apid, pus_getNextPacketCount(&apid), 3));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST09TC(&tc, pus_TC_9_1_setTimeReportRate));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tc));
 	CU_ASSERT_EQUAL(0, pus_getSequenceCount(&tc));
@@ -43,7 +43,7 @@ void test_st09_packets()
 	pus_clearError();
 
 	//TM[9,2]
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_9_2_createCucTimeReport(&tm, &apid));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_9_2_createCucTimeReport(&tm, apid.apid, pus_getNextPacketCount(&apid)));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST09TM(&tm));
 	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
 	CU_ASSERT_EQUAL(1, pus_getSequenceCount(&tm));
@@ -51,8 +51,8 @@ void test_st09_packets()
 
 
 	// ERROR_NULL_PTR
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_9_1_createSetTimeReportRate(NULL, NULL, 2));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_9_2_createCucTimeReport(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_9_1_createSetTimeReportRate(NULL, 1, 1, 2));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_9_2_createCucTimeReport(NULL, 1,1));
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_9_1_setExponentialRate(NULL, 4));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_9_1_getExponentialRate(NULL, NULL));
@@ -82,21 +82,21 @@ void test_st09_packets()
 void test_st09()
 {
 	//printf("-- Error %d -- ", PUS_EXPECT_ST09TC(&tc, pus_TC_9_1_setTimeReportRate));
+	pusSt09ExponentialRate_t rate;
 
-	uint64_t rate;
+	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_time_setRerportGenerationExponentialRate(26));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_time_getReportGenerationExponentialRate(NULL));
 
-	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_time_setRerportGenerationRate(26));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_time_getReportGenerationRate(NULL));
-
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_setRerportGenerationRate(3));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationRate(&rate));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_setRerportGenerationExponentialRate(3));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationExponentialRate(&rate));
 	CU_ASSERT_EQUAL(3, rate);
 
-
+	uint64_t result;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationRate(&result));
+	CU_ASSERT_EQUAL(8, result);
 
 
 	pus_clearError();
-
 }
 
 int main()

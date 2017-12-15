@@ -18,6 +18,8 @@
 #include "pus_st03_packets.h"
 #include "pus_st05_packets.h"
 #include "pus_st08_packets.h"
+#include "pus_st09_packets.h"
+#include "pus_st11_packets.h"
 #include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
@@ -38,6 +40,9 @@
 
 //st08
 pusError_t pus_st08_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
+
+//st09
+pusError_t pus_st09_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);
 
 //st12
 pusError_t pus_st12_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid);

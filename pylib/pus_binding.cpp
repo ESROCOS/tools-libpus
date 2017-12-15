@@ -268,10 +268,10 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_19_2_createDeleteEventActionDefinitionsRequest", &pus_tc_19_2_createDeleteEventActionDefinitionsRequest, "Binding for pus_tc_19_2_createDeleteEventActionDefinitionsRequest");
 	m.def("pus_tc_19_4_createEnableEventActionDefinitions", &pus_tc_19_4_createEnableEventActionDefinitions, "Binding for pus_tc_19_4_createEnableEventActionDefinitions");
 	m.def("pus_tc_19_5_createDisableEventActionDefinitions", &pus_tc_19_5_createDisableEventActionDefinitions, "Binding for pus_tc_19_5_createDisableEventActionDefinitions");
-	m.def("pus_tc_19_X_createPacketReducedFromPacket", &pus_tc_19_X_createPacketReducedFromPacket, "Binding for pus_tc_19_X_createPacketReducedFromPacket");
-	m.def("pus_tc_19_X_setPacketReducedTcData", &pus_tc_19_X_setPacketReducedTcData, "Binding for pus_tc_19_X_setPacketReducedTcData");
-	m.def("pus_tc_19_X_setPacketTcData", &pus_tc_19_X_setPacketTcData, "Binding for pus_tc_19_X_setPacketTcData");
-	m.def("pus_tc_19_X_createPacketFromPacketReduced", &pus_tc_19_X_createPacketFromPacketReduced, "Binding for pus_tc_19_X_createPacketFromPacketReduced");
+	//m.def("pus_tc_19_X_createPacketReducedFromPacket", &pus_tc_19_X_createPacketReducedFromPacket, "Binding for pus_tc_19_X_createPacketReducedFromPacket");
+	//m.def("pus_tc_19_X_setPacketReducedTcData", &pus_tc_19_X_setPacketReducedTcData, "Binding for pus_tc_19_X_setPacketReducedTcData");
+	//m.def("pus_tc_19_X_setPacketTcData", &pus_tc_19_X_setPacketTcData, "Binding for pus_tc_19_X_setPacketTcData");
+	//m.def("pus_tc_19_X_createPacketFromPacketReduced", &pus_tc_19_X_createPacketFromPacketReduced, "Binding for pus_tc_19_X_createPacketFromPacketReduced");
 	m.def("pus_tc_19_X_setEventId", &pus_tc_19_X_setEventId, "Binding for pus_tc_19_X_setEventId");
 	m.def("pus_tc_19_X_getEventId", &pus_tc_19_X_getEventId, "Binding for pus_tc_19_X_getEventId");
 	m.def("pus_tc_19_1_setAction", &pus_tc_19_1_setAction, "Binding for pus_tc_19_1_setAction");

@@ -1,0 +1,8 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains the description of the system distribution.
+--  It is an input file for the TASTE ORCHESTRATOR
+
+* x86_partition PLATFORM_NATIVE
+producer
+consumer
