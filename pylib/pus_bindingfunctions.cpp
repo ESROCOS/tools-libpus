@@ -1,6 +1,6 @@
 #include "pus_bindingfunctions.hpp"
 
-pusError_t pus_initApidInfo_(pusApidInfo_t *obj, pusApid_t apid)
+pusError_t pus_initApidInfo_null(pusApidInfo_t *obj, pusApid_t apid)
 {
 	return pus_initApidInfo(obj, apid, NULL);
 }
@@ -172,34 +172,34 @@ pusSt05Event_t parse_pusSt05EventStruct_(st05Event event)
 	return pusEvent;
 }
 
-pusError_t pus_tm_5_X_createEventReport_(pusPacket_t* outTm, pusApidInfo_t* apid, const st05Event* event, pusApid_t destination, pusSubservice_t subtype)
+pusError_t pus_tm_5_X_createEventReport_(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const st05Event* event, pusApid_t destination, pusSubservice_t subtype)
 {
 	pusSt05Event_t pusEvent = parse_pusSt05EventStruct_(*event);
-	return pus_tm_5_X_createEventReport(outTm, apid, &pusEvent, destination, subtype);
+	return pus_tm_5_X_createEventReport(outTm, apid, sequenceCount, &pusEvent, destination, subtype);
 }
 
-pusError_t pus_tm_5_1_createInformativeEventReport_(pusPacket_t* outTm, pusApidInfo_t* apid, const st05Event* event, pusApid_t destination)
+pusError_t pus_tm_5_1_createInformativeEventReport_(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const st05Event* event, pusApid_t destination)
 {
 	pusSt05Event_t pusEvent = parse_pusSt05EventStruct_(*event);
-	return pus_tm_5_1_createInformativeEventReport(outTm, apid, &pusEvent, destination);
+	return pus_tm_5_1_createInformativeEventReport(outTm, apid, sequenceCount, &pusEvent, destination);
 }
 
-pusError_t pus_tm_5_2_createLowSeverityEventReport_(pusPacket_t* outTm, pusApidInfo_t* apid, const st05Event* event, pusApid_t destination)
+pusError_t pus_tm_5_2_createLowSeverityEventReport_(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const st05Event* event, pusApid_t destination)
 {
 	pusSt05Event_t pusEvent = parse_pusSt05EventStruct_(*event);
-	return pus_tm_5_2_createLowSeverityEventReport(outTm, apid, &pusEvent, destination);
+	return pus_tm_5_2_createLowSeverityEventReport(outTm, apid, sequenceCount, &pusEvent, destination);
 }
 
-pusError_t pus_tm_5_3_createMediumSeverityEventReport_(pusPacket_t* outTm, pusApidInfo_t* apid, const st05Event* event, pusApid_t destination)
+pusError_t pus_tm_5_3_createMediumSeverityEventReport_(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const st05Event* event, pusApid_t destination)
 {
 	pusSt05Event_t pusEvent = parse_pusSt05EventStruct_(*event);
-	return pus_tm_5_3_createMediumSeverityEventReport(outTm, apid, &pusEvent, destination);
+	return pus_tm_5_3_createMediumSeverityEventReport(outTm, apid, sequenceCount, &pusEvent, destination);
 }
 
-pusError_t pus_tm_5_4_createHighSeverityEventReport_(pusPacket_t* outTm, pusApidInfo_t* apid, const st05Event* event, pusApid_t destination)
+pusError_t pus_tm_5_4_createHighSeverityEventReport_(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const st05Event* event, pusApid_t destination)
 {
 	pusSt05Event_t pusEvent = parse_pusSt05EventStruct_(*event);
-	return pus_tm_5_4_createHighSeverityEventReport(outTm, apid, &pusEvent, destination);
+	return pus_tm_5_4_createHighSeverityEventReport(outTm, apid, sequenceCount, &pusEvent, destination);
 }
 
 pusError_t pus_tm_get_5_X_event_id_(const pusPacket_t *packet, ull *eventId)
@@ -242,4 +242,19 @@ pusError_t pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet, ull *auxdat
 pusError_t pus_events_initialize_null_()
 {
 	return pus_events_initialize(NULL);
+}
+
+pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet)
+{
+	pusSt08FunctiontId_t functionId;
+	pus_tc_8_1_getFunctionId(&functionId, packet);
+	return functionId;
+}
+
+pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
+{
+	pusSt12PmonId_t pmon;
+	pusError_t error = pus_tc_12_1_2_getPmonId(&pmon, tcPacket);
+	PUS_SET_ERROR(error);
+	return pmon;
 }
