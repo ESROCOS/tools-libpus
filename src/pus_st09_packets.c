@@ -159,7 +159,7 @@ pusError_t pus_time_getReportGenerationRate(uint64_t* expRate)
 	//*expRate = pow(2, pus_time_reportGenerationExponentialRate); //todo math -lm
 
 	*expRate= 1;
-	for (size_t i = 0; i < pus_time_reportGenerationExponentialRate; i++)
+	for (size_t i = 0; i < pus_time_reportGenerationExponentialRate; i++) //TODO >> o <<
 		*expRate *= 2;
 
 

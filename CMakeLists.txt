@@ -72,3 +72,13 @@ set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
 mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
 coverage_evaluate()
+
+
+
+# Merge mision01 lib
+#add_library(test01_all $<TARGET_OBJECTS:/debug/src/libesrocos_pus_nothreads.a> $<TARGET_OBJECTS:libesrocos_pus_mission_test_01>)
+#add_library(test01_all $<TARGET_OBJECTS:esrocos_pus_nothreads> )
+#target_link_libraries(test01_all libesrocos_pus_nothreads libesrocos_pus_mission_test_01)
+#set_target_properties(test01_all PROPERTIES LINKER_LANGUAGE C)
+#set_target_properties(test01_all PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
+#add_dependencies(test01_all libesrocos_pus_nothreads libesrocos_pus_mission_test_01)

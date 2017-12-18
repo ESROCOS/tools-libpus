@@ -37,4 +37,4 @@ target_compile_options(esrocos_pus_nothreads PUBLIC -DPUS_DISABLE_THREADS)
 add_dependencies(esrocos_pus_nothreads esrocos_pus_asn1)
 add_coverage(esrocos_pus_nothreads)
 
-
+#add_library(test01_all $<TARGET_OBJECTS:esrocos_pus_nothreads> )

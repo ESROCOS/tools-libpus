@@ -25,7 +25,7 @@ void groundtc_startup()
 void groundtc_PI_GroundTcTrigger()
 {
     /* Write your code here! */
-	pusPacket_t tcSend;
+	/*pusPacket_t tcSend;
 	pusError_t error = 0;
 
 
@@ -65,6 +65,6 @@ void groundtc_PI_GroundTcTrigger()
 	{
 		printf("Error in groundtc_PI_GroundTcTrigger, %d (exit)\n", error);
 		exit(-1);
-	}
+	}*/
 }
 

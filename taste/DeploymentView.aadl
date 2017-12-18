@@ -33,6 +33,8 @@ WITH interfaceview::IV::OnBoard::ST01;
 WITH interfaceview::IV::OnBoard::ST08;
 WITH interfaceview::IV::Ground::GroundAPID;
 WITH interfaceview::IV::OnBoard::OnBoardAPID;
+WITH interfaceview::IV::OnBoard::Events;
+WITH interfaceview::IV::OnBoard::ST05;
 WITH ocarina_processors_x86;
 WITH deploymentview::DV::Node1;
 WITH Taste;
@@ -77,6 +79,12 @@ SUBCOMPONENTS
   IV_OnBoardAPID : SYSTEM interfaceview::IV::OnBoard::OnBoardAPID::OnBoardAPID.others {
     Taste::FunctionName => "OnBoardAPID";
   };
+  IV_Events : SYSTEM interfaceview::IV::OnBoard::Events::Events.others {
+    Taste::FunctionName => "Events";
+  };
+  IV_ST05 : SYSTEM interfaceview::IV::OnBoard::ST05::ST05.others {
+    Taste::FunctionName => "ST05";
+  };
   x86_partition : PROCESS deploymentview::DV::Node1::x86_partition.others {
     Taste::coordinates => "112215 76540 165731 134957";
     Deployment::Port_Number => 0;
@@ -96,6 +104,8 @@ PROPERTIES
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST08;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_GroundAPID;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_OnBoardAPID;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_Events;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST05;
   Actual_Processor_Binding => (reference (x86_linux)) APPLIES TO x86_partition;
 END Node1.others;
 

@@ -10,7 +10,6 @@ pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, p
 	else
 	{
 		pus_initTcPacket(outTc);
-		//pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
 
 		// Source information
 		pus_setApid(outTc, apid);

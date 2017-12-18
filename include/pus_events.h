@@ -64,7 +64,7 @@ typedef struct {
 extern size_t pus_st05_eventBufferIn;
 
 
-#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT UINT64_MAX
+#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT UINT32_MAX
 //! Counter of the events that has been inserted
 extern size_t pus_st05_eventBufferCounter;
 
@@ -109,7 +109,7 @@ bool pus_events_isInInfoList(pusSt05Event_t * event);
  * \param[in] event Event that is going to be inserted into the buffer
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_st05_pushBufferEvent(pusSt05Event_t * event);
+pusError_t pus_st05_pushBufferEvent(const pusSt05Event_t * event);
 
 
 //! Function that return the next event in buffer.
