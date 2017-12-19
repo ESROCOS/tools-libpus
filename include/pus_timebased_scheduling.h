@@ -26,9 +26,9 @@ typedef struct
 	pusTime_t time;
 	pusPacket_t action;
 	bool deleted;
-}pusSchedulingAction_t;
+}pusSchedulingActivity_t;
 
-extern pusSchedulingAction_t pus_scheduling_queue[];
+extern pusSchedulingActivity_t pus_scheduling_queue[];
 
 extern const size_t pus_scheduling_queueSize;
 
@@ -45,6 +45,32 @@ pusError_t pus_scheduling_initialize(pusMutex_t* mutex);
 //! Check if the time-based scheduling is initialized.
 bool pus_scheduling_isInitialized();
 
+//! Check if the time-based scheduling function is enabled.
+bool pus_scheduling_isFunctionEnable();
+
+//! Setter for the  time-based scheduling function flag
+pusError_t pus_scheduling_setFunctionFlag(bool flag);
+
+//! Enable the time-based scheduling function
+pusError_t pus_scheduling_enableFunction();
+
+//! Disable the time-based scheduling function
+pusError_t pus_scheduling_disableFunction();
+
+//! Reset the time-based scheduling function
+pusError_t pus_scheduling_resetFunction();
+
+//! Add a new activity to the time-based scheduling table
+pusError_t pus_scheduling_insertActivity(const pusPacket_t* tcAction, const pusTime_t* time);
+
+//! Check if a scheduled activity can be executed
+bool pus_scheduling_isActivityExecutable(const pusTime_t* timeRelease, const pusTime_t* timeRef);
+
+//! Get an executable activity
+/*!
+ * Set in the packet passed an activity that can be executed.
+ */
+pusError_t pus_scheduling_getActivity(pusPacket_t* tcAction, const pusTime_t* time);
 
 
 #ifdef  __cplusplus
