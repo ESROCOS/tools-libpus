@@ -1,7 +1,7 @@
 #!/bin/sh
 mkdir -p libs
 cd libs
-rm *.a
+rm *.a || true
 ar -x /home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/libesrocos_pus_mission_test_01.a
 ar -x /home/esrocos/esrocos-ws-pus/pus/debug/src/libesrocos_pus_nothreads.a
 ar -qc libtest01_all.a *.o

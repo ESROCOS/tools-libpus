@@ -26,17 +26,17 @@ void events_PI_getNextEvent(const asn1SccPusUInt64 *IN_actualCounter,
 
 	uint64_t counter = (uint64_t) *IN_actualCounter;
 	pusError_t error = pus_st05_getNextBufferEvent(OUT_eventInfo, &counter);
-	/*if( PUS_NO_ERROR == error )
+	if( PUS_NO_ERROR == error )
 	{
-		printf(" -EVENTS: getNextEvent successfully.\n");
+		//printf(" -EVENTS: getNextEvent successfully.\n");
 
 	}
 	else
 	{
-		printf(" -EVENTS: getNextEvent fail %d\n", error);
-	}*/
+		//printf(" -EVENTS: getNextEvent fail %d\n", error);
+		pus_clearError();
+	}
 	*OUT_nextCounter = counter;
-
 }
 
 void events_PI_pushNewEvent(const asn1SccPusSt05Event *IN_eventInfo)

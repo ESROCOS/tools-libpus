@@ -22,6 +22,8 @@ BEGIN
   	PusTC-19-X-Data FROM PUS-ST19
   	
   	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
+  	
+  	PusUInt32 FROM PUS-NbitIntegers
   	;
 
 
@@ -59,13 +61,25 @@ BEGIN
     }
     
     
-    -- Data for TM[19,X], event action
+    -- Data for TM[19,1], event action
     PusTC-19-1-Data  ::= SEQUENCE
     {
     	-- Just 1 action-event per TC
     	-- No Aplication Process ID in TC packet
-    	eventId PusSt05EventId,
-    	packetReduced PusPacketReduced
+    	eventId 		PusSt05EventId,
+    	packetReduced 	PusPacketReduced
+    }
+    
+   -- PusPacketReducedArray ::= SEQUENCE OF PusPacketReduced
+    
+    PusTC-11-1-Data  ::= SEQUENCE
+    {
+    	-- No sub-schedule
+    	-- No GroupID
+    	
+    	time			PusTime,
+    	n				PusUInt32,
+    	packetReduced 	PusPacketReduced
     }
     
     

@@ -14,8 +14,6 @@ WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
 SUBPROGRAM PI_GroundTcTrigger
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_GroundTcTrigger;
 
 SUBPROGRAM IMPLEMENTATION PI_GroundTcTrigger.others
@@ -56,26 +54,26 @@ END RI_getSequenceCounter.others;
 SYSTEM GroundTc
 FEATURES
   PI_GroundTcTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTc::PI_GroundTcTrigger.others {
-    Taste::coordinates => "91083 50349";
+    Taste::coordinates => "122079 49729";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 10000 ms;
+    Taste::RCMperiod => 1000000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "GroundTcTrigger";
   };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "95091 54236";
+    Taste::coordinates => "126087 53616";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundAPID::PI_getApid.others {
-    Taste::coordinates => "84446 55455";
+    Taste::coordinates => "115442 54835";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCounter : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundAPID::PI_getSequenceCounter.others {
-    Taste::coordinates => "84446 57541";
+    Taste::coordinates => "115442 56921";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCounter";
     Taste::labelInheritance => "true";
@@ -134,20 +132,20 @@ END RI_getSequenceCounter.others;
 SYSTEM GroundTm
 FEATURES
   PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTm::PI_newTm.others {
-    Taste::coordinates => "95908 60632";
+    Taste::coordinates => "126904 60012";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "newTm";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundAPID::PI_getApid.others {
-    Taste::coordinates => "84614 60096";
+    Taste::coordinates => "115610 59476";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCounter : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundAPID::PI_getSequenceCounter.others {
-    Taste::coordinates => "84614 63879";
+    Taste::coordinates => "115610 63259";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCounter";
     Taste::labelInheritance => "true";
@@ -199,14 +197,14 @@ END PI_getSequenceCounter.others;
 SYSTEM GroundAPID
 FEATURES
   PI_getApid : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundAPID::PI_getApid.others {
-    Taste::coordinates => "80687 55769";
+    Taste::coordinates => "111683 55149";
     Taste::RCMoperationKind => unprotected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getApid";
   };
   PI_getSequenceCounter : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundAPID::PI_getSequenceCounter.others {
-    Taste::coordinates => "80687 58607";
+    Taste::coordinates => "111683 57987";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
@@ -263,14 +261,14 @@ END RI_newTc.others;
 SYSTEM Ground
 FEATURES
   PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::GroundTm::PI_newTm.others {
-    Taste::coordinates => "101543 60674";
+    Taste::coordinates => "132539 59986";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "newTm";
   };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "101543 54371";
+    Taste::coordinates => "132539 53652";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
@@ -283,32 +281,32 @@ END Ground;
 SYSTEM IMPLEMENTATION Ground.others
 SUBCOMPONENTS
   GroundTc : SYSTEM interfaceview::IV::Ground::GroundTc::GroundTc.others {
-    Taste::coordinates => "84446 50349 95091 58132";
+    Taste::coordinates => "115442 49729 126087 57512";
   };
   GroundTm : SYSTEM interfaceview::IV::Ground::GroundTm::GroundTm.others {
-    Taste::coordinates => "84614 58779 95908 65940";
+    Taste::coordinates => "115610 58159 126904 65320";
   };
   GroundAPID : SYSTEM interfaceview::IV::Ground::GroundAPID::GroundAPID.others {
-    Taste::coordinates => "73086 54396 80687 60090";
+    Taste::coordinates => "104082 53776 111683 59470";
   };
 CONNECTIONS
   Ground_RI_newTc_GroundTc_RI_newTc : SUBPROGRAM ACCESS RI_newTc -> GroundTc.RI_newTc {
-    Taste::coordinates => "95091 54236 104538 54236 104538 54371 101543 54371";
+    Taste::coordinates => "126087 53616 135534 53616 135534 53652 132539 53652";
   };
   GroundAPID_PI_getApid_GroundTc_RI_getApid : SUBPROGRAM ACCESS GroundAPID.PI_getApid -> GroundTc.RI_getApid {
-    Taste::coordinates => "84446 55455 82566 55455 82566 55769 80687 55769";
+    Taste::coordinates => "115442 54835 113562 54835 113562 55149 111683 55149";
   };
   GroundAPID_PI_getSequenceCounter_GroundTc_RI_getSequenceCounter : SUBPROGRAM ACCESS GroundAPID.PI_getSequenceCounter -> GroundTc.RI_getSequenceCounter {
-    Taste::coordinates => "84446 57541 82566 57541 82566 58607 80687 58607";
+    Taste::coordinates => "115442 56921 113562 56921 113562 57987 111683 57987";
   };
   GroundTm_PI_newTm_Ground_PI_newTm : SUBPROGRAM ACCESS GroundTm.PI_newTm -> PI_newTm {
-    Taste::coordinates => "101543 60674 104538 60674 104538 60632 95908 60632";
+    Taste::coordinates => "132539 59986 135534 59986 135534 60012 126904 60012";
   };
   GroundAPID_PI_getApid_GroundTm_RI_getApid : SUBPROGRAM ACCESS GroundAPID.PI_getApid -> GroundTm.RI_getApid {
-    Taste::coordinates => "84614 60096 81927 60096 81927 55769 80687 55769";
+    Taste::coordinates => "115610 59476 112923 59476 112923 55149 111683 55149";
   };
   GroundAPID_PI_getSequenceCounter_GroundTm_RI_getSequenceCounter : SUBPROGRAM ACCESS GroundAPID.PI_getSequenceCounter -> GroundTm.RI_getSequenceCounter {
-    Taste::coordinates => "84614 63879 82584 63879 82584 58607 80687 58607";
+    Taste::coordinates => "115610 63259 113580 63259 113580 57987 111683 57987";
   };
 END Ground.others;
 
@@ -430,15 +428,15 @@ END RI_tc08;
 SUBPROGRAM IMPLEMENTATION RI_tc08.others
 END RI_tc08.others;
 
-SUBPROGRAM RI_ST19
+SUBPROGRAM RI_tc19
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-END RI_ST19;
+END RI_tc19;
 
-SUBPROGRAM IMPLEMENTATION RI_ST19.others
-END RI_ST19.others;
+SUBPROGRAM IMPLEMENTATION RI_tc19.others
+END RI_tc19.others;
 
 SYSTEM TcDispatch
 FEATURES
@@ -467,10 +465,10 @@ FEATURES
     Taste::InterfaceName => "tc08";
     Taste::labelInheritance => "true";
   };
-  RI_ST19 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST19::PI_ST19.others {
+  RI_tc19 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST19::PI_tc19.others {
     Taste::coordinates => "199684 37919";
     Taste::RCMoperationKind => any;
-    Taste::InterfaceName => "ST19";
+    Taste::InterfaceName => "tc19";
     Taste::labelInheritance => "true";
   };
 PROPERTIES
@@ -528,15 +526,15 @@ END RI_tc08;
 SUBPROGRAM IMPLEMENTATION RI_tc08.others
 END RI_tc08.others;
 
-SUBPROGRAM RI_ST19
+SUBPROGRAM RI_tc19
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-END RI_ST19;
+END RI_tc19;
 
-SUBPROGRAM IMPLEMENTATION RI_ST19.others
-END RI_ST19.others;
+SUBPROGRAM IMPLEMENTATION RI_tc19.others
+END RI_tc19.others;
 
 SYSTEM TC
 FEATURES
@@ -559,10 +557,10 @@ FEATURES
     Taste::InterfaceName => "tc08";
     Taste::labelInheritance => "true";
   };
-  RI_ST19 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST19::PI_ST19.others {
+  RI_tc19 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST19::PI_tc19.others {
     Taste::coordinates => "202451 37879";
     Taste::RCMoperationKind => any;
-    Taste::InterfaceName => "ST19";
+    Taste::InterfaceName => "tc19";
     Taste::labelInheritance => "true";
   };
 PROPERTIES
@@ -591,7 +589,7 @@ CONNECTIONS
   TC_RI_tc08_TcDispatch_RI_tc08 : SUBPROGRAM ACCESS RI_tc08 -> TcDispatch.RI_tc08 {
     Taste::coordinates => "199684 43079 202275 43079 202275 43098 202451 43098";
   };
-  TC_RI_ST19_TcDispatch_RI_ST19 : SUBPROGRAM ACCESS RI_ST19 -> TcDispatch.RI_ST19 {
+  TC_RI_tc19_TcDispatch_RI_tc19 : SUBPROGRAM ACCESS RI_tc19 -> TcDispatch.RI_tc19 {
     Taste::coordinates => "199684 37919 201067 37919 201067 37879 202451 37879";
   };
 END TC.others;
@@ -1223,7 +1221,7 @@ FEATURES
   PI_debugTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::Events::PI_debugTrigger.others {
     Taste::coordinates => "254866 28422";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 3000 ms;
+    Taste::RCMperiod => 10000 ms;
     Taste::InterfaceName => "debugTrigger";
   };
 PROPERTIES
@@ -1353,17 +1351,17 @@ WITH interfaceview::IV::OnBoard::TC::TcQueue;
 WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
-SUBPROGRAM PI_ST19
+SUBPROGRAM PI_tc19
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-END PI_ST19;
+END PI_tc19;
 
-SUBPROGRAM IMPLEMENTATION PI_ST19.others
+SUBPROGRAM IMPLEMENTATION PI_tc19.others
 PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
-END PI_ST19.others;
+END PI_tc19.others;
 
 SUBPROGRAM RI_getNextEvent
 FEATURES
@@ -1423,10 +1421,10 @@ END RI_newTc.others;
 
 SYSTEM ST19
 FEATURES
-  PI_ST19 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST19::PI_ST19.others {
+  PI_tc19 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST19::PI_tc19.others {
     Taste::coordinates => "221779 37009";
     Taste::RCMoperationKind => protected;
-    Taste::InterfaceName => "ST19";
+    Taste::InterfaceName => "tc19";
   };
   RI_getNextEvent : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::Events::PI_getNextEvent.others {
     Taste::coordinates => "232550 37680";
@@ -1447,7 +1445,7 @@ FEATURES
     Taste::InterfaceName => "trigger";
   };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "221779 41533";
+    Taste::coordinates => "221779 42053";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
@@ -1547,7 +1545,7 @@ SUBCOMPONENTS
     Taste::coordinates => "241648 26185 254866 33235";
   };
   ST05 : SYSTEM interfaceview::IV::OnBoard::ST05::ST05.others {
-    Taste::coordinates => "221727 26103 232845 33142";
+    Taste::coordinates => "221727 26103 232845 33887";
   };
   ST19 : SYSTEM interfaceview::IV::OnBoard::ST19::ST19.others {
     Taste::coordinates => "221779 35688 232550 43680";
@@ -1557,7 +1555,7 @@ CONNECTIONS
     Taste::coordinates => "153830 38665 159760 38665 159760 38706 161505 38706";
   };
   TC_PI_newTc_ST19_RI_newTc : SUBPROGRAM ACCESS TC.PI_newTc -> ST19.RI_newTc {
-    Taste::coordinates => "221779 41533 154249 41533 154249 38706 161505 38706";
+    Taste::coordinates => "221779 42053 154400 42053 154400 38706 161505 38706";
   };
   ST17_PI_tc17_TC_RI_tc17 : SUBPROGRAM ACCESS ST17.PI_tc17 -> TC.RI_tc17 {
     Taste::coordinates => "197477 48303 197477 68756 220144 68756";
@@ -1565,7 +1563,7 @@ CONNECTIONS
   ST08_PI_tc08_TC_RI_tc08 : SUBPROGRAM ACCESS ST08.PI_tc08 -> TC.RI_tc08 {
     Taste::coordinates => "202451 43098 208590 43098 208590 52152 221839 52152";
   };
-  ST19_PI_ST19_TC_RI_ST19 : SUBPROGRAM ACCESS ST19.PI_ST19 -> TC.RI_ST19 {
+  ST19_PI_tc19_TC_RI_tc19 : SUBPROGRAM ACCESS ST19.PI_tc19 -> TC.RI_tc19 {
     Taste::coordinates => "202451 37879 218298 37879 218298 37009 221779 37009";
   };
   TM_PI_newTm_ST01_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> ST01.RI_newTm {
@@ -1631,17 +1629,17 @@ END interfaceview;
 SYSTEM IMPLEMENTATION interfaceview.others
 SUBCOMPONENTS
   Ground : SYSTEM interfaceview::IV::Ground::Ground.others {
-    Taste::coordinates => "71598 43923 101543 68616";
+    Taste::coordinates => "102594 43303 132539 67996";
   };
   OnBoard : SYSTEM interfaceview::IV::OnBoard::OnBoard.others {
     Taste::coordinates => "153830 24750 259339 101491";
   };
 CONNECTIONS
   Ground_PI_newTm_OnBoard_RI_newTm : SUBPROGRAM ACCESS Ground.PI_newTm -> OnBoard.RI_newTm {
-    Taste::coordinates => "153830 83838 106869 83838 106869 60674 101543 60674";
+    Taste::coordinates => "153830 83838 144484 83838 144484 59986 132539 59986";
   };
   OnBoard_PI_newTc_Ground_RI_newTc : SUBPROGRAM ACCESS OnBoard.PI_newTc -> Ground.RI_newTc {
-    Taste::coordinates => "101543 54371 106765 54371 106765 38665 153830 38665";
+    Taste::coordinates => "132539 53652 145000 53652 145000 38665 153830 38665";
   };
 END interfaceview.others;
 

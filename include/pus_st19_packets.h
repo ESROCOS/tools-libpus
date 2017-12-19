@@ -86,12 +86,12 @@ pusError_t pus_packetReduced_setDataFromPacketReducedToPacket(pusPacket_t* outTc
 pusError_t pus_tc_19_X_setEventId(pusPacket_t* packet, pusSt05EventId_t eventId);
 
 //! Function that return the eventId from the data field of tC[19,X]
-pusError_t pus_tc_19_X_getEventId(pusSt05EventId_t* eventID, pusPacket_t* packet);
+pusError_t pus_tc_19_X_getEventId(pusSt05EventId_t* eventID, const pusPacket_t* packet);
 
 //! Function that set an action to a TC packet
 void pus_tc_19_1_setAction(pusPacket_t* outTc, pusPacketReduced_t* actionR);
 
-void pus_tc_19_1_getAction(pusPacketReduced_t* action, pusPacket_t* tc);
+void pus_tc_19_1_getAction(pusPacketReduced_t* action, const pusPacket_t* tc);
 
 //
 // Parameter checking

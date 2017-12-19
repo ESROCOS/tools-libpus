@@ -59,6 +59,7 @@ void tcdispatch_PI_tcTrigger()
 				break;
 			case 19:
 				//pus_st19_processTcPacket(&tcRead, &apid);
+				tcdispatch_RI_tc19(&tc);
 				break;
 			default:
 				printf("Exception TC service. (exit)\n");

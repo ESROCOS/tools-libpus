@@ -48,7 +48,6 @@ pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_19_1);
 
 	pusPacketReduced_t tcActionR;
-
 	pus_packetReduced_createPacketReducedFromPacket(&tcActionR, tcAction);
 
 	pus_tc_19_1_setAction(outTc, &tcActionR);
@@ -235,7 +234,7 @@ void pus_tc_19_1_setAction(pusPacket_t* outTc, pusPacketReduced_t* actionR)
     }
 }
 
-void pus_tc_19_1_getAction(pusPacketReduced_t* action, pusPacket_t* tc)
+void pus_tc_19_1_getAction(pusPacketReduced_t* action, const pusPacket_t* tc)
 {
     if ( NULL == tc)
     {
@@ -266,7 +265,7 @@ pusError_t pus_tc_19_X_setEventId(pusPacket_t* packet, pusSt05EventId_t eventId)
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_19_X_getEventId(pusSt05EventId_t* eventID, pusPacket_t* packet)
+pusError_t pus_tc_19_X_getEventId(pusSt05EventId_t* eventID, const pusPacket_t* packet)
 {
 	if ( NULL == packet )
 	{

@@ -20,6 +20,7 @@ set(SOURCES
     pus_stored_param.c
     pus_threads.c
     pus_time.c
+    pus_timebased_scheduling.c
 )
 
 # Define the PUS library
@@ -37,4 +38,9 @@ target_compile_options(esrocos_pus_nothreads PUBLIC -DPUS_DISABLE_THREADS)
 add_dependencies(esrocos_pus_nothreads esrocos_pus_asn1)
 add_coverage(esrocos_pus_nothreads)
 
-#add_library(test01_all $<TARGET_OBJECTS:esrocos_pus_nothreads> )
+#add_library(esrocos_pus_nothreads2 OBJECT ${SOURCES})
+#set_target_properties(esrocos_pus_nothreads2 PROPERTIES LINKER_LANGUAGE C)
+
+
+
+

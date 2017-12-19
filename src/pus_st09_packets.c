@@ -51,15 +51,6 @@ pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApid_t apid, pu
 		// Data length
 		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));
 
-		// Service identification
-		//pus_setTmService(outTm, pus_ST09_timeManagement);
-		//pus_setTmSubtype(outTm, pus_TM_9_2_cucTimeReport);
-
-		// Timestamp
-		//pus_setTmPacketTimeNow(outTm);
-
-		// Destination
-		//pus_setTmDestination(outTm, destination);
 
 		pus_setTmNoHeaderDataKind(outTm, pus_TM_DATA_ST_9_2);
 		pus_tm_9_2_setDataField(outTm);

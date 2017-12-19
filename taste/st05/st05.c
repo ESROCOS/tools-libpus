@@ -33,31 +33,31 @@ void st05_PI_trigger()
 		pusPacket_t outTm;
 		pusApid_t apid;
 		pusSequenceCount_t seqCount;
-		st17_RI_getApid(&apid);
-		st17_RI_getSequenceCount(&seqCount);
+		st05_RI_getApid(&apid);
+		st05_RI_getSequenceCount(&seqCount);
 
 		switch( pus_st05_eventInfoList[pus_events_getEventId(&event)].defaultSeverity )
 		{
 		case PUS_ST05_SEVERITY_INFO:
-			if(PUS_NO_ERROR != pus_tm_5_1_createInformativeEventReport(&outTm, &apid, &seqCount, &event, pus_st05_eventReportDestination))
+			if(PUS_NO_ERROR != pus_tm_5_1_createInformativeEventReport(&outTm, apid, seqCount, &event, pus_st05_eventReportDestination))
 			{
 				return;
 			}
 			break;
 		case PUS_ST05_SEVERITY_LOW:
-			if(PUS_NO_ERROR != pus_tm_5_2_createLowSeverityEventReport(&outTm, &apid, &seqCount, &event, pus_st05_eventReportDestination))
+			if(PUS_NO_ERROR != pus_tm_5_2_createLowSeverityEventReport(&outTm, apid, seqCount, &event, pus_st05_eventReportDestination))
 			{
 				return;
 			}
 			break;
 		case PUS_ST05_SEVERITY_MEDIUM:
-			if(PUS_NO_ERROR != pus_tm_5_3_createMediumSeverityEventReport(&outTm, &apid, &seqCount, &event, pus_st05_eventReportDestination))
+			if(PUS_NO_ERROR != pus_tm_5_3_createMediumSeverityEventReport(&outTm, apid, seqCount, &event, pus_st05_eventReportDestination))
 			{
 				return;
 			}
 			break;
 		case PUS_ST05_SEVERITY_HIGH:
-			if(PUS_NO_ERROR != pus_tm_5_4_createHighSeverityEventReport(&outTm, &apid, &seqCount, &event, pus_st05_eventReportDestination))
+			if(PUS_NO_ERROR != pus_tm_5_4_createHighSeverityEventReport(&outTm, apid, seqCount, &event, pus_st05_eventReportDestination))
 			{
 				return;
 			}

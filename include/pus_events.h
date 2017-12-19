@@ -141,110 +141,30 @@ pusApid_t pus_st05_getEventDestination() ;
 //! getter pus_st05_eventInfoListLength
 size_t pus_st05_getEventInfoListLength();
 
+// Getters/Setters pusSt05Event_t
+//! Getter for eventId in event structure
+pusSt05EventId_t pus_events_getEventId(const pusSt05Event_t* event);
 
-////
-//// Getters and setters for HK parameters
-////
-//
-////! Get the current value of an uint32_t parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[out] outValue The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue);
-//
-////! Set the value of an uint32_t parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[in] value The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_setUInt32Param(pusSt03ParamId_t param, uint32_t value);
-//
-////! Get the current value of an int32_t parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[out] outValue The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_getInt32Param(pusSt03ParamId_t param, int32_t* outValue);
-//
-////! Set the value of an int32_t parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[in] value The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_setInt32Param(pusSt03ParamId_t param, int32_t value);
-//
-////! Get the current value of a double parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[out] outValue The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_getReal64Param(pusSt03ParamId_t param, double* outValue);
-//
-////! Set the value of a double parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[in] value The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_setReal64Param(pusSt03ParamId_t param, double value);
-//
-////! Get the current value of a bool parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[out] outValue The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_getBoolParam(pusSt03ParamId_t param, bool* outValue);
-//
-////! Set the value of a Boolean parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[in] value The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_setBoolParam(pusSt03ParamId_t param, bool value);
-//
-////! Get the current value of an uint8_t parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[out] outValue The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_getByteParam(pusSt03ParamId_t param, uint8_t* outValue);
-//
-////! Set the value of an uint8_t parameter, using a lock
-///*! If the service was initialized with mutex, uses it to lock the parameter table.
-// *  \param[in] param The parameter identifier
-// *  \param[in] value The parameter value
-// *  \return Error code (PUS_NO_ERROR if success)
-// */
-//pusError_t pus_hk_setByteParam(pusSt03ParamId_t param, uint8_t value);
-//
-//
-////
-//// Cast parameter to type
-////
-//
-////! Convert a value from the internal parameter format to uint32_t
-//pusError_t pus_hk_paramToUInt32(uint32_t* outValue, pusStoredParam_t paramValue);
-//
-////! Convert a value from the internal parameter format to int32_t
-//pusError_t pus_hk_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue);
-//
-////! Convert a value from the internal parameter format to uint32_t
-//pusError_t pus_hk_paramToReal64(double* outValue, pusStoredParam_t paramValue);
-//
-////! Convert a value from the internal parameter format to uint32_t
-//pusError_t pus_hk_paramToBool(bool* outValue, pusStoredParam_t paramValue);
-//
-////! Convert a value from the internal parameter format to uint32_t
-//pusError_t pus_hk_paramToByte(uint8_t* outValue, pusStoredParam_t paramValue);
+//! Setter for eventId in event structure
+void pus_events_setEventId(pusSt05Event_t* event, pusSt05EventId_t eventId);
+
+//! Getter for data in event structure
+pusSt05EventAuxData_t pus_events_getEventAuxData(const pusSt05Event_t* event);
+
+//! Setter for data in event structure
+void pus_events_setEventAuxData(pusSt05Event_t* event, pusSt05EventAuxData_t data);
+
+//! Getter for data1 in data structure
+pusStoredParam_t pus_events_getEventAuxData1(const pusSt05EventAuxData_t* data);
+
+//! Setter for data1 in data structure
+void pus_events_setEventAuxData1(pusSt05EventAuxData_t* data, pusStoredParam_t data1);
+
+//! Getter for data2 in data structure
+pusStoredParam_t pus_events_getEventAuxData2(const pusSt05EventAuxData_t* data);
+
+//! setter for data2 in data structure
+void pus_events_setEventAuxData2(pusSt05EventAuxData_t* data, pusStoredParam_t data2);
 
 #ifdef  __cplusplus
 }

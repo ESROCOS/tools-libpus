@@ -1,0 +1,18 @@
+-- ASN.1 definitions for service ST[11] Connection test
+-- (cf. ECSS-E-ST-70-41C sections 6.8, 8.8)
+--
+
+
+--TODO
+
+PUS-ST11 DEFINITIONS ::= 
+BEGIN
+
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+    ;
+    
+
+    
+END
