@@ -83,6 +83,8 @@ BEGIN
     }
     
     
+   -- PusTcSched ::= SEQUENCE SIZE(1..maxSched) OF PusTcRelease
+    
     
     -- TC actual data
     PusTcApplicationData ::= CHOICE

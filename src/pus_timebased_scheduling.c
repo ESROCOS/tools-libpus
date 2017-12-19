@@ -13,7 +13,11 @@ pusMutex_t* pus_scheduling_mutex = NULL;
 bool pus_scheduling_initializedFlag = false;
 
 // Function Flag
-bool pus_scheduling_functionFlag = false;
+bool pus_scheduling_functionStatus = false;
+
+pusSchedulingActivity_t pus_scheduling_queue[10];
+
+const size_t pus_scheduling_queueSize = 10;
 
 pusError_t pus_scheduling_initialize(pusMutex_t* mutex)
 {
@@ -43,14 +47,24 @@ pusError_t pus_scheduling_initialize(pusMutex_t* mutex)
 		return PUS_SET_ERROR(PUS_ERROR_INITIALIZATION);
 	}
 
-	for(size_t i=0; i<pus_scheduling_queueSize; i++)
-	{
-		pus_scheduling_queue[i].deleted = true;
-	}
-
-	pus_scheduling_functionFlag = false;
 	pus_scheduling_initializedFlag = true;
+	pus_scheduling_resetFunction();
 	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_scheduling_finalize()
+{
+	if (!pus_scheduling_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else
+	{
+		pus_scheduling_mutex = NULL;
+		pus_scheduling_initializedFlag = false;
+		pus_scheduling_functionStatus = false;
+		return PUS_SET_ERROR(PUS_NO_ERROR);
+	}
 }
 
 bool pus_scheduling_isInitialized()
@@ -60,7 +74,7 @@ bool pus_scheduling_isInitialized()
 
 bool pus_scheduling_isFunctionEnable()
 {
-	return pus_scheduling_functionFlag;
+	return pus_scheduling_functionStatus;
 }
 
 pusError_t pus_scheduling_setFunctionFlag(bool flag)
@@ -69,12 +83,17 @@ pusError_t pus_scheduling_setFunctionFlag(bool flag)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
-	pus_scheduling_functionFlag = flag;
+	pus_scheduling_functionStatus = flag;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
 pusError_t pus_scheduling_enableFunction()
 {
+	if( ! pus_scheduling_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+
 	if(pus_scheduling_isFunctionEnable())
 	{
 		return PUS_SET_ERROR(PUS_ERROR_ALREADY_ENABLED);
@@ -85,7 +104,12 @@ pusError_t pus_scheduling_enableFunction()
 
 pusError_t pus_scheduling_disableFunction()
 {
-	if(pus_scheduling_isFunctionEnable())
+	if( ! pus_scheduling_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+
+	if( !pus_scheduling_isFunctionEnable())
 	{
 		return PUS_SET_ERROR(PUS_ERROR_ALREADY_DISABLED);
 	}
@@ -104,7 +128,7 @@ pusError_t pus_scheduling_resetFunction()
 	{
 		pus_scheduling_queue[i].deleted = true;
 	}
-	pus_scheduling_functionFlag = false;
+	pus_scheduling_functionStatus = false;
 
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
@@ -122,26 +146,35 @@ pusError_t pus_scheduling_insertActivity(const pusPacket_t* tcAction, const pusT
 	}
 
 	static size_t j = 0;
-	for(size_t i = 0; i < pus_scheduling_queueSize; i++, (j++)%pus_scheduling_queueSize)
+	for(size_t i = 0; i < pus_scheduling_queueSize; i++)
 	{
 		if( true == pus_scheduling_queue[j].deleted )
 		{
 			pus_scheduling_queue[j].action = *tcAction;
 			pus_scheduling_queue[j].deleted = false;
 			pus_scheduling_queue[j].time = *time;
-
 			return PUS_SET_ERROR(PUS_NO_ERROR);
 		}
+
+		j = (j+1)%pus_scheduling_queueSize;
 	}
 	return PUS_SET_ERROR(PUS_ERROR_MAXIMUM_REACHED);
 }
 
 bool pus_scheduling_isActivityExecutable(const pusTime_t* timeRelease, const pusTime_t* timeRef)
 {
-	return((timeRelease->tv_sec >= timeRef->tv_sec) && (timeRelease->tv_nsec >= timeRef->tv_nsec));
+	if(timeRelease->tv_sec < timeRef->tv_sec)
+	{
+		return true;
+	}
+	if( (timeRelease->tv_sec == timeRef->tv_sec) && (timeRelease->tv_nsec <= timeRef->tv_nsec) )
+	{
+		return true;
+	}
+	return false;
 }
 
-pusError_t pus_scheduling_getActivity(pusPacket_t* tcAction, const pusTime_t* time)
+pusError_t pus_scheduling_getScheduledActivity(pusPacket_t* tcAction, const pusTime_t* time)
 {
 	if ( NULL == tcAction || NULL == time )
 	{
@@ -153,15 +186,13 @@ pusError_t pus_scheduling_getActivity(pusPacket_t* tcAction, const pusTime_t* ti
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
 
-	pusTime_t timeRef;
-	pus_now(&timeRef);
 
 	static size_t j = 0;
-	for(size_t i = 0; i < pus_scheduling_queueSize; i++, (j++)%pus_scheduling_queueSize)
+	for(size_t i = 0; i < pus_scheduling_queueSize; i++)
 	{
 		if( false == pus_scheduling_queue[j].deleted )
 		{
-			if( pus_scheduling_isActivityExecutable( &pus_scheduling_queue[j].time, &timeRef))
+			if( pus_scheduling_isActivityExecutable( &pus_scheduling_queue[j].time, time))
 			{
 				*tcAction = pus_scheduling_queue[j].action;
 				pus_scheduling_queue[j].deleted = true;
@@ -169,6 +200,8 @@ pusError_t pus_scheduling_getActivity(pusPacket_t* tcAction, const pusTime_t* ti
 				return PUS_SET_ERROR(PUS_NO_ERROR);
 			}
 		}
+
+		j = (j+1)%pus_scheduling_queueSize;
 	}
 
 	return PUS_SET_ERROR(PUS_ERROR_DEFINITION_NOT_FOUND);

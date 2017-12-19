@@ -32,7 +32,6 @@ extern pusSchedulingActivity_t pus_scheduling_queue[];
 
 extern const size_t pus_scheduling_queueSize;
 
-
 //! Function to initialize the time-based scheduling configuration
 /*! This function is generated from the mission database, and it should be declared
  *  in \ref pus_st11_config.h
@@ -41,6 +40,9 @@ extern pusError_t pus_scheduling_configure();
 
 //! Function that initialize the time-based scheduling.
 pusError_t pus_scheduling_initialize(pusMutex_t* mutex);
+
+//! Function that finalize the time-based scheduling.
+pusError_t pus_scheduling_finalize();
 
 //! Check if the time-based scheduling is initialized.
 bool pus_scheduling_isInitialized();
@@ -70,7 +72,7 @@ bool pus_scheduling_isActivityExecutable(const pusTime_t* timeRelease, const pus
 /*!
  * Set in the packet passed an activity that can be executed.
  */
-pusError_t pus_scheduling_getActivity(pusPacket_t* tcAction, const pusTime_t* time);
+pusError_t pus_scheduling_getScheduledActivity(pusPacket_t* tcAction, const pusTime_t* time);
 
 
 #ifdef  __cplusplus
