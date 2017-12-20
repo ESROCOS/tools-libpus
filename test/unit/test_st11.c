@@ -140,17 +140,19 @@ void test_st11()
 
 	pus_clearError();
 
+	pusPacket_t tcAction;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_11_1_createEnableTimeBasedSchedule(&tcAction, 1, 2));
 
-	pusSt11ScheduledActivity_t activities[1];
-	pusPacketReduced_t pR;
-	pus_tc_11_1_createEnableTimeBasedSchedule(&tc, 1, 2);
-	pus_packetReduced_createPacketReducedFromPacket(&pR, &tc);
+	pus_now( &time );
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_11_4_createInsertActivityIntoSchedule(&tc, 1, 2));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_11_4_setActivity(&tc, &tcAction, &time));
+	CU_ASSERT_EQUAL(1, pus_tc_11_4_getNCount(&tc));
 
-	activities[0].packetReduced = pR;
-	pus_now( &activities[0].time );
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_11_4_createInsertActivityIntoSchedule(&tc, 1, 2, 1, activities));
-	printf("Error: %d\n", PUS_GET_ERROR());
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_tc_11_4_packetToTable(&tc));
+	pus_now(&time);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_scheduling_getScheduledActivity(&tc, &time));
 
 
 

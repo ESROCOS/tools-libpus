@@ -1,7 +1,7 @@
 #include "pus_packet_reduced.h"
 
 
-pusError_t pus_packetReduced_createPacketReducedFromPacket(pusPacketReduced_t* outTcR, pusPacket_t* inTc)
+pusError_t pus_packetReduced_createPacketReducedFromPacket(pusPacketReduced_t* outTcR, const pusPacket_t* inTc)
 {
 	if (NULL == outTcR || NULL == inTc)
 	{
@@ -26,7 +26,7 @@ pusError_t pus_packetReduced_createPacketReducedFromPacket(pusPacketReduced_t* o
 	return PUS_GET_ERROR();
 }
 
-pusError_t pus_packetReduced_createPacketFromPacketReduced(pusPacket_t* outTc, pusPacketReduced_t* inTcR)
+pusError_t pus_packetReduced_createPacketFromPacketReduced(pusPacket_t* outTc, const pusPacketReduced_t* inTcR)
 {
 	if (NULL == outTc || NULL == inTcR)
 	{
@@ -51,7 +51,7 @@ pusError_t pus_packetReduced_createPacketFromPacketReduced(pusPacket_t* outTc, p
 	return PUS_GET_ERROR();
 }
 
-pusError_t pus_packetReduced_setDataFromPacketToPacketReduced(pusPacketReduced_t* outTcR, pusPacket_t* inTc)
+pusError_t pus_packetReduced_setDataFromPacketToPacketReduced(pusPacketReduced_t* outTcR, const pusPacket_t* inTc)
 {
 	if (NULL == outTcR || NULL == inTc)
 	{
@@ -61,17 +61,19 @@ pusError_t pus_packetReduced_setDataFromPacketToPacketReduced(pusPacketReduced_t
 	switch( inTc->data.u.tcData.data.kind )
 	{
 		case pus_TC_DATA_NONE:
-			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		case pus_TC_DATA_ST_8_1:
 			outTcR->data.u.tcData.data.u.st_8_1 = inTc->data.u.tcData.data.u.st_8_1;
 			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
-		case pus_TC_DATA_ST_19_1:
-			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+		case pus_TC_DATA_ST_12_1_2:
+			outTcR->data.u.tcData.data.u.st_12_1_2 = inTc->data.u.tcData.data.u.st_12_1_2;
+			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		case pus_TC_DATA_ST_19_X:
-			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+			outTcR->data.u.tcData.data.u.st_19_X = inTc->data.u.tcData.data.u.st_19_X;
+			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		default:
 			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
@@ -80,7 +82,7 @@ pusError_t pus_packetReduced_setDataFromPacketToPacketReduced(pusPacketReduced_t
 }
 
 
-pusError_t pus_packetReduced_setDataFromPacketReducedToPacket(pusPacket_t* outTc, pusPacketReduced_t* inTcR)
+pusError_t pus_packetReduced_setDataFromPacketReducedToPacket(pusPacket_t* outTc, const pusPacketReduced_t* inTcR)
 {
 	if (NULL == outTc || NULL == inTcR)
 	{
@@ -90,14 +92,19 @@ pusError_t pus_packetReduced_setDataFromPacketReducedToPacket(pusPacket_t* outTc
 	switch( inTcR->data.u.tcData.data.kind )
 	{
 		case pus_TC_DATA_NONE:
-			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		case pus_TC_DATA_ST_8_1:
 			outTc->data.u.tcData.data.u.st_8_1 = inTcR->data.u.tcData.data.u.st_8_1;
 			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
+		case pus_TC_DATA_ST_12_1_2:
+			outTc->data.u.tcData.data.u.st_12_1_2 = inTcR->data.u.tcData.data.u.st_12_1_2;
+			return PUS_SET_ERROR(PUS_NO_ERROR);
+			break;
 		case pus_TC_DATA_ST_19_X:
-			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+			outTc->data.u.tcData.data.u.st_19_X = inTcR->data.u.tcData.data.u.st_19_X;
+			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		default:
 			return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
