@@ -19,5 +19,8 @@ BEGIN
 
     -- Maximum number of parameters in a housekeeping report
     pus-ST03-MAX-REPORT-LENGTH PusUInt32 ::= 20
+    
+    -- Maximun number of Scheduled Actions in a TC11.4 packet
+    pus-ST11-MAX-SCHEDULED-ACTIVITIES PusUInt32 ::= 10
 
 END

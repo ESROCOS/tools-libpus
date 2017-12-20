@@ -20,6 +20,7 @@ pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, p
 
 		pus_setTcService(outTc, pus_ST11_timeBasedScheduling);
 		pus_setTcSubtype(outTc, subtype);
+		pus_setTcSource(outTc, apid);
 
 
 		return PUS_GET_ERROR();
@@ -76,9 +77,9 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, uint32_t nCount, const pusSt11ScheduledActivity_t* activities)
 {
-	if( NULL == outTc)
+	if( NULL == outTc || NULL == activities)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
@@ -90,11 +91,27 @@ pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusA
 	//TODO Data field
 	// n_packets
 	// pusPacketReduced_t* array;
-
+	pus_setTcDataKind(outTc, pus_TC_DATA_ST_11_4);
+	//pus_tc_11_4_setActivities()
+	outTc->data.u.tcData.data.u.st_11_4.nCount = nCount;
+	for(size_t i = 0; i<nCount; i++)
+	{
+		outTc->data.u.tcData.data.u.st_11_4.arr[0].packetReduced = activities[0].packetReduced;
+		outTc->data.u.tcData.data.u.st_11_4.arr[0].time = activities[0].time;
+	}
 
 	return PUS_NO_ERROR;
 }
 
+pusError_t pus_tc_11_4_setActivities(pusPacket_t* outTc, int32_t nCount, const pusSt11ScheduledActivity_t* activities)
+{
+	outTc->data.u.tcData.data.u.st_11_4.nCount = nCount;
+	for(size_t i = 0; i<nCount; i++)
+	{
+		outTc->data.u.tcData.data.u.st_11_4.arr[0].packetReduced = activities[0].packetReduced;
+		outTc->data.u.tcData.data.u.st_11_4.arr[0].time = activities[0].time;
+	}
+}
 
 
 //

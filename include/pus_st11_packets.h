@@ -99,7 +99,7 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  */
-pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, uint32_t nCount, const pusSt11ScheduledActivity_t* activities);
 
 
 //! Check that a packet is of a PUS ST[11] kind

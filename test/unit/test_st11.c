@@ -109,12 +109,34 @@ void test_st11()
 	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_scheduling_getScheduledActivity(&tc, &time));
 	pus_tc_17_1_createConnectionTestRequest(&tc, 1, 2);
 	pus_now(&time);
-	printf("a: %lu, %lu\n", time.tv_sec, time.tv_nsec);
+	//printf("a: %lu, %lu\n", time.tv_sec, time.tv_nsec);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_scheduling_insertActivity(NULL, &time));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_insertActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_ERROR_MAXIMUM_REACHED, pus_scheduling_insertActivity(&tc, &time));
 
 	pus_now(&time);
-	printf("b: %lu, %lu\n", time.tv_sec, time.tv_nsec);
+	//printf("b: %lu, %lu\n", time.tv_sec, time.tv_nsec);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_scheduling_getScheduledActivity(NULL, &time));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_scheduling_getScheduledActivity(&tc, &time));
 
 
 

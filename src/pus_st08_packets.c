@@ -66,6 +66,7 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApid_t 
 		pus_setTcService(outTc, pus_ST08_functionManagement);
 		pus_setTcSubtype(outTc, pus_TC_8_1_performFunction);
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_8_1);
+		pus_setTcSource(outTc, apid);
 
 		// Data field
 		pus_tc_8_1_setFunctionId(outTc, functionId);

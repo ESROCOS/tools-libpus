@@ -26,6 +26,7 @@ pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApid_t apid
 
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_9_1);
 		pus_tc_9_1_setExponentialRate(outTc, expRate);
+		pus_setTcSource(outTc, apid);
 
 		return PUS_GET_ERROR();
 	}

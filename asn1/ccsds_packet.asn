@@ -24,6 +24,8 @@ BEGIN
   	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
   	
   	PusUInt32 FROM PUS-NbitIntegers
+  	
+  	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
   	;
 
 
@@ -70,21 +72,16 @@ BEGIN
     	packetReduced 	PusPacketReduced
     }
     
-   -- PusPacketReducedArray ::= SEQUENCE OF PusPacketReduced
-    
-    PusTC-11-1-Data  ::= SEQUENCE
-    {
-    	-- No sub-schedule
-    	-- No GroupID
-    	
+    -- Schedulable action TC11.4
+    PusTcScheduledActivity ::= SEQUENCE
+    {	
     	time			PusTime,
-    	n				PusUInt32,
     	packetReduced 	PusPacketReduced
     }
     
-    
-   -- PusTcSched ::= SEQUENCE SIZE(1..maxSched) OF PusTcRelease
-    
+    -- Data field for TC11.4
+    PusTC-11-4-Data ::= SEQUENCE SIZE(1..pus-ST11-MAX-SCHEDULED-ACTIVITIES) OF PusTcScheduledActivity
+           
     
     -- TC actual data
     PusTcApplicationData ::= CHOICE
@@ -93,6 +90,7 @@ BEGIN
     	st-9-1 PusTC-9-1-Data,
     	st-12-1-2 PusTC-12-1-2-Data,
     	st-19-X PusTC-19-X-Data,
+    	st-11-4 PusTC-11-4-Data,
     	st-19-1 PusTC-19-1-Data
     }
     

@@ -163,6 +163,12 @@ pusError_t pus_scheduling_insertActivity(const pusPacket_t* tcAction, const pusT
 
 bool pus_scheduling_isActivityExecutable(const pusTime_t* timeRelease, const pusTime_t* timeRef)
 {
+
+	if ( NULL == timeRelease || NULL == timeRef )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+
 	if(timeRelease->tv_sec < timeRef->tv_sec)
 	{
 		return true;

@@ -20,9 +20,7 @@ pusError_t pus_tc_19_X_createDefaultEventActionRequest(pusPacket_t* outTc, pusAp
 		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
 
 		pus_setTcService(outTc, pus_ST19_eventAction);
-
-		// Timestamp
-		//pus_setTmPacketTimeNow(outTm);
+		pus_setTcSource(outTc, apid);
 
 		return PUS_GET_ERROR();
 	}

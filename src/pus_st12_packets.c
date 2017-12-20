@@ -20,6 +20,7 @@ pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, p
 
 		pus_setTcService(outTc, pus_ST12_onBoardMonitoring);
 		pus_setTcSubtype(outTc, subtype);
+		pus_setTcSource(outTc, apid);
 
 
 		return PUS_GET_ERROR();
