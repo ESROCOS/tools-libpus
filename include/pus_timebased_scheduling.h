@@ -16,6 +16,9 @@
 #include "pus_packet.h"
 #include "pus_apid.h"
 
+#include "pus_packet_reduced.h"
+#include "pus_st11_packets.h"
+
 #ifdef  __cplusplus
 extern "C" {
 #endif
@@ -28,9 +31,11 @@ typedef struct
 	bool deleted;
 }pusSchedulingActivity_t;
 
-extern pusSchedulingActivity_t pus_scheduling_queue[];
+extern pusSchedulingActivity_t pus_scheduling_table[];
 
-extern const size_t pus_scheduling_queueSize;
+extern const size_t pus_scheduling_tableSize;
+
+extern pusSt11ScheduledActivity_t pus_scheduling_tableAuxiliar[];
 
 //! Function to initialize the time-based scheduling configuration
 /*! This function is generated from the mission database, and it should be declared
@@ -73,6 +78,13 @@ bool pus_scheduling_isActivityExecutable(const pusTime_t* timeRelease, const pus
  * Set in the packet passed an activity that can be executed.
  */
 pusError_t pus_scheduling_getScheduledActivity(pusPacket_t* tcAction, const pusTime_t* time);
+
+//! Insert the activities in TC[11,4] packet to the scheduling table.
+/*!
+ *  \param[in] packet TC[11.4] packet
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_scheduling_tc_11_4_packetToTable(pusPacket_t* packet);
 
 
 #ifdef  __cplusplus

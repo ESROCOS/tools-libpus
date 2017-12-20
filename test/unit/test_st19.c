@@ -8,6 +8,7 @@
 #include "pus_time.h"
 #include "pus_stored_param.h"
 #include "pus_types.h"
+#include "pus_packet_reduced.h"
 
 #include <stdio.h>
 #include <math.h>
@@ -17,6 +18,7 @@
 //#include "../../include/pus_st03_packets.h"
 //#include "../../include/pus_st05_packets.h"
 #include "../../include/pus_st19_packets.h"
+
 
 #include "pus_events.h"
 #include "pus_event_action.h"

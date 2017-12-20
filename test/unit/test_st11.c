@@ -17,7 +17,7 @@
 
 //testing Activity
 #include "pus_st17_packets.h"
-
+#include "pus_st11_config.h"
 
 void test_st11_packets()
 {
@@ -137,6 +137,20 @@ void test_st11()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
 	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_scheduling_getScheduledActivity(&tc, &time));
+
+	pus_clearError();
+
+
+	pusSt11ScheduledActivity_t activities[1];
+	pusPacketReduced_t pR;
+	pus_tc_11_1_createEnableTimeBasedSchedule(&tc, 1, 2);
+	pus_packetReduced_createPacketReducedFromPacket(&pR, &tc);
+
+	activities[0].packetReduced = pR;
+	pus_now( &activities[0].time );
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_11_4_createInsertActivityIntoSchedule(&tc, 1, 2, 1, activities));
+	printf("Error: %d\n", PUS_GET_ERROR());
 
 
 

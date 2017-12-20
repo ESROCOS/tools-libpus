@@ -15,9 +15,6 @@ bool pus_scheduling_initializedFlag = false;
 // Function Flag
 bool pus_scheduling_functionStatus = false;
 
-pusSchedulingActivity_t pus_scheduling_queue[10];
-
-const size_t pus_scheduling_queueSize = 10;
 
 pusError_t pus_scheduling_initialize(pusMutex_t* mutex)
 {
@@ -124,9 +121,9 @@ pusError_t pus_scheduling_resetFunction()
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
 
-	for(size_t i=0; i<pus_scheduling_queueSize; i++)
+	for(size_t i=0; i<pus_scheduling_tableSize; i++)
 	{
-		pus_scheduling_queue[i].deleted = true;
+		pus_scheduling_table[i].deleted = true;
 	}
 	pus_scheduling_functionStatus = false;
 
@@ -146,17 +143,17 @@ pusError_t pus_scheduling_insertActivity(const pusPacket_t* tcAction, const pusT
 	}
 
 	static size_t j = 0;
-	for(size_t i = 0; i < pus_scheduling_queueSize; i++)
+	for(size_t i = 0; i < pus_scheduling_tableSize; i++)
 	{
-		if( true == pus_scheduling_queue[j].deleted )
+		if( true == pus_scheduling_table[j].deleted )
 		{
-			pus_scheduling_queue[j].action = *tcAction;
-			pus_scheduling_queue[j].deleted = false;
-			pus_scheduling_queue[j].time = *time;
+			pus_scheduling_table[j].action = *tcAction;
+			pus_scheduling_table[j].deleted = false;
+			pus_scheduling_table[j].time = *time;
 			return PUS_SET_ERROR(PUS_NO_ERROR);
 		}
 
-		j = (j+1)%pus_scheduling_queueSize;
+		j = (j+1)%pus_scheduling_tableSize;
 	}
 	return PUS_SET_ERROR(PUS_ERROR_MAXIMUM_REACHED);
 }
@@ -194,22 +191,57 @@ pusError_t pus_scheduling_getScheduledActivity(pusPacket_t* tcAction, const pusT
 
 
 	static size_t j = 0;
-	for(size_t i = 0; i < pus_scheduling_queueSize; i++)
+	for(size_t i = 0; i < pus_scheduling_tableSize; i++)
 	{
-		if( false == pus_scheduling_queue[j].deleted )
+		if( false == pus_scheduling_table[j].deleted )
 		{
-			if( pus_scheduling_isActivityExecutable( &pus_scheduling_queue[j].time, time))
+			if( pus_scheduling_isActivityExecutable( &pus_scheduling_table[j].time, time))
 			{
-				*tcAction = pus_scheduling_queue[j].action;
-				pus_scheduling_queue[j].deleted = true;
+				*tcAction = pus_scheduling_table[j].action;
+				pus_scheduling_table[j].deleted = true;
 
 				return PUS_SET_ERROR(PUS_NO_ERROR);
 			}
 		}
 
-		j = (j+1)%pus_scheduling_queueSize;
+		j = (j+1)%pus_scheduling_tableSize;
 	}
 
 	return PUS_SET_ERROR(PUS_ERROR_DEFINITION_NOT_FOUND);
 }
+
+pusError_t pus_scheduling_tc_11_4_packetToTable(pusPacket_t* packet)
+{
+	if( NULL == packet )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(packet, pus_TC_DATA_ST_11_4))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	int32_t nCount;
+	size_t max = pus_scheduling_tableSize;
+	if( PUS_NO_ERROR != pus_tc_11_4_getActivities(&nCount, pus_scheduling_tableAuxiliar, packet, max))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	pusPacket_t tcAction;
+	for(int32_t i = 0; i<nCount; i++)
+	{
+		pus_packetReduced_createPacketFromPacketReduced(&tcAction, &pus_scheduling_tableAuxiliar[i].packetReduced);
+
+		if( PUS_NO_ERROR != pus_scheduling_insertActivity(&tcAction, &pus_scheduling_tableAuxiliar[i].time))
+		{
+			return PUS_GET_ERROR();
+		}
+	}
+
+
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+
 

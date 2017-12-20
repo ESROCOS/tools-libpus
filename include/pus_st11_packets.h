@@ -102,6 +102,10 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_
 pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, uint32_t nCount, const pusSt11ScheduledActivity_t* activities);
 
 
+pusError_t pus_tc_11_4_setActivities(pusPacket_t* outTc, int32_t nCount, const pusSt11ScheduledActivity_t* activities);
+
+pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t* activities, const pusPacket_t* outTc, int32_t max);
+
 //! Check that a packet is of a PUS ST[11] kind
 /*! \param[in] packet The PUS packet
  *  \param[in] expectedSubtype Check that the TM has this subtype; use pusSubtype_NONE to check for all TC types in ST[11]

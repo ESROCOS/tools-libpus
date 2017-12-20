@@ -66,7 +66,7 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_
 {
 	if( NULL == outTc)
 	{
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_11_3_resetTimeBasedSchedule) )
 	{
@@ -81,7 +81,7 @@ pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusA
 {
 	if( NULL == outTc || NULL == activities)
 	{
-		return PUS_ERROR_NULLPTR;
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	if( PUS_NO_ERROR != pus_tc_11_X_createDefaultPacket(outTc, apid, sequenceCount, pus_TC_11_4_insertActivity) )
 	{
@@ -92,25 +92,55 @@ pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusA
 	// n_packets
 	// pusPacketReduced_t* array;
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_11_4);
-	//pus_tc_11_4_setActivities()
-	outTc->data.u.tcData.data.u.st_11_4.nCount = nCount;
-	for(size_t i = 0; i<nCount; i++)
-	{
-		outTc->data.u.tcData.data.u.st_11_4.arr[0].packetReduced = activities[0].packetReduced;
-		outTc->data.u.tcData.data.u.st_11_4.arr[0].time = activities[0].time;
-	}
+	pus_tc_11_4_setActivities(outTc, nCount, activities);
 
-	return PUS_NO_ERROR;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
 pusError_t pus_tc_11_4_setActivities(pusPacket_t* outTc, int32_t nCount, const pusSt11ScheduledActivity_t* activities)
 {
+	if( NULL == outTc || NULL == activities)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(outTc, pus_TC_DATA_ST_11_4))
+	{
+		return PUS_GET_ERROR();
+	}
+
 	outTc->data.u.tcData.data.u.st_11_4.nCount = nCount;
-	for(size_t i = 0; i<nCount; i++)
+	for(int32_t i = 0; i<nCount; i++)
 	{
 		outTc->data.u.tcData.data.u.st_11_4.arr[0].packetReduced = activities[0].packetReduced;
 		outTc->data.u.tcData.data.u.st_11_4.arr[0].time = activities[0].time;
 	}
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t* activities, const pusPacket_t* outTc, int32_t max)
+{
+	if( NULL == outTc || NULL == activities)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(outTc, pus_TC_DATA_ST_11_4))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	*nCount = outTc->data.u.tcData.data.u.st_11_4.nCount;
+
+	if( *nCount > max)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_OUT_OF_RANGE);
+	}
+
+	for(int32_t i = 0; i < *nCount; i++)
+	{
+		activities[0].packetReduced = outTc->data.u.tcData.data.u.st_11_4.arr[0].packetReduced ;
+		activities[0].time = outTc->data.u.tcData.data.u.st_11_4.arr[0].time;
+	}
+	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
 

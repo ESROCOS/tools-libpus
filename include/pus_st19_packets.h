@@ -20,6 +20,8 @@
 #include "pus_apid.h"
 #include "pus_types.h"
 
+#include "pus_packet_reduced.h"
+
 #ifdef  __cplusplus
 extern "C" {
 #endif
@@ -58,28 +60,6 @@ pusError_t pus_tc_19_4_createEnableEventActionDefinitions(pusPacket_t* outTc, pu
  *  \param[in] apid APID of the process sending the report
  */
 pusError_t pus_tc_19_5_createDisableEventActionDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt05EventId_t eventId);
-
-
-//TODO Move to a particular file ¿name?
-//! Create a pusPacketReduced from a pusPacket
-/*! Set parameters to a pusPacketReduced from a pusPacket
- *  \param[out] outTcR PacketReduced that is going to be created
- *  \param[in] inTc Packet to get parameters for PacketReduced.
- */
-pusError_t pus_packetReduced_createPacketReducedFromPacket(pusPacketReduced_t* outTcR, pusPacket_t* inTc);
-
-//! Create a Packet from a packetReduced
-/*! Set parameters to a pusPacketReduced from a pusPacket
- *  \param[out] outTc Packet that is going to be created
- *  \param[in] inTcR PacketReduced to get parameters for Packet.
- */
-pusError_t pus_packetReduced_createPacketFromPacketReduced(pusPacket_t* outTc, pusPacketReduced_t* inTcR);
-
-//! Function that set the tcData field from a pusPacket_t to a pusPacketReduced_t
-pusError_t pus_packetReduced_setDataFromPacketToPacketReduced(pusPacketReduced_t* outPacket, pusPacket_t* inTc);
-
-//! Function that set the tcData field from a pusPacketReduced_t to a pusPacket_t
-pusError_t pus_packetReduced_setDataFromPacketReducedToPacket(pusPacket_t* outTc, pusPacketReduced_t* inTcR);
 
 
 //! Function that set the eventId to the data field of tC[19,X]
