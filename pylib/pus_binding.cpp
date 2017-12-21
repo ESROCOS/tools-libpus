@@ -78,6 +78,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	        .value("PUS_LAST_ERROR",pusError_t::PUS_LAST_ERROR)
 	        .export_values();
 	m.def("getError", getError, "");
+	m.def("ret_packets", ret_packets);
 
 	py::class_<pusMutex_t>(m, "pusMutex_t")
 		.def(py::init<>());

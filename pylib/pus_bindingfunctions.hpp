@@ -21,6 +21,7 @@ typedef unsigned int uint;
 typedef unsigned long long int ull;
 typedef long long int ll;
 
+void ret_packets(pusPacket_t *tm, int i);
 
 pusError_t pus_initApidInfo_null(pusApidInfo_t* obj, pusApid_t apid);
 uint pus_getPacketVersion_(const pusPacket_t* packet);

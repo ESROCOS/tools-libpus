@@ -1,5 +1,67 @@
 #include "pus_bindingfunctions.hpp"
 
+void ret_packets(pusPacket_t *tm, int i)
+{
+	pusPacket_t tc;
+	pusTime_t tv, now;
+	pusApidInfo_t apid;
+
+	pus_initApidInfo(&apid, 33, NULL);
+
+	// Test TC
+	pus_initTcPacket(&tc);
+	pus_setTcSource(&tc, 11);
+	pus_setSequenceCount(&tc, 22);
+
+	// Test failures
+	pusSt01FailureInfo_t info1, info2;
+	pus_setSt01FailureInfo(&info1, 101, 102, 103);
+
+	// TM[1,1]
+	if (i==0) pus_tm_1_1_createAcceptanceReportSuccess(tm, apid.apid, pus_getNextPacketCount(&apid), &tc);
+
+
+	// TM[1,2]
+	else if (i==1) pus_tm_1_2_createAcceptanceReportFailure(tm, apid.apid, pus_getNextPacketCount(&apid), &tc, pus_ST01_ERROR_SERVICE_UNAVAILABLE, &info1);
+
+
+	// TM[1,3]
+	else if (i==2) pus_tm_1_3_createStartReportSuccess(tm, apid.apid, pus_getNextPacketCount(&apid), &tc);
+
+	// TM[1,4]
+	else if (i==3) pus_tm_1_4_createStartReportFailure(tm, apid.apid, pus_getNextPacketCount(&apid), &tc, pus_ST01_ERROR_WRONG_FORMAT, NULL);
+
+
+	// TM[1,5]
+	else if (i==4) pus_tm_1_5_createProgressReportSuccess(tm, apid.apid, pus_getNextPacketCount(&apid), &tc, 71);
+
+	// TM[1,6]
+	else if (i==5) pus_tm_1_6_createProgressReportFailure(tm, apid.apid, pus_getNextPacketCount(&apid), &tc, 72, pus_ST01_ERROR_SUBTYPE_UNAVAILABLE, NULL);
+
+
+	// TM[1,7]
+	else if (i==6) pus_tm_1_7_createCompletionReportSuccess(tm, apid.apid, pus_getNextPacketCount(&apid), &tc);
+
+
+	// TM[1,8]
+	else if (i==7) pus_tm_1_8_createCompletionReportFailure(tm, apid.apid, pus_getNextPacketCount(&apid), &tc, pus_ST01_ERROR_WRONG_FORMAT, NULL);
+
+	else if (i==8)
+	{
+		pus_hk_initialize(NULL);
+		pus_tm_3_25_createHousekeepingReportDefault(tm, apid.apid, pus_getNextPacketCount(&apid), 55);
+		pus_hk_finalize();
+	}
+
+
+
+	// TC without header
+	//CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacketNoHeader(&tc));
+	//pus_tm_1_1_createAcceptanceReportSuccess(&tm, apid.apid, pus_getNextPacketCount(&apid), &tc);
+	//CU_ASSERT_FALSE(pus_tm_1_X_getSecondaryHeaderFlag(&tm));
+
+}
+
 pusError_t pus_initApidInfo_null(pusApidInfo_t *obj, pusApid_t apid)
 {
 	return pus_initApidInfo(obj, apid, NULL);
