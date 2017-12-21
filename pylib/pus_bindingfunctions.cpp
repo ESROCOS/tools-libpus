@@ -258,3 +258,11 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 	PUS_SET_ERROR(error);
 	return pmon;
 }
+
+pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket)
+{
+	pusSt09ExponentialRate_t tExp;;
+	pusError_t error = pus_tc_9_1_getExponentialRate(&tExp, tcPacket);
+	PUS_SET_ERROR(error);
+	return tExp;
+}

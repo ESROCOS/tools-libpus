@@ -6,6 +6,7 @@
 #include "pus_st05_packets.h"
 #include "pus_st08_packets.h"
 #include "pus_st08_config.h"
+#include "pus_st09_packets.h"
 #include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
@@ -251,6 +252,17 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_8_1_getFunctionId", &pus_tc_8_1_getFunctionId_, "Binding for pus_tc_8_1_getFunctionId");
 	m.def("pus_st08_isInFunctionTable", &pus_st08_isInFunctionTable, "Binding for pus_st08_isInFunctionTable");
 	m.def("pus_expectSt08", &pus_expectSt08, "Binding for pus_expectSt08");
+
+	m.def("pus_tc_9_1_createSetTimeReportRate", &pus_tc_9_1_createSetTimeReportRate, "Binding for pus_tc_9_1_createSetTimeReportRate");
+	m.def("pus_tm_9_2_createCucTimeReport", &pus_tm_9_2_createCucTimeReport, "Binding for pus_tm_9_2_createCucTimeReport");
+	m.def("pus_tc_9_1_setExponentialRate", &pus_tc_9_1_setExponentialRate, "Binding for pus_tc_9_1_setExponentialRate");
+	m.def("pus_tc_9_1_getExponentialRate", &pus_tc_9_1_getExponentialRate_, "Binding for pus_tc_9_1_getExponentialRate");
+	m.def("pus_tm_9_2_setDataField", &pus_tm_9_2_setDataField, "Binding for pus_tm_9_2_setDataField");
+	m.def("pus_time_getReportGenerationExponentialRate", &pus_time_getReportGenerationExponentialRate, "Binding for pus_time_getReportGenerationExponentialRate");
+	m.def("pus_time_setReportGenerationExponentialRate", &pus_time_setReportGenerationExponentialRate, "Binding for pus_time_setReportGenerationExponentialRate");
+	m.def("pus_time_getReportGenerationRate", &pus_time_getReportGenerationRate, "Binding for pus_time_getReportGenerationRate");
+	m.def("pus_expectSt09Tc", &pus_expectSt09Tc, "Binding for pus_expectSt09Tc");
+	m.def("pus_expectSt09Tm", &pus_expectSt09Tm, "Binding for pus_expectSt09Tm");
 
 	m.doc() = "pus_st12_packets binding";
 	m.def("pus_tc_12_X_createDefaultPacket", &pus_tc_12_X_createDefaultPacket, "Binding for pus_tc_12_X_createDefaultPacket");

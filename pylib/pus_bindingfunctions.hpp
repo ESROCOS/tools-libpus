@@ -10,6 +10,7 @@
 #include "pus_st03_packets.h"
 #include "pus_st05_packets.h"
 #include "pus_st08_packets.h"
+#include "pus_st09_packets.h"
 #include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
@@ -76,5 +77,7 @@ pusError_t pus_events_initialize_null_();
 pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet);
 
 pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket);
+
+pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket);
 
 #endif

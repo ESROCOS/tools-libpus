@@ -2,6 +2,7 @@
 #include "pus_st09_packets.h"
 #include <math.h>
 
+pusSt09ExponentialRate_t pus_time_reportGenerationExponentialRate;
 
 pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt09ExponentialRate_t expRate)
 {
@@ -130,7 +131,7 @@ pusError_t pus_time_getReportGenerationExponentialRate(pusSt09ExponentialRate_t*
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_time_setRerportGenerationExponentialRate(pusSt09ExponentialRate_t expRate)
+pusError_t pus_time_setReportGenerationExponentialRate(pusSt09ExponentialRate_t expRate)
 {
 	if ( expRate > 8 )
 	{

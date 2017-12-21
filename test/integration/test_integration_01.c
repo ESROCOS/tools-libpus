@@ -296,7 +296,7 @@ pusError_t pus_st09_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 	{
 		pusSt09ExponentialRate_t expRate;
 		pus_tc_9_1_getExponentialRate(&expRate, tcRead);
-		pus_time_setRerportGenerationExponentialRate(expRate);
+		pus_time_setReportGenerationExponentialRate(expRate);
 	}
 	else
 	{
