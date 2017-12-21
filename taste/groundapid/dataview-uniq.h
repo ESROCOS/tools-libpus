@@ -891,12 +891,45 @@ flag asn1SccPusTC_19_1_Data_IsConstraintValid(const asn1SccPusTC_19_1_Data* val,
 
 
 typedef struct {
+    asn1SccPusTime time;
+    asn1SccPusPacketReduced packetReduced;
+} asn1SccPusTcScheduledActivity;
+
+#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_ENCODING       207 
+#define asn1SccPusTcScheduledActivity_REQUIRED_BITS_FOR_ENCODING        1650
+#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_ACN_ENCODING   207 
+#define asn1SccPusTcScheduledActivity_REQUIRED_BITS_FOR_ACN_ENCODING    1650
+#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_XER_ENCODING   1891
+
+void asn1SccPusTcScheduledActivity_Initialize(asn1SccPusTcScheduledActivity* pVal);
+flag asn1SccPusTcScheduledActivity_IsConstraintValid(const asn1SccPusTcScheduledActivity* val, int* pErrCode);
+
+
+typedef struct {    int nCount; 
+    
+    asn1SccPusTcScheduledActivity arr[10];
+} asn1SccPusTC_11_4_Data;
+
+#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ENCODING       2063 
+#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ENCODING        16504
+#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ACN_ENCODING   2063 
+#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ACN_ENCODING    16504
+#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_XER_ENCODING   18945
+
+void asn1SccPusTC_11_4_Data_Initialize(asn1SccPusTC_11_4_Data* pVal);
+flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data* val, int* pErrCode);
+#ifndef ERR_asn1SccPusTC_11_4_Data 
+#define ERR_asn1SccPusTC_11_4_Data		1023  /*(SIZE(1 .. pus-ST11-MAX-SCHEDULED-ACTIVITIES))*/
+#endif
+
+typedef struct {
     enum {
         PusTcApplicationData_NONE,
         PusTcApplicationData_st_8_1_PRESENT,
         PusTcApplicationData_st_9_1_PRESENT,
         PusTcApplicationData_st_12_1_2_PRESENT,
         PusTcApplicationData_st_19_X_PRESENT,
+        st_11_4_PRESENT,
         st_19_1_PRESENT 
     } kind;
     union {
@@ -904,20 +937,21 @@ typedef struct {
         asn1SccPusTC_9_1_Data st_9_1;
         asn1SccPusTC_12_1_2_Data st_12_1_2;
         asn1SccPusTC_19_X_Data st_19_X;
+        asn1SccPusTC_11_4_Data st_11_4;
         asn1SccPusTC_19_1_Data st_19_1;
     } u; 
 } asn1SccPusTcApplicationData;
 
-#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ENCODING       195 
-#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ENCODING        1557
-#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ACN_ENCODING   195 
-#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ACN_ENCODING    1557
-#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_XER_ENCODING   1856
+#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ENCODING       2064 
+#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ENCODING        16507
+#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ACN_ENCODING   2064 
+#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ACN_ENCODING    16507
+#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_XER_ENCODING   18974
 
 void asn1SccPusTcApplicationData_Initialize(asn1SccPusTcApplicationData* pVal);
 flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplicationData* val, int* pErrCode);
 #ifndef ERR_asn1SccPusTcApplicationData_unknown_choice_index 
-#define ERR_asn1SccPusTcApplicationData_unknown_choice_index		1023  /**/
+#define ERR_asn1SccPusTcApplicationData_unknown_choice_index		1024  /**/
 #endif
 
 typedef struct {
@@ -925,11 +959,11 @@ typedef struct {
     asn1SccPusTcApplicationData data;
 } asn1SccPusPacketData_tcData;
 
-#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_ENCODING       199 
-#define asn1SccPusPacketData_tcData_REQUIRED_BITS_FOR_ENCODING        1590
-#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_ACN_ENCODING   199 
-#define asn1SccPusPacketData_tcData_REQUIRED_BITS_FOR_ACN_ENCODING    1590
-#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_XER_ENCODING   2324
+#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_ENCODING       2068 
+#define asn1SccPusPacketData_tcData_REQUIRED_BITS_FOR_ENCODING        16540
+#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_ACN_ENCODING   2068 
+#define asn1SccPusPacketData_tcData_REQUIRED_BITS_FOR_ACN_ENCODING    16540
+#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_XER_ENCODING   19442
 
 void asn1SccPusPacketData_tcData_Initialize(asn1SccPusPacketData_tcData* pVal);
 flag asn1SccPusPacketData_tcData_IsConstraintValid(const asn1SccPusPacketData_tcData* val, int* pErrCode);
@@ -951,16 +985,16 @@ typedef struct {
     } u; 
 } asn1SccPusPacketData;
 
-#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ENCODING       200 
-#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ENCODING        1593
-#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ACN_ENCODING   200 
-#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ACN_ENCODING    1593
-#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_XER_ENCODING   2327
+#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ENCODING       2068 
+#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ENCODING        16543
+#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ACN_ENCODING   2068 
+#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ACN_ENCODING    16543
+#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_XER_ENCODING   19445
 
 void asn1SccPusPacketData_Initialize(asn1SccPusPacketData* pVal);
 flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData* val, int* pErrCode);
 #ifndef ERR_asn1SccPusPacketData_unknown_choice_index 
-#define ERR_asn1SccPusPacketData_unknown_choice_index		1024  /**/
+#define ERR_asn1SccPusPacketData_unknown_choice_index		1025  /**/
 #endif
 
 typedef struct {
@@ -974,11 +1008,11 @@ typedef struct {
     asn1SccPusPacketData data;
 } asn1SccPusPacket;
 
-#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ENCODING       205 
-#define asn1SccPusPacket_REQUIRED_BITS_FOR_ENCODING        1636
-#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ACN_ENCODING   205 
-#define asn1SccPusPacket_REQUIRED_BITS_FOR_ACN_ENCODING    1636
-#define asn1SccPusPacket_REQUIRED_BYTES_FOR_XER_ENCODING   2691
+#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ENCODING       2074 
+#define asn1SccPusPacket_REQUIRED_BITS_FOR_ENCODING        16586
+#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ACN_ENCODING   2074 
+#define asn1SccPusPacket_REQUIRED_BITS_FOR_ACN_ENCODING    16586
+#define asn1SccPusPacket_REQUIRED_BYTES_FOR_XER_ENCODING   19809
 
 void asn1SccPusPacket_Initialize(asn1SccPusPacket* pVal);
 flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket* val, int* pErrCode);
@@ -995,7 +1029,7 @@ typedef asn1SccSint asn1SccT_Int32;
 void asn1SccT_Int32_Initialize(asn1SccT_Int32* pVal);
 flag asn1SccT_Int32_IsConstraintValid(const asn1SccT_Int32* val, int* pErrCode);
 #ifndef ERR_asn1SccT_Int32 
-#define ERR_asn1SccT_Int32		1025  /*(-2147483648 .. 2147483647)*/
+#define ERR_asn1SccT_Int32		1026  /*(-2147483648 .. 2147483647)*/
 #endif
 
 typedef asn1SccUint asn1SccT_UInt32;
@@ -1009,7 +1043,7 @@ typedef asn1SccUint asn1SccT_UInt32;
 void asn1SccT_UInt32_Initialize(asn1SccT_UInt32* pVal);
 flag asn1SccT_UInt32_IsConstraintValid(const asn1SccT_UInt32* val, int* pErrCode);
 #ifndef ERR_asn1SccT_UInt32 
-#define ERR_asn1SccT_UInt32		1026  /*(0 .. 4294967295)*/
+#define ERR_asn1SccT_UInt32		1027  /*(0 .. 4294967295)*/
 #endif
 
 typedef asn1SccSint asn1SccT_Int8;
@@ -1023,7 +1057,7 @@ typedef asn1SccSint asn1SccT_Int8;
 void asn1SccT_Int8_Initialize(asn1SccT_Int8* pVal);
 flag asn1SccT_Int8_IsConstraintValid(const asn1SccT_Int8* val, int* pErrCode);
 #ifndef ERR_asn1SccT_Int8 
-#define ERR_asn1SccT_Int8		1027  /*(-128 .. 127)*/
+#define ERR_asn1SccT_Int8		1028  /*(-128 .. 127)*/
 #endif
 
 typedef asn1SccUint asn1SccT_UInt8;
@@ -1037,7 +1071,7 @@ typedef asn1SccUint asn1SccT_UInt8;
 void asn1SccT_UInt8_Initialize(asn1SccT_UInt8* pVal);
 flag asn1SccT_UInt8_IsConstraintValid(const asn1SccT_UInt8* val, int* pErrCode);
 #ifndef ERR_asn1SccT_UInt8 
-#define ERR_asn1SccT_UInt8		1028  /*(0 .. 255)*/
+#define ERR_asn1SccT_UInt8		1029  /*(0 .. 255)*/
 #endif
 
 typedef flag asn1SccT_Boolean;
@@ -1142,6 +1176,7 @@ extern const asn1SccPusSubserviceType pus_TC_23_3_reportFileAttributes;
 extern const asn1SccPusSubserviceType pus_TM_23_4_reportFileAttributes;
 extern const asn1SccPusSubserviceType pus_TC_23_14_copyFile;
 extern const asn1SccPusUInt32 pus_ST03_MAX_REPORT_LENGTH;
+extern const asn1SccPusUInt32 pus_ST11_MAX_SCHEDULED_ACTIVITIES;
 extern const asn1SccPusSt03HousekeepingReportId pus_ST03_DEFAULT_HK_REPORT;
 extern const asn1SccPusSt01FailureCode pus_ST01_NO_ERROR;
 extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNAVAILABLE;
@@ -1160,6 +1195,8 @@ extern const asn1SccPusUInt64 pus_EVENT_DATASTORED_NONE;
  * These functions are placed at the end of the file to make sure all types
  * have been declared first, in case of parameterized ACN encodings
  * ========================================================================= */
+
+
 
 
 
@@ -1257,6 +1294,7 @@ extern const asn1SccPusUInt64 pus_EVENT_DATASTORED_NONE;
 #define CHOICE_PusTcApplicationData_st_9_1_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_9_1_PRESENT
 #define CHOICE_PusTcApplicationData_st_12_1_2_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_12_1_2_PRESENT
 #define CHOICE_PusTcApplicationData_st_19_X_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_19_X_PRESENT
+#define CHOICE_st_11_4_PRESENT	asn1SccPusTcApplicationData::st_11_4_PRESENT
 #define CHOICE_st_19_1_PRESENT	asn1SccPusTcApplicationData::st_19_1_PRESENT
 #define CHOICE_PusPacketData_tmData_PRESENT	asn1SccPusPacketData::PusPacketData_tmData_PRESENT
 #define CHOICE_PusPacketData_tmDataNoHeader_PRESENT	asn1SccPusPacketData::PusPacketData_tmDataNoHeader_PRESENT

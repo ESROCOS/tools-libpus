@@ -1691,6 +1691,167 @@ flag asn1SccPusTC_19_1_Data_IsConstraintValid(const asn1SccPusTC_19_1_Data* pVal
 	return ret;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1800
+void asn1SccPusTcScheduledActivity_Initialize(asn1SccPusTcScheduledActivity* pVal)
+{
+    *pVal = (asn1SccPusTcScheduledActivity) {
+    .time = {
+        .tv_sec = LLONG_MIN,
+        .tv_nsec = LLONG_MIN
+    },
+    .packetReduced = {
+        .packetVersion = asn1Sccpus_CCSDS_V1,
+        .packetType = asn1Sccpus_TM,
+        .secondaryHeaderFlag = FALSE,
+        .apid = 0,
+        .sequenceFlags = asn1Sccpus_STANDALONE_PACKET,
+        .sequenceCount = 0,
+        .dataLength = 0,
+        .data = {
+            .kind = PusPacketDataReduced_tmData_PRESENT,
+            .u = { .tmData = {
+            .header = {
+                .pusVersion = asn1Sccpus_V0,
+                .timeRefStatus = 0,
+                .serviceId = 0,
+                .subtype = 0,
+                .msgTypeCount = 0,
+                .destination = 0,
+                .time = {
+                    .tv_sec = LLONG_MIN,
+                    .tv_nsec = LLONG_MIN
+                }
+            },
+            .data = {
+                .kind = st_1_X_PRESENT,
+                .u = { .st_1_X = {
+                .request = {
+                    .packetVersion = asn1Sccpus_CCSDS_V1,
+                    .packetType = asn1Sccpus_TM,
+                    .secondaryHeaderFlag = FALSE,
+                    .apid = 0,
+                    .sequenceFlags = asn1Sccpus_STANDALONE_PACKET,
+                    .sequenceCount = 0
+                },
+                .step = 0,
+                .failure = {
+                    .code = 0,
+                    .info = {
+                        .subcode = -2147483648LL,
+                        .data = -2147483648LL,
+                        .address = 0
+                    }
+                }
+            }}
+            }
+        }}
+        }
+    }
+};
+}
+#endif
+
+ 
+flag asn1SccPusTcScheduledActivity_IsConstraintValid(const asn1SccPusTcScheduledActivity* pVal, int* pErrCode)
+{
+    
+    flag ret = TRUE;
+	*pErrCode=0;
+
+	(void)pVal;
+
+	ret = asn1SccPusTime_IsConstraintValid(&pVal->time, pErrCode);
+	if (ret) {
+	    ret = asn1SccPusPacketReduced_IsConstraintValid(&pVal->packetReduced, pErrCode);
+	
+	}
+
+	return ret;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1800
+void asn1SccPusTC_11_4_Data_Initialize(asn1SccPusTC_11_4_Data* pVal)
+{
+    *pVal = (asn1SccPusTC_11_4_Data) {    .nCount = 1,    .arr = 
+    {
+        {
+            .time = {
+                .tv_sec = LLONG_MIN,
+                .tv_nsec = LLONG_MIN
+            },
+            .packetReduced = {
+                .packetVersion = asn1Sccpus_CCSDS_V1,
+                .packetType = asn1Sccpus_TM,
+                .secondaryHeaderFlag = FALSE,
+                .apid = 0,
+                .sequenceFlags = asn1Sccpus_STANDALONE_PACKET,
+                .sequenceCount = 0,
+                .dataLength = 0,
+                .data = {
+                    .kind = PusPacketDataReduced_tmData_PRESENT,
+                    .u = { .tmData = {
+                    .header = {
+                        .pusVersion = asn1Sccpus_V0,
+                        .timeRefStatus = 0,
+                        .serviceId = 0,
+                        .subtype = 0,
+                        .msgTypeCount = 0,
+                        .destination = 0,
+                        .time = {
+                            .tv_sec = LLONG_MIN,
+                            .tv_nsec = LLONG_MIN
+                        }
+                    },
+                    .data = {
+                        .kind = st_1_X_PRESENT,
+                        .u = { .st_1_X = {
+                        .request = {
+                            .packetVersion = asn1Sccpus_CCSDS_V1,
+                            .packetType = asn1Sccpus_TM,
+                            .secondaryHeaderFlag = FALSE,
+                            .apid = 0,
+                            .sequenceFlags = asn1Sccpus_STANDALONE_PACKET,
+                            .sequenceCount = 0
+                        },
+                        .step = 0,
+                        .failure = {
+                            .code = 0,
+                            .info = {
+                                .subcode = -2147483648LL,
+                                .data = -2147483648LL,
+                                .address = 0
+                            }
+                        }
+                    }}
+                    }
+                }}
+                }
+            }
+        }        
+    }
+};
+}
+#endif
+
+ 
+flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data* pVal, int* pErrCode)
+{
+    
+    flag ret = TRUE;
+	int i1=0;
+	*pErrCode=0;
+
+	(void)pVal;
+
+	ret = (1 <= pVal->nCount && pVal->nCount <= (int)pus_ST11_MAX_SCHEDULED_ACTIVITIES);
+	*pErrCode = ret ? 0 : ERR_asn1SccPusTC_11_4_Data;
+	i1 = 0;
+	while (ret && (i1< pVal->nCount)) {
+	    ret = asn1SccPusTcScheduledActivity_IsConstraintValid(&pVal->arr[i1], pErrCode);
+	    i1 = i1+1;
+	}
+
+	return ret;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1800
 void asn1SccPusTcApplicationData_Initialize(asn1SccPusTcApplicationData* pVal)
 {
     *pVal = (asn1SccPusTcApplicationData) {
@@ -1723,6 +1884,9 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
 	        break;
 	    case PusTcApplicationData_st_19_X_PRESENT :
 	        ret = asn1SccPusTC_19_X_Data_IsConstraintValid(&pVal->u.st_19_X, pErrCode);
+	        break;
+	    case st_11_4_PRESENT :
+	        ret = asn1SccPusTC_11_4_Data_IsConstraintValid(&pVal->u.st_11_4, pErrCode);
 	        break;
 	    case st_19_1_PRESENT :
 	        ret = asn1SccPusTC_19_1_Data_IsConstraintValid(&pVal->u.st_19_1, pErrCode);
@@ -2220,6 +2384,8 @@ const asn1SccPusSubserviceType pus_TM_23_4_reportFileAttributes = 4;
 const asn1SccPusSubserviceType pus_TC_23_14_copyFile = 14;
 
 const asn1SccPusUInt32 pus_ST03_MAX_REPORT_LENGTH = 20;
+
+const asn1SccPusUInt32 pus_ST11_MAX_SCHEDULED_ACTIVITIES = 10;
 
 const asn1SccPusSt03HousekeepingReportId pus_ST03_DEFAULT_HK_REPORT = 0;
 

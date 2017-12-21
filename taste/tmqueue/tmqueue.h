@@ -18,6 +18,9 @@ void tmqueue_PI_tmRequest(asn1SccPusPacket *,
 
 void tmqueue_PI_newTm(const asn1SccPusPacket *);
 
+extern void tmqueue_RI_incCount(asn1SccPusPacket *,
+                                asn1SccPusSt01FailureCode *);
+
 #ifdef __cplusplus
 }
 #endif
