@@ -45,3 +45,6 @@ set_target_properties(${MISSION_LIB} PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 add_dependencies(${MISSION_LIB} mission_generate_code)
 add_coverage(${MISSION_LIB})
 
+#add_library(test01 OBJECT ${C_FILES})
+#set_target_properties(test01 PROPERTIES LINKER_LANGUAGE C)
+#add_dependencies(test01 mission_generate_code)

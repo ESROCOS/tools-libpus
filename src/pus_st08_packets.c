@@ -66,6 +66,7 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApid_t 
 		pus_setTcService(outTc, pus_ST08_functionManagement);
 		pus_setTcSubtype(outTc, pus_TC_8_1_performFunction);
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_8_1);
+		pus_setTcSource(outTc, apid);
 
 		// Data field
 		pus_tc_8_1_setFunctionId(outTc, functionId);
@@ -105,7 +106,7 @@ void pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionI
 }
 
 
-void pus_tc_8_1_getFunctionId(pusSt08FunctiontId_t* functionId, pusPacket_t* outTc)
+void pus_tc_8_1_getFunctionId(pusSt08FunctiontId_t* functionId, const pusPacket_t* outTc)
 {
 	if (NULL == outTc)
 	{

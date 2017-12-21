@@ -83,6 +83,12 @@ cd "$SKELS" && rm -f st08.zip && zip st08 st08/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f onboardapid.zip && zip onboardapid onboardapid/* && cd $OLDPWD
 
+cd "$SKELS" && rm -f events.zip && zip events events/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st05.zip && zip st05 st05/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st19.zip && zip st19 st19/* && cd $OLDPWD
+
 [ ! -z "$CLEANUP" ] && rm -rf binary*
 
 if [ -f ConcurrencyView.pro ]
@@ -134,6 +140,9 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC st01:"$SKELS"/st01.zip \
 	--subC st08:"$SKELS"/st08.zip \
 	--subC onboardapid:"$SKELS"/onboardapid.zip \
+	--subC events:"$SKELS"/events.zip \
+	--subC st05:"$SKELS"/st05.zip \
+	--subC st19:"$SKELS"/st19.zip \
 	$ORCHESTRATOR_OPTIONS
 
 if [ -f user_init_last.sh ]

@@ -26,6 +26,7 @@ pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApid_t apid
 
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_9_1);
 		pus_tc_9_1_setExponentialRate(outTc, expRate);
+		pus_setTcSource(outTc, apid);
 
 		return PUS_GET_ERROR();
 	}
@@ -51,15 +52,6 @@ pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApid_t apid, pu
 		// Data length
 		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));
 
-		// Service identification
-		//pus_setTmService(outTm, pus_ST09_timeManagement);
-		//pus_setTmSubtype(outTm, pus_TM_9_2_cucTimeReport);
-
-		// Timestamp
-		//pus_setTmPacketTimeNow(outTm);
-
-		// Destination
-		//pus_setTmDestination(outTm, destination);
 
 		pus_setTmNoHeaderDataKind(outTm, pus_TM_DATA_ST_9_2);
 		pus_tm_9_2_setDataField(outTm);
@@ -159,7 +151,7 @@ pusError_t pus_time_getReportGenerationRate(uint64_t* expRate)
 	//*expRate = pow(2, pus_time_reportGenerationExponentialRate); //todo math -lm
 
 	*expRate= 1;
-	for (size_t i = 0; i < pus_time_reportGenerationExponentialRate; i++)
+	for (size_t i = 0; i < pus_time_reportGenerationExponentialRate; i++) //TODO >> o <<
 		*expRate *= 2;
 
 

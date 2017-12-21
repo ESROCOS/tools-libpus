@@ -81,7 +81,6 @@ pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pu
 		return PUS_ERROR_DEFINITION_ALREADY_EXIST;
 	}
 
-
 	if( true == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
 		pus_st19_EventActionDefinitionList[eventID].definitionStatus = false;

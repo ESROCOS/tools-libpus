@@ -1,0 +1,1 @@
+#add_library(test01_all $<TARGET_OBJECTS:esrocos_pus_nothreads2> $<TARGET_OBJECTS:test01>)

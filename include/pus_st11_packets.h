@@ -25,6 +25,7 @@ extern "C" {
 #include "pus_threads.h"
 #include "pus_types.h"
 #include "pus_packet.h"
+#include "pus_packet_reduced.h"
 
 
 
@@ -101,6 +102,12 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_
  */
 pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
+int32_t pus_tc_11_4_getNCount(pusPacket_t* outTc);
+pusError_t pus_tc_11_4_setNCount(pusPacket_t* outTc, int32_t nCount);
+
+pusError_t pus_tc_11_4_setActivity(pusPacket_t* outTc, const pusPacket_t* tcAction, const pusTime_t* time);
+
+pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t* activities, const pusPacket_t* outTc, int32_t max);
 
 //! Check that a packet is of a PUS ST[11] kind
 /*! \param[in] packet The PUS packet

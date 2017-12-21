@@ -40,21 +40,23 @@ void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
 
 
 		printf(" - ST17: processing packet\n");
-
 		pusPacket_t outTm;
 		pusApid_t apid;
 		pusSequenceCount_t seqCount;
 		st17_RI_getApid(&apid);
 		st17_RI_getSequenceCount(&seqCount);
-		pus_tm_17_2_createConnectionTestReport(&outTm, apid, seqCount, IN_tcPacket->apid);
+		if( PUS_NO_ERROR == pus_tm_17_2_createConnectionTestReport(&outTm, apid, seqCount, IN_tcPacket->apid))
+		{
+			printf(" - ST17: Sending TM17.2\n");
+			st17_RI_newTm(&outTm);
+		}
 
-		printf(" - ST17: Sending TM17.2\n");
-		st17_RI_newTm(&outTm);
 	}
 	else
 	{
-		//create tm1.2 if needed
-
+		subtype = pus_TM_1_2_failedAcceptance;
+		errorCode = error;
+		st17_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		printf(" - ST17: Error in st17_PI_tc17, %d (no exit)\n", error);
 	}
 

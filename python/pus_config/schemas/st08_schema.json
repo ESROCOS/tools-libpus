@@ -1,8 +1,8 @@
 {
     "$schema": "http://json-schema.org/schema#",
     "id": "https://github.com/esrocos/TBD",
-    "title": "On-board events",
-    "description": "Events configuration for PUS packet queues",
+    "title": "On-board functions",
+    "description": "Functions ST08",
     "type": "object",
     "properties": {
     	"functions": {

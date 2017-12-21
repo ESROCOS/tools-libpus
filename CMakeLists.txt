@@ -56,6 +56,7 @@ add_subdirectory(mission)
 add_subdirectory(src)
 add_subdirectory(test)
 add_subdirectory(pylib)
+add_subdirectory(taste)
 
 ### Install stuff commented ###
 
@@ -72,3 +73,6 @@ set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
 mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
 coverage_evaluate()
+
+
+

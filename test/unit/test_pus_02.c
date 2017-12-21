@@ -95,8 +95,7 @@ void test_packetQueue()
 	queue.nPacketInside = 0;
 	queue.out = 0;
 
-	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, pus_packetQueues_push(&packet, &queue));
-	CU_ASSERT_EQUAL(PUS_ERROR_THREADS, pus_packetQueues_pop(&packet, &queue));
+	pus_clearError();
 
 	queue.mutex = NULL;
 

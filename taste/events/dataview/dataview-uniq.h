@@ -1161,74 +1161,142 @@ extern const asn1SccPusUInt64 pus_EVENT_DATASTORED_NONE;
  * have been declared first, in case of parameterized ACN encodings
  * ========================================================================= */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+flag asn1SccPusPacketVersion_Encode(const asn1SccPusPacketVersion* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacketVersion_Decode(asn1SccPusPacketVersion* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusPacketType_Encode(const asn1SccPusPacketType* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacketType_Decode(asn1SccPusPacketType* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSecondaryHeaderFlag_Encode(const asn1SccPusSecondaryHeaderFlag* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSecondaryHeaderFlag_Decode(asn1SccPusSecondaryHeaderFlag* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSequenceFlags_Encode(const asn1SccPusSequenceFlags* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSequenceFlags_Decode(asn1SccPusSequenceFlags* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusVersionNumber_Encode(const asn1SccPusVersionNumber* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusVersionNumber_Decode(asn1SccPusVersionNumber* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusAcknowledgementFlags_Encode(const asn1SccPusAcknowledgementFlags* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusAcknowledgementFlags_Decode(asn1SccPusAcknowledgementFlags* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusUInt3_Encode(const asn1SccPusUInt3* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusUInt3_Decode(asn1SccPusUInt3* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusUInt4_Encode(const asn1SccPusUInt4* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusUInt4_Decode(asn1SccPusUInt4* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTimeReferenceStatus_Encode(const asn1SccPusTimeReferenceStatus* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTimeReferenceStatus_Decode(asn1SccPusTimeReferenceStatus* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusUInt8_Encode(const asn1SccPusUInt8* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusUInt8_Decode(asn1SccPusUInt8* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusServiceType_Encode(const asn1SccPusServiceType* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusServiceType_Decode(asn1SccPusServiceType* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSubserviceType_Encode(const asn1SccPusSubserviceType* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSubserviceType_Decode(asn1SccPusSubserviceType* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusUInt11_Encode(const asn1SccPusUInt11* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusUInt11_Decode(asn1SccPusUInt11* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusApid_Encode(const asn1SccPusApid* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusApid_Decode(asn1SccPusApid* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTcHeader_Encode(const asn1SccPusTcHeader* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTcHeader_Decode(asn1SccPusTcHeader* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusUInt14_Encode(const asn1SccPusUInt14* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusUInt14_Decode(asn1SccPusUInt14* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSequenceCount_Encode(const asn1SccPusSequenceCount* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSequenceCount_Decode(asn1SccPusSequenceCount* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt01RequestId_Encode(const asn1SccPusSt01RequestId* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt01RequestId_Decode(asn1SccPusSt01RequestId* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusUInt16_Encode(const asn1SccPusUInt16* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusUInt16_Decode(asn1SccPusUInt16* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusPacketDataLength_Encode(const asn1SccPusPacketDataLength* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacketDataLength_Decode(asn1SccPusPacketDataLength* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusMessageTypeCounter_Encode(const asn1SccPusMessageTypeCounter* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusMessageTypeCounter_Decode(asn1SccPusMessageTypeCounter* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusChecksum_Encode(const asn1SccPusChecksum* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusChecksum_Decode(asn1SccPusChecksum* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusUInt32_Encode(const asn1SccPusUInt32* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusUInt32_Decode(asn1SccPusUInt32* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt08FunctionId_Encode(const asn1SccPusSt08FunctionId* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt08FunctionId_Decode(asn1SccPusSt08FunctionId* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTC_8_1_Data_Encode(const asn1SccPusTC_8_1_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTC_8_1_Data_Decode(asn1SccPusTC_8_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusStepId_Encode(const asn1SccPusStepId* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusStepId_Decode(asn1SccPusStepId* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusConfigDummyType_Encode(const asn1SccPusConfigDummyType* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusConfigDummyType_Decode(asn1SccPusConfigDummyType* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt03HousekeepingReportId_Encode(const asn1SccPusSt03HousekeepingReportId* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt03HousekeepingReportId_Decode(asn1SccPusSt03HousekeepingReportId* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt03ParameterId_Encode(const asn1SccPusSt03ParameterId* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt03ParameterId_Decode(asn1SccPusSt03ParameterId* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt01FailureCode_Encode(const asn1SccPusSt01FailureCode* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt01FailureCode_Decode(asn1SccPusSt01FailureCode* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt09ExponentialRate_Encode(const asn1SccPusSt09ExponentialRate* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt09ExponentialRate_Decode(asn1SccPusSt09ExponentialRate* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTC_9_1_Data_Encode(const asn1SccPusTC_9_1_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTC_9_1_Data_Decode(asn1SccPusTC_9_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt05EventId_Encode(const asn1SccPusSt05EventId* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt05EventId_Decode(asn1SccPusSt05EventId* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTC_19_X_Data_Encode(const asn1SccPusTC_19_X_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTC_19_X_Data_Decode(asn1SccPusTC_19_X_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt12pmonId_Encode(const asn1SccPusSt12pmonId* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt12pmonId_Decode(asn1SccPusSt12pmonId* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTC_12_1_2_Data_Encode(const asn1SccPusTC_12_1_2_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTC_12_1_2_Data_Decode(asn1SccPusTC_12_1_2_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTcApplicationDataReduced_Encode(const asn1SccPusTcApplicationDataReduced* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTcApplicationDataReduced_Decode(asn1SccPusTcApplicationDataReduced* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusPacketDataReduced_tcData_Encode(const asn1SccPusPacketDataReduced_tcData* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacketDataReduced_tcData_Decode(asn1SccPusPacketDataReduced_tcData* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusUInt64_Encode(const asn1SccPusUInt64* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusUInt64_Decode(asn1SccPusUInt64* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusMemAddr_Encode(const asn1SccPusMemAddr* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusMemAddr_Decode(asn1SccPusMemAddr* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt03ParameterArray_Encode(const asn1SccPusSt03ParameterArray* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt03ParameterArray_Decode(asn1SccPusSt03ParameterArray* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTM_3_25_Data_Encode(const asn1SccPusTM_3_25_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTM_3_25_Data_Decode(asn1SccPusTM_3_25_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt05EventAuxData_Encode(const asn1SccPusSt05EventAuxData* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt05EventAuxData_Decode(asn1SccPusSt05EventAuxData* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt05Event_Encode(const asn1SccPusSt05Event* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt05Event_Decode(asn1SccPusSt05Event* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTM_5_X_Data_Encode(const asn1SccPusTM_5_X_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTM_5_X_Data_Decode(asn1SccPusTM_5_X_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusInt32_Encode(const asn1SccPusInt32* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusInt32_Decode(asn1SccPusInt32* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt01FailureInfo_Encode(const asn1SccPusSt01FailureInfo* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt01FailureInfo_Decode(asn1SccPusSt01FailureInfo* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusSt01Failure_Encode(const asn1SccPusSt01Failure* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusSt01Failure_Decode(asn1SccPusSt01Failure* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTM_1_X_Data_Encode(const asn1SccPusTM_1_X_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTM_1_X_Data_Decode(asn1SccPusTM_1_X_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusInt64_Encode(const asn1SccPusInt64* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusInt64_Decode(asn1SccPusInt64* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTime_Encode(const asn1SccPusTime* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTime_Decode(asn1SccPusTime* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTmHeader_Encode(const asn1SccPusTmHeader* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTmHeader_Decode(asn1SccPusTmHeader* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTM_9_2_Data_Encode(const asn1SccPusTM_9_2_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTM_9_2_Data_Decode(asn1SccPusTM_9_2_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTmSourceData_Encode(const asn1SccPusTmSourceData* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTmSourceData_Decode(asn1SccPusTmSourceData* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTmHeaderData_Encode(const asn1SccPusTmHeaderData* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTmHeaderData_Decode(asn1SccPusTmHeaderData* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusPacketDataReduced_Encode(const asn1SccPusPacketDataReduced* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacketDataReduced_Decode(asn1SccPusPacketDataReduced* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusPacketReduced_Encode(const asn1SccPusPacketReduced* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacketReduced_Decode(asn1SccPusPacketReduced* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTC_19_1_Data_Encode(const asn1SccPusTC_19_1_Data* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTC_19_1_Data_Decode(asn1SccPusTC_19_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusTcApplicationData_Encode(const asn1SccPusTcApplicationData* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusTcApplicationData_Decode(asn1SccPusTcApplicationData* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusPacketData_tcData_Encode(const asn1SccPusPacketData_tcData* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacketData_tcData_Decode(asn1SccPusPacketData_tcData* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusPacketData_Encode(const asn1SccPusPacketData* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacketData_Decode(asn1SccPusPacketData* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccPusPacket_Encode(const asn1SccPusPacket* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccPusPacket_Decode(asn1SccPusPacket* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccT_Int32_Encode(const asn1SccT_Int32* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccT_Int32_Decode(asn1SccT_Int32* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccT_UInt32_Encode(const asn1SccT_UInt32* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccT_UInt32_Decode(asn1SccT_UInt32* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccT_Int8_Encode(const asn1SccT_Int8* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccT_Int8_Decode(asn1SccT_Int8* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccT_UInt8_Encode(const asn1SccT_UInt8* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccT_UInt8_Decode(asn1SccT_UInt8* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccT_Boolean_Encode(const asn1SccT_Boolean* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccT_Boolean_Decode(asn1SccT_Boolean* pVal, BitStream* pBitStrm, int* pErrCode);
+flag asn1SccTASTE_Boolean_Encode(const asn1SccTASTE_Boolean* val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+flag asn1SccTASTE_Boolean_Decode(asn1SccTASTE_Boolean* pVal, BitStream* pBitStrm, int* pErrCode); 
 
 
 #ifdef  __cplusplus

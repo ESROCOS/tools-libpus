@@ -8,6 +8,8 @@ set(MAKO_TEMPLATES
     pus_st05_config.h.mako
     pus_st08_config.c.mako
     pus_st08_config.h.mako
+    pus_st11_config.c.mako
+    pus_st11_config.h.mako
     pus_st12_config.c.mako
     pus_st12_config.h.mako
   	pus_st19_config.c.mako

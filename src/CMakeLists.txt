@@ -5,6 +5,7 @@ set(SOURCES
     pus_event_action.c
     pus_events.c
     pus_housekeeping.c
+    pus_packet_reduced.c
     pus_packet_queues.c
     pus_packet.c
     pus_parameter_monitoring.c
@@ -20,6 +21,7 @@ set(SOURCES
     pus_stored_param.c
     pus_threads.c
     pus_time.c
+    pus_timebased_scheduling.c
 )
 
 # Define the PUS library
@@ -36,5 +38,10 @@ set_target_properties(esrocos_pus_nothreads PROPERTIES POSITION_INDEPENDENT_CODE
 target_compile_options(esrocos_pus_nothreads PUBLIC -DPUS_DISABLE_THREADS)
 add_dependencies(esrocos_pus_nothreads esrocos_pus_asn1)
 add_coverage(esrocos_pus_nothreads)
+
+#add_library(esrocos_pus_nothreads2 OBJECT ${SOURCES})
+#set_target_properties(esrocos_pus_nothreads2 PROPERTIES LINKER_LANGUAGE C)
+
+
 
 

@@ -70,25 +70,11 @@ typedef asn1SccPusPacketReduced pusPacketReduced_t; //!< Packet reduced
 typedef asn1SccPusSt12pmonId pusSt12PmonId_t; //!< Pmon ID
 typedef asn1SccPusSt09ExponentialRate pusSt09ExponentialRate_t; //!< report generation exponential rate
 
+typedef asn1SccPusTcScheduledActivity pusSt11ScheduledActivity_t;
+
 
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
-/*#ifdef __cplusplus
-typedef decltype(asn1SccPusPacketData::PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
-typedef decltype(asn1SccPusTmSourceData::PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
-typedef decltype(asn1SccPusTcApplicationData::PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
-#else
-	#if (__STDC_VERSION__ == 199901L)
-	typedef int pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
-	typedef int pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
-	typedef int pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
-	#else
-	typedef typeof(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
-	typedef typeof(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
-	typedef typeof(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
-	#endif
-#endif*/
-
 #ifdef __cplusplus
 typedef decltype(asn1SccPusPacketData::PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
 typedef decltype(asn1SccPusTmSourceData::PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
@@ -134,9 +120,10 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pus_TC_DATA_NONE 		((pusTcDataKind_t) PusTcApplicationData_NONE)
 #define pus_TC_DATA_ST_8_1 		((pusTcDataKind_t) PusTcApplicationData_st_8_1_PRESENT)
 #define pus_TC_DATA_ST_9_1		((pusTcDataKind_t) PusTcApplicationData_st_9_1_PRESENT)
+#define pus_TC_DATA_ST_11_4		((pusTcDataKind_t) st_11_4_PRESENT)
+#define pus_TC_DATA_ST_12_1_2	((pusTcDataKind_t) PusTcApplicationData_st_12_1_2_PRESENT)
 #define pus_TC_DATA_ST_19_1		((pusTcDataKind_t) st_19_1_PRESENT)
 #define pus_TC_DATA_ST_19_X		((pusTcDataKind_t) PusTcApplicationData_st_19_X_PRESENT)
-#define pus_TC_DATA_ST_12_1_2	((pusTcDataKind_t) PusTcApplicationData_st_12_1_2_PRESENT)
 
 
 

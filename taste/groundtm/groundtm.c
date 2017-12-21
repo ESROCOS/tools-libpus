@@ -22,6 +22,6 @@ void groundtm_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
     /* Write your code here! */
 
 
-	printf("TM%llu_%llu in TmGround.\n", pus_getTmService(IN_tmPacket), pus_getTmSubtype(IN_tmPacket));
+	printf("GROUND: TM%llu_%llu in TmGround.\n", pus_getTmService(IN_tmPacket), pus_getTmSubtype(IN_tmPacket));
 }
 

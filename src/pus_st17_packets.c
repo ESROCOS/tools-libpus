@@ -26,12 +26,7 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApid_t
 		// Service identification
 		pus_setTcService(outTc, pus_ST17_test);
 		pus_setTcSubtype(outTc, pus_TC_17_1_connectionTest);
-
-		//pus_setTmDestination(outTm, pus_APID_IDLE);
-
-		// Timestamp
-		//pus_setTmPacketTimeNow(outTm);
-
+		pus_setTcSource(outTc, apid);
 
 		return PUS_GET_ERROR();
 	}

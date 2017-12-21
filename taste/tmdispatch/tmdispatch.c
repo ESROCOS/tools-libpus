@@ -20,7 +20,7 @@ void tmdispatch_startup()
 void tmdispatch_PI_tmTrigger()
 {
     /* Write your code here! */
-	printf("tmdispatch_PI_tmTrigger: ");
+	printf("TmDispatch: ");
 
 	pusPacket_t tm;
 	asn1SccT_Boolean isAvailable;
@@ -37,7 +37,7 @@ void tmdispatch_PI_tmTrigger()
 	pusError_t error = PUS_EXPECT_TM(&tm);
 	if ( PUS_NO_ERROR == error)
 	{
-		printf(" - TM%llu_%llu in TmDispatch.\n", pus_getTmService(&tm), pus_getTmSubtype(&tm));
+		printf("TM%llu_%llu in TmDispatch.\n", pus_getTmService(&tm), pus_getTmSubtype(&tm));
 		tmdispatch_RI_newTm(&tm);
 	}
 	else
