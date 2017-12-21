@@ -62,6 +62,10 @@ pusError_t pus_tc_9_1_getExponentialRate(pusSt09ExponentialRate_t* expRate, pusP
 //! Set the data field of a TM[9,2]
 pusError_t pus_tm_9_2_setDataField(pusPacket_t* tm);
 
+//! Get the data field of a TM[9,2]
+pusError_t pus_tm_9_2_getDataField(pusPacket_t* tm, pusTime_t* time, pusSt09ExponentialRate_t* expRate);
+
+
 //! Getter for the time report generation rate of the service
 pusError_t pus_time_getReportGenerationExponentialRate(pusSt09ExponentialRate_t* expRate);
 

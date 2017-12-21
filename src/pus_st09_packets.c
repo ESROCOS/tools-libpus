@@ -118,6 +118,24 @@ pusError_t pus_tm_9_2_setDataField(pusPacket_t* tm)
 	return PUS_NO_ERROR;
 }
 
+pusError_t pus_tm_9_2_getDataField(pusPacket_t* tm, pusTime_t* time, pusSt09ExponentialRate_t* expRate)
+{
+	if ( NULL == tm )
+	{
+		return PUS_ERROR_NULLPTR;
+	}
+
+	if ( PUS_NO_ERROR != PUS_EXPECT_ST09TM(tm))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	*expRate = tm->data.u.tmDataNoHeader.u.st_9_2.exponentialRate ;
+	*time = tm->data.u.tmDataNoHeader.u.st_9_2.time ;
+
+	return PUS_NO_ERROR;
+}
+
 
 pusError_t pus_time_getReportGenerationExponentialRate(pusSt09ExponentialRate_t* expRate)
 {
@@ -149,12 +167,8 @@ pusError_t pus_time_getReportGenerationRate(uint64_t* expRate)
 	{
 		return PUS_ERROR_NULLPTR;
 	}
-	//*expRate = pow(2, pus_time_reportGenerationExponentialRate); //todo math -lm
 
-	*expRate= 1;
-	for (size_t i = 0; i < pus_time_reportGenerationExponentialRate; i++) //TODO >> o <<
-		*expRate *= 2;
-
+	*expRate = 1 << pus_time_reportGenerationExponentialRate;
 
 	return PUS_NO_ERROR;
 }

@@ -11,6 +11,8 @@
 #include "pus_types.h"
 #include "pus_packet_queues.h"
 
+#include "pus_st01_packets.h"
+
 void tmqueue_startup()
 {
     /* Write your initialization code here,
@@ -55,6 +57,14 @@ void tmqueue_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 	if( PUS_NO_ERROR == error )
 	{
 		printf("TmQUEUE: TM%llu_%llu inserted in TmQueue.\n", pus_getTmService(IN_tmPacket), pus_getTmSubtype(IN_tmPacket));
+		pusSt01FailureCode_t available = PUS_ERROR_NULLPTR;
+		pusPacket_t tmPacket;
+		tmqueue_RI_incCount(&tmPacket, &available);
+		if( PUS_NO_ERROR == available)
+		{
+			while(PUS_NO_ERROR != pus_packetQueues_push(&tmPacket, &pus_packetQueue_tm));
+			//TODO ?=?=?
+		}
 	}
 	else if (PUS_ERROR_FULL_QUEUE == error )
 	{

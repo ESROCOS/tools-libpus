@@ -95,6 +95,13 @@ void test_st09()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationRate(&result));
 	CU_ASSERT_EQUAL(8, result);
 
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_setReportGenerationExponentialRate(0));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationExponentialRate(&rate));
+	CU_ASSERT_EQUAL(0, rate);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_time_getReportGenerationRate(&result));
+	CU_ASSERT_EQUAL(1, result);
+
 
 	pus_clearError();
 }

@@ -36,6 +36,7 @@ WITH interfaceview::IV::OnBoard::OnBoardAPID;
 WITH interfaceview::IV::OnBoard::Events;
 WITH interfaceview::IV::OnBoard::ST05;
 WITH interfaceview::IV::OnBoard::ST19;
+WITH interfaceview::IV::OnBoard::ST09;
 WITH ocarina_processors_x86;
 WITH deploymentview::DV::Node1;
 WITH Taste;
@@ -89,12 +90,15 @@ SUBCOMPONENTS
   IV_ST19 : SYSTEM interfaceview::IV::OnBoard::ST19::ST19.others {
     Taste::FunctionName => "ST19";
   };
+  IV_ST09 : SYSTEM interfaceview::IV::OnBoard::ST09::ST09.others {
+    Taste::FunctionName => "ST09";
+  };
   x86_partition : PROCESS deploymentview::DV::Node1::x86_partition.others {
-    Taste::coordinates => "110010 79532 163526 137949";
+    Taste::coordinates => "112214 74493 165730 132910";
     Deployment::Port_Number => 0;
   };
   x86_linux : PROCESSOR ocarina_processors_x86::x86.linux {
-    Taste::coordinates => "105840 68534 172736 144878";
+    Taste::coordinates => "108044 63495 174940 139839";
   };
 PROPERTIES
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_GroundTc;
@@ -111,6 +115,7 @@ PROPERTIES
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_Events;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST05;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST19;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST09;
   Actual_Processor_Binding => (reference (x86_linux)) APPLIES TO x86_partition;
 END Node1.others;
 
@@ -120,7 +125,7 @@ END deploymentview;
 SYSTEM IMPLEMENTATION deploymentview.others
 SUBCOMPONENTS
   Node1 : SYSTEM Node1.others {
-    Taste::coordinates => "97478 57479 181098 149130";
+    Taste::coordinates => "99682 52440 183302 144091";
   };
   interfaceview : SYSTEM interfaceview::IV::interfaceview.others;
 END deploymentview.others;
