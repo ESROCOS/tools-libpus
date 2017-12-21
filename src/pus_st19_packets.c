@@ -49,8 +49,7 @@ pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc
 
 	pusPacketReduced_t tcActionR;
 
-	pus_packetReduced_createPacketReducedFromPacket(&tcActionR, tcAction);
-
+	pus_packetReduced_createPacketReducedFromPacket(&tcActionR, tcAction); // Revisar
 	pus_tc_19_1_setAction(outTc, &tcActionR);
 	pus_tc_19_X_setEventId(outTc, eventId);
 
