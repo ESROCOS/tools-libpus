@@ -118,19 +118,19 @@ pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id);
 // Checking limits.
 //
 //! Check if a Int32 param is in its limits
-pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id);
+pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id, int32_t value);
 
 //! Check if a Uint32 param is in its limits
-pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id);
+pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id, uint32_t value);
 
 //! Check if a Real64 param is in its limits
-pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id);
+pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id, double value);
 
 //! Check if a Byte param is in its limits
-pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id);
+pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id, uint8_t value);
 
 //! Check if a Bool param is in its limits
-pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id);
+pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id, bool value);
 
 
 #ifdef  __cplusplus

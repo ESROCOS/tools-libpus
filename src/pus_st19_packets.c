@@ -50,7 +50,6 @@ pusError_t pus_tc_19_1_createAddEventActionDefinitionsRequest(pusPacket_t* outTc
 
 	pus_tc_19_1_setAction(outTc, &tcActionR);
 	pus_tc_19_X_setEventId(outTc, eventId);
-
 	return PUS_NO_ERROR;
 }
 

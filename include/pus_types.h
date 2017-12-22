@@ -72,6 +72,9 @@ typedef asn1SccPusSt09ExponentialRate pusSt09ExponentialRate_t; //!< report gene
 
 typedef asn1SccPusTcScheduledActivity pusSt11ScheduledActivity_t;
 
+typedef asn1SccPusSt03StoredParam pusStoredParam_t;
+
+
 
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type

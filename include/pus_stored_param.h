@@ -13,6 +13,7 @@
 #include "pus_threads.h"
 #include "pus_error.h"
 #include "pus_packet.h"
+#include "pus_types.h"
 
 #ifdef  __cplusplus
 extern "C" {
@@ -29,7 +30,6 @@ typedef enum
 
 
 
-typedef unsigned long long int pusStoredParam_t;
 
 //! Convert a value from the internal parameter format to uint32_t
 pusError_t pus_paramToUint32(uint32_t* outValue, pusStoredParam_t paramValue);

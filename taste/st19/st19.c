@@ -8,8 +8,9 @@
 #include "pus_types.h"
 
 #include "pus_st19_packets.h"
-#include "pus_events.h"
 #include "pus_st19_config.h"
+
+#include "pus_events.h"
 
 asn1SccPusUInt64 counter;
 
@@ -41,32 +42,36 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 		if( PUS_NO_ERROR != pus_tc_19_X_getEventId(&eventID, IN_tcPacket))
 		{
 			errorCode = PUS_ERROR_NOT_INITIALIZED;
-		}
-
-		pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);
-		if( pus_TC_19_1_addEventActionDefinitions == subtype )
-		{
-			pusPacketReduced_t tcActionR;
-			pusPacket_t tcAction;
-			pus_tc_19_1_getAction(&tcActionR, IN_tcPacket);
-			pus_packetReduced_createPacketFromPacketReduced(&tcAction, &tcActionR);
-			errorCode =  pus_eventAction_addEventActionDefinition(eventID, &tcAction);
-		}
-		else if( pus_TC_19_2_deleteEventActionDefinitions == subtype )
-		{
-			errorCode = pus_eventAction_deleteEventActionDefinition(eventID);
-		}
-		else if( pus_TC_19_4_enableEventActionDefinitions == subtype )
-		{
-			errorCode = pus_eventAction_enableEventActionDefinition(eventID);
-		}
-		else if( pus_TC_19_5_disableEventActionDefinitions == subtype )
-		{
-			errorCode = pus_eventAction_enableEventActionDefinition(eventID);
+			printf("holaa!");
 		}
 		else
 		{
-			errorCode = PUS_ERROR_TC_SUBTYPE;
+			pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);
+			if( pus_TC_19_1_addEventActionDefinitions == subtype )
+			{
+				pusPacketReduced_t tcActionR;
+				pusPacket_t tcAction;
+				pus_tc_19_1_getAction(&tcActionR, IN_tcPacket);
+				pus_packetReduced_createPacketFromPacketReduced(&tcAction, &tcActionR);
+				errorCode =  pus_eventAction_addEventActionDefinition(eventID, &tcAction);
+			}
+			else if( pus_TC_19_2_deleteEventActionDefinitions == subtype )
+			{
+				errorCode = pus_eventAction_deleteEventActionDefinition(eventID);
+			}
+			else if( pus_TC_19_4_enableEventActionDefinitions == subtype )
+			{
+				errorCode = pus_eventAction_enableEventActionDefinition(eventID);
+				printf("Enable %d\n", eventID);
+			}
+			else if( pus_TC_19_5_disableEventActionDefinitions == subtype )
+			{
+				errorCode = pus_eventAction_enableEventActionDefinition(eventID);
+			}
+			else
+			{
+				errorCode = PUS_ERROR_TC_SUBTYPE;
+			}
 		}
 	}
 	else
@@ -90,6 +95,7 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
+		printf("Error 19.4 %d", errorCode);
 		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }

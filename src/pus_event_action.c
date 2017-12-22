@@ -125,7 +125,6 @@ pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID)
 	{
 		return PUS_ERROR_OUT_OF_RANGE;
 	}
-
 	if( false == pus_st19_EventActionDefinitionList[eventID].deleted )
 	{
 		pus_st19_EventActionDefinitionList[eventID].definitionStatus = true;

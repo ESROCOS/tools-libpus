@@ -55,6 +55,8 @@ void events_PI_pushNewEvent(const asn1SccPusSt05Event *IN_eventInfo)
 
 void events_PI_debugTrigger()
 {
+	return;
+
 	pusSt05Event_t event;
 	pus_events_createEVENT_INFO_01(&event, 23, 54);
 	pusError_t error = pus_st05_pushBufferEvent(&event);

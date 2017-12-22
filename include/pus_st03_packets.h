@@ -151,7 +151,15 @@ void pus_tm_3_25_setReportId(pusPacket_t* outTm, pusSt03HousekeepingReportId_t r
  *  \param[in] paramIds Array of the parameter IDs whose values will be included in the report
  *  \param[in] numParams Length of the paramIds array; must be at most \ref pus_ST03_MAX_REPORT_LENGTH
  */
-pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, const pusSt03ParamId_t* paramIds, size_t numParams);
+pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, pusSt03HousekeepingReportId_t reportId);
+
+//! Set the value of one parameter in the report (to be casted to the correct type)
+/*! \param[out] tm The TM packet
+ *  \param[in] index The index of the parameter to be returned; must be at most \ref pus_ST03_MAX_REPORT_LENGTH
+ *  \param[in] inValue Input parameter value as \ref pusStoredParam_t, to be casted to the correct type
+ */
+pusError_t pus_tm_3_25_setParameterValue(pusPacket_t* tm, size_t index, pusStoredParam_t inValue);
+
 
 //! Get the value of one parameter in the report (to be casted to the correct type)
 /*! \param[in] tm The TM packet
@@ -166,6 +174,11 @@ pusError_t pus_tm_3_25_getParameterValue(const pusPacket_t* tm, size_t index, pu
  */
 pusError_t pus_tm_3_25_getNumParameters(const pusPacket_t* tm, size_t* outNumParams);
 
+//! Set the number of parameters in the report
+/*! \param[out] tm The TM packet
+ *  \param[in] inNumParams Input for the number of parameters
+ */
+pusError_t pus_tm_3_25_setNumParameters(pusPacket_t* tm, size_t outNumParams);
 
 //
 // Parameter checking

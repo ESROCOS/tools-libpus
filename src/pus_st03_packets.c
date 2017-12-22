@@ -25,9 +25,6 @@ pusError_t pus_tm_3_25_createHousekeepingReportDefault(pusPacket_t* outTm, pusAp
 
 pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt03HousekeepingReportId_t reportId, pusApid_t destination)
 {
-	size_t numParams = 0;
-	pusSt03ParamId_t* paramIds;
-
 	if (NULL == outTm)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
@@ -41,23 +38,6 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t ap
 	if (!pus_hk_isInitialized())
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
-	}
-
-	// Get the array defining the report contents
-	if (pus_ST03_DEFAULT_HK_REPORT == reportId)
-	{
-		numParams = pus_st03_defaultHkReportInfo.numParams;
-		paramIds = pus_st03_defaultHkReportInfo.paramIds;
-	}
-	// handle here user-defined HK reports (not yet implemented)
-	else
-	{
-		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
-	}
-
-	if (numParams > pus_ST03_MAX_REPORT_LENGTH)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
 	}
 
 	// Build the TM packet
@@ -83,8 +63,15 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t ap
 	pus_setTmPacketTimeNow(outTm);
 
 	// Report contents
+	if (pus_ST03_DEFAULT_HK_REPORT != reportId)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
+	}
+	// handle here user-defined HK reports (not yet implemented)
+
 	pus_tm_3_25_setReportId(outTm, reportId);
-	return (pus_tm_3_25_setParameterValues(outTm, paramIds, numParams));
+
+	return PUS_GET_ERROR();
 }
 
 
@@ -122,21 +109,35 @@ void pus_tm_3_25_setReportId(pusPacket_t* outTm, pusSt03HousekeepingReportId_t r
 	}
 }
 
-pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, const pusSt03ParamId_t* paramIds, size_t numParams)
+pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, pusSt03HousekeepingReportId_t reportId)
 {
-	if (NULL == outTm || NULL == paramIds)
+	if (NULL == outTm )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-
-	if (numParams > pus_ST03_MAX_REPORT_LENGTH)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
 	}
 
 	if (PUS_NO_ERROR != PUS_EXPECT_ST03(outTm, pus_TM_3_25_housekeepingReport))
 	{
 		return PUS_GET_ERROR();
+	}
+
+	size_t numParams = 0;
+	pusSt03ParamId_t* paramIds;
+	// Get the array defining the report contents
+	if (pus_ST03_DEFAULT_HK_REPORT == reportId)
+	{
+		numParams = pus_st03_defaultHkReportInfo.numParams;
+		paramIds = pus_st03_defaultHkReportInfo.paramIds;
+	}
+	// handle here user-defined HK reports (not yet implemented)
+	else
+	{
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
+	}
+
+	if (numParams > pus_ST03_MAX_REPORT_LENGTH)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
 	}
 
 	// Lock access parameters array
@@ -159,6 +160,29 @@ pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, const pusSt03Param
 	{
 		return PUS_ERROR_THREADS;
 	}
+
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tm_3_25_setParameterValue(pusPacket_t* tm, size_t index, pusStoredParam_t inValue)
+{
+	if ( NULL == tm )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+
+	if (PUS_NO_ERROR != PUS_EXPECT_ST03(tm, pus_TM_3_25_housekeepingReport))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	// Check against maximum and actual size of the packet
+	if (index > (size_t)pus_ST03_MAX_REPORT_LENGTH || index > (size_t)tm->data.u.tmData.data.u.st_3_25.parameters.nCount)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_LENGTH);
+	}
+
+	tm->data.u.tmData.data.u.st_3_25.parameters.arr[index] = inValue;
 
 	return PUS_NO_ERROR;
 }
@@ -203,6 +227,22 @@ pusError_t pus_tm_3_25_getNumParameters(const pusPacket_t* tm, size_t* outNumPar
 	return PUS_NO_ERROR;
 }
 
+pusError_t pus_tm_3_25_setNumParameters(pusPacket_t* tm, size_t inNumParams)
+{
+	if (NULL == tm)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+
+	if (PUS_NO_ERROR != PUS_EXPECT_ST03(tm, pus_TM_3_25_housekeepingReport))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	tm->data.u.tmData.data.u.st_3_25.parameters.nCount = inNumParams;
+
+	return PUS_NO_ERROR;
+}
 
 //
 // Parameter checking

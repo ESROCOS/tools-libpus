@@ -57,7 +57,7 @@ pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApid_t apid, pu
 pusError_t pus_tc_9_1_setExponentialRate(pusPacket_t* tc, pusSt09ExponentialRate_t expRate);
 
 //! Get the exponential rate from a TC[9,1] packet
-pusError_t pus_tc_9_1_getExponentialRate(pusSt09ExponentialRate_t* expRate, pusPacket_t* tc);
+pusError_t pus_tc_9_1_getExponentialRate(pusSt09ExponentialRate_t* expRate, const pusPacket_t* tc);
 
 //! Set the data field of a TM[9,2]
 pusError_t pus_tm_9_2_setDataField(pusPacket_t* tm);

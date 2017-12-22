@@ -204,27 +204,42 @@ pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id)
 	switch(type)
 	{
 		case PUS_INT32:
-			return pus_pmon_checkLimitInt32(id);
-			break;
+		{
+			int32_t value;
+			pus_hk_getInt32Param(id, &value);
+			return pus_pmon_checkLimitInt32(id, value);
+		}
 		case PUS_UINT32:
-			return pus_pmon_checkLimitUint32(id);
-			break;
+		{
+			uint32_t value;
+			pus_hk_getUInt32Param(id, &value);
+			return pus_pmon_checkLimitUint32(id, value);
+		}
 		case PUS_REAL64:
-			return pus_pmon_checkLimitReal64(id);
-			break;
+		{
+			double value;
+			pus_hk_getReal64Param(id, &value);
+			return pus_pmon_checkLimitReal64(id, value);
+		}
 		case PUS_BYTE:
-			return pus_pmon_checkLimitByte(id);
-			break;
+		{
+			uint8_t value;
+			pus_hk_getByteParam(id, &value);
+			return pus_pmon_checkLimitByte(id, value);
+		}
 		case PUS_BOOL:
-			return pus_pmon_checkLimitBool(id);
-			break;
+		{
+			bool value;
+			pus_hk_getBoolParam(id, &value);
+			return pus_pmon_checkLimitBool(id, value);
+		}
 		default:
 			return PUS_ERROR_UNEXPECTED_PARAM_TYPE;
 			break;
 	}
 }
 
-pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id)
+pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id, int32_t value)
 {
 	if( ! pus_pmon_isInitialized())
 	{
@@ -235,9 +250,6 @@ pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_INVALID_ID;
 	}
-
-	int32_t value;
-	pus_hk_getInt32Param(id, &value);
 
 	if( value > pus_pmon_definitionList[id].check.high_limit.INT32 )
 	{
@@ -253,7 +265,7 @@ pusError_t pus_pmon_checkLimitInt32(pusSt12PmonId_t id)
 	}
 }
 
-pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id)
+pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id, uint32_t value)
 {
 	if( ! pus_pmon_isInitialized())
 	{
@@ -264,10 +276,6 @@ pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_INVALID_ID;
 	}
-
-
-	uint32_t value;
-	pus_hk_getUInt32Param(id, &value);
 
 	if( value > pus_pmon_definitionList[id].check.high_limit.UINT32 )
 	{
@@ -283,7 +291,7 @@ pusError_t pus_pmon_checkLimitUint32(pusSt12PmonId_t id)
 	}
 }
 
-pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id)
+pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id, double value)
 {
 	if( ! pus_pmon_isInitialized())
 	{
@@ -294,9 +302,6 @@ pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_INVALID_ID;
 	}
-
-	double value;
-	pus_hk_getReal64Param(id, &value);
 
 	if( value > pus_pmon_definitionList[id].check.high_limit.REAL64 )
 	{
@@ -312,7 +317,7 @@ pusError_t pus_pmon_checkLimitReal64(pusSt12PmonId_t id)
 	}
 }
 
-pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id)
+pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id, uint8_t value)
 {
 	if( ! pus_pmon_isInitialized())
 	{
@@ -323,9 +328,6 @@ pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_INVALID_ID;
 	}
-
-	uint8_t value;
-	pus_hk_getByteParam(id, &value);
 
 	if( value > pus_pmon_definitionList[id].check.high_limit.BOOL )
 	{
@@ -341,7 +343,7 @@ pusError_t pus_pmon_checkLimitByte(pusSt12PmonId_t id)
 	}
 }
 
-pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id)
+pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id, bool value)
 {
 	if( ! pus_pmon_isInitialized())
 	{
@@ -352,9 +354,6 @@ pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id)
 	{
 		return PUS_ERROR_INVALID_ID;
 	}
-
-	bool value;
-	pus_hk_getBoolParam(id, &value);
 
 	if( value > pus_pmon_definitionList[id].check.high_limit.BOOL )
 	{
