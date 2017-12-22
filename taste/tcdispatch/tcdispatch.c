@@ -49,7 +49,7 @@ void tcdispatch_PI_tcTrigger()
 				break;
 			case 12:
 				//pus_st12_processTcPacket(&tcRead, &apid);
-
+				tcdispatch_RI_tc12(&tc);
 				break;
 			case 17:
 				//pus_st17_processTcPacket(&tcRead, &apid);

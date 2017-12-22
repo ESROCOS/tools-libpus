@@ -1791,8 +1791,6 @@ PROPERTIES
 END PI_tc12.others;
 
 SUBPROGRAM PI_trigger
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_trigger;
 
 SUBPROGRAM IMPLEMENTATION PI_trigger.others
@@ -1860,7 +1858,7 @@ FEATURES
   PI_trigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::ST12::PI_trigger.others {
     Taste::coordinates => "200552 73991";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 100000 ms;
+    Taste::RCMperiod => 6000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "trigger";
   };

@@ -42,7 +42,6 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 		if( PUS_NO_ERROR != pus_tc_19_X_getEventId(&eventID, IN_tcPacket))
 		{
 			errorCode = PUS_ERROR_NOT_INITIALIZED;
-			printf("holaa!");
 		}
 		else
 		{
@@ -62,7 +61,6 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 			else if( pus_TC_19_4_enableEventActionDefinitions == subtype )
 			{
 				errorCode = pus_eventAction_enableEventActionDefinition(eventID);
-				printf("Enable %d\n", eventID);
 			}
 			else if( pus_TC_19_5_disableEventActionDefinitions == subtype )
 			{
@@ -95,7 +93,7 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		printf("Error 19.4 %d", errorCode);
+		printf("Error 19.4 %llu", errorCode);
 		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
