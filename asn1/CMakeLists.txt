@@ -12,8 +12,10 @@ set(ASN1
     pus_st03.asn
     pus_st05.asn
     pus_st08.asn
+    pus_st12.asn
     pus_st09.asn
     pus_st19.asn
+    pus_st20.asn
     pus_time.asn
 )
 

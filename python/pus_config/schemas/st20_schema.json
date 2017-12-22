@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "id": "https://github.com/esrocos/TBD",
+    "title": "On-board parameters",
+    "description": "On-board parameters configuration for PUS service ST[20]",
+    "type": "object",
+    "properties": {
+        "parameters": {
+            "type": "array",
+            "items": {
+                "title": "On-board parameter",
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "description": "Textual label for the parameter",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "Data type of the parameter",
+                        "type": "string",
+                        "enum": ["INT32", "UINT32", "REAL64", "BYTE", "BOOL"]
+                    }
+                },
+                "required": ["label", "type"]
+            }
+        }       
+    },
+    "required": ["parameters"]
+}

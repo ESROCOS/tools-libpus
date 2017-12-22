@@ -8,6 +8,7 @@ from .st08_config import generate_st08_config
 from .st11_config import generate_st11_config
 from .st12_config import generate_st12_config
 from .st19_config import generate_st19_config
+from .st20_config import generate_st20_config
 
 def generate(jsonDir, outDir):
     print('Generate mission configuration for {} in {}:'.format(jsonDir,outDir))
@@ -18,5 +19,5 @@ def generate(jsonDir, outDir):
     generate_st11_config(jsonDir, outDir)
     generate_st12_config(jsonDir, outDir)
     generate_st19_config(jsonDir, outDir)
-    
+    generate_st20_config(jsonDir, outDir)
 

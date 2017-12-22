@@ -25,6 +25,7 @@
 #include "asn1/pus_st09.h"
 #include "asn1/pus_st12.h"
 #include "asn1/pus_st19.h"
+#include "asn1/pus_st20.h"
 #include "asn1/pus_services.h"
 #endif
 
@@ -74,7 +75,7 @@ typedef asn1SccPusTcScheduledActivity pusSt11ScheduledActivity_t;
 
 typedef asn1SccPusSt03StoredParam pusStoredParam_t;
 
-
+typedef asn1SccPusSt20OnBoardParameterId pusSt20OnBoardParamId_t;
 
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type

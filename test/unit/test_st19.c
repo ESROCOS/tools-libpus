@@ -217,8 +217,8 @@ int main()
     }
 
     /* add the tests to the suite */
-    if ((NULL == CU_add_test(pSuite, "test_st17", test_st19)) ||
-    	(NULL == CU_add_test(pSuite, "packets_st17", packets_st19)) ||
+    if ((NULL == CU_add_test(pSuite, "test_st19", test_st19)) ||
+    	(NULL == CU_add_test(pSuite, "packets_st19", packets_st19)) ||
 		0)
     {
       CU_cleanup_registry();
