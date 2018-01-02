@@ -63,6 +63,106 @@ pusError_t pus_parameters_finalize();
 bool pus_parameters_isInitialized();
 
 
+//
+// Getters and setters for PM (parameter management) parameters
+//
+
+//! Get the current value of a parameter in 64 bits, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] outValue The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_getStoredParam(pusSt20OnBoardParamId_t param, pusStoredParam_t* outValue);
+
+//! Get the current value of an uint32_t parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] outValue The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_getUInt32Param(pusSt20OnBoardParamId_t param, uint32_t* outValue);
+
+//! Set the value of an uint32_t parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[in] value The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_setUInt32Param(pusSt20OnBoardParamId_t param, uint32_t value);
+
+//! Get the current value of an int32_t parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] outValue The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_getInt32Param(pusSt20OnBoardParamId_t param, int32_t* outValue);
+
+//! Set the value of an int32_t parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[in] value The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_setInt32Param(pusSt20OnBoardParamId_t param, int32_t value);
+
+//! Get the current value of a double parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] outValue The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_getReal64Param(pusSt20OnBoardParamId_t param, double* outValue);
+
+//! Set the value of a double parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[in] value The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_setReal64Param(pusSt20OnBoardParamId_t param, double value);
+
+//! Get the current value of a bool parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] outValue The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_getBoolParam(pusSt20OnBoardParamId_t param, bool* outValue);
+
+//! Set the value of a Boolean parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[in] value The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_setBoolParam(pusSt20OnBoardParamId_t param, bool value);
+
+//! Get the current value of an uint8_t parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] outValue The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_getByteParam(pusSt20OnBoardParamId_t param, uint8_t* outValue);
+
+//! Set the value of an uint8_t parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[in] value The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_setByteParam(pusSt20OnBoardParamId_t param, uint8_t value);
+
+//! Get the type of the parameter, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] type The parameter type
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_getParamType(pusSt20OnBoardParamId_t param, pusParamType_t* type);
+
 
 #ifdef  __cplusplus
 }

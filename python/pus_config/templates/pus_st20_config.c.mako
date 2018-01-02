@@ -8,6 +8,33 @@
 <%
 # Array lengths
 tempvars['numParams'] = len(config['parameters'])
+
+def getCTypes( configType ):
+	if str(configType) == str("INT32"):
+		return str("int32_t")
+	elif str(configType) == str("UINT32"):
+		return str("uint32_t")
+	elif str(configType) == str("REAL64"):
+		return str("double")
+	elif str(configType) == str("BYTE"):
+		return str("uint8_t")
+	elif str(configType) == str("BOOL"):
+		return str("bool")
+	endif
+	
+def getAliasName( configType ):
+	if str(configType) == str("INT32"):
+		return str("Int32")
+	elif str(configType) == str("UINT32"):
+		return str("UInt32")
+	elif str(configType) == str("REAL64"):
+		return str("Real64")
+	elif str(configType) == str("BYTE"):
+		return str("Byte")
+	elif str(configType) == str("BOOL"):
+		return str("Bool")
+	endif
+	
 %>
 
 // PUS service ST[20] configuration
@@ -17,6 +44,7 @@ tempvars['numParams'] = len(config['parameters'])
 //                     -- DO NOT MODIFY --
 
 #include "pus_st20_config.h"
+#include "pus_parameter_management.h"
 
 // ST[20] arrays
 pusSt20ParamInfo_t pus_st20_paramInfo[${tempvars['numParams']}];
@@ -24,7 +52,7 @@ pusStoredParam_t pus_st20_params[${tempvars['numParams']}];
 
 
 // ST[20] constants
-const pusSt20OnBoardParamId_t pus_ST03_PARAM_LIMIT = PUS_ST20_PARAM_LIMIT;
+const pusSt20OnBoardParamId_t pus_ST20_PARAM_LIMIT = PUS_ST20_PARAM_LIMIT;
 
 
 pusError_t pus_parameters_configure()
@@ -38,43 +66,20 @@ pusError_t pus_parameters_configure()
     return PUS_NO_ERROR;
 }
 
-/*
+
 % for param in config['parameters']:
-pusError_t pus_hk_set${param['label']}(${param['type']} value)
+pusError_t pus_hk_set${param['label']}(${getCTypes(param['type'])} value)
 {
-	%if str(param['type']) == str("INT32"):
-	return pus_hk_setInt32Param(${param['label']}, value);
-	%elif str(param['type']) == str("UINT32"):
-	return pus_hk_setUInt32Param(${param['label']}, value);
-	%elif str(param['type']) == str("REAL64"):
-	return pus_hk_setReal64Param(${param['label']}, value);
-	%elif str(param['type']) == str("BYTE"):
-	return pus_hk_setByteParam(${param['label']}, value);
-	%elif str(param['type']) == str("BOOL"):
-	return pus_hk_setBoolParam(${param['label']}, value);
-	%else:
-	return PUS_ERROR_NOT_IMPLEMENTED;
-	%endif
+	return pus_parameters_set${getAliasName(param['type'])}Param(${param['label']}, value);
 }
 
-pusError_t pus_hk_get${param['label']}(${param['type']}* value)
+pusError_t pus_hk_get${param['label']}(${getCTypes(param['type'])}* value)
 {
-	%if str(param['type']) == str("INT32"):
-	return pus_hk_getInt32Param(${param['label']}, value);
-	%elif str(param['type']) == str("UINT32"):
-	return pus_hk_getUInt32Param(${param['label']}, value);
-	%elif str(param['type']) == str("REAL64"):
-	return pus_hk_getReal64Param(${param['label']}, value);
-	%elif str(param['type']) == str("BYTE"):
-	return pus_hk_getByteParam(${param['label']}, value);
-	%elif str(param['type']) == str("BOOL"):
-	return pus_hk_getBoolParam(${param['label']}, value);
-	%else:
-	return PUS_ERROR_NOT_IMPLEMENTED;
-	%endif
+	return pus_parameters_get${getAliasName(param['type'])}Param(${param['label']}, value);
 }
+
 
 % endfor
 
-*/
+
 

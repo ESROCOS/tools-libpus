@@ -22,7 +22,7 @@ BEGIN
     PusConfigDummyType, pus-ST03-MAX-REPORT-LENGTH FROM PUS-Config
     ;
     
-    -- StoredParam pf reports
+    -- StoredParam of reports
     PusSt03StoredParam ::= PusUInt64
     
     -- Identifier of housekeeping reports

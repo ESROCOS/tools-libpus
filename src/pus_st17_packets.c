@@ -1,8 +1,6 @@
 #include "pus_st17_packets.h"
-//#include "pus_threads.h"
 #include "pus_error.h"
 #include "pus_packet.h"
-//#include "pus_stored_param.h"
 
 
 pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
@@ -80,7 +78,6 @@ pusError_t pus_st17_createTestResponse(pusPacket_t* outTm, pusApidInfo_t* apid, 
 		}
 		else
 		{
-
 			pus_tm_17_2_createConnectionTestReport(outTm, apid->apid, pus_getNextPacketCount(apid), inTc->apid);
 			return PUS_NO_ERROR;
 		}

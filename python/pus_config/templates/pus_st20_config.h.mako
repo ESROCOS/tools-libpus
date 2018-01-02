@@ -40,6 +40,8 @@ extern pusSt20ParamInfo_t pus_st20_paramInfo[];
 //! Array for parameters values (all stored in 64 bits)
 extern pusStoredParam_t pus_st20_params[];
 
+//! ST[20]on board parameters limit
+extern const pusSt20OnBoardParamId_t pus_ST20_PARAM_LIMIT;
 
 //! Initialize the configuration of the ST[20] service from the mission database
 pusError_t pus_parameteres_configure();

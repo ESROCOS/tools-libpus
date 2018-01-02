@@ -118,6 +118,8 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pus_TM_DATA_ST_3_25		((pusTmDataKind_t) st_3_25_PRESENT)
 #define pus_TM_DATA_ST_5_X		((pusTmDataKind_t) st_5_X_PRESENT)
 #define pus_TM_DATA_ST_9_2		((pusTmDataKind_t) st_9_2_PRESENT)
+#define pus_TM_DATA_ST_20_2		((pusTmDataKind_t) st_20_2_PRESENT)
+
 
 
 // pusPacketTcDataKind_t
@@ -128,7 +130,7 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pus_TC_DATA_ST_12_1_2	((pusTcDataKind_t) PusTcApplicationData_st_12_1_2_PRESENT)
 #define pus_TC_DATA_ST_19_1		((pusTcDataKind_t) st_19_1_PRESENT)
 #define pus_TC_DATA_ST_19_X		((pusTcDataKind_t) PusTcApplicationData_st_19_X_PRESENT)
-
+#define pus_TC_DATA_ST_20_X		((pusTcDataKind_t) PusTcApplicationData_st_20_X_PRESENT)
 
 
 //
