@@ -1,0 +1,30 @@
+-- ASN.1 definitions for service ST[23] On-board control procedure
+-- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
+--
+-- * Only the minimal services are implemented:
+-- * OBCP management
+-- 	- TC[18,1] Load OBCP Direct                  
+--		- TC[18,2] Unload OBCP                      
+--		- TC[18,3] Activate OBCP     
+--		- TC[18,4] Stop OBCP    
+--		- TC[18,5] Suspend OBCP     
+--		- TC[18,6] Resume OBCP  
+--		- TC[18,12] Abort OBCP    
+--		- TC[18,13] Load OBCP by reference  
+-- * OBCP engine management
+--		- TC[18,21] Start OBCP engine  
+--		- TC[18,22] Stop OBCP engine 
+
+--TODO
+
+PUS-ST23 DEFINITIONS ::= 
+BEGIN
+
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+    ;
+    
+
+    
+END
