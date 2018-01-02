@@ -33,7 +33,14 @@ typedef struct
 	pusParamType_t type; //!< Data type
 } pusSt20ParamInfo_t;
 
+//! Array with parameter information (length = number of parameters)
+extern pusSt20ParamInfo_t pus_st20_paramInfo[];
 
+//! Array for parameters values (all stored in 64 bits)
+extern pusStoredParam_t pus_st20_params[];
+
+//! ST[20]on board parameters limit
+extern const pusSt20OnBoardParamId_t pus_ST20_PARAM_LIMIT;
 
 //
 // Service initialization and tear down
@@ -74,6 +81,14 @@ bool pus_parameters_isInitialized();
  *  \return Error code (PUS_NO_ERROR if success)
  */
 pusError_t pus_parameters_getStoredParam(pusSt20OnBoardParamId_t param, pusStoredParam_t* outValue);
+
+//! Set a value of a parameter in 64 bits, using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[in] outValue The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_parameters_setStoredParam(pusSt20OnBoardParamId_t param, pusStoredParam_t outValue);
 
 //! Get the current value of an uint32_t parameter, using a lock
 /*! If the service was initialized with mutex, uses it to lock the parameter table.

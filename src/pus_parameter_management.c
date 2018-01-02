@@ -74,13 +74,15 @@ bool pus_parameters_isInitialized()
 }
 
 
-
-
 pusError_t pus_parameters_getStoredParam(pusSt20OnBoardParamId_t param, pusStoredParam_t* outValue)
 {
 	if (NULL == outValue)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
 	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
@@ -104,12 +106,44 @@ pusError_t pus_parameters_getStoredParam(pusSt20OnBoardParamId_t param, pusStore
 	}
 }
 
+pusError_t pus_parameters_setStoredParam(pusSt20OnBoardParamId_t param, pusStoredParam_t outValue)
+{
+	if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else if (param >= pus_ST20_PARAM_LIMIT)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
+	}
+	else
+	{
+		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		{
+			return PUS_ERROR_THREADS;
+		}
+
+		pus_st20_params[param] = outValue;
+
+		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		{
+			return PUS_ERROR_THREADS;
+		}
+
+		return PUS_NO_ERROR;
+	}
+}
+
 
 pusError_t pus_parameters_getUInt32Param(pusSt20OnBoardParamId_t param, uint32_t* outValue)
 {
 	if (NULL == outValue)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
 	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
@@ -144,7 +178,11 @@ pusError_t pus_parameters_getUInt32Param(pusSt20OnBoardParamId_t param, uint32_t
 
 pusError_t pus_parameters_setUInt32Param(pusSt20OnBoardParamId_t param, uint32_t value)
 {
-	if (param >= pus_ST20_PARAM_LIMIT)
+	if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
@@ -182,6 +220,10 @@ pusError_t pus_parameters_getInt32Param(pusSt20OnBoardParamId_t param, int32_t* 
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
+	else if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
 	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
@@ -215,7 +257,11 @@ pusError_t pus_parameters_getInt32Param(pusSt20OnBoardParamId_t param, int32_t* 
 
 pusError_t pus_parameters_setInt32Param(pusSt20OnBoardParamId_t param, int32_t value)
 {
-	if (param >= pus_ST20_PARAM_LIMIT)
+	 if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
@@ -254,6 +300,10 @@ pusError_t pus_parameters_getReal64Param(pusSt20OnBoardParamId_t param, double* 
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
+	else if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
 	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
@@ -287,7 +337,11 @@ pusError_t pus_parameters_getReal64Param(pusSt20OnBoardParamId_t param, double* 
 
 pusError_t pus_parameters_setReal64Param(pusSt20OnBoardParamId_t param, double value)
 {
-	if (param >= pus_ST20_PARAM_LIMIT)
+	if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
@@ -326,6 +380,10 @@ pusError_t pus_parameters_getBoolParam(pusSt20OnBoardParamId_t param, bool* outV
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
+	else if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
 	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
@@ -359,7 +417,11 @@ pusError_t pus_parameters_getBoolParam(pusSt20OnBoardParamId_t param, bool* outV
 
 pusError_t pus_parameters_setBoolParam(pusSt20OnBoardParamId_t param, bool value)
 {
-	if (param >= pus_ST20_PARAM_LIMIT)
+	if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
@@ -397,6 +459,10 @@ pusError_t pus_parameters_getByteParam(pusSt20OnBoardParamId_t param, uint8_t* o
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
+	else if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
 	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
@@ -430,7 +496,11 @@ pusError_t pus_parameters_getByteParam(pusSt20OnBoardParamId_t param, uint8_t* o
 
 pusError_t pus_parameters_setByteParam(pusSt20OnBoardParamId_t param, uint8_t value)
 {
-	if (param >= pus_ST20_PARAM_LIMIT)
+	if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
@@ -464,6 +534,14 @@ pusError_t pus_parameters_setByteParam(pusSt20OnBoardParamId_t param, uint8_t va
 
 pusError_t pus_parameters_getParamType(pusSt20OnBoardParamId_t param, pusParamType_t* type)
 {
+	if (NULL == type)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (! pus_parameters_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
 	if (param >= pus_ST20_PARAM_LIMIT)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);

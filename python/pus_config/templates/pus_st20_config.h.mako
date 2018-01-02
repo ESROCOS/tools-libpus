@@ -1,11 +1,26 @@
-## Template for generating the PUS ST[03] housekeeping and diagnostic
-## service configuration
+## Template for generating the PUS ST[20] on-board parameters management
 ##
 ## The template expects the following arguments:
 ## - config: a dictionary containing the service configuration, read from the JSON file
 ## - tempvars: an empty dictionary to be used to store global counters within the template 
 ##             (see http://docs.makotemplates.org/en/latest/runtime.html#context)
 ##
+<%
+
+def getCTypes( configType ):
+	if str(configType) == str("INT32"):
+		return str("int32_t")
+	elif str(configType) == str("UINT32"):
+		return str("uint32_t")
+	elif str(configType) == str("REAL64"):
+		return str("double")
+	elif str(configType) == str("BYTE"):
+		return str("uint8_t")
+	elif str(configType) == str("BOOL"):
+		return str("bool")
+	endif
+
+%>
 // PUS service ST[20] configuration
 // 
 // File automatically generated from the pus_st20_config.h.mako template
@@ -47,21 +62,14 @@ extern const pusSt20OnBoardParamId_t pus_ST20_PARAM_LIMIT;
 pusError_t pus_parameteres_configure();
 
 
-/*
-//Param types
-typedef int32_t INT32;
-typedef uint32_t UINT32;
-typedef double REAL64;
-typedef uint8_t BYTE;
-typedef bool BOOL;
 
 //Param getters/setters
 % for param in config['parameters']:
-pusError_t pus_parameters_set${param['label']}(${param['type']} value);
-pusError_t pus_parameters_get${param['label']}(${param['type']}* value);
+pusError_t pus_hk_set${param['label']}(${getCTypes(param['type'])} value);
+pusError_t pus_hk_get${param['label']}(${getCTypes(param['type'])}* value);
 
 % endfor
-*/
+
 
 #ifdef __cplusplus
 }

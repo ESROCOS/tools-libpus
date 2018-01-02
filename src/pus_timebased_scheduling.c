@@ -30,14 +30,14 @@ pusError_t pus_scheduling_initialize(pusMutex_t* mutex)
 		return PUS_SET_ERROR(PUS_ERROR_INITIALIZATION);
 	}
 
-	/*if (PUS_NO_ERROR != pus_scheduling_configure())
+	if (PUS_NO_ERROR != pus_scheduling_configure())
 	{
 		if (NULL != pus_scheduling_mutex)
 		{
 			(void) pus_mutexUnlockOk(pus_scheduling_mutex);
 		}
 		return PUS_SET_ERROR(PUS_ERROR_INITIALIZATION);
-	}*/
+	}
 
 	if (NULL != pus_scheduling_mutex && !pus_mutexUnlockOk(pus_scheduling_mutex))
 	{

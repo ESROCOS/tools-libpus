@@ -71,6 +71,7 @@ void test_event()
 	CU_ASSERT_EQUAL(auxData.data1, pus_events_getEventAuxData(&event).data1);
 	CU_ASSERT_EQUAL(auxData.data2, pus_events_getEventAuxData(&event).data2);
 
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_events_createEVENT_ST12(&event, 1, 2));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_events_createEVENT_INFO_01(&event, 1, 2));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_events_createEVENT_LOW_02(&event, 1.25, 2));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_events_createEVENT_MEDIUM_03(&event, true, 0x23));

@@ -1,14 +1,13 @@
-//! \file pus_st03_packets.h
-/*! \brief Implementation of the PUS service ST[03] Housekeeping.
+//! \file pus_st20_packets.h
+/*! \brief Implementation of the PUS service ST[20] On-board parameters management.
  *
- *  This module contains the functions to manage the on-board housekeeping parameters
- *  database, to generate housekeeping and parameter reports, and to process the TCs
- *  to manage this service.
+ *  This module contains the functions to manage the on-board parameters management
+ *  database
  *
  *  Only a subset of the standard requests and reports are implemented.
- *
- *  - Housekeeping
- *    + TM[3,25] Housekeeping parameter report
+ *  - TC[20,1] Report Parameter Values (request)
+ *  - TM[20,2] Report Parameter Values
+ *  - TC[20,3] Set Parameter Values
  *
  *  \author GMV
  */
@@ -25,6 +24,7 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
+
 
 
 /*! Builds a TC[20,1] packet in the packet passed as parameter.
@@ -112,4 +112,4 @@ pusError_t pus_expectSt20Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 }
 #endif
 
-#endif // PUS_ST03_PACKETS_H
+#endif // PUS_ST20_PACKETS_H

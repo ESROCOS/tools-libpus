@@ -28,6 +28,7 @@ pusError_t pus_tc_20_1_createParameterValueRequest(pusPacket_t* outTc, pusApid_t
 		// Service identification
 		pus_setTcService(outTc, pus_ST20_parameterManagement);
 		pus_setTcSubtype(outTc, pus_TC_20_1_reportParameterValues);
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_20_X);
 		pus_setTcSource(outTc, apid);
 
 		//set paramId
@@ -59,6 +60,7 @@ pusError_t pus_tm_20_2_createParameterValueReport(pusPacket_t* outTm, pusApid_t 
 		// Service identification
 		pus_setTmService(outTm, pus_ST20_parameterManagement);
 		pus_setTmSubtype(outTm, pus_TM_20_2_reportParameterValues);
+		pus_setTmDataKind(outTm, pus_TM_DATA_ST_20_2);
 
 		pus_setTmDestination(outTm, destination);
 
@@ -68,6 +70,7 @@ pusError_t pus_tm_20_2_createParameterValueReport(pusPacket_t* outTm, pusApid_t 
 		//set paramId and value
 		pus_tm_20_2_setParamId(outTm, param);
 		pus_tm_20_2_setParamValue(outTm, value);
+
 
 		return PUS_GET_ERROR();
 	}
@@ -95,7 +98,8 @@ pusError_t pus_tc_20_3_createSetParameterValueRequest(pusPacket_t* outTc, pusApi
 
 		// Service identification
 		pus_setTcService(outTc, pus_ST20_parameterManagement);
-		pus_setTcSubtype(outTc, pus_TC_20_1_reportParameterValues);
+		pus_setTcSubtype(outTc, pus_TC_20_3_setParameterValues);
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_20_X);
 		pus_setTcSource(outTc, apid);
 
 		//set paramId and value
@@ -114,6 +118,10 @@ pusError_t pus_tc_20_X_setParamId(pusPacket_t* outTc, pusSt20OnBoardParamId_t pa
 	{
 		return PUS_GET_ERROR();
 	}
+	if( param >= pus_ST20_PARAM_LIMIT )
+	{
+		return PUS_ERROR_INVALID_ID;
+	}
 	outTc->data.u.tcData.data.u.st_20_X.paramId = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
@@ -122,7 +130,8 @@ pusSt20OnBoardParamId_t pus_tc_20_X_getParamId(const pusPacket_t* outTc)
 {
 	if( PUS_NO_ERROR != PUS_EXPECT_ST20TC(outTc, pusSubtype_NONE))
 	{
-		return PUS_GET_ERROR();
+		//return PUS_GET_ERROR();
+		return 0;
 	}
 	PUS_SET_ERROR(PUS_NO_ERROR);
 	return outTc->data.u.tcData.data.u.st_20_X.paramId;
@@ -142,7 +151,8 @@ pusStoredParam_t pus_tc_20_3_getParamValue(pusPacket_t* outTc)
 {
 	if( PUS_NO_ERROR != PUS_EXPECT_ST20TC(outTc, pus_TC_20_3_setParameterValues))
 	{
-		return PUS_GET_ERROR();
+		//PUS_GET_ERROR();
+		return 0;
 	}
 	PUS_SET_ERROR(PUS_NO_ERROR);
 	return outTc->data.u.tcData.data.u.st_20_X.value;
@@ -153,6 +163,10 @@ pusError_t pus_tm_20_2_setParamId(pusPacket_t* outTc, pusSt20OnBoardParamId_t pa
 	if( PUS_NO_ERROR != PUS_EXPECT_ST20TM(outTc, pus_TM_20_2_reportParameterValues))
 	{
 		return PUS_GET_ERROR();
+	}
+	if( param >= pus_ST20_PARAM_LIMIT )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 	outTc->data.u.tmData.data.u.st_20_2.paramId = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);

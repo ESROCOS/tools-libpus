@@ -242,6 +242,11 @@ void test_st03()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_createHousekeepingReportDefault(&tm, apid.apid, pus_getNextPacketCount(&apid), 55));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_setParameterValues(&tm, pus_ST03_DEFAULT_HK_REPORT));
 
+
+	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, pus_tm_3_25_setParameterValues(&tm, 45));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_setParameterValues(NULL, pus_ST03_DEFAULT_HK_REPORT));
+	pus_clearError();
+
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST03(&tm, pusSubtype_NONE));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST03(&tm, pus_TM_3_25_housekeepingReport));
 
@@ -266,6 +271,10 @@ void test_st03()
 
 	// Report id
 	CU_ASSERT_EQUAL(pus_ST03_DEFAULT_HK_REPORT, pus_tm_3_25_getReportId(&tm));
+
+	pus_tm_3_25_setReportId(NULL, 5);
+	CU_ASSERT_TRUE(PUS_IS_ERROR());
+	pus_clearError();
 
 	pus_tm_3_25_setReportId(&tm, 70);
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
@@ -298,6 +307,12 @@ void test_st03()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 4, &val));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToBool(&b1, val));
 	CU_ASSERT_EQUAL(true, b1);
+
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_3_25_setParameterValue(NULL, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_setParameterValue(&tm, 1, 1));
+	pus_clearError();
+
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_finalize());
 	CU_ASSERT_FALSE(PUS_IS_ERROR());
