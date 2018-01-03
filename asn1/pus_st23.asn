@@ -1,5 +1,5 @@
--- ASN.1 definitions for service ST[18] On-board control procedure
--- (cf. ECSS-E-ST-70-41C sections 6.18, 8.18)
+-- ASN.1 definitions for service ST[23] File management
+-- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
 
 -- * Only the minimal services are implemented:
 -- * File handling
@@ -10,23 +10,25 @@
 -- * File copy
 --   - pus-TC-23-14-copyFile
 
-PUS-ST18 DEFINITIONS ::= 
+PUS-ST23 DEFINITIONS ::= 
 BEGIN
 
-
-    IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-NbitIntegers
-    pus-ST23-MAX-SIZE-FILE-PATH FROM PUS-Config
-    ;
+	
+	IMPORTS 
+	PusUInt64 FROM PUS-NbitIntegers
+	
+	pus-ST23-MAX-SIZE-FILE-PATH FROM PUS-Config
+	;
     
    
-   PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH))
-   PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH)) 
+   PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..6)) 
+   
+   PusSt23FileName ::= OCTET STRING (SIZE(1..6)) 
     
 	-- Data TC[23,1]
 	PusTC-23-1-Data ::= SEQUENCE
 	{
-		repositoryPath  	PusSt23RepositoryPath,
+		repository			PusSt23RepositoryPath,
 		fileName				PusSt23FileName,
 		maxSize	 			PusUInt64
 		-- file locked status BOOLEAN (optional)
@@ -36,27 +38,35 @@ BEGIN
 	-- Data TC[23,2]
 	PusTC-23-2-Data ::= SEQUENCE
 	{
-		repositoryPath  	PusSt23RepositoryPath,
+		repository			PusSt23RepositoryPath,
 		fileName				PusSt23FileName
 	}
 	
 	-- Data TC[23,3]
 	PusTC-23-3-Data ::= SEQUENCE
 	{
-		repositoryPath  	PusSt23RepositoryPath,
+		repository			PusSt23RepositoryPath,
 		fileName				PusSt23FileName
 	}
 	
 	-- Data TM[23,4]
-	PusTC-23-4-Data ::= SEQUENCE
+	PusTM-23-4-Data ::= SEQUENCE
 	{
-		repositoryPath  	PusSt23RepositoryPath,
+		repository		 	PusSt23RepositoryPath,
 		fileName				PusSt23FileName,
 		maxSize	 			PusUInt64
 		-- file locked status BOOLEAN (optional)
 		-- additional file atributes DEDUCED (optinal N-Times)
 	}
 	
+	-- Data TC[23,14]
+	PusTC-23-14-Data ::= SEQUENCE
+	{
+		sourceRepository  		PusSt23RepositoryPath,
+		sourceFileName				PusSt23FileName,
+		targetRepository		  	PusSt23RepositoryPath,
+		targetFileName				PusSt23FileName
+	}
 	
 	
 END
