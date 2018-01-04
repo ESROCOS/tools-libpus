@@ -1,7 +1,7 @@
-/*! \file pus_st17_packets.h
- *  \brief PUS service ST[17] Test Connection
+/*! \file pus_st18_packets.h
+ *  \brief PUS service ST[18] On-board control procedure
  *
- *  This module provides the functions to generate reports of the service ST[17],
+ *  This module provides the functions to generate reports of the service ST[18],
  *  as well as getter/setter and checking functions.
  *
  *  Only a subset of the standard requests and reports are implemented.

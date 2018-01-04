@@ -1,7 +1,7 @@
-//! \file pus_stored_param.h
-/*! \brief Management of the StoredParam
+/*! \file pus_stored_param.h
+ * \brief Management of the Stored parameters in packets
  *
- *  Defines the stored param for data.
+ *  Defines the stored param for data field in packets.
  *
  *
  *  \author GMV

@@ -1,5 +1,5 @@
-//! \file pus_events.h
-/*! \brief Management of the events table used by several services
+/*! \file pus_events.h
+ *  \brief Management of the events table used by several services
  *
  *  Defines the parameters table used by the service ST[05], ST[18] and ST[19].
  *

@@ -1,5 +1,5 @@
-//! \file pus_housekeeping.h
-/*! \brief Management of on-board parameters
+/*! \file pus_parameter_management.h
+ *  \brief Management of on-board parameters
  *
  *  Defines the parameters table used by the service ST[20].
  *

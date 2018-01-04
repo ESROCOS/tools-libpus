@@ -29,11 +29,9 @@ BEGIN
     PusConfigDummyType, pus-ST18-SIZE-OBCP-ID, pus-ST18-MAX-SIZE-OBCP-CODE FROM PUS-Config
     ;
     
-    --PusSt18ObcpId ::= OCTET STRING (SIZE(pus-ST18-SIZE-OBCP-ID))
-    PusSt18ObcpId ::= OCTET STRING (SIZE(5))
+    PusSt18ObcpId ::= OCTET STRING (SIZE(pus-ST18-SIZE-OBCP-ID))
     
     PusSt18ObcpCode ::= OCTET STRING (SIZE(1 .. pus-ST18-MAX-SIZE-OBCP-CODE))
-    --PusSt18ObcpCode ::= OCTET STRING (SIZE(1 .. 50))
     
     PusSt18ObcpChecksum ::= BIT STRING (SIZE(16))
     

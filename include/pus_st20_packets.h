@@ -1,5 +1,5 @@
-//! \file pus_st20_packets.h
-/*! \brief Implementation of the PUS service ST[20] On-board parameters management.
+/*! \file pus_st20_packets.h
+ *  \brief PUS service ST[20] On-board parameters management.
  *
  *  This module contains the functions to manage the on-board parameters management
  *  database

@@ -1,5 +1,5 @@
-//! \file pus_parameter_monitoring.h
-/*! \brief Management of the parameter monitoring table
+/*! \file pus_parameter_monitoring.h
+ *  \brief Management of the parameter monitoring table
  *
  *  Defines the parameters monitoring table used by the service ST[12].
  *
