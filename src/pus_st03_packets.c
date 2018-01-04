@@ -35,11 +35,6 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t ap
 		return PUS_ERROR_BEFORE;
 	}
 
-	if (!pus_hk_isInitialized())
-	{
-		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
-	}
-
 	// Build the TM packet
 
 	pus_initTmPacket(outTm);
