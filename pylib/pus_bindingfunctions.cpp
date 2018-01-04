@@ -1,10 +1,14 @@
 #include "pus_bindingfunctions.hpp"
 
-void ret_packets(pusPacket_t *tm, int i)
+int ret_packets(pusPacket_t *tm, int i)
 {
 	pusPacket_t tc;
 	pusTime_t tv, now;
 	pusApidInfo_t apid;
+	pusSt03ParamId_t params[3];
+	params[0] = 1;
+	params[1] = 2;
+	params[2] = 3;
 
 	pus_initApidInfo(&apid, 33, NULL);
 
@@ -50,9 +54,15 @@ void ret_packets(pusPacket_t *tm, int i)
 	{
 		pus_hk_initialize(NULL);
 		pus_tm_3_25_createHousekeepingReportDefault(tm, apid.apid, pus_getNextPacketCount(&apid), 55);
+		if (PUS_NO_ERROR != pus_tm_3_25_setParameterValues(tm, params, 3)){
+			return 2;
+		}
+		pusStoredParam_t v;
+		pus_tm_3_25_getParameterValue(tm, 2, &v);
 		pus_hk_finalize();
+		if (v>0) return 1;
 	}
-
+	return 0;
 
 
 	// TC without header
@@ -219,6 +229,20 @@ st05Event pus_event_init_struct_(ull event_id, ull auxdata1, ull auxdata2)
 	event.auxdata.data2 = auxdata2;
 
 	return event;
+}
+
+pusStoredParam_t pus_tm_3_25_getParameterValue_(const pusPacket_t* tm, size_t index)
+{
+	pusStoredParam_t v;
+	pus_tm_3_25_getParameterValue(tm, index, &v);
+	return v;
+}
+
+size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm)
+{
+	size_t n_p;
+	pus_tm_3_25_getNumParameters(tm, &n_p);
+	return n_p;
 }
 
 pusSt05Event_t parse_pusSt05EventStruct_(st05Event event)

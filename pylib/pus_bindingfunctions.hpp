@@ -21,7 +21,7 @@ typedef unsigned int uint;
 typedef unsigned long long int ull;
 typedef long long int ll;
 
-void ret_packets(pusPacket_t *tm, int i);
+int ret_packets(pusPacket_t *tm, int i);
 
 pusError_t pus_initApidInfo_null(pusApidInfo_t* obj, pusApid_t apid);
 uint pus_getPacketVersion_(const pusPacket_t* packet);
@@ -50,6 +50,8 @@ ull pus_getSt01FailureAddress_(const pusPacket_t *tm);
 void pus_setSt01FailureInfo_(pusPacket_t *tm, ull code, ll subcode, ll data, ull address);
 
 pusError_t pus_hk_initialize_null_();
+pusStoredParam_t pus_tm_3_25_getParameterValue_(const pusPacket_t* tm, size_t index);
+size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm);
 
 
 typedef struct

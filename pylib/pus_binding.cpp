@@ -223,8 +223,8 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_3_25_getReportId", &pus_tm_3_25_getReportId, "Binding for pus_tm_3_25_getReportId");
 	m.def("pus_tm_3_25_setReportId", &pus_tm_3_25_setReportId, "Binding for pus_tm_3_25_setReportId");
 	m.def("pus_tm_3_25_setParameterValues", &pus_tm_3_25_setParameterValues, "Binding for pus_tm_3_25_setParameterValues");
-	m.def("pus_tm_3_25_getParameterValue", &pus_tm_3_25_getParameterValue, "Binding for pus_tm_3_25_getParameterValue");
-	m.def("pus_tm_3_25_getNumParameters", &pus_tm_3_25_getNumParameters, "Binding for pus_tm_3_25_getNumParameters");
+	m.def("pus_tm_3_25_getParameterValue", &pus_tm_3_25_getParameterValue_, "Binding for pus_tm_3_25_getParameterValue");
+	m.def("pus_tm_3_25_getNumParameters", &pus_tm_3_25_getNumParameters_, "Binding for pus_tm_3_25_getNumParameters");
 	m.def("pus_expectSt03Tm", &pus_expectSt03Tm, "Binding for pus_expectSt03Tm");
 
 	py::class_<st05Event>(m, "st05Event")
