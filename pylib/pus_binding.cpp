@@ -7,10 +7,12 @@
 #include "pus_st08_packets.h"
 #include "pus_st08_config.h"
 #include "pus_st09_packets.h"
+#include "pus_st11_packets.h"
 #include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
 #include "pus_housekeeping.h"
+#include "pus_time.h"
 #include "pus_events.h"
 
 #include "pus_bindingfunctions.hpp"
@@ -82,6 +84,10 @@ PYBIND11_MODULE(pusbinding, m) {
 
 	py::class_<pusMutex_t>(m, "pusMutex_t")
 		.def(py::init<>());
+
+	py::class_<pusTime_t>(m, "pusTime_t")
+			.def(py::init<>());
+	m.def("pus_now", &pus_now, "Binding for pus_now");
 
 	py::class_<pusPacketReduced_t>(m, "pusPacketReduced_t")
 			.def(py::init<>());
@@ -204,10 +210,6 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_expectSt01Tm", &pus_expectSt01Tm, "Binding for pus_expectSt01Tm");
 
 	m.doc() = "pus_st03_packets binding";
-	m.def("pus_hk_initialize", &pus_hk_initialize, "Binding for pus_hk_initialize");
-	m.def("pus_hk_initialize_null", &pus_hk_initialize_null_, "Binding for pus_hk_initialize");
-	m.def("pus_hk_finalize", &pus_hk_finalize, "Binding for pus_hk_finalize");
-	m.def("pus_hk_isInitialized", &pus_hk_isInitialized, "Binding for pus_hk_isInitialized");
 	m.def("pus_tm_3_25_createHousekeepingReportDefault", &pus_tm_3_25_createHousekeepingReportDefault, "Binding for pus_tm_3_25_createHousekeepingReportDefault");
 	m.def("pus_tm_3_25_createHousekeepingReport", &pus_tm_3_25_createHousekeepingReport, "Binding for pus_tm_3_25_createHousekeepingReport");
 	m.def("pus_hk_getUInt32Param", &pus_hk_getUInt32Param, "Binding for pus_hk_getUInt32Param");
@@ -223,8 +225,10 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_3_25_getReportId", &pus_tm_3_25_getReportId, "Binding for pus_tm_3_25_getReportId");
 	m.def("pus_tm_3_25_setReportId", &pus_tm_3_25_setReportId, "Binding for pus_tm_3_25_setReportId");
 	m.def("pus_tm_3_25_setParameterValues", &pus_tm_3_25_setParameterValues, "Binding for pus_tm_3_25_setParameterValues");
+	m.def("pus_tm_3_25_setParameterValue", &pus_tm_3_25_setParameterValue, "Binding for pus_tm_3_25_setParameterValue");
 	m.def("pus_tm_3_25_getParameterValue", &pus_tm_3_25_getParameterValue_, "Binding for pus_tm_3_25_getParameterValue");
 	m.def("pus_tm_3_25_getNumParameters", &pus_tm_3_25_getNumParameters_, "Binding for pus_tm_3_25_getNumParameters");
+	m.def("pus_tm_3_25_setNumParameters", &pus_tm_3_25_setNumParameters, "Binding for pus_tm_3_25_setNumParameters");
 	m.def("pus_expectSt03Tm", &pus_expectSt03Tm, "Binding for pus_expectSt03Tm");
 
 	py::class_<st05Event>(m, "st05Event")
@@ -264,6 +268,20 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_time_getReportGenerationRate", &pus_time_getReportGenerationRate, "Binding for pus_time_getReportGenerationRate");
 	m.def("pus_expectSt09Tc", &pus_expectSt09Tc, "Binding for pus_expectSt09Tc");
 	m.def("pus_expectSt09Tm", &pus_expectSt09Tm, "Binding for pus_expectSt09Tm");
+
+	m.doc() = "pus_st11_packets binding";
+	m.def("pus_tc_11_X_createDefaultPacket", &pus_tc_11_X_createDefaultPacket, "Binding for pus_tc_11_X_createDefaultPacket");
+	m.def("pus_tc_11_1_createEnableTimeBasedSchedule", &pus_tc_11_1_createEnableTimeBasedSchedule, "Binding for pus_tc_11_1_createEnableTimeBasedSchedule");
+	m.def("pus_tc_11_2_createDisableTimeBasedSchedule", &pus_tc_11_2_createDisableTimeBasedSchedule, "Binding for pus_tc_11_2_createDisableTimeBasedSchedule");
+	m.def("pus_tc_11_3_createResetTimeBasedSchedule", &pus_tc_11_3_createResetTimeBasedSchedule, "Binding for pus_tc_11_3_createResetTimeBasedSchedule");
+	m.def("pus_tc_11_4_createInsertActivityIntoSchedule", &pus_tc_11_4_createInsertActivityIntoSchedule, "Binding for pus_tc_11_4_createInsertActivityIntoSchedule");
+	m.def("pus_tc_11_4_getNCount", &pus_tc_11_4_getNCount, "Binding for pus_tc_11_4_getNCount");
+	m.def("pus_tc_11_4_setNCount", &pus_tc_11_4_setNCount, "Binding for pus_tc_11_4_setNCount");
+	m.def("pus_tc_11_4_setActivity", &pus_tc_11_4_setActivity, "Binding for pus_tc_11_4_setActivity");
+	m.def("pus_tc_11_4_getActivities", &pus_tc_11_4_getActivities, "Binding for pus_tc_11_4_getActivities");
+	m.def("pus_tc_11_4_get_request", &pus_tc_11_4_get_request, "Binding for pus_tc_11_4_get_request");
+	m.def("pus_tc_11_4_get_release_time", &pus_tc_11_4_get_release_time, "Binding for pus_tc_11_4_get_release_time");
+	m.def("pus_expectSt11Tc", &pus_expectSt11Tc, "Binding for pus_expectSt11Tc");
 
 	m.doc() = "pus_st12_packets binding";
 	m.def("pus_tc_12_X_createDefaultPacket", &pus_tc_12_X_createDefaultPacket, "Binding for pus_tc_12_X_createDefaultPacket");

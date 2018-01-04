@@ -11,11 +11,13 @@
 #include "pus_st05_packets.h"
 #include "pus_st08_packets.h"
 #include "pus_st09_packets.h"
+#include "pus_st11_packets.h"
 #include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
 #include "pus_events.h"
 #include <time.h>
+#include <stdint.h>
 
 typedef unsigned int uint;
 typedef unsigned long long int ull;
@@ -82,5 +84,8 @@ pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet);
 pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket);
 
 pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket);
+
+void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *outTc, long max);
+void pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, pusTime_t *outTime, long max);
 
 #endif

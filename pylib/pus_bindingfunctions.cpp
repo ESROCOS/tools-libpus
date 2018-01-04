@@ -5,10 +5,6 @@ int ret_packets(pusPacket_t *tm, int i)
 	pusPacket_t tc;
 	pusTime_t tv, now;
 	pusApidInfo_t apid;
-	pusSt03ParamId_t params[3];
-	params[0] = 1;
-	params[1] = 2;
-	params[2] = 3;
 
 	pus_initApidInfo(&apid, 33, NULL);
 
@@ -54,13 +50,27 @@ int ret_packets(pusPacket_t *tm, int i)
 	{
 		pus_hk_initialize(NULL);
 		pus_tm_3_25_createHousekeepingReportDefault(tm, apid.apid, pus_getNextPacketCount(&apid), 55);
-		if (PUS_NO_ERROR != pus_tm_3_25_setParameterValues(tm, params, 3)){
-			return 2;
-		}
-		pusStoredParam_t v;
-		pus_tm_3_25_getParameterValue(tm, 2, &v);
+		pus_tm_3_25_setNumParameters(tm, 3);
+		pus_tm_3_25_setParameterValue(tm, 0, 1);
+		pus_tm_3_25_setParameterValue(tm, 1, 2);
+		pus_tm_3_25_setParameterValue(tm, 2, 3);
 		pus_hk_finalize();
-		if (v>0) return 1;
+	}
+	else if (i == 9)
+	{
+		pus_tc_11_1_createEnableTimeBasedSchedule(tm, apid.apid, pus_getNextPacketCount(&apid));
+	}
+	else if (i == 10)
+	{
+
+	}
+	else if (i == 11)
+	{
+
+	}
+	else if (i == 12)
+	{
+
 	}
 	return 0;
 
@@ -147,7 +157,6 @@ void pus_setTmPacketTime_(pusPacket_t *packet, time_t time_)
 	pus_posix2time(&time, &time_struct);
 	pus_setTmPacketTime(packet, &time);
 }
-
 
 uint pus_tm_1_X_getPacketVersionNumber_(pusPacket_t *tm)
 {
@@ -335,6 +344,24 @@ pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet)
 	pusSt08FunctiontId_t functionId;
 	pus_tc_8_1_getFunctionId(&functionId, packet);
 	return functionId;
+}
+
+void pus_tc_11_4_get_request(long index, const pusPacket_t* inTc, pusPacket_t *outTc, long max)
+{
+	pusSt11ScheduledActivity_t activities[10];
+	pusPacketReduced_t pack;
+	int32_t nCount;
+	pus_tc_11_4_getActivities(&nCount, activities, inTc, max);
+	pack = activities[index].packetReduced;
+	pus_packetReduced_createPacketFromPacketReduced(outTc, &pack);
+}
+
+void pus_tc_11_4_get_release_time(long index, const pusPacket_t* inTc, pusTime_t *outTime, long max)
+{
+	pusSt11ScheduledActivity_t activities[10];
+	int32_t nCount;
+	pus_tc_11_4_getActivities(&nCount, activities, inTc, max);
+	*outTime = activities[index].time;
 }
 
 pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
