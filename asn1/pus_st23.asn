@@ -21,9 +21,9 @@ BEGIN
 	;
     
    
-   PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..6)) 
+   PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH)) 
    
-   PusSt23FileName ::= OCTET STRING (SIZE(1..6)) 
+   PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH)) 
     
 	-- Data TC[23,1]
 	PusTC-23-1-Data ::= SEQUENCE

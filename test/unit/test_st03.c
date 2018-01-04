@@ -355,8 +355,8 @@ void test_st03()
 
 	// Not initialized
 	apid.mutex = NULL;
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, PUS_GET_ERROR());
+//	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
+//	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, PUS_GET_ERROR());
 	pus_clearError();
 
 	// Reinitialize

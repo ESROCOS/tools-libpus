@@ -55,6 +55,8 @@ void pus_tc_8_1_getFunctionId(pusSt08FunctiontId_t* functionId, const pusPacket_
 //! Function that check if the function ID is defined in the configuration options.
 bool pus_st08_isInFunctionTable(pusSt08FunctiontId_t functionId);
 
+//! Perform a funcion passing it ID as a parameter
+pusError_t pus_st08_performAFunction(pusSt08FunctiontId_t functionId);
 
 //
 // Parameter checking

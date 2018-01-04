@@ -77,14 +77,32 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApid_t 
 
 bool pus_st08_isInFunctionTable(pusSt08FunctiontId_t functionId)
 {
+	if (! pus_st08_isInitialized())
+	{
+		PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+		return false;
+	}
+
 	if( functionId < pus_st08_limitFunctions)
 	{
 		return true;
 	}
 	else
 	{
+		PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_FUNCTION_ID);
 		return false;
 	}
+}
+
+pusError_t pus_st08_performAFunction(pusSt08FunctiontId_t functionId)
+{
+	if( !pus_st08_isInFunctionTable(functionId))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	extern pusError_t (*pus_st08_functionTable[])();
+	return pus_st08_functionTable[functionId]();
 }
 
 void pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionId)
@@ -92,11 +110,6 @@ void pus_tc_8_1_setFunctionId(pusPacket_t* outTc, pusSt08FunctiontId_t functionI
 	if (NULL == outTc)
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-
-	if( !pus_st08_isInFunctionTable(functionId))
-	{
-		PUS_SET_ERROR(PUS_ERROR_UNEXPECTED_FUNCTION_ID);
 	}
 
 	if (PUS_NO_ERROR == PUS_EXPECT_ST08(outTc, pus_TC_8_1_performFunction))
@@ -117,6 +130,8 @@ void pus_tc_8_1_getFunctionId(pusSt08FunctiontId_t* functionId, const pusPacket_
 		*functionId = outTc->data.u.tcData.data.u.st_8_1.functionId;
 	}
 }
+
+
 
 
 pusError_t pus_expectSt08(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)

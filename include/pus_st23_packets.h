@@ -1,5 +1,5 @@
-//! \file pus_st23_packets.h
-/*! \brief Implementation of the PUS service ST[23] File management.
+/*! \file pus_st23_packets.h
+ *  \brief PUS service ST[23] File management.
  *
  *  This module contains the functions to manage the file management
  *

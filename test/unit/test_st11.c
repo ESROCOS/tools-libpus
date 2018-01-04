@@ -91,6 +91,13 @@ void test_st11()
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_scheduling_insertActivity(&tc, &time));
 
 
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_11_4_setNCount(NULL, 1));
+	CU_ASSERT_EQUAL(0, pus_tc_11_4_getNCount(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_11_4_setActivity(NULL, NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_11_4_getActivities(NULL, NULL, NULL, 1));
+
+
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_initialize(NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_scheduling_initialize(NULL));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_finalize());

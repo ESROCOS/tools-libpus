@@ -38,6 +38,7 @@ void housekeeping_PI_setParamValue(const asn1SccPusSt03ParameterId *IN_paramId,
                                    const asn1SccPusSt03StoredParam *IN_paramValue)
 {
     /* Write your code here! */
+	pus_hk_setStoredParam(*IN_paramId, *IN_paramValue);
 
 }
 

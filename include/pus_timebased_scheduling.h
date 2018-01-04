@@ -84,7 +84,7 @@ pusError_t pus_scheduling_getScheduledActivity(pusPacket_t* tcAction, const pusT
  *  \param[in] packet TC[11.4] packet
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_scheduling_tc_11_4_packetToTable(pusPacket_t* packet);
+pusError_t pus_scheduling_tc_11_4_packetToTable(const pusPacket_t* packet);
 
 
 #ifdef  __cplusplus

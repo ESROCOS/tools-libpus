@@ -1,4 +1,17 @@
-
+/*! \file pus_st19_packets.h
+ *  \brief PUS service ST[19] Event-action
+ *
+ *  This module provides the functions to generate packets of the service ST[19],
+ *  as well as getter/setter and checking functions.
+ *
+ *  Only a subset of the standard requests and reports are implemented.
+ *
+ *  - TC[11,1] enable the time-based schedule execution function
+ *  - TM[11,2] disable the time-based schedule execution function
+ *  - TC[11,3] reset the time-based schedule
+ *  - TM[11,4] insert activities into the time-based schedule
+ *  \author GMV
+ */
 
 /*
  * EventDefinition ID

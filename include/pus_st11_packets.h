@@ -1,4 +1,4 @@
-/*! \file pus_st12_packets.h
+/*! \file pus_st11_packets.h
  *  \brief PUS service ST[11] time-based scheduling
  *
  *  This module provides the functions to generate packets of the service ST[11],

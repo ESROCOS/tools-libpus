@@ -1,4 +1,13 @@
-//header
+/*! \file pus_event_action.h
+ *  \brief Management of the event-action definitions table
+ *
+ *  Defines the functions and structures that manage the event-action definitions table.
+ *
+ *  Access to the table is optionally protected by a mutex. This allows implementing
+ *  the service using external synchronization (by TASTE) or not.
+ *
+ *  \author GMV
+ */
 
 
 #ifndef PUS_EVENT_ACTION_H
@@ -17,9 +26,9 @@ extern "C" {
 typedef struct
 {
 	//pusSt05EventId_t eventID; //Index in array will be eventID
-	bool definitionStatus;
-	pusPacket_t tcAction; //action TC? or reduced
-	bool deleted;
+	bool definitionStatus; //!< Status of the definition (enabled or disabled)
+	pusPacket_t tcAction; //!< TC action of the definition
+	bool deleted; //!< True if definition is deleted
 }pusSt19EventActionDefinition_t;
 
 //! List to manage the event-action definitions status
@@ -34,20 +43,23 @@ extern pusError_t pus_eventAction_configure();
 //! Function that initialize the service
 pusError_t pus_eventAction_initialize(pusMutex_t* mutex);
 
+//! Function that finalize the service
 pusError_t pus_eventAction_finalize();
 
-//!
+//! Check if the event action is initialized
 bool pus_eventAction_isInitialized();
 
 
-
-
+//! Add a definition to an event-action
 pusError_t pus_eventAction_addEventActionDefinition(pusSt05EventId_t eventID, pusPacket_t* tcAction);
 
+//! Delete the definition of an event-action
 pusError_t pus_eventAction_deleteEventActionDefinition(pusSt05EventId_t eventID);
 
+//! Enable the definition of an event-action
 pusError_t pus_eventAction_enableEventActionDefinition(pusSt05EventId_t eventID);
 
+//! Disable the definition of an event-action
 pusError_t pus_eventAction_disableEventActionDefinition(pusSt05EventId_t eventID);
 
 //! Function that check if an event-action definition is in the list
