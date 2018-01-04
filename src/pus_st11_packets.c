@@ -175,8 +175,8 @@ pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t
 
 	for(int32_t i = 0; i < *nCount; i++)
 	{
-		activities[0].packetReduced = inTc->data.u.tcData.data.u.st_11_4.arr[0].packetReduced ;
-		activities[0].time = inTc->data.u.tcData.data.u.st_11_4.arr[0].time;
+		activities[i].packetReduced = inTc->data.u.tcData.data.u.st_11_4.arr[i].packetReduced ;
+		activities[i].time = inTc->data.u.tcData.data.u.st_11_4.arr[i].time;
 	}
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }

@@ -210,7 +210,7 @@ pusError_t pus_scheduling_getScheduledActivity(pusPacket_t* tcAction, const pusT
 	return PUS_SET_ERROR(PUS_ERROR_DEFINITION_NOT_FOUND);
 }
 
-pusError_t pus_scheduling_tc_11_4_packetToTable(pusPacket_t* packet)
+pusError_t pus_scheduling_tc_11_4_packetToTable(const pusPacket_t* packet)
 {
 	if( NULL == packet )
 	{
