@@ -57,8 +57,6 @@ extern "C" {
  *   - reject if maximun reached
  *	 - accept:
  *	 	- create scheduled
- *
- *
  * */
 
 
@@ -102,11 +100,16 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_
  */
 pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
+//! Getter for the number of activities in a TC[11,4] packet
 int32_t pus_tc_11_4_getNCount(pusPacket_t* outTc);
+
+//! Setter for the number of activities in a TC[11,4] packet
 pusError_t pus_tc_11_4_setNCount(pusPacket_t* outTc, int32_t nCount);
 
+//! Set an activity into a TC[11,4]
 pusError_t pus_tc_11_4_setActivity(pusPacket_t* outTc, const pusPacket_t* tcAction, const pusTime_t* time);
 
+//! Get the list of activities from a TC[11,4]
 pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t* activities, const pusPacket_t* outTc, int32_t max);
 
 //! Check that a packet is of a PUS ST[11] kind

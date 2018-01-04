@@ -15,7 +15,9 @@
 
 #include "pus_st08_packets.h"
 #include "pus_st08_config.h"
+#include "pus_st05_config.h"
 
+#include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
 
@@ -30,20 +32,38 @@ void groundtc_startup()
 void groundtc_PI_GroundTcTrigger()
 {
     /* Write your code here! */
+	// test ST12
+
+
+
 	pusPacket_t tcSend, tcAction;
 	pusError_t error = 0;
-
 	pusApid_t apid;
 	pusSequenceCount_t seqCount;
-	groundtc_RI_getApid(&apid);
 
+	groundtc_RI_getApid(&apid);
+	groundtc_RI_getSequenceCounter(&seqCount);
+	pus_tc_12_2_createDisableParameterMonitoringDefinitions(&tcSend, apid, seqCount, 3);
+	groundtc_RI_newTc(&tcSend);
+
+	sleep(6);
+	pus_tc_12_1_createEnableParameterMonitoringDefinitions(&tcSend, apid, seqCount, 3);
+	groundtc_RI_newTc(&tcSend);
+	pus_tc_12_16_createDisableParameterMonitoring(&tcSend, apid, seqCount);
+	groundtc_RI_newTc(&tcSend);
+
+
+
+	sleep(12);
+	pus_tc_12_15_createEnableParameterMonitoring(&tcSend, apid, seqCount);
+	groundtc_RI_newTc(&tcSend);
+
+	/* TEST Events ST19 - ST08
 	sleep(2);
 	groundtc_RI_getSequenceCounter(&seqCount);
 	error = pus_tc_8_1_createPerformFuctionRequest(&tcAction, apid, seqCount, EXAMPLE_FUNCTION_01);
-	printf("Erro 8.1: %d\n", error);
 	groundtc_RI_getSequenceCounter(&seqCount);
-	error = pus_tc_19_1_createAddEventActionDefinitionsRequest(&tcSend, apid, seqCount, 0, &tcAction);
-	printf("Erro 19.1: %d\n", error);
+	error = pus_tc_19_1_createAddEventActionDefinitionsRequest(&tcSend, apid, seqCount, EVENT_INFO_01, &tcAction);
 	pus_setTcAckFlags(&tcSend, true, false, false, true);
 	if( PUS_NO_ERROR == error )
 	{
@@ -58,8 +78,7 @@ void groundtc_PI_GroundTcTrigger()
 
 	sleep(2);
 	groundtc_RI_getSequenceCounter(&seqCount);
-	error = pus_tc_19_4_createEnableEventActionDefinitions(&tcSend, apid, seqCount, 0);
-	printf("Erro 19.4: %d\n", error);
+	error = pus_tc_19_4_createEnableEventActionDefinitions(&tcSend, apid, seqCount, EVENT_INFO_01);
 	if( PUS_NO_ERROR == error )
 	{
 		pus_setTcAckFlags(&tcSend, true, false, false, true);
@@ -70,7 +89,7 @@ void groundtc_PI_GroundTcTrigger()
 	{
 		printf("Error in groundtc_PI_GroundTcTrigger, %d (exit)\n", error);
 		exit(-1);
-	}
+	}*/
 
 	/*if(seqCount == 0)
 	{

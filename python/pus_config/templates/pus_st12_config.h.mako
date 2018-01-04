@@ -31,6 +31,7 @@ extern "C" {
 
 extern pusSt12PmonDefinition pus_pmon_definitionList[];
 
+extern pusError_t pus_pmon_configure();
 
 #ifdef __cplusplus
 }

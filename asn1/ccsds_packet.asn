@@ -20,6 +20,7 @@ BEGIN
   	PusTC-9-1-Data, PusTM-9-2-Data FROM PUS-ST09
   	PusTC-12-1-2-Data  FROM PUS-ST12
   	PusTC-19-X-Data FROM PUS-ST19
+  	PusTC-TM-20-X-Data FROM PUS-ST20
   	
   	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
   	
@@ -48,7 +49,8 @@ BEGIN
         st-1-X PusTM-1-X-Data,
         st-3-25 PusTM-3-25-Data,
         st-5-X PusTM-5-X-Data,
-        st-9-2 PusTM-9-2-Data
+        st-9-2 PusTM-9-2-Data,
+        st-20-2 PusTC-TM-20-X-Data
     }
     
     -- TC secondary header
@@ -90,6 +92,7 @@ BEGIN
     	st-9-1 PusTC-9-1-Data,
     	st-12-1-2 PusTC-12-1-2-Data,
     	st-19-X PusTC-19-X-Data,
+    	st-20-X PusTC-TM-20-X-Data,
     	st-11-4 PusTC-11-4-Data,
     	st-19-1 PusTC-19-1-Data
     }
@@ -99,7 +102,8 @@ BEGIN
     	st-8-1 PusTC-8-1-Data,
     	st-9-1 PusTC-9-1-Data,
     	st-12-1-2 PusTC-12-1-2-Data,
-    	st-19-X PusTC-19-X-Data
+    	st-19-X PusTC-19-X-Data,
+    	st-20-X PusTC-TM-20-X-Data
     }
     
     -- TM/TC header + data

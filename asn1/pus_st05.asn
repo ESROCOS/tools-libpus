@@ -38,10 +38,10 @@ BEGIN
 	
 	-- Event and data
 	PusSt05Event ::= SEQUENCE
-    {
+   {
     	eventId PusSt05EventId,
     	data PusSt05EventAuxData
-    }
+   }
     
     -- Data for TM[5,1] to TM[5,4] event/anomaly reports
     PusTM-5-X-Data ::= PusSt05Event    

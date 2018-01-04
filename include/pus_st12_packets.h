@@ -28,17 +28,49 @@ extern "C" {
 #include "pus_packet.h"
 
 
-
+//! Build the common part of the TC[12] request
+/*! Builds a TC[12,X] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCountcount TM sequence counter for the source APID
+ *  \param[in] subtype The TM service subtype to be created
+ */
 pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype);
 
+/*! Builds a TC[12,1] packet in the packet passed as parameter.
+ *  \param[out] outTc Packet variable to build the TC
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] pmon PMON definition identifier
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_tc_12_1_createEnableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt12PmonId_t pmon);
 
+/*! Builds a TC[12,2] packet in the packet passed as parameter.
+ *  \param[out] outTc Packet variable to build the TC
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] pmon PMON definition identifier
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_tc_12_2_createDisableParameterMonitoringDefinitions(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt12PmonId_t pmon);
 
 //pusError_t pus_tm_12_12_createCheckTransitionReport(pusPacket_t* outTm, pusApidInfo_t* apid);
 
+/*! Builds a TC[12,15] packet in the packet passed as parameter.
+ *  \param[out] outTc Packet variable to build the TC
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
+/*! Builds a TC[12,16] packet in the packet passed as parameter.
+ *  \param[out] outTc Packet variable to build the TC
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_tc_12_16_createDisableParameterMonitoring(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
 
 //! Set pmonId to the data field of TC[12,1] and TC[17,2]

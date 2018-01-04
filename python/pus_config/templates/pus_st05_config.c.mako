@@ -11,6 +11,8 @@ tempvars['eventListLength'] = len(config['events'])
 tempvars['eventList'] = config['events']
 
 tempvars['eventCount'] = 0
+
+
 %>
 
 

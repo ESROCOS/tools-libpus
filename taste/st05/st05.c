@@ -29,7 +29,7 @@ void st05_PI_trigger()
 
 	if(lastCounter != counter)
 	{
-		printf(" -ST05: New event read. ID: %d, count: %d\n", pus_events_getEventId(&event), counter);
+		printf(" -ST05: New event read. ID: %llu, count: %llu\n", pus_events_getEventId(&event), counter);
 		pusPacket_t outTm;
 		pusApid_t apid;
 		pusSequenceCount_t seqCount;
@@ -69,7 +69,7 @@ void st05_PI_trigger()
 	}
 	else
 	{
-		printf(" -ST05: No new events .\n");
+		//printf(" -ST05: No new events .\n");
 	}
 }
 

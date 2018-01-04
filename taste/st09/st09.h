@@ -18,6 +18,16 @@ void st09_PI_incCount(asn1SccPusPacket *,
 
 void st09_PI_tc09(const asn1SccPusPacket *);
 
+extern void st09_RI_getApid(asn1SccPusApid *);
+
+extern void st09_RI_getSequenceCount(asn1SccPusSequenceCount *);
+
+extern void st09_RI_ACK(const asn1SccPusPacket *,
+                        const asn1SccPusSubserviceType *,
+                        const asn1SccPusSt01FailureCode *,
+                        const asn1SccPusSt01FailureInfo *,
+                        const asn1SccPusStepId *);
+
 #ifdef __cplusplus
 }
 #endif

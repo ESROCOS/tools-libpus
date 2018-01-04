@@ -84,7 +84,7 @@ pusError_t pus_tc_9_1_setExponentialRate(pusPacket_t* tc, pusSt09ExponentialRate
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_9_1_getExponentialRate(pusSt09ExponentialRate_t* expRate, pusPacket_t* tc)
+pusError_t pus_tc_9_1_getExponentialRate(pusSt09ExponentialRate_t* expRate, const pusPacket_t* tc)
 {
 	if ( NULL == tc )
 	{

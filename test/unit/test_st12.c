@@ -136,21 +136,21 @@ void test_st12()
 void test_checks()
 {
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkParameter(HK_PARAM_INT01));
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitInt32(0));
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitUint32(0));
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitBool(0));
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitReal64(0));
-	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitByte(0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitInt32(0, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitUint32(0, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitBool(0, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitReal64(0, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_pmon_checkLimitByte(0, 1));
 
 	pus_pmon_finalize(); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_initialize(NULL));
 
 	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkParameter(456));
-	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitInt32(23));
-	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitUint32(34));
-	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitBool(23));
-	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitReal64(23));
-	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitByte(23));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitInt32(23, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitUint32(34, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitBool(23, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitReal64(23, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitByte(23, 1));
 
 	pus_hk_finalize();
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_initialize(NULL));

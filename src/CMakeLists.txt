@@ -8,6 +8,7 @@ set(SOURCES
     pus_packet_reduced.c
     pus_packet_queues.c
     pus_packet.c
+    pus_parameter_management.c
     pus_parameter_monitoring.c
     pus_st01_packets.c
     pus_st03_packets.c
@@ -17,7 +18,10 @@ set(SOURCES
     pus_st11_packets.c
     pus_st12_packets.c
     pus_st17_packets.c
+    pus_st18_packets.c
     pus_st19_packets.c
+    pus_st20_packets.c
+    pus_st23_packets.c
     pus_stored_param.c
     pus_threads.c
     pus_time.c

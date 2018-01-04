@@ -513,6 +513,7 @@ pusError_t pus_st12_processPmonDefinitions()
 				if( PUS_NO_ERROR != pus_pmon_checkParameter(i))
 				{
 					//TODO create event, data? severity?
+					//pus_events_createEVENT_ST12(event, idPMON, NONE);
 					printf("Error in pmon %llu, error: %d\n", i, pus_pmon_checkParameter(i));
 				}
 			}

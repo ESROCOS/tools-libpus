@@ -50,6 +50,7 @@ void test_st11_packets()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_11_1_createEnableTimeBasedSchedule(NULL, apid.apid, 1));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_11_2_createDisableTimeBasedSchedule(NULL, apid.apid,1));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_11_3_createResetTimeBasedSchedule(NULL, apid.apid, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_11_4_createInsertActivityIntoSchedule(NULL, 1, 1));
 
 	/*CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_11_4_createInsertActivityIntoSchedule(outTc, apid, sequenceCount));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST11TC(&tc, pus_TC_11_3_resetTimeBasedSchedule));

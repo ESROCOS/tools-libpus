@@ -1,6 +1,11 @@
 {
     "events": [
         {
+            "label": "EVENT_ST12",
+            "defaultSeverity": "INFO",
+            "data": ["UINT32", "UINT32"]
+        },
+        {
             "label": "EVENT_INFO_01",
             "defaultSeverity": "INFO",
             "data": ["UINT32", "INT32"]

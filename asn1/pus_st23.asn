@@ -1,0 +1,72 @@
+-- ASN.1 definitions for service ST[23] File management
+-- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
+
+-- * Only the minimal services are implemented:
+-- * File handling
+--	  - TC-23-1 createFile
+--   - TC-23-2 deleteFile
+--   - TC-23-3 reportFileAttributes
+--   - TM-23-4 reportFileAttributes
+-- * File copy
+--   - TC-23-14 copyFile
+
+PUS-ST23 DEFINITIONS ::= 
+BEGIN
+
+	
+	IMPORTS 
+	PusUInt64 FROM PUS-NbitIntegers
+	
+	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH FROM PUS-Config
+	;
+    
+   
+   PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..6)) 
+   
+   PusSt23FileName ::= OCTET STRING (SIZE(1..6)) 
+    
+	-- Data TC[23,1]
+	PusTC-23-1-Data ::= SEQUENCE
+	{
+		repository			PusSt23RepositoryPath,
+		fileName				PusSt23FileName,
+		maxSize	 			PusUInt64
+		-- file locked status BOOLEAN (optional)
+		-- additional file atributes DEDUCED (optinal N-Times)
+	}
+	
+	-- Data TC[23,2]
+	PusTC-23-2-Data ::= SEQUENCE
+	{
+		repository			PusSt23RepositoryPath,
+		fileName				PusSt23FileName
+	}
+	
+	-- Data TC[23,3]
+	PusTC-23-3-Data ::= SEQUENCE
+	{
+		repository			PusSt23RepositoryPath,
+		fileName				PusSt23FileName
+	}
+	
+	-- Data TM[23,4]
+	PusTM-23-4-Data ::= SEQUENCE
+	{
+		repository		 	PusSt23RepositoryPath,
+		fileName				PusSt23FileName,
+		maxSize	 			PusUInt64
+		-- file locked status BOOLEAN (optional)
+		-- additional file atributes DEDUCED (optinal N-Times)
+	}
+	
+	-- Data TC[23,14]
+	PusTC-23-14-Data ::= SEQUENCE
+	{
+		sourceRepository  		PusSt23RepositoryPath,
+		sourceFileName				PusSt23FileName,
+		targetRepository		  	PusSt23RepositoryPath,
+		targetFileName				PusSt23FileName
+	}
+	
+	
+END

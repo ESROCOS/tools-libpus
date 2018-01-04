@@ -17,8 +17,6 @@
 
 void test_st09_packets()
 {
-	//printf("-- Error %d -- ", PUS_EXPECT_ST09TC(&tc, pus_TC_9_1_setTimeReportRate));
-
 	pusPacket_t tm, tc;
 	pusApidInfo_t apid;
 
@@ -48,6 +46,9 @@ void test_st09_packets()
 	CU_ASSERT_EQUAL(5, pus_getApid(&tm));
 	CU_ASSERT_EQUAL(1, pus_getSequenceCount(&tm));
 	pus_clearError();
+	pusTime_t timeAux;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_9_2_getDataField(&tm, &timeAux, &rate));
+
 
 
 	// ERROR_NULL_PTR
@@ -60,6 +61,7 @@ void test_st09_packets()
 	CU_ASSERT_EQUAL(PUS_ERROR_OUT_OF_RANGE, pus_tc_9_1_setExponentialRate(&tc, 25));
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_9_2_setDataField(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_9_2_getDataField(NULL, NULL, NULL));
 
 	pusPacket_t tm2, tc2;
 	CU_ASSERT_NOT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST09TC(&tc2, pusSubtype_NONE));

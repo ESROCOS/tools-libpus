@@ -36,7 +36,11 @@ WITH interfaceview::IV::OnBoard::OnBoardAPID;
 WITH interfaceview::IV::OnBoard::Events;
 WITH interfaceview::IV::OnBoard::ST05;
 WITH interfaceview::IV::OnBoard::ST19;
-WITH interfaceview::IV::OnBoard::ST09;
+WITH interfaceview::IV::OnBoard::TimeReports::ST09;
+WITH interfaceview::IV::OnBoard::Housekeeping;
+WITH interfaceview::IV::OnBoard::ST03;
+WITH interfaceview::IV::OnBoard::ST12;
+WITH interfaceview::IV::OnBoard::TimeReports::TimeReportAPID;
 WITH ocarina_processors_x86;
 WITH deploymentview::DV::Node1;
 WITH Taste;
@@ -90,8 +94,20 @@ SUBCOMPONENTS
   IV_ST19 : SYSTEM interfaceview::IV::OnBoard::ST19::ST19.others {
     Taste::FunctionName => "ST19";
   };
-  IV_ST09 : SYSTEM interfaceview::IV::OnBoard::ST09::ST09.others {
+  IV_ST09 : SYSTEM interfaceview::IV::OnBoard::TimeReports::ST09::ST09.others {
     Taste::FunctionName => "ST09";
+  };
+  IV_Housekeeping : SYSTEM interfaceview::IV::OnBoard::Housekeeping::Housekeeping.others {
+    Taste::FunctionName => "Housekeeping";
+  };
+  IV_ST03 : SYSTEM interfaceview::IV::OnBoard::ST03::ST03.others {
+    Taste::FunctionName => "ST03";
+  };
+  IV_ST12 : SYSTEM interfaceview::IV::OnBoard::ST12::ST12.others {
+    Taste::FunctionName => "ST12";
+  };
+  IV_TimeReportAPID : SYSTEM interfaceview::IV::OnBoard::TimeReports::TimeReportAPID::TimeReportAPID.others {
+    Taste::FunctionName => "TimeReportAPID";
   };
   x86_partition : PROCESS deploymentview::DV::Node1::x86_partition.others {
     Taste::coordinates => "112214 74493 165730 132910";
@@ -116,6 +132,10 @@ PROPERTIES
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST05;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST19;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST09;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_Housekeeping;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST03;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST12;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_TimeReportAPID;
   Actual_Processor_Binding => (reference (x86_linux)) APPLIES TO x86_partition;
 END Node1.others;
 

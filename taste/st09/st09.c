@@ -20,7 +20,7 @@ void st09_startup()
     /* Write your initialization code here,
        but do not make any call to a required interface. */
 	tmCounter = 0;
-	pus_initApidInfo(&apid, 0, NULL);
+	pus_initApidInfo(&apid, pus_APID_TIME, NULL);
 }
 
 void st09_PI_incCount(asn1SccPusPacket *OUT_tmPacket,
@@ -28,10 +28,21 @@ void st09_PI_incCount(asn1SccPusPacket *OUT_tmPacket,
 {
     /* Write your code here! */
 	tmCounter++;
-	uint64_t counterTrigger = 3;
+	uint64_t counterTrigger = 0;
 	pus_time_getReportGenerationRate(&counterTrigger);
-	//if()
 
+	if ( counterTrigger == tmCounter)
+	{
+		*OUT_isAvailable = PUS_NO_ERROR;
+
+		pusApid_t apid;
+		pusSequenceCount_t seqCount;
+		st09_RI_getApid(&apid);
+		st09_RI_getSequenceCount(&seqCount);
+
+		pus_tm_9_2_createCucTimeReport(OUT_tmPacket, apid, seqCount);
+	}
+	*OUT_isAvailable = PUS_ERROR_NOT_AVAILABLE;
 }
 
 void st09_PI_tc09(const asn1SccPusPacket *IN_tcPacket)

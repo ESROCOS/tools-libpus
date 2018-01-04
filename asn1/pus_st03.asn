@@ -22,6 +22,9 @@ BEGIN
     PusConfigDummyType, pus-ST03-MAX-REPORT-LENGTH FROM PUS-Config
     ;
     
+    -- StoredParam of reports
+    PusSt03StoredParam ::= PusUInt64
+    
     -- Identifier of housekeeping reports
     PusSt03HousekeepingReportId ::= PusUInt32
     
@@ -32,7 +35,7 @@ BEGIN
     PusSt03ParameterId ::= PusUInt32
     
     -- Array of parameters in the report (all stored as PusUInt64)
-    PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusUInt64
+    PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusSt03StoredParam
     
     -- Data for TM[3,25], housekeeping parameter report
     PusTM-3-25-Data ::= SEQUENCE
