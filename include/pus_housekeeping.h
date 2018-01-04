@@ -1,5 +1,5 @@
-//! \file pus_housekeeping.h
-/*! \brief Management of the housekeeping and diagnostics parameters table
+/*! \file pus_housekeeping.h
+ *  \brief Management of the housekeeping and diagnostics parameters table
  *
  *  Defines the parameters table used by the service ST[03].
  *

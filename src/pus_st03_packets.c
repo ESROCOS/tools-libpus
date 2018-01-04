@@ -63,13 +63,16 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t ap
 	pus_setTmPacketTimeNow(outTm);
 
 	// Report contents
-	if (pus_ST03_DEFAULT_HK_REPORT != reportId)
+	if (pus_ST03_DEFAULT_HK_REPORT == reportId)
+	{
+		pus_tm_3_25_setReportId(outTm, reportId);
+		pus_tm_3_25_setNumParameters(outTm, pus_st03_defaultHkReportInfo.numParams);
+	}
+	else
 	{
 		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
 	}
 	// handle here user-defined HK reports (not yet implemented)
-
-	pus_tm_3_25_setReportId(outTm, reportId);
 
 	return PUS_GET_ERROR();
 }

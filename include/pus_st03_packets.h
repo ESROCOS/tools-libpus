@@ -1,9 +1,8 @@
-//! \file pus_st03_packets.h
-/*! \brief Implementation of the PUS service ST[03] Housekeeping.
+/*! \file pus_st03_packets.h
+ *  \brief PUS service ST[03] Housekeeping.
  *
- *  This module contains the functions to manage the on-board housekeeping parameters
- *  database, to generate housekeeping and parameter reports, and to process the TCs
- *  to manage this service.
+ *  This module provides the functions to generate packets of the service ST[03],
+ *  as well as getter/setter and checking functions.
  *
  *  Only a subset of the standard requests and reports are implemented.
  *
