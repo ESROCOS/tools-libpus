@@ -101,6 +101,30 @@ pusError_t pus_hk_getStoredParam(pusSt03ParamId_t param, pusStoredParam_t* outVa
 	}
 }
 
+pusError_t pus_hk_setStoredParam(pusSt03ParamId_t param, pusStoredParam_t outValue)
+{
+	if (param >= pus_ST03_PARAM_LIMIT)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
+	}
+	else
+	{
+		if (NULL != pus_hk_mutex && !pus_mutexLockOk(pus_hk_mutex))
+		{
+			return PUS_ERROR_THREADS;
+		}
+
+		pus_st03_params[param] = outValue;
+
+		if (NULL != pus_hk_mutex && !pus_mutexUnlockOk(pus_hk_mutex))
+		{
+			return PUS_ERROR_THREADS;
+		}
+
+		return PUS_NO_ERROR;
+	}
+}
+
 
 pusError_t pus_hk_getUInt32Param(pusSt03ParamId_t param, uint32_t* outValue)
 {

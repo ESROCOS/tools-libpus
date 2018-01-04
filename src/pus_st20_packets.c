@@ -271,7 +271,7 @@ pusError_t pus_expectSt20Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 
 		if (expectedSubtype == pusSubtype_NONE)
 		{
-			// Check that subtype corresponds to ST[01]
+			// Check that subtype corresponds to ST[20]
 			if ((subtype != pus_TC_20_1_reportParameterValues) &&
 				(subtype != pus_TC_20_3_setParameterValues))
 			{

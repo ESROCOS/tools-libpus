@@ -1,4 +1,4 @@
-#include "pus_st11_packets.h"
+ #include "pus_st11_packets.h"
 
 
 pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype)
@@ -86,10 +86,8 @@ pusError_t pus_tc_11_4_createInsertActivityIntoSchedule(pusPacket_t* outTc, pusA
 		return PUS_GET_ERROR();
 	}
 
-	//TODO Data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_11_4);
 
-	//pus_tc_11_4_setActivities(outTc, nCount, activities);
 	pus_tc_11_4_setNCount(outTc, 0);
 
 	return PUS_SET_ERROR(PUS_NO_ERROR);
@@ -157,18 +155,18 @@ pusError_t pus_tc_11_4_setActivity(pusPacket_t* outTc, const pusPacket_t* tcActi
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t* activities, const pusPacket_t* outTc, int32_t max)
+pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t* activities, const pusPacket_t* inTc, int32_t max)
 {
-	if( NULL == outTc || NULL == activities)
+	if( NULL == inTc || NULL == activities)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(outTc, pus_TC_DATA_ST_11_4))
+	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(inTc, pus_TC_DATA_ST_11_4))
 	{
 		return PUS_GET_ERROR();
 	}
 
-	*nCount = outTc->data.u.tcData.data.u.st_11_4.nCount;
+	*nCount = inTc->data.u.tcData.data.u.st_11_4.nCount;
 
 	if( *nCount > max)
 	{
@@ -177,8 +175,8 @@ pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t
 
 	for(int32_t i = 0; i < *nCount; i++)
 	{
-		activities[0].packetReduced = outTc->data.u.tcData.data.u.st_11_4.arr[0].packetReduced ;
-		activities[0].time = outTc->data.u.tcData.data.u.st_11_4.arr[0].time;
+		activities[0].packetReduced = inTc->data.u.tcData.data.u.st_11_4.arr[0].packetReduced ;
+		activities[0].time = inTc->data.u.tcData.data.u.st_11_4.arr[0].time;
 	}
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
@@ -224,13 +222,12 @@ pusError_t pus_expectSt11Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 			}
 		}
 
-		/* TODO
-		 * pusPacketDataKind_t kind = pus_getTcDataKind(packet);
-		if (kind != pus_TC_DATA_ST_12_1_2 && kind != pus_TC_DATA_NONE)
+		pusPacketDataKind_t kind = pus_getTcDataKind(packet);
+		if (kind != pus_TC_DATA_ST_11_4 && kind != pus_TC_DATA_NONE)
 		{
 			pus_setError(PUS_ERROR_TC_KIND, function, (pusErrorData_t){.integer=kind});
 			return PUS_ERROR_TC_KIND;
-		}*/
+		}
 
 		return PUS_NO_ERROR;
 	}

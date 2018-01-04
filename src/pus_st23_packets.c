@@ -15,6 +15,7 @@ pusError_t pus_tc_23_X_createDefaultRequest(pusPacket_t* outTc, pusApid_t apid, 
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTcPacket(outTc);
 
 		// Source information
@@ -100,6 +101,7 @@ pusError_t pus_tm_23_4_createReportFileAtributesReport(pusPacket_t* outTm, pusAp
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTmPacket(outTm);
 
 		// Source information

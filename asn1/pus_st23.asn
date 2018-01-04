@@ -3,12 +3,12 @@
 
 -- * Only the minimal services are implemented:
 -- * File handling
---	  - pus-TC-23-1-createFile
---   - pus-TC-23-2-deleteFile
---   - pus-TC-23-3-reportFileAttributes
---   - pus-TM-23-4-reportFileAttributes
+--	  - TC-23-1 createFile
+--   - TC-23-2 deleteFile
+--   - TC-23-3 reportFileAttributes
+--   - TM-23-4 reportFileAttributes
 -- * File copy
---   - pus-TC-23-14-copyFile
+--   - TC-23-14 copyFile
 
 PUS-ST23 DEFINITIONS ::= 
 BEGIN
@@ -17,7 +17,7 @@ BEGIN
 	IMPORTS 
 	PusUInt64 FROM PUS-NbitIntegers
 	
-	pus-ST23-MAX-SIZE-FILE-PATH FROM PUS-Config
+	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH FROM PUS-Config
 	;
     
    

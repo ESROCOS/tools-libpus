@@ -10,6 +10,7 @@ pusError_t pus_tc_18_X_createDefaultRequest(pusPacket_t* outTc, pusApid_t apid, 
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTcPacket(outTc);
 
 		// Source information
