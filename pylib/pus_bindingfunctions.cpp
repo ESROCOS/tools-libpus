@@ -3,7 +3,7 @@
 int ret_packets(pusPacket_t *tm, int i)
 {
 	pusPacket_t tc;
-	pusTime_t tv, now;
+	//pusTime_t tv, now;
 	pusApidInfo_t apid;
 
 	pus_initApidInfo(&apid, 33, NULL);
@@ -62,7 +62,10 @@ int ret_packets(pusPacket_t *tm, int i)
 	}
 	else if (i == 10)
 	{
-
+		pusSt05Event_t event = parse_pusSt05EventStruct_(pus_event_init_struct_(1, 2, 3));
+		pus_events_initialize(NULL);
+		pus_tm_5_1_createInformativeEventReport(tm, apid.apid, pus_getNextPacketCount(&apid), &event, 1);
+		pus_events_finalize();
 	}
 	else if (i == 11)
 	{
@@ -297,41 +300,33 @@ pusError_t pus_tm_5_4_createHighSeverityEventReport_(pusPacket_t* outTm, pusApid
 	return pus_tm_5_4_createHighSeverityEventReport(outTm, apid, sequenceCount, &pusEvent, destination);
 }
 
-pusError_t pus_tm_get_5_X_event_id_(const pusPacket_t *packet, ull *eventId)
+ull pus_tm_get_5_X_event_id_(const pusPacket_t *packet)
 {
 	pusSt05Event_t event;
-	pusError_t error = pus_tm_5_X_getTmEventReportData(packet, &event);
-	if (pusError_t::PUS_NO_ERROR != error) return error;
-	*eventId = pus_events_getEventId((const pusSt05Event_t *)&event);
-	return pusError_t::PUS_NO_ERROR;
+	pus_tm_5_X_getTmEventReportData(packet, &event);
+	return pus_events_getEventId((const pusSt05Event_t *)&event);
 }
 
-pusError_t pus_tm_get_5_X_event_auxdata1_(const pusPacket_t *packet, ull *auxdata1)
+ull pus_tm_get_5_X_event_auxdata1_(const pusPacket_t *packet)
 {
 
 	pusSt05Event_t event;
 	pusSt05EventAuxData_t auxdata;
 
-	pusError_t error = pus_tm_5_X_getTmEventReportData(packet, &event);
-	if (pusError_t::PUS_NO_ERROR != error) return error;
+	pus_tm_5_X_getTmEventReportData(packet, &event);
 	auxdata =  pus_events_getEventAuxData((const pusSt05Event_t *)&event);
-	*auxdata1 = pus_events_getEventAuxData1((const pusSt05EventAuxData_t *)&auxdata);
-
-	return pusError_t::PUS_NO_ERROR;
+	return pus_events_getEventAuxData1((const pusSt05EventAuxData_t *)&auxdata);
 }
 
-pusError_t pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet, ull *auxdata2)
+ull pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet)
 {
 
 	pusSt05Event_t event;
 	pusSt05EventAuxData_t auxdata;
 
-	pusError_t error = pus_tm_5_X_getTmEventReportData(packet, &event);
-	if (pusError_t::PUS_NO_ERROR != error) return error;
+	pus_tm_5_X_getTmEventReportData(packet, &event);
 	auxdata =  pus_events_getEventAuxData((const pusSt05Event_t *)&event);
-	*auxdata2 = pus_events_getEventAuxData2((const pusSt05EventAuxData_t *)&auxdata);
-
-	return pusError_t::PUS_NO_ERROR;
+	return pus_events_getEventAuxData2((const pusSt05EventAuxData_t *)&auxdata);
 }
 
 pusError_t pus_events_initialize_null_()
@@ -356,12 +351,16 @@ void pus_tc_11_4_get_request(long index, const pusPacket_t* inTc, pusPacket_t *o
 	pus_packetReduced_createPacketFromPacketReduced(outTc, &pack);
 }
 
-void pus_tc_11_4_get_release_time(long index, const pusPacket_t* inTc, pusTime_t *outTime, long max)
+time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t* inTc, long max)
 {
 	pusSt11ScheduledActivity_t activities[10];
+	pusTime_t time_;
+	struct timespec time_struct;
 	int32_t nCount;
 	pus_tc_11_4_getActivities(&nCount, activities, inTc, max);
-	*outTime = activities[index].time;
+	time_ = activities[index].time;
+	pus_time2posix(&time_struct, &time_);
+	return time_struct.tv_sec;
 }
 
 pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
@@ -374,7 +373,7 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 
 pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket)
 {
-	pusSt09ExponentialRate_t tExp;;
+	pusSt09ExponentialRate_t tExp;
 	pusError_t error = pus_tc_9_1_getExponentialRate(&tExp, tcPacket);
 	PUS_SET_ERROR(error);
 	return tExp;

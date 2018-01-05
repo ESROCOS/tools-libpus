@@ -74,9 +74,9 @@ pusError_t pus_tm_5_2_createLowSeverityEventReport_(pusPacket_t* outTm, pusApid_
 pusError_t pus_tm_5_3_createMediumSeverityEventReport_(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const st05Event* event, pusApid_t destination);
 pusError_t pus_tm_5_4_createHighSeverityEventReport_(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const st05Event* event, pusApid_t destination);
 
-pusError_t pus_tm_get_5_X_event_id_(const pusPacket_t *packet, ull *eventId);
-pusError_t pus_tm_get_5_X_event_auxdata1_(const pusPacket_t *packet, ull *auxdata1);
-pusError_t pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet, ull *auxdata2);
+ull pus_tm_get_5_X_event_id_(const pusPacket_t *packet);
+ull pus_tm_get_5_X_event_auxdata1_(const pusPacket_t *packet);
+ull pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet);
 pusError_t pus_events_initialize_null_();
 
 pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet);
@@ -86,6 +86,6 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket);
 pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket);
 
 void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *outTc, long max);
-void pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, pusTime_t *outTime, long max);
+time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, long max);
 
 #endif
