@@ -1,5 +1,5 @@
 {
-    "tcPacketQueueLength": 10,
-    "tmPacketQueueLength": 20,
-    "isTasteFlag": 0
+	"tcPacketQueueLength": 10,
+	"tmPacketQueueLength": 20,
+	"isTasteFlag": 0
 }
