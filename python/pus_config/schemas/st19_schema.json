@@ -1,13 +1,15 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "id": "https://github.com/esrocos/TBD",
-    "title": "Event-action",
-    "description": "Event actions",
-    "type": "object",
-    "properties": {
-    	"maximumDefinitions": {
-            "type": "integer"
-     	}
-    },
-    "required": ["maximumDefinitions"]
+	"$schema": "http://json-schema.org/schema#",
+	"id": "https://github.com/esrocos/TBD",
+	"title": "Event-action",
+	"description": "Event actions",
+	"type": "object",
+	"properties": {
+		"maximumDefinitions": {
+			"type": "integer"
+		}
+	},
+	"required": [
+		"maximumDefinitions"
+	]
 }

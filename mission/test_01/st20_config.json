@@ -1,24 +1,24 @@
 {
-    "parameters": [
-        {
-            "label": "ONBOARD_PARAM_INT01",
-            "type": "INT32"
-        },
-        {
-            "label": "ONBOARD_PARAM_REAL01",
-            "type": "REAL64"
-        },
-        {
-            "label": "ONBOARD_PARAM_UINT01",
-            "type": "UINT32"
-        },
-        {
-            "label": "ONBOARD_PARAM_BYTE01",
-            "type": "BYTE"
-        },
-        {
-            "label": "ONBOARD_PARAM_BOOL01",
-            "type": "BOOL"
-        }
-    ]
+	"parameters": [
+		{
+			"label": "ONBOARD_PARAM_INT01",
+			"type": "INT32"
+		},
+		{
+			"label": "ONBOARD_PARAM_REAL01",
+			"type": "REAL64"
+		},
+		{
+			"label": "ONBOARD_PARAM_UINT01",
+			"type": "UINT32"
+		},
+		{
+			"label": "ONBOARD_PARAM_BYTE01",
+			"type": "BYTE"
+		},
+		{
+			"label": "ONBOARD_PARAM_BOOL01",
+			"type": "BOOL"
+		}
+	]
 }

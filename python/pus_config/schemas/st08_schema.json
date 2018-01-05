@@ -1,28 +1,33 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "id": "https://github.com/esrocos/TBD",
-    "title": "On-board functions",
-    "description": "Functions ST08",
-    "type": "object",
-    "properties": {
-    	"functions": {
-            "type": "array",
-            "items": {
-                "title": "Function",
-                "type": "object",
-                "properties": {
-                    "label": {
-                        "description": "Textual label for the function",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Name of the fuction",
-                        "type": "string"
-                    }
-                },
-                "required": ["label", "name"]
-            }
-         }
-    },
-    "required": ["functions"]
+	"$schema": "http://json-schema.org/schema#",
+	"id": "https://github.com/esrocos/TBD",
+	"title": "On-board functions",
+	"description": "Functions defined for ST08",
+	"type": "object",
+	"properties": {
+		"functions": {
+			"type": "array",
+			"items": {
+				"title": "Function",
+				"type": "object",
+				"properties": {
+					"label": {
+						"description": "Textual label for the function",
+						"type": "string"
+					},
+					"name": {
+						"description": "Name of the fuction",
+						"type": "string"
+					}
+				},
+				"required": [
+					"label",
+					"name"
+				]
+			}
+		}
+	},
+	"required": [
+		"functions"
+	]
 }

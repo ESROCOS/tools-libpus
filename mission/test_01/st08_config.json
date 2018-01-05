@@ -1,16 +1,16 @@
 {
-    "functions": [
-        {
-            "label": "EXAMPLE_FUNCTION_01",
-            "name" : "example_function"
-        },
-        {
-            "label": "EXAMPLE_FUNCTION_02",
-            "name" : "example_function2"
-        },
-        {
-            "label": "EXAMPLE_FUNCTION_03",
-            "name" : "example_function3"
-        }
-    ]
+	"functions": [
+		{
+			"label": "EXAMPLE_FUNCTION_01",
+			"name": "example_function"
+		},
+		{
+			"label": "EXAMPLE_FUNCTION_02",
+			"name": "example_function2"
+		},
+		{
+			"label": "EXAMPLE_FUNCTION_03",
+			"name": "example_function3"
+		}
+	]
 }

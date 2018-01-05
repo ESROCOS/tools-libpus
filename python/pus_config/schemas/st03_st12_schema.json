@@ -1,44 +1,58 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "id": "https://github.com/esrocos/TBD",
-    "title": "HK parameters",
-    "description": "Housekeeping parameters configuration for PUS service ST[03]",
-    "type": "object",
-    "properties": {
-        "parameters": {
-            "type": "array",
-            "items": {
-                "title": "HK parameter",
-                "type": "object",
-                "properties": {
-                    "label": {
-                        "description": "Textual label for the parameter",
-                        "type": "string"
-                    },
-                    "type": {
-                        "description": "Data type of the parameter",
-                        "type": "string",
-                        "enum": ["INT32", "UINT32", "REAL64", "BYTE", "BOOL"]
-                    },
-                    "low_limit": {
-                        "description": "Low limit for PMON",
-                        "type": "number"
-                    },
-                    "high_limit": {
-                        "description": "High limit for PMON",
-                        "type": "number"
-                    }
-                },
-                "required": ["label", "type", "low_limit", "high_limit"]
-            }
-        },
-        "defaultHkReport":  {
-            "type": "array",
-            "items": {
-                "description": "Textual label for the parameter, matching the parameters array",
-                "type": "string"
-            }
-        }        
-    },
-    "required": ["parameters", "defaultHkReport"]
+	"$schema": "http://json-schema.org/schema#",
+	"id": "https://github.com/esrocos/TBD",
+	"title": "HK parameters",
+	"description": "Housekeeping parameters configuration for PUS service ST[03]",
+	"type": "object",
+	"properties": {
+		"parameters": {
+			"type": "array",
+			"items": {
+				"title": "HK parameter",
+				"type": "object",
+				"properties": {
+					"label": {
+						"description": "Textual label for the parameter",
+						"type": "string"
+					},
+					"type": {
+						"description": "Data type of the parameter",
+						"type": "string",
+						"enum": [
+							"INT32",
+							"UINT32",
+							"REAL64",
+							"BYTE",
+							"BOOL"
+						]
+					},
+					"low_limit": {
+						"description": "Low limit for PMON",
+						"type": "number"
+					},
+					"high_limit": {
+						"description": "High limit for PMON",
+						"type": "number"
+					}
+				},
+				"required": [
+					"label",
+					"type",
+					"low_limit",
+					"high_limit"
+				]
+			}
+		},
+		"defaultHkReport": {
+			"type": "array",
+			"items": {
+				"description": "Textual label for the parameter, matching the parameters array",
+				"type": "string"
+			}
+		}
+	},
+	"required": [
+		"parameters",
+		"defaultHkReport"
+	]
 }

@@ -1,13 +1,13 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "id": "https://github.com/esrocos/TBD",
-    "title": "Time-based Scheduling configuration",
-    "description": "Time-based Scheduling configuration",
-    "type": "object",
+	"$schema": "http://json-schema.org/schema#",
+	"id": "https://github.com/esrocos/TBD",
+	"title": "Time-based Scheduling configuration",
+	"description": "Time-based Scheduling configuration",
+	"type": "object",
 	"properties": {
-    	"maximumActivities": {
-            "type": "integer"
-     	}
-    },
-    "required": ["maximumActivities"]
+		"maximumActivities": {
+			"type": "integer"
+			}
+		},
+	"required": ["maximumActivities"]
 }
