@@ -33,9 +33,9 @@ WITH interfaceview::IV::OnBoard::ST01;
 WITH interfaceview::IV::OnBoard::ST08;
 WITH interfaceview::IV::Ground::GroundAPID;
 WITH interfaceview::IV::OnBoard::OnBoardAPID;
-WITH interfaceview::IV::OnBoard::Events;
-WITH interfaceview::IV::OnBoard::ST05;
-WITH interfaceview::IV::OnBoard::ST19;
+WITH interfaceview::IV::OnBoard::EventServices::Events;
+WITH interfaceview::IV::OnBoard::EventServices::ST05;
+WITH interfaceview::IV::OnBoard::EventServices::ST19;
 WITH interfaceview::IV::OnBoard::TimeReports::ST09;
 WITH interfaceview::IV::OnBoard::Housekeeping;
 WITH interfaceview::IV::OnBoard::ST03;
@@ -85,13 +85,13 @@ SUBCOMPONENTS
   IV_OnBoardAPID : SYSTEM interfaceview::IV::OnBoard::OnBoardAPID::OnBoardAPID.others {
     Taste::FunctionName => "OnBoardAPID";
   };
-  IV_Events : SYSTEM interfaceview::IV::OnBoard::Events::Events.others {
+  IV_Events : SYSTEM interfaceview::IV::OnBoard::EventServices::Events::Events.others {
     Taste::FunctionName => "Events";
   };
-  IV_ST05 : SYSTEM interfaceview::IV::OnBoard::ST05::ST05.others {
+  IV_ST05 : SYSTEM interfaceview::IV::OnBoard::EventServices::ST05::ST05.others {
     Taste::FunctionName => "ST05";
   };
-  IV_ST19 : SYSTEM interfaceview::IV::OnBoard::ST19::ST19.others {
+  IV_ST19 : SYSTEM interfaceview::IV::OnBoard::EventServices::ST19::ST19.others {
     Taste::FunctionName => "ST19";
   };
   IV_ST09 : SYSTEM interfaceview::IV::OnBoard::TimeReports::ST09::ST09.others {

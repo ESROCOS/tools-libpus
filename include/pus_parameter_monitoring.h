@@ -25,10 +25,13 @@ extern "C" {
 #include "pus_housekeeping.h"
 
 
+//! Type to describe the check definition of a PMON value
 typedef struct{
 	//bool checking_status;
 	//int repetition; //repetition number
 	//int check_type; //limit, expect, delta
+
+	//! Low limit check condition
 	union uLow
 	{
 		int32_t INT32;
@@ -37,6 +40,8 @@ typedef struct{
 		bool BOOL;
 		byte BYTE;
 	}low_limit;
+
+	//!High limit check condition
 	union uHigh
 	{
 		int32_t INT32;
@@ -49,11 +54,12 @@ typedef struct{
 	//int mask;
 }pusSt12CheckDefinition;
 
+//! Type to define the PMON definition
 typedef struct{
 	// pmon id -> array index;
 	// param id -> array index (1 pmon per param)
-	bool status;
-	pusSt12CheckDefinition check;
+	bool status; //!< Status of the definition (enabled or disabled)
+	pusSt12CheckDefinition check; //! Check definition for the PMON
 }pusSt12PmonDefinition;
 
 extern const pusSt12PmonId_t pus_ST12_PARAM_LIMIT;

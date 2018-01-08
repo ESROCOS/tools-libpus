@@ -1,9 +1,10 @@
--- ASN.1 definitions for service ST[8] Function managementt
+-- ASN.1 definitions for service ST[08] Function management
 -- (cf. ECSS-E-ST-70-41C sections 6.8, 8.8)
 --
+-- The only one subservice is implemented:
+--  - TC[8,1] Perform a function (no arguments for functions)
 
 
---TODO
 
 PUS-ST08 DEFINITIONS ::= 
 BEGIN
@@ -18,7 +19,7 @@ BEGIN
         
 
     
-    -- Data for TM[3,25], housekeeping parameter report
+    -- Data for TC[8,1], Perform a function request
     PusTC-8-1-Data  ::= SEQUENCE
     {
     	functionId PusSt08FunctionId

@@ -24,8 +24,10 @@
 #include "asn1/pus_st08.h"
 #include "asn1/pus_st09.h"
 #include "asn1/pus_st12.h"
+#include "asn1/pus_st18.h"
 #include "asn1/pus_st19.h"
 #include "asn1/pus_st20.h"
+#include "asn1/pus_st23.h"
 #include "asn1/pus_services.h"
 #endif
 
@@ -59,6 +61,9 @@ typedef asn1SccPusInt32 pusInt32_t; //!< Type of int32 fields
 typedef asn1SccPusMemAddr pusMemAddr_t; //!< Type of memory address fields
 typedef asn1SccPusSt03HousekeepingReportId pusSt03HousekeepingReportId_t; //!< Type of the ST[03] housekeeping report identifier field
 typedef asn1SccPusSt03ParameterId pusSt03ParamId_t; //!< Type of the ST[03] parameter identifiers
+typedef asn1SccPusSt03StoredParam pusStoredParam_t; //!< Stored param for all packets' services
+typedef asn1SccPusPacketReduced pusPacketReduced_t; //!< Packet reduced
+
 
 typedef asn1SccPusSt05Event pusSt05Event_t; //!< Type of the ST[05] event with data
 typedef asn1SccPusSt05EventId pusSt05EventId_t; //!< Type of the ST[05] event ID
@@ -66,16 +71,25 @@ typedef asn1SccPusSt05EventAuxData pusSt05EventAuxData_t; //!< Type of the ST[05
 
 typedef asn1SccPusSt08FunctionId pusSt08FunctiontId_t; //!< Type of the ST[08] function ID
 
-typedef asn1SccPusPacketReduced pusPacketReduced_t; //!< Packet reduced
+typedef asn1SccPusSt09ExponentialRate pusSt09ExponentialRate_t; //!< Report generation exponential rate
 
-typedef asn1SccPusSt12pmonId pusSt12PmonId_t; //!< Pmon ID
-typedef asn1SccPusSt09ExponentialRate pusSt09ExponentialRate_t; //!< report generation exponential rate
+typedef asn1SccPusTcScheduledActivity pusSt11ScheduledActivity_t; //!< Scheduled activity for st11; time and action
 
-typedef asn1SccPusTcScheduledActivity pusSt11ScheduledActivity_t;
+typedef asn1SccPusSt12pmonId pusSt12PmonId_t; //!< Pmon definition identifier
 
-typedef asn1SccPusSt03StoredParam pusStoredParam_t;
+typedef asn1SccPusSt20OnBoardParameterId pusSt20OnBoardParamId_t; //!< Identifier of on-board parameters
 
-typedef asn1SccPusSt20OnBoardParameterId pusSt20OnBoardParamId_t;
+typedef asn1SccPusSt23RepositoryPath pusSt23RepositoryPath_t; //!< Repository path of a file
+typedef asn1SccPusSt23FileName pusSt23FileName_t; //!< File name
+
+typedef asn1SccPusSt18ObcpId pusSt18ObcpId_t; //! Obcp procedure identifier
+typedef asn1SccPusSt18ObcpCode pusSt18ObcpCode_t; //! Obcp procedure code
+typedef asn1SccPusSt18ObcpChecksum pusSt18ObcpChecksum_t; //! Obcp procedure checksum
+typedef asn1SccPusSt18ObservabilityLevel pusSt18ObservabilityLevel_t; //! Obcp observability level
+#define PUS_ST18_OBSERVABILITY_NONE 0
+#define PUS_ST18_OBSERVABILITY_PROCEDURE 1
+#define PUS_ST18_OBSERVABILITY_STEP 2
+#define PUS_ST18_OBSERVABILITY_DETAILED 3
 
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
@@ -121,16 +135,22 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pus_TM_DATA_ST_20_2		((pusTmDataKind_t) st_20_2_PRESENT)
 
 
-
 // pusPacketTcDataKind_t
 #define pus_TC_DATA_NONE 		((pusTcDataKind_t) PusTcApplicationData_NONE)
 #define pus_TC_DATA_ST_8_1 		((pusTcDataKind_t) PusTcApplicationData_st_8_1_PRESENT)
 #define pus_TC_DATA_ST_9_1		((pusTcDataKind_t) PusTcApplicationData_st_9_1_PRESENT)
 #define pus_TC_DATA_ST_11_4		((pusTcDataKind_t) st_11_4_PRESENT)
 #define pus_TC_DATA_ST_12_1_2	((pusTcDataKind_t) PusTcApplicationData_st_12_1_2_PRESENT)
+#define pus_TC_DATA_ST_18_1		((pusTcDataKind_t) PusTcApplicationData_st_18_1_PRESENT)
+#define pus_TC_DATA_ST_18_2_6_12 ((pusTcDataKind_t) PusTcApplicationData_st_18_2_6_12_PRESENT)
+#define pus_TC_DATA_ST_18_3		((pusTcDataKind_t) PusTcApplicationData_st_18_3_PRESENT)
+#define pus_TC_DATA_ST_18_4_5	((pusTcDataKind_t) PusTcApplicationData_st_18_4_5_PRESENT)
+#define pus_TC_DATA_ST_18_13	((pusTcDataKind_t) PusTcApplicationData_st_18_13_PRESENT)
 #define pus_TC_DATA_ST_19_1		((pusTcDataKind_t) st_19_1_PRESENT)
 #define pus_TC_DATA_ST_19_X		((pusTcDataKind_t) PusTcApplicationData_st_19_X_PRESENT)
 #define pus_TC_DATA_ST_20_X		((pusTcDataKind_t) PusTcApplicationData_st_20_X_PRESENT)
+
+
 
 
 //

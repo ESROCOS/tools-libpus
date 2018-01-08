@@ -13,16 +13,6 @@
  *  \author GMV
  */
 
-/*
- * EventDefinition ID
- *
- * Rechazar request si no existe,
- *
- * Recibe TC19.1 (add new) si es correcto,
- * 	- no existe, añade y lo pone en disable
- * 	- si existe, reemplaza la accion
- *s
- */
 
 #ifndef PUS_ST19_PACKETS_H
 #define PUS_ST19_PACKETS_H

@@ -3,6 +3,11 @@
 --
 -- Limitations:
 -- * Only the minimal services are implemented
+--    TC-19-1 Add Event Action Definitions
+--    TC-19-2 Delete Event Action Definitions
+--    TC-19-4 Enable Event Action Definitions
+--    TC-19-5 Disable Event Action Definitions
+
 
 
 PUS-ST19 DEFINITIONS ::=

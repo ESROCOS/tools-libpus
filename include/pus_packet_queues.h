@@ -20,6 +20,7 @@
 extern "C" {
 #endif
 
+//! Type to describe a packets' queue. Buffer, lenght, mutex, and variables to control push and pop operations.
 typedef struct{
 	pusPacket_t * buffer;
 	size_t length;

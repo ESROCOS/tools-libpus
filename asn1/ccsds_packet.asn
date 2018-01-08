@@ -4,23 +4,26 @@
 PUS-CcsdsPacket DEFINITIONS ::=
 BEGIN
 
-    IMPORTS 
-    PusTime FROM PUS-Time
+	IMPORTS 
+	PusTime FROM PUS-Time
+	
+	PusServiceType, PusSubserviceType FROM PUS-Services
+	
+	PusVersionNumber, PusTimeReferenceStatus, PusMessageTypeCounter, PusPacketType, PusApid, 
+	PusChecksum, PusAcknowledgementFlags, PusPacketVersion, PusSecondaryHeaderFlag, PusSequenceFlags, 
+	PusSequenceCount, PusPacketDataLength FROM PUS-CcsdsPacketFields
 
-    PusServiceType, PusSubserviceType FROM PUS-Services
-
-    PusVersionNumber, PusTimeReferenceStatus, PusMessageTypeCounter, PusPacketType, PusApid, 
-    PusChecksum, PusAcknowledgementFlags, PusPacketVersion, PusSecondaryHeaderFlag, PusSequenceFlags, 
-    PusSequenceCount, PusPacketDataLength FROM PUS-CcsdsPacketFields
-
-    PusTM-1-X-Data FROM PUS-ST01
-    PusTM-3-25-Data FROM PUS-ST03
-    PusTM-5-X-Data FROM PUS-ST05
-  	PusTC-8-1-Data FROM PUS-ST08
-  	PusTC-9-1-Data, PusTM-9-2-Data FROM PUS-ST09
-  	PusTC-12-1-2-Data  FROM PUS-ST12
-  	PusTC-19-X-Data FROM PUS-ST19
-  	PusTC-TM-20-X-Data FROM PUS-ST20
+	PusTM-1-X-Data FROM PUS-ST01
+	PusTM-3-25-Data FROM PUS-ST03
+	PusTM-5-X-Data FROM PUS-ST05
+	PusTC-8-1-Data FROM PUS-ST08
+	PusTC-9-1-Data, PusTM-9-2-Data FROM PUS-ST09
+	PusTC-12-1-2-Data  FROM PUS-ST12
+	PusTC-19-X-Data FROM PUS-ST19
+	PusTC-TM-20-X-Data FROM PUS-ST20
+  	
+	PusTC-18-1-Data, PusTC-18-2-6-12-Data, PusTC-18-3-Data, 
+	PusTC-18-4-5-Data, PusTC-18-13-Data FROM PUS-ST18
   	
   	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
   	
@@ -88,22 +91,33 @@ BEGIN
     -- TC actual data
     PusTcApplicationData ::= CHOICE
     { -- The same order as the reduced
-    	st-8-1 PusTC-8-1-Data,
-    	st-9-1 PusTC-9-1-Data,
-    	st-12-1-2 PusTC-12-1-2-Data,
-    	st-19-X PusTC-19-X-Data,
-    	st-20-X PusTC-TM-20-X-Data,
-    	st-11-4 PusTC-11-4-Data,
-    	st-19-1 PusTC-19-1-Data
+    	st-8-1 		PusTC-8-1-Data,
+    	st-9-1 		PusTC-9-1-Data,
+    	st-12-1-2 	PusTC-12-1-2-Data,
+    	st-18-1 		PusTC-18-1-Data,
+    	st-18-2-6-12 PusTC-18-2-6-12-Data,
+    	st-18-3		PusTC-18-3-Data,
+    	st-18-4-5	PusTC-18-4-5-Data,
+    	st-18-13 	PusTC-18-13-Data,
+    	st-19-X 		PusTC-19-X-Data,
+    	st-20-X 		PusTC-TM-20-X-Data,
+    	-- with packet reduced
+    	st-11-4 		PusTC-11-4-Data,
+    	st-19-1 		PusTC-19-1-Data
     }
     
     PusTcApplicationDataReduced ::= CHOICE
     { 
-    	st-8-1 PusTC-8-1-Data,
-    	st-9-1 PusTC-9-1-Data,
-    	st-12-1-2 PusTC-12-1-2-Data,
-    	st-19-X PusTC-19-X-Data,
-    	st-20-X PusTC-TM-20-X-Data
+    	st-8-1 		PusTC-8-1-Data,
+    	st-9-1 		PusTC-9-1-Data,
+    	st-12-1-2 	PusTC-12-1-2-Data,
+    	st-18-1 		PusTC-18-1-Data,
+    	st-18-2-6-12 PusTC-18-2-6-12-Data,
+    	st-18-3		PusTC-18-3-Data,
+    	st-18-4-5	PusTC-18-4-5-Data,
+    	st-18-13 	PusTC-18-13-Data,
+    	st-19-X 		PusTC-19-X-Data,
+    	st-20-X 		PusTC-TM-20-X-Data
     }
     
     -- TM/TC header + data

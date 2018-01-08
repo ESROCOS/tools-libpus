@@ -6,7 +6,7 @@
  *
  *	Implemented subservices:
  *  - TC[9,1] Set Time Report Rate.
- *	- TC[9,2] Cuc Time Report.
+ *	- TC[9,2] CUC Time Report.
  *
  *  \author GMV
  */
@@ -24,12 +24,6 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
-
-// JSON
-// The time report generation rates supported by the spacecraft shall be declared when specifying the time management service
-// 	The possible time report generation rates are 1, 2, 4, 8, 16, 32, 64, 128 or 256.
-// 	The report generation rate is relative to the generation of telemetry transfer frames on virtual channel 0.
-// 	For example, if the report generation rate is 16, then every 16th transfer frame on virtual channel 0 causes the generation of a time report packet.
 
 
 extern pusSt09ExponentialRate_t pus_time_reportGenerationExponentialRate;

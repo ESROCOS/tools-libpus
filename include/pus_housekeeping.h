@@ -76,8 +76,20 @@ bool pus_hk_isInitialized();
 // Getters and setters for HK parameters
 //
 
+//! Get the current value of a stored parameter (in 64bits), using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[out] outValue The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_hk_getStoredParam(pusSt03ParamId_t param, pusStoredParam_t* outValue);
 
+//! Set the value of a stored parameter (in 64bits), using a lock
+/*! If the service was initialized with mutex, uses it to lock the parameter table.
+ *  \param[in] param The parameter identifier
+ *  \param[in] value The parameter value
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_hk_setStoredParam(pusSt03ParamId_t param, pusStoredParam_t outValue);
 
 

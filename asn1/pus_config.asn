@@ -23,11 +23,14 @@ BEGIN
     -- Maximun number of Scheduled Actions in a TC11.4 packet
     pus-ST11-MAX-SCHEDULED-ACTIVITIES PusUInt32 ::= 10
     
-    -- Maximun number os character in OBCP ID (ST18)
+    -- Maximun number of character in OBCP ID (ST18)
     pus-ST18-SIZE-OBCP-ID PusUInt32 ::= 10
     
-    -- Maximun number os character in OBCP Code TC[18,1] 
+    -- Maximun number of character in OBCP Code TC[18,1] 
     pus-ST18-MAX-SIZE-OBCP-CODE PusUInt32 ::= 1000
+    
+    -- Maximun number of bits in OBCP CHECKSUM (ST18)
+    pus-ST18-SIZE-OBCP-CHECKSUM PusUInt32 ::= 16
     
     -- Maximum number of character in file path (ST23)
     pus-ST23-MAX-SIZE-FILE-PATH PusUInt32 ::= 30

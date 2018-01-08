@@ -38,10 +38,11 @@ typedef enum
 } pusSt05SeverityType_t;
 
 
+//! Type to define the data types of each parameter of an event
 typedef struct
 {
-	pusParamType_t dataType1; //!< Name of the event, for debugging purposes
-	pusParamType_t dataType2; //!< Severity type
+	pusParamType_t dataType1; //!< Datatype of param 1
+	pusParamType_t dataType2; //!< Datatype of param 2
 } pusSt05EventReportData_t;
 
 //! Type to describe a event: label, severity, dataTypes (the parameter ID gives its location in the array)
@@ -52,17 +53,15 @@ typedef struct
 	pusSt05EventReportData_t data; //!< Data type
 } pusSt05EventInfo_t;
 
-//! Buffer list
+//! Type to describe the structure that the events' table save
 typedef struct {
-	pusSt05Event_t event;
-    size_t eventBufferCounter;
+	pusSt05Event_t event; //!< Event in table
+    size_t eventBufferCounter; //!< Counter of the events' number in table.
 } pusSt05EventInBuffer_t;
 
 
-
-//! Pointer for buffer in
+//! Pointer(index) for event buffer in
 extern size_t pus_st05_eventBufferIn;
-
 
 #define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT UINT32_MAX
 //! Counter of the events that has been inserted

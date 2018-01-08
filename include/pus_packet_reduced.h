@@ -1,7 +1,8 @@
 /*! \file pus_packet_reduced.h
  *  \brief PacketReduced functions.
  *
- * TODO
+ *  This file contains functions that manage the creations of packet reduced from packets
+ *  and the other way around.
  *
  *  \author GMV
  */

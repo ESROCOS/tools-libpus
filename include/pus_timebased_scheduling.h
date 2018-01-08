@@ -1,7 +1,8 @@
 /*! \file pus_timebased_scheduling.h
  *  \brief Time-based Scheduling functionality.
  *
- * TODO
+ *	Functions that manage the time-based scheduling table and
+ *	the requests from TC[11,X]
  *
  *  \author GMV
  */
@@ -23,12 +24,12 @@
 extern "C" {
 #endif
 
-
+//! Type to define a scheluding activity. It include the time to be executed, the action and a parameter to check if this action is active or not.
 typedef struct
 {
-	pusTime_t time;
-	pusPacket_t action;
-	bool deleted;
+	pusTime_t time; //!< Time to execute the activity
+	pusPacket_t action; //!< Action that is going to be performed
+	bool deleted; //!< Control the activity status
 }pusSchedulingActivity_t;
 
 extern pusSchedulingActivity_t pus_scheduling_table[];

@@ -65,7 +65,7 @@ void st05_PI_trigger()
 		default:
 			return;
 		}
-		st05_RI_newTm(&outTm);
+		st05_RI_newTmNoInherit(&outTm);
 	}
 	else
 	{

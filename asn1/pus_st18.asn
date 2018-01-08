@@ -21,19 +21,27 @@ PUS-ST18 DEFINITIONS ::=
 BEGIN
 
 
-    IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+	IMPORTS 
+	PusUInt16, PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+	
+	PusSt23RepositoryPath, PusSt23FileName FROM PUS-ST23
+	
+	PusConfigDummyType, pus-ST18-SIZE-OBCP-ID, pus-ST18-MAX-SIZE-OBCP-CODE, pus-ST18-SIZE-OBCP-CHECKSUM FROM PUS-Config
+	;
     
-    PusSt23RepositoryPath, PusSt23FileName FROM PUS-ST23
-    
-    PusConfigDummyType, pus-ST18-SIZE-OBCP-ID, pus-ST18-MAX-SIZE-OBCP-CODE FROM PUS-Config
-    ;
-    
-    PusSt18ObcpId ::= OCTET STRING (SIZE(pus-ST18-SIZE-OBCP-ID))
-    
-    PusSt18ObcpCode ::= OCTET STRING (SIZE(1 .. pus-ST18-MAX-SIZE-OBCP-CODE))
-    
-    PusSt18ObcpChecksum ::= BIT STRING (SIZE(16))
+	PusSt18ObcpId ::= OCTET STRING (SIZE(pus-ST18-SIZE-OBCP-ID))
+	
+	PusSt18ObcpCode ::= OCTET STRING (SIZE(1 .. pus-ST18-MAX-SIZE-OBCP-CODE))
+	
+	PusSt18ObcpChecksum ::= PusUInt16
+	
+	PusSt18ObservabilityLevel ::= ENUMERATED
+	{
+		none(0),
+		procedure(1),
+		step(2),
+		detailed(3)
+	}
     
 	-- Data TC[18,1]
 	PusTC-18-1-Data ::= SEQUENCE
@@ -43,21 +51,12 @@ BEGIN
 		checksum		PusSt18ObcpChecksum -- OPTIONAL
 	}
 	
-	-- Data TC[18,2]
-	PusTC-18-2-Data ::= SEQUENCE
+	-- Data TC[18,2], TC[18,6], TC[18,12]
+	PusTC-18-2-6-12-Data ::= SEQUENCE
 	{
 		obcpId		PusSt18ObcpId
 	}
-    
-    
-   PusSt18ObservabilityLevel ::= ENUMERATED
-   {
-   	none(0),
-   	procedure(1),
-   	step(2),
-   	detailed(3)
-   }
-   
+       
    -- Data TC[18,3]
 	PusTC-18-3-Data ::= SEQUENCE
 	{
@@ -66,32 +65,14 @@ BEGIN
 		-- argument values deduced --OPTIONAL
 	}
 	
-	-- Data TC[18,4]
-	PusTC-18-4-Data ::= SEQUENCE
+	-- Data TC[18,4], TC[18,5]
+	PusTC-18-4-5-Data ::= SEQUENCE
 	{
 		obcpId		PusSt18ObcpId,
 		stepId		PusUInt32 -- 0 for current step, ENUM?
 	}
 	
-	-- Data TC[18,5]
-	PusTC-18-5-Data ::= SEQUENCE
-	{
-		obcpId		PusSt18ObcpId,
-		stepId		PusUInt32 -- 0 for current step, ENUM?
-	}
-    
-   -- Data TC[18,6]
-	PusTC-18-6-Data ::= SEQUENCE
-	{
-		obcpId		PusSt18ObcpId
-	} 
-	
-	-- Data TC[18,12]
-	PusTC-18-12-Data ::= SEQUENCE
-	{
-		obcpId		PusSt18ObcpId
-	} 
-	
+
 	-- Data TC[18,13]
 	PusTC-18-13-Data ::= SEQUENCE
 	{
@@ -99,7 +80,6 @@ BEGIN
 		repository 	PusSt23RepositoryPath, 	-- OPTIONAL
 		fileName		PusSt23FileName			-- OPTIONAL
 	} 
-	
 	
 	-- Data TC[18,21]
 	-- NONE

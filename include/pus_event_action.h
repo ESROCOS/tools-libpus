@@ -23,6 +23,7 @@
 extern "C" {
 #endif
 
+//! Type to describe an event-action definition
 typedef struct
 {
 	//pusSt05EventId_t eventID; //Index in array will be eventID

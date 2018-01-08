@@ -27,6 +27,8 @@ extern void st19_RI_ACK(const asn1SccPusPacket *,
                         const asn1SccPusSt01FailureInfo *,
                         const asn1SccPusStepId *);
 
+extern void st19_RI_newTm(const asn1SccPusPacket *);
+
 extern void st19_RI_newTc(const asn1SccPusPacket *);
 
 #ifdef __cplusplus

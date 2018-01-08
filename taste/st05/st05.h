@@ -15,7 +15,7 @@ void st05_startup();
 
 void st05_PI_trigger();
 
-extern void st05_RI_newTm(const asn1SccPusPacket *);
+extern void st05_RI_newTmNoInherit(const asn1SccPusPacket *);
 
 extern void st05_RI_getNextEvent(const asn1SccPusUInt64 *,
                                  asn1SccPusSt05Event *,

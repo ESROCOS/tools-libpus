@@ -28,38 +28,6 @@ extern "C" {
 #include "pus_packet_reduced.h"
 
 
-
-/*
- * JSON:
- *  - Maximun number of definitions:
- *  - Time marging:  release > now+marging
- *  - Maximun delta between release and real release
- *
- *
- * Scheduled activity definition STRUCT*
- *  - request (TC)
- *  - release time
- *  - if sub-schedule: ID
- *  - if groups: ID
- *  - (flag deleted ?¿)
- *
- * FLAG: time-based schedule execution function status (general) TC[11.1] TC[11.2]
- * 		 default false! // accepted/rejected if enable or disable before
- *
- * TC[11.3] reset schedule
- *   - flag_function to false
- *   - delete all scheduled activities
- *   - if sub-schedules: delete all
- *   - if groups: enable all
- *
- * TC[11,4]
- *   - N instruction
- *   - reject if maximun reached
- *	 - accept:
- *	 	- create scheduled
- * */
-
-
 //! Build the common part of the ST[11] TC packets
 /*! Builds a TC[11,X] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC

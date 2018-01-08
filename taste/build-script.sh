@@ -83,12 +83,6 @@ cd "$SKELS" && rm -f st08.zip && zip st08 st08/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f onboardapid.zip && zip onboardapid onboardapid/* && cd $OLDPWD
 
-cd "$SKELS" && rm -f events.zip && zip events events/* && cd $OLDPWD
-
-cd "$SKELS" && rm -f st05.zip && zip st05 st05/* && cd $OLDPWD
-
-cd "$SKELS" && rm -f st19.zip && zip st19 st19/* && cd $OLDPWD
-
 cd "$SKELS" && rm -f housekeeping.zip && zip housekeeping housekeeping/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f st03.zip && zip st03 st03/* && cd $OLDPWD
@@ -98,6 +92,12 @@ cd "$SKELS" && rm -f st12.zip && zip st12 st12/* && cd $OLDPWD
 cd "$SKELS" && rm -f st09.zip && zip st09 st09/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f timereportapid.zip && zip timereportapid timereportapid/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f events.zip && zip events events/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st05.zip && zip st05 st05/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st19.zip && zip st19 st19/* && cd $OLDPWD
 
 [ ! -z "$CLEANUP" ] && rm -rf binary*
 
@@ -150,14 +150,14 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC st01:"$SKELS"/st01.zip \
 	--subC st08:"$SKELS"/st08.zip \
 	--subC onboardapid:"$SKELS"/onboardapid.zip \
-	--subC events:"$SKELS"/events.zip \
-	--subC st05:"$SKELS"/st05.zip \
-	--subC st19:"$SKELS"/st19.zip \
 	--subC housekeeping:"$SKELS"/housekeeping.zip \
 	--subC st03:"$SKELS"/st03.zip \
 	--subC st12:"$SKELS"/st12.zip \
 	--subC st09:"$SKELS"/st09.zip \
 	--subC timereportapid:"$SKELS"/timereportapid.zip \
+	--subC events:"$SKELS"/events.zip \
+	--subC st05:"$SKELS"/st05.zip \
+	--subC st19:"$SKELS"/st19.zip \
 	$ORCHESTRATOR_OPTIONS
 
 if [ -f user_init_last.sh ]

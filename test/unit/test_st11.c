@@ -162,10 +162,6 @@ void test_st11()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
 	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_scheduling_getScheduledActivity(&tc, &time));
 
-
-
-
-
 	pus_clearError();
 }
 
