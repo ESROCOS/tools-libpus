@@ -20,7 +20,7 @@ void st05_startup()
 	counter = 0;
 }
 
-void st05_PI_trigger()
+void st05_PI_EventReportTrigger()
 {
     /* Write your code here! */
 	pusSt05Event_t event;

@@ -98,7 +98,7 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 	}
 }
 
-void st19_PI_trigger()
+void st19_PI_EventActionTrigger()
 {
     /* Write your code here! */
 	pusSt05Event_t event;

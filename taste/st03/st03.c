@@ -17,7 +17,7 @@ void st03_startup()
        but do not make any call to a required interface. */
 }
 
-void st03_PI_tm3Trigger()
+void st03_PI_HkReportTrigger()
 {
     /* Write your code here! */
 

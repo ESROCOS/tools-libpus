@@ -15,7 +15,7 @@ void st19_startup();
 
 void st19_PI_tc19(const asn1SccPusPacket *);
 
-void st19_PI_trigger();
+void st19_PI_EventActionTrigger();
 
 extern void st19_RI_getNextEvent(const asn1SccPusUInt64 *,
                                  asn1SccPusSt05Event *,

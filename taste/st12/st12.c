@@ -100,7 +100,7 @@ void st12_PI_tc12(const asn1SccPusPacket *IN_tcPacket)
 
 }
 
-void st12_PI_trigger()
+void st12_PI_PmonTrigger()
 {
     /* Write your code here! */
 	pusStoredParam_t paramValue;

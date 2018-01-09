@@ -13,7 +13,7 @@ extern "C" {
 
 void st05_startup();
 
-void st05_PI_trigger();
+void st05_PI_EventReportTrigger();
 
 extern void st05_RI_newTmNoInherit(const asn1SccPusPacket *);
 

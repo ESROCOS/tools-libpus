@@ -28,6 +28,14 @@ extern void tcdispatch_RI_tc09(const asn1SccPusPacket *);
 
 extern void tcdispatch_RI_tc12(const asn1SccPusPacket *);
 
+extern void tcdispatch_RI_tc11(const asn1SccPusPacket *);
+
+extern void tcdispatch_RI_tc18(const asn1SccPusPacket *);
+
+extern void tcdispatch_RI_tc23();
+
+extern void tcdispatch_RI_tc20(const asn1SccPusPacket *);
+
 #ifdef __cplusplus
 }
 #endif

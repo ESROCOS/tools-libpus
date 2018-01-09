@@ -13,17 +13,17 @@ extern "C" {
 
 void st03_startup();
 
-void st03_PI_tm3Trigger();
+void st03_PI_HkReportTrigger();
 
-extern void st03_RI_getSequenceCount(asn1SccPusSequenceCount *);
+extern void st03_RI_newTm(const asn1SccPusPacket *);
+
+extern void st03_RI_getParamValue(const asn1SccPusSt03ParameterId *,
+                                  asn1SccPusSt01FailureCode *,
+                                  asn1SccPusSt03StoredParam *);
 
 extern void st03_RI_getApid(asn1SccPusApid *);
 
-extern void st03_RI_getParamValue(const asn1SccPusSt03ParameterId *,
-                                  asn1SccPusSt03StoredParam *,
-                                  asn1SccPusSt01FailureCode *);
-
-extern void st03_RI_newTm(const asn1SccPusPacket *);
+extern void st03_RI_getSequenceCount(asn1SccPusSequenceCount *);
 
 #ifdef __cplusplus
 }

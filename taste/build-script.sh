@@ -83,12 +83,6 @@ cd "$SKELS" && rm -f st08.zip && zip st08 st08/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f onboardapid.zip && zip onboardapid onboardapid/* && cd $OLDPWD
 
-cd "$SKELS" && rm -f housekeeping.zip && zip housekeeping housekeeping/* && cd $OLDPWD
-
-cd "$SKELS" && rm -f st03.zip && zip st03 st03/* && cd $OLDPWD
-
-cd "$SKELS" && rm -f st12.zip && zip st12 st12/* && cd $OLDPWD
-
 cd "$SKELS" && rm -f st09.zip && zip st09 st09/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f timereportapid.zip && zip timereportapid timereportapid/* && cd $OLDPWD
@@ -98,6 +92,28 @@ cd "$SKELS" && rm -f events.zip && zip events events/* && cd $OLDPWD
 cd "$SKELS" && rm -f st05.zip && zip st05 st05/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f st19.zip && zip st19 st19/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f housekeeping.zip && zip housekeeping housekeeping/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st03.zip && zip st03 st03/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st12.zip && zip st12 st12/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st11.zip && zip st11 st11/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st18.zip && zip st18 st18/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f obcpengine.zip && zip obcpengine obcpengine/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st23.zip && zip st23 st23/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f filemanagement.zip && zip filemanagement filemanagement/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f st20.zip && zip st20 st20/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f onboardparams.zip && zip onboardparams onboardparams/* && cd $OLDPWD
+
+cd "$SKELS" && rm -f trigger.zip && zip trigger trigger/* && cd $OLDPWD
 
 [ ! -z "$CLEANUP" ] && rm -rf binary*
 
@@ -150,14 +166,22 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC st01:"$SKELS"/st01.zip \
 	--subC st08:"$SKELS"/st08.zip \
 	--subC onboardapid:"$SKELS"/onboardapid.zip \
-	--subC housekeeping:"$SKELS"/housekeeping.zip \
-	--subC st03:"$SKELS"/st03.zip \
-	--subC st12:"$SKELS"/st12.zip \
 	--subC st09:"$SKELS"/st09.zip \
 	--subC timereportapid:"$SKELS"/timereportapid.zip \
 	--subC events:"$SKELS"/events.zip \
 	--subC st05:"$SKELS"/st05.zip \
 	--subC st19:"$SKELS"/st19.zip \
+	--subC housekeeping:"$SKELS"/housekeeping.zip \
+	--subC st03:"$SKELS"/st03.zip \
+	--subC st12:"$SKELS"/st12.zip \
+	--subC st11:"$SKELS"/st11.zip \
+	--subC st18:"$SKELS"/st18.zip \
+	--subC obcpengine:"$SKELS"/obcpengine.zip \
+	--subC st23:"$SKELS"/st23.zip \
+	--subC filemanagement:"$SKELS"/filemanagement.zip \
+	--subC st20:"$SKELS"/st20.zip \
+	--subC onboardparams:"$SKELS"/onboardparams.zip \
+	--subC trigger:"$SKELS"/trigger.zip \
 	$ORCHESTRATOR_OPTIONS
 
 if [ -f user_init_last.sh ]

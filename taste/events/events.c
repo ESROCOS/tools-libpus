@@ -53,7 +53,7 @@ void events_PI_pushNewEvent(const asn1SccPusSt05Event *IN_eventInfo)
 	}
 }
 
-void events_PI_debugTrigger()
+void events_PI_debugEventsTrigger()
 {
 	return;
 
