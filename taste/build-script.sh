@@ -115,6 +115,8 @@ cd "$SKELS" && rm -f onboardparams.zip && zip onboardparams onboardparams/* && c
 
 cd "$SKELS" && rm -f trigger.zip && zip trigger trigger/* && cd $OLDPWD
 
+cd "$SKELS" && rm -f debug.zip && zip debug debug/* && cd $OLDPWD
+
 [ ! -z "$CLEANUP" ] && rm -rf binary*
 
 if [ -f ConcurrencyView.pro ]
@@ -182,6 +184,7 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC st20:"$SKELS"/st20.zip \
 	--subC onboardparams:"$SKELS"/onboardparams.zip \
 	--subC trigger:"$SKELS"/trigger.zip \
+	--subC debug:"$SKELS"/debug.zip \
 	$ORCHESTRATOR_OPTIONS
 
 if [ -f user_init_last.sh ]

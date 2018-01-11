@@ -11,9 +11,9 @@ extern "C" {
 
 void onboardparams_startup();
 
-void onboardparams_PI_setParam();
+void onboardparams_PI_setOnBoardParam();
 
-void onboardparams_PI_getParam();
+void onboardparams_PI_getOnBoardParam();
 
 #ifdef __cplusplus
 }

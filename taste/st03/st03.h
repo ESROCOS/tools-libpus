@@ -18,8 +18,8 @@ void st03_PI_HkReportTrigger();
 extern void st03_RI_newTm(const asn1SccPusPacket *);
 
 extern void st03_RI_getParamValue(const asn1SccPusSt03ParameterId *,
-                                  asn1SccPusSt01FailureCode *,
-                                  asn1SccPusSt03StoredParam *);
+                                  asn1SccPusSt03StoredParam *,
+                                  asn1SccPusSt01FailureCode *);
 
 extern void st03_RI_getApid(asn1SccPusApid *);
 

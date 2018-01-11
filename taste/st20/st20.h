@@ -15,9 +15,9 @@ void st20_startup();
 
 void st20_PI_tc20(const asn1SccPusPacket *);
 
-extern void st20_RI_setParam();
+extern void st20_RI_setOnBoardParam();
 
-extern void st20_RI_getParam();
+extern void st20_RI_getOnBoardParam();
 
 extern void st20_RI_newTm(const asn1SccPusPacket *);
 

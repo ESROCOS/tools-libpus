@@ -20,8 +20,8 @@ void st12_PI_tc12(const asn1SccPusPacket *);
 extern void st12_RI_pushNewEvent(const asn1SccPusSt05Event *);
 
 extern void st12_RI_getParamValue(const asn1SccPusSt03ParameterId *,
-                                  asn1SccPusSt01FailureCode *,
-                                  asn1SccPusSt03StoredParam *);
+                                  asn1SccPusSt03StoredParam *,
+                                  asn1SccPusSt01FailureCode *);
 
 extern void st12_RI_ACK(const asn1SccPusPacket *,
                         const asn1SccPusSubserviceType *,

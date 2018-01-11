@@ -29,6 +29,12 @@ extern void st23_RI_getApid(asn1SccPusApid *);
 
 extern void st23_RI_getSequenceCount(asn1SccPusSequenceCount *);
 
+extern void st23_RI_ACK(const asn1SccPusPacket *,
+                        const asn1SccPusSubserviceType *,
+                        const asn1SccPusSt01FailureCode *,
+                        const asn1SccPusSt01FailureInfo *,
+                        const asn1SccPusStepId *);
+
 #ifdef __cplusplus
 }
 #endif

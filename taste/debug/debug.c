@@ -1,19 +1,14 @@
 /* User code: This file will not be overwritten by TASTE. */
 
-#include "onboardparams.h"
+#include "debug.h"
 
-void onboardparams_startup()
+void debug_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
 }
 
-void onboardparams_PI_setOnBoardParam()
-{
-    /* Write your code here! */
-}
-
-void onboardparams_PI_getOnBoardParam()
+void debug_PI_a()
 {
     /* Write your code here! */
 }
