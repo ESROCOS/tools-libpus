@@ -60,6 +60,42 @@ void test_st18_packets()
 	pus_setTcService(&tc, 2); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_ERROR_TC_SERVICE, PUS_EXPECT_ST18TC(&tc, 0));
 
+	pus_clearError();
+
+	pusSt18ObcpId_t id, id2;
+	memcpy(id.arr, "OBCPID001\0", 10);
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_setObcpId(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_getObcpId(NULL, NULL));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_1_createLoadObcpDirectRequest(&tc, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
+
+	memcpy(id.arr, "OBCPID002\0", 10);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_2_createUnloadObcpRequest(&tc, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
+
+	memcpy(id.arr, "OBCPID003\0", 10);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_3_createActivateObcpRequest(&tc, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
+
+	memcpy(id.arr, "OBCPID004\0", 10);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_4_createStopObcpRequest(&tc, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
+
+	memcpy(id.arr, "OBCPID013\0", 10);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_13_createLoadObcpReferenceRequest(&tc, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
+
 }
 
 

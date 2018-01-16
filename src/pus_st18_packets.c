@@ -220,9 +220,9 @@ pusError_t pus_tc_18_22_createStopObcpEngineRequest(pusPacket_t* outTc, pusApid_
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_tc_18_X_setObcpId(pusPacket_t* outTc, const pusSt18ObcpId_t obcpId[])
+pusError_t pus_tc_18_X_setObcpId(pusPacket_t* outTc, const pusSt18ObcpId_t* obcpId)
 {
-	if( NULL == outTc )
+	if( NULL == outTc || obcpId == NULL )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -262,7 +262,7 @@ pusError_t pus_tc_18_X_setObcpId(pusPacket_t* outTc, const pusSt18ObcpId_t obcpI
 
 pusError_t pus_tc_18_X_getObcpId(pusSt18ObcpId_t* obcpId, const pusPacket_t* outTc)
 {
-	if( NULL == outTc )
+	if( NULL == outTc || obcpId == NULL )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}

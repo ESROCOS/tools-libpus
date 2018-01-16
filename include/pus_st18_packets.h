@@ -126,10 +126,10 @@ pusError_t pus_tc_18_22_createStopObcpEngineRequest(pusPacket_t* outTc, pusApid_
 
 
 //! Setter for the OBCP ID of a TC[18,X] packet
-pusError_t pus_tc_18_X_setObcpId(pusPacket_t* outTc, const pusSt18ObcpId_t obcpId[]);
+pusError_t pus_tc_18_X_setObcpId(pusPacket_t* outTc, const pusSt18ObcpId_t* obcpId);
 
 //! Getter for the OBCP ID of a TC[18,X] packet
-pusError_t pus_tc_18_X_getObcpId(pusSt18ObcpId_t obcpId[], const pusPacket_t* outTc);
+pusError_t pus_tc_18_X_getObcpId(pusSt18ObcpId_t* obcpId, const pusPacket_t* outTc);
 
 //
 // Parameter checking
