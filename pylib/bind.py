@@ -58,7 +58,7 @@ else:
     route_to_h = ""
 
 files = ["pus_packet.h", "pus_apid.h", "pus_st01_packets.h", "pus_st03_packets.h", "pus_st05_packets.h", "pus_st08_packets.h", "pus_st09_packets.h",
-         "pus_st11_packets.h", "pus_st17_packets.h", "pus_st19_packets.h", "pus_st12_packets.h"]
+         "pus_st11_packets.h", "pus_st17_packets.h", "pus_st19_packets.h", "pus_st12_packets.h", "pus_st20_packets.h"]
 
 with open("tempbinding" + ".cpp", "w") as outfile:
     outfile.write("#include \"pybind11/pybind11.h\"\n")

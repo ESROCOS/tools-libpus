@@ -11,12 +11,14 @@
 #include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
+#include "pus_st20_packets.h"
 #include "pus_housekeeping.h"
 #include "pus_time.h"
 #include "pus_events.h"
 
 #include "pus_bindingfunctions.hpp"
 
+// We had to define this function to make sure st08 worked
 extern "C" {
 	pusError_t example_function()
 	{
@@ -88,6 +90,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	py::class_<pusTime_t>(m, "pusTime_t")
 			.def(py::init<>());
 	m.def("pus_now", &pus_now, "Binding for pus_now");
+	m.def("pus_posix2time", &pus_posix2time_, "Binding for posix2time");
 
 	py::class_<pusPacketReduced_t>(m, "pusPacketReduced_t")
 			.def(py::init<>());
@@ -315,5 +318,20 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_19_1_setAction", &pus_tc_19_1_setAction, "Binding for pus_tc_19_1_setAction");
 	m.def("pus_tc_19_1_getAction", &pus_tc_19_1_getAction, "Binding for pus_tc_19_1_getAction");
 	m.def("pus_expectSt19Tc", &pus_expectSt19Tc, "Binding for pus_expectSt19Tc");
+
+	m.doc() = "pus_st20_packets binding";
+	m.def("pus_tc_20_1_createParameterValueRequest", &pus_tc_20_1_createParameterValueRequest, "Binding for pus_tc_20_1_createParameterValueRequest");
+	m.def("pus_tm_20_2_createParameterValueReport", &pus_tm_20_2_createParameterValueReport, "Binding for pus_tm_20_2_createParameterValueReport");
+	m.def("pus_tc_20_3_createSetParameterValueRequest", &pus_tc_20_3_createSetParameterValueRequest, "Binding for pus_tc_20_3_createSetParameterValueRequest");
+	m.def("pus_tc_20_X_setParamId", &pus_tc_20_X_setParamId, "Binding for pus_tc_20_X_setParamId");
+	m.def("pus_tc_20_X_getParamId", &pus_tc_20_X_getParamId, "Binding for pus_tc_20_X_getParamId");
+	m.def("pus_tc_20_3_setParamValue", &pus_tc_20_3_setParamValue, "Binding for pus_tc_20_3_setParamValue");
+	m.def("pus_tc_20_3_getParamValue", &pus_tc_20_3_getParamValue, "Binding for pus_tc_20_3_getParamValue");
+	m.def("pus_tm_20_2_setParamId", &pus_tm_20_2_setParamId, "Binding for pus_tm_20_2_setParamId");
+	m.def("pus_tm_20_2_getParamId", &pus_tm_20_2_getParamId, "Binding for pus_tm_20_2_getParamId");
+	m.def("pus_tm_20_2_setParamValue", &pus_tm_20_2_setParamValue, "Binding for pus_tm_20_2_setParamValue");
+	m.def("pus_tm_20_2_getParamValue", &pus_tm_20_2_getParamValue, "Binding for pus_tm_20_2_getParamValue");
+	m.def("pus_expectSt20Tc", &pus_expectSt20Tc, "Binding for pus_expectSt20Tc");
+	m.def("pus_expectSt20Tm", &pus_expectSt20Tm, "Binding for pus_expectSt20Tm");
 
 }

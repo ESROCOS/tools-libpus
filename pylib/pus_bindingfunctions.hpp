@@ -15,15 +15,20 @@
 #include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
+#include "pus_st20_packets.h"
 #include "pus_events.h"
-#include <time.h>
 #include <stdint.h>
 
 typedef unsigned int uint;
 typedef unsigned long long int ull;
 typedef long long int ll;
 
+/**
+ * This function has been done with testing purposes only.
+ */
 int ret_packets(pusPacket_t *tm, int i);
+
+void pus_posix2time_(pusTime_t* outPusTime, time_t posixTime);
 
 pusError_t pus_initApidInfo_null(pusApidInfo_t* obj, pusApid_t apid);
 uint pus_getPacketVersion_(const pusPacket_t* packet);
