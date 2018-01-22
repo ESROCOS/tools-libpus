@@ -14,7 +14,7 @@
 #include <stdbool.h>
 
 
-#include "../../include/pus_st18_packets.h"
+#include "pus_st18_packets.h"
 
 
 
