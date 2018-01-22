@@ -22,29 +22,36 @@ void test_st18_packets()
 {
 
 	pusPacket_t tc;
+	pusSt18ObcpId_t id, id2;
+	pusSt18ObcpCode_t code, code2;
+	pusSt18ObcpStepId_t step = 1;
+
+	memcpy(id.arr, "OBCPID001\0", 10);
+	code.nCount = 10;
+	memcpy(code.arr, "OBCPID001\0", 10);
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_createDefaultRequest(NULL, 1, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_1_createLoadObcpDirectRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_2_createUnloadObcpRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_3_createActivateObcpRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_4_createStopObcpRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_5_createSuspendObcpRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_6_createResumeObcpRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_12_createAbortObcpRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_createLoadObcpReferenceRequest(NULL, 1, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_1_createLoadObcpDirectRequest(NULL, 1, 1, NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_2_createUnloadObcpRequest(NULL, 1, 1, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_3_createActivateObcpRequest(NULL, 1, 1, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_4_createStopObcpRequest(NULL, 1, 1, NULL, step));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_5_createSuspendObcpRequest(NULL, 1, 1, NULL, step));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_6_createResumeObcpRequest(NULL, 1, 1, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_12_createAbortObcpRequest(NULL, 1, 1, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_createLoadObcpReferenceRequest(NULL, 1, 1, NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_21_createStartObcpEngineRequest(NULL, 1, 1));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_22_createStopObcpEngineRequest(NULL, 1, 1));
 	pus_clearError();
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_createDefaultRequest(&tc, 1, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_1_createLoadObcpDirectRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_2_createUnloadObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_3_createActivateObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_4_createStopObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_5_createSuspendObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_6_createResumeObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_12_createAbortObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_13_createLoadObcpReferenceRequest(&tc, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_1_createLoadObcpDirectRequest(&tc, 1, 1, &id, &code));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_2_createUnloadObcpRequest(&tc, 1, 1, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_3_createActivateObcpRequest(&tc, 1, 1, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_4_createStopObcpRequest(&tc, 1, 1, &id, step));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_5_createSuspendObcpRequest(&tc, 1, 1, &id, step));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_6_createResumeObcpRequest(&tc, 1, 1, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_12_createAbortObcpRequest(&tc, 1, 1, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_13_createLoadObcpReferenceRequest(&tc, 1, 1, &id));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_21_createStartObcpEngineRequest(&tc, 1, 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_22_createStopObcpEngineRequest(&tc, 1, 1));
 
@@ -62,37 +69,42 @@ void test_st18_packets()
 
 	pus_clearError();
 
-	pusSt18ObcpId_t id, id2;
 	memcpy(id.arr, "OBCPID001\0", 10);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_setObcpId(NULL, NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_getObcpId(NULL, NULL));
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_1_createLoadObcpDirectRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_1_createLoadObcpDirectRequest(&tc, 1, 1, &id, &code));
+	//CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
 	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_1_getObcpCode(&code2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(code.arr, code2.arr, 10))
+	CU_ASSERT_EQUAL(code.nCount, code2.nCount)
 
 	memcpy(id.arr, "OBCPID002\0", 10);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_2_createUnloadObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_2_createUnloadObcpRequest(&tc, 1, 1, &id));
+	//CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
 	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
 
 	memcpy(id.arr, "OBCPID003\0", 10);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_3_createActivateObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_3_createActivateObcpRequest(&tc, 1, 1, &id));
+	//CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
 	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
 
 	memcpy(id.arr, "OBCPID004\0", 10);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_4_createStopObcpRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_4_createStopObcpRequest(&tc, 1, 1, &id, 3));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
 	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
+	pusSt18ObcpStepId_t step2=0;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_4_5_getObcpStepId(&step2, &tc));
+	CU_ASSERT_EQUAL(3, step2);
+
 
 	memcpy(id.arr, "OBCPID013\0", 10);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_13_createLoadObcpReferenceRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_13_createLoadObcpReferenceRequest(&tc, 1, 1, &id));
+	//CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
 	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
 

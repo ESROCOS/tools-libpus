@@ -49,7 +49,7 @@ pusError_t pus_tc_18_X_createDefaultRequest(pusPacket_t* outTc, pusApid_t apid, 
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_1_createLoadObcpDirectRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_18_1_createLoadObcpDirectRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, const pusSt18ObcpCode_t* code);
 
 /*! Builds a TC[23,2] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -57,7 +57,7 @@ pusError_t pus_tc_18_1_createLoadObcpDirectRequest(pusPacket_t* outTc, pusApid_t
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_2_createUnloadObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_18_2_createUnloadObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
 
 /*! Builds a TC[23,3] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -65,7 +65,7 @@ pusError_t pus_tc_18_2_createUnloadObcpRequest(pusPacket_t* outTc, pusApid_t api
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
 
 /*! Builds a TC[23,4] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -73,7 +73,7 @@ pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t a
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_4_createStopObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_18_4_createStopObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, pusSt18ObcpStepId_t step);
 
 /*! Builds a TC[23,5] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -81,7 +81,7 @@ pusError_t pus_tc_18_4_createStopObcpRequest(pusPacket_t* outTc, pusApid_t apid,
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_5_createSuspendObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_18_5_createSuspendObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, pusSt18ObcpStepId_t step);
 
 
 /*! Builds a TC[23,6] packet in the packet passed as parameter.
@@ -90,7 +90,7 @@ pusError_t pus_tc_18_5_createSuspendObcpRequest(pusPacket_t* outTc, pusApid_t ap
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_6_createResumeObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_18_6_createResumeObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
 
 /*! Builds a TC[23,12] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -98,7 +98,7 @@ pusError_t pus_tc_18_6_createResumeObcpRequest(pusPacket_t* outTc, pusApid_t api
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_12_createAbortObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_18_12_createAbortObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
 
 /*! Builds a TC[23,13] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -106,7 +106,7 @@ pusError_t pus_tc_18_12_createAbortObcpRequest(pusPacket_t* outTc, pusApid_t api
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
 
 /*! Builds a TC[23,21] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -130,6 +130,18 @@ pusError_t pus_tc_18_X_setObcpId(pusPacket_t* outTc, const pusSt18ObcpId_t* obcp
 
 //! Getter for the OBCP ID of a TC[18,X] packet
 pusError_t pus_tc_18_X_getObcpId(pusSt18ObcpId_t* obcpId, const pusPacket_t* outTc);
+
+//! Setter for the OBCP Code of a TC[18,1] packet
+pusError_t pus_tc_18_1_setObcpCode(pusPacket_t* outTc, const pusSt18ObcpCode_t* code);
+
+//! Getter for the OBCP Code of a TC[18,1] packet
+pusError_t pus_tc_18_1_getObcpCode(pusSt18ObcpCode_t* code, const pusPacket_t* outTc);
+
+//! Setter for the OBCP Step Id of a TC[18,4] and TC[18,5] packet
+pusError_t pus_tc_18_4_5_setObcpStepId(pusPacket_t* outTc, pusSt18ObcpStepId_t obcpId);
+
+//! Getter for the OBCP Step Id of a TC[18,4] and TC[18,5] packet
+pusError_t pus_tc_18_4_5_getObcpStepId(pusSt18ObcpStepId_t* obcpId, const pusPacket_t* outTc);
 
 //
 // Parameter checking

@@ -32,9 +32,9 @@ pusError_t pus_tc_18_X_createDefaultRequest(pusPacket_t* outTc, pusApid_t apid, 
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_tc_18_1_createLoadObcpDirectRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_18_1_createLoadObcpDirectRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, const pusSt18ObcpCode_t* code)
 {
-	if ( NULL == outTc )
+	if ( NULL == outTc || NULL == obcpId || NULL == code )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -47,13 +47,15 @@ pusError_t pus_tc_18_1_createLoadObcpDirectRequest(pusPacket_t* outTc, pusApid_t
 
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_1);
+	pus_tc_18_X_setObcpId(outTc, obcpId);
+	pus_tc_18_1_setObcpCode(outTc, code);
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_2_createUnloadObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_18_2_createUnloadObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId)
 {
-	if ( NULL == outTc )
+	if ( NULL == outTc || NULL == obcpId )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -66,13 +68,15 @@ pusError_t pus_tc_18_2_createUnloadObcpRequest(pusPacket_t* outTc, pusApid_t api
 
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_2_6_12);
+	pus_tc_18_X_setObcpId(outTc, obcpId);
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+
+	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId)
 {
-	if ( NULL == outTc )
+	if ( NULL == outTc || NULL == obcpId )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -85,13 +89,15 @@ pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t a
 
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_3);
+	pus_tc_18_X_setObcpId(outTc, obcpId);
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+
+	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_4_createStopObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_18_4_createStopObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, pusSt18ObcpStepId_t step)
 {
-	if ( NULL == outTc )
+	if ( NULL == outTc || NULL == obcpId )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -104,13 +110,15 @@ pusError_t pus_tc_18_4_createStopObcpRequest(pusPacket_t* outTc, pusApid_t apid,
 
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_4_5);
+	pus_tc_18_X_setObcpId(outTc, obcpId);
+	pus_tc_18_4_5_setObcpStepId(outTc, step);
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_5_createSuspendObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_18_5_createSuspendObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, pusSt18ObcpStepId_t step)
 {
-	if ( NULL == outTc )
+	if ( NULL == outTc || NULL == obcpId )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -123,13 +131,15 @@ pusError_t pus_tc_18_5_createSuspendObcpRequest(pusPacket_t* outTc, pusApid_t ap
 
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_4_5);
+	pus_tc_18_X_setObcpId(outTc, obcpId);
+	pus_tc_18_4_5_setObcpStepId(outTc, step);
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_6_createResumeObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_18_6_createResumeObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId)
 {
-	if ( NULL == outTc )
+	if ( NULL == outTc || NULL == obcpId )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -142,13 +152,15 @@ pusError_t pus_tc_18_6_createResumeObcpRequest(pusPacket_t* outTc, pusApid_t api
 
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_2_6_12);
+	pus_tc_18_X_setObcpId(outTc, obcpId);
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+
+	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_12_createAbortObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_18_12_createAbortObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId)
 {
-	if ( NULL == outTc )
+	if ( NULL == outTc || NULL == obcpId )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -161,13 +173,15 @@ pusError_t pus_tc_18_12_createAbortObcpRequest(pusPacket_t* outTc, pusApid_t api
 
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_2_6_12);
+	pus_tc_18_X_setObcpId(outTc, obcpId);
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+
+	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId)
 {
-	if ( NULL == outTc )
+	if ( NULL == outTc || NULL == obcpId )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -180,8 +194,10 @@ pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusAp
 
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_13);
+	pus_tc_18_X_setObcpId(outTc, obcpId);
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+
+	return PUS_GET_ERROR();
 }
 
 pusError_t pus_tc_18_21_createStartObcpEngineRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
@@ -234,27 +250,27 @@ pusError_t pus_tc_18_X_setObcpId(pusPacket_t* outTc, const pusSt18ObcpId_t* obcp
 	if( pus_TC_DATA_ST_18_1 == pus_getTcDataKind(outTc) )
 	{
 		outTc->data.u.tcData.data.u.st_18_1.obcpId = *obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 	if( pus_TC_DATA_ST_18_2_6_12 == pus_getTcDataKind(outTc) )
 	{
 		outTc->data.u.tcData.data.u.st_18_2_6_12.obcpId = *obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 	if( pus_TC_DATA_ST_18_3 == pus_getTcDataKind(outTc) )
 	{
 		outTc->data.u.tcData.data.u.st_18_3.obcpId = *obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 	if( pus_TC_DATA_ST_18_4_5 == pus_getTcDataKind(outTc) )
 	{
 		outTc->data.u.tcData.data.u.st_18_4_5.obcpId = *obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 	if( pus_TC_DATA_ST_18_13 == pus_getTcDataKind(outTc) )
 	{
 		outTc->data.u.tcData.data.u.st_18_13.obcpId = *obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 
 	return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
@@ -274,32 +290,110 @@ pusError_t pus_tc_18_X_getObcpId(pusSt18ObcpId_t* obcpId, const pusPacket_t* out
 	if( pus_TC_DATA_ST_18_1 == pus_getTcDataKind(outTc) )
 	{
 		*obcpId = outTc->data.u.tcData.data.u.st_18_1.obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 	if( pus_TC_DATA_ST_18_2_6_12 == pus_getTcDataKind(outTc) )
 	{
 		*obcpId = outTc->data.u.tcData.data.u.st_18_2_6_12.obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 	if( pus_TC_DATA_ST_18_3 == pus_getTcDataKind(outTc) )
 	{
 		*obcpId = outTc->data.u.tcData.data.u.st_18_3.obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 	if( pus_TC_DATA_ST_18_4_5 == pus_getTcDataKind(outTc) )
 	{
 		*obcpId = outTc->data.u.tcData.data.u.st_18_4_5.obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 	if( pus_TC_DATA_ST_18_13 == pus_getTcDataKind(outTc) )
 	{
 		*obcpId = outTc->data.u.tcData.data.u.st_18_13.obcpId;
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_NO_ERROR;
 	}
 
 	return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 }
 
+
+
+pusError_t pus_tc_18_1_setObcpCode(pusPacket_t* outTc, const pusSt18ObcpCode_t* code)
+{
+	if( NULL == outTc || NULL == code )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pusSubtype_NONE))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_1 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	outTc->data.u.tcData.data.u.st_18_1.obcpCode = *code;
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_18_1_getObcpCode(pusSt18ObcpCode_t* code, const pusPacket_t* outTc)
+{
+	if( NULL == outTc || NULL == code )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pusSubtype_NONE))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_1 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	*code = outTc->data.u.tcData.data.u.st_18_1.obcpCode;
+	return PUS_NO_ERROR;
+}
+
+
+pusError_t pus_tc_18_4_5_setObcpStepId(pusPacket_t* outTc, pusSt18ObcpStepId_t step)
+{
+	if( NULL == outTc )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pusSubtype_NONE))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_4_5 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	outTc->data.u.tcData.data.u.st_18_4_5.stepId = step;
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_18_4_5_getObcpStepId(pusSt18ObcpStepId_t* step, const pusPacket_t* outTc)
+{
+	if( NULL == outTc || NULL == step )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pusSubtype_NONE))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_4_5 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	*step = outTc->data.u.tcData.data.u.st_18_4_5.stepId;
+	return PUS_NO_ERROR;
+}
 
 pusError_t pus_expectSt18Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
 {
