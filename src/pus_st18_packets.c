@@ -74,7 +74,7 @@ pusError_t pus_tc_18_2_createUnloadObcpRequest(pusPacket_t* outTc, pusApid_t api
 	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId)
+pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, pusSt18ObservabilityLevel_t observability)
 {
 	if ( NULL == outTc || NULL == obcpId )
 	{
@@ -90,7 +90,7 @@ pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t a
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_3);
 	pus_tc_18_X_setObcpId(outTc, obcpId);
-
+	pus_tc_18_3_setObservabilityLevel(outTc, observability);
 
 	return PUS_GET_ERROR();
 }
@@ -179,9 +179,11 @@ pusError_t pus_tc_18_12_createAbortObcpRequest(pusPacket_t* outTc, pusApid_t api
 	return PUS_GET_ERROR();
 }
 
-pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId)
+
+pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt18ObcpId_t* obcpId, const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName)
 {
-	if ( NULL == outTc || NULL == obcpId )
+	if ( NULL == outTc || NULL == obcpId || NULL == repository || NULL == fileName )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
@@ -195,7 +197,8 @@ pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusAp
 	//Set data field
 	pus_setTcDataKind(outTc, pus_TC_DATA_ST_18_13);
 	pus_tc_18_X_setObcpId(outTc, obcpId);
-
+	pus_tc_18_13_setFileName(outTc, fileName);
+	pus_tc_18_13_setRepositoryPath(outTc, repository);
 
 	return PUS_GET_ERROR();
 }
@@ -324,7 +327,7 @@ pusError_t pus_tc_18_1_setObcpCode(pusPacket_t* outTc, const pusSt18ObcpCode_t* 
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pusSubtype_NONE))
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pus_TC_18_1_loadObcpDirect))
 	{
 		return PUS_GET_ERROR();
 	}
@@ -343,7 +346,7 @@ pusError_t pus_tc_18_1_getObcpCode(pusSt18ObcpCode_t* code, const pusPacket_t* o
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pusSubtype_NONE))
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pus_TC_18_1_loadObcpDirect))
 	{
 		return PUS_GET_ERROR();
 	}
@@ -356,6 +359,43 @@ pusError_t pus_tc_18_1_getObcpCode(pusSt18ObcpCode_t* code, const pusPacket_t* o
 	return PUS_NO_ERROR;
 }
 
+pusError_t pus_tc_18_3_setObservabilityLevel(pusPacket_t* outTc, pusSt18ObservabilityLevel_t observability)
+{
+	if( NULL == outTc )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pus_TC_18_3_activateObcp))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_3 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	outTc->data.u.tcData.data.u.st_18_3.observabilityLevel = observability;
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_18_3_getObservabilityLevel(pusSt18ObservabilityLevel_t* observability, const pusPacket_t* outTc)
+{
+	if( NULL == outTc || NULL == observability )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pus_TC_18_3_activateObcp))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_3 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	*observability = outTc->data.u.tcData.data.u.st_18_3.observabilityLevel;
+	return PUS_NO_ERROR;
+}
 
 pusError_t pus_tc_18_4_5_setObcpStepId(pusPacket_t* outTc, pusSt18ObcpStepId_t step)
 {
@@ -392,6 +432,83 @@ pusError_t pus_tc_18_4_5_getObcpStepId(pusSt18ObcpStepId_t* step, const pusPacke
 	}
 
 	*step = outTc->data.u.tcData.data.u.st_18_4_5.stepId;
+	return PUS_NO_ERROR;
+}
+
+
+pusError_t pus_tc_18_13_setFileName(pusPacket_t* outTc, const pusSt23FileName_t* fileName)
+{
+	if( NULL == outTc || NULL == fileName )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pus_TC_18_13_loadObcpByReference))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_13 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	outTc->data.u.tcData.data.u.st_18_13.fileName = *fileName;
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_18_13_getFileName(pusSt23FileName_t* fileName, const pusPacket_t* outTc)
+{
+	if( NULL == outTc || NULL == fileName )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pus_TC_18_13_loadObcpByReference))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_13 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	*fileName = outTc->data.u.tcData.data.u.st_18_13.fileName;
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_18_13_setRepositoryPath(pusPacket_t* outTc, const pusSt23RepositoryPath_t* repository)
+{
+	if( NULL == outTc || NULL == repository )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pus_TC_18_13_loadObcpByReference))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_13 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	outTc->data.u.tcData.data.u.st_18_13.repository = *repository;
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_18_13_getRepositoryPath(pusSt23RepositoryPath_t* repository, const pusPacket_t* outTc)
+{
+	if( NULL == outTc || NULL == repository )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST18TC(outTc, pus_TC_18_13_loadObcpByReference))
+	{
+		return PUS_GET_ERROR();
+	}
+	if( pus_TC_DATA_ST_18_13 != pus_getTcDataKind(outTc) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
+	}
+
+	*repository = outTc->data.u.tcData.data.u.st_18_13.repository;
 	return PUS_NO_ERROR;
 }
 

@@ -86,6 +86,9 @@ typedef asn1SccPusSt18ObcpId pusSt18ObcpId_t; //! Obcp procedure identifier
 typedef asn1SccPusSt18ObcpCode pusSt18ObcpCode_t; //! Obcp procedure code
 typedef asn1SccPusSt18ObcpChecksum pusSt18ObcpChecksum_t; //! Obcp procedure checksum
 typedef asn1SccPusSt18ObservabilityLevel pusSt18ObservabilityLevel_t; //! Obcp observability level
+typedef asn1SccPusUInt32 pusSt18ObcpStepId_t; //! OBCP step id
+
+
 #define PUS_ST18_OBSERVABILITY_NONE 0
 #define PUS_ST18_OBSERVABILITY_PROCEDURE 1
 #define PUS_ST18_OBSERVABILITY_STEP 2

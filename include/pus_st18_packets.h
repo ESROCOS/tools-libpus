@@ -37,16 +37,18 @@ extern "C" {
 
 /*! Builds a default TC[18,X] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] subtype Subservice type of the request
  *  \return Error code (PUS_NO_ERROR if success)
  */
 pusError_t pus_tc_18_X_createDefaultRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype);
 
 /*! Builds a TC[23,1] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] obcpId OCBP identifier
  *  \return Error code (PUS_NO_ERROR if success)
  */
 pusError_t pus_tc_18_1_createLoadObcpDirectRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, const pusSt18ObcpCode_t* code);
@@ -61,56 +63,69 @@ pusError_t pus_tc_18_2_createUnloadObcpRequest(pusPacket_t* outTc, pusApid_t api
 
 /*! Builds a TC[23,3] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] obcpId OCBP identifier
+ *  \param[in] observability Observability level to use during the execution of the OBCP
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
+pusError_t pus_tc_18_3_createActivateObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt18ObcpId_t* obcpId, pusSt18ObservabilityLevel_t observability);
 
 /*! Builds a TC[23,4] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] obcpId OCBP identifier
+ *  \param[in] step Step where the Obcp shall be stopped.
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_4_createStopObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, pusSt18ObcpStepId_t step);
+pusError_t pus_tc_18_4_createStopObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt18ObcpId_t* obcpId, pusSt18ObcpStepId_t step);
 
 /*! Builds a TC[23,5] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] obcpId OCBP identifier
+ *  \param[in] step Step where the Obcp shall be suspended.
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_5_createSuspendObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId, pusSt18ObcpStepId_t step);
+pusError_t pus_tc_18_5_createSuspendObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt18ObcpId_t* obcpId, pusSt18ObcpStepId_t step);
 
 
 /*! Builds a TC[23,6] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] obcpId OCBP identifier
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_6_createResumeObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
+pusError_t pus_tc_18_6_createResumeObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,const pusSt18ObcpId_t* obcpId);
 
 /*! Builds a TC[23,12] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
  *  \param[in] apid APID of the process sending the report
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] obcpId OCBP identifier
  *  \return Error code (PUS_NO_ERROR if success)
  */
 pusError_t pus_tc_18_12_createAbortObcpRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
 
 /*! Builds a TC[23,13] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
+ *  \param[in] obcpId OCBP identifier
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt18ObcpId_t* obcpId);
+pusError_t pus_tc_18_13_createLoadObcpReferenceRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt18ObcpId_t* obcpId, const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName);
 
 /*! Builds a TC[23,21] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
@@ -118,7 +133,7 @@ pusError_t pus_tc_18_21_createStartObcpEngineRequest(pusPacket_t* outTc, pusApid
 
 /*! Builds a TC[23,22] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
- *  \param[in] apid APID of the process sending the report
+ *  \param[in] apid APID of the process sending the request
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
@@ -137,11 +152,29 @@ pusError_t pus_tc_18_1_setObcpCode(pusPacket_t* outTc, const pusSt18ObcpCode_t* 
 //! Getter for the OBCP Code of a TC[18,1] packet
 pusError_t pus_tc_18_1_getObcpCode(pusSt18ObcpCode_t* code, const pusPacket_t* outTc);
 
+//! Setter for the OBCP observability level of a TC[18,3] packet
+pusError_t pus_tc_18_3_setObservabilityLevel(pusPacket_t* outTc, pusSt18ObservabilityLevel_t observability);
+
+//! Getter for the OBCP observability level of a TC[18,3] packet
+pusError_t pus_tc_18_3_getObservabilityLevel(pusSt18ObservabilityLevel_t* observability, const pusPacket_t* outTc);
+
 //! Setter for the OBCP Step Id of a TC[18,4] and TC[18,5] packet
 pusError_t pus_tc_18_4_5_setObcpStepId(pusPacket_t* outTc, pusSt18ObcpStepId_t obcpId);
 
 //! Getter for the OBCP Step Id of a TC[18,4] and TC[18,5] packet
 pusError_t pus_tc_18_4_5_getObcpStepId(pusSt18ObcpStepId_t* obcpId, const pusPacket_t* outTc);
+
+//! Setter for the OBCP file name of a TC[18,13] packet
+pusError_t pus_tc_18_13_setFileName(pusPacket_t* outTc, const pusSt23FileName_t* fileName);
+
+//! Getter for the OBCP file name of a TC[18,13] packet
+pusError_t pus_tc_18_13_getFileName(pusSt23FileName_t* fileName, const pusPacket_t* outTc);
+
+//! Setter for the OBCP repository path of a TC[18,13] packet
+pusError_t pus_tc_18_13_setRepositoryPath(pusPacket_t* outTc, const pusSt23RepositoryPath_t* repository);
+
+//! Getter for the OBCP repository path of a TC[18,13] packet
+pusError_t pus_tc_18_13_getRepositoryPath(pusSt23RepositoryPath_t* repository, const pusPacket_t* outTc);
 
 //
 // Parameter checking
