@@ -14,9 +14,22 @@
 #include "pus_error.h"
 #include "pus_threads.h"
 
+#include <stdio.h>
+
 #ifdef  __cplusplus
 extern "C" {
 #endif
+
+//! Type to manage files
+typedef struct
+{
+	pusSt23RepositoryPath_t repository; //!< Reposirory of the file
+	pusSt23FileName_t fileName; //!< File name
+	pusSt23MaximumSize_t maxSize; //!< Size  of the file
+	bool opened; //!< True if file is opened
+	bool deleted; //!< True if file is deleted
+	FILE* file;
+}pusSt23File_t;
 
 extern pusSt23FilesTableSize_t pus_files_tableSize;
 
@@ -40,7 +53,7 @@ extern pusError_t pus_files_configure();
  *  \param[inout] mutex Mutex to be initialized; if NULL, access protection is disabled
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_files_initialize(pusMutex_t* mutex);
+pusError_t pus_files_initialize(pusMutex_t* mutex, pusSt23RepositoryPath_t* repository);
 
 //! Release the resources allocated by the files manager
 /*! \return Error code (PUS_NO_ERROR if success)
@@ -49,6 +62,9 @@ pusError_t pus_files_finalize();
 
 //! Check if the files manager is initialized
 bool pus_files_isInitialized();
+
+pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, pusSt23MaximumSize_t size);
+pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName);
 
 
 #ifdef  __cplusplus

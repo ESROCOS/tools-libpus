@@ -25,9 +25,11 @@ extern "C" {
 #include "pus_file_management.h"
 
 
-#define PUS_ST23_FLES_LIMIT ((size_t) ${config['maximumFiles']})
+#define PUS_ST23_FILES_LIMIT ((size_t) ${config['maximumFiles']})
 
 extern pusSt23FilesTableSize_t pus_files_tableSize;
+
+extern pusSt23File_t pus_files_table[];
 
 //! Initialize the configuration of the ST[23] service from the mission database
 pusError_t pus_files_configure();

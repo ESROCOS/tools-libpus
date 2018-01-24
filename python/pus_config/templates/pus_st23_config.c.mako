@@ -21,9 +21,10 @@
 
 pusSt23FilesTableSize_t pus_files_tableSize = ${config['maximumFiles']};
 
+pusSt23File_t pus_files_table[PUS_ST23_FILES_LIMIT];
+
 pusError_t pus_files_configure()
 {
-
 
     return PUS_NO_ERROR;
 }

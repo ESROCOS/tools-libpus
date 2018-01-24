@@ -178,6 +178,8 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 //! First value not representable by the pusPacketDataLength_t type
 #define pusPacketDataLength_LIMIT pusUInt16_LIMIT
 
+#define pus_ST23_MAX_SIZE_FILE_PATH pus_ST23_MAX_SIZE_FILE_PATH
+
 #ifdef  __cplusplus
 }
 #endif

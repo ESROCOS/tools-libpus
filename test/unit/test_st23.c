@@ -16,6 +16,7 @@
 
 
 #include "../../include/pus_st23_packets.h"
+#include "pus_file_management.h"
 
 
 void packets_st23()
@@ -27,7 +28,7 @@ void packets_st23()
 	pusSt23FileName_t file, file2, file3;
 	pusSt23MaximumSize_t size, size2;
 
-	printf("Sizeof packet: %lu, packetReduced: %lu\n", sizeof(tc), sizeof(pusPacketReduced_t));
+	//printf("Sizeof packet: %lu, packetReduced: %lu\n", sizeof(tc), sizeof(pusPacketReduced_t));
 
 	size = 5;
 
@@ -126,17 +127,34 @@ void packets_st23()
 
 void test_st23()
 {
+	pusSt23RepositoryPath_t repo;
+	repo.nCount = 10;
+	memcpy(repo.arr, "123456789\0", 10);
+
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_finalize());
 	CU_ASSERT_FALSE(pus_files_isInitialized());
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(NULL));
-	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_files_initialize(NULL));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(NULL, &repo));
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_files_initialize(NULL, &repo));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_finalize());
 
 	pusMutex_t mutex;
 	pus_mutexInitOk(&mutex);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(&mutex));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(&mutex, &repo));
 	CU_ASSERT_TRUE(pus_files_isInitialized());
+
+	pusSt23FileName_t file;
+	pusSt23MaximumSize_t size = 300;
+
+	repo.nCount = 10;
+	memcpy(repo.arr, "123456789\0", 10);
+
+	memcpy(file.arr, "/tmp/pus/hello2.txt\0", pus_ST23_MAX_SIZE_FILE_PATH);
+	file.nCount = strlen((char*)file.arr) + 1;
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_createFile(&repo, &file, size));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_deleteFile(&repo, &file));
+
 
 	pus_clearError();
 }
