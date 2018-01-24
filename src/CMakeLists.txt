@@ -4,7 +4,9 @@ set(SOURCES
     pus_error.c
     pus_event_action.c
     pus_events.c
+    pus_file_management.c
     pus_housekeeping.c
+    pus_obcp_engine.c
     pus_packet_reduced.c
     pus_packet_queues.c
     pus_packet.c
