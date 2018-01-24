@@ -20,6 +20,7 @@
 
 #include "pus_types.h"
 #include "pus_error.h"
+#include "pus_threads.h"
 
 #ifdef  __cplusplus
 extern "C" {

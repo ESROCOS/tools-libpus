@@ -85,6 +85,16 @@ int ret_packets(pusPacket_t *tm, int i)
 
 }
 
+pusPacket_t read_from_taste()
+{
+	pusMutex_t mutex;
+	pus_notify_getMutex(&mutex);
+	printf("Block 2: %d\n", mutex.__data.__lock);
+	pus_mutexLockOk(&mutex);
+	printf("Block 3: %d\n", mutex.__data.__lock);
+	return pus_notify_getPacket();
+}
+
 void pus_posix2time_(pusTime_t* outPusTime, time_t posixTime)
 {
 	struct timespec tmspc;

@@ -1,5 +1,5 @@
 #include "pybind11/pybind11.h"
-#include "pus_packet.h"
+#include "pus_notify.h"
 #include "pus_apid.h"
 #include "pus_st01_packets.h"
 #include "pus_st03_packets.h"
@@ -81,8 +81,10 @@ PYBIND11_MODULE(pusbinding, m) {
 	        .value("PUS_ERROR_REPORT_LENGTH",pusError_t::PUS_ERROR_REPORT_LENGTH)
 	        .value("PUS_LAST_ERROR",pusError_t::PUS_LAST_ERROR)
 	        .export_values();
+
 	m.def("getError", getError, "");
 	m.def("ret_packets", ret_packets);
+	m.def("read_from_taste", &read_from_taste);
 
 	py::class_<pusMutex_t>(m, "pusMutex_t")
 		.def(py::init<>());

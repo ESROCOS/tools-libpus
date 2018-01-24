@@ -5,6 +5,7 @@ set(SOURCES
     pus_event_action.c
     pus_events.c
     pus_housekeeping.c
+    pus_notify.c
     pus_packet_reduced.c
     pus_packet_queues.c
     pus_packet.c
