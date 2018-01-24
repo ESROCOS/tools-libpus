@@ -42,7 +42,8 @@ pusError_t pus_tc_23_X_createDefaultRequest(pusPacket_t* outTc, pusApid_t apid, 
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_23_1_createCreateFileRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_23_1_createCreateFileRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName, pusSt23MaximumSize_t maxSize);
 
 /*! Builds a TC[23,2] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -50,7 +51,8 @@ pusError_t pus_tc_23_1_createCreateFileRequest(pusPacket_t* outTc, pusApid_t api
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_23_2_createDeleteFileRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_23_2_createDeleteFileRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName);
 
 /*! Builds a TC[23,3] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -58,7 +60,8 @@ pusError_t pus_tc_23_2_createDeleteFileRequest(pusPacket_t* outTc, pusApid_t api
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_23_3_createReportFileAtributesRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_23_3_createReportFileAtributesRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName);
 
 /*! Builds a TM[23_4] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
@@ -67,7 +70,8 @@ pusError_t pus_tc_23_3_createReportFileAtributesRequest(pusPacket_t* outTc, pusA
  *  \param[in] destination Destination of the TM report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_23_4_createReportFileAtributesReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination);
+pusError_t pus_tm_23_4_createReportFileAtributesReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination,
+		const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName, pusSt23MaximumSize_t maxSize);
 
 /*! Builds a TC[23,1] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC
@@ -75,8 +79,45 @@ pusError_t pus_tm_23_4_createReportFileAtributesReport(pusPacket_t* outTm, pusAp
  *  \param[in] sequenceCountcount TC sequence counter for the source APID
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_23_14_createCopyFileRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_23_14_createCopyFileRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const pusSt23RepositoryPath_t* sourceRepository, const pusSt23FileName_t* sourceFileName,
+		const pusSt23RepositoryPath_t* targetRepository, const pusSt23FileName_t* targetFileName);
 
+
+//! Setter for the file name of a TC[23,X] and TM[23,4] packet
+pusError_t pus_tc_tm_23_X_setFileName(pusPacket_t* outTc, const pusSt23FileName_t* file);
+
+//! Getter for the file name of a TC[23,X] packet
+pusError_t pus_tc_tm_23_X_getFileName(pusSt23FileName_t* file, const pusPacket_t* outTc);
+
+//! Setter for the repository path of a TC[23,X] packet
+pusError_t pus_tc_tm_23_X_setRepositoryPath(pusPacket_t* outTc, const pusSt23RepositoryPath_t* repository);
+
+//! Getter for the repository path of a TC[23,X] packet
+pusError_t pus_tc_tm_23_X_getRepositoryPath(pusSt23RepositoryPath_t* repository, const pusPacket_t* outTc);
+
+//! Setter for the maximum size of a TC[23,1] and TM[23,4] packet
+pusError_t pus_tc_tm_23_1_4_setMaximumSize(pusPacket_t* outTc, pusSt23MaximumSize_t size);
+
+//! Getter for the maximum size of a TC[23,1] and TM[23,4] packet
+pusError_t pus_tc_tm_23_1_4_getMaximumSize(pusSt23MaximumSize_t* size, const pusPacket_t* outTc);
+
+
+pusError_t pus_tc_23_14_setSourceFileName(pusPacket_t* outTc, const pusSt23FileName_t* fileName);
+
+pusError_t pus_tc_23_14_getSourceFileName(pusSt23FileName_t* fileName, const pusPacket_t* outTc);
+
+pusError_t pus_tc_23_14_setTargetFileName(pusPacket_t* outTc, const pusSt23FileName_t* fileName);
+
+pusError_t pus_tc_23_14_getTargetFileName(pusSt23FileName_t* fileName, const pusPacket_t* outTc);
+
+pusError_t pus_tc_23_14_setSourceRepositoryPath(pusPacket_t* outTc, const pusSt23RepositoryPath_t* repository);
+
+pusError_t pus_tc_23_14_getSourceRepositoryPath(pusSt23RepositoryPath_t* repository, const pusPacket_t* outTc);
+
+pusError_t pus_tc_23_14_setTargetRepositoryPath(pusPacket_t* outTc, const pusSt23RepositoryPath_t* repository);
+
+pusError_t pus_tc_23_14_getTargetRepositoryPath(pusSt23RepositoryPath_t* repository, const pusPacket_t* outTc);
 
 //
 // Parameter checking

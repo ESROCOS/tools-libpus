@@ -24,6 +24,8 @@ BEGIN
   	
 	PusTC-18-1-Data, PusTC-18-2-6-12-Data, PusTC-18-3-Data, 
 	PusTC-18-4-5-Data, PusTC-18-13-Data FROM PUS-ST18
+	
+	PusTC-TM-23-1-4-Data, PusTC-23-2-3-Data, PusTC-23-14-Data FROM PUS-ST23
   	
   	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
   	
@@ -49,11 +51,12 @@ BEGIN
     -- TM actual data
     PusTmSourceData ::= CHOICE
     {
-        st-1-X PusTM-1-X-Data,
+        st-1-X 	PusTM-1-X-Data,
         st-3-25 PusTM-3-25-Data,
-        st-5-X PusTM-5-X-Data,
-        st-9-2 PusTM-9-2-Data,
-        st-20-2 PusTC-TM-20-X-Data
+        st-5-X 	PusTM-5-X-Data,
+        st-9-2 	PusTM-9-2-Data,
+        st-20-2 PusTC-TM-20-X-Data,
+        st-23-4 PusTC-TM-23-1-4-Data
     }
     
     -- TC secondary header
@@ -94,16 +97,19 @@ BEGIN
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,
-    	st-18-1 		PusTC-18-1-Data,
+    	st-18-1 	PusTC-18-1-Data,
     	st-18-2-6-12 PusTC-18-2-6-12-Data,
     	st-18-3		PusTC-18-3-Data,
     	st-18-4-5	PusTC-18-4-5-Data,
     	st-18-13 	PusTC-18-13-Data,
-    	st-19-X 		PusTC-19-X-Data,
-    	st-20-X 		PusTC-TM-20-X-Data,
+    	st-19-X 	PusTC-19-X-Data,
+    	st-20-X 	PusTC-TM-20-X-Data,
+    	st-23-1		PusTC-TM-23-1-4-Data,
+    	st-23-2-3	PusTC-23-2-3-Data,
+    	st-23-14	PusTC-23-14-Data,
     	-- with packet reduced
-    	st-11-4 		PusTC-11-4-Data,
-    	st-19-1 		PusTC-19-1-Data
+    	st-11-4 	PusTC-11-4-Data,
+    	st-19-1 	PusTC-19-1-Data
     }
     
     PusTcApplicationDataReduced ::= CHOICE
@@ -111,13 +117,16 @@ BEGIN
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,
-    	st-18-1 		PusTC-18-1-Data,
+    	st-18-1 	PusTC-18-1-Data,
     	st-18-2-6-12 PusTC-18-2-6-12-Data,
     	st-18-3		PusTC-18-3-Data,
     	st-18-4-5	PusTC-18-4-5-Data,
     	st-18-13 	PusTC-18-13-Data,
-    	st-19-X 		PusTC-19-X-Data,
-    	st-20-X 		PusTC-TM-20-X-Data
+    	st-19-X 	PusTC-19-X-Data,
+    	st-20-X 	PusTC-TM-20-X-Data,
+    	st-23-1		PusTC-TM-23-1-4-Data,
+    	st-23-2-3	PusTC-23-2-3-Data,
+    	st-23-14	PusTC-23-14-Data
     }
     
     -- TM/TC header + data

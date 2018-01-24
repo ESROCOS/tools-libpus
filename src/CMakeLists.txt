@@ -7,6 +7,7 @@ set(SOURCES
     pus_file_management.c
     pus_housekeeping.c
     pus_obcp_engine.c
+    pus_notify.c
     pus_packet_reduced.c
     pus_packet_queues.c
     pus_packet.c

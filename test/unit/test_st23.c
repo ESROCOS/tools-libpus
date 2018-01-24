@@ -20,22 +20,82 @@
 
 void packets_st23()
 {
+
+
 	pusPacket_t tc, tm;
+	pusSt23RepositoryPath_t repo, repo2, repo3;
+	pusSt23FileName_t file, file2, file3;
+	pusSt23MaximumSize_t size, size2;
+
+	printf("Sizeof packet: %lu, packetReduced: %lu\n", sizeof(tc), sizeof(pusPacketReduced_t));
+
+	size = 5;
+
+	repo.nCount = 10;
+	memcpy(repo.arr, "123456789\0", 10);
+
+	file.nCount = 10;
+	memcpy(file.arr, "123456789\0", 10);
+
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_X_createDefaultRequest(NULL, 1, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_1_createCreateFileRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_2_createDeleteFileRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_3_createReportFileAtributesRequest(NULL, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_23_4_createReportFileAtributesReport(NULL, 1, 1, 1));
-	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_createCopyFileRequest(NULL, 1, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_1_createCreateFileRequest(NULL, 1, 1, NULL, NULL, size));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_2_createDeleteFileRequest(NULL, 1, 1, NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_3_createReportFileAtributesRequest(NULL, 1, 1, NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_23_4_createReportFileAtributesReport(NULL, 1, 1, 1, NULL, NULL, size));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_createCopyFileRequest(NULL, 1, 1, NULL, NULL, NULL, NULL));
 	pus_clearError();
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_X_createDefaultRequest(&tc, 1, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_1_createCreateFileRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_2_createDeleteFileRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_3_createReportFileAtributesRequest(&tc, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_23_4_createReportFileAtributesReport(&tm, 1, 1, 1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_14_createCopyFileRequest(&tc, 1, 1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_1_createCreateFileRequest(&tc, 1, 1, &repo, &file, size));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_X_getFileName(&file2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(file.arr, file2.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_X_getRepositoryPath(&repo2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(repo.arr, repo2.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_1_4_getMaximumSize(&size2, &tc));
+	CU_ASSERT_EQUAL(size, size2);
+
+
+	memcpy(repo.arr, "987654321\0", 10);
+	memcpy(file.arr, "987654321\0", 10);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_2_createDeleteFileRequest(&tc, 1, 1, &repo, &file));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_X_getFileName(&file2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(file.arr, file2.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_X_getRepositoryPath(&repo2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(repo.arr, repo2.arr, 10));
+
+	memcpy(repo.arr, "123456789\0", 10);
+	memcpy(file.arr, "123456789\0", 10);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_3_createReportFileAtributesRequest(&tc, 1, 1, &repo, &file));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_X_getFileName(&file2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(file.arr, file2.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_X_getRepositoryPath(&repo2, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(repo.arr, repo2.arr, 10));
+
+	memcpy(repo.arr, "987654321\0", 10);
+	memcpy(file.arr, "987654321\0", 10);
+	size = 9;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_23_4_createReportFileAtributesReport(&tm, 1, 1, 1, &repo, &file, size));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_X_getFileName(&file2, &tm));
+	CU_ASSERT_EQUAL(0, memcmp(file.arr, file2.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_X_getRepositoryPath(&repo2, &tm));
+	CU_ASSERT_EQUAL(0, memcmp(repo.arr, repo2.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_tm_23_1_4_getMaximumSize(&size2, &tm));
+	CU_ASSERT_EQUAL(size, size2);
+
+	memcpy(repo.arr, "111111111\0", 10);
+	memcpy(file.arr, "222555888\0", 10);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_14_createCopyFileRequest(&tc, 1, 1, &repo, &file, &repo2, &file2));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_14_getSourceFileName(&file3, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(file.arr, file3.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_14_getSourceRepositoryPath(&repo3, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(repo.arr, repo3.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_14_getTargetFileName(&file3, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(file2.arr, file3.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_14_getTargetRepositoryPath(&repo3, &tc));
+	CU_ASSERT_EQUAL(0, memcmp(repo2.arr, repo3.arr, 10));
+
+
 
 	pus_clearError();
 
@@ -66,6 +126,17 @@ void packets_st23()
 
 void test_st23()
 {
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_finalize());
+	CU_ASSERT_FALSE(pus_files_isInitialized());
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_files_initialize(NULL));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_finalize());
+
+	pusMutex_t mutex;
+	pus_mutexInitOk(&mutex);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(&mutex));
+	CU_ASSERT_TRUE(pus_files_isInitialized());
 
 	pus_clearError();
 }

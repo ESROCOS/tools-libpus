@@ -21,6 +21,11 @@ extern void st18_RI_ACK(const asn1SccPusPacket *,
                         const asn1SccPusSt01FailureInfo *,
                         const asn1SccPusStepId *);
 
+extern void st18_RI_loadDirect(const asn1SccPusSt18ObcpId *,
+                               const asn1SccPusSt18ObcpCode *);
+
+extern void st18_RI_loadReference(const asn1SccPusTC_18_13_Data *);
+
 #ifdef __cplusplus
 }
 #endif

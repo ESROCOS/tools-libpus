@@ -77,16 +77,20 @@ typedef asn1SccPusTcScheduledActivity pusSt11ScheduledActivity_t; //!< Scheduled
 
 typedef asn1SccPusSt12pmonId pusSt12PmonId_t; //!< Pmon definition identifier
 
-typedef asn1SccPusSt20OnBoardParameterId pusSt20OnBoardParamId_t; //!< Identifier of on-board parameters
-
-typedef asn1SccPusSt23RepositoryPath pusSt23RepositoryPath_t; //!< Repository path of a file
-typedef asn1SccPusSt23FileName pusSt23FileName_t; //!< File name
-
 typedef asn1SccPusSt18ObcpId pusSt18ObcpId_t; //! Obcp procedure identifier
 typedef asn1SccPusSt18ObcpCode pusSt18ObcpCode_t; //! Obcp procedure code
 typedef asn1SccPusSt18ObcpChecksum pusSt18ObcpChecksum_t; //! Obcp procedure checksum
 typedef asn1SccPusSt18ObservabilityLevel pusSt18ObservabilityLevel_t; //! Obcp observability level
 typedef asn1SccPusUInt32 pusSt18ObcpStepId_t; //! OBCP step id
+
+typedef asn1SccPusSt20OnBoardParameterId pusSt20OnBoardParamId_t; //!< Identifier of on-board parameters
+
+typedef asn1SccPusSt23RepositoryPath pusSt23RepositoryPath_t; //!< Repository path of a file
+typedef asn1SccPusSt23FileName pusSt23FileName_t; //!< File name
+typedef asn1SccPusUInt64 pusSt23MaximumSize_t; //!< Maximum size of files
+typedef asn1SccPusUInt32 pusSt23FilesTableSize_t; //!< Maximum size of table files
+typedef asn1SccPusUInt32 pusSt23FileId_t;
+
 
 
 #define PUS_ST18_OBSERVABILITY_NONE 0
@@ -136,6 +140,7 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pus_TM_DATA_ST_5_X		((pusTmDataKind_t) st_5_X_PRESENT)
 #define pus_TM_DATA_ST_9_2		((pusTmDataKind_t) st_9_2_PRESENT)
 #define pus_TM_DATA_ST_20_2		((pusTmDataKind_t) st_20_2_PRESENT)
+#define pus_TM_DATA_ST_23_4		((pusTmDataKind_t) st_23_4_PRESENT)
 
 
 // pusPacketTcDataKind_t
@@ -152,8 +157,9 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pus_TC_DATA_ST_19_1		((pusTcDataKind_t) st_19_1_PRESENT)
 #define pus_TC_DATA_ST_19_X		((pusTcDataKind_t) PusTcApplicationData_st_19_X_PRESENT)
 #define pus_TC_DATA_ST_20_X		((pusTcDataKind_t) PusTcApplicationData_st_20_X_PRESENT)
-
-
+#define pus_TC_DATA_ST_23_1		((pusTcDataKind_t) PusTcApplicationData_st_23_1_PRESENT)
+#define pus_TC_DATA_ST_23_2_3	((pusTcDataKind_t) PusTcApplicationData_st_23_2_3_PRESENT)
+#define pus_TC_DATA_ST_23_14	((pusTcDataKind_t) PusTcApplicationData_st_23_14_PRESENT)
 
 
 //

@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 #include "pus_packet.h"
 #include "pus_apid.h"
 #include "pus_time.h"
@@ -17,7 +18,8 @@
 #include "pus_st19_packets.h"
 #include "pus_st20_packets.h"
 #include "pus_events.h"
-#include <stdint.h>
+#include "pus_threads.h"
+#include "pus_notify.h"
 
 typedef unsigned int uint;
 typedef unsigned long long int ull;
@@ -27,6 +29,8 @@ typedef long long int ll;
  * This function has been done with testing purposes only.
  */
 int ret_packets(pusPacket_t *tm, int i);
+
+pusPacket_t read_from_taste();
 
 void pus_posix2time_(pusTime_t* outPusTime, time_t posixTime);
 

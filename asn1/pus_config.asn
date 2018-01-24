@@ -21,7 +21,7 @@ BEGIN
     pus-ST03-MAX-REPORT-LENGTH PusUInt32 ::= 20
     
     -- Maximun number of Scheduled Actions in a TC11.4 packet
-    pus-ST11-MAX-SCHEDULED-ACTIVITIES PusUInt32 ::= 10
+    pus-ST11-MAX-SCHEDULED-ACTIVITIES PusUInt32 ::= 5
     
     -- Maximun number of character in OBCP ID (ST18)
     pus-ST18-SIZE-OBCP-ID PusUInt32 ::= 10

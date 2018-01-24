@@ -123,6 +123,13 @@
 #define __NEED_PusSt01FailureCode_NATIVE
 #define __NEED_PusSt01FailureInfo_NATIVE
 #define __NEED_PusStepId_NATIVE
+#define __NEED_PusSt18ObcpId_NATIVE
+#define __NEED_PusSt18ObcpCode_NATIVE
+#define __NEED_PusTC_18_13_Data_NATIVE
+#define __NEED_PusSt18ObcpId_NATIVE
+#define __NEED_PusSt18ObcpCode_NATIVE
+#define __NEED_PusTC_18_13_Data_NATIVE
+#define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusApid_NATIVE
 #define __NEED_PusSequenceCount_NATIVE

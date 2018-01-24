@@ -21,13 +21,17 @@
 void test_st18_packets()
 {
 
-	pusPacket_t tc;
+	pusPacket_t tc, tc2;
 	pusSt18ObcpId_t id, id2;
 	pusSt18ObcpCode_t code, code2;
 	pusSt18ObcpStepId_t step = 1;
 
 	pusSt23FileName_t fileName, fileName2;
 	pusSt23RepositoryPath_t repository, repository2;
+
+	pusSt18ObcpStepId_t step2=0;
+
+	pusSt18ObservabilityLevel_t obs = 0;
 
 	memcpy(id.arr, "OBCPID001\0", 10);
 
@@ -52,7 +56,32 @@ void test_st18_packets()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_createLoadObcpReferenceRequest(NULL, 1, 1, NULL, NULL, NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_21_createStartObcpEngineRequest(NULL, 1, 1));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_22_createStopObcpEngineRequest(NULL, 1, 1));
-	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_setObcpId(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_getObcpId(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_1_setObcpCode(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_1_getObcpCode(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_3_setObservabilityLevel(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_3_getObservabilityLevel(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_4_5_setObcpStepId(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_4_5_getObcpStepId(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_setFileName(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_getFileName(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_setRepositoryPath(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_getRepositoryPath(NULL, NULL));
+
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_setObcpId(&tc2, &id));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_X_getObcpId(&id, &tc2));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_1_setObcpCode(&tc2, &code));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_1_getObcpCode(&code, &tc2));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_3_setObservabilityLevel(&tc2, 1));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_3_getObservabilityLevel(&obs, &tc2));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_4_5_setObcpStepId(&tc2, 1));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_4_5_getObcpStepId(&step, &tc2));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_setFileName(&tc2, &fileName));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_getFileName(&fileName, &tc2));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_setRepositoryPath(&tc2, &repository));
+	CU_ASSERT_NOT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_18_13_getRepositoryPath(&repository, &tc2));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_createDefaultRequest(&tc, 1, 1, 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_1_createLoadObcpDirectRequest(&tc, 1, 1, &id, &code));
@@ -65,9 +94,8 @@ void test_st18_packets()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_13_createLoadObcpReferenceRequest(&tc, 1, 1, &id, &repository, &fileName));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_21_createStartObcpEngineRequest(&tc, 1, 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_22_createStopObcpEngineRequest(&tc, 1, 1));
+	pus_clearError();
 
-
-	pusPacket_t  tc2;
 	CU_ASSERT_NOT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST18TC(&tc2, pusSubtype_NONE));
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST18TC(&tc, pusSubtype_NONE));
@@ -103,12 +131,14 @@ void test_st18_packets()
 	//CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_setObcpId(&tc, &id));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
 	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_3_getObservabilityLevel(&obs, &tc));
+	CU_ASSERT_EQUAL(1, obs);
 
 	memcpy(id.arr, "OBCPID004\0", 10);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_4_createStopObcpRequest(&tc, 1, 1, &id, 3));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_X_getObcpId(&id2, &tc));
 	CU_ASSERT_EQUAL(0, memcmp(id.arr, id2.arr, 10));
-	pusSt18ObcpStepId_t step2=0;
+
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_18_4_5_getObcpStepId(&step2, &tc));
 	CU_ASSERT_EQUAL(3, step2);
 

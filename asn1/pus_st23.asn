@@ -25,47 +25,31 @@ BEGIN
    
    PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH)) 
     
-	-- Data TC[23,1]
-	PusTC-23-1-Data ::= SEQUENCE
+	-- Data TC[23,1] TM[23,4]
+	PusTC-TM-23-1-4-Data ::= SEQUENCE
 	{
 		repository			PusSt23RepositoryPath,
-		fileName				PusSt23FileName,
+		fileName			PusSt23FileName,
 		maxSize	 			PusUInt64
 		-- file locked status BOOLEAN (optional)
 		-- additional file atributes DEDUCED (optinal N-Times)
 	}
-	
-	-- Data TC[23,2]
-	PusTC-23-2-Data ::= SEQUENCE
+	 
+	-- Data TC[23,2] TC[23,3]
+	PusTC-23-2-3-Data ::= SEQUENCE
 	{
 		repository			PusSt23RepositoryPath,
-		fileName				PusSt23FileName
+		fileName			PusSt23FileName
 	}
-	
-	-- Data TC[23,3]
-	PusTC-23-3-Data ::= SEQUENCE
-	{
-		repository			PusSt23RepositoryPath,
-		fileName				PusSt23FileName
-	}
-	
-	-- Data TM[23,4]
-	PusTM-23-4-Data ::= SEQUENCE
-	{
-		repository		 	PusSt23RepositoryPath,
-		fileName				PusSt23FileName,
-		maxSize	 			PusUInt64
-		-- file locked status BOOLEAN (optional)
-		-- additional file atributes DEDUCED (optinal N-Times)
-	}
-	
+
+
 	-- Data TC[23,14]
 	PusTC-23-14-Data ::= SEQUENCE
 	{
 		sourceRepository  		PusSt23RepositoryPath,
-		sourceFileName				PusSt23FileName,
-		targetRepository		  	PusSt23RepositoryPath,
-		targetFileName				PusSt23FileName
+		sourceFileName			PusSt23FileName,
+		targetRepository		PusSt23RepositoryPath,
+		targetFileName			PusSt23FileName
 	}
 	
 	

@@ -1,0 +1,16 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "https://github.com/esrocos/TBD",
+	"title": "Files management",
+	"description": "Files management configuration for PUS service ST[23]",
+	"type": "object",
+	"properties": {
+		"maximumFiles": {
+			"type": "integer",
+			"minimum": 0
+		}
+	},
+	"required": [
+		"maximumFiles"
+	]
+}

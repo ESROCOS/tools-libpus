@@ -49,7 +49,7 @@ WITH interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement;
 WITH interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20;
 WITH interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams;
 WITH interfaceview::IV::OnBoard::PusServices::trigger;
-WITH interfaceview::IV::OnBoard::Debug;
+WITH interfaceview::IV::OnBoard::OnboardSoftware;
 WITH ocarina_processors_x86;
 WITH deploymentview::DV::Node1;
 WITH Taste;
@@ -142,8 +142,8 @@ SUBCOMPONENTS
   IV_trigger : SYSTEM interfaceview::IV::OnBoard::PusServices::trigger::trigger.others {
     Taste::FunctionName => "trigger";
   };
-  IV_Debug : SYSTEM interfaceview::IV::OnBoard::Debug::Debug.others {
-    Taste::FunctionName => "Debug";
+  IV_OnboardSoftware : SYSTEM interfaceview::IV::OnBoard::OnboardSoftware::OnboardSoftware.others {
+    Taste::FunctionName => "OnboardSoftware";
   };
   x86_partition : PROCESS deploymentview::DV::Node1::x86_partition.others {
     Taste::coordinates => "112694 80013 205703 205198";
@@ -180,7 +180,7 @@ PROPERTIES
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST20;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_OnBoardParams;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_trigger;
-  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_Debug;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_OnboardSoftware;
   Actual_Processor_Binding => (reference (x86_linux)) APPLIES TO x86_partition;
 END Node1.others;
 
