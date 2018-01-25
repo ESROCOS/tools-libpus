@@ -89,7 +89,7 @@ typedef asn1SccPusSt23RepositoryPath pusSt23RepositoryPath_t; //!< Repository pa
 typedef asn1SccPusSt23FileName pusSt23FileName_t; //!< File name
 typedef asn1SccPusUInt64 pusSt23MaximumSize_t; //!< Maximum size of files
 typedef asn1SccPusUInt32 pusSt23FilesTableSize_t; //!< Maximum size of table files
-typedef asn1SccPusUInt32 pusSt23FileId_t;
+typedef asn1SccPusSt23RepositoryDomain pusSt23RepositoryDomain_t; //!< Repository domain
 
 
 
@@ -179,6 +179,11 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pusPacketDataLength_LIMIT pusUInt16_LIMIT
 
 #define pus_ST23_MAX_SIZE_FILE_PATH pus_ST23_MAX_SIZE_FILE_PATH
+
+#define pus_ST23_MAX_SIZE_REPOSITORY_PATH pus_ST23_MAX_SIZE_REPOSITORY_PATH
+
+#define pus_ST23_MAX_SIZE_REPOSITORY_DOMAIN pus_ST23_MAX_SIZE_REPOSITORY_DOMAIN
+
 
 #ifdef  __cplusplus
 }

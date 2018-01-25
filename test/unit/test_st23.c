@@ -149,11 +149,17 @@ void test_st23()
 	repo.nCount = 10;
 	memcpy(repo.arr, "123456789\0", 10);
 
-	memcpy(file.arr, "/tmp/pus/hello2.txt\0", pus_ST23_MAX_SIZE_FILE_PATH);
+	memcpy(file.arr, "/tmp/pus/hello.txt\0", pus_ST23_MAX_SIZE_FILE_PATH);
 	file.nCount = strlen((char*)file.arr) + 1;
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_createFile(&repo, &file, size));
+	CU_ASSERT_EQUAL(PUS_ERROR_FILE_IN_TABLE, pus_files_createFile(&repo, &file, size));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_deleteFile(&repo, &file));
+	CU_ASSERT_EQUAL(PUS_ERROR_FILE_NOT_FOUND, pus_files_deleteFile(&repo, &file));
+
+
+
+	copy_file("/tmp/pus/ei.txt", "/tmp/pus/ei2.txt");
 
 
 	pus_clearError();

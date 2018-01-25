@@ -85,17 +85,87 @@ bool pus_files_isInitialized()
 	return pus_files_initializedFlag;
 }
 
-//open file
+bool pus_files_isSameRepository(pusSt23RepositoryPath_t* repository1, pusSt23RepositoryPath_t* repository2)
+{
+	if( NULL == repository1 || NULL == repository2 )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return false;
+	}
+	else if( repository1->nCount == repository2->nCount )
+	{
+		if( 0 == memcmp(repository1->arr, repository2->arr, repository1->nCount) )
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+
+bool pus_files_isSameFileName( pusSt23FileName_t* fileName1, pusSt23FileName_t* fileName2)
+{
+	if( NULL == fileName1 || NULL == fileName2 )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return false;
+	}
+	else if( fileName1->nCount == fileName2->nCount )
+	{
+		if( 0 == memcmp(fileName1->arr, fileName2->arr, fileName1->nCount) )
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool pus_files_isFileInTable(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, size_t* index)
+{
+	if( NULL == repository || NULL == fileName )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return false;
+	}
+	if( ! pus_files_isSameRepository(repository, &serviceRepository))
+	{
+		PUS_SET_ERROR(PUS_ERROR_FILE_REPOSITORY);
+		return false;
+	}
+	for(size_t i = 0; i < pus_files_tableSize; i++)
+	{
+		if( pus_files_table[i].deleted == false )
+		{
+			if(pus_files_isSameFileName(fileName, &pus_files_table[i].fileName))
+			{
+				if( NULL != index)
+				{
+					*index = i;
+				}
+				PUS_SET_ERROR( PUS_NO_ERROR );
+				return true;
+			}
+		}
+	}
+
+	PUS_SET_ERROR( PUS_ERROR_FILE_NOT_FOUND );
+	return false;
+}
+
+
 pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, pusSt23MaximumSize_t size)
 {
 	if( NULL == repository || NULL == fileName )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-
 	if (!pus_files_isInitialized())
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	if( pus_files_isFileInTable(repository, fileName, NULL))
+	{
+		return PUS_SET_ERROR( PUS_ERROR_FILE_IN_TABLE );;
 	}
 	else
 	{
@@ -103,7 +173,7 @@ pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23File
 
 		for( size_t i = 0; i < pus_files_tableSize; i++)
 		{
-			if(pus_files_table[j].deleted == true )
+			if( pus_files_table[j].deleted == true )
 			{
 				FILE* fp;
 
@@ -125,25 +195,17 @@ pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23File
 				pus_files_table[j].repository = *repository;
 				pus_files_table[j].maxSize = size;
 				pus_files_table[j].deleted = false;
-				j = (j + 1)%pus_files_tableSize;
 
 				return PUS_SET_ERROR(PUS_NO_ERROR);
 			}
+			j = (j + 1)%pus_files_tableSize;
 		}
 	}
 
 	return PUS_SET_ERROR(PUS_ERROR_CREATING_FILE);
 }
 
-pusError_t pus_files_isFileInTable(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName)
-{
-	/*if(repository->nCount == serviceRepository.nCount)
-	{
 
-	}*/
-
-	return PUS_NO_ERROR;
-}
 
 pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName)
 {
@@ -155,19 +217,15 @@ pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23File
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
-
-	if( PUS_NO_ERROR != pus_files_isFileInTable(repository, fileName))
+	size_t index;
+	if( false == pus_files_isFileInTable(repository, fileName, &index))
 	{
-		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+		return PUS_GET_ERROR();
 	}
 
-	// get table index TODO
-
-	int ret;
-	ret = remove((char*)fileName->arr);
-	if( 0 == ret )
+	if( 0 == remove((char*)fileName->arr) )
 	{
-		//pus_files_table[j].deleted = true; TODO
+		pus_files_table[index].deleted = true;
 		return PUS_NO_ERROR;
 	}
 	else
@@ -177,6 +235,69 @@ pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23File
 }
 
 
+int copy_file(char *old_filename, char  *new_filename)
+{
+	FILE  *ptr_old, *ptr_new;
+	int a;
+
+	ptr_old = fopen(old_filename, "r");
+	if( NULL == ptr_old )
+	{
+		printf("Error fopen\n");
+		return PUS_SET_ERROR(PUS_ERROR_CREATING_FILE);
+	}
+
+	ptr_new = fopen(new_filename, "w");
+	if( NULL == ptr_new )
+	{
+		fclose(ptr_new);
+		printf("Error fopen\n");
+		return PUS_SET_ERROR(PUS_ERROR_CREATING_FILE);
+	}
+
+	while(1)
+	{
+		a  =  fgetc(ptr_old);
+
+		if(!feof(ptr_old))
+			fputc(a, ptr_new);
+		else
+			break;
+	}
+
+	fclose(ptr_new);
+	fclose(ptr_old);
+	return  0;
+}
+
+pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23FileName_t* sourceFileName,
+								pusSt23RepositoryPath_t* targetRepository, pusSt23FileName_t* targetFileName)
+{
+	// from service
+	if( pus_files_isSameRepository(sourceRepository, &serviceRepository) )
+	{
+		size_t index;
+		if( false == pus_files_isFileInTable(sourceRepository, sourceFileName, &index))
+		{
+			return PUS_GET_ERROR();
+		}
+
+		return PUS_NO_ERROR;
+	}
+	// to service
+	if( pus_files_isSameRepository(targetRepository, &serviceRepository) )
+	{
+		size_t index;
+		if( false == pus_files_isFileInTable(targetRepository, targetFileName, &index))
+		{
+			return PUS_GET_ERROR();
+		}
 
 
-//close file
+		return PUS_NO_ERROR;
+	}
+
+	return PUS_SET_ERROR(PUS_ERROR_FILE_REPOSITORY);
+}
+
+

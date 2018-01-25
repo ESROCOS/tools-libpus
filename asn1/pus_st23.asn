@@ -3,7 +3,7 @@
 
 -- * Only the minimal services are implemented:
 -- * File handling
---	  - TC-23-1 createFile
+--	 - TC-23-1 createFile
 --   - TC-23-2 deleteFile
 --   - TC-23-3 reportFileAttributes
 --   - TM-23-4 reportFileAttributes
@@ -17,13 +17,15 @@ BEGIN
 	IMPORTS 
 	PusUInt64 FROM PUS-NbitIntegers
 	
-	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH FROM PUS-Config
+	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH,
+	pus-ST23-MAX-SIZE-REPOSITORY-PATH, pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN FROM PUS-Config
 	;
     
-   
-   PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH)) 
-   
-   PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH)) 
+	PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-PATH)) 
+	
+	PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH))
+	
+	PusSt23RepositoryDomain ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN))
     
 	-- Data TC[23,1] TM[23,4]
 	PusTC-TM-23-1-4-Data ::= SEQUENCE

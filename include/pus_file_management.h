@@ -20,16 +20,32 @@
 extern "C" {
 #endif
 
+
+#ifdef __gnu_linux__
+	typedef FILE pusSt23FileDescriptor_t;
+#endif
+
+#ifdef RTEMS_____
+	typedef uint8_t pusSt23FileDescriptor_t;
+#endif
+
 //! Type to manage files
 typedef struct
 {
-	pusSt23RepositoryPath_t repository; //!< Reposirory of the file
+	pusSt23RepositoryPath_t repository; //!< Repository of the file
 	pusSt23FileName_t fileName; //!< File name
 	pusSt23MaximumSize_t maxSize; //!< Size  of the file
 	bool opened; //!< True if file is opened
 	bool deleted; //!< True if file is deleted
-	FILE* file;
+	pusSt23FileDescriptor_t* file; //descriptor
 }pusSt23File_t;
+
+//! Type to manage files
+typedef struct
+{
+	pusSt23RepositoryPath_t repository; //!< Repository of the file
+	pusSt23RepositoryDomain_t domain; //!< Repository of the file
+}pusSt23Repository_t;
 
 extern pusSt23FilesTableSize_t pus_files_tableSize;
 
@@ -66,6 +82,16 @@ bool pus_files_isInitialized();
 pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, pusSt23MaximumSize_t size);
 pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName);
 
+bool pus_files_isFileInTable(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, size_t* index);
+
+bool pus_files_isSameRepository(pusSt23RepositoryPath_t* repository1, pusSt23RepositoryPath_t* repository2);
+
+bool pus_files_isSameFileName(pusSt23FileName_t* fileName1, pusSt23FileName_t* fileName2);
+
+int copy_file(char *old_filename, char  *new_filename);
+
+pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23FileName_t* sourceFileName,
+								pusSt23RepositoryPath_t* targetRepository, pusSt23FileName_t* targetFileName);
 
 #ifdef  __cplusplus
 }

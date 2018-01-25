@@ -35,6 +35,12 @@ BEGIN
     -- Maximum number of character in file path (ST23)
     pus-ST23-MAX-SIZE-FILE-PATH PusUInt32 ::= 30
     
+    -- Maximum number of character in repository path (ST23)
+    pus-ST23-MAX-SIZE-REPOSITORY-PATH PusUInt32 ::= 30
+    
+    -- Maximum number of character in repository domain (ST23)
+    pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN PusUInt32 ::= 30
+    
     -- Maximum size of a file in ST23
     pus-ST23-MAX-SIZE-FILE PusUInt32 ::= 1000
 
