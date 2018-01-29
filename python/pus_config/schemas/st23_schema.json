@@ -8,9 +8,40 @@
 		"maximumFiles": {
 			"type": "integer",
 			"minimum": 0
+		},
+		"repositories": {
+			"type": "array",
+			"items": {
+				"title": "Domains",
+				"type": "object",
+				"properties": {
+					"label": {
+						"description": "Textual label for the repository",
+						"type": "string"
+					},
+					"domain": {
+						"description": "Domain repository",
+						"type": "string"
+					},
+					"system": {
+						"description": "System repository",
+						"type": "string",
+						"enum": [
+							"LINUX",
+							"RTEMS"
+						]
+					}
+				},
+				"required": [
+					"label",
+					"domain",
+					"system"
+				]
+			}
 		}
 	},
 	"required": [
-		"maximumFiles"
+		"maximumFiles",
+		"repositories"
 	]
 }

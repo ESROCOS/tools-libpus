@@ -43,11 +43,11 @@ typedef struct
 //! Type to manage files
 typedef struct
 {
-	pusSt23RepositoryPath_t repository; //!< Repository of the file
-	pusSt23RepositoryDomain_t domain; //!< Repository of the file
+	pusSt23RepositoryPath_t repository; //!< Repository
+	pusSt23RepositoryDomain_t domain; //!< Domain of the repository
+	pusSt23RepositorySystem_t system; //!< System of the repository
 }pusSt23Repository_t;
 
-extern pusSt23FilesTableSize_t pus_files_tableSize;
 
 // Mutex to lock access to the event tables
 extern pusMutex_t* pus_files_mutex;
@@ -69,7 +69,7 @@ extern pusError_t pus_files_configure();
  *  \param[inout] mutex Mutex to be initialized; if NULL, access protection is disabled
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_files_initialize(pusMutex_t* mutex, pusSt23RepositoryPath_t* repository);
+pusError_t pus_files_initialize(pusMutex_t* mutex, pusSt23RepositoryId_t repositoryId);
 
 //! Release the resources allocated by the files manager
 /*! \return Error code (PUS_NO_ERROR if success)
@@ -88,10 +88,18 @@ bool pus_files_isSameRepository(pusSt23RepositoryPath_t* repository1, pusSt23Rep
 
 bool pus_files_isSameFileName(pusSt23FileName_t* fileName1, pusSt23FileName_t* fileName2);
 
-int copy_file(char *old_filename, char  *new_filename);
-
 pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23FileName_t* sourceFileName,
 								pusSt23RepositoryPath_t* targetRepository, pusSt23FileName_t* targetFileName);
+
+pusError_t pus_files_copyFileLinux(pusSt23RepositoryDomain_t* sourceDomain, pusSt23FileName_t* sourceFileName,
+									pusSt23RepositoryDomain_t* targetDomain, pusSt23FileName_t* targetFileName);
+
+pusError_t pus_files_getRepositoryPathFromId(pusSt23RepositoryPath_t* path, pusSt23RepositoryId_t id);
+
+pusError_t pus_files_copyFromLocalToLocalLinux(pusSt23FileName_t* sourceFileName, pusSt23FileName_t* targetFileName);
+
+
+pusError_t pus_files_getDomainFromRepositoryPath(pusSt23RepositoryDomain_t* domain, pusSt23RepositoryPath_t* repositoryPath);
 
 #ifdef  __cplusplus
 }

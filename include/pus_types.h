@@ -90,6 +90,8 @@ typedef asn1SccPusSt23FileName pusSt23FileName_t; //!< File name
 typedef asn1SccPusUInt64 pusSt23MaximumSize_t; //!< Maximum size of files
 typedef asn1SccPusUInt32 pusSt23FilesTableSize_t; //!< Maximum size of table files
 typedef asn1SccPusSt23RepositoryDomain pusSt23RepositoryDomain_t; //!< Repository domain
+typedef asn1SccPusSt23RepositoryDomain pusSt23RepositorySystem_t; //!< Repository domain
+typedef asn1SccPusUInt32 pusSt23RepositoryId_t; //! RepositoryId
 
 
 

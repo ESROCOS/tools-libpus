@@ -14,7 +14,7 @@ int ret_packets(pusPacket_t *tm, int i)
 	pus_setSequenceCount(&tc, 22);
 
 	// Test failures
-	pusSt01FailureInfo_t info1, info2;
+	pusSt01FailureInfo_t info1/*, info2*/;
 	pus_setSt01FailureInfo(&info1, 101, 102, 103);
 
 	// TM[1,1]

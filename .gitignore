@@ -8,6 +8,7 @@
 *.log
 
 build/*
+buildRtems/*
 pylib/bind.py
 pylib/tempbinding.cpp
 debug/*
@@ -30,3 +31,4 @@ __pycache__
 asn1/generated/asn1/*
 !asn1/generated/asn1/CMakeLists.txt
 
+/install.sh

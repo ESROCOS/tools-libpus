@@ -27,9 +27,19 @@ extern "C" {
 
 #define PUS_ST23_FILES_LIMIT ((size_t) ${config['maximumFiles']})
 
-extern pusSt23FilesTableSize_t pus_files_tableSize;
+<% count = 0 %>
+% for repo in config['repositories']:
+#define ${repo['label']} ((pusSt23RepositoryId_t) ${count}) \
+<% count = count + 1 %>
+% endfor
 
-extern pusSt23File_t pus_files_table[];
+extern size_t pus_files_filesTableSize;
+
+extern pusSt23File_t pus_files_filesTable[];
+
+extern size_t pus_files_repositoriesTableSize;
+
+extern pusSt23Repository_t pus_files_repositoriesTable[];
 
 //! Initialize the configuration of the ST[23] service from the mission database
 pusError_t pus_files_configure();

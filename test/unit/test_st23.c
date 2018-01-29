@@ -11,18 +11,18 @@
 #include "pus_packet_reduced.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
 
 
-#include "../../include/pus_st23_packets.h"
+#include "pus_st23_packets.h"
 #include "pus_file_management.h"
+#include "pus_st23_config.h"
 
 
 void packets_st23()
 {
-
-
 	pusPacket_t tc, tm;
 	pusSt23RepositoryPath_t repo, repo2, repo3;
 	pusSt23FileName_t file, file2, file3;
@@ -128,28 +128,27 @@ void packets_st23()
 void test_st23()
 {
 	pusSt23RepositoryPath_t repo;
-	repo.nCount = 10;
-	memcpy(repo.arr, "123456789\0", 10);
+	//pus_files_getRepositoryPathFromId(&repo, PUS_REPOSITORY_GROUND);
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_finalize());
 	CU_ASSERT_FALSE(pus_files_isInitialized());
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(NULL, &repo));
-	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_files_initialize(NULL, &repo));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(NULL, PUS_REPOSITORY_GROUND));
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_files_initialize(NULL, PUS_REPOSITORY_GROUND));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_finalize());
 
 	pusMutex_t mutex;
 	pus_mutexInitOk(&mutex);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(&mutex, &repo));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(&mutex, PUS_REPOSITORY_GROUND));
 	CU_ASSERT_TRUE(pus_files_isInitialized());
 
-	pusSt23FileName_t file;
+	pusSt23FileName_t file, file2;
 	pusSt23MaximumSize_t size = 300;
 
-	repo.nCount = 10;
-	memcpy(repo.arr, "123456789\0", 10);
 
-	memcpy(file.arr, "/tmp/pus/hello.txt\0", pus_ST23_MAX_SIZE_FILE_PATH);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_getRepositoryPathFromId(&repo, PUS_REPOSITORY_GROUND));
+
+	memcpy(file.arr, "hello.txt\0", pus_ST23_MAX_SIZE_FILE_PATH - 1);
 	file.nCount = strlen((char*)file.arr) + 1;
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_createFile(&repo, &file, size));
@@ -158,8 +157,20 @@ void test_st23()
 	CU_ASSERT_EQUAL(PUS_ERROR_FILE_NOT_FOUND, pus_files_deleteFile(&repo, &file));
 
 
+	char command[50];
+	pusSt23RepositoryDomain_t domain;
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_createFile(&repo, &file, size));
+	pus_files_getDomainFromRepositoryPath(&domain, &repo);
 
-	copy_file("/tmp/pus/ei.txt", "/tmp/pus/ei2.txt");
+	sprintf(command, "echo \"hola como estamos\" > %s%s",  (char*)domain.arr, (char*)file.arr);
+	system(command);
+
+	memcpy(file2.arr, "helloCpy.txt\0", pus_ST23_MAX_SIZE_FILE_PATH -1);
+	file2.nCount = strlen((char*)file.arr) + 1;
+
+
+	pusError_t a = pus_files_copyFile(&repo, &file, &repo, &file2);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, a);
 
 
 	pus_clearError();
