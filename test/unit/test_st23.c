@@ -45,6 +45,18 @@ void packets_st23()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_3_createReportFileAtributesRequest(NULL, 1, 1, NULL, NULL));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tm_23_4_createReportFileAtributesReport(NULL, 1, 1, 1, NULL, NULL, size));
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_createCopyFileRequest(NULL, 1, 1, NULL, NULL, NULL, NULL));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_tm_23_1_4_setMaximumSize(NULL, 1));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_tm_23_1_4_getMaximumSize(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_setSourceFileName(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_getSourceFileName(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_setTargetFileName(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_getTargetFileName(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_setSourceRepositoryPath(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_getSourceRepositoryPath(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_setTargetRepositoryPath(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_tc_23_14_getTargetRepositoryPath(NULL, NULL));
+
 	pus_clearError();
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_23_X_createDefaultRequest(&tc, 1, 1, 1));
@@ -156,7 +168,6 @@ void test_st23()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_deleteFile(&repo, &file));
 	CU_ASSERT_EQUAL(PUS_ERROR_FILE_NOT_FOUND, pus_files_deleteFile(&repo, &file));
 
-
 	char command[50];
 	pusSt23RepositoryDomain_t domain;
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_createFile(&repo, &file, size));
@@ -168,10 +179,8 @@ void test_st23()
 	memcpy(file2.arr, "helloCpy.txt\0", pus_ST23_MAX_SIZE_FILE_PATH -1);
 	file2.nCount = strlen((char*)file.arr) + 1;
 
-
 	pusError_t a = pus_files_copyFile(&repo, &file, &repo, &file2);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, a);
-
 
 	pus_clearError();
 }

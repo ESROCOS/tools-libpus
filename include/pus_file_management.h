@@ -80,6 +80,7 @@ pusError_t pus_files_finalize();
 bool pus_files_isInitialized();
 
 pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, pusSt23MaximumSize_t size);
+
 pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName);
 
 bool pus_files_isFileInTable(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, size_t* index);

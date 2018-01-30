@@ -80,7 +80,7 @@ pusError_t pus_tm_23_4_createReportFileAtributesReport(pusPacket_t* outTm, pusAp
  *  \return Error code (PUS_NO_ERROR if success)
  */
 pusError_t pus_tc_23_14_createCopyFileRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
-		const pusSt23RepositoryPath_t* sourceRepository, const pusSt23FileName_t* sourceFileName,
+		const pusSt23RepositoryPath_t* scourceRepository, const pusSt23FileName_t* sourceFileName,
 		const pusSt23RepositoryPath_t* targetRepository, const pusSt23FileName_t* targetFileName);
 
 
@@ -103,20 +103,28 @@ pusError_t pus_tc_tm_23_1_4_setMaximumSize(pusPacket_t* outTc, pusSt23MaximumSiz
 pusError_t pus_tc_tm_23_1_4_getMaximumSize(pusSt23MaximumSize_t* size, const pusPacket_t* outTc);
 
 
+//! Setter for the source file name of a TC[23,14] packet
 pusError_t pus_tc_23_14_setSourceFileName(pusPacket_t* outTc, const pusSt23FileName_t* fileName);
 
+//! Getter for the source file name of a TC[23,14] packet
 pusError_t pus_tc_23_14_getSourceFileName(pusSt23FileName_t* fileName, const pusPacket_t* outTc);
 
+//! Setter for the target file name of a TC[23,14] packet
 pusError_t pus_tc_23_14_setTargetFileName(pusPacket_t* outTc, const pusSt23FileName_t* fileName);
 
+//! Getter for the target file name of a TC[23,14] packet
 pusError_t pus_tc_23_14_getTargetFileName(pusSt23FileName_t* fileName, const pusPacket_t* outTc);
 
+//! Setter for the source repository path of a TC[23,14] packet
 pusError_t pus_tc_23_14_setSourceRepositoryPath(pusPacket_t* outTc, const pusSt23RepositoryPath_t* repository);
 
+//! Getter for the source repository path of a TC[23,14] packet
 pusError_t pus_tc_23_14_getSourceRepositoryPath(pusSt23RepositoryPath_t* repository, const pusPacket_t* outTc);
 
+//! Setter for the target repository path of a TC[23,14] packet
 pusError_t pus_tc_23_14_setTargetRepositoryPath(pusPacket_t* outTc, const pusSt23RepositoryPath_t* repository);
 
+//! Getter for the target repository path of a TC[23,14] packet
 pusError_t pus_tc_23_14_getTargetRepositoryPath(pusSt23RepositoryPath_t* repository, const pusPacket_t* outTc);
 
 //

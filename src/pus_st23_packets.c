@@ -195,7 +195,6 @@ pusError_t pus_tc_tm_23_X_setFileName(pusPacket_t* outTc, const pusSt23FileName_
 		return PUS_NO_ERROR;
 	}
 
-
 	return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 }
 
@@ -257,7 +256,6 @@ pusError_t pus_tc_tm_23_X_setRepositoryPath(pusPacket_t* outTc, const pusSt23Rep
 		return PUS_NO_ERROR;
 	}
 
-
 	return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 }
 
@@ -288,7 +286,6 @@ pusError_t pus_tc_tm_23_X_getRepositoryPath(pusSt23RepositoryPath_t* repository,
 		*repository = outTc->data.u.tcData.data.u.st_23_2_3.repository;
 		return PUS_NO_ERROR;
 	}
-
 
 	return PUS_SET_ERROR(PUS_ERROR_TC_KIND);
 }
