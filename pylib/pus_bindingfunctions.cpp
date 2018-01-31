@@ -1,3 +1,9 @@
+/*
+ * H2020 ESROCOS Project
+ * Company: GMV Aerospace & Defence S.A.U.
+ * Licence: GPLv2
+ */
+
 #include "pus_bindingfunctions.hpp"
 
 int ret_packets(pusPacket_t *tm, int i)

@@ -1,3 +1,9 @@
+/*
+ * H2020 ESROCOS Project
+ * Company: GMV Aerospace & Defence S.A.U.
+ * Licence: GPLv2
+ */
+
 #include "pus_threads.h"
 #include "pus_error.h"
 #include "pus_packet.h"

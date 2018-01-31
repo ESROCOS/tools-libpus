@@ -12,7 +12,9 @@
  *  * File copy
  *   - TC[23,14] Copy file
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_ST23_PACKETS_H

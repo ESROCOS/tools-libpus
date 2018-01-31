@@ -1,3 +1,10 @@
+/*! \file pus_notify.h
+ *  \brief Auxiliary functions to the interface with PusConsole
+ *
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
+ */
 #ifndef PUS_NOTIFY_H
 #define PUS_NOTIFY_H
 

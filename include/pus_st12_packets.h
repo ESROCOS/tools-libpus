@@ -11,7 +11,10 @@
  *  - TM[12,12] check Transition Report
  *  - TC[12,15] enable Parameter Monitoring
  *  - TM[12,16] disable Parameter Monitoring
- *  \author GMV
+ *
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_ST12_PACKETS_H

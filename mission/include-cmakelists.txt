@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 # Input and ouput directories
 set(JSON_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(OUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")

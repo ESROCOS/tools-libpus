@@ -8,7 +8,9 @@
  *  - TC[9,1] Set Time Report Rate.
  *	- TC[9,2] CUC Time Report.
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 

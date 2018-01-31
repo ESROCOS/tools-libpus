@@ -6,11 +6,17 @@
 ## - tempvars: an empty dictionary to be used to store global counters within the template 
 ##             (see http://docs.makotemplates.org/en/latest/runtime.html#context)
 ##
+//
+// H2020 ESROCOS Project
+// Company: GMV Aerospace & Defence S.A.U.
+// Licence: GPLv2
+//
 // PUS service ST[03] configuration
 // 
 // File automatically generated from the pus_st30_config.h.mako template
 //
 //                     -- DO NOT MODIFY --
+
 
 #ifndef PUS_ST03_CONFIG_H
 #define PUS_ST03_CONFIG_H

@@ -11,7 +11,9 @@
  *  - TM[5,3] Medium severity anomaly report
  *  - TM[5,4] High severity anomaly report
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_ST05_PACKETS_H

@@ -9,7 +9,9 @@
  *  - TC[17,1] Perform an are-you-alive connection test
  *  - TM[17,2] Are-you-alive connection test report
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 

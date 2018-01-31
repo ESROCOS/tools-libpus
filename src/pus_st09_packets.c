@@ -1,3 +1,8 @@
+/*
+ * H2020 ESROCOS Project
+ * Company: GMV Aerospace & Defence S.A.U.
+ * Licence: GPLv2
+ */
 
 #include "pus_st09_packets.h"
 #include <math.h>

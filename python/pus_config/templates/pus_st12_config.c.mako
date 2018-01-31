@@ -43,16 +43,19 @@ def getAliasName( configType ):
 	endif
 	
 %>
-
+//
+// H2020 ESROCOS Project
+// Company: GMV Aerospace & Defence S.A.U.
+// Licence: GPLv2
+//
 // PUS service ST[12] configuration
 // 
 // File automatically generated from the pus_st12_config.c.mako template
 //
 //                     -- DO NOT MODIFY --
 
+
 #include "pus_st12_config.h"
-
-
 
 // ST[12] constants
 const pusSt12PmonId_t pus_ST12_PARAM_LIMIT = PUS_ST12_PARAM_LIMIT;

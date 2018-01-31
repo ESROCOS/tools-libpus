@@ -4,7 +4,9 @@
  *	Functions that manage the time-based scheduling table and
  *	the requests from TC[11,X]
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 

@@ -7,7 +7,9 @@
  *  All standard reports are implemented except for:
  *  - TM[1,10] Failed routing verification report
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_ST01_PACKETS_H

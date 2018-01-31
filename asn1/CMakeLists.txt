@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 if (NOT DEFINED ENV{ASN1SCC})
     message(FATAL_ERROR "Environment variable ASN1SCC not set. Load TASTE environment.")
 endif()

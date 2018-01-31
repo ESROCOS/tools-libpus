@@ -6,7 +6,9 @@
  *  Access to the table is optionally protected by a mutex. This allows implementing
  *  the service using external synchronization (by TASTE) or not.
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 

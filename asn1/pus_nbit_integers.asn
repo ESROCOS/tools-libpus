@@ -1,3 +1,7 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
 -- ASN.1 definitions for small N-bit integers used in PUS packets
 
 PUS-NbitIntegers DEFINITIONS ::=

@@ -1,3 +1,9 @@
+/*
+* H2020 ESROCOS Project
+* Company: GMV Aerospace & Defence S.A.U.
+* Licence: GPLv2
+*/
+
 #ifndef PUS_BINDINGFUNCTIONS_HPP
 #define PUS_BINDINGFUNCTIONS_HPP
 #include <time.h>

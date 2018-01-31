@@ -5,7 +5,9 @@
  *  wrapper types and supporting definitions for convenience. In addition, these
  *  types provide some independence from the underlaying representation.
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_TYPES_H

@@ -7,7 +7,9 @@
  *	Implemented subservices:
  *  - TC[8,1] Perform a function.
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 

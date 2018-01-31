@@ -1,3 +1,7 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
 -- ASN.1 definitions for service ST[01] telecommand verification
 -- (cf. ECSS-E-ST-70-41C sections 6.1.4.3, 8.1)
 --

@@ -10,7 +10,9 @@
  *  The functions in this module are not thread-safe. This intends to keep the module
  *  as simple as possible.
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_ERROR_H

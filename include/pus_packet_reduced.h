@@ -4,7 +4,9 @@
  *  This file contains functions that manage the creations of packet reduced from packets
  *  and the other way around.
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 

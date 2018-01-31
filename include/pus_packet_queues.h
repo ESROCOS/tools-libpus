@@ -3,7 +3,9 @@
  *
  *  This module contains functions to
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_PACKET_QUEUES_H

@@ -1,3 +1,7 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
 -- ASN.1 definitions for the standard PUS services and subservices
 -- (cf. ECSS-E-ST-70-41C)
 -- Only a subset of the capabilities are implemented

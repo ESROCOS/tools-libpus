@@ -10,7 +10,10 @@
  *  - TM[11,2] disable the time-based schedule execution function
  *  - TC[11,3] reset the time-based schedule
  *  - TM[11,4] insert activities into the time-based schedule
- *  \author GMV
+ *
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_ST11_PACKETS_H

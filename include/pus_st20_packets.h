@@ -9,7 +9,9 @@
  *  - TM[20,2] Report Parameter Values
  *  - TC[20,3] Set Parameter Values
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_ST20_PACKETS_H

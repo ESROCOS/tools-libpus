@@ -1,9 +1,13 @@
+//
+// H2020 ESROCOS Project
+// Company: GMV Aerospace & Defence S.A.U.
+// Licence: GPLv2
+//
 // PUS Service ST[19] Event-Actions
 // 
 // File automatically generated from the pus_st19_config.c.mako template
 //
 //                     -- DO NOT MODIFY --
-
 
 
 #ifndef PUS_ST19_CONFIG_H

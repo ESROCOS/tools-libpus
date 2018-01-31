@@ -19,7 +19,9 @@
  *	- TC[18,21] Start OBCP engine
  *	- TC[18,22] Stop OBCP engine
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 

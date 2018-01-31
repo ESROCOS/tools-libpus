@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 # JSON schema files
 set(JSON_SCHEMAS
     st03_st12_schema.json

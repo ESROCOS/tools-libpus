@@ -17,12 +17,16 @@ tempvars['defaultReportCount'] = -1
 tempvars['paramIndex'] = dict()
 
 %>
-
+//
+// H2020 ESROCOS Project
+// Company: GMV Aerospace & Defence S.A.U.
+// Licence: GPLv2
+//
 // PUS service ST[03] configuration
 // 
 // File automatically generated from the pus_st30_config.h.mako template
 //
-//                     -- DO NOT MODIFY --
+
 
 #include "pus_st03_config.h"
 #include <string.h> //memcpy

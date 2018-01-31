@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 '''Functions to process the ST[08] housekeeping parameter definitions.'''
 
 import os

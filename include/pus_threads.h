@@ -12,7 +12,9 @@
  *  the library. For instance, TASTE applications should leave all thread creation and
  *  synchronization to TASTE, and not use threads or mutexes internally.
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_THREADS_H

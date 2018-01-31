@@ -1,3 +1,8 @@
+//
+// H2020 ESROCOS Project
+// Company: GMV Aerospace & Defence S.A.U.
+// Licence: GPLv2
+//
 // PUS Packet Queues configuration
 // 
 // File automatically generated from the pus_st08_config.c.mako template

@@ -9,7 +9,9 @@
  *  - Housekeeping
  *    + TM[3,25] Housekeeping parameter report
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_ST03_PACKETS_H

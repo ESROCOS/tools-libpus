@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 # Mako template files
 set(MAKO_TEMPLATES
 	pus_packet_queues_config.c.mako

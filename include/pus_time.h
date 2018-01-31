@@ -9,7 +9,9 @@
  *  The purpose of the module is to allow for the adaptation of the PUS library
  *  to different on-board time representations.
  *
- *  \author GMV
+ *  H2020 ESROCOS Project
+ *  \author Company: GMV Aerospace & Defence S.A.U.
+ *  \copyright Licence: GPLv2
  */
 
 #ifndef PUS_TIME_H
