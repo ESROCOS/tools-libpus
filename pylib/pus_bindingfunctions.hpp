@@ -36,8 +36,6 @@ typedef long long int ll;
  */
 int ret_packets(pusPacket_t *tm, int i);
 
-pusPacket_t read_from_taste();
-
 void pus_posix2time_(pusTime_t* outPusTime, time_t posixTime);
 
 pusError_t pus_initApidInfo_null(pusApidInfo_t* obj, pusApid_t apid);

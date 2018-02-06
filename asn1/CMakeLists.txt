@@ -87,7 +87,7 @@ foreach(cFile ${C_FILES})
 endforeach()
 
 # Define the types library
-add_library(esrocos_pus_asn1 STATIC ${SOURCES})
+add_library(esrocos_pus_asn1 SHARED ${SOURCES})
 set_target_properties(esrocos_pus_asn1 PROPERTIES LINKER_LANGUAGE C)
 set_target_properties(esrocos_pus_asn1 PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 add_dependencies(esrocos_pus_asn1 asn1_generate_c)
@@ -95,7 +95,7 @@ add_coverage(esrocos_pus_asn1)
 
 
 # Create a library with the common .c files
-add_library(esrocos_pus_asn1common STATIC ${ASN1SCC_COMMON})
+add_library(esrocos_pus_asn1common SHARED ${ASN1SCC_COMMON})
 set_target_properties(esrocos_pus_asn1common PROPERTIES LINKER_LANGUAGE C)
 set_target_properties(esrocos_pus_asn1common PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 add_dependencies(esrocos_pus_asn1common asn1_generate_c)

@@ -33,17 +33,18 @@ set(SOURCES
     pus_threads.c
     pus_time.c
     pus_timebased_scheduling.c
+    functions.c
 )
 
 # Define the PUS library
-add_library(esrocos_pus STATIC ${SOURCES})
+add_library(esrocos_pus SHARED ${SOURCES})
 set_target_properties(esrocos_pus PROPERTIES LINKER_LANGUAGE C)
 set_target_properties(esrocos_pus PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 add_dependencies(esrocos_pus esrocos_pus_asn1)
 add_coverage(esrocos_pus)
 
 # Define the PUS library with threads disabled
-add_library(esrocos_pus_nothreads STATIC ${SOURCES})
+add_library(esrocos_pus_nothreads SHARED ${SOURCES})
 set_target_properties(esrocos_pus_nothreads PROPERTIES LINKER_LANGUAGE C)
 set_target_properties(esrocos_pus_nothreads PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 target_compile_options(esrocos_pus_nothreads PUBLIC -DPUS_DISABLE_THREADS)

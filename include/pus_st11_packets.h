@@ -30,7 +30,6 @@ extern "C" {
 #include "pus_packet.h"
 #include "pus_packet_reduced.h"
 
-
 //! Build the common part of the ST[11] TC packets
 /*! Builds a TC[11,X] packet in the packet passed as parameter.
  *  \param[out] outTc Packet variable to build the TC

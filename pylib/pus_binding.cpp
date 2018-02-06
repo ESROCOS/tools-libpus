@@ -5,7 +5,6 @@
  */
 
 #include "pybind11/pybind11.h"
-#include "pus_notify.h"
 #include "pus_apid.h"
 #include "pus_st01_packets.h"
 #include "pus_st03_packets.h"
@@ -21,10 +20,12 @@
 #include "pus_housekeeping.h"
 #include "pus_time.h"
 #include "pus_events.h"
+#include "pus_notify.h"
+
 
 #include "pus_bindingfunctions.hpp"
 
-// We had to define this function to make sure st08 worked
+// We had to define this function to make sure st08 works
 extern "C" {
 	pusError_t example_function()
 	{
@@ -90,7 +91,15 @@ PYBIND11_MODULE(pusbinding, m) {
 
 	m.def("getError", getError, "");
 	m.def("ret_packets", ret_packets);
-	m.def("read_from_taste", &read_from_taste);
+	m.def("pus_notify_readTm", &pus_notify_readTm);
+	m.def("pus_notify_writeTm", &pus_notify_writeTm);
+	m.def("pus_notify_readTc", &pus_notify_readTc);
+	m.def("pus_notify_writeTc", &pus_notify_writeTc);
+	m.def("pus_notify_sendPacket", &pus_notify_sendPacket);
+	m.def("pus_notify_getNumPackets", &pus_notify_getNumPackets);
+
+
+	//m.def("getint", &getint);
 
 	py::class_<pusMutex_t>(m, "pusMutex_t")
 		.def(py::init<>());

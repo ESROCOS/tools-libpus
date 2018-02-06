@@ -10,20 +10,69 @@
 
 #include "pus_types.h"
 #include "pus_error.h"
+#include "pus_packet.h"
 #include "pus_threads.h"
+
 
 #ifdef  __cplusplus
 extern "C" {
 #endif
 
-pusPacket_t pus_notify_getPacket();
+//! Initializes the queue and the related mutex.
+/*! Initializes a queue of tm packets to be red from
+ *  pus console and to be written from taste. To guarantee
+ *  mutual exclusion a mutex is also initialized.
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_notify_initialize();
 
-void pus_notify_setPacket(pusPacket_t* packet);
+//! Destroys mutex.
+/*!
+ * \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_notify_finalize();
 
-void pus_notify_getMutex(pusMutex_t *mutex);
+//! Write a packet into its queue
+/*! Push a packet into its queue checking if it is possible and blocks
+ *  the process waiting for the mutex.
+ *  \param[in] packet Packet that is going to be pushed
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_notify_writeTm(pusPacket_t *packet);
 
-void pus_notify_setMutex(pusMutex_t mutex);
+//! Pop packet from its queue
+/*! Pop packet from its queue checking if it is possible
+ * 	\param[out] outPacket Packet that is going to be popped
+ * 	\param queue Queue where the packet is going to be popped
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_notify_readTm(pusPacket_t *packet);
 
+//! Write a packet into its queue
+/*! Push a packet into its queue checking if it is possible and blocks
+ *  the process waiting for the mutex.
+ *  \param[in] packet Packet that is going to be pushed
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_notify_writeTc(pusPacket_t *packet);
+
+//! Pop packet from its queue
+/*! Pop packet from its queue checking if it is possible
+ * 	\param[out] outPacket Packet that is going to be popped
+ * 	\param queue Queue where the packet is going to be popped
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_notify_readTc(pusPacket_t *packet);
+
+// Retrieves the number of packets in the queue
+/*!
+ * \return Number of packets in queue.
+ */
+size_t pus_notify_getNumPackets();
+
+pusError_t pus_notify_sendPacket(pusPacket_t *packet);
+
+//void set_fun_pointer(void (*sending_interface_)(pusPacket_t *));
 
 #ifdef  __cplusplus
 }
