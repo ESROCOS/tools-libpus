@@ -35,7 +35,7 @@ void ground_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
-    printf("%d\n", pus_notify_initialize()); 
+    printf("Notify init: %d\n", pus_notify_initialize());
 
     //init thread
     pthread_t tid;
@@ -49,6 +49,7 @@ void ground_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
     pus_notify_writeTm(IN_tmPacket);
     printf("Recibido\n");  
 }
+
 
 void ground_PI_triggerTmGUI()
 {

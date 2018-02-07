@@ -3,97 +3,84 @@
  * Company: GMV Aerospace & Defence S.A.U.
  * Licence: GPLv2
  */
-
-#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "pus_error.h"
-#include "pus_packet_queues.h"
+#include "pus_notify.h"
 
 
-pthread_mutex_t receivedMutex; // needed to add/remove data from the buffer
+#define PUS_BUFFER_QUEUE_LENGHT ((size_t) 10)
 
+pusPacketQueue_t pus_queueTmGUI;
+pusPacketQueue_t pus_queueTcGUI;
 
-//TODO create own queue
-extern const pusPacketQueueId_t pus_TM_QUEUE_GROUND;
-extern const pusPacketQueueId_t pus_TC_QUEUE_GROUND;
-extern pusPacketQueue_t pus_packetQueue_table[];
+pusMutex_t tmGuiMutex; // needed to add/remove data from the buffer
+pusMutex_t tcGuiMutex; // needed to add/remove data from the buffer
 
-
+pusPacket_t bufferTmGui[PUS_BUFFER_QUEUE_LENGHT];
+pusPacket_t bufferTcGui[PUS_BUFFER_QUEUE_LENGHT];
 
 pusError_t pus_notify_initialize()
 {
-	int res = 0;
-	res = pthread_mutex_init(&receivedMutex, NULL);
-	if (0 != res)
+	if ( true != pus_mutexInitOk(&tmGuiMutex) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_THREADS);
+	}
+	if ( true != pus_mutexInitOk(&tcGuiMutex) )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_THREADS);
 	}
 
-	pusError_t error;
-	error = pus_packetQueues_initialize();
-	if( PUS_NO_ERROR != error && PUS_ERROR_ALREADY_INITIALIZED != error)
-	{
-		return error;
-	}
+	pus_queueTmGUI.buffer = bufferTmGui;
+	pus_queueTmGUI.length = PUS_BUFFER_QUEUE_LENGHT;
+	pus_queueTmGUI.nPacketInside = 0;
+	pus_queueTmGUI.out = 0;
+	pus_queueTmGUI.mutex = &tmGuiMutex;
+
+	pus_queueTcGUI.buffer = bufferTcGui;
+	pus_queueTcGUI.length = PUS_BUFFER_QUEUE_LENGHT;
+	pus_queueTcGUI.nPacketInside = 0;
+	pus_queueTcGUI.out = 0;
+	pus_queueTcGUI.mutex = &tcGuiMutex;
+
+	printf("Notify init \n");
+
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
 pusError_t pus_notify_finalize()
 {
-	int res = 0;
-	res = pthread_mutex_destroy(&receivedMutex);
-	if (0 != res)
+	if ( true != pus_mutexDestroyOk(&tmGuiMutex) )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_THREADS);
 	}
-	return PUS_NO_ERROR;
+	if ( true != pus_mutexDestroyOk(&tcGuiMutex) )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_THREADS);
+	}
+
+	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-// produce random numbers
 pusError_t pus_notify_writeTm(pusPacket_t *packet)
 {
-	pusError_t error;
-	pthread_mutex_lock(&receivedMutex);
-	error = pus_packetQueues_push(packet, pus_TM_QUEUE_GROUND);
-	pthread_mutex_unlock(&receivedMutex);
-
-	return error;
+	return pus_packetQueues_pushGeneric(packet, &pus_queueTmGUI);
 }
 
-// consume random numbers
 pusError_t pus_notify_readTm(pusPacket_t *packet)
 {
-	pusError_t error;
-	pthread_mutex_lock(&receivedMutex);
-	error = pus_packetQueues_pop(packet, pus_TM_QUEUE_GROUND);
-	pthread_mutex_unlock(&receivedMutex);
-
-	return error;
+	return pus_packetQueues_popGeneric(packet, &pus_queueTmGUI);
 }
 
-// produce random numbers
 pusError_t pus_notify_writeTc(pusPacket_t *packet)
 {
-	pusError_t error;
-	pthread_mutex_lock(&receivedMutex);
-	error = pus_packetQueues_push(packet, pus_TC_QUEUE_GROUND);
-	pthread_mutex_unlock(&receivedMutex);
-
-	return error;
+	return pus_packetQueues_pushGeneric(packet, &pus_queueTcGUI);
 }
 
-// consume random numbers
 pusError_t pus_notify_readTc(pusPacket_t *packet)
 {
-	pusError_t error;
-	pthread_mutex_lock(&receivedMutex);
-	error = pus_packetQueues_pop(packet, pus_TC_QUEUE_GROUND);
-	pthread_mutex_unlock(&receivedMutex);
-
-	return error;
+	return pus_packetQueues_popGeneric(packet, &pus_queueTcGUI);
 }
 
 pusError_t pus_notify_sendPacket(pusPacket_t *packet)
@@ -101,14 +88,9 @@ pusError_t pus_notify_sendPacket(pusPacket_t *packet)
 	return pus_notify_writeTc(packet);
 }
 
-/*void set_fun_pointer(void (*sending_interface_)(pusPacket_t *))
+size_t pus_notify_getTmQueueNumPackets()
 {
-	sending_interface = sending_interface_;
-}*/
-
-size_t pus_notify_getNumPackets()
-{
-	return pus_packetQueue_table[pus_TM_QUEUE_GROUND].nPacketInside;
+	return pus_queueTmGUI.nPacketInside;
 }
 
 

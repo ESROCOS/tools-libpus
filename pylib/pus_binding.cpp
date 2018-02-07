@@ -96,7 +96,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_notify_readTc", &pus_notify_readTc);
 	m.def("pus_notify_writeTc", &pus_notify_writeTc);
 	m.def("pus_notify_sendPacket", &pus_notify_sendPacket);
-	m.def("pus_notify_getNumPackets", &pus_notify_getNumPackets);
+	m.def("pus_notify_getNumPackets", &pus_notify_getTmQueueNumPackets);
 
 
 	//m.def("getint", &getint);
