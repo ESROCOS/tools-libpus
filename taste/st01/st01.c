@@ -28,6 +28,7 @@ void st01_PI_ACK(const asn1SccPusPacket *IN_tcPacket,
 		printf("Error st01_PI_ACK  -  NULL PARAM \n");
 		exit(-1);
 	}
+	pus_clearError();
 
 	printf(" - ST01: Packet TC%llu_%llu received, subtype: %llu.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket), *IN_reportType);
 

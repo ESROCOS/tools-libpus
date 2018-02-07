@@ -31,6 +31,7 @@ pusError_t pus_tm_1_X_createReport(pusPacket_t* outTm, pusApid_t apid, pusSequen
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTmPacket(outTm);
 		pus_setTmDataKind(outTm, pus_TM_DATA_ST_1_X);
 
@@ -81,10 +82,6 @@ pusError_t pus_tm_1_1_createAcceptanceReportSuccess(pusPacket_t* outTm, pusApid_
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	else if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
-	}
 	else
 	{
 		return pus_tm_1_X_createReport(outTm, apid, sequenceCount, receivedTc, pus_TM_1_1_successfulAcceptance);
@@ -97,10 +94,6 @@ pusError_t pus_tm_1_2_createAcceptanceReportFailure(pusPacket_t* outTm, pusApid_
 	if (NULL == outTm || NULL == receivedTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
 	}
 	else
 	{
@@ -123,10 +116,6 @@ pusError_t pus_tm_1_3_createStartReportSuccess(pusPacket_t* outTm, pusApid_t api
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	else if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
-	}
 	else
 	{
 		return pus_tm_1_X_createReport(outTm, apid, sequenceCount, receivedTc, pus_TM_1_3_successfulStart);
@@ -139,10 +128,6 @@ pusError_t pus_tm_1_4_createStartReportFailure(pusPacket_t* outTm, pusApid_t api
 	if (NULL == outTm || NULL == receivedTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
 	}
 	else
 	{
@@ -164,10 +149,6 @@ pusError_t pus_tm_1_5_createProgressReportSuccess(pusPacket_t* outTm, pusApid_t 
 	if (NULL == outTm || NULL == receivedTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
 	}
 	else
 	{
@@ -191,10 +172,6 @@ pusError_t pus_tm_1_6_createProgressReportFailure(pusPacket_t* outTm, pusApid_t 
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	else if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
-	}
 	else
 	{
 		pusError_t result = pus_tm_1_X_createReport(outTm, apid, sequenceCount, receivedTc, pus_TM_1_6_failedProgress);
@@ -217,10 +194,6 @@ pusError_t pus_tm_1_7_createCompletionReportSuccess(pusPacket_t* outTm, pusApid_
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	else if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
-	}
 	else
 	{
 		return pus_tm_1_X_createReport(outTm, apid, sequenceCount, receivedTc, pus_TM_1_7_successfulCompletion);
@@ -233,10 +206,6 @@ pusError_t pus_tm_1_8_createCompletionReportFailure(pusPacket_t* outTm, pusApid_
 	if (NULL == outTm || NULL == receivedTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
-	}
-	else if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
 	}
 	else
 	{
@@ -500,87 +469,6 @@ void pus_tm_1_X_setFailureInfo(pusPacket_t* tm, pusSt01FailureCode_t code, const
 }
 
 
-
-
-//push to queue
-pusError_t pus_st01_pushTmAceptanceReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
-{
-	if(pus_getTcAckFlagAcceptance(tcRead))
-	{
-		//get next sequence count
-
-		pusPacket_t tmAcceptance;
-		if( isCorrect )
-		{
-			pus_tm_1_1_createAcceptanceReportSuccess(&tmAcceptance, apid->apid, pus_getNextPacketCount(apid), tcRead);
-		}
-		else
-		{
-			pus_tm_1_2_createAcceptanceReportFailure(&tmAcceptance, apid->apid, pus_getNextPacketCount(apid), tcRead, error, NULL); //TODO error info Null
-		}
-		return pus_packetQueues_push(&tmAcceptance, &pus_packetQueue_tm);
-	}
-	return PUS_NO_ERROR;
-}
-
-
-pusError_t pus_st01_pushTmStartReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
-{
-	if(pus_getTcAckFlagStart(tcRead))
-	{
-		pusPacket_t tmCompletion;
-		if( isCorrect )
-		{
-			pus_tm_1_3_createStartReportSuccess(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead);
-		}
-		else
-		{
-			pus_tm_1_4_createStartReportFailure(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead, error, NULL);
-		}
-		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
-	}
-	return PUS_NO_ERROR;
-}
-
-
-pusError_t pus_st01_pushTmProgressReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error, pusStepId_t step)
-{
-	if(pus_getTcAckFlagProgress(tcRead))
-	{
-		//get next sequence count
-		pusPacket_t tmCompletion;
-		if( isCorrect )
-		{
-			pus_tm_1_5_createProgressReportSuccess(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead, step);
-		}
-		else
-		{
-			pus_tm_1_6_createProgressReportFailure(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead, step, error, NULL);
-		}
-		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
-	}
-	return PUS_NO_ERROR;
-}
-
-
-pusError_t pus_st01_pushTmCompletionReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t* apid, bool isCorrect, pusError_t error)
-{
-	if(pus_getTcAckFlagCompletion(tcRead))
-	{
-		//get next sequence count
-		pusPacket_t tmCompletion;
-		if( isCorrect )
-		{
-			pus_tm_1_7_createCompletionReportSuccess(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead);
-		}
-		else
-		{
-			pus_tm_1_8_createCompletionReportFailure(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead, error, NULL);
-		}
-		return pus_packetQueues_push(&tmCompletion, &pus_packetQueue_tm);
-	}
-	return PUS_NO_ERROR;
-}
 
 
 //

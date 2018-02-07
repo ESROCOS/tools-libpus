@@ -20,6 +20,12 @@ void obcpengine_PI_loadReference(const asn1SccPusTC_18_13_Data *);
 
 extern void obcpengine_RI_newTc(const asn1SccPusPacket *);
 
+extern void obcpengine_RI_getOnBoardParam();
+
+extern void obcpengine_RI_setOnBoardParam();
+
+extern void obcpengine_RI_pushNewEvent(const asn1SccPusSt05Event *);
+
 #ifdef __cplusplus
 }
 #endif

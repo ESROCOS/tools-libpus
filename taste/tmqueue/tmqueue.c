@@ -13,6 +13,8 @@
 
 #include "pus_st01_packets.h"
 
+#include "pus_packet_queues_config.h"
+
 void tmqueue_startup()
 {
     /* Write your initialization code here,
@@ -25,7 +27,7 @@ void tmqueue_PI_tmRequest(asn1SccPusPacket *OUT_tmPacket, asn1SccT_Boolean *OUT_
 {
 	*OUT_isAvailable = false;
 
-	pusError_t error = pus_packetQueues_pop(OUT_tmPacket, &pus_packetQueue_tm);
+	pusError_t error = pus_packetQueues_pop(OUT_tmPacket, pus_TM_QUEUE_ONBOARD);
 	if ( PUS_NO_ERROR == error )
 	{
 		//printf("TmQUEUE: TM%llu_%llu to TcDispatch.\n", pus_getTmService(OUT_tmPacket), pus_getTmSubtype(OUT_tmPacket));
@@ -34,6 +36,7 @@ void tmqueue_PI_tmRequest(asn1SccPusPacket *OUT_tmPacket, asn1SccT_Boolean *OUT_
 	else if ( PUS_ERROR_EMPTY_QUEUE == error)
 	{
 		//printf("Error in tmqueue_PI_tmRequest EMPTY QUEUE, %d (no exit)\n", error);
+		pus_clearError();
 	}
 	else
 	{
@@ -53,7 +56,7 @@ void tmqueue_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 	}
 
 
-	error = pus_packetQueues_push(IN_tmPacket, &pus_packetQueue_tm);
+	error = pus_packetQueues_push(IN_tmPacket, pus_TM_QUEUE_ONBOARD);
 	if( PUS_NO_ERROR == error )
 	{
 		printf("TmQUEUE: TM%llu_%llu inserted in TmQueue.\n", pus_getTmService(IN_tmPacket), pus_getTmSubtype(IN_tmPacket));
@@ -62,13 +65,14 @@ void tmqueue_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 		tmqueue_RI_incCount(&tmPacket, &available);
 		if( PUS_NO_ERROR == available)
 		{
-			while(PUS_NO_ERROR != pus_packetQueues_push(&tmPacket, &pus_packetQueue_tm));
+			while(PUS_NO_ERROR != pus_packetQueues_push(&tmPacket, pus_TM_QUEUE_ONBOARD));
 			//TODO ?=?=?
 		}
 	}
 	else if (PUS_ERROR_FULL_QUEUE == error )
 	{
 		printf("TmQUEUE: PUS_ERROR_FULL_QUEUE, %d (no exit)\n", error);
+		pus_clearError();
 	}
 	else
 	{

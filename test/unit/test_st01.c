@@ -18,6 +18,24 @@ int init_suite_pusPacket(void) { return 0; }
 int clean_suite_pusPacket(void) { return 0; }
 */
 
+pusError_t example_function()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function2()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function3()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
 void test_st01()
 {
 	pusPacket_t tc;
@@ -174,7 +192,7 @@ void test_st01()
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR());
 	pus_clearError();
 
-	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	/*PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
 	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_1_createAcceptanceReportSuccess(&tm, apid.apid, apid.packetCount, &tc));
 	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
 	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_2_createAcceptanceReportFailure(&tm, apid.apid, apid.packetCount, &tc, 0, NULL));
@@ -189,7 +207,7 @@ void test_st01()
 	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
 	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_7_createCompletionReportSuccess(&tm, apid.apid, apid.packetCount, &tc));
 	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
-	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_8_createCompletionReportFailure(&tm, apid.apid, apid.packetCount, &tc, 1, &info1));
+	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_1_8_createCompletionReportFailure(&tm, apid.apid, apid.packetCount, &tc, 1, &info1));*/
 	pus_clearError();
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_TC, pus_tm_1_1_createAcceptanceReportSuccess(&tm, apid.apid, apid.packetCount, &tm));

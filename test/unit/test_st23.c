@@ -20,6 +20,23 @@
 #include "pus_file_management.h"
 #include "pus_st23_config.h"
 
+pusError_t example_function()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function2()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function3()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
 
 void packets_st23()
 {
@@ -173,7 +190,7 @@ void test_st23()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_createFile(&repo, &file, size));
 	pus_files_getDomainFromRepositoryPath(&domain, &repo);
 
-	sprintf(command, "echo \"hola como estamos\" > %s%s",  (char*)domain.arr, (char*)file.arr);
+	sprintf(command, "echo \"hello, how are you?\" > %s%s",  (char*)domain.arr, (char*)file.arr);
 	system(command);
 
 	memcpy(file2.arr, "helloCpy.txt\0", pus_ST23_MAX_SIZE_FILE_PATH -1);
@@ -181,6 +198,10 @@ void test_st23()
 
 	pusError_t a = pus_files_copyFile(&repo, &file, &repo, &file2);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, a);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_deleteFile(&repo, &file));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_deleteFile(&repo, &file2));
+
 
 	pus_clearError();
 }
@@ -237,5 +258,9 @@ int main()
     CU_cleanup_registry();
 
     /* return, 0 if all passed */
+    if( 0 != numFailures )
+    {
+    	printf("\n-- Check if '/tmp/pus' directory is created --\n");
+    }
     return numFailures;
 }

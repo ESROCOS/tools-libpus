@@ -22,18 +22,23 @@ extern "C" {
 #include "pus_types.h"
 #include "pus_packet_queues.h"
 
-extern pusPacketQueue_t pus_packetQueue_tc;
+<% count = 0 %>
+% for queue in config['queues']:
+#define ${queue['label']} ((pusPacketQueueId_t) ${count})
+const pusPacketQueueId_t pus_${queue['label']} = ${count};
 
-extern pusPacketQueue_t pus_packetQueue_tm;
+<% count = count + 1 %>
+% endfor
+#define PUS_PACKET_QUEUES_LIMIT ((pusPacketQueueId_t) ${count})
 
-extern pusPacket_t pus_packetQueue_buffer_tc[];
+//! Table of packetQueues
+extern pusPacketQueue_t pus_packetQueue_table[];
 
-extern pusPacket_t pus_packetQueue_buffer_tm[];
+//! Size of the packetQueues table
+extern const pusPacketQueueId_t pus_packetQueue_tableLenght;
 
-
-//! Initialize the configuration of the packet queues from the mission database
+//! Initialize the configuration of the pusPackets queues from mission
 pusError_t pus_packetQueues_configure();
-
 
 #ifdef __cplusplus
 }

@@ -57,6 +57,7 @@ pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApid_t 
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTcPacket(outTc);
 
 		// Source information

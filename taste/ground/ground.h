@@ -2,8 +2,8 @@
 
 /* Declaration of the functions that have to be provided by the user */
 
-#ifndef __USER_CODE_H_groundapid__
-#define __USER_CODE_H_groundapid__
+#ifndef __USER_CODE_H_ground__
+#define __USER_CODE_H_ground__
 
 #include "C_ASN1_Types.h"
 
@@ -11,11 +11,13 @@
 extern "C" {
 #endif
 
-void groundapid_startup();
+void ground_startup();
 
-void groundapid_PI_getApid(asn1SccPusApid *);
+void ground_PI_newTm(const asn1SccPusPacket *);
 
-void groundapid_PI_getSequenceCounter(asn1SccPusSequenceCount *);
+void ground_PI_triggerTmGUI();
+
+extern void ground_RI_newTc(const asn1SccPusPacket *);
 
 #ifdef __cplusplus
 }

@@ -33,7 +33,6 @@ set(SOURCES
     pus_threads.c
     pus_time.c
     pus_timebased_scheduling.c
-    functions.c
 )
 
 # Define the PUS library

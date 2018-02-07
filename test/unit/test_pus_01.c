@@ -18,6 +18,24 @@ int init_suite_pusPacket(void) { return 0; }
 int clean_suite_pusPacket(void) { return 0; }
 */
 
+pusError_t example_function()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function2()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function3()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
 void test_packetHeader(void)
 {
     pusPacket_t packet;

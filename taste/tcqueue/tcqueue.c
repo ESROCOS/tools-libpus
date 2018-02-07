@@ -11,6 +11,7 @@
 #include "pus_types.h"
 #include "pus_packet_queues.h"
 
+#include "pus_packet_queues_config.h"
 
 void tcqueue_startup()
 {
@@ -30,7 +31,7 @@ void tcqueue_PI_newTc(const asn1SccPusPacket *IN_tcPacket)
 		exit(-1);
 	}
 
-	error = pus_packetQueues_push(IN_tcPacket, &pus_packetQueue_tc);
+	error = pus_packetQueues_push(IN_tcPacket, pus_TC_QUEUE_ONBOARD);
 	if( PUS_NO_ERROR == error )
 	{
 		printf("TcQUEUE: TC%llu_%llu inserted in TcQueue.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
@@ -51,7 +52,7 @@ void tcqueue_PI_tcRequest(asn1SccPusPacket *OUT_tcPacket, asn1SccT_Boolean *OUT_
     /* Write your code here! */
 	*OUT_isAvailable = false;
 
-	pusError_t error = pus_packetQueues_pop(OUT_tcPacket, &pus_packetQueue_tc);
+	pusError_t error = pus_packetQueues_pop(OUT_tcPacket, pus_TC_QUEUE_ONBOARD);
 	if ( PUS_NO_ERROR == error )
 	{
 		//printf("TC%llu_%llu to TcDispatch.\n", pus_getTcService(OUT_tcPacket), pus_getTcSubtype(OUT_tcPacket));

@@ -27,6 +27,7 @@ pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApid_t apid, pusS
 	}
 	else
 	{
+		pus_clearError();
 		//create package
 		pus_initTmPacket(outTm);
 
