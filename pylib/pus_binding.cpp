@@ -51,7 +51,6 @@ pusError_t getError()
 
 namespace py = pybind11;
 
-
 PYBIND11_MODULE(pusbinding, m) {
 	m.doc() = "pus_packet binding";
 	py::enum_<pusError_t>(m, "pusError_t")
@@ -351,4 +350,11 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_expectSt20Tc", &pus_expectSt20Tc, "Binding for pus_expectSt20Tc");
 	m.def("pus_expectSt20Tm", &pus_expectSt20Tm, "Binding for pus_expectSt20Tm");
 
+	m.doc() = "pus_st20_packets binding";
+	m.def("pus_tc_20_1_createParameterValueRequest", &pus_tc_20_1_createParameterValueRequest, "Binding for pus_tc_20_1_createParameterValueRequest");
+	m.def("pus_tm_20_2_createParameterValueReport", &pus_tm_20_2_createParameterValueReport, "Binding for pus_tm_20_2_createParameterValueReport");
+
+	m.doc() = "pus_st23_packets binding";
+	m.def("pus_tc_23_1_createCreateFileRequest", &pus_tc_23_1_createCreateFileRequest_, "Binding for pus_tc_23_1_createCreateFileRequest");
+	m.def("pus_tc_23_2_createDeleteFileRequest", &pus_tc_23_2_createDeleteFileRequest_, "Binding for pus_tc_23_2_createDeleteFileRequest_");
 }
