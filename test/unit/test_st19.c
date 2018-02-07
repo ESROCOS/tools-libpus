@@ -78,17 +78,17 @@ void packets_st19()
 	CU_ASSERT_EQUAL(PUS_ERROR_TC_SERVICE, PUS_EXPECT_ST19(&tc, 0));
 	pus_clearError();
 
-	//TM[19,2]
+	//TC[19,2]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_2_createDeleteEventActionDefinitionsRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_2_deleteEventActionDefinitions));
 	pus_clearError();
 
-	//TM[19,4]
+	//TC[19,4]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_4_createEnableEventActionDefinitions(&tc, apid.apid, pus_getNextPacketCount(&apid), 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_4_enableEventActionDefinitions));
 	pus_clearError();
 
-	//TM[19,5]
+	//TC[19,5]
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tc_19_5_createDisableEventActionDefinitions(&tc, apid.apid, pus_getNextPacketCount(&apid), 1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, PUS_EXPECT_ST19(&tc, pus_TC_19_5_disableEventActionDefinitions));
 	pus_clearError();

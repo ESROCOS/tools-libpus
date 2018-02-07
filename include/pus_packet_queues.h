@@ -32,11 +32,6 @@ typedef struct{
 }pusPacketQueue_t;
 
 //from config
-//! PacketQueue for TC packets
-extern pusPacketQueue_t pus_packetQueue_tc;
-
-//! PacketQueue for TM packets
-extern pusPacketQueue_t pus_packetQueue_tm;
 
 
 extern pusError_t pus_packetQueues_configure();
@@ -59,7 +54,7 @@ bool pus_packetQueues_isInitialized();
  *  \param queue Queue where the packet is going to be pushed
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueue_t * queue);
+pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueueId_t queue);
 
 
 //! Pop packet from its queue
@@ -68,7 +63,24 @@ pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueue_t 
  * 	\param queue Queue where the packet is going to be popped
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_packetQueues_pop(pusPacket_t *outPacket, pusPacketQueue_t * queue);
+pusError_t pus_packetQueues_pop(pusPacket_t *outPacket, pusPacketQueueId_t queue);
+
+//! Push a packet into its queue
+/*! Push a packet into its queue checking if it is possible
+ *  \param[in] inPacket Packet that is going to be pushed
+ *  \param queue Queue where the packet is going to be pushed
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_packetQueues_pushGeneric(const pusPacket_t * inPacket, pusPacketQueue_t * queue);
+
+
+//! Pop packet from its queue
+/*! Pop packet from its queue checking if it is possible
+ * 	\param[out] outPacket Packet that is going to be popped
+ * 	\param queue Queue where the packet is going to be popped
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_packetQueues_popGeneric(pusPacket_t *outPacket, pusPacketQueue_t * queue);
 
 #ifdef  __cplusplus
 }

@@ -215,7 +215,7 @@ pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23File
 					return PUS_SET_ERROR(PUS_ERROR_CREATING_FILE);
 				}
 
-				/* TODO
+				/* TODO todo 0
 				fseek(fp, size-1, 0);
 				fputs("5", fp);
 				if( (uint32_t)ftell(fp) != size)
@@ -238,7 +238,6 @@ pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23File
 
 	return PUS_SET_ERROR(PUS_ERROR_CREATING_FILE);
 }
-
 
 
 pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName)
@@ -276,7 +275,7 @@ pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23File
 pusError_t pus_files_copyFileLinux(pusSt23RepositoryDomain_t* sourceDomain, pusSt23FileName_t* sourceFileName,
 									pusSt23RepositoryDomain_t* targetDomain, pusSt23FileName_t* targetFileName)
 {
-	char command[200];
+	/*char command[200];
 	sprintf(command, "scp %s%s %s%s", (char*)sourceDomain->arr, (char*)sourceFileName->arr, (char*)targetDomain->arr, (char*)targetFileName->arr);
 
 	if ( 0 == system(command) )
@@ -284,7 +283,35 @@ pusError_t pus_files_copyFileLinux(pusSt23RepositoryDomain_t* sourceDomain, pusS
 		return PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 
-	return PUS_SET_ERROR(PUS_ERROR_COPYING_FILE);
+	return PUS_SET_ERROR(PUS_ERROR_COPYING_FILE);*/
+
+	char ch, source_file[200], target_file[200];
+	FILE *source, *target;
+
+	printf("Enter name of file to copy\n");
+	sprintf( source_file, "%s%s", (char*)sourceDomain->arr, (char*)sourceFileName->arr);
+	sprintf( target_file, "%s%s", (char*)targetDomain->arr, (char*)targetFileName->arr);
+
+	source = fopen(source_file, "r");
+	if( source == NULL )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_COPYING_FILE);
+	}
+
+	target = fopen(target_file, "w");
+	if( target == NULL )
+	{
+		fclose(source);
+		return PUS_SET_ERROR(PUS_ERROR_COPYING_FILE);
+	}
+
+	while( ( ch = fgetc(source) ) != EOF )
+		fputc(ch, target);
+
+	fclose(source);
+	fclose(target);
+
+	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
 pusError_t pus_files_getFileMaxSize(pusSt23MaximumSize_t* maxSize, pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName)
@@ -384,7 +411,11 @@ pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23
 	// to service
 	if( pus_files_isSameRepository(targetRepository, &serviceRepository) )
 	{
-		/* TODO
+		if( PUS_NO_ERROR != pus_files_createFile(targetRepository, targetFileName, pus_ST23_MAX_SIZE_FILE))
+		{
+			return PUS_GET_ERROR();
+		}
+		/*  TODO
 		size_t index;
 		if( false == pus_files_isFileInTable(targetRepository, targetFileName, &index))
 		{
@@ -392,6 +423,7 @@ pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23
 		}*/
 		targetLocal = true;
 		//TODO check Linux/Rtems
+
 
 		//return PUS_NO_ERROR;
 	}

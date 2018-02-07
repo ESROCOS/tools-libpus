@@ -1,31 +1,42 @@
 {
 	"$schema": "http://json-schema.org/schema#",
 	"id": "https://github.com/esrocos/TBD",
-	"title": "On-board events",
-	"description": "Events configuration for PUS packet queues",
+	"title": "PUS packet queue",
+	"description": "Configuration for PUS packet queues",
 	"type": "object",
 	"properties": {
-		"tcPacketQueueLength": {
-			"type": "integer",
-			"minimum": 0,
-			"maximum": 2047
-		},
-		"tmPacketQueueLength": {
-			"type": "integer",
-			"minimum": 0,
-			"maximum": 2047
-		},
 		"isTasteFlag": {
 			"type": "integer",
 			"enum": [
 				0,
 				1
 			]
+		},
+		"queues": {
+			"type": "array",
+			"items": {
+				"title": "Queue",
+				"type": "object",
+				"properties": {
+					"label": {
+						"description": "Textual label for the packetQueue",
+						"type": "string"
+					},
+					"length": {
+						"description": "Severity level assigned to the event by default",
+						"type": "integer",
+						"minimun" : 0
+					}
+				},
+				"required": [
+					"label",
+					"length"
+				]
+			}
 		}
 	},
 	"required": [
-		"tcPacketQueueLength",
-		"tmPacketQueueLength",
+		"queues",
 		"isTasteFlag"
 	]
 }

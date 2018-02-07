@@ -1,5 +1,21 @@
 {
-	"tcPacketQueueLength": 10,
-	"tmPacketQueueLength": 20,
-	"isTasteFlag": 0
+	"isTasteFlag": 1,
+	"queues": [
+		{
+			"label": "TM_QUEUE_ONBOARD",
+			"length": 5
+		},
+		{
+			"label": "TC_QUEUE_ONBOARD",
+			"length": 5
+		},
+		{
+			"label": "TM_QUEUE_GROUND",
+			"length": 10
+		},
+		{
+			"label": "TC_QUEUE_GROUND",
+			"length": 10
+		}
+	]
 }

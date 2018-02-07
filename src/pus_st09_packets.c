@@ -17,6 +17,7 @@ pusError_t pus_tc_9_1_createSetTimeReportRate(pusPacket_t* outTc, pusApid_t apid
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTcPacket(outTc);
 
 		// Source information
@@ -48,6 +49,7 @@ pusError_t pus_tm_9_2_createCucTimeReport(pusPacket_t* outTm, pusApid_t apid, pu
 	}
 	else
 	{
+		pus_clearError();
 		//create package
 		pus_initTmPacketNoHeader(outTm);
 

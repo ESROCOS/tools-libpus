@@ -1,21 +1,20 @@
 #!/bin/sh
-mkdir -p libs
-cd libs
-rm *.a || true
-ar -x /home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/libesrocos_pus_mission_test_01.a
-ar -x /home/esrocos/esrocos-ws-pus/pus/debug/src/libesrocos_pus_nothreads.a
-ar -qc libtest01_all.a *.o
-rm *.o
-cd ..
 
-ORCHESTRATOR_OPTIONS+=" --no-retry"
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/esrocos/esrocos-ws-pus/pus/debug/src/:/home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/
+
+gcc -shared -o ~/esrocos-ws-pus/pus/debug/mission/test_01/libesrocos_pus_mission_test_01_st08_functions.so -fPIC ~/esrocos-ws-pus/pus/mission/test_01/st08_functions.c -I/home/esrocos/esrocos-ws-pus/pus/include/
+#cp ~/esrocos-ws-pus/pus/mission/test_01/libesrocos_pus_mission_test_01_st08_functions.so /home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/libesrocos_pus_mission_test_01_st08_functions.so
+
+ORCHESTRATOR_OPTIONS+=" --no-retry "
+ORCHESTRATOR_OPTIONS+=" -e x86_partition:/usr/include/python3.5m"
 ORCHESTRATOR_OPTIONS+=" -e x86_partition:/home/esrocos/esrocos-ws-pus/pus/include/"
 ORCHESTRATOR_OPTIONS+=" -e x86_partition:/home/esrocos/esrocos-ws-pus/pus/debug/asn1/generated/"
-ORCHESTRATOR_OPTIONS+=" -e x86_partition:/home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/generated/include/"
+ORCHESTRATOR_OPTIONS+=" -e x86_partition:/home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/generated/include/" 
 
-#ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/libesrocos_pus_mission_test_01.a"
-#ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/pus/debug/src/libesrocos_pus_nothreads.a"
-ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/pus/taste/libs/libtest01_all.a"
+ORCHESTRATOR_OPTIONS+=" -l x86_partition:/usr/lib/x86_64-linux-gnu/libpython3.5m.so"
+ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/pus/debug/src/libesrocos_pus_nothreads.so"
+ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/libesrocos_pus_mission_test_01.so"
+ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/pus/debug/mission/test_01/libesrocos_pus_mission_test_01_st08_functions.so"
 
-
-echo "ORCHESTRATOR_OPTIONS=$ORCHESTRATOR_OPTIONS"
+echo "ORCHESTRATOR_OPTIONS=$ORCHESTRATOR_OPTIONS" 

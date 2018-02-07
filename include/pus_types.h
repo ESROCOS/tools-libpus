@@ -95,6 +95,7 @@ typedef asn1SccPusSt23RepositoryDomain pusSt23RepositoryDomain_t; //!< Repositor
 typedef asn1SccPusSt23RepositoryDomain pusSt23RepositorySystem_t; //!< Repository domain
 typedef asn1SccPusUInt32 pusSt23RepositoryId_t; //! RepositoryId
 
+typedef asn1SccPusUInt64 pusPacketQueueId_t;
 
 
 #define PUS_ST18_OBSERVABILITY_NONE 0
@@ -187,6 +188,8 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pus_ST23_MAX_SIZE_REPOSITORY_PATH pus_ST23_MAX_SIZE_REPOSITORY_PATH
 
 #define pus_ST23_MAX_SIZE_REPOSITORY_DOMAIN pus_ST23_MAX_SIZE_REPOSITORY_DOMAIN
+
+#define pus_ST23_MAX_SIZE_FILE pus_ST23_MAX_SIZE_FILE
 
 
 #ifdef  __cplusplus

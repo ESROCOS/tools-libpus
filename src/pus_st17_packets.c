@@ -18,6 +18,7 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApid_t
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTcPacket(outTc);
 
 		// Source information
@@ -46,6 +47,7 @@ pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApid_t 
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTmPacket(outTm);
 
 		// Source information

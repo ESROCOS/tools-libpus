@@ -22,9 +22,7 @@ END deploymentview::DV::Node1;
 PACKAGE deploymentview::DV
 PUBLIC
 
-WITH interfaceview::IV::Ground::GroundTc;
-WITH interfaceview::IV::Ground::GroundTm;
-WITH interfaceview::IV::Ground::GroundAPID;
+WITH interfaceview::IV::Ground;
 WITH interfaceview::IV::OnBoard::PusServices::TC::TcQueue;
 WITH interfaceview::IV::OnBoard::PusServices::TC::TcDispatch;
 WITH interfaceview::IV::OnBoard::PusServices::TM::TmDispatch;
@@ -61,14 +59,8 @@ END Node1;
 
 SYSTEM IMPLEMENTATION Node1.others
 SUBCOMPONENTS
-  IV_GroundTc : SYSTEM interfaceview::IV::Ground::GroundTc::GroundTc.others {
-    Taste::FunctionName => "GroundTc";
-  };
-  IV_GroundTm : SYSTEM interfaceview::IV::Ground::GroundTm::GroundTm.others {
-    Taste::FunctionName => "GroundTm";
-  };
-  IV_GroundAPID : SYSTEM interfaceview::IV::Ground::GroundAPID::GroundAPID.others {
-    Taste::FunctionName => "GroundAPID";
+  IV_Ground : SYSTEM interfaceview::IV::Ground::Ground.others {
+    Taste::FunctionName => "Ground";
   };
   IV_TcQueue : SYSTEM interfaceview::IV::OnBoard::PusServices::TC::TcQueue::TcQueue.others {
     Taste::FunctionName => "TcQueue";
@@ -153,9 +145,7 @@ SUBCOMPONENTS
     Taste::coordinates => "108044 63495 219385 206638";
   };
 PROPERTIES
-  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_GroundTc;
-  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_GroundTm;
-  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_GroundAPID;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_Ground;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_TcQueue;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_TcDispatch;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_TmDispatch;

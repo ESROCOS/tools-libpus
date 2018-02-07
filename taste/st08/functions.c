@@ -6,7 +6,7 @@
 
 pusError_t example_function()
 {
-	printf("Hello from function1 !!!!!!!!!!!!!!!!!!!!!!!!!\n");
+	printf("Hello from function1 \n");
 
 	return PUS_NO_ERROR;
 }

@@ -45,7 +45,9 @@ void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
 		pusSequenceCount_t seqCount;
 		st17_RI_getApid(&apid);
 		st17_RI_getSequenceCount(&seqCount);
-		if( PUS_NO_ERROR == pus_tm_17_2_createConnectionTestReport(&outTm, apid, seqCount, IN_tcPacket->apid))
+		pusError_t error = pus_tm_17_2_createConnectionTestReport(&outTm, apid, seqCount, IN_tcPacket->apid);
+		printf(" - ST17: error: %d\n", error);
+		if( PUS_NO_ERROR == error)
 		{
 			printf(" - ST17: Sending TM17.2\n");
 			st17_RI_newTm(&outTm);

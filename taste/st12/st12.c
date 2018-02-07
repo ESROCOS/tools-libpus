@@ -103,6 +103,9 @@ void st12_PI_tc12(const asn1SccPusPacket *IN_tcPacket)
 void st12_PI_PmonTrigger()
 {
     /* Write your code here! */
+    
+    return; //TODO
+    
 	pusStoredParam_t paramValue;
 	pusSt01FailureCode_t isAvailable;
 

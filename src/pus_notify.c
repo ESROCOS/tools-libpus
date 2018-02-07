@@ -8,11 +8,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "pus_notify.h"
-#include "pus_packet_queues.h"
+
 #include "pus_error.h"
+#include "pus_packet_queues.h"
+
 
 pthread_mutex_t receivedMutex; // needed to add/remove data from the buffer
+
+
+//TODO create own queue
+extern const pusPacketQueueId_t pus_TM_QUEUE_GROUND;
+extern const pusPacketQueueId_t pus_TC_QUEUE_GROUND;
+extern pusPacketQueue_t pus_packetQueue_table[];
+
+
 
 pusError_t pus_notify_initialize()
 {
@@ -23,7 +32,13 @@ pusError_t pus_notify_initialize()
 		return PUS_SET_ERROR(PUS_ERROR_THREADS);
 	}
 
-	return pus_packetQueues_initialize();
+	pusError_t error;
+	error = pus_packetQueues_initialize();
+	if( PUS_NO_ERROR != error && PUS_ERROR_ALREADY_INITIALIZED != error)
+	{
+		return error;
+	}
+	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
 pusError_t pus_notify_finalize()
@@ -42,7 +57,7 @@ pusError_t pus_notify_writeTm(pusPacket_t *packet)
 {
 	pusError_t error;
 	pthread_mutex_lock(&receivedMutex);
-	error = pus_packetQueues_push(packet, &pus_packetQueue_tm);
+	error = pus_packetQueues_push(packet, pus_TM_QUEUE_GROUND);
 	pthread_mutex_unlock(&receivedMutex);
 
 	return error;
@@ -53,7 +68,7 @@ pusError_t pus_notify_readTm(pusPacket_t *packet)
 {
 	pusError_t error;
 	pthread_mutex_lock(&receivedMutex);
-	error = pus_packetQueues_pop(packet, &pus_packetQueue_tm);
+	error = pus_packetQueues_pop(packet, pus_TM_QUEUE_GROUND);
 	pthread_mutex_unlock(&receivedMutex);
 
 	return error;
@@ -64,7 +79,7 @@ pusError_t pus_notify_writeTc(pusPacket_t *packet)
 {
 	pusError_t error;
 	pthread_mutex_lock(&receivedMutex);
-	error = pus_packetQueues_push(packet, &pus_packetQueue_tc);
+	error = pus_packetQueues_push(packet, pus_TC_QUEUE_GROUND);
 	pthread_mutex_unlock(&receivedMutex);
 
 	return error;
@@ -75,7 +90,7 @@ pusError_t pus_notify_readTc(pusPacket_t *packet)
 {
 	pusError_t error;
 	pthread_mutex_lock(&receivedMutex);
-	error = pus_packetQueues_pop(packet, &pus_packetQueue_tc);
+	error = pus_packetQueues_pop(packet, pus_TC_QUEUE_GROUND);
 	pthread_mutex_unlock(&receivedMutex);
 
 	return error;
@@ -93,7 +108,7 @@ pusError_t pus_notify_sendPacket(pusPacket_t *packet)
 
 size_t pus_notify_getNumPackets()
 {
-	return pus_packetQueue_tm.nPacketInside;
+	return pus_packetQueue_table[pus_TM_QUEUE_GROUND].nPacketInside;
 }
 
 

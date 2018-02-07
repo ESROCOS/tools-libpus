@@ -22,6 +22,7 @@ pusError_t pus_tc_20_1_createParameterValueRequest(pusPacket_t* outTc, pusApid_t
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTcPacket(outTc);
 
 		// Source information
@@ -54,6 +55,7 @@ pusError_t pus_tm_20_2_createParameterValueReport(pusPacket_t* outTm, pusApid_t 
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTmPacket(outTm);
 
 		// Source information
@@ -93,6 +95,7 @@ pusError_t pus_tc_20_3_createSetParameterValueRequest(pusPacket_t* outTc, pusApi
 	}
 	else
 	{
+		pus_clearError();
 		pus_initTcPacket(outTc);
 
 		// Source information

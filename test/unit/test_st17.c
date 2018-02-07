@@ -18,7 +18,23 @@
 //#include "../../include/pus_st05_packets.h"
 #include "../../include/pus_st17_packets.h"
 
+pusError_t example_function()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
 
+pusError_t example_function2()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
+
+pusError_t example_function3()
+{
+	// DUmmy function
+	return PUS_NO_ERROR;
+}
 
 void test_st17()
 {
