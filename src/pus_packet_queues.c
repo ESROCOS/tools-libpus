@@ -47,12 +47,19 @@ bool pus_packetQueues_isInitialized()
 
 pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueueId_t queueId)
 {
-
+	if( queueId >= pus_packetQueue_tableLenght )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
+	}
 	return pus_packetQueues_pushGeneric(inPacket,  &pus_packetQueue_table[queueId]);
 }
 
 pusError_t pus_packetQueues_pop(pusPacket_t * outPacket, pusPacketQueueId_t queueId)
 {
+	if( queueId >= pus_packetQueue_tableLenght )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
+	}
 	return pus_packetQueues_popGeneric(outPacket,  &pus_packetQueue_table[queueId]);
 }
 
