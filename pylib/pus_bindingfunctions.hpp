@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 #include "pus_packet.h"
 #include "pus_apid.h"
 #include "pus_time.h"
@@ -23,6 +24,7 @@
 #include "pus_st17_packets.h"
 #include "pus_st19_packets.h"
 #include "pus_st20_packets.h"
+#include "pus_st23_packets.h"
 #include "pus_events.h"
 #include "pus_threads.h"
 #include "pus_notify.h"
@@ -100,5 +102,10 @@ pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket);
 
 void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *outTc, long max);
 time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, long max);
+/*
+pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+												const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize);
+pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+												const char* repository, const char* fileName);*/
 
 #endif

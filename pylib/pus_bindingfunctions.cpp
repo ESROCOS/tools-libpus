@@ -355,6 +355,14 @@ pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet)
 	return functionId;
 }
 
+pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket)
+{
+	pusSt09ExponentialRate_t tExp;
+	pusError_t error = pus_tc_9_1_getExponentialRate(&tExp, tcPacket);
+	PUS_SET_ERROR(error);
+	return tExp;
+}
+
 void pus_tc_11_4_get_request(long index, const pusPacket_t* inTc, pusPacket_t *outTc, long max)
 {
 	pusSt11ScheduledActivity_t activities[10];
@@ -385,10 +393,32 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 	return pmon;
 }
 
-pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket)
-{
-	pusSt09ExponentialRate_t tExp;
-	pusError_t error = pus_tc_9_1_getExponentialRate(&tExp, tcPacket);
-	PUS_SET_ERROR(error);
-	return tExp;
+/*pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize) {
+	pusSt23FileName_t file;
+	pusSt23RepositoryPath_t repo;
+
+	memcpy(file.arr, fileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	file.nCount = strlen((char*)file.arr) + 1;
+
+	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
+	repo.nCount = strlen((char*)repo.arr) + 1;
+
+	return pus_tc_23_1_createCreateFileRequest(outTc, apid, sequenceCount, &repo, &file, maxSize);
 }
+
+pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* repository, const char* fileName) {
+	pusSt23FileName_t file;
+	pusSt23RepositoryPath_t repo;
+
+	memcpy(file.arr, fileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	file.nCount = strlen((char*)file.arr) + 1;
+
+	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
+	repo.nCount = strlen((char*)repo.arr) + 1;
+
+	return pus_tc_23_2_createDeleteFileRequest(outTc, apid, sequenceCount, &repo, &file);
+}*/
+
+
