@@ -20,7 +20,7 @@ void events_startup()
 
 void events_PI_getNextEvent(const asn1SccPusUInt64 *IN_actualCounter,
 							asn1SccPusSt05Event *OUT_eventInfo,
-                            asn1SccPusUInt64 *OUT_nextCounter) //TODO INcount
+                            asn1SccPusUInt64 *OUT_nextCounter)
 {
     /* Write your code here! */
 
@@ -37,6 +37,7 @@ void events_PI_getNextEvent(const asn1SccPusUInt64 *IN_actualCounter,
 		pus_clearError();
 	}
 	*OUT_nextCounter = counter;
+	//printf(" -EVENTS: *OUT_nextCounter %llu, *IN_actualCounter %llu\n", *OUT_nextCounter, *IN_actualCounter);
 }
 
 void events_PI_pushNewEvent(const asn1SccPusSt05Event *IN_eventInfo)
@@ -55,14 +56,12 @@ void events_PI_pushNewEvent(const asn1SccPusSt05Event *IN_eventInfo)
 
 void events_PI_debugEventsTrigger()
 {
-	return;
-
 	pusSt05Event_t event;
 	pus_events_createEVENT_INFO_01(&event, 23, 54);
 	pusError_t error = pus_st05_pushBufferEvent(&event);
 	if(PUS_NO_ERROR == error)
 	{
-		printf(" -EVENTS: new event in buffer.\n");
+		printf(" -EVENTS: new event in buffer (info, trigger).\n");
 	}
 	else
 	{

@@ -69,7 +69,7 @@ pusSt20OnBoardParamId_t pus_tc_20_X_getParamId(const pusPacket_t* outTc);
 pusError_t pus_tc_20_3_setParamValue(pusPacket_t* outTc, pusStoredParam_t value);
 
 //! Get on-board param value from a TC[20,3] packet
-pusStoredParam_t pus_tc_20_3_getParamValue(pusPacket_t* outTc);
+pusStoredParam_t pus_tc_20_3_getParamValue(const pusPacket_t* outTc);
 
 //! Set on-board paramId into a TM[20,2]
 pusError_t pus_tm_20_2_setParamId(pusPacket_t* outTc, pusSt20OnBoardParamId_t param);
@@ -81,7 +81,7 @@ pusSt20OnBoardParamId_t pus_tm_20_2_getParamId(const pusPacket_t* outTc);
 pusError_t pus_tm_20_2_setParamValue(pusPacket_t* outTc, pusStoredParam_t value);
 
 //! Get on-board param value from a TM[20,2]
-pusStoredParam_t pus_tm_20_2_getParamValue(pusPacket_t* outTc);
+pusStoredParam_t pus_tm_20_2_getParamValue(const pusPacket_t* outTc);
 
 
 //

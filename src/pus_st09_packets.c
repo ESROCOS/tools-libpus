@@ -125,7 +125,7 @@ pusError_t pus_tm_9_2_setDataField(pusPacket_t* tm)
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tm_9_2_getDataField(pusPacket_t* tm, pusTime_t* time, pusSt09ExponentialRate_t* expRate)
+pusError_t pus_tm_9_2_getDataField(const pusPacket_t* tm, pusTime_t* time, pusSt09ExponentialRate_t* expRate)
 {
 	if ( NULL == tm )
 	{

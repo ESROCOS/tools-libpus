@@ -30,7 +30,7 @@ void st01_PI_ACK(const asn1SccPusPacket *IN_tcPacket,
 	}
 	pus_clearError();
 
-	printf(" - ST01: Packet TC%llu_%llu received, subtype: %llu.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket), *IN_reportType);
+	printf(" - ST01: Packet TC%llu_%llu received, subtype: %llu, error %llu, step %llu\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket), *IN_reportType, *IN_error, *IN_step);
 
 	pusApid_t apid;
 	pusSequenceCount_t seqCount;

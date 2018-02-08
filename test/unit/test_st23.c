@@ -158,6 +158,7 @@ void test_st23()
 {
 	pusSt23RepositoryPath_t repo;
 	//pus_files_getRepositoryPathFromId(&repo, PUS_REPOSITORY_GROUND);
+	system("mkdir -p /tmp/pus");
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_finalize());
 	CU_ASSERT_FALSE(pus_files_isInitialized());

@@ -20,9 +20,12 @@ void obcpengine_PI_loadReference(const asn1SccPusTC_18_13_Data *);
 
 extern void obcpengine_RI_newTc(const asn1SccPusPacket *);
 
-extern void obcpengine_RI_getOnBoardParam();
+extern void obcpengine_RI_getOnBoardParam(const asn1SccPusSt20OnBoardParameterId *,
+                                          asn1SccPusSt20StoredParam *,
+                                          asn1SccPusSt01FailureCode *);
 
-extern void obcpengine_RI_setOnBoardParam();
+extern void obcpengine_RI_setOnBoardParam(const asn1SccPusSt20OnBoardParameterId *,
+                                          const asn1SccPusSt20StoredParam *);
 
 extern void obcpengine_RI_pushNewEvent(const asn1SccPusSt05Event *);
 

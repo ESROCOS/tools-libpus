@@ -36,13 +36,8 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t ap
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
-	if (PUS_IS_ERROR())
-	{
-		return PUS_ERROR_BEFORE;
-	}
-
 	// Build the TM packet
-
+	pus_clearError();
 	pus_initTmPacket(outTm);
 	pus_setTmDataKind(outTm, pus_TM_DATA_ST_3_25);
 

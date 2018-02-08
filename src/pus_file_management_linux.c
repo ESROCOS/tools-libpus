@@ -288,7 +288,6 @@ pusError_t pus_files_copyFileLinux(pusSt23RepositoryDomain_t* sourceDomain, pusS
 	char ch, source_file[200], target_file[200];
 	FILE *source, *target;
 
-	printf("Enter name of file to copy\n");
 	sprintf( source_file, "%s%s", (char*)sourceDomain->arr, (char*)sourceFileName->arr);
 	sprintf( target_file, "%s%s", (char*)targetDomain->arr, (char*)targetFileName->arr);
 
@@ -415,7 +414,7 @@ pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23
 		{
 			return PUS_GET_ERROR();
 		}
-		/*  TODO
+		/*
 		size_t index;
 		if( false == pus_files_isFileInTable(targetRepository, targetFileName, &index))
 		{

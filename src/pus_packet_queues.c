@@ -47,19 +47,37 @@ bool pus_packetQueues_isInitialized()
 
 pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueueId_t queueId)
 {
-	if( queueId >= pus_packetQueue_tableLenght )
+	if( NULL == inPacket )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if( ! pus_packetQueues_isInitialized() )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else if( queueId >= pus_packetQueue_tableLenght )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
+
 	return pus_packetQueues_pushGeneric(inPacket,  &pus_packetQueue_table[queueId]);
 }
 
 pusError_t pus_packetQueues_pop(pusPacket_t * outPacket, pusPacketQueueId_t queueId)
 {
-	if( queueId >= pus_packetQueue_tableLenght )
+	if( NULL == outPacket )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if( ! pus_packetQueues_isInitialized() )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else if( queueId >= pus_packetQueue_tableLenght )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
+
 	return pus_packetQueues_popGeneric(outPacket,  &pus_packetQueue_table[queueId]);
 }
 
@@ -76,7 +94,7 @@ pusError_t pus_packetQueues_pushGeneric(const pusPacket_t * inPacket, pusPacketQ
 	}
 
 	pusError_t error = PUS_NO_ERROR;
-	if( ! pus_packetQueues_isInitialized() )
+	if( NULL == queue->buffer )
 	{
 		error = PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
@@ -114,7 +132,7 @@ pusError_t pus_packetQueues_popGeneric(pusPacket_t * outPacket, pusPacketQueue_t
 	}
 
 	pusError_t error = PUS_NO_ERROR;
-	if( ! pus_packetQueues_isInitialized() )
+	if( NULL == queue->buffer )
 	{
 		error = PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}

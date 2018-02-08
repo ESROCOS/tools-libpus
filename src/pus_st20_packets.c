@@ -156,7 +156,7 @@ pusError_t pus_tc_20_3_setParamValue(pusPacket_t* outTc, pusStoredParam_t value)
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusStoredParam_t pus_tc_20_3_getParamValue(pusPacket_t* outTc)
+pusStoredParam_t pus_tc_20_3_getParamValue(const pusPacket_t* outTc)
 {
 	if( PUS_NO_ERROR != PUS_EXPECT_ST20TC(outTc, pus_TC_20_3_setParameterValues))
 	{
@@ -201,7 +201,7 @@ pusError_t pus_tm_20_2_setParamValue(pusPacket_t* outTc, pusStoredParam_t value)
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusStoredParam_t pus_tm_20_2_getParamValue(pusPacket_t* outTc)
+pusStoredParam_t pus_tm_20_2_getParamValue(const pusPacket_t* outTc)
 {
 	if( PUS_NO_ERROR != PUS_EXPECT_ST20TM(outTc, pus_TM_20_2_reportParameterValues))
 	{

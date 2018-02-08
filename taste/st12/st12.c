@@ -1,4 +1,4 @@
-/* User code: This file will not be overwritten by TASTE. */
+ /* User code: This file will not be overwritten by TASTE. */
 
 #include "st12.h"
 
@@ -93,18 +93,14 @@ void st12_PI_tc12(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		printf("Error 19.4 %d", errorCode);
+		printf("Error 19.4 %llu", errorCode);
 		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
-
-
 }
 
 void st12_PI_PmonTrigger()
 {
     /* Write your code here! */
-    
-    return; //TODO
     
 	pusStoredParam_t paramValue;
 	pusSt01FailureCode_t isAvailable;

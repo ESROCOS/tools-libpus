@@ -66,7 +66,7 @@ void tmqueue_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 		if( PUS_NO_ERROR == available)
 		{
 			while(PUS_NO_ERROR != pus_packetQueues_push(&tmPacket, pus_TM_QUEUE_ONBOARD));
-			//TODO ?=?=?
+			pus_clearError();
 		}
 	}
 	else if (PUS_ERROR_FULL_QUEUE == error )
