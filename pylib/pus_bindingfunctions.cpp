@@ -393,7 +393,7 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 	return pmon;
 }
 
-/*pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 		const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize) {
 	pusSt23FileName_t file;
 	pusSt23RepositoryPath_t repo;
@@ -419,6 +419,49 @@ pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t ap
 	repo.nCount = strlen((char*)repo.arr) + 1;
 
 	return pus_tc_23_2_createDeleteFileRequest(outTc, apid, sequenceCount, &repo, &file);
-}*/
+}
+
+pusError_t pus_tc_tm_23_X_setFileName_(pusPacket_t* outTc, const char* file) {
+	pusSt23FileName_t fileName;
+	memcpy(fileName.arr, file, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	fileName.nCount = strlen((char*)fileName.arr) + 1;
+
+	return pus_tc_tm_23_X_setFileName(outTc, &fileName);
+}
+
+pusError_t pus_tc_tm_23_X_getFileName_(char* file, const pusPacket_t* outTc) {
+	pusSt23FileName_t fileName;
+	if (NULL == file) {
+		return pusError_t::PUS_ERROR_NULLPTR;
+	}
+	pus_tc_tm_23_X_getFileName(&fileName, outTc);
+	strcpy(file, (char *)fileName.arr);
+	return pusError_t::PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_tm_23_X_setRepositoryPath_(pusPacket_t* outTc, const char* repository) {
+	pusSt23RepositoryPath_t repo;
+	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	repo.nCount = strlen((char*)repo.arr) + 1;
+
+	return pus_tc_tm_23_X_setRepositoryPath(outTc, &repo);
+}
+
+pusError_t pus_tc_tm_23_X_getRepositoryPath_(char* repository, const pusPacket_t* outTc) {
+	pusSt23RepositoryPath_t repo;
+	if (NULL == repository) {
+		return pusError_t::PUS_ERROR_NULLPTR;
+	}
+	pus_tc_tm_23_X_getRepositoryPath(&repo, outTc);
+	strcpy(repository, (char *)repo.arr);
+	return pusError_t::PUS_NO_ERROR;
+}
+
+pusSt23MaximumSize_t pus_tc_tm_23_1_4_getMaximumSize_(const pusPacket_t* outTc) {
+	pusSt23MaximumSize_t max;
+
+	PUS_SET_ERROR(pus_tc_tm_23_1_4_getMaximumSize(&max, outTc));
+	return max;
+}
 
 
