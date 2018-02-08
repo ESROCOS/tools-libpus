@@ -5,7 +5,7 @@
  */
 
  #include "pus_st11_packets.h"
-
+#include <stdio.h>
 
 pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype)
 {
@@ -106,7 +106,7 @@ pusError_t pus_tc_11_4_setNCount(pusPacket_t* outTc, int32_t nCount)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(outTc, pus_TC_DATA_ST_11_4))
+	if( PUS_NO_ERROR != PUS_EXPECT_ST11TC(outTc, pus_TC_11_4_insertActivity))
 	{
 		return PUS_GET_ERROR();
 	}
@@ -126,7 +126,7 @@ int32_t pus_tc_11_4_getNCount(pusPacket_t* outTc)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(outTc, pus_TC_DATA_ST_11_4))
+	if( PUS_NO_ERROR != PUS_EXPECT_ST11TC(outTc, pus_TC_11_4_insertActivity))
 	{
 		return 0;
 	}
@@ -141,7 +141,7 @@ pusError_t pus_tc_11_4_setActivity(pusPacket_t* outTc, const pusPacket_t* tcActi
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(outTc, pus_TC_DATA_ST_11_4))
+	if( PUS_NO_ERROR != PUS_EXPECT_ST11TC(outTc, pus_TC_11_4_insertActivity))
 	{
 		return PUS_GET_ERROR();
 	}
@@ -164,11 +164,11 @@ pusError_t pus_tc_11_4_setActivity(pusPacket_t* outTc, const pusPacket_t* tcActi
 
 pusError_t pus_tc_11_4_getActivities(int32_t* nCount, pusSt11ScheduledActivity_t* activities, const pusPacket_t* inTc, int32_t max)
 {
-	if( NULL == inTc || NULL == activities)
+	if( NULL == inTc || NULL == activities || NULL == inTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(inTc, pus_TC_DATA_ST_11_4))
+	if( PUS_NO_ERROR != PUS_EXPECT_ST11TC(inTc, pus_TC_11_4_insertActivity))
 	{
 		return PUS_GET_ERROR();
 	}
