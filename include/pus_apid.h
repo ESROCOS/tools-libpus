@@ -21,9 +21,9 @@ extern "C" {
 //! Type to keep the information (e.g., packet counts) for a given APID
 typedef struct
 {
-	pusApid_t apid; 			//!< The APID
+	pusApid_t apid; 				//!< The APID
 	pusSequenceCount_t packetCount; //!< Count of TM messages sent
-	pusMutex_t* mutex;			//!< Mutex for access control (may be NULL if not needed)
+	pusMutex_t* mutex;				//!< Mutex for access control (may be NULL if not needed)
 } pusApidInfo_t;
 
 

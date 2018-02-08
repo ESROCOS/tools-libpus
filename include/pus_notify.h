@@ -12,6 +12,7 @@
 #include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_threads.h"
+#include "pus_packet_queues.h"
 
 
 #ifdef  __cplusplus
@@ -68,7 +69,7 @@ pusError_t pus_notify_readTc(pusPacket_t *packet);
 /*!
  * \return Number of packets in queue.
  */
-size_t pus_notify_getNumPackets();
+size_t pus_notify_getTmQueueNumPackets();
 
 pusError_t pus_notify_sendPacket(pusPacket_t *packet);
 

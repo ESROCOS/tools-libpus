@@ -12,6 +12,9 @@
 #include "../../include/pus_st01_packets.h"
 #include "../../include/pus_st03_packets.h"
 
+#include "pus_packet_queues.h"
+#include "pus_packet_queues_config.h"
+
 // Sample init and clean functions
 /*
 int init_suite_pusPacket(void) { return 0; }
@@ -49,9 +52,9 @@ void test_packetHeader(void)
     CU_ASSERT_EQUAL(0, pus_getSequenceCount(&packet));
     CU_ASSERT_EQUAL(pus_PACKET_DATA_NONE, pus_getPacketDataKind(&packet));
 
-    printf("uint64_t %lu\n", sizeof(uint64_t));
-    printf("ul %lu\n", sizeof(unsigned long int));
-    printf("ull %lu\n", sizeof(unsigned long long int));
+   // printf("uint64_t %lu\n", sizeof(uint64_t));
+   // printf("ul %lu\n", sizeof(unsigned long int));
+   // printf("ull %lu\n", sizeof(unsigned long long int));
 }
 
 void test_setSequenceIncrement(void)
@@ -431,7 +434,48 @@ void test_packetErrors()
 	pus_setTmNoHeaderDataKind(NULL, pus_TM_DATA_NONE);
 	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, PUS_GET_ERROR()); pus_clearError();
 
+	pus_clearError();
+}
 
+void test_packetQueue()
+{
+	pusPacket_t packet;
+
+	pus_clearError();
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_packetQueues_push(&packet, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_packetQueues_pop(&packet, 0));
+	CU_ASSERT_FALSE(pus_packetQueues_isInitialized());
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_packetQueues_push(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_packetQueues_pop(NULL, 0));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_initialize());
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_packetQueues_initialize());
+	CU_ASSERT_TRUE(pus_packetQueues_isInitialized());
+	CU_ASSERT_EQUAL(0, pus_packetQueue_table[0].nPacketInside);
+	CU_ASSERT_EQUAL(0, pus_packetQueue_table[0].out);
+
+	for(size_t i=0; i< pus_packetQueue_table[0].length; i++)
+	{
+		CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_push(&packet, 0));
+	}
+	CU_ASSERT_EQUAL(PUS_ERROR_FULL_QUEUE, pus_packetQueues_push(&packet, 0));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, 0));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_push(&packet, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_FULL_QUEUE, pus_packetQueues_push(&packet, 0));
+	CU_ASSERT_EQUAL(1, pus_packetQueue_table[0].out);
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, 0));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, 0));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, 0));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, 0));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetQueues_pop(&packet, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_EMPTY_QUEUE, pus_packetQueues_pop(&packet, 0));
+	CU_ASSERT_EQUAL(0, pus_packetQueue_table[0].nPacketInside);
+
+	pus_clearError();
 }
 
 int main()
@@ -463,6 +507,7 @@ int main()
 		(NULL == CU_add_test(pSuite, "test_error", test_error)) ||
 		(NULL == CU_add_test(pSuite, "test_apid", test_apid)) ||
 		(NULL == CU_add_test(pSuite, "test_threads", test_threads)) ||
+		(NULL == CU_add_test(pSuite, "test_packetQueue", test_packetQueue)) ||
 		0)
     {
       CU_cleanup_registry();

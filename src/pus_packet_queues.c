@@ -47,70 +47,20 @@ bool pus_packetQueues_isInitialized()
 
 pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueueId_t queueId)
 {
-	if( NULL == inPacket )
+	if( queueId >= pus_packetQueue_tableLenght )
 	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
-
-	if (NULL != pus_packetQueue_table[queueId].mutex && !pus_mutexLockOk(pus_packetQueue_table[queueId].mutex))
-	{
-		return PUS_ERROR_THREADS;
-	}
-
-	if( ! pus_packetQueues_isInitialized() )
-	{
-		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
-	}
-
-	if ( pus_packetQueue_table[queueId].length == pus_packetQueue_table[queueId].nPacketInside )
-	{
-		return PUS_SET_ERROR(PUS_ERROR_FULL_QUEUE);
-	}
-
-	pus_packetQueue_table[queueId].buffer[(pus_packetQueue_table[queueId].out + pus_packetQueue_table[queueId].nPacketInside) % pus_packetQueue_table[queueId].length] = *inPacket;
-	pus_packetQueue_table[queueId].nPacketInside = (pus_packetQueue_table[queueId].nPacketInside + 1);
-
-	if (NULL != pus_packetQueue_table[queueId].mutex && !pus_mutexUnlockOk(pus_packetQueue_table[queueId].mutex))
-	{
-		return PUS_ERROR_THREADS;
-	}
-
-	return PUS_NO_ERROR;
+	return pus_packetQueues_pushGeneric(inPacket,  &pus_packetQueue_table[queueId]);
 }
 
 pusError_t pus_packetQueues_pop(pusPacket_t * outPacket, pusPacketQueueId_t queueId)
 {
-	if( NULL == outPacket )
+	if( queueId >= pus_packetQueue_tableLenght )
 	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
-
-	if (NULL != pus_packetQueue_table[queueId].mutex && !pus_mutexLockOk(pus_packetQueue_table[queueId].mutex))
-	{
-		return PUS_ERROR_THREADS;
-	}
-
-	if( ! pus_packetQueues_isInitialized() )
-	{
-		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
-	}
-
-	if( 0 == pus_packetQueue_table[queueId].nPacketInside )
-	{
-		return PUS_SET_ERROR(PUS_ERROR_EMPTY_QUEUE);
-	}
-
-	*outPacket = pus_packetQueue_table[queueId].buffer[pus_packetQueue_table[queueId].out];
-	pus_packetQueue_table[queueId].out = (pus_packetQueue_table[queueId].out + 1) % pus_packetQueue_table[queueId].length;
-	pus_packetQueue_table[queueId].nPacketInside = pus_packetQueue_table[queueId].nPacketInside - 1;
-
-
-	if (NULL != pus_packetQueue_table[queueId].mutex && !pus_mutexUnlockOk(pus_packetQueue_table[queueId].mutex))
-	{
-		return PUS_ERROR_THREADS;
-	}
-
-	return PUS_NO_ERROR;
+	return pus_packetQueues_popGeneric(outPacket,  &pus_packetQueue_table[queueId]);
 }
 
 pusError_t pus_packetQueues_pushGeneric(const pusPacket_t * inPacket, pusPacketQueue_t * queue)
@@ -125,20 +75,30 @@ pusError_t pus_packetQueues_pushGeneric(const pusPacket_t * inPacket, pusPacketQ
 		return PUS_ERROR_THREADS;
 	}
 
-	if ( queue->length == queue->nPacketInside )
+	pusError_t error = PUS_NO_ERROR;
+	if( ! pus_packetQueues_isInitialized() )
 	{
-		return PUS_SET_ERROR(PUS_ERROR_FULL_QUEUE);
+		error = PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
-
-	queue->buffer[(queue->out + queue->nPacketInside) % queue->length] = *inPacket;
-	queue->nPacketInside = (queue->nPacketInside + 1);
+	else
+	{
+		if ( queue->length == queue->nPacketInside )
+		{
+			error = PUS_SET_ERROR(PUS_ERROR_FULL_QUEUE);
+		}
+		else
+		{
+			queue->buffer[(queue->out + queue->nPacketInside) % queue->length] = *inPacket;
+			queue->nPacketInside = (queue->nPacketInside + 1);
+		}
+	}
 
 	if (NULL != queue->mutex && !pus_mutexUnlockOk(queue->mutex))
 	{
 		return PUS_ERROR_THREADS;
 	}
 
-	return PUS_NO_ERROR;
+	return error;
 }
 
 pusError_t pus_packetQueues_popGeneric(pusPacket_t * outPacket, pusPacketQueue_t * queue)
@@ -153,21 +113,30 @@ pusError_t pus_packetQueues_popGeneric(pusPacket_t * outPacket, pusPacketQueue_t
 		return PUS_ERROR_THREADS;
 	}
 
-	if( 0 == queue->nPacketInside )
+	pusError_t error = PUS_NO_ERROR;
+	if( ! pus_packetQueues_isInitialized() )
 	{
-		return PUS_SET_ERROR(PUS_ERROR_EMPTY_QUEUE);
+		error = PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
-
-	*outPacket = queue->buffer[queue->out];
-	queue->out = (queue->out + 1) % queue->length;
-	queue->nPacketInside = queue->nPacketInside - 1;
-
+	else
+	{
+		if( 0 == queue->nPacketInside )
+		{
+			error = PUS_SET_ERROR(PUS_ERROR_EMPTY_QUEUE);
+		}
+		else
+		{
+			*outPacket = queue->buffer[queue->out];
+			queue->out = (queue->out + 1) % queue->length;
+			queue->nPacketInside = queue->nPacketInside - 1;
+		}
+	}
 
 	if (NULL != queue->mutex && !pus_mutexUnlockOk(queue->mutex))
 	{
 		return PUS_ERROR_THREADS;
 	}
 
-	return PUS_NO_ERROR;
+	return error;
 }
 

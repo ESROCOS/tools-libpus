@@ -1,5 +1,5 @@
 {
-	"isTasteFlag": 1,
+	"isTasteFlag": 0,
 	"queues": [
 		{
 			"label": "TM_QUEUE_ONBOARD",

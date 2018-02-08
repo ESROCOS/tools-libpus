@@ -95,7 +95,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_notify_readTc", &pus_notify_readTc);
 	m.def("pus_notify_writeTc", &pus_notify_writeTc);
 	m.def("pus_notify_sendPacket", &pus_notify_sendPacket);
-	m.def("pus_notify_getNumPackets", &pus_notify_getNumPackets);
+	m.def("pus_notify_getNumPackets", &pus_notify_getTmQueueNumPackets);
 
 
 	//m.def("getint", &getint);
@@ -355,6 +355,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_20_2_createParameterValueReport", &pus_tm_20_2_createParameterValueReport, "Binding for pus_tm_20_2_createParameterValueReport");
 
 	m.doc() = "pus_st23_packets binding";
+
 	m.def("pus_tc_23_1_createCreateFileRequest", &pus_tc_23_1_createCreateFileRequest_, "Binding for pus_tc_23_1_createCreateFileRequest");
 	m.def("pus_tc_23_2_createDeleteFileRequest", &pus_tc_23_2_createDeleteFileRequest_, "Binding for pus_tc_23_2_createDeleteFileRequest");
 	m.def("pus_tc_tm_23_X_setFileName", &pus_tc_tm_23_X_setFileName_, "Binding for pus_tc_tm_23_X_setFileName");
@@ -363,4 +364,5 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_tm_23_X_getRepositoryPath", &pus_tc_tm_23_X_getRepositoryPath_, "Binding for pus_tc_tm_23_X_getRepositoryPath");
 	m.def("pus_tc_tm_23_1_4_setMaximumSize", &pus_tc_tm_23_1_4_setMaximumSize, "Binding for pus_tc_tm_23_1_4_setMaximumSize");
 	m.def("pus_tc_tm_23_1_4_getMaximumSize", &pus_tc_tm_23_1_4_getMaximumSize_, "Binding for pus_tc_tm_23_1_4_getMaximumSize");
+
 }
