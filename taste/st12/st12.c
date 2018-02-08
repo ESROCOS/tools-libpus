@@ -35,7 +35,7 @@ void st12_PI_tc12(const asn1SccPusPacket *IN_tcPacket)
 		//send 1.1
 		printf(" -ST12: pus_TM_1_1_successfulAcceptance\n");
 		subtype = pus_TM_1_1_successfulAcceptance;
-		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 
 		pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);

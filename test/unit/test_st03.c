@@ -420,9 +420,9 @@ void test_st03()
 	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_GET_ERROR()); pus_clearError();
 
 	// pus_tm_3_25_createHousekeepingReport
-	PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
+	/*PUS_SET_ERROR(PUS_ERROR_NOT_IMPLEMENTED);
 	CU_ASSERT_EQUAL(PUS_ERROR_BEFORE, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
-	pus_clearError();
+	*/pus_clearError();
 
 	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), 1234, pus_APID_IDLE));
 	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, PUS_GET_ERROR()); pus_clearError();

@@ -43,7 +43,6 @@ void tmdispatch_PI_tmTrigger()
 	else
 	{
 		printf(" - Error tmdispatch_PI_tmTrigger, %d (no exit)\n", error);
-		//TODO ¿¿¿¿¿¿¿???? when no packet received
 		pus_clearError();
 	}
 }

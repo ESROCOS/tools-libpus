@@ -46,6 +46,14 @@ void tcdispatch_PI_tcTrigger()
 				//pus_st08_processTcPacket(&tcRead, &apid);
 				tcdispatch_RI_tc08(&tc);
 				break;
+			case 9:
+				//pus_st08_processTcPacket(&tcRead, &apid);
+				tcdispatch_RI_tc09(&tc);
+				break;
+			case 11:
+				//pus_st12_processTcPacket(&tcRead, &apid);
+				tcdispatch_RI_tc11(&tc);
+				break;
 			case 12:
 				//pus_st12_processTcPacket(&tcRead, &apid);
 				tcdispatch_RI_tc12(&tc);
@@ -54,6 +62,10 @@ void tcdispatch_PI_tcTrigger()
 				//pus_st17_processTcPacket(&tcRead, &apid);
 				tcdispatch_RI_tc17(&tc);
 				break;
+			case 18:
+				//pus_st17_processTcPacket(&tcRead, &apid);
+				tcdispatch_RI_tc18(&tc);
+				break;
 			case 19:
 				//pus_st19_processTcPacket(&tcRead, &apid);
 				tcdispatch_RI_tc19(&tc);
@@ -61,6 +73,10 @@ void tcdispatch_PI_tcTrigger()
 			case 20:
 				//pus_st19_processTcPacket(&tcRead, &apid);
 				tcdispatch_RI_tc20(&tc);
+				break;
+			case 23:
+				//pus_st19_processTcPacket(&tcRead, &apid);
+				tcdispatch_RI_tc23(&tc);
 				break;
 			default:
 				printf("Exception TC service. (exit)\n");

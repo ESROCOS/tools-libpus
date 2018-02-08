@@ -15,8 +15,6 @@ void st17_startup();
 
 void st17_PI_tc17(const asn1SccPusPacket *);
 
-extern void st17_RI_newTm(const asn1SccPusPacket *);
-
 extern void st17_RI_ACK(const asn1SccPusPacket *,
                         const asn1SccPusSubserviceType *,
                         const asn1SccPusSt01FailureCode *,
@@ -26,6 +24,8 @@ extern void st17_RI_ACK(const asn1SccPusPacket *,
 extern void st17_RI_getApid(asn1SccPusApid *);
 
 extern void st17_RI_getSequenceCount(asn1SccPusSequenceCount *);
+
+extern void st17_RI_newTm(const asn1SccPusPacket *);
 
 #ifdef __cplusplus
 }
