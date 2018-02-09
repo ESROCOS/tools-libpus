@@ -8,22 +8,10 @@ void trigger_startup()
        but do not make any call to a required interface. */
 }
 
-void trigger_PI_HkReportTrigger()
-{
-    /* Write your code here! */
-    trigger_RI_HkReportTrigger();
-}
-
 void trigger_PI_TmDispatchTrigger()
 {
     /* Write your code here! */
     trigger_RI_tmTrigger();
-}
-
-void trigger_PI_EventActionTrigger()
-{
-    /* Write your code here! */
-    trigger_RI_EventActionTrigger();
 }
 
 void trigger_PI_TcDispatchTrigger()
@@ -35,18 +23,39 @@ void trigger_PI_TcDispatchTrigger()
 void trigger_PI_PmonTrigger()
 {
     /* Write your code here! */
+	return;
+
     trigger_RI_PmonTrigger();
+}
+
+void trigger_PI_HkReportTrigger()
+{
+    /* Write your code here! */
+	return;
+
+    trigger_RI_HkReportTrigger();
 }
 
 void trigger_PI_EventReportTrigger()
 {
     /* Write your code here! */
-    trigger_RI_EventReportTrigger;
+	return;
+
+	trigger_RI_EventReportTrigger();
+}
+
+void trigger_PI_EventActionTrigger()
+{
+    /* Write your code here! */
+	return;
+
+    trigger_RI_EventActionTrigger();
 }
 
 void trigger_PI_debugEventTrigger()
 {
     /* Write your code here! */
-    trigger_RI_debugEventsTrigger();
+	return;
+	trigger_RI_debugEventsTrigger();
 }
 

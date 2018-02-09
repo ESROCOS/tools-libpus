@@ -34,7 +34,7 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 	if(PUS_NO_ERROR == errorCode )
 	{
 		//send 1.1
-		printf(" -ST19: pus_TM_1_1_successfulAcceptance\n.");
+		//printf(" -ST19: pus_TM_1_1_successfulAcceptance\n.");
 		subtype = pus_TM_1_1_successfulAcceptance;
 		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
@@ -46,6 +46,7 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 		else
 		{
 			pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);
+			printf(" -ST19: Subtype: %llu, eventId %llu", subtype, eventID);
 			if( pus_TC_19_1_addEventActionDefinitions == subtype )
 			{
 				pusPacketReduced_t tcActionR;
@@ -64,7 +65,7 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 			}
 			else if( pus_TC_19_5_disableEventActionDefinitions == subtype )
 			{
-				errorCode = pus_eventAction_enableEventActionDefinition(eventID);
+				errorCode = pus_eventAction_disableEventActionDefinition(eventID);
 			}
 			else
 			{
@@ -77,7 +78,7 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 		errorCode = PUS_ERROR_TC_SERVICE;
 
 		//send 1.2
-		printf(" -ST19: pus_TM_1_2_failedAcceptance\n");
+		//printf(" -ST19: pus_TM_1_2_failedAcceptance\n");
 		subtype = pus_TM_1_2_failedAcceptance;
 		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		return;
@@ -93,7 +94,7 @@ void st19_PI_tc19(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		printf("Error 19.4 %llu", errorCode);
+		//printf("Error 19.4 %llu", errorCode);
 		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }

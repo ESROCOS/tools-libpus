@@ -216,7 +216,7 @@ pusError_t pus_scheduling_tc_11_4_packetToTable(const pusPacket_t* packet)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if( PUS_NO_ERROR == PUS_EXPECT_ST11TC(packet, pus_TC_DATA_ST_11_4))
+	if( PUS_NO_ERROR != PUS_EXPECT_ST11TC(packet, pus_TC_11_4_insertActivity))
 	{
 		return PUS_GET_ERROR();
 	}
@@ -229,11 +229,17 @@ pusError_t pus_scheduling_tc_11_4_packetToTable(const pusPacket_t* packet)
 	}
 
 	pusPacket_t tcAction;
+	pusError_t error;
 	for(int32_t i = 0; i<nCount; i++)
 	{
-		pus_packetReduced_createPacketFromPacketReduced(&tcAction, &pus_scheduling_tableAuxiliar[i].packetReduced);
+		error = pus_packetReduced_createPacketFromPacketReduced(&tcAction, &pus_scheduling_tableAuxiliar[i].packetReduced);
+		if( PUS_NO_ERROR != error)
+		{
+			return PUS_GET_ERROR();
+		}
 
-		if( PUS_NO_ERROR != pus_scheduling_insertActivity(&tcAction, &pus_scheduling_tableAuxiliar[i].time))
+		error = pus_scheduling_insertActivity(&tcAction, &pus_scheduling_tableAuxiliar[i].time);
+		if( PUS_NO_ERROR != error )
 		{
 			return PUS_GET_ERROR();
 		}

@@ -20,7 +20,7 @@ void tmdispatch_startup()
 void tmdispatch_PI_tmTrigger()
 {
     /* Write your code here! */
-	printf("TmDispatch: ");
+	//printf("TmDispatch: ");
 
 	pusPacket_t tm;
 	asn1SccT_Boolean isAvailable;
@@ -28,7 +28,7 @@ void tmdispatch_PI_tmTrigger()
 	tmdispatch_RI_tmRequest(&tm, &isAvailable);
 	if( false == isAvailable )
 	{
-		printf("NO DATA READ\n");
+		///¡printf("NO DATA READ\n");
 		pus_clearError();
 		return;
 	}
@@ -43,7 +43,6 @@ void tmdispatch_PI_tmTrigger()
 	else
 	{
 		printf(" - Error tmdispatch_PI_tmTrigger, %d (no exit)\n", error);
-		//TODO ¿¿¿¿¿¿¿???? when no packet received
 		pus_clearError();
 	}
 }

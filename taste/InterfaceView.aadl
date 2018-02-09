@@ -26,6 +26,16 @@ PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_newTm.others;
 
+SUBPROGRAM PI_triggerTmGUI
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_triggerTmGUI;
+
+SUBPROGRAM IMPLEMENTATION PI_triggerTmGUI.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_triggerTmGUI.others;
+
 SUBPROGRAM RI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
@@ -36,34 +46,27 @@ END RI_newTc;
 SUBPROGRAM IMPLEMENTATION RI_newTc.others
 END RI_newTc.others;
 
-SUBPROGRAM PI_triggerTmGUI
-END PI_triggerTmGUI;
-
-SUBPROGRAM IMPLEMENTATION PI_triggerTmGUI.others
-PROPERTIES
-  Compute_Execution_Time => 0 ms .. 0 ms;
-END PI_triggerTmGUI.others;
-
 SYSTEM Ground
 FEATURES
   PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_newTm.others {
-    Taste::coordinates => "57887 73905";
+    Taste::coordinates => "57092 76607";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "newTm";
   };
+  PI_triggerTmGUI : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_triggerTmGUI.others {
+    Taste::coordinates => "39199 59924";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 500 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "triggerTmGUI";
+  };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "57887 67571";
+    Taste::coordinates => "57092 65981";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
-  };
-  PI_triggerTmGUI : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_triggerTmGUI.others {
-    Taste::coordinates => "34590 57222";
-    Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 500 ms;
-    Taste::InterfaceName => "triggerTmGUI";
   };
 PROPERTIES
   Source_Language => (C);
@@ -115,14 +118,14 @@ END PI_tcRequest.others;
 SYSTEM TcQueue
 FEATURES
   PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "91999 47062";
+    Taste::coordinates => "90886 47221";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "newTc";
   };
   PI_tcRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_tcRequest.others {
-    Taste::coordinates => "98503 44108";
+    Taste::coordinates => "97390 44267";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
@@ -266,68 +269,68 @@ END RI_tc20.others;
 SYSTEM TcDispatch
 FEATURES
   PI_tcTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcDispatch::PI_tcTrigger.others {
-    Taste::coordinates => "102580 49061";
+    Taste::coordinates => "101467 49220";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tcTrigger";
   };
   RI_tcRequest : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_tcRequest.others {
-    Taste::coordinates => "101530 46842";
+    Taste::coordinates => "100417 47001";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tcRequest";
     Taste::labelInheritance => "true";
   };
   RI_tc17 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST17::PI_tc17.others {
-    Taste::coordinates => "110351 45931";
+    Taste::coordinates => "109238 46090";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc17";
     Taste::labelInheritance => "true";
   };
   RI_tc08 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST08::PI_tc08.others {
-    Taste::coordinates => "110351 44659";
+    Taste::coordinates => "109238 44818";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc08";
     Taste::labelInheritance => "true";
   };
   RI_tc19 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_tc19.others {
-    Taste::coordinates => "110351 43336";
+    Taste::coordinates => "109238 43495";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc19";
     Taste::labelInheritance => "true";
   };
   RI_tc09 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::PI_tc09.others {
-    Taste::coordinates => "103680 49061";
+    Taste::coordinates => "102567 49220";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc09";
     Taste::labelInheritance => "true";
   };
   RI_tc12 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_tc12.others {
-    Taste::coordinates => "110351 43985";
+    Taste::coordinates => "109238 44144";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc12";
     Taste::labelInheritance => "true";
   };
   RI_tc11 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_tc11.others {
-    Taste::coordinates => "110351 45287";
+    Taste::coordinates => "109238 45446";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc11";
     Taste::labelInheritance => "true";
   };
   RI_tc18 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OBCP::ST18::PI_tc18.others {
-    Taste::coordinates => "110351 46556";
+    Taste::coordinates => "109238 46715";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc18";
     Taste::labelInheritance => "true";
   };
   RI_tc23 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::ST23::PI_tc23.others {
-    Taste::coordinates => "110351 48304";
+    Taste::coordinates => "109238 48463";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc23";
     Taste::labelInheritance => "true";
   };
   RI_tc20 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20::PI_tc20.others {
-    Taste::coordinates => "110351 47332";
+    Taste::coordinates => "109238 47491";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc20";
     Taste::labelInheritance => "true";
@@ -472,69 +475,69 @@ END RI_tc20.others;
 SYSTEM TC
 FEATURES
   PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "90145 43596";
+    Taste::coordinates => "89032 43755";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "newTc";
   };
   PI_tcTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcDispatch::PI_tcTrigger.others {
-    Taste::coordinates => "91416 51795";
+    Taste::coordinates => "90303 51954";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tcTrigger";
   };
   RI_tc17 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST17::PI_tc17.others {
-    Taste::coordinates => "114416 46751";
+    Taste::coordinates => "113303 46910";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc17";
     Taste::labelInheritance => "true";
   };
   RI_tc08 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST08::PI_tc08.others {
-    Taste::coordinates => "114416 44463";
+    Taste::coordinates => "113303 44622";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc08";
     Taste::labelInheritance => "true";
   };
   RI_tc09 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::PI_tc09.others {
-    Taste::coordinates => "97711 51795";
+    Taste::coordinates => "96598 51954";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc09";
     Taste::labelInheritance => "true";
   };
   RI_tc12 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_tc12.others {
-    Taste::coordinates => "114416 43317";
+    Taste::coordinates => "113303 43476";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc12";
     Taste::labelInheritance => "true";
   };
   RI_tc19 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_tc19.others {
-    Taste::coordinates => "114416 42225";
+    Taste::coordinates => "113303 42384";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc19";
     Taste::labelInheritance => "true";
   };
   RI_tc11 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_tc11.others {
-    Taste::coordinates => "114416 45600";
+    Taste::coordinates => "113303 45759";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc11";
     Taste::labelInheritance => "true";
   };
   RI_tc18 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OBCP::ST18::PI_tc18.others {
-    Taste::coordinates => "114416 48003";
+    Taste::coordinates => "113303 48162";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc18";
     Taste::labelInheritance => "true";
   };
   RI_tc23 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::ST23::PI_tc23.others {
-    Taste::coordinates => "114416 50709";
+    Taste::coordinates => "113303 50868";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc23";
     Taste::labelInheritance => "true";
   };
   RI_tc20 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20::PI_tc20.others {
-    Taste::coordinates => "114416 49108";
+    Taste::coordinates => "113303 49267";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc20";
     Taste::labelInheritance => "true";
@@ -547,47 +550,47 @@ END TC;
 SYSTEM IMPLEMENTATION TC.others
 SUBCOMPONENTS
   TcQueue : SYSTEM interfaceview::IV::OnBoard::PusServices::TC::TcQueue::TcQueue.others {
-    Taste::coordinates => "91999 42775 98503 48705";
+    Taste::coordinates => "90886 42934 97390 48864";
   };
   TcDispatch : SYSTEM interfaceview::IV::OnBoard::PusServices::TC::TcDispatch::TcDispatch.others {
-    Taste::coordinates => "101530 42932 110351 49061";
+    Taste::coordinates => "100417 43091 109238 49220";
   };
 CONNECTIONS
   TcQueue_PI_newTc_TC_PI_newTc : SUBPROGRAM ACCESS TcQueue.PI_newTc -> PI_newTc {
-    Taste::coordinates => "90145 43596 91072 43596 91072 47062 91999 47062";
+    Taste::coordinates => "89032 43755 89959 43755 89959 47221 90886 47221";
   };
   TcQueue_PI_tcRequest_TcDispatch_RI_tcRequest : SUBPROGRAM ACCESS TcQueue.PI_tcRequest -> TcDispatch.RI_tcRequest {
-    Taste::coordinates => "101530 46842 100016 46842 100016 44108 98503 44108";
+    Taste::coordinates => "100417 47001 98903 47001 98903 44267 97390 44267";
   };
   TcDispatch_PI_tcTrigger_TC_PI_tcTrigger : SUBPROGRAM ACCESS TcDispatch.PI_tcTrigger -> PI_tcTrigger {
-    Taste::coordinates => "91416 51795 91416 49737 102580 49737 102580 49061";
+    Taste::coordinates => "90303 51954 90303 49896 101467 49896 101467 49220";
   };
   TC_RI_tc17_TcDispatch_RI_tc17 : SUBPROGRAM ACCESS RI_tc17 -> TcDispatch.RI_tc17 {
-    Taste::coordinates => "110351 45931 112383 45931 112383 46751 114416 46751";
+    Taste::coordinates => "109238 46090 111270 46090 111270 46910 113303 46910";
   };
   TC_RI_tc08_TcDispatch_RI_tc08 : SUBPROGRAM ACCESS RI_tc08 -> TcDispatch.RI_tc08 {
-    Taste::coordinates => "110351 44659 112383 44659 112383 44463 114416 44463";
+    Taste::coordinates => "109238 44818 111270 44818 111270 44622 113303 44622";
   };
   TC_RI_tc19_TcDispatch_RI_tc19 : SUBPROGRAM ACCESS RI_tc19 -> TcDispatch.RI_tc19 {
-    Taste::coordinates => "110351 43336 112383 43336 112383 42225 114416 42225";
+    Taste::coordinates => "109238 43495 111270 43495 111270 42384 113303 42384";
   };
   TC_RI_tc09_TcDispatch_RI_tc09 : SUBPROGRAM ACCESS RI_tc09 -> TcDispatch.RI_tc09 {
-    Taste::coordinates => "103680 49061 103680 51287 97711 51287 97711 51795";
+    Taste::coordinates => "102567 49220 102567 51446 96598 51446 96598 51954";
   };
   TC_RI_tc12_TcDispatch_RI_tc12 : SUBPROGRAM ACCESS RI_tc12 -> TcDispatch.RI_tc12 {
-    Taste::coordinates => "110351 43985 112383 43985 112383 43317 114416 43317";
+    Taste::coordinates => "109238 44144 111270 44144 111270 43476 113303 43476";
   };
   TC_RI_tc11_TcDispatch_RI_tc11 : SUBPROGRAM ACCESS RI_tc11 -> TcDispatch.RI_tc11 {
-    Taste::coordinates => "110351 45287 112383 45287 112383 45600 114416 45600";
+    Taste::coordinates => "109238 45446 111270 45446 111270 45759 113303 45759";
   };
   TC_RI_tc18_TcDispatch_RI_tc18 : SUBPROGRAM ACCESS RI_tc18 -> TcDispatch.RI_tc18 {
-    Taste::coordinates => "110351 46556 112383 46556 112383 48003 114416 48003";
+    Taste::coordinates => "109238 46715 111270 46715 111270 48162 113303 48162";
   };
   TC_RI_tc23_TcDispatch_RI_tc23 : SUBPROGRAM ACCESS RI_tc23 -> TcDispatch.RI_tc23 {
-    Taste::coordinates => "110351 48304 112383 48304 112383 50709 114416 50709";
+    Taste::coordinates => "109238 48463 111270 48463 111270 50868 113303 50868";
   };
   TC_RI_tc20_TcDispatch_RI_tc20 : SUBPROGRAM ACCESS RI_tc20 -> TcDispatch.RI_tc20 {
-    Taste::coordinates => "110351 47332 112383 47332 112383 49108 114416 49108";
+    Taste::coordinates => "109238 47491 111270 47491 111270 49267 113303 49267";
   };
 END TC.others;
 
@@ -637,20 +640,20 @@ END RI_tmRequest.others;
 SYSTEM TmDispatch
 FEATURES
   PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
-    Taste::coordinates => "95531 101890";
+    Taste::coordinates => "94418 102049";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 1000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmTrigger";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_newTm.others {
-    Taste::coordinates => "90180 96722";
+    Taste::coordinates => "89067 96881";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_tmRequest : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_tmRequest.others {
-    Taste::coordinates => "100232 99123";
+    Taste::coordinates => "99119 99282";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tmRequest";
     Taste::labelInheritance => "true";
@@ -719,21 +722,21 @@ END RI_incCount.others;
 SYSTEM TmQueue
 FEATURES
   PI_tmRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_tmRequest.others {
-    Taste::coordinates => "105119 98829";
+    Taste::coordinates => "104006 98988";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmRequest";
   };
   PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "114842 96428";
+    Taste::coordinates => "113729 96587";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "newTm";
   };
   RI_incCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::PI_incCount.others {
-    Taste::coordinates => "107520 94027";
+    Taste::coordinates => "106407 94186";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "incCount";
     Taste::labelInheritance => "true";
@@ -808,27 +811,27 @@ END RI_incCount.others;
 SYSTEM TM
 FEATURES
   PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "118676 94684";
+    Taste::coordinates => "117563 94843";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "newTm";
   };
   PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
-    Taste::coordinates => "93973 104365";
+    Taste::coordinates => "92860 104524";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 1000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmTrigger";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_newTm.others {
-    Taste::coordinates => "86693 101549";
+    Taste::coordinates => "85580 101708";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_incCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::PI_incCount.others {
-    Taste::coordinates => "90697 92219";
+    Taste::coordinates => "89584 92378";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "incCount";
     Taste::labelInheritance => "true";
@@ -841,26 +844,26 @@ END TM;
 SYSTEM IMPLEMENTATION TM.others
 SUBCOMPONENTS
   TmDispatch : SYSTEM interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::TmDispatch.others {
-    Taste::coordinates => "90180 94321 100232 101890";
+    Taste::coordinates => "89067 94480 99119 102049";
   };
   TmQueue : SYSTEM interfaceview::IV::OnBoard::PusServices::TM::TmQueue::TmQueue.others {
-    Taste::coordinates => "105119 94027 114842 102124";
+    Taste::coordinates => "104006 94186 113729 102283";
   };
 CONNECTIONS
   TmDispatch_PI_tmTrigger_TM_PI_tmTrigger : SUBPROGRAM ACCESS TmDispatch.PI_tmTrigger -> PI_tmTrigger {
-    Taste::coordinates => "93973 104365 93973 103127 95531 103127 95531 101890";
+    Taste::coordinates => "92860 104524 92860 103286 94418 103286 94418 102049";
   };
   TM_RI_newTm_TmDispatch_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> TmDispatch.RI_newTm {
-    Taste::coordinates => "90180 96722 88436 96722 88436 101549 86693 101549";
+    Taste::coordinates => "89067 96881 87323 96881 87323 101708 85580 101708";
   };
   TmQueue_PI_tmRequest_TmDispatch_RI_tmRequest : SUBPROGRAM ACCESS TmQueue.PI_tmRequest -> TmDispatch.RI_tmRequest {
-    Taste::coordinates => "100232 99123 102675 99123 102675 98829 105119 98829";
+    Taste::coordinates => "99119 99282 101562 99282 101562 98988 104006 98988";
   };
   TmQueue_PI_newTm_TM_PI_newTm : SUBPROGRAM ACCESS TmQueue.PI_newTm -> PI_newTm {
-    Taste::coordinates => "118676 94684 116759 94684 116759 96428 114842 96428";
+    Taste::coordinates => "117563 94843 115646 94843 115646 96587 113729 96587";
   };
   TM_RI_incCount_TmQueue_RI_incCount : SUBPROGRAM ACCESS RI_incCount -> TmQueue.RI_incCount {
-    Taste::coordinates => "107520 94027 107520 93123 90697 93123 90697 92219";
+    Taste::coordinates => "106407 94186 106407 93282 89584 93282 89584 92378";
   };
 END TM.others;
 
@@ -869,9 +872,9 @@ END interfaceview::IV::OnBoard::PusServices::TM;
 PACKAGE interfaceview::IV::OnBoard::PusServices::ST17
 PUBLIC
 
-WITH interfaceview::IV::OnBoard::PusServices::TM::TmQueue;
 WITH interfaceview::IV::OnBoard::PusServices::ST01;
 WITH interfaceview::IV::OnBoard::PusServices::OnBoardAPID;
+WITH interfaceview::IV::OnBoard::PusServices::TM::TmQueue;
 WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
@@ -888,16 +891,6 @@ SUBPROGRAM IMPLEMENTATION PI_tc17.others
 PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_tc17.others;
-
-SUBPROGRAM RI_newTm
-FEATURES
-  tmPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
-  };
-END RI_newTm;
-
-SUBPROGRAM IMPLEMENTATION RI_newTm.others
-END RI_newTm.others;
 
 SUBPROGRAM RI_ACK
 FEATURES
@@ -941,37 +934,47 @@ END RI_getSequenceCount;
 SUBPROGRAM IMPLEMENTATION RI_getSequenceCount.others
 END RI_getSequenceCount.others;
 
+SUBPROGRAM RI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTm;
+
+SUBPROGRAM IMPLEMENTATION RI_newTm.others
+END RI_newTm.others;
+
 SYSTEM ST17
 FEATURES
   PI_tc17 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST17::PI_tc17.others {
-    Taste::coordinates => "146858 98154";
+    Taste::coordinates => "145745 98313";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc17";
   };
-  RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "146858 98949";
-    Taste::RCMoperationKind => any;
-    Taste::InterfaceName => "newTm";
-    Taste::labelInheritance => "true";
-  };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "164042 96658";
+    Taste::coordinates => "162929 96817";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "164042 98365";
+    Taste::coordinates => "162929 98524";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "164042 102021";
+    Taste::coordinates => "162929 102180";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
+    Taste::labelInheritance => "true";
+  };
+  RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
+    Taste::coordinates => "145745 100109";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
 PROPERTIES
@@ -1051,26 +1054,26 @@ END RI_getApid.others;
 SYSTEM ST01
 FEATURES
   PI_ACK : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "181806 92069";
+    Taste::coordinates => "180693 92228";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "ACK";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "181806 86777";
+    Taste::coordinates => "180693 86936";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "194300 92378";
+    Taste::coordinates => "193187 92537";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "194300 86066";
+    Taste::coordinates => "193187 86225";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
@@ -1131,14 +1134,14 @@ END RI_ACK.others;
 SYSTEM ST08
 FEATURES
   PI_tc08 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST08::PI_tc08.others {
-    Taste::coordinates => "150402 76594";
+    Taste::coordinates => "149289 76753";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc08";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "160899 81238";
+    Taste::coordinates => "159786 81397";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
@@ -1190,14 +1193,14 @@ END PI_getSequenceCount.others;
 SYSTEM OnBoardAPID
 FEATURES
   PI_getApid : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "194070 76332";
+    Taste::coordinates => "192957 76491";
     Taste::RCMoperationKind => unprotected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getApid";
   };
   PI_getSequenceCount : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "194070 80456";
+    Taste::coordinates => "192957 80615";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
@@ -1301,33 +1304,33 @@ END RI_ACK.others;
 SYSTEM ST09
 FEATURES
   PI_incCount : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::PI_incCount.others {
-    Taste::coordinates => "112078 82955";
+    Taste::coordinates => "110965 83114";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "incCount";
   };
   PI_tc09 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::PI_tc09.others {
-    Taste::coordinates => "109683 82955";
+    Taste::coordinates => "108570 83114";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc09";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::TimeReportAPID::PI_getApid.others {
-    Taste::coordinates => "109052 81752";
+    Taste::coordinates => "107939 81911";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::TimeReportAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "109052 80651";
+    Taste::coordinates => "107939 80810";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "113520 80489";
+    Taste::coordinates => "112407 80648";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
@@ -1379,14 +1382,14 @@ END PI_getSequenceCount.others;
 SYSTEM TimeReportAPID
 FEATURES
   PI_getApid : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::TimeReportAPID::PI_getApid.others {
-    Taste::coordinates => "105977 81754";
+    Taste::coordinates => "104864 81913";
     Taste::RCMoperationKind => unprotected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getApid";
   };
   PI_getSequenceCount : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::TimeReportAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "105977 80785";
+    Taste::coordinates => "104864 80944";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
@@ -1471,21 +1474,21 @@ END RI_ACK.others;
 SYSTEM TimeReports
 FEATURES
   PI_tc09 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::PI_tc09.others {
-    Taste::coordinates => "99051 83934";
+    Taste::coordinates => "97938 84093";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc09";
   };
   PI_incCount : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::PI_incCount.others {
-    Taste::coordinates => "105243 85256";
+    Taste::coordinates => "104130 85415";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "incCount";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "115815 83343";
+    Taste::coordinates => "114702 83502";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
@@ -1498,26 +1501,26 @@ END TimeReports;
 SYSTEM IMPLEMENTATION TimeReports.others
 SUBCOMPONENTS
   ST09 : SYSTEM interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::ST09.others {
-    Taste::coordinates => "109052 80084 113520 82955";
+    Taste::coordinates => "107939 80243 112407 83114";
   };
   TimeReportAPID : SYSTEM interfaceview::IV::OnBoard::PusServices::TimeReports::TimeReportAPID::TimeReportAPID.others {
-    Taste::coordinates => "100363 79910 105977 82529";
+    Taste::coordinates => "99250 80069 104864 82688";
   };
 CONNECTIONS
   ST09_PI_incCount_TimeReports_PI_incCount : SUBPROGRAM ACCESS ST09.PI_incCount -> PI_incCount {
-    Taste::coordinates => "105243 85256 105243 84625 112078 84625 112078 82955";
+    Taste::coordinates => "104130 85415 104130 84784 110965 84784 110965 83114";
   };
   ST09_PI_tc09_TimeReports_PI_tc09 : SUBPROGRAM ACCESS ST09.PI_tc09 -> PI_tc09 {
-    Taste::coordinates => "99051 83934 109683 83934 109683 82955";
+    Taste::coordinates => "97938 84093 108570 84093 108570 83114";
   };
   TimeReportAPID_PI_getApid_ST09_RI_getApid : SUBPROGRAM ACCESS TimeReportAPID.PI_getApid -> ST09.RI_getApid {
-    Taste::coordinates => "109052 81752 107514 81752 107514 81754 105977 81754";
+    Taste::coordinates => "107939 81911 106401 81911 106401 81913 104864 81913";
   };
   TimeReportAPID_PI_getSequenceCount_ST09_RI_getSequenceCount : SUBPROGRAM ACCESS TimeReportAPID.PI_getSequenceCount -> ST09.RI_getSequenceCount {
-    Taste::coordinates => "109052 80651 107514 80651 107514 80785 105977 80785";
+    Taste::coordinates => "107939 80810 106401 80810 106401 80944 104864 80944";
   };
   TimeReports_RI_ACK_ST09_RI_ACK : SUBPROGRAM ACCESS RI_ACK -> ST09.RI_ACK {
-    Taste::coordinates => "113520 80489 114667 80489 114667 83343 115815 83343";
+    Taste::coordinates => "112407 80648 113554 80648 113554 83502 114702 83502";
   };
 END TimeReports.others;
 
@@ -1576,21 +1579,21 @@ END PI_debugEventsTrigger.others;
 SYSTEM Events
 FEATURES
   PI_getNextEvent : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_getNextEvent.others {
-    Taste::coordinates => "164692 51372";
+    Taste::coordinates => "163579 51531";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getNextEvent";
   };
   PI_pushNewEvent : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_pushNewEvent.others {
-    Taste::coordinates => "167199 50272";
+    Taste::coordinates => "166086 50431";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "pushNewEvent";
   };
   PI_debugEventsTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_debugEventsTrigger.others {
-    Taste::coordinates => "159915 47367";
+    Taste::coordinates => "158802 47526";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
@@ -1674,32 +1677,32 @@ END RI_getSequenceCount.others;
 SYSTEM ST05
 FEATURES
   PI_EventReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST05::PI_EventReportTrigger.others {
-    Taste::coordinates => "151474 42103";
+    Taste::coordinates => "150361 42262";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventReportTrigger";
   };
   RI_newTmNoInherit : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "155011 46518";
+    Taste::coordinates => "153898 46677";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTmNoInherit";
     Taste::labelInheritance => "false";
   };
   RI_getNextEvent : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_getNextEvent.others {
-    Taste::coordinates => "155011 45675";
+    Taste::coordinates => "153898 45834";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getNextEvent";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "155011 45245";
+    Taste::coordinates => "153898 45404";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "155011 43714";
+    Taste::coordinates => "153898 43873";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
@@ -1809,39 +1812,39 @@ END RI_newTc.others;
 SYSTEM ST19
 FEATURES
   PI_tc19 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_tc19.others {
-    Taste::coordinates => "153303 50340";
+    Taste::coordinates => "152190 50499";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc19";
   };
   PI_EventActionTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_EventActionTrigger.others {
-    Taste::coordinates => "150088 51176";
+    Taste::coordinates => "148975 51335";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventActionTrigger";
   };
   RI_getNextEvent : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_getNextEvent.others {
-    Taste::coordinates => "157155 51887";
+    Taste::coordinates => "156042 52046";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getNextEvent";
     Taste::labelInheritance => "true";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "157155 54054";
+    Taste::coordinates => "156042 54213";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "152160 54646";
+    Taste::coordinates => "151047 54805";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "150088 53403";
+    Taste::coordinates => "148975 53562";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
@@ -2002,72 +2005,72 @@ END RI_newTc.others;
 SYSTEM EventServices
 FEATURES
   PI_tc19 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_tc19.others {
-    Taste::coordinates => "144548 48585";
+    Taste::coordinates => "143435 48744";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc19";
   };
   PI_pushNewEvent : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_pushNewEvent.others {
-    Taste::coordinates => "170751 51579";
+    Taste::coordinates => "169638 51738";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "pushNewEvent";
   };
   PI_EventReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST05::PI_EventReportTrigger.others {
-    Taste::coordinates => "144548 49688";
+    Taste::coordinates => "143435 49847";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventReportTrigger";
   };
   PI_debugEventsTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_debugEventsTrigger.others {
-    Taste::coordinates => "144548 52526";
+    Taste::coordinates => "143435 52685";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "debugEventsTrigger";
   };
   PI_EventActionTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_EventActionTrigger.others {
-    Taste::coordinates => "144548 51182";
+    Taste::coordinates => "143435 51341";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventActionTrigger";
   };
   RI_newTmNoInherit : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "144548 57643";
+    Taste::coordinates => "143435 57802";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTmNoInherit";
     Taste::labelInheritance => "false";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "170751 56800";
+    Taste::coordinates => "169638 56959";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "170751 45021";
+    Taste::coordinates => "169638 45180";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "170751 47336";
+    Taste::coordinates => "169638 47495";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "144548 56196";
+    Taste::coordinates => "143435 56355";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "144548 54399";
+    Taste::coordinates => "143435 54558";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
@@ -2080,53 +2083,53 @@ END EventServices;
 SYSTEM IMPLEMENTATION EventServices.others
 SUBCOMPONENTS
   Events : SYSTEM interfaceview::IV::OnBoard::PusServices::EventServices::Events::Events.others {
-    Taste::coordinates => "159915 45470 167199 51372";
+    Taste::coordinates => "158802 45629 166086 51531";
   };
   ST05 : SYSTEM interfaceview::IV::OnBoard::PusServices::EventServices::ST05::ST05.others {
-    Taste::coordinates => "149073 42103 155011 47075";
+    Taste::coordinates => "147960 42262 153898 47234";
   };
   ST19 : SYSTEM interfaceview::IV::OnBoard::PusServices::EventServices::ST19::ST19.others {
-    Taste::coordinates => "150088 50340 157155 54646";
+    Taste::coordinates => "148975 50499 156042 54805";
   };
 CONNECTIONS
   Events_PI_getNextEvent_ST05_RI_getNextEvent : SUBPROGRAM ACCESS Events.PI_getNextEvent -> ST05.RI_getNextEvent {
-    Taste::coordinates => "155011 45675 156824 45675 156824 52299 164692 52299 164692 51372";
+    Taste::coordinates => "153898 45834 155711 45834 155711 52458 163579 52458 163579 51531";
   };
   Events_PI_getNextEvent_ST19_RI_getNextEvent : SUBPROGRAM ACCESS Events.PI_getNextEvent -> ST19.RI_getNextEvent {
-    Taste::coordinates => "157155 51887 164692 51887 164692 51372";
+    Taste::coordinates => "156042 52046 163579 52046 163579 51531";
   };
   Events_PI_pushNewEvent_EventServices_PI_pushNewEvent : SUBPROGRAM ACCESS Events.PI_pushNewEvent -> PI_pushNewEvent {
-    Taste::coordinates => "170751 51579 168975 51579 168975 50272 167199 50272";
+    Taste::coordinates => "169638 51738 167862 51738 167862 50431 166086 50431";
   };
   Events_PI_debugEventsTrigger_EventServices_PI_debugEventsTrigger : SUBPROGRAM ACCESS Events.PI_debugEventsTrigger -> PI_debugEventsTrigger {
-    Taste::coordinates => "144548 52526 152231 52526 152231 47367 159915 47367";
+    Taste::coordinates => "143435 52685 151118 52685 151118 47526 158802 47526";
   };
   ST05_PI_EventReportTrigger_EventServices_PI_EventReportTrigger : SUBPROGRAM ACCESS ST05.PI_EventReportTrigger -> PI_EventReportTrigger {
-    Taste::coordinates => "144548 49688 147168 49688 147168 40321 151474 40321 151474 42103";
+    Taste::coordinates => "143435 49847 146055 49847 146055 41358 150361 41358 150361 42262";
   };
   EventServices_RI_newTmNoInherit_ST05_RI_newTmNoInherit : SUBPROGRAM ACCESS RI_newTmNoInherit -> ST05.RI_newTmNoInherit {
-    Taste::coordinates => "155011 46518 157631 46518 157631 57643 144548 57643";
+    Taste::coordinates => "153898 46677 156518 46677 156518 57802 143435 57802";
   };
   EventServices_RI_getApid_ST05_RI_getApid : SUBPROGRAM ACCESS RI_getApid -> ST05.RI_getApid {
-    Taste::coordinates => "155011 45245 162881 45245 162881 47336 170751 47336";
+    Taste::coordinates => "153898 45404 161768 45404 161768 47495 169638 47495";
   };
   EventServices_RI_getSequenceCount_ST05_RI_getSequenceCount : SUBPROGRAM ACCESS RI_getSequenceCount -> ST05.RI_getSequenceCount {
-    Taste::coordinates => "155011 43714 162881 43714 162881 45021 170751 45021";
+    Taste::coordinates => "153898 43873 161768 43873 161768 45180 169638 45180";
   };
   ST19_PI_tc19_EventServices_PI_tc19 : SUBPROGRAM ACCESS ST19.PI_tc19 -> PI_tc19 {
-    Taste::coordinates => "144548 48585 153303 48585 153303 50340";
+    Taste::coordinates => "143435 48744 152190 48744 152190 50499";
   };
   ST19_PI_EventActionTrigger_EventServices_PI_EventActionTrigger : SUBPROGRAM ACCESS ST19.PI_EventActionTrigger -> PI_EventActionTrigger {
-    Taste::coordinates => "144548 51182 147318 51182 147318 51176 150088 51176";
+    Taste::coordinates => "143435 51341 146205 51341 146205 51335 148975 51335";
   };
   EventServices_RI_ACK_ST19_RI_ACK : SUBPROGRAM ACCESS RI_ACK -> ST19.RI_ACK {
-    Taste::coordinates => "157155 54054 163953 54054 163953 56800 170751 56800";
+    Taste::coordinates => "156042 54213 162840 54213 162840 56959 169638 56959";
   };
   EventServices_RI_newTm_ST19_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> ST19.RI_newTm {
-    Taste::coordinates => "152160 54646 152160 56196 144548 56196";
+    Taste::coordinates => "151047 54805 151047 56355 143435 56355";
   };
   EventServices_RI_newTc_ST19_RI_newTc : SUBPROGRAM ACCESS RI_newTc -> ST19.RI_newTc {
-    Taste::coordinates => "150088 53403 147318 53403 147318 54399 144548 54399";
+    Taste::coordinates => "148975 53562 146205 53562 146205 54558 143435 54558";
   };
 END EventServices.others;
 
@@ -2140,14 +2143,12 @@ WITH DataView;
 WITH TASTE_IV_Properties;
 SUBPROGRAM PI_setParamValue
 FEATURES
-  storedParam : IN PARAMETER DataView::PusSt03StoredParam {
-    Taste::encoding => NATIVE;
-  };
   paramId : IN PARAMETER DataView::PusSt03ParameterId {
     Taste::encoding => NATIVE;
   };
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
+  paramValue : IN PARAMETER DataView::PusSt03StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END PI_setParamValue;
 
 SUBPROGRAM IMPLEMENTATION PI_setParamValue.others
@@ -2178,14 +2179,13 @@ END PI_getParamValue.others;
 SYSTEM Housekeeping
 FEATURES
   PI_setParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_setParamValue.others {
-    Taste::coordinates => "164103 69991";
+    Taste::coordinates => "162990 70150";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setParamValue";
   };
   PI_getParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_getParamValue.others {
-    Taste::coordinates => "160314 68047";
+    Taste::coordinates => "159201 68206";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
@@ -2269,32 +2269,32 @@ END RI_getSequenceCount.others;
 SYSTEM ST03
 FEATURES
   PI_HkReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03::PI_HkReportTrigger.others {
-    Taste::coordinates => "150714 64163";
+    Taste::coordinates => "149601 64322";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "HkReportTrigger";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "152085 66847";
+    Taste::coordinates => "150972 67006";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_getParamValue : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_getParamValue.others {
-    Taste::coordinates => "157118 65893";
+    Taste::coordinates => "156005 66052";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getParamValue";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "157118 64969";
+    Taste::coordinates => "156005 65128";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "157118 64200";
+    Taste::coordinates => "156005 64359";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
@@ -2393,33 +2393,33 @@ END RI_ACK.others;
 SYSTEM ST12
 FEATURES
   PI_PmonTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_PmonTrigger.others {
-    Taste::coordinates => "150866 70937";
+    Taste::coordinates => "149753 71096";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "PmonTrigger";
   };
   PI_tc12 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_tc12.others {
-    Taste::coordinates => "150866 69141";
+    Taste::coordinates => "149753 69300";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc12";
   };
   RI_pushNewEvent : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_pushNewEvent.others {
-    Taste::coordinates => "156936 70842";
+    Taste::coordinates => "155823 71001";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "pushNewEvent";
     Taste::labelInheritance => "true";
   };
   RI_getParamValue : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_getParamValue.others {
-    Taste::coordinates => "156936 69727";
+    Taste::coordinates => "155823 69886";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getParamValue";
     Taste::labelInheritance => "true";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "152217 71878";
+    Taste::coordinates => "151104 72037";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
@@ -2483,14 +2483,12 @@ END PI_PmonTrigger.others;
 
 SUBPROGRAM PI_setParamValue
 FEATURES
-  storedParam : IN PARAMETER DataView::PusSt03StoredParam {
-    Taste::encoding => NATIVE;
-  };
   paramId : IN PARAMETER DataView::PusSt03ParameterId {
     Taste::encoding => NATIVE;
   };
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
+  paramValue : IN PARAMETER DataView::PusSt03StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END PI_setParamValue;
 
 SUBPROGRAM IMPLEMENTATION PI_setParamValue.others
@@ -2583,66 +2581,65 @@ END RI_ACK.others;
 SYSTEM HousekeepingServices
 FEATURES
   PI_tc12 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_tc12.others {
-    Taste::coordinates => "146262 68841";
+    Taste::coordinates => "145149 69000";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc12";
   };
   PI_HkReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03::PI_HkReportTrigger.others {
-    Taste::coordinates => "146262 65945";
+    Taste::coordinates => "145149 66104";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "HkReportTrigger";
   };
   PI_PmonTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_PmonTrigger.others {
-    Taste::coordinates => "146262 70954";
+    Taste::coordinates => "145149 71113";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "PmonTrigger";
   };
   PI_setParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_setParamValue.others {
-    Taste::coordinates => "168661 71434";
+    Taste::coordinates => "167548 71593";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setParamValue";
   };
   PI_getParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_getParamValue.others {
-    Taste::coordinates => "168661 72479";
+    Taste::coordinates => "167548 72638";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getParamValue";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "168661 66377";
+    Taste::coordinates => "167548 66536";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "168661 64165";
+    Taste::coordinates => "167548 64324";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
   };
   RI_pushNewEvent : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_pushNewEvent.others {
-    Taste::coordinates => "168661 70845";
+    Taste::coordinates => "167548 71004";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "pushNewEvent";
     Taste::labelInheritance => "true";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "146262 67489";
+    Taste::coordinates => "145149 67648";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "168661 73866";
+    Taste::coordinates => "167548 74025";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
@@ -2655,50 +2652,50 @@ END HousekeepingServices;
 SYSTEM IMPLEMENTATION HousekeepingServices.others
 SUBCOMPONENTS
   Housekeeping : SYSTEM interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::Housekeeping.others {
-    Taste::coordinates => "160314 66967 167396 69991";
+    Taste::coordinates => "159201 67126 166283 70150";
   };
   ST03 : SYSTEM interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03::ST03.others {
-    Taste::coordinates => "150714 63492 157118 66847";
+    Taste::coordinates => "149601 63651 156005 67006";
   };
   ST12 : SYSTEM interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::ST12.others {
-    Taste::coordinates => "150866 68479 156936 71878";
+    Taste::coordinates => "149753 68638 155823 72037";
   };
 CONNECTIONS
   Housekeeping_PI_setParamValue_HousekeepingServices_PI_setParamValue : SUBPROGRAM ACCESS Housekeeping.PI_setParamValue -> PI_setParamValue {
-    Taste::coordinates => "168661 71434 164103 71434 164103 69991";
+    Taste::coordinates => "167548 71593 162990 71593 162990 70150";
   };
   Housekeeping_PI_getParamValue_HousekeepingServices_PI_getParamValue : SUBPROGRAM ACCESS Housekeeping.PI_getParamValue -> PI_getParamValue {
-    Taste::coordinates => "168661 72479 158074 72479 158074 68047 160314 68047";
+    Taste::coordinates => "167548 72638 156961 72638 156961 68206 159201 68206";
   };
   Housekeeping_PI_getParamValue_ST03_RI_getParamValue : SUBPROGRAM ACCESS Housekeeping.PI_getParamValue -> ST03.RI_getParamValue {
-    Taste::coordinates => "157118 65893 158716 65893 158716 68047 160314 68047";
+    Taste::coordinates => "156005 66052 157603 66052 157603 68206 159201 68206";
   };
   Housekeeping_PI_getParamValue_ST12_RI_getParamValue : SUBPROGRAM ACCESS Housekeeping.PI_getParamValue -> ST12.RI_getParamValue {
-    Taste::coordinates => "156936 69727 158625 69727 158625 68047 160314 68047";
+    Taste::coordinates => "155823 69886 157512 69886 157512 68206 159201 68206";
   };
   ST03_PI_HkReportTrigger_HousekeepingServices_PI_HkReportTrigger : SUBPROGRAM ACCESS ST03.PI_HkReportTrigger -> PI_HkReportTrigger {
-    Taste::coordinates => "146262 65945 148488 65945 148488 64163 150714 64163";
+    Taste::coordinates => "145149 66104 147375 66104 147375 64322 149601 64322";
   };
   HousekeepingServices_RI_newTm_ST03_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> ST03.RI_newTm {
-    Taste::coordinates => "152085 66847 152085 67489 146262 67489";
+    Taste::coordinates => "150972 67006 150972 67648 145149 67648";
   };
   HousekeepingServices_RI_getApid_ST03_RI_getApid : SUBPROGRAM ACCESS RI_getApid -> ST03.RI_getApid {
-    Taste::coordinates => "157118 64969 162889 64969 162889 66377 168661 66377";
+    Taste::coordinates => "156005 65128 161776 65128 161776 66536 167548 66536";
   };
   HousekeepingServices_RI_getSequenceCount_ST03_RI_getSequenceCount : SUBPROGRAM ACCESS RI_getSequenceCount -> ST03.RI_getSequenceCount {
-    Taste::coordinates => "157118 64200 162889 64200 162889 64165 168661 64165";
+    Taste::coordinates => "156005 64359 161776 64359 161776 64324 167548 64324";
   };
   ST12_PI_PmonTrigger_HousekeepingServices_PI_PmonTrigger : SUBPROGRAM ACCESS ST12.PI_PmonTrigger -> PI_PmonTrigger {
-    Taste::coordinates => "146262 70954 148564 70954 148564 70937 150866 70937";
+    Taste::coordinates => "145149 71113 147451 71113 147451 71096 149753 71096";
   };
   ST12_PI_tc12_HousekeepingServices_PI_tc12 : SUBPROGRAM ACCESS ST12.PI_tc12 -> PI_tc12 {
-    Taste::coordinates => "146262 68841 148564 68841 148564 69141 150866 69141";
+    Taste::coordinates => "145149 69000 147451 69000 147451 69300 149753 69300";
   };
   HousekeepingServices_RI_pushNewEvent_ST12_RI_pushNewEvent : SUBPROGRAM ACCESS RI_pushNewEvent -> ST12.RI_pushNewEvent {
-    Taste::coordinates => "156936 70842 162798 70842 162798 70845 168661 70845";
+    Taste::coordinates => "155823 71001 161685 71001 161685 71004 167548 71004";
   };
   HousekeepingServices_RI_ACK_ST12_RI_ACK : SUBPROGRAM ACCESS RI_ACK -> ST12.RI_ACK {
-    Taste::coordinates => "152217 71878 152217 73866 168661 73866";
+    Taste::coordinates => "151104 72037 151104 74025 167548 74025";
   };
 END HousekeepingServices.others;
 
@@ -2761,20 +2758,20 @@ END RI_newTc.others;
 SYSTEM ST11
 FEATURES
   PI_tc11 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_tc11.others {
-    Taste::coordinates => "150240 84392";
+    Taste::coordinates => "149127 84551";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc11";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "161304 89623";
+    Taste::coordinates => "160191 89782";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
   };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "150240 89797";
+    Taste::coordinates => "149127 89956";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
@@ -2859,26 +2856,26 @@ END RI_loadReference.others;
 SYSTEM ST18
 FEATURES
   PI_tc18 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OBCP::ST18::PI_tc18.others {
-    Taste::coordinates => "146393 108740";
+    Taste::coordinates => "145280 108899";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc18";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "148867 111350";
+    Taste::coordinates => "147754 111509";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
   };
   RI_loadDirect : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OBCP::ObcpEngine::PI_loadDirect.others {
-    Taste::coordinates => "150735 108834";
+    Taste::coordinates => "149622 108993";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "loadDirect";
     Taste::labelInheritance => "true";
   };
   RI_loadReference : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OBCP::ObcpEngine::PI_loadReference.others {
-    Taste::coordinates => "150735 110390";
+    Taste::coordinates => "149622 110549";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "loadReference";
     Taste::labelInheritance => "true";
@@ -2944,12 +2941,29 @@ SUBPROGRAM IMPLEMENTATION RI_newTc.others
 END RI_newTc.others;
 
 SUBPROGRAM RI_getOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : OUT PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
 END RI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION RI_getOnBoardParam.others
 END RI_getOnBoardParam.others;
 
 SUBPROGRAM RI_setOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : IN PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END RI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION RI_setOnBoardParam.others
@@ -2968,39 +2982,39 @@ END RI_pushNewEvent.others;
 SYSTEM ObcpEngine
 FEATURES
   PI_loadDirect : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OBCP::ObcpEngine::PI_loadDirect.others {
-    Taste::coordinates => "154879 108835";
+    Taste::coordinates => "153766 108994";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "loadDirect";
   };
   PI_loadReference : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OBCP::ObcpEngine::PI_loadReference.others {
-    Taste::coordinates => "154879 110179";
+    Taste::coordinates => "153766 110338";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "loadReference";
   };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "155754 111438";
+    Taste::coordinates => "154641 111597";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
   };
   RI_getOnBoardParam : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
-    Taste::coordinates => "161556 109240";
+    Taste::coordinates => "160443 109399";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getOnBoardParam";
     Taste::labelInheritance => "true";
   };
   RI_setOnBoardParam : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
-    Taste::coordinates => "161556 110572";
+    Taste::coordinates => "160443 110731";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "setOnBoardParam";
     Taste::labelInheritance => "true";
   };
   RI_pushNewEvent : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_pushNewEvent.others {
-    Taste::coordinates => "159199 108052";
+    Taste::coordinates => "158086 108211";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "pushNewEvent";
     Taste::labelInheritance => "true";
@@ -3074,12 +3088,29 @@ SUBPROGRAM IMPLEMENTATION RI_newTc.others
 END RI_newTc.others;
 
 SUBPROGRAM RI_setOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : IN PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END RI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION RI_setOnBoardParam.others
 END RI_setOnBoardParam.others;
 
 SUBPROGRAM RI_getOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : OUT PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
 END RI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION RI_getOnBoardParam.others
@@ -3098,38 +3129,38 @@ END RI_pushNewEvent.others;
 SYSTEM OBCP
 FEATURES
   PI_tc18 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OBCP::ST18::PI_tc18.others {
-    Taste::coordinates => "143215 108475";
+    Taste::coordinates => "142102 108634";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc18";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "164638 111942";
+    Taste::coordinates => "163525 112101";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
   };
   RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "143215 111651";
+    Taste::coordinates => "142102 111810";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
   };
   RI_setOnBoardParam : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
-    Taste::coordinates => "164638 111236";
+    Taste::coordinates => "163525 111395";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "setOnBoardParam";
     Taste::labelInheritance => "true";
   };
   RI_getOnBoardParam : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
-    Taste::coordinates => "164638 108898";
+    Taste::coordinates => "163525 109057";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getOnBoardParam";
     Taste::labelInheritance => "true";
   };
   RI_pushNewEvent : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_pushNewEvent.others {
-    Taste::coordinates => "164638 105311";
+    Taste::coordinates => "163525 105470";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "pushNewEvent";
     Taste::labelInheritance => "true";
@@ -3142,35 +3173,35 @@ END OBCP;
 SYSTEM IMPLEMENTATION OBCP.others
 SUBCOMPONENTS
   ST18 : SYSTEM interfaceview::IV::OnBoard::PusServices::OBCP::ST18::ST18.others {
-    Taste::coordinates => "146393 108156 150735 111350";
+    Taste::coordinates => "145280 108315 149622 111509";
   };
   ObcpEngine : SYSTEM interfaceview::IV::OnBoard::PusServices::OBCP::ObcpEngine::ObcpEngine.others {
-    Taste::coordinates => "154879 108052 161556 111438";
+    Taste::coordinates => "153766 108211 160443 111597";
   };
 CONNECTIONS
   ST18_PI_tc18_OBCP_PI_tc18 : SUBPROGRAM ACCESS ST18.PI_tc18 -> PI_tc18 {
-    Taste::coordinates => "143215 108475 144804 108475 144804 108740 146393 108740";
+    Taste::coordinates => "142102 108634 143691 108634 143691 108899 145280 108899";
   };
   OBCP_RI_ACK_ST18_RI_ACK : SUBPROGRAM ACCESS RI_ACK -> ST18.RI_ACK {
-    Taste::coordinates => "148867 111350 148867 111942 164638 111942";
+    Taste::coordinates => "147754 111509 147754 112101 163525 112101";
   };
   ObcpEngine_PI_loadDirect_ST18_RI_loadDirect : SUBPROGRAM ACCESS ObcpEngine.PI_loadDirect -> ST18.RI_loadDirect {
-    Taste::coordinates => "150735 108834 152807 108834 152807 108835 154879 108835";
+    Taste::coordinates => "149622 108993 151694 108993 151694 108994 153766 108994";
   };
   ObcpEngine_PI_loadReference_ST18_RI_loadReference : SUBPROGRAM ACCESS ObcpEngine.PI_loadReference -> ST18.RI_loadReference {
-    Taste::coordinates => "150735 110390 152807 110390 152807 110179 154879 110179";
+    Taste::coordinates => "149622 110549 151694 110549 151694 110338 153766 110338";
   };
   OBCP_RI_newTc_ObcpEngine_RI_newTc : SUBPROGRAM ACCESS RI_newTc -> ObcpEngine.RI_newTc {
-    Taste::coordinates => "155754 111438 155754 111651 143215 111651";
+    Taste::coordinates => "154641 111597 154641 111810 142102 111810";
   };
   OBCP_RI_getOnBoardParam_ObcpEngine_RI_getOnBoardParam : SUBPROGRAM ACCESS RI_getOnBoardParam -> ObcpEngine.RI_getOnBoardParam {
-    Taste::coordinates => "161556 109240 163097 109240 163097 108898 164638 108898";
+    Taste::coordinates => "160443 109399 161984 109399 161984 109057 163525 109057";
   };
   OBCP_RI_setOnBoardParam_ObcpEngine_RI_setOnBoardParam : SUBPROGRAM ACCESS RI_setOnBoardParam -> ObcpEngine.RI_setOnBoardParam {
-    Taste::coordinates => "161556 110572 163097 110572 163097 111236 164638 111236";
+    Taste::coordinates => "160443 110731 161984 110731 161984 111395 163525 111395";
   };
   OBCP_RI_pushNewEvent_ObcpEngine_RI_pushNewEvent : SUBPROGRAM ACCESS RI_pushNewEvent -> ObcpEngine.RI_pushNewEvent {
-    Taste::coordinates => "159199 108052 159199 105311 164638 105311";
+    Taste::coordinates => "158086 108211 158086 105470 163525 105470";
   };
 END OBCP.others;
 
@@ -3275,56 +3306,56 @@ END RI_ACK.others;
 SYSTEM ST23
 FEATURES
   PI_tc23 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::ST23::PI_tc23.others {
-    Taste::coordinates => "145892 130868";
+    Taste::coordinates => "144779 131027";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc23";
   };
   RI_copy : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_copy.others {
-    Taste::coordinates => "151243 130997";
+    Taste::coordinates => "150130 131156";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "copy";
     Taste::labelInheritance => "true";
   };
   RI_delete : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_delete.others {
-    Taste::coordinates => "151243 130234";
+    Taste::coordinates => "150130 130393";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "delete";
     Taste::labelInheritance => "true";
   };
   RI_create : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_create.others {
-    Taste::coordinates => "151243 129460";
+    Taste::coordinates => "150130 129619";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "create";
     Taste::labelInheritance => "true";
   };
   RI_getAttributes : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_getAttributes.others {
-    Taste::coordinates => "151243 131702";
+    Taste::coordinates => "150130 131861";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getAttributes";
     Taste::labelInheritance => "true";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "145892 131910";
+    Taste::coordinates => "144779 132069";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "147003 132841";
+    Taste::coordinates => "145890 133000";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "149131 132841";
+    Taste::coordinates => "148018 133000";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "149730 128583";
+    Taste::coordinates => "148617 128742";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
@@ -3388,28 +3419,28 @@ END PI_getAttributes.others;
 SYSTEM FileManagement
 FEATURES
   PI_copy : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_copy.others {
-    Taste::coordinates => "155614 131010";
+    Taste::coordinates => "154501 131169";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "copy";
   };
   PI_delete : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_delete.others {
-    Taste::coordinates => "155614 130231";
+    Taste::coordinates => "154501 130390";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "delete";
   };
   PI_create : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_create.others {
-    Taste::coordinates => "155614 129424";
+    Taste::coordinates => "154501 129583";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "create";
   };
   PI_getAttributes : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_getAttributes.others {
-    Taste::coordinates => "155614 131721";
+    Taste::coordinates => "154501 131880";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
@@ -3501,32 +3532,32 @@ END RI_ACK.others;
 SYSTEM FilesService
 FEATURES
   PI_tc23 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::ST23::PI_tc23.others {
-    Taste::coordinates => "142880 131522";
+    Taste::coordinates => "141767 131681";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc23";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "142880 135176";
+    Taste::coordinates => "141767 135335";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "164584 134803";
+    Taste::coordinates => "163471 134962";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "164584 133653";
+    Taste::coordinates => "163471 133812";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "164584 130865";
+    Taste::coordinates => "163471 131024";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
@@ -3539,38 +3570,38 @@ END FilesService;
 SYSTEM IMPLEMENTATION FilesService.others
 SUBCOMPONENTS
   ST23 : SYSTEM interfaceview::IV::OnBoard::PusServices::FilesService::ST23::ST23.others {
-    Taste::coordinates => "145892 128583 151243 132841";
+    Taste::coordinates => "144779 128742 150130 133000";
   };
   FileManagement : SYSTEM interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::FileManagement.others {
-    Taste::coordinates => "155614 128795 164067 132983";
+    Taste::coordinates => "154501 128954 162954 133142";
   };
 CONNECTIONS
   ST23_PI_tc23_FilesService_PI_tc23 : SUBPROGRAM ACCESS ST23.PI_tc23 -> PI_tc23 {
-    Taste::coordinates => "142880 131522 144386 131522 144386 130868 145892 130868";
+    Taste::coordinates => "141767 131681 143273 131681 143273 131027 144779 131027";
   };
   FileManagement_PI_copy_ST23_RI_copy : SUBPROGRAM ACCESS FileManagement.PI_copy -> ST23.RI_copy {
-    Taste::coordinates => "151243 130997 153428 130997 153428 131010 155614 131010";
+    Taste::coordinates => "150130 131156 152315 131156 152315 131169 154501 131169";
   };
   FileManagement_PI_delete_ST23_RI_delete : SUBPROGRAM ACCESS FileManagement.PI_delete -> ST23.RI_delete {
-    Taste::coordinates => "151243 130234 153428 130234 153428 130231 155614 130231";
+    Taste::coordinates => "150130 130393 152315 130393 152315 130390 154501 130390";
   };
   FileManagement_PI_create_ST23_RI_create : SUBPROGRAM ACCESS FileManagement.PI_create -> ST23.RI_create {
-    Taste::coordinates => "151243 129460 153428 129460 153428 129424 155614 129424";
+    Taste::coordinates => "150130 129619 152315 129619 152315 129583 154501 129583";
   };
   FileManagement_PI_getAttributes_ST23_RI_getAttributes : SUBPROGRAM ACCESS FileManagement.PI_getAttributes -> ST23.RI_getAttributes {
-    Taste::coordinates => "151243 131702 153428 131702 153428 131721 155614 131721";
+    Taste::coordinates => "150130 131861 152315 131861 152315 131880 154501 131880";
   };
   FilesService_RI_newTm_ST23_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> ST23.RI_newTm {
-    Taste::coordinates => "145892 131910 144386 131910 144386 135176 142880 135176";
+    Taste::coordinates => "144779 132069 143273 132069 143273 135335 141767 135335";
   };
   FilesService_RI_getApid_ST23_RI_getApid : SUBPROGRAM ACCESS RI_getApid -> ST23.RI_getApid {
-    Taste::coordinates => "147003 132841 147003 134803 164584 134803";
+    Taste::coordinates => "145890 133000 145890 134962 163471 134962";
   };
   FilesService_RI_getSequenceCount_ST23_RI_getSequenceCount : SUBPROGRAM ACCESS RI_getSequenceCount -> ST23.RI_getSequenceCount {
-    Taste::coordinates => "149131 132841 149131 133653 164584 133653";
+    Taste::coordinates => "148018 133000 148018 133812 163471 133812";
   };
   FilesService_RI_ACK_ST23_RI_ACK : SUBPROGRAM ACCESS RI_ACK -> ST23.RI_ACK {
-    Taste::coordinates => "149730 128583 149730 127631 162414 127631 162414 130865 164584 130865";
+    Taste::coordinates => "148617 128742 148617 127790 161301 127790 161301 131024 163471 131024";
   };
 END FilesService.others;
 
@@ -3601,12 +3632,29 @@ PROPERTIES
 END PI_tc20.others;
 
 SUBPROGRAM RI_setOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : IN PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END RI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION RI_setOnBoardParam.others
 END RI_setOnBoardParam.others;
 
 SUBPROGRAM RI_getOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : OUT PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
 END RI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION RI_getOnBoardParam.others
@@ -3667,44 +3715,44 @@ END RI_getSequenceCount.others;
 SYSTEM ST20
 FEATURES
   PI_tc20 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20::PI_tc20.others {
-    Taste::coordinates => "146048 118182";
+    Taste::coordinates => "144935 118341";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc20";
   };
   RI_setOnBoardParam : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
-    Taste::coordinates => "153509 118415";
+    Taste::coordinates => "152396 118574";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "setOnBoardParam";
     Taste::labelInheritance => "true";
   };
   RI_getOnBoardParam : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
-    Taste::coordinates => "153509 119985";
+    Taste::coordinates => "152396 120144";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getOnBoardParam";
     Taste::labelInheritance => "true";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "146048 120034";
+    Taste::coordinates => "144935 120193";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "152576 120899";
+    Taste::coordinates => "151463 121058";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "147896 120899";
+    Taste::coordinates => "146783 121058";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "150337 120899";
+    Taste::coordinates => "149224 121058";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
@@ -3726,8 +3774,13 @@ WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
 SUBPROGRAM PI_setOnBoardParam
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : IN PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END PI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_setOnBoardParam.others
@@ -3736,8 +3789,16 @@ PROPERTIES
 END PI_setOnBoardParam.others;
 
 SUBPROGRAM PI_getOnBoardParam
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : OUT PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
 END PI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_getOnBoardParam.others
@@ -3748,16 +3809,14 @@ END PI_getOnBoardParam.others;
 SYSTEM OnBoardParams
 FEATURES
   PI_setOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
-    Taste::coordinates => "156593 118363";
+    Taste::coordinates => "155480 118522";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setOnBoardParam";
   };
   PI_getOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
-    Taste::coordinates => "156593 119972";
+    Taste::coordinates => "155480 120131";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getOnBoardParam";
   };
@@ -3797,8 +3856,13 @@ PROPERTIES
 END PI_tc20.others;
 
 SUBPROGRAM PI_setOnBoardParam
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : IN PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END PI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_setOnBoardParam.others
@@ -3807,8 +3871,16 @@ PROPERTIES
 END PI_setOnBoardParam.others;
 
 SUBPROGRAM PI_getOnBoardParam
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : OUT PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
 END PI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_getOnBoardParam.others
@@ -3871,46 +3943,44 @@ END RI_getSequenceCount.others;
 SYSTEM ParameterManagement
 FEATURES
   PI_tc20 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20::PI_tc20.others {
-    Taste::coordinates => "142006 118449";
+    Taste::coordinates => "140893 118608";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc20";
   };
   PI_setOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
-    Taste::coordinates => "167228 116800";
+    Taste::coordinates => "166115 116959";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setOnBoardParam";
   };
   PI_getOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
-    Taste::coordinates => "167228 118921";
+    Taste::coordinates => "166115 119080";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getOnBoardParam";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_newTm.others {
-    Taste::coordinates => "142006 122213";
+    Taste::coordinates => "140893 122372";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
-    Taste::coordinates => "167228 121816";
+    Taste::coordinates => "166115 121975";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "ACK";
     Taste::labelInheritance => "true";
   };
   RI_getApid : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getApid.others {
-    Taste::coordinates => "167228 124145";
+    Taste::coordinates => "166115 124304";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getApid";
     Taste::labelInheritance => "true";
   };
   RI_getSequenceCount : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::OnBoardAPID::PI_getSequenceCount.others {
-    Taste::coordinates => "167228 123054";
+    Taste::coordinates => "166115 123213";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getSequenceCount";
     Taste::labelInheritance => "true";
@@ -3923,38 +3993,38 @@ END ParameterManagement;
 SYSTEM IMPLEMENTATION ParameterManagement.others
 SUBCOMPONENTS
   ST20 : SYSTEM interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20::ST20.others {
-    Taste::coordinates => "146048 117598 153509 120899";
+    Taste::coordinates => "144935 117757 152396 121058";
   };
   OnBoardParams : SYSTEM interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::OnBoardParams.others {
-    Taste::coordinates => "156593 117678 165312 120770";
+    Taste::coordinates => "155480 117837 164199 120929";
   };
 CONNECTIONS
   ST20_PI_tc20_ParameterManagement_PI_tc20 : SUBPROGRAM ACCESS ST20.PI_tc20 -> PI_tc20 {
-    Taste::coordinates => "142006 118449 144027 118449 144027 118182 146048 118182";
+    Taste::coordinates => "140893 118608 142914 118608 142914 118341 144935 118341";
   };
   OnBoardParams_PI_setOnBoardParam_ST20_RI_setOnBoardParam : SUBPROGRAM ACCESS OnBoardParams.PI_setOnBoardParam -> ST20.RI_setOnBoardParam {
-    Taste::coordinates => "153509 118415 155051 118415 155051 118363 156593 118363";
+    Taste::coordinates => "152396 118574 153938 118574 153938 118522 155480 118522";
   };
   OnBoardParams_PI_getOnBoardParam_ST20_RI_getOnBoardParam : SUBPROGRAM ACCESS OnBoardParams.PI_getOnBoardParam -> ST20.RI_getOnBoardParam {
-    Taste::coordinates => "153509 119985 155051 119985 155051 119972 156593 119972";
+    Taste::coordinates => "152396 120144 153938 120144 153938 120131 155480 120131";
   };
   ParameterManagement_RI_newTm_ST20_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> ST20.RI_newTm {
-    Taste::coordinates => "146048 120034 144027 120034 144027 122213 142006 122213";
+    Taste::coordinates => "144935 120193 142914 120193 142914 122372 140893 122372";
   };
   ParameterManagement_RI_ACK_ST20_RI_ACK : SUBPROGRAM ACCESS RI_ACK -> ST20.RI_ACK {
-    Taste::coordinates => "152576 120899 152576 121816 167228 121816";
+    Taste::coordinates => "151463 121058 151463 121975 166115 121975";
   };
   ParameterManagement_RI_getApid_ST20_RI_getApid : SUBPROGRAM ACCESS RI_getApid -> ST20.RI_getApid {
-    Taste::coordinates => "147896 120899 147896 124145 167228 124145";
+    Taste::coordinates => "146783 121058 146783 124304 166115 124304";
   };
   ParameterManagement_RI_getSequenceCount_ST20_RI_getSequenceCount : SUBPROGRAM ACCESS RI_getSequenceCount -> ST20.RI_getSequenceCount {
-    Taste::coordinates => "150337 120899 150337 123054 167228 123054";
+    Taste::coordinates => "149224 121058 149224 123213 166115 123213";
   };
   OnBoardParams_PI_setOnBoardParam_ParameterManagement_PI_setOnBoardParam : SUBPROGRAM ACCESS OnBoardParams.PI_setOnBoardParam -> PI_setOnBoardParam {
-    Taste::coordinates => "167228 116800 154071 116800 154071 118363 156593 118363";
+    Taste::coordinates => "166115 116959 154417 116959 154417 118522 155480 118522";
   };
   OnBoardParams_PI_getOnBoardParam_ParameterManagement_PI_getOnBoardParam : SUBPROGRAM ACCESS OnBoardParams.PI_getOnBoardParam -> PI_getOnBoardParam {
-    Taste::coordinates => "167228 118921 154071 118921 154071 119972 156593 119972";
+    Taste::coordinates => "166115 119080 154299 119080 154299 120131 155480 120131";
   };
 END ParameterManagement.others;
 
@@ -3990,6 +4060,8 @@ PROPERTIES
 END PI_TmDispatchTrigger.others;
 
 SUBPROGRAM PI_EventActionTrigger
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_EventActionTrigger;
 
 SUBPROGRAM IMPLEMENTATION PI_EventActionTrigger.others
@@ -4006,6 +4078,8 @@ PROPERTIES
 END PI_TcDispatchTrigger.others;
 
 SUBPROGRAM PI_PmonTrigger
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_PmonTrigger;
 
 SUBPROGRAM IMPLEMENTATION PI_PmonTrigger.others
@@ -4074,92 +4148,92 @@ END RI_EventActionTrigger.others;
 SYSTEM trigger
 FEATURES
   PI_HkReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::trigger::PI_HkReportTrigger.others {
-    Taste::coordinates => "81251 126073";
+    Taste::coordinates => "80138 126232";
     Taste::RCMoperationKind => cyclic;
     Taste::RCMperiod => 10000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "HkReportTrigger";
   };
   PI_TmDispatchTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::trigger::PI_TmDispatchTrigger.others {
-    Taste::coordinates => "81251 117032";
+    Taste::coordinates => "80138 117191";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 1000 ms;
+    Taste::RCMperiod => 500 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "TmDispatchTrigger";
   };
   PI_EventActionTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::trigger::PI_EventActionTrigger.others {
-    Taste::coordinates => "81251 127832";
+    Taste::coordinates => "80138 127991";
     Taste::RCMoperationKind => cyclic;
     Taste::RCMperiod => 10000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventActionTrigger";
   };
   PI_TcDispatchTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::trigger::PI_TcDispatchTrigger.others {
-    Taste::coordinates => "81251 115654";
+    Taste::coordinates => "80138 115813";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 1000 ms;
+    Taste::RCMperiod => 500 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "TcDispatchTrigger";
   };
   PI_PmonTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::trigger::PI_PmonTrigger.others {
-    Taste::coordinates => "81251 118230";
+    Taste::coordinates => "80138 118389";
     Taste::RCMoperationKind => cyclic;
     Taste::RCMperiod => 10000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "PmonTrigger";
   };
   PI_EventReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::trigger::PI_EventReportTrigger.others {
-    Taste::coordinates => "81251 119720";
+    Taste::coordinates => "80138 119879";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 20000 ms;
+    Taste::RCMperiod => 1000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventReportTrigger";
   };
   PI_debugEventTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::trigger::PI_debugEventTrigger.others {
-    Taste::coordinates => "81251 124601";
+    Taste::coordinates => "80138 124760";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 10000 ms;
+    Taste::RCMperiod => 15000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "debugEventTrigger";
   };
   RI_tmTrigger : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
-    Taste::coordinates => "96315 112940";
+    Taste::coordinates => "95202 113099";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tmTrigger";
     Taste::labelInheritance => "true";
   };
   RI_HkReportTrigger : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03::PI_HkReportTrigger.others {
-    Taste::coordinates => "118398 120069";
+    Taste::coordinates => "117285 120228";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "HkReportTrigger";
     Taste::labelInheritance => "true";
   };
   RI_PmonTrigger : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_PmonTrigger.others {
-    Taste::coordinates => "118398 115006";
+    Taste::coordinates => "117285 115165";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "PmonTrigger";
     Taste::labelInheritance => "true";
   };
   RI_EventReportTrigger : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST05::PI_EventReportTrigger.others {
-    Taste::coordinates => "118398 116345";
+    Taste::coordinates => "117285 116504";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "EventReportTrigger";
     Taste::labelInheritance => "true";
   };
   RI_tcTrigger : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcDispatch::PI_tcTrigger.others {
-    Taste::coordinates => "85276 112940";
+    Taste::coordinates => "84163 113099";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tcTrigger";
     Taste::labelInheritance => "true";
   };
   RI_debugEventsTrigger : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_debugEventsTrigger.others {
-    Taste::coordinates => "118398 117525";
+    Taste::coordinates => "117285 117684";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "debugEventsTrigger";
     Taste::labelInheritance => "true";
   };
   RI_EventActionTrigger : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_EventActionTrigger.others {
-    Taste::coordinates => "118398 113762";
+    Taste::coordinates => "117285 113921";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "EventActionTrigger";
     Taste::labelInheritance => "true";
@@ -4215,14 +4289,12 @@ END PI_newTc.others;
 
 SUBPROGRAM PI_setParamValue
 FEATURES
-  storedParam : IN PARAMETER DataView::PusSt03StoredParam {
-    Taste::encoding => NATIVE;
-  };
   paramId : IN PARAMETER DataView::PusSt03ParameterId {
     Taste::encoding => NATIVE;
   };
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
+  paramValue : IN PARAMETER DataView::PusSt03StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END PI_setParamValue;
 
 SUBPROGRAM IMPLEMENTATION PI_setParamValue.others
@@ -4265,24 +4337,19 @@ PROPERTIES
 END PI_pushNewEvent.others;
 
 SUBPROGRAM PI_setOnBoardParam
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : IN PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END PI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_setOnBoardParam.others
 PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_setOnBoardParam.others;
-
-SUBPROGRAM PI_getOnBoardParam
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
-END PI_getOnBoardParam;
-
-SUBPROGRAM IMPLEMENTATION PI_getOnBoardParam.others
-PROPERTIES
-  Compute_Execution_Time => 0 ms .. 0 ms;
-END PI_getOnBoardParam.others;
 
 SUBPROGRAM RI_newTm
 FEATURES
@@ -4294,55 +4361,70 @@ END RI_newTm;
 SUBPROGRAM IMPLEMENTATION RI_newTm.others
 END RI_newTm.others;
 
+SUBPROGRAM PI_getOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : OUT PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
+END PI_getOnBoardParam;
+
+SUBPROGRAM IMPLEMENTATION PI_getOnBoardParam.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_getOnBoardParam.others;
+
 SYSTEM PusServices
 FEATURES
   PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "77913 43498";
+    Taste::coordinates => "76800 43657";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "newTc";
   };
   PI_setParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_setParamValue.others {
-    Taste::coordinates => "204135 69522";
+    Taste::coordinates => "203022 69681";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setParamValue";
   };
   PI_getParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_getParamValue.others {
-    Taste::coordinates => "204135 72488";
+    Taste::coordinates => "203022 72647";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getParamValue";
   };
   PI_pushNewEvent : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::Events::PI_pushNewEvent.others {
-    Taste::coordinates => "204135 51610";
+    Taste::coordinates => "203022 51769";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "pushNewEvent";
   };
   PI_setOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
-    Taste::coordinates => "204135 106478";
+    Taste::coordinates => "203022 106637";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setOnBoardParam";
   };
-  PI_getOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
-    Taste::coordinates => "204135 111943";
-    Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
-    Taste::Deadline => 0 ms;
-    Taste::InterfaceName => "getOnBoardParam";
-  };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_newTm.others {
-    Taste::coordinates => "77913 99168";
+    Taste::coordinates => "76800 99327";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
+  };
+  PI_getOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
+    Taste::coordinates => "203022 113194";
+    Taste::RCMoperationKind => protected;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "getOnBoardParam";
   };
 PROPERTIES
   Source_Language => (C);
@@ -4352,224 +4434,224 @@ END PusServices;
 SYSTEM IMPLEMENTATION PusServices.others
 SUBCOMPONENTS
   TC : SYSTEM interfaceview::IV::OnBoard::PusServices::TC::TC.others {
-    Taste::coordinates => "90145 39833 114416 51795";
+    Taste::coordinates => "89032 39992 113303 51954";
   };
   TM : SYSTEM interfaceview::IV::OnBoard::PusServices::TM::TM.others {
-    Taste::coordinates => "86693 92219 118676 104365";
+    Taste::coordinates => "85580 92378 117563 104524";
   };
   ST17 : SYSTEM interfaceview::IV::OnBoard::PusServices::ST17::ST17.others {
-    Taste::coordinates => "146858 94880 164042 103769";
+    Taste::coordinates => "145745 95039 162929 103928";
   };
   ST01 : SYSTEM interfaceview::IV::OnBoard::PusServices::ST01::ST01.others {
-    Taste::coordinates => "181806 84092 194300 94053";
+    Taste::coordinates => "180693 84251 193187 94212";
   };
   ST08 : SYSTEM interfaceview::IV::OnBoard::PusServices::ST08::ST08.others {
-    Taste::coordinates => "150402 75346 160899 82195";
+    Taste::coordinates => "149289 75505 159786 82354";
   };
   OnBoardAPID : SYSTEM interfaceview::IV::OnBoard::PusServices::OnBoardAPID::OnBoardAPID.others {
-    Taste::coordinates => "179696 74888 194070 81315";
+    Taste::coordinates => "178583 75047 192957 81474";
   };
   TimeReports : SYSTEM interfaceview::IV::OnBoard::PusServices::TimeReports::TimeReports.others {
-    Taste::coordinates => "99051 78422 115815 85256";
+    Taste::coordinates => "97938 78581 114702 85415";
   };
   EventServices : SYSTEM interfaceview::IV::OnBoard::PusServices::EventServices::EventServices.others {
-    Taste::coordinates => "144548 40727 170751 58551";
+    Taste::coordinates => "143435 40886 169638 58710";
   };
   HousekeepingServices : SYSTEM interfaceview::IV::OnBoard::PusServices::HousekeepingServices::HousekeepingServices.others {
-    Taste::coordinates => "146262 59923 168661 74296";
+    Taste::coordinates => "145149 60082 167548 74455";
   };
   ST11 : SYSTEM interfaceview::IV::OnBoard::PusServices::ST11::ST11.others {
-    Taste::coordinates => "150240 83353 161304 90762";
+    Taste::coordinates => "149127 83512 160191 90921";
   };
   OBCP : SYSTEM interfaceview::IV::OnBoard::PusServices::OBCP::OBCP.others {
-    Taste::coordinates => "143215 104654 164638 112510";
+    Taste::coordinates => "142102 104813 163525 112669";
   };
   FilesService : SYSTEM interfaceview::IV::OnBoard::PusServices::FilesService::FilesService.others {
-    Taste::coordinates => "142880 126602 164584 136121";
+    Taste::coordinates => "141767 126761 163471 136280";
   };
   ParameterManagement : SYSTEM interfaceview::IV::OnBoard::PusServices::ParameterManagement::ParameterManagement.others {
-    Taste::coordinates => "142006 113369 167228 124470";
+    Taste::coordinates => "140893 113528 166115 124629";
   };
   trigger : SYSTEM interfaceview::IV::OnBoard::PusServices::trigger::trigger.others {
-    Taste::coordinates => "81251 112940 118398 129337";
+    Taste::coordinates => "80138 113099 117285 129496";
   };
 CONNECTIONS
   TC_PI_newTc_PusServices_PI_newTc : SUBPROGRAM ACCESS TC.PI_newTc -> PI_newTc {
-    Taste::coordinates => "77913 43498 80065 43498 80065 43596 90145 43596";
+    Taste::coordinates => "76800 43657 78952 43657 78952 43755 89032 43755";
   };
   TC_PI_newTc_EventServices_RI_newTc : SUBPROGRAM ACCESS TC.PI_newTc -> EventServices.RI_newTc {
-    Taste::coordinates => "144548 54399 82733 54399 82733 43596 90145 43596";
+    Taste::coordinates => "143435 54558 81620 54558 81620 43755 89032 43755";
   };
   TC_PI_newTc_ST11_RI_newTc : SUBPROGRAM ACCESS TC.PI_newTc -> ST11.RI_newTc {
-    Taste::coordinates => "150240 89797 82728 89797 82728 43596 90145 43596";
+    Taste::coordinates => "149127 89956 81615 89956 81615 43755 89032 43755";
   };
   TC_PI_newTc_OBCP_RI_newTc : SUBPROGRAM ACCESS TC.PI_newTc -> OBCP.RI_newTc {
-    Taste::coordinates => "143215 111651 82696 111651 82696 43596 90145 43596";
+    Taste::coordinates => "142102 111810 81583 111810 81583 43755 89032 43755";
   };
   TC_PI_tcTrigger_trigger_RI_tcTrigger : SUBPROGRAM ACCESS TC.PI_tcTrigger -> trigger.RI_tcTrigger {
-    Taste::coordinates => "85276 112940 85276 69162 91416 69162 91416 51795";
+    Taste::coordinates => "84163 113099 84163 69321 90303 69321 90303 51954";
   };
   ST17_PI_tc17_TC_RI_tc17 : SUBPROGRAM ACCESS ST17.PI_tc17 -> TC.RI_tc17 {
-    Taste::coordinates => "114416 46751 138892 46751 138892 98154 146858 98154";
+    Taste::coordinates => "113303 46910 137779 46910 137779 98313 145745 98313";
   };
   ST08_PI_tc08_TC_RI_tc08 : SUBPROGRAM ACCESS ST08.PI_tc08 -> TC.RI_tc08 {
-    Taste::coordinates => "114416 44463 140309 44463 140309 76594 150402 76594";
+    Taste::coordinates => "113303 44622 139196 44622 139196 76753 149289 76753";
   };
   TimeReports_PI_tc09_TC_RI_tc09 : SUBPROGRAM ACCESS TimeReports.PI_tc09 -> TC.RI_tc09 {
-    Taste::coordinates => "97711 51795 97711 83934 99051 83934";
+    Taste::coordinates => "96598 51954 96598 84093 97938 84093";
   };
   HousekeepingServices_PI_tc12_TC_RI_tc12 : SUBPROGRAM ACCESS HousekeepingServices.PI_tc12 -> TC.RI_tc12 {
-    Taste::coordinates => "114416 43317 141397 43317 141397 68841 146262 68841";
+    Taste::coordinates => "113303 43476 140284 43476 140284 69000 145149 69000";
   };
   EventServices_PI_tc19_TC_RI_tc19 : SUBPROGRAM ACCESS EventServices.PI_tc19 -> TC.RI_tc19 {
-    Taste::coordinates => "114416 42225 142485 42225 142485 48585 144548 48585";
+    Taste::coordinates => "113303 42384 141372 42384 141372 48744 143435 48744";
   };
   ST11_PI_tc11_TC_RI_tc11 : SUBPROGRAM ACCESS ST11.PI_tc11 -> TC.RI_tc11 {
-    Taste::coordinates => "114416 45600 139616 45600 139616 84392 150240 84392";
+    Taste::coordinates => "113303 45759 138503 45759 138503 84551 149127 84551";
   };
   OBCP_PI_tc18_TC_RI_tc18 : SUBPROGRAM ACCESS OBCP.PI_tc18 -> TC.RI_tc18 {
-    Taste::coordinates => "114416 48003 137859 48003 137859 108475 143215 108475";
+    Taste::coordinates => "113303 48162 136746 48162 136746 108634 142102 108634";
   };
   FilesService_PI_tc23_TC_RI_tc23 : SUBPROGRAM ACCESS FilesService.PI_tc23 -> TC.RI_tc23 {
-    Taste::coordinates => "114416 50709 135793 50709 135793 131522 142880 131522";
+    Taste::coordinates => "113303 50868 134680 50868 134680 131681 141767 131681";
   };
   ParameterManagement_PI_tc20_TC_RI_tc20 : SUBPROGRAM ACCESS ParameterManagement.PI_tc20 -> TC.RI_tc20 {
-    Taste::coordinates => "114416 49108 136826 49108 136826 118449 142006 118449";
+    Taste::coordinates => "113303 49267 135713 49267 135713 118608 140893 118608";
   };
   TM_PI_newTm_ST01_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> ST01.RI_newTm {
-    Taste::coordinates => "181806 86777 177944 86777 177944 94684 118676 94684";
-  };
-  TM_PI_newTm_ST17_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> ST17.RI_newTm {
-    Taste::coordinates => "146858 98949 124988 98949 124988 94684 118676 94684";
+    Taste::coordinates => "180693 86936 176831 86936 176831 94843 117563 94843";
   };
   TM_PI_newTm_EventServices_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> EventServices.RI_newTm {
-    Taste::coordinates => "144548 56196 125057 56196 125057 94684 118676 94684";
+    Taste::coordinates => "143435 56355 123944 56355 123944 94843 117563 94843";
   };
   TM_PI_newTm_EventServices_RI_newTmNoInherit : SUBPROGRAM ACCESS TM.PI_newTm -> EventServices.RI_newTmNoInherit {
-    Taste::coordinates => "144548 57643 125128 57643 125128 94684 118676 94684";
+    Taste::coordinates => "143435 57802 124015 57802 124015 94843 117563 94843";
   };
   TM_PI_newTm_HousekeepingServices_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> HousekeepingServices.RI_newTm {
-    Taste::coordinates => "146262 67489 124994 67489 124994 94684 118676 94684";
+    Taste::coordinates => "145149 67648 123881 67648 123881 94843 117563 94843";
   };
   TM_PI_newTm_FilesService_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> FilesService.RI_newTm {
-    Taste::coordinates => "142880 135176 124959 135176 124959 94684 118676 94684";
+    Taste::coordinates => "141767 135335 123846 135335 123846 94843 117563 94843";
   };
   TM_PI_newTm_ParameterManagement_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> ParameterManagement.RI_newTm {
-    Taste::coordinates => "142006 122213 125007 122213 125007 94684 118676 94684";
+    Taste::coordinates => "140893 122372 123894 122372 123894 94843 117563 94843";
+  };
+  TM_PI_newTm_ST17_RI_newTm : SUBPROGRAM ACCESS TM.PI_newTm -> ST17.RI_newTm {
+    Taste::coordinates => "145745 100109 131654 100109 131654 94843 117563 94843";
   };
   TM_PI_tmTrigger_trigger_RI_tmTrigger : SUBPROGRAM ACCESS TM.PI_tmTrigger -> trigger.RI_tmTrigger {
-    Taste::coordinates => "96315 112940 96315 108652 93973 108652 93973 104365";
+    Taste::coordinates => "95202 113099 95202 108811 92860 108811 92860 104524";
   };
   PusServices_RI_newTm_TM_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> TM.RI_newTm {
-    Taste::coordinates => "86693 101549 80533 101549 80533 99168 77913 99168";
+    Taste::coordinates => "85580 101708 79420 101708 79420 99327 76800 99327";
   };
   TimeReports_PI_incCount_TM_RI_incCount : SUBPROGRAM ACCESS TimeReports.PI_incCount -> TM.RI_incCount {
-    Taste::coordinates => "90697 92219 90697 88737 105243 88737 105243 85256";
+    Taste::coordinates => "89584 92378 89584 88896 104130 88896 104130 85415";
   };
   ST01_PI_ACK_ST17_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> ST17.RI_ACK {
-    Taste::coordinates => "164042 96658 173218 96658 173218 92069 181806 92069";
+    Taste::coordinates => "162929 96817 172105 96817 172105 92228 180693 92228";
   };
   OnBoardAPID_PI_getApid_ST17_RI_getApid : SUBPROGRAM ACCESS OnBoardAPID.PI_getApid -> ST17.RI_getApid {
-    Taste::coordinates => "164042 98365 198488 98365 198488 76332 194070 76332";
+    Taste::coordinates => "162929 98524 197375 98524 197375 76491 192957 76491";
   };
   OnBoardAPID_PI_getSequenceCount_ST17_RI_getSequenceCount : SUBPROGRAM ACCESS OnBoardAPID.PI_getSequenceCount -> ST17.RI_getSequenceCount {
-    Taste::coordinates => "164042 102021 195844 102021 195844 80456 194070 80456";
+    Taste::coordinates => "162929 102180 194731 102180 194731 80615 192957 80615";
   };
   ST01_PI_ACK_ST08_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> ST08.RI_ACK {
-    Taste::coordinates => "160899 81238 171352 81238 171352 92069 181806 92069";
+    Taste::coordinates => "159786 81397 170239 81397 170239 92228 180693 92228";
   };
   ST01_PI_ACK_TimeReports_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> TimeReports.RI_ACK {
-    Taste::coordinates => "115815 83343 119388 83343 119388 92069 181806 92069";
+    Taste::coordinates => "114702 83502 118275 83502 118275 92228 180693 92228";
   };
   ST01_PI_ACK_EventServices_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> EventServices.RI_ACK {
-    Taste::coordinates => "170751 56800 175204 56800 175204 92069 181806 92069";
+    Taste::coordinates => "169638 56959 174091 56959 174091 92228 180693 92228";
   };
   ST01_PI_ACK_HousekeepingServices_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> HousekeepingServices.RI_ACK {
-    Taste::coordinates => "168661 73866 175233 73866 175233 92069 181806 92069";
+    Taste::coordinates => "167548 74025 174120 74025 174120 92228 180693 92228";
   };
   ST01_PI_ACK_ST11_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> ST11.RI_ACK {
-    Taste::coordinates => "161304 89623 171395 89623 171395 92069 181806 92069";
+    Taste::coordinates => "160191 89782 170282 89782 170282 92228 180693 92228";
   };
   ST01_PI_ACK_OBCP_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> OBCP.RI_ACK {
-    Taste::coordinates => "164638 111942 173222 111942 173222 92069 181806 92069";
+    Taste::coordinates => "163525 112101 172109 112101 172109 92228 180693 92228";
   };
   ST01_PI_ACK_ParameterManagement_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> ParameterManagement.RI_ACK {
-    Taste::coordinates => "167228 121816 174517 121816 174517 92069 181806 92069";
+    Taste::coordinates => "166115 121975 173404 121975 173404 92228 180693 92228";
   };
   ST01_PI_ACK_FilesService_RI_ACK : SUBPROGRAM ACCESS ST01.PI_ACK -> FilesService.RI_ACK {
-    Taste::coordinates => "164584 130865 173195 130865 173195 92069 181806 92069";
+    Taste::coordinates => "163471 131024 172082 131024 172082 92228 180693 92228";
   };
   OnBoardAPID_PI_getSequenceCount_ST01_RI_getSequenceCount : SUBPROGRAM ACCESS OnBoardAPID.PI_getSequenceCount -> ST01.RI_getSequenceCount {
-    Taste::coordinates => "194300 92378 195760 92378 195760 80456 194070 80456";
+    Taste::coordinates => "193187 92537 194647 92537 194647 80615 192957 80615";
   };
   OnBoardAPID_PI_getApid_ST01_RI_getApid : SUBPROGRAM ACCESS OnBoardAPID.PI_getApid -> ST01.RI_getApid {
-    Taste::coordinates => "194300 86066 198420 86066 198420 76332 194070 76332";
+    Taste::coordinates => "193187 86225 197307 86225 197307 76491 192957 76491";
   };
   OnBoardAPID_PI_getApid_EventServices_RI_getApid : SUBPROGRAM ACCESS OnBoardAPID.PI_getApid -> EventServices.RI_getApid {
-    Taste::coordinates => "170751 47336 198556 47336 198556 76332 194070 76332";
+    Taste::coordinates => "169638 47495 197443 47495 197443 76491 192957 76491";
   };
   OnBoardAPID_PI_getApid_HousekeepingServices_RI_getApid : SUBPROGRAM ACCESS OnBoardAPID.PI_getApid -> HousekeepingServices.RI_getApid {
-    Taste::coordinates => "168661 66377 198556 66377 198556 76332 194070 76332";
+    Taste::coordinates => "167548 66536 197443 66536 197443 76491 192957 76491";
   };
   OnBoardAPID_PI_getApid_FilesService_RI_getApid : SUBPROGRAM ACCESS OnBoardAPID.PI_getApid -> FilesService.RI_getApid {
-    Taste::coordinates => "164584 134803 198556 134803 198556 76332 194070 76332";
+    Taste::coordinates => "163471 134962 197443 134962 197443 76491 192957 76491";
   };
   OnBoardAPID_PI_getApid_ParameterManagement_RI_getApid : SUBPROGRAM ACCESS OnBoardAPID.PI_getApid -> ParameterManagement.RI_getApid {
-    Taste::coordinates => "167228 124145 198488 124145 198488 76332 194070 76332";
+    Taste::coordinates => "166115 124304 197375 124304 197375 76491 192957 76491";
   };
   OnBoardAPID_PI_getSequenceCount_EventServices_RI_getSequenceCount : SUBPROGRAM ACCESS OnBoardAPID.PI_getSequenceCount -> EventServices.RI_getSequenceCount {
-    Taste::coordinates => "170751 45021 195776 45021 195776 80456 194070 80456";
+    Taste::coordinates => "169638 45180 194663 45180 194663 80615 192957 80615";
   };
   OnBoardAPID_PI_getSequenceCount_HousekeepingServices_RI_getSequenceCount : SUBPROGRAM ACCESS OnBoardAPID.PI_getSequenceCount -> HousekeepingServices.RI_getSequenceCount {
-    Taste::coordinates => "168661 64165 195844 64165 195844 80456 194070 80456";
+    Taste::coordinates => "167548 64324 194731 64324 194731 80615 192957 80615";
   };
   OnBoardAPID_PI_getSequenceCount_FilesService_RI_getSequenceCount : SUBPROGRAM ACCESS OnBoardAPID.PI_getSequenceCount -> FilesService.RI_getSequenceCount {
-    Taste::coordinates => "164584 133653 195776 133653 195776 80456 194070 80456";
+    Taste::coordinates => "163471 133812 194663 133812 194663 80615 192957 80615";
   };
   OnBoardAPID_PI_getSequenceCount_ParameterManagement_RI_getSequenceCount : SUBPROGRAM ACCESS OnBoardAPID.PI_getSequenceCount -> ParameterManagement.RI_getSequenceCount {
-    Taste::coordinates => "167228 123054 195776 123054 195776 80456 194070 80456";
+    Taste::coordinates => "166115 123213 194663 123213 194663 80615 192957 80615";
   };
   EventServices_PI_pushNewEvent_PusServices_PI_pushNewEvent : SUBPROGRAM ACCESS EventServices.PI_pushNewEvent -> PI_pushNewEvent {
-    Taste::coordinates => "204135 51610 187443 51610 187443 51579 170751 51579";
+    Taste::coordinates => "203022 51769 186330 51769 186330 51738 169638 51738";
   };
   EventServices_PI_pushNewEvent_HousekeepingServices_RI_pushNewEvent : SUBPROGRAM ACCESS EventServices.PI_pushNewEvent -> HousekeepingServices.RI_pushNewEvent {
-    Taste::coordinates => "168661 70845 172269 70845 172269 51579 170751 51579";
+    Taste::coordinates => "167548 71004 171156 71004 171156 51738 169638 51738";
   };
   EventServices_PI_pushNewEvent_OBCP_RI_pushNewEvent : SUBPROGRAM ACCESS EventServices.PI_pushNewEvent -> OBCP.RI_pushNewEvent {
-    Taste::coordinates => "164638 105311 173505 105311 173505 51579 170751 51579";
+    Taste::coordinates => "163525 105470 172392 105470 172392 51738 169638 51738";
   };
   EventServices_PI_EventReportTrigger_trigger_RI_EventReportTrigger : SUBPROGRAM ACCESS EventServices.PI_EventReportTrigger -> trigger.RI_EventReportTrigger {
-    Taste::coordinates => "118398 116345 128250 116345 128250 49688 144548 49688";
+    Taste::coordinates => "117285 116504 127137 116504 127137 49847 143435 49847";
   };
   EventServices_PI_debugEventsTrigger_trigger_RI_debugEventsTrigger : SUBPROGRAM ACCESS EventServices.PI_debugEventsTrigger -> trigger.RI_debugEventsTrigger {
-    Taste::coordinates => "118398 117525 129337 117525 129337 52526 144548 52526";
+    Taste::coordinates => "117285 117684 128224 117684 128224 52685 143435 52685";
   };
   EventServices_PI_EventActionTrigger_trigger_RI_EventActionTrigger : SUBPROGRAM ACCESS EventServices.PI_EventActionTrigger -> trigger.RI_EventActionTrigger {
-    Taste::coordinates => "118398 113762 128767 113762 128767 51182 144548 51182";
+    Taste::coordinates => "117285 113921 127654 113921 127654 51341 143435 51341";
   };
   HousekeepingServices_PI_HkReportTrigger_trigger_RI_HkReportTrigger : SUBPROGRAM ACCESS HousekeepingServices.PI_HkReportTrigger -> trigger.RI_HkReportTrigger {
-    Taste::coordinates => "118398 120069 130103 120069 130103 65945 146262 65945";
+    Taste::coordinates => "117285 120228 128990 120228 128990 66104 145149 66104";
   };
   HousekeepingServices_PI_PmonTrigger_trigger_RI_PmonTrigger : SUBPROGRAM ACCESS HousekeepingServices.PI_PmonTrigger -> trigger.RI_PmonTrigger {
-    Taste::coordinates => "118398 115006 130730 115006 130730 70954 146262 70954";
+    Taste::coordinates => "117285 115165 129617 115165 129617 71113 145149 71113";
   };
   HousekeepingServices_PI_setParamValue_PusServices_PI_setParamValue : SUBPROGRAM ACCESS HousekeepingServices.PI_setParamValue -> PI_setParamValue {
-    Taste::coordinates => "204135 69522 186398 69522 186398 71434 168661 71434";
+    Taste::coordinates => "203022 69681 185285 69681 185285 71593 167548 71593";
   };
   HousekeepingServices_PI_getParamValue_PusServices_PI_getParamValue : SUBPROGRAM ACCESS HousekeepingServices.PI_getParamValue -> PI_getParamValue {
-    Taste::coordinates => "204135 72488 186398 72488 186398 72479 168661 72479";
+    Taste::coordinates => "203022 72647 185285 72647 185285 72638 167548 72638";
   };
   ParameterManagement_PI_setOnBoardParam_OBCP_RI_setOnBoardParam : SUBPROGRAM ACCESS ParameterManagement.PI_setOnBoardParam -> OBCP.RI_setOnBoardParam {
-    Taste::coordinates => "164638 111236 169750 111236 169750 116800 167228 116800";
+    Taste::coordinates => "163525 111395 167465 111395 167465 116959 166115 116959";
   };
   ParameterManagement_PI_getOnBoardParam_OBCP_RI_getOnBoardParam : SUBPROGRAM ACCESS ParameterManagement.PI_getOnBoardParam -> OBCP.RI_getOnBoardParam {
-    Taste::coordinates => "164638 108898 170485 108898 170485 118921 167228 118921";
+    Taste::coordinates => "163525 109057 168637 109057 168637 119080 166115 119080";
   };
   ParameterManagement_PI_setOnBoardParam_PusServices_PI_setOnBoardParam : SUBPROGRAM ACCESS ParameterManagement.PI_setOnBoardParam -> PI_setOnBoardParam {
-    Taste::coordinates => "204135 106478 184714 106478 184714 116800 167228 116800";
+    Taste::coordinates => "203022 106637 183601 106637 183601 116959 166115 116959";
   };
   ParameterManagement_PI_getOnBoardParam_PusServices_PI_getOnBoardParam : SUBPROGRAM ACCESS ParameterManagement.PI_getOnBoardParam -> PI_getOnBoardParam {
-    Taste::coordinates => "204135 111943 185681 111943 185681 118921 167228 118921";
+    Taste::coordinates => "203022 113194 184568 113194 184568 119080 166115 119080";
   };
 END PusServices.others;
 
@@ -4594,10 +4676,10 @@ END PI_debugTrigger.others;
 
 SUBPROGRAM RI_setParamValue
 FEATURES
-  storedParam : IN PARAMETER DataView::PusSt03StoredParam {
+  paramId : IN PARAMETER DataView::PusSt03ParameterId {
     Taste::encoding => NATIVE;
   };
-  paramId : IN PARAMETER DataView::PusSt03ParameterId {
+  paramValue : IN PARAMETER DataView::PusSt03StoredParam {
     Taste::encoding => NATIVE;
   };
 END RI_setParamValue;
@@ -4632,12 +4714,29 @@ SUBPROGRAM IMPLEMENTATION RI_pushNewEvent.others
 END RI_pushNewEvent.others;
 
 SUBPROGRAM RI_setOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : IN PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
 END RI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION RI_setOnBoardParam.others
 END RI_setOnBoardParam.others;
 
 SUBPROGRAM RI_getOnBoardParam
+FEATURES
+  paramId : IN PARAMETER DataView::PusSt20OnBoardParameterId {
+    Taste::encoding => NATIVE;
+  };
+  paramValue : OUT PARAMETER DataView::PusSt20StoredParam {
+    Taste::encoding => NATIVE;
+  };
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
 END RI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION RI_getOnBoardParam.others
@@ -4729,7 +4828,7 @@ END RI_newTm.others;
 SYSTEM OnBoard
 FEATURES
   PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
-    Taste::coordinates => "66854 42296";
+    Taste::coordinates => "66854 42773";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
@@ -4749,32 +4848,32 @@ END OnBoard;
 SYSTEM IMPLEMENTATION OnBoard.others
 SUBCOMPONENTS
   PusServices : SYSTEM interfaceview::IV::OnBoard::PusServices::PusServices.others {
-    Taste::coordinates => "77913 33034 204135 139115";
+    Taste::coordinates => "76800 33193 203022 139274";
   };
   OnboardSoftware : SYSTEM interfaceview::IV::OnBoard::OnboardSoftware::OnboardSoftware.others {
     Taste::coordinates => "219639 44167 238379 98482";
   };
 CONNECTIONS
   PusServices_PI_newTc_OnBoard_PI_newTc : SUBPROGRAM ACCESS PusServices.PI_newTc -> PI_newTc {
-    Taste::coordinates => "66854 42296 71940 42296 71940 43498 77913 43498";
+    Taste::coordinates => "66854 42773 71940 42773 71940 43657 76800 43657";
   };
   PusServices_PI_setParamValue_OnboardSoftware_RI_setParamValue : SUBPROGRAM ACCESS PusServices.PI_setParamValue -> OnboardSoftware.RI_setParamValue {
-    Taste::coordinates => "219639 58507 209927 58507 209927 69522 204135 69522";
+    Taste::coordinates => "219639 58507 209927 58507 209927 69681 203022 69681";
   };
   PusServices_PI_getParamValue_OnboardSoftware_RI_getParamValue : SUBPROGRAM ACCESS PusServices.PI_getParamValue -> OnboardSoftware.RI_getParamValue {
-    Taste::coordinates => "219639 60439 211887 60439 211887 72488 204135 72488";
+    Taste::coordinates => "219639 60439 211887 60439 211887 72647 203022 72647";
   };
   PusServices_PI_pushNewEvent_OnboardSoftware_RI_pushNewEvent : SUBPROGRAM ACCESS PusServices.PI_pushNewEvent -> OnboardSoftware.RI_pushNewEvent {
-    Taste::coordinates => "219639 56026 211887 56026 211887 51610 204135 51610";
+    Taste::coordinates => "219639 56026 211887 56026 211887 51769 203022 51769";
   };
   PusServices_PI_setOnBoardParam_OnboardSoftware_RI_setOnBoardParam : SUBPROGRAM ACCESS PusServices.PI_setOnBoardParam -> OnboardSoftware.RI_setOnBoardParam {
-    Taste::coordinates => "219639 84343 209927 84343 209927 106478 204135 106478";
-  };
-  PusServices_PI_getOnBoardParam_OnboardSoftware_RI_getOnBoardParam : SUBPROGRAM ACCESS PusServices.PI_getOnBoardParam -> OnboardSoftware.RI_getOnBoardParam {
-    Taste::coordinates => "219639 91417 211887 91417 211887 111943 204135 111943";
+    Taste::coordinates => "219639 84343 209927 84343 209927 106637 203022 106637";
   };
   OnBoard_RI_newTm_PusServices_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> PusServices.RI_newTm {
-    Taste::coordinates => "77913 99168 71940 99168 71940 90896 66854 90896";
+    Taste::coordinates => "76800 99327 71940 99327 71940 90896 66854 90896";
+  };
+  PusServices_PI_getOnBoardParam_OnboardSoftware_RI_getOnBoardParam : SUBPROGRAM ACCESS PusServices.PI_getOnBoardParam -> OnboardSoftware.RI_getOnBoardParam {
+    Taste::coordinates => "219639 91417 211330 91417 211330 113194 203022 113194";
   };
 END OnBoard.others;
 
@@ -4794,17 +4893,17 @@ END interfaceview;
 SYSTEM IMPLEMENTATION interfaceview.others
 SUBCOMPONENTS
   Ground : SYSTEM interfaceview::IV::Ground::Ground.others {
-    Taste::coordinates => "16806 57222 57887 85826";
+    Taste::coordinates => "25410 59924 57092 83155";
   };
   OnBoard : SYSTEM interfaceview::IV::OnBoard::OnBoard.others {
     Taste::coordinates => "66854 18968 241992 150587";
   };
 CONNECTIONS
   Ground_PI_newTm_OnBoard_RI_newTm : SUBPROGRAM ACCESS Ground.PI_newTm -> OnBoard.RI_newTm {
-    Taste::coordinates => "66854 90896 62370 90896 62370 73905 57887 73905";
+    Taste::coordinates => "66854 90896 62370 90896 62370 76607 57092 76607";
   };
   OnBoard_PI_newTc_Ground_RI_newTc : SUBPROGRAM ACCESS OnBoard.PI_newTc -> Ground.RI_newTc {
-    Taste::coordinates => "57887 67571 62370 67571 62370 42296 66854 42296";
+    Taste::coordinates => "57092 65981 62370 65981 62370 42773 66854 42773";
   };
 END interfaceview.others;
 

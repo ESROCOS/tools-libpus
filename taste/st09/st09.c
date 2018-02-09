@@ -40,9 +40,15 @@ void st09_PI_incCount(asn1SccPusPacket *OUT_tmPacket,
 		st09_RI_getApid(&apid);
 		st09_RI_getSequenceCount(&seqCount);
 
-		pus_tm_9_2_createCucTimeReport(OUT_tmPacket, apid, seqCount);
+		pusError_t error = pus_tm_9_2_createCucTimeReport(OUT_tmPacket, apid, seqCount);
+		printf(" INC COUNT:: TM%llu_%llu inserted in TmQueue.\n", pus_getTmService(OUT_tmPacket), pus_getTmSubtype(OUT_tmPacket));
+		printf(" INC COUNT: in, error %u\n", error);
+		tmCounter = 0;
 	}
-	*OUT_isAvailable = PUS_ERROR_NOT_AVAILABLE;
+	else
+	{
+		*OUT_isAvailable = PUS_ERROR_NOT_AVAILABLE;
+	}
 }
 
 void st09_PI_tc09(const asn1SccPusPacket *IN_tcPacket)

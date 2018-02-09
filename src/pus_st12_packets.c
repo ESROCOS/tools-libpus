@@ -119,7 +119,7 @@ pusError_t pus_tc_12_1_2_setPmonId(pusPacket_t* outTc, pusSt12PmonId_t pmon)
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_12_1_2_getPmonId(pusSt12PmonId_t* pmon, pusPacket_t* tcPacket)
+pusError_t pus_tc_12_1_2_getPmonId(pusSt12PmonId_t* pmon, const pusPacket_t* tcPacket)
 {
 	if( NULL == tcPacket || NULL == pmon )
 	{

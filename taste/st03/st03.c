@@ -21,8 +21,6 @@ void st03_PI_HkReportTrigger()
 {
     /* Write your code here! */
 
-	return;
-
 	//TM3.25 report
 	pusPacket_t tm;
 	pusApid_t apid;
@@ -52,7 +50,7 @@ void st03_PI_HkReportTrigger()
 	for( size_t i =0; i < reportInfo.numParams; i++)
 	{
 		st03_RI_getParamValue(&reportInfo.paramIds[i], &paramValue, &isAvailable);
-		printf("i: %llu, id: %llu, param:%llu\n", i, reportInfo.paramIds[i], paramValue);
+		printf("i: %lu, id: %llu, param:%llu\n", i, reportInfo.paramIds[i], paramValue);
 		if( PUS_NO_ERROR == isAvailable )
 		{
 			pus_tm_3_25_setParameterValue(&tm, i, paramValue);
@@ -62,6 +60,7 @@ void st03_PI_HkReportTrigger()
 			printf("param not available\n");
 		}
 	}
+
 
 	st03_RI_newTm(&tm);
 }

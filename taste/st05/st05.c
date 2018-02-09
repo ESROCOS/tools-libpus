@@ -70,6 +70,7 @@ void st05_PI_EventReportTrigger()
 	else
 	{
 		//printf(" -ST05: No new events .\n");
+		pus_clearError();
 	}
 }
 

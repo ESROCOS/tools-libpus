@@ -13,8 +13,8 @@ extern "C" {
 
 void housekeeping_startup();
 
-void housekeeping_PI_setParamValue(const asn1SccPusSt03StoredParam *,
-                                   const asn1SccPusSt03ParameterId *);
+void housekeeping_PI_setParamValue(const asn1SccPusSt03ParameterId *,
+                                   const asn1SccPusSt03StoredParam *);
 
 void housekeeping_PI_getParamValue(const asn1SccPusSt03ParameterId *,
                                    asn1SccPusSt03StoredParam *,
