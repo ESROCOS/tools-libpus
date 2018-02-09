@@ -355,14 +355,22 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_20_2_createParameterValueReport", &pus_tm_20_2_createParameterValueReport, "Binding for pus_tm_20_2_createParameterValueReport");
 
 	m.doc() = "pus_st23_packets binding";
-
 	m.def("pus_tc_23_1_createCreateFileRequest", &pus_tc_23_1_createCreateFileRequest_, "Binding for pus_tc_23_1_createCreateFileRequest");
 	m.def("pus_tc_23_2_createDeleteFileRequest", &pus_tc_23_2_createDeleteFileRequest_, "Binding for pus_tc_23_2_createDeleteFileRequest");
+	m.def("pus_tc_23_3_createReportFileAtributesRequest", &pus_tc_23_3_createReportFileAtributesRequest_, "Binding for pus_tc_23_3_createReportFileAtributesRequest");
+	m.def("pus_tc_23_14_createCopyFileRequest", &pus_tc_23_14_createCopyFileRequest_, "Binding for pus_tc_23_3_createReportFileAtributesRequest");
 	m.def("pus_tc_tm_23_X_setFileName", &pus_tc_tm_23_X_setFileName_, "Binding for pus_tc_tm_23_X_setFileName");
-	m.def("pus_tc_tm_23_X_getFileName", &pus_tc_tm_23_X_getFileName_, "Binding for pus_tc_tm_23_X_getFileName");
 	m.def("pus_tc_tm_23_X_setRepositoryPath", &pus_tc_tm_23_X_setRepositoryPath_, "Binding for pus_tc_tm_23_X_setRepositoryPath_");
-	m.def("pus_tc_tm_23_X_getRepositoryPath", &pus_tc_tm_23_X_getRepositoryPath_, "Binding for pus_tc_tm_23_X_getRepositoryPath");
+	m.def("pus_tc_23_14_setSourceFileName", &pus_tc_23_14_setSourceFileName_, "Binding for pus_tc_23_14_setSourceFileName");
+	m.def("pus_tc_23_14_setTargetFileName", &pus_tc_23_14_setTargetFileName_, "Binding for pus_tc_23_14_setTargetFileName");
+	m.def("pus_tc_23_14_setSourceRepositoryPath", &pus_tc_23_14_setSourceRepositoryPath_, "Binding for pus_tc_23_14_setSourceRepositoryPath");
+	m.def("pus_tc_23_14_setTargetRepositoryPath", &pus_tc_23_14_setTargetRepositoryPath_, "Binding for pus_tc_23_14_setTargetRepositoryPath");
 	m.def("pus_tc_tm_23_1_4_setMaximumSize", &pus_tc_tm_23_1_4_setMaximumSize, "Binding for pus_tc_tm_23_1_4_setMaximumSize");
+	m.def("pus_tc_tm_23_X_getFileName", &pus_tc_tm_23_X_getFileName_, "Binding for pus_tc_tm_23_X_getFileName");
+	m.def("pus_tc_tm_23_X_getRepositoryPath", &pus_tc_tm_23_X_getRepositoryPath_, "Binding for pus_tc_tm_23_X_getRepositoryPath");
+	m.def("pus_tc_23_14_getSourceFileName", &pus_tc_23_14_getSourceFileName_, "Binding for pus_tc_23_14_getSourceFileName");
+	m.def("pus_tc_23_14_getTargetFileName", &pus_tc_23_14_getTargetFileName_, "Binding for pus_tc_23_14_getTargetFileName");
+	m.def("pus_tc_23_14_getSourceRepositoryPath", &pus_tc_23_14_getSourceRepositoryPath_, "Binding for pus_tc_23_14_getSourceRepositoryPath");
+	m.def("pus_tc_23_14_getTargetRepositoryPath", &pus_tc_23_14_getTargetRepositoryPath_, "Binding for pus_tc_23_14_getTargetRepositoryPath");
 	m.def("pus_tc_tm_23_1_4_getMaximumSize", &pus_tc_tm_23_1_4_getMaximumSize_, "Binding for pus_tc_tm_23_1_4_getMaximumSize");
-
 }

@@ -103,14 +103,32 @@ pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket);
 void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *outTc, long max);
 time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, long max);
 
+
 pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 												const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize);
+
 pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 												const char* repository, const char* fileName);
+
+pusError_t pus_tc_23_3_createReportFileAtributesRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* repository, const char* fileName);
+
+pusError_t pus_tc_23_14_createCopyFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* sourceRepository, const char* sourceFileName, const char* targetRepository, const char* targetFileName);
+
 pusError_t pus_tc_tm_23_X_setFileName_(pusPacket_t* outTc, const char* file);
-pusError_t pus_tc_tm_23_X_getFileName_(char* file, const pusPacket_t* outTc);
 pusError_t pus_tc_tm_23_X_setRepositoryPath_(pusPacket_t* outTc, const char* repository);
-pusError_t pus_tc_tm_23_X_getRepositoryPath_(char* repository, const pusPacket_t* outTc);
+pusError_t pus_tc_23_14_setSourceFileName_(pusPacket_t* outTc, const char* file);
+pusError_t pus_tc_23_14_setTargetFileName_(pusPacket_t* outTc, const char* fileName);
+pusError_t pus_tc_23_14_setSourceRepositoryPath_(pusPacket_t* outTc, const char* repository);
+pusError_t pus_tc_23_14_setTargetRepositoryPath_(pusPacket_t* outTc, const char* repository);
+char *pus_tc_tm_23_X_getRepositoryPath_(char* repository, const pusPacket_t* outTc);
+char *pus_tc_tm_23_X_getFileName_(char* file, const pusPacket_t* outTc);
+char *pus_tc_23_14_getSourceFileName_(const pusPacket_t* outTc);
+char *pus_tc_23_14_getTargetFileName_(const pusPacket_t* outTc);
+char *pus_tc_23_14_getSourceRepositoryPath_(const pusPacket_t* outTc);
+char *pus_tc_23_14_getTargetRepositoryPath_(const pusPacket_t* outTc);
 pusSt23MaximumSize_t pus_tc_tm_23_1_4_getMaximumSize_(const pusPacket_t* outTc);
+
 
 #endif

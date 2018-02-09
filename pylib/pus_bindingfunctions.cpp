@@ -79,7 +79,13 @@ int ret_packets(pusPacket_t *tm, int i)
 	}
 	else if (i == 12)
 	{
-
+		pusSt23RepositoryPath_t repo;
+		pusSt23FileName_t file;
+		pusSt23MaximumSize_t size;
+		memcpy(repo.arr, "987654321\0", 10);
+		memcpy(file.arr, "987654321\0", 10);
+		size = 9;
+		pus_tm_23_4_createReportFileAtributesReport(tm, 1, 1, 1, &repo, &file, size);
 	}
 	return 0;
 
@@ -421,6 +427,44 @@ pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t ap
 	return pus_tc_23_2_createDeleteFileRequest(outTc, apid, sequenceCount, &repo, &file);
 }
 
+pusError_t pus_tc_23_3_createReportFileAtributesRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* repository, const char* fileName) {
+	pusSt23FileName_t file;
+	pusSt23RepositoryPath_t repo;
+
+	memcpy(file.arr, fileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	file.nCount = strlen((char*)file.arr) + 1;
+
+	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
+	repo.nCount = strlen((char*)repo.arr) + 1;
+
+	return pus_tc_23_3_createReportFileAtributesRequest(outTc, apid, sequenceCount, &repo, &file);
+}
+
+pusError_t pus_tc_23_14_createCopyFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* sourceRepository, const char* sourceFileName, const char* targetRepository, const char* targetFileName) {
+
+	pusSt23FileName_t srcFile, dstFile;
+	pusSt23RepositoryPath_t srcRepo, dstRepo;
+
+	if (NULL == sourceRepository || NULL == sourceFileName || NULL == targetFileName || NULL == targetRepository)
+		return pusError_t::PUS_ERROR_NULLPTR;
+
+	memcpy(srcFile.arr, sourceFileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	srcFile.nCount = strlen((char*)srcFile.arr) + 1;
+
+	memcpy(srcRepo.arr, sourceRepository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
+	srcRepo.nCount = strlen((char*)srcRepo.arr) + 1;
+
+	memcpy(dstFile.arr, targetFileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	dstFile.nCount = strlen((char*)dstFile.arr) + 1;
+
+	memcpy(dstRepo.arr, targetRepository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
+	dstRepo.nCount = strlen((char*)dstRepo.arr) + 1;
+
+	return pus_tc_23_14_createCopyFileRequest(outTc, apid, sequenceCount, &srcRepo, &srcFile, &dstRepo, &dstFile);
+}
+
 pusError_t pus_tc_tm_23_X_setFileName_(pusPacket_t* outTc, const char* file) {
 	pusSt23FileName_t fileName;
 	memcpy(fileName.arr, file, pus_ST23_MAX_SIZE_FILE_PATH - 1);
@@ -429,14 +473,14 @@ pusError_t pus_tc_tm_23_X_setFileName_(pusPacket_t* outTc, const char* file) {
 	return pus_tc_tm_23_X_setFileName(outTc, &fileName);
 }
 
-pusError_t pus_tc_tm_23_X_getFileName_(char* file, const pusPacket_t* outTc) {
+char *pus_tc_tm_23_X_getFileName_(char *file, const pusPacket_t* outTc) {
 	pusSt23FileName_t fileName;
 	if (NULL == file) {
-		return pusError_t::PUS_ERROR_NULLPTR;
+		return NULL;
 	}
 	pus_tc_tm_23_X_getFileName(&fileName, outTc);
 	strcpy(file, (char *)fileName.arr);
-	return pusError_t::PUS_NO_ERROR;
+	return file;
 }
 
 pusError_t pus_tc_tm_23_X_setRepositoryPath_(pusPacket_t* outTc, const char* repository) {
@@ -447,14 +491,14 @@ pusError_t pus_tc_tm_23_X_setRepositoryPath_(pusPacket_t* outTc, const char* rep
 	return pus_tc_tm_23_X_setRepositoryPath(outTc, &repo);
 }
 
-pusError_t pus_tc_tm_23_X_getRepositoryPath_(char* repository, const pusPacket_t* outTc) {
+char *pus_tc_tm_23_X_getRepositoryPath_(char *repository, const pusPacket_t* outTc) {
 	pusSt23RepositoryPath_t repo;
 	if (NULL == repository) {
-		return pusError_t::PUS_ERROR_NULLPTR;
+		return NULL;
 	}
 	pus_tc_tm_23_X_getRepositoryPath(&repo, outTc);
 	strcpy(repository, (char *)repo.arr);
-	return pusError_t::PUS_NO_ERROR;
+	return repository;
 }
 
 pusSt23MaximumSize_t pus_tc_tm_23_1_4_getMaximumSize_(const pusPacket_t* outTc) {
@@ -462,6 +506,90 @@ pusSt23MaximumSize_t pus_tc_tm_23_1_4_getMaximumSize_(const pusPacket_t* outTc) 
 
 	PUS_SET_ERROR(pus_tc_tm_23_1_4_getMaximumSize(&max, outTc));
 	return max;
+}
+
+//! Setter for the source file name of a TC[23,14] packet
+pusError_t pus_tc_23_14_setSourceFileName_(pusPacket_t* outTc, const char* file) {
+	pusSt23FileName_t fileName;
+	memcpy(fileName.arr, file, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	fileName.nCount = strlen((char*)fileName.arr) + 1;
+
+	return pus_tc_23_14_setSourceFileName(outTc, &fileName);
+}
+
+//! Getter for the source file name of a TC[23,14] packet
+char *pus_tc_23_14_getSourceFileName_(const pusPacket_t* outTc) {
+	pusSt23FileName_t fileName;
+	char *srcFile;
+
+	if (pusError_t::PUS_NO_ERROR == pus_tc_23_14_getSourceFileName(&fileName, outTc)) {
+		srcFile = strdup((char *)fileName.arr);
+		return srcFile;
+	}
+	return NULL;
+}
+
+//! Setter for the target file name of a TC[23,14] packet
+pusError_t pus_tc_23_14_setTargetFileName_(pusPacket_t* outTc, const char* file) {
+	pusSt23FileName_t fileName;
+	memcpy(fileName.arr, file, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	fileName.nCount = strlen((char*)fileName.arr) + 1;
+
+	return pus_tc_tm_23_X_setFileName(outTc, &fileName);
+}
+
+//! Getter for the target file name of a TC[23,14] packet
+char *pus_tc_23_14_getTargetFileName_(const pusPacket_t* outTc) {
+	pusSt23FileName_t fileName;
+	char *dstFile;
+
+	if (pusError_t::PUS_NO_ERROR == pus_tc_23_14_getTargetFileName(&fileName, outTc)) {
+		dstFile = strdup((char *)fileName.arr);
+		return dstFile;
+	}
+	return NULL;
+}
+
+//! Setter for the source repository path of a TC[23,14] packet
+pusError_t pus_tc_23_14_setSourceRepositoryPath_(pusPacket_t* outTc, const char* repository) {
+	pusSt23RepositoryPath_t repo;
+	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	repo.nCount = strlen((char*)repo.arr) + 1;
+
+	return pus_tc_23_14_setSourceRepositoryPath(outTc, &repo);
+}
+
+//! Getter for the source repository path of a TC[23,14] packet
+char *pus_tc_23_14_getSourceRepositoryPath_(const pusPacket_t* outTc) {
+	pusSt23RepositoryPath_t repoName;
+	char *srcRepo;
+
+	if (pusError_t::PUS_NO_ERROR == pus_tc_23_14_getSourceRepositoryPath(&repoName, outTc)) {
+		srcRepo = strdup((char *)repoName.arr);
+		return srcRepo;
+	}
+	return NULL;
+}
+
+//! Setter for the target repository path of a TC[23,14] packet
+pusError_t pus_tc_23_14_setTargetRepositoryPath_(pusPacket_t* outTc, const char* repository) {
+	pusSt23RepositoryPath_t repo;
+	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_FILE_PATH - 1);
+	repo.nCount = strlen((char*)repo.arr) + 1;
+
+	return pus_tc_23_14_setTargetRepositoryPath(outTc, &repo);
+}
+
+//! Getter for the target repository path of a TC[23,14] packet
+char *pus_tc_23_14_getTargetRepositoryPath_(const pusPacket_t* outTc) {
+	pusSt23RepositoryPath_t repoName;
+	char *dstRepo;
+
+	if (pusError_t::PUS_NO_ERROR == pus_tc_23_14_getTargetRepositoryPath(&repoName, outTc)) {
+		dstRepo = strdup((char *)repoName.arr);
+		return dstRepo;
+	}
+	return NULL;
 }
 
 
