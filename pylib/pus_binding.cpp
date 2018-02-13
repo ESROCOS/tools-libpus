@@ -282,6 +282,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_9_1_setExponentialRate", &pus_tc_9_1_setExponentialRate, "Binding for pus_tc_9_1_setExponentialRate");
 	m.def("pus_tc_9_1_getExponentialRate", &pus_tc_9_1_getExponentialRate_, "Binding for pus_tc_9_1_getExponentialRate");
 	m.def("pus_tm_9_2_setDataField", &pus_tm_9_2_setDataField, "Binding for pus_tm_9_2_setDataField");
+	m.def("pus_tm_9_2_getDataField", &pus_tm_9_2_getDataField_, "Binding for pus_tm_9_2_getDataField");
 	m.def("pus_time_getReportGenerationExponentialRate", &pus_time_getReportGenerationExponentialRate, "Binding for pus_time_getReportGenerationExponentialRate");
 	m.def("pus_time_setReportGenerationExponentialRate", &pus_time_setReportGenerationExponentialRate, "Binding for pus_time_setReportGenerationExponentialRate");
 	m.def("pus_time_getReportGenerationRate", &pus_time_getReportGenerationRate, "Binding for pus_time_getReportGenerationRate");

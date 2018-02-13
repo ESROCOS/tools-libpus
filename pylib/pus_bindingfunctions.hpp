@@ -99,6 +99,7 @@ pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet);
 pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket);
 
 pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket);
+pusSt09ExponentialRate_t pus_tm_9_2_getDataField_(const pusPacket_t* tm, pusTime_t* time);
 
 void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *outTc, long max);
 time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, long max);

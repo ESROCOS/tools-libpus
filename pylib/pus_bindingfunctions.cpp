@@ -87,6 +87,9 @@ int ret_packets(pusPacket_t *tm, int i)
 		size = 9;
 		pus_tm_23_4_createReportFileAtributesReport(tm, 1, 1, 1, &repo, &file, size);
 	}
+	else if (i==9) {
+		pus_tm_9_2_createCucTimeReport(tm, apid.apid, 27);
+	}
 	return 0;
 
 
@@ -367,6 +370,12 @@ pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket)
 	pusError_t error = pus_tc_9_1_getExponentialRate(&tExp, tcPacket);
 	PUS_SET_ERROR(error);
 	return tExp;
+}
+
+pusSt09ExponentialRate_t pus_tm_9_2_getDataField_(const pusPacket_t* tm, pusTime_t* time) {
+	pusSt09ExponentialRate_t rate;
+	pus_tm_9_2_getDataField(tm, time, &rate);
+	return rate;
 }
 
 void pus_tc_11_4_get_request(long index, const pusPacket_t* inTc, pusPacket_t *outTc, long max)
