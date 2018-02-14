@@ -38,7 +38,7 @@ typedef long long int ll;
  */
 int ret_packets(pusPacket_t *tm, int i);
 
-void pus_posix2time_(pusTime_t* outPusTime, time_t posixTime);
+time_t pus_posix2time_(pusTime_t* outPusTime);
 
 pusError_t pus_initApidInfo_null(pusApidInfo_t* obj, pusApid_t apid);
 uint pus_getPacketVersion_(const pusPacket_t* packet);

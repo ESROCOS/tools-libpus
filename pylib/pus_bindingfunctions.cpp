@@ -100,12 +100,10 @@ int ret_packets(pusPacket_t *tm, int i)
 
 }
 
-void pus_posix2time_(pusTime_t* outPusTime, time_t posixTime)
-{
-	struct timespec tmspc;
-	tmspc.tv_nsec = 0;
-	tmspc.tv_sec = posixTime;
-	pus_posix2time(outPusTime, &tmspc);
+time_t pus_posix2time_(pusTime_t* outPusTime) {
+	struct timespec t;
+	pus_posix2time(outPusTime, &t);
+	return t.tv_sec;
 }
 
 pusError_t pus_initApidInfo_null(pusApidInfo_t *obj, pusApid_t apid)
