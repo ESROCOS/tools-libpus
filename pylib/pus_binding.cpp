@@ -106,7 +106,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	py::class_<pusTime_t>(m, "pusTime_t")
 			.def(py::init<>());
 	m.def("pus_now", &pus_now, "Binding for pus_now");
-	m.def("pus_time2posix", &pus_time2posix, "Binding for pus_time2posix");
+	m.def("pus_time2posix", &pus_time2posix_, "Binding for pus_time2posix");
 
 	py::class_<pusPacketReduced_t>(m, "pusPacketReduced_t")
 			.def(py::init<>());
