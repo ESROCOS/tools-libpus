@@ -100,9 +100,9 @@ int ret_packets(pusPacket_t *tm, int i)
 
 }
 
-time_t pus_posix2time_(pusTime_t* outPusTime) {
+time_t pus_time2posix_(pusTime_t* time) {
 	struct timespec t;
-	pus_posix2time(outPusTime, &t);
+	pus_time2posix(&t, time);
 	return t.tv_sec;
 }
 
