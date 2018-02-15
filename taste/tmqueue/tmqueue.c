@@ -41,7 +41,7 @@ void tmqueue_PI_tmRequest(asn1SccPusPacket *OUT_tmPacket, asn1SccT_Boolean *OUT_
 	else
 	{
 		printf("Error in tmqueue_PI_tmRequest, %d\n", error);
-		exit(-1);
+		return;
 	}
 }
 
@@ -51,8 +51,8 @@ void tmqueue_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 	pusError_t error = PUS_EXPECT_TM(IN_tmPacket);
 	if( PUS_NO_ERROR != error )
 	{
-		printf("Error in tmqueue_PI_newTm, %d (exit)\n", error);
-		exit(-1);
+		printf("Error in tmqueue_PI_newTm, %d (no exit)\n", error);
+		return;
 	}
 
 
@@ -76,7 +76,8 @@ void tmqueue_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 	}
 	else
 	{
-		printf("Error in tmqueue_PI_newTm, %d (exit)\n", error);
-		exit(-1);
+		printf("Error in tmqueue_PI_newTm, %d (no exit)\n", error);
+		pus_clearError();
+		return;
 	}
 }

@@ -11,14 +11,6 @@
 #include "pus_packet.h"
 #include "pus_packet_queues.h"
 
-//! PacketQueue for TC packets
-extern pusPacketQueue_t pus_packetQueue_tc;
-
-//! PacketQueue for TM packets
-extern pusPacketQueue_t pus_packetQueue_tm;
-
-
-
 //
 // Creation of TC acceptance report
 //

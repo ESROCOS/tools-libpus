@@ -17,10 +17,6 @@ CMakeFiles
 cmake_install.cmake
 taste/binary.c/*
 taste/*.zip
-taste/deployment.pro
-taste/__dv_1_3.aadl
-taste/interfaceview.pro
-taste/__iv_1_3.aadl
 
 __pycache__
 *.pyc

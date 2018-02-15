@@ -21,6 +21,7 @@ void st09_startup()
        but do not make any call to a required interface. */
 	tmCounter = 0;
 	pus_initApidInfo(&apid, pus_APID_TIME, NULL);
+	pus_time_setReportGenerationExponentialRate(2);
 }
 
 void st09_PI_incCount(asn1SccPusPacket *OUT_tmPacket,
@@ -41,7 +42,14 @@ void st09_PI_incCount(asn1SccPusPacket *OUT_tmPacket,
 		st09_RI_getSequenceCount(&seqCount);
 
 		pusError_t error = pus_tm_9_2_createCucTimeReport(OUT_tmPacket, apid, seqCount);
-		printf(" INC COUNT:: TM%llu_%llu inserted in TmQueue.\n", pus_getTmService(OUT_tmPacket), pus_getTmSubtype(OUT_tmPacket));
+
+		pusTime_t timeAux;
+		pusSt09ExponentialRate_t rate;
+		pus_tm_9_2_getDataField(OUT_tmPacket, &timeAux, &rate);
+		printf(" INC COUNT: Time2: %llu\n", timeAux.tv_sec);
+
+
+		printf(" INC COUNT: TM%llu_%llu inserted in TmQueue.\n", pus_getTmService(OUT_tmPacket), pus_getTmSubtype(OUT_tmPacket));
 		printf(" INC COUNT: in, error %u\n", error);
 		tmCounter = 0;
 	}
@@ -63,7 +71,7 @@ void st09_PI_tc09(const asn1SccPusPacket *IN_tcPacket)
 	if(PUS_NO_ERROR == errorCode )
 	{
 		//send 1.1
-		printf(" -ST09: pus_TM_1_1_successfulAcceptance\n.");
+		printf(" - ST09: pus_TM_1_1_successfulAcceptance\n.");
 		subtype = pus_TM_1_1_successfulAcceptance;
 		st09_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
@@ -75,6 +83,7 @@ void st09_PI_tc09(const asn1SccPusPacket *IN_tcPacket)
 		else
 		{
 			errorCode = pus_time_setReportGenerationExponentialRate(expRate);
+			tmCounter = 0;
 		}
 	}
 	else

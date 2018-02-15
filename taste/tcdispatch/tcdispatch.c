@@ -79,9 +79,8 @@ void tcdispatch_PI_tcTrigger()
 				tcdispatch_RI_tc23(&tc);
 				break;
 			default:
-				printf("Exception TC service. (exit)\n");
-				exit(-1);
-				break;
+				printf("Exception TC service. (no exit)\n");
+				return;
 		}
 
 	}

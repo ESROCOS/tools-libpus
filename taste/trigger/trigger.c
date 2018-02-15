@@ -39,7 +39,6 @@ void trigger_PI_HkReportTrigger()
 void trigger_PI_EventReportTrigger()
 {
     /* Write your code here! */
-	return;
 
 	trigger_RI_EventReportTrigger();
 }

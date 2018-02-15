@@ -28,7 +28,7 @@ void tcqueue_PI_newTc(const asn1SccPusPacket *IN_tcPacket)
 	if( PUS_NO_ERROR != error )
 	{
 		printf("Error in tcqueue_PI_newTc, %d (exit)\n", error);
-		exit(-1);
+		return;
 	}
 
 	error = pus_packetQueues_push(IN_tcPacket, pus_TC_QUEUE_ONBOARD);
@@ -43,7 +43,7 @@ void tcqueue_PI_newTc(const asn1SccPusPacket *IN_tcPacket)
 	else
 	{
 		printf("Error in tcqueue_PI_newTc, %d\n", error);
-		exit(-1);
+		return;
 	}
 }
 
@@ -61,11 +61,13 @@ void tcqueue_PI_tcRequest(asn1SccPusPacket *OUT_tcPacket, asn1SccT_Boolean *OUT_
 	else if ( PUS_ERROR_EMPTY_QUEUE == error)
 	{
 		//printf("Error in tcqueue_PI_tcRequest EMPTY QUEUE, %d (no exit)\n", error);
+		pus_clearError();
 	}
 	else
 	{
 		printf("Error in tcqueue_PI_tcRequest, %d\n", error);
-		exit(-1);
+		pus_clearError();
+		return;
 	}
 }
 
