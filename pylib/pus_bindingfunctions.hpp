@@ -22,6 +22,7 @@
 #include "pus_st11_packets.h"
 #include "pus_st12_packets.h"
 #include "pus_st17_packets.h"
+#include "pus_st18_packets.h"
 #include "pus_st19_packets.h"
 #include "pus_st20_packets.h"
 #include "pus_st23_packets.h"
@@ -104,16 +105,15 @@ pusSt09ExponentialRate_t pus_tm_9_2_getDataField_(const pusPacket_t* tm, pusTime
 void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *outTc, long max);
 time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, long max);
 
+pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code);
+pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char* obcpId);
+pusError_t pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc);
+pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code);
+pusError_t pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc);
 
-pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
-												const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize);
-
-pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
-												const char* repository, const char* fileName);
-
-pusError_t pus_tc_23_3_createReportFileAtributesRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
-		const char* repository, const char* fileName);
-
+pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize);
+pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName);
+pusError_t pus_tc_23_3_createReportFileAtributesRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName);
 pusError_t pus_tc_23_14_createCopyFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 		const char* sourceRepository, const char* sourceFileName, const char* targetRepository, const char* targetFileName);
 

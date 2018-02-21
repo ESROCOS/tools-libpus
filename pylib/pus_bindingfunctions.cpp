@@ -406,6 +406,50 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 	return pmon;
 }
 
+pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code) {
+	pusSt18ObcpId_t id;
+	pusSt18ObcpCode_t obcpCode;
+
+	memcpy(id.arr, obcpId, strlen(obcpId)+1);
+	memcpy(obcpCode.arr, code, strlen(code)+1);
+	obcpCode.nCount = strlen(code);
+
+	return pus_tc_18_1_createLoadObcpDirectRequest(outTc, apid, sequenceCount, &id, &obcpCode);
+}
+
+pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char* obcpId) {
+	pusSt18ObcpId_t id;
+	memcpy(id.arr, obcpId, strlen(obcpId));
+	return pus_tc_18_X_setObcpId(outTc, &id);
+}
+
+pusError_t pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc) {
+	pusError_t error;
+	pusSt18ObcpId_t obcpId;
+
+	error = pus_tc_18_X_getObcpId(&obcpId, outTc);
+	strcpy(id, (char *) obcpId.arr);
+
+	return error;
+}
+
+pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code) {
+	pusSt18ObcpCode_t obcpCode;
+	memcpy(obcpCode.arr, code, strlen(code));
+	return pus_tc_18_1_setObcpCode(outTc, &obcpCode);
+}
+
+pusError_t pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc) {
+	pusError_t error;
+	pusSt18ObcpCode_t obcpCode;
+
+	error = pus_tc_18_1_getObcpCode(&obcpCode, outTc);
+	strcpy(code, ((char *) obcpCode.arr));
+
+	return error;
+}
+
+
 pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 		const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize) {
 	pusSt23FileName_t file;
