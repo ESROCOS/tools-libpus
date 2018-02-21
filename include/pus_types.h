@@ -19,6 +19,7 @@
 // to prevent redefinition of types when it is used whith taste (dataview_unique.h)
 #ifndef GENERATED_ASN1SCC_DATAVIEW_UNIQ_H
 #include "asn1/ccsds_packet.h"
+#include "asn1/ccsds_packet_fields.h"
 #include "asn1/pus_config.h"
 #include "asn1/pus_st01.h"
 #include "asn1/pus_st03.h"

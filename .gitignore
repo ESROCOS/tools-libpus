@@ -1,9 +1,9 @@
 *~
 .*.swp
 
-.project
-.cproject
-.pydevproject
+#.project
+#.cproject
+#.pydevproject
 .settings/*
 *.log
 

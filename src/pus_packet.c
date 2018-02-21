@@ -9,6 +9,7 @@
 // Debug
 #include <stddef.h>
 
+#include "pus_types.h"
 #include "pus_packet.h"
 #include "pus_error.h"
 #include "pus_time.h"
