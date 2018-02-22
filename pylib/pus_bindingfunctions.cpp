@@ -417,37 +417,109 @@ pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_
 	return pus_tc_18_1_createLoadObcpDirectRequest(outTc, apid, sequenceCount, &id, &obcpCode);
 }
 
-pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char* obcpId) {
+
+pusError_t pus_tc_18_2_createUnloadObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* id) {
+	pusSt18ObcpId_t obcpId;
+	memcpy(obcpId.arr, id, strlen(id)+1);
+
+	return pus_tc_18_2_createUnloadObcpRequest(outTc, apid, sequenceCount, &obcpId);
+}
+
+pusError_t pus_tc_18_3_createActivateObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char *id, int observability) {
+	pusSt18ObcpId_t obcpId;
+	memcpy(obcpId.arr, id, strlen(id)+1);
+
+	return pus_tc_18_3_createActivateObcpRequest(outTc, apid, sequenceCount, &obcpId, (pusSt18ObservabilityLevel_t) observability);
+}
+
+pusError_t pus_tc_18_4_createStopObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* id, pusSt18ObcpStepId_t step) {
+	pusSt18ObcpId_t obcpId;
+	memcpy(obcpId.arr, id, strlen(id)+1);
+	return pus_tc_18_4_createStopObcpRequest(outTc, apid, sequenceCount, &obcpId, step);
+}
+
+pusError_t pus_tc_18_5_createSuspendObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* id, pusSt18ObcpStepId_t step) {
+	pusSt18ObcpId_t obcpId;
+	memcpy(obcpId.arr, id, strlen(id)+1);
+	return pus_tc_18_5_createSuspendObcpRequest(outTc, apid, sequenceCount, &obcpId, step);
+}
+
+pusError_t pus_tc_18_6_createResumeObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* id) {
+	pusSt18ObcpId_t obcpId;
+	memcpy(obcpId.arr, id, strlen(id)+1);
+
+	return pus_tc_18_6_createResumeObcpRequest(outTc, apid, sequenceCount, &obcpId);
+}
+
+pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char *obcpId) {
 	pusSt18ObcpId_t id;
-	memcpy(id.arr, obcpId, strlen(obcpId));
+	memcpy(id.arr, obcpId, strlen(obcpId)+1);
 	return pus_tc_18_X_setObcpId(outTc, &id);
 }
 
-pusError_t pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc) {
+char *pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc) {
 	pusError_t error;
 	pusSt18ObcpId_t obcpId;
 
 	error = pus_tc_18_X_getObcpId(&obcpId, outTc);
-	strcpy(id, (char *) obcpId.arr);
+	if (pusError_t::PUS_NO_ERROR == error) {
+		id = strdup((char *) obcpId.arr);
+		return id;
+	}
 
-	return error;
+	PUS_SET_ERROR(error);
+	return NULL;
 }
 
 pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code) {
 	pusSt18ObcpCode_t obcpCode;
-	memcpy(obcpCode.arr, code, strlen(code));
+	memcpy(obcpCode.arr, code, strlen(code)+1);
+	obcpCode.nCount = strlen(code);
 	return pus_tc_18_1_setObcpCode(outTc, &obcpCode);
 }
 
-pusError_t pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc) {
-	pusError_t error;
+	char *pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc) {
 	pusSt18ObcpCode_t obcpCode;
+	pusError_t error;
 
 	error = pus_tc_18_1_getObcpCode(&obcpCode, outTc);
-	strcpy(code, ((char *) obcpCode.arr));
+	if (pusError_t::PUS_NO_ERROR == error) {
+		code = strdup((char *) obcpCode.arr);
+		return code;
+	}
 
-	return error;
+	PUS_SET_ERROR(error);
+	return NULL;
 }
+
+pusError_t pus_tc_18_3_setObservabilityLevel_(pusPacket_t* outTc, int observability) {
+	pusSt18ObservabilityLevel_t obs = (pusSt18ObservabilityLevel_t) observability;
+	return pus_tc_18_3_setObservabilityLevel(outTc, obs);
+}
+
+int pus_tc_18_3_getObservabilityLevel_(const pusPacket_t* outTc) {
+	pusSt18ObservabilityLevel_t obs;
+	pusError_t error;
+	error = pus_tc_18_3_getObservabilityLevel(&obs, outTc);
+	if (pusError_t::PUS_NO_ERROR ==  error)
+		return (int) obs;
+	PUS_SET_ERROR(error);
+	return 0;
+}
+
+pusSt18ObcpStepId_t pus_tc_18_4_5_getObcpStepId_(const pusPacket_t* outTc) {
+	pusSt18ObcpStepId_t obcpStep;
+	pusError_t error;
+
+	error = pus_tc_18_4_5_getObcpStepId(&obcpStep, outTc);
+	if (pusError_t::PUS_NO_ERROR == error)
+		return obcpStep;
+	PUS_SET_ERROR(error);
+	return 0;
+}
+
 
 
 pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,

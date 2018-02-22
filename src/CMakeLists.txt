@@ -25,7 +25,7 @@ set(SOURCES
     pus_st11_packets.c
     pus_st12_packets.c
     pus_st17_packets.c
-    pus_st18_packets.c
+    pus_st18_packets.c	
     pus_st19_packets.c
     pus_st20_packets.c
     pus_st23_packets.c

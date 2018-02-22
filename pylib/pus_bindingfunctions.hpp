@@ -106,10 +106,20 @@ void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *o
 time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, long max);
 
 pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code);
+pusError_t pus_tc_18_2_createUnloadObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* id);
+pusError_t pus_tc_18_3_createActivateObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char *id, int observability);
+pusError_t pus_tc_18_4_createStopObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* id, pusSt18ObcpStepId_t step);
+pusError_t pus_tc_18_5_createSuspendObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* id, pusSt18ObcpStepId_t step);
+pusError_t pus_tc_18_6_createResumeObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char *obcpId);
 pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char* obcpId);
-pusError_t pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc);
+char *pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc);
 pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code);
-pusError_t pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc);
+char *pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc);
+pusError_t pus_tc_18_3_setObservabilityLevel_(pusPacket_t* outTc, int observability);
+int pus_tc_18_3_getObservabilityLevel_(const pusPacket_t* outTc);
+pusSt18ObcpStepId_t pus_tc_18_4_5_getObcpStepId_(const pusPacket_t* outTc);
 
 pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize);
 pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName);

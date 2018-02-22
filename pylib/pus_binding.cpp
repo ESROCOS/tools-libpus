@@ -324,11 +324,11 @@ PYBIND11_MODULE(pusbinding, m) {
 
 	m.def("pus_tc_18_X_createDefaultRequest", &pus_tc_18_X_createDefaultRequest, "Binding f	or pus_tc_18_X_createDefaultRequest");
 	m.def("pus_tc_18_1_createLoadObcpDirectRequest", &pus_tc_18_1_createLoadObcpDirectRequest_, "Binding for pus_tc_18_1_createLoadObcpDirectRequest");
-	m.def("pus_tc_18_2_createUnloadObcpRequest", &pus_tc_18_2_createUnloadObcpRequest, "Binding for pus_tc_18_2_createUnloadObcpRequest");
-	m.def("pus_tc_18_3_createActivateObcpRequest", &pus_tc_18_3_createActivateObcpRequest, "Binding for pus_tc_18_3_createActivateObcpRequest");
-	m.def("pus_tc_18_4_createStopObcpRequest", &pus_tc_18_4_createStopObcpRequest, "Binding for pus_tc_18_4_createStopObcpRequest");
-	m.def("pus_tc_18_5_createSuspendObcpRequest", &pus_tc_18_5_createSuspendObcpRequest, "Binding for pus_tc_18_5_createSuspendObcpRequest");
-	m.def("pus_tc_18_6_createResumeObcpRequest", &pus_tc_18_6_createResumeObcpRequest, "Binding for pus_tc_18_6_createResumeObcpRequest");
+	m.def("pus_tc_18_2_createUnloadObcpRequest", &pus_tc_18_2_createUnloadObcpRequest_, "Binding for pus_tc_18_2_createUnloadObcpRequest");
+	m.def("pus_tc_18_3_createActivateObcpRequest", &pus_tc_18_3_createActivateObcpRequest_, "Binding for pus_tc_18_3_createActivateObcpRequest");
+	m.def("pus_tc_18_4_createStopObcpRequest", &pus_tc_18_4_createStopObcpRequest_, "Binding for pus_tc_18_4_createStopObcpRequest");
+	m.def("pus_tc_18_5_createSuspendObcpRequest", &pus_tc_18_5_createSuspendObcpRequest_, "Binding for pus_tc_18_5_createSuspendObcpRequest");
+	m.def("pus_tc_18_6_createResumeObcpRequest", &pus_tc_18_6_createResumeObcpRequest_, "Binding for pus_tc_18_6_createResumeObcpRequest");
 	m.def("pus_tc_18_12_createAbortObcpRequest", &pus_tc_18_12_createAbortObcpRequest, "Binding for pus_tc_18_12_createAbortObcpRequest");
 	m.def("pus_tc_18_13_createLoadObcpReferenceRequest", &pus_tc_18_13_createLoadObcpReferenceRequest, "Binding for pus_tc_18_13_createLoadObcpReferenceRequest");
 	m.def("pus_tc_18_21_createStartObcpEngineRequest", &pus_tc_18_21_createStartObcpEngineRequest, "Binding for pus_tc_18_21_createStartObcpEngineRequest");
@@ -337,10 +337,10 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_18_X_getObcpId", &pus_tc_18_X_getObcpId_, "Binding for pus_tc_18_X_getObcpId");
 	m.def("pus_tc_18_1_setObcpCode", &pus_tc_18_1_setObcpCode_, "Binding for pus_tc_18_1_setObcpCode");
 	m.def("pus_tc_18_1_getObcpCode", &pus_tc_18_1_getObcpCode_, "Binding for pus_tc_18_1_getObcpCode");
-	m.def("pus_tc_18_3_setObservabilityLevel", &pus_tc_18_3_setObservabilityLevel, "Binding for pus_tc_18_3_setObservabilityLevel");
-	m.def("pus_tc_18_3_getObservabilityLevel", &pus_tc_18_3_getObservabilityLevel, "Binding for pus_tc_18_3_getObservabilityLevel");
+	m.def("pus_tc_18_3_setObservabilityLevel", &pus_tc_18_3_setObservabilityLevel_, "Binding for pus_tc_18_3_setObservabilityLevel");
+	m.def("pus_tc_18_3_getObservabilityLevel", &pus_tc_18_3_getObservabilityLevel_, "Binding for pus_tc_18_3_getObservabilityLevel");
 	m.def("pus_tc_18_4_5_setObcpStepId", &pus_tc_18_4_5_setObcpStepId, "Binding for pus_tc_18_4_5_setObcpStepId");
-	m.def("pus_tc_18_4_5_getObcpStepId", &pus_tc_18_4_5_getObcpStepId, "Binding for pus_tc_18_4_5_getObcpStepId");
+	m.def("pus_tc_18_4_5_getObcpStepId", &pus_tc_18_4_5_getObcpStepId_, "Binding for pus_tc_18_4_5_getObcpStepId");
 	m.def("pus_tc_18_13_setFileName", &pus_tc_18_13_setFileName, "Binding for pus_tc_18_13_setFileName");
 	m.def("pus_tc_18_13_getFileName", &pus_tc_18_13_getFileName, "Binding for pus_tc_18_13_getFileName");
 	m.def("pus_tc_18_13_setRepositoryPath", &pus_tc_18_13_setRepositoryPath, "Binding for pus_tc_18_13_setRepositoryPath");
