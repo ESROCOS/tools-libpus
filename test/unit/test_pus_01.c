@@ -14,6 +14,7 @@
 
 #include "pus_packet_queues.h"
 #include "pus_packet_queues_config.h"
+#include "pus_packet_reduced.h"
 
 // Sample init and clean functions
 /*
@@ -478,6 +479,89 @@ void test_packetQueue()
 	pus_clearError();
 }
 
+void test_packetReduced()
+{
+	pus_clearError();
+	pusPacket_t packet;
+	pusPacketReduced_t packetR;
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacket(&packet));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_8_1);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_9_1);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_12_1_2);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_18_1);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_18_2_6_12);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_18_3);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_18_4_5);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_18_13);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_19_X);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_20_X);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_23_1);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_23_2_3);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	pus_setTcDataKind(&packet, pus_TC_DATA_ST_23_14);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
+	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
+
+	//pusError_t err = pus_packetReduced_setDataFromPacketReducedToPacket(&packet, &packetR);
+	//CU_ASSERT_EQUAL(PUS_NO_ERROR, err);
+	//printf("Error err: %u", err);
+
+	pus_clearError();
+}
+
 int main()
 {
     CU_pSuite pSuite = NULL;
@@ -508,6 +592,7 @@ int main()
 		(NULL == CU_add_test(pSuite, "test_apid", test_apid)) ||
 		(NULL == CU_add_test(pSuite, "test_threads", test_threads)) ||
 		(NULL == CU_add_test(pSuite, "test_packetQueue", test_packetQueue)) ||
+		(NULL == CU_add_test(pSuite, "test_packetReduced", test_packetReduced)) ||
 		0)
     {
       CU_cleanup_registry();

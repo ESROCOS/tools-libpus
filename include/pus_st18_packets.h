@@ -164,7 +164,7 @@ pusError_t pus_tc_18_3_getObservabilityLevel(pusSt18ObservabilityLevel_t* observ
 pusError_t pus_tc_18_4_5_setObcpStepId(pusPacket_t* outTc, pusSt18ObcpStepId_t obcpId);
 
 //! Getter for the OBCP Step Id of a TC[18,4] and TC[18,5] packet
-	pusError_t pus_tc_18_4_5_getObcpStepId(pusSt18ObcpStepId_t* obcpId, const pusPacket_t* outTc);
+pusError_t pus_tc_18_4_5_getObcpStepId(pusSt18ObcpStepId_t* obcpId, const pusPacket_t* outTc);
 
 //! Setter for the OBCP file name of a TC[18,13] packet
 pusError_t pus_tc_18_13_setFileName(pusPacket_t* outTc, const pusSt23FileName_t* fileName);
