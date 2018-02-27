@@ -184,6 +184,12 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 //! First value not representable by the pusPacketDataLength_t type
 #define pusPacketDataLength_LIMIT pusUInt16_LIMIT
 
+#define pus_ST18_SIZE_OBCP_ID pus_ST18_SIZE_OBCP_ID
+
+#define pus_ST18_MAX_SIZE_OBCP_CODE pus_ST18_MAX_SIZE_OBCP_CODE
+
+#define pus_ST18_SIZE_OBCP_CHECKSUM pus_ST18_SIZE_OBCP_CHECKSUM
+
 #define pus_ST23_MAX_SIZE_FILE_PATH pus_ST23_MAX_SIZE_FILE_PATH
 
 #define pus_ST23_MAX_SIZE_REPOSITORY_PATH pus_ST23_MAX_SIZE_REPOSITORY_PATH

@@ -329,8 +329,8 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_18_4_createStopObcpRequest", &pus_tc_18_4_createStopObcpRequest_, "Binding for pus_tc_18_4_createStopObcpRequest");
 	m.def("pus_tc_18_5_createSuspendObcpRequest", &pus_tc_18_5_createSuspendObcpRequest_, "Binding for pus_tc_18_5_createSuspendObcpRequest");
 	m.def("pus_tc_18_6_createResumeObcpRequest", &pus_tc_18_6_createResumeObcpRequest_, "Binding for pus_tc_18_6_createResumeObcpRequest");
-	m.def("pus_tc_18_12_createAbortObcpRequest", &pus_tc_18_12_createAbortObcpRequest, "Binding for pus_tc_18_12_createAbortObcpRequest");
-	m.def("pus_tc_18_13_createLoadObcpReferenceRequest", &pus_tc_18_13_createLoadObcpReferenceRequest, "Binding for pus_tc_18_13_createLoadObcpReferenceRequest");
+	m.def("pus_tc_18_12_createAbortObcpRequest", &pus_tc_18_12_createAbortObcpRequest_, "Binding for pus_tc_18_12_createAbortObcpRequest");
+	m.def("pus_tc_18_13_createLoadObcpReferenceRequest", &pus_tc_18_13_createLoadObcpReferenceRequest_, "Binding for pus_tc_18_13_createLoadObcpReferenceRequest");
 	m.def("pus_tc_18_21_createStartObcpEngineRequest", &pus_tc_18_21_createStartObcpEngineRequest, "Binding for pus_tc_18_21_createStartObcpEngineRequest");
 	m.def("pus_tc_18_22_createStopObcpEngineRequest", &pus_tc_18_22_createStopObcpEngineRequest, "Binding for pus_tc_18_22_createStopObcpEngineRequest");
 	m.def("pus_tc_18_X_setObcpId", &pus_tc_18_X_setObcpId_, "Binding for pus_tc_18_X_setObcpId");
@@ -341,10 +341,10 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_18_3_getObservabilityLevel", &pus_tc_18_3_getObservabilityLevel_, "Binding for pus_tc_18_3_getObservabilityLevel");
 	m.def("pus_tc_18_4_5_setObcpStepId", &pus_tc_18_4_5_setObcpStepId, "Binding for pus_tc_18_4_5_setObcpStepId");
 	m.def("pus_tc_18_4_5_getObcpStepId", &pus_tc_18_4_5_getObcpStepId_, "Binding for pus_tc_18_4_5_getObcpStepId");
-	m.def("pus_tc_18_13_setFileName", &pus_tc_18_13_setFileName, "Binding for pus_tc_18_13_setFileName");
-	m.def("pus_tc_18_13_getFileName", &pus_tc_18_13_getFileName, "Binding for pus_tc_18_13_getFileName");
-	m.def("pus_tc_18_13_setRepositoryPath", &pus_tc_18_13_setRepositoryPath, "Binding for pus_tc_18_13_setRepositoryPath");
-	m.def("pus_tc_18_13_getRepositoryPath", &pus_tc_18_13_getRepositoryPath, "Binding for pus_tc_18_13_getRepositoryPath");
+	m.def("pus_tc_18_13_setFileName", &pus_tc_18_13_setFileName_, "Binding for pus_tc_18_13_setFileName");
+	m.def("pus_tc_18_13_getFileName", &pus_tc_18_13_getFileName_, "Binding for pus_tc_18_13_getFileName");
+	m.def("pus_tc_18_13_setRepositoryPath", &pus_tc_18_13_setRepositoryPath_, "Binding for pus_tc_18_13_setRepositoryPath");
+	m.def("pus_tc_18_13_getRepositoryPath", &pus_tc_18_13_getRepositoryPath_, "Binding for pus_tc_18_13_getRepositoryPath");
 	m.def("pus_expectSt18Tc", &pus_expectSt18Tc, "Binding for pus_expectSt18Tc");
 
 	m.doc() = "pus_st19_packets binding";

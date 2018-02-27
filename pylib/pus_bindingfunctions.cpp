@@ -409,10 +409,11 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code) {
 	pusSt18ObcpId_t id;
 	pusSt18ObcpCode_t obcpCode;
-
-	memcpy(id.arr, obcpId, strlen(obcpId)+1);
-	memcpy(obcpCode.arr, code, strlen(code)+1);
-	obcpCode.nCount = strlen(code);
+	size_t len = (strlen(obcpId) < pus_ST18_SIZE_OBCP_ID) ? strlen(obcpId)+1 : pus_ST18_SIZE_OBCP_ID;
+	memcpy(id.arr, obcpId, len);
+	len = (strlen(code) < pus_ST18_MAX_SIZE_OBCP_CODE) ? strlen(code)+1 : pus_ST18_MAX_SIZE_OBCP_CODE;
+	memcpy(obcpCode.arr, code, len);
+	obcpCode.nCount = len-1;
 
 	return pus_tc_18_1_createLoadObcpDirectRequest(outTc, apid, sequenceCount, &id, &obcpCode);
 }
@@ -420,14 +421,16 @@ pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_
 
 pusError_t pus_tc_18_2_createUnloadObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* id) {
 	pusSt18ObcpId_t obcpId;
-	memcpy(obcpId.arr, id, strlen(id)+1);
+	size_t len = (strlen(id) < pus_ST18_SIZE_OBCP_ID) ? strlen(id)+1 : pus_ST18_SIZE_OBCP_ID;
+	memcpy(obcpId.arr, id, len);
 
 	return pus_tc_18_2_createUnloadObcpRequest(outTc, apid, sequenceCount, &obcpId);
 }
 
 pusError_t pus_tc_18_3_createActivateObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char *id, int observability) {
 	pusSt18ObcpId_t obcpId;
-	memcpy(obcpId.arr, id, strlen(id)+1);
+	size_t len = (strlen(id) < pus_ST18_SIZE_OBCP_ID) ? strlen(id)+1 : pus_ST18_SIZE_OBCP_ID;
+	memcpy(obcpId.arr, id, len);
 
 	return pus_tc_18_3_createActivateObcpRequest(outTc, apid, sequenceCount, &obcpId, (pusSt18ObservabilityLevel_t) observability);
 }
@@ -435,27 +438,56 @@ pusError_t pus_tc_18_3_createActivateObcpRequest_(pusPacket_t* outTc, pusApid_t 
 pusError_t pus_tc_18_4_createStopObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 		const char* id, pusSt18ObcpStepId_t step) {
 	pusSt18ObcpId_t obcpId;
-	memcpy(obcpId.arr, id, strlen(id)+1);
+	size_t len = (strlen(id) < pus_ST18_SIZE_OBCP_ID) ? strlen(id)+1 : pus_ST18_SIZE_OBCP_ID;
+	memcpy(obcpId.arr, id, len);
 	return pus_tc_18_4_createStopObcpRequest(outTc, apid, sequenceCount, &obcpId, step);
 }
 
 pusError_t pus_tc_18_5_createSuspendObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 		const char* id, pusSt18ObcpStepId_t step) {
 	pusSt18ObcpId_t obcpId;
-	memcpy(obcpId.arr, id, strlen(id)+1);
+	size_t len = (strlen(id) < pus_ST18_SIZE_OBCP_ID) ? strlen(id)+1 : pus_ST18_SIZE_OBCP_ID;
+	memcpy(obcpId.arr, id, len);
 	return pus_tc_18_5_createSuspendObcpRequest(outTc, apid, sequenceCount, &obcpId, step);
 }
 
 pusError_t pus_tc_18_6_createResumeObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* id) {
 	pusSt18ObcpId_t obcpId;
-	memcpy(obcpId.arr, id, strlen(id)+1);
+	size_t len = (strlen(id) < pus_ST18_SIZE_OBCP_ID) ? strlen(id)+1 : pus_ST18_SIZE_OBCP_ID;
+	memcpy(obcpId.arr, id, len);
 
 	return pus_tc_18_6_createResumeObcpRequest(outTc, apid, sequenceCount, &obcpId);
 }
 
+pusError_t pus_tc_18_12_createAbortObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* id) {
+	pusSt18ObcpId_t obcpId;
+	memcpy(obcpId.arr, id, strlen(id)+1);
+
+	return pus_tc_18_12_createAbortObcpRequest(outTc, apid, sequenceCount, &obcpId);
+}
+
+pusError_t pus_tc_18_13_createLoadObcpReferenceRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
+		const char* id, const char* repository, const char* fileName) {
+	pusSt18ObcpId_t obcpId;
+	pusSt23RepositoryPath_t repo;
+	pusSt23FileName_t fName;
+	size_t len;
+	len = (strlen(id) < pus_ST18_SIZE_OBCP_ID) ? strlen(id)+1 : pus_ST18_SIZE_OBCP_ID;
+	memcpy(obcpId.arr, id, len);
+	len = (strlen(repository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(repository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+	memcpy(repo.arr, repository, len);
+	repo.nCount = len-1;
+	len = (strlen(fileName) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(fileName)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(fName.arr, fileName, len);
+	fName.nCount = len-1;
+
+	return pus_tc_18_13_createLoadObcpReferenceRequest(outTc, apid, sequenceCount, &obcpId, &repo, &fName);
+}
+
 pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char *obcpId) {
 	pusSt18ObcpId_t id;
-	memcpy(id.arr, obcpId, strlen(obcpId)+1);
+	size_t len = (strlen(obcpId) < pus_ST18_SIZE_OBCP_ID) ? strlen(obcpId)+1 : pus_ST18_SIZE_OBCP_ID;
+	memcpy(id.arr, obcpId, len);
 	return pus_tc_18_X_setObcpId(outTc, &id);
 }
 
@@ -475,8 +507,9 @@ char *pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc) {
 
 pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code) {
 	pusSt18ObcpCode_t obcpCode;
-	memcpy(obcpCode.arr, code, strlen(code)+1);
-	obcpCode.nCount = strlen(code);
+	size_t len = (strlen(code) < pus_ST18_MAX_SIZE_OBCP_CODE) ? strlen(code)+1 : pus_ST18_MAX_SIZE_OBCP_CODE;
+	memcpy(obcpCode.arr, code, len);
+	obcpCode.nCount = len-1;
 	return pus_tc_18_1_setObcpCode(outTc, &obcpCode);
 }
 
@@ -520,18 +553,63 @@ pusSt18ObcpStepId_t pus_tc_18_4_5_getObcpStepId_(const pusPacket_t* outTc) {
 	return 0;
 }
 
+pusError_t pus_tc_18_13_setFileName_(pusPacket_t* outTc, const char* fileName) {
+	pusSt23FileName_t fName;
+	size_t len = (strlen(fileName) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(fileName)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(fName.arr, fileName, len);
+	fName.nCount = len-1;
+	return pus_tc_18_13_setFileName(outTc, &fName);
+}
+
+char *pus_tc_18_13_getFileName_(char* fileName, const pusPacket_t* outTc) {
+	pusError_t error;
+	pusSt23FileName_t fName;
+
+	error = pus_tc_18_13_getFileName(&fName, outTc);
+	if (pusError_t::PUS_NO_ERROR == error) {
+		fileName = strdup((char *) fName.arr);
+		return fileName;
+	}
+	PUS_SET_ERROR(error);
+	return NULL;
+}
+
+pusError_t pus_tc_18_13_setRepositoryPath_(pusPacket_t* outTc, const char* repository) {
+	pusSt23RepositoryPath_t repo;
+	size_t len = (strlen(repository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(repository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+	memcpy(repo.arr, repository, len);
+	repo.nCount = len-1;
+	return pus_tc_18_13_setRepositoryPath(outTc, &repo);
+}
+
+char *pus_tc_18_13_getRepositoryPath_(char* repository, const pusPacket_t* outTc) {
+	pusError_t error;
+	pusSt23RepositoryPath_t repo;
+
+	error = pus_tc_18_13_getRepositoryPath(&repo, outTc);
+	if (pusError_t::PUS_NO_ERROR == error) {
+		repository = strdup((char *) repo.arr);
+		return repository;
+	}
+	PUS_SET_ERROR(error);
+	return NULL;
+}
+
 
 
 pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 		const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize) {
 	pusSt23FileName_t file;
 	pusSt23RepositoryPath_t repo;
+	size_t len;
 
-	memcpy(file.arr, fileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	file.nCount = strlen((char*)file.arr) + 1;
+	len = (strlen(fileName) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(fileName)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(file.arr, fileName, len);
+	file.nCount = len -1;
 
-	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
-	repo.nCount = strlen((char*)repo.arr) + 1;
+	len = (strlen(repository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(repository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+	memcpy(repo.arr, repository, len);
+	repo.nCount = len -1;
 
 	return pus_tc_23_1_createCreateFileRequest(outTc, apid, sequenceCount, &repo, &file, maxSize);
 }
@@ -540,12 +618,15 @@ pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t ap
 		const char* repository, const char* fileName) {
 	pusSt23FileName_t file;
 	pusSt23RepositoryPath_t repo;
+	size_t len;
 
-	memcpy(file.arr, fileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	file.nCount = strlen((char*)file.arr) + 1;
+	len = (strlen(fileName) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(fileName)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(file.arr, fileName, len);
+	file.nCount = len -1;
 
-	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
-	repo.nCount = strlen((char*)repo.arr) + 1;
+	len = (strlen(repository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(repository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+	memcpy(repo.arr, repository, len);
+	repo.nCount = len -1;
 
 	return pus_tc_23_2_createDeleteFileRequest(outTc, apid, sequenceCount, &repo, &file);
 }
@@ -554,12 +635,15 @@ pusError_t pus_tc_23_3_createReportFileAtributesRequest_(pusPacket_t* outTc, pus
 		const char* repository, const char* fileName) {
 	pusSt23FileName_t file;
 	pusSt23RepositoryPath_t repo;
+	size_t len;
 
-	memcpy(file.arr, fileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	file.nCount = strlen((char*)file.arr) + 1;
+	len = (strlen(fileName) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(fileName)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(file.arr, fileName, len);
+	file.nCount = len -1;
 
-	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
-	repo.nCount = strlen((char*)repo.arr) + 1;
+	len = (strlen(repository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(repository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+	memcpy(repo.arr, repository, len);
+	repo.nCount = len -1;
 
 	return pus_tc_23_3_createReportFileAtributesRequest(outTc, apid, sequenceCount, &repo, &file);
 }
@@ -569,29 +653,34 @@ pusError_t pus_tc_23_14_createCopyFileRequest_(pusPacket_t* outTc, pusApid_t api
 
 	pusSt23FileName_t srcFile, dstFile;
 	pusSt23RepositoryPath_t srcRepo, dstRepo;
-
+	size_t len;
 	if (NULL == sourceRepository || NULL == sourceFileName || NULL == targetFileName || NULL == targetRepository)
 		return pusError_t::PUS_ERROR_NULLPTR;
 
-	memcpy(srcFile.arr, sourceFileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	srcFile.nCount = strlen((char*)srcFile.arr) + 1;
+	len = (strlen(sourceFileName) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(sourceFileName)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(srcFile.arr, sourceFileName, len);
+	srcFile.nCount = len -1;
 
+	len = (strlen(sourceRepository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(sourceRepository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
 	memcpy(srcRepo.arr, sourceRepository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
-	srcRepo.nCount = strlen((char*)srcRepo.arr) + 1;
+	srcRepo.nCount = len -1;
 
-	memcpy(dstFile.arr, targetFileName, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	dstFile.nCount = strlen((char*)dstFile.arr) + 1;
+	len = (strlen(targetFileName) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(targetFileName)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(dstFile.arr, targetFileName, len);
+	dstFile.nCount = len -1;
 
+	len = (strlen(targetRepository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(targetRepository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
 	memcpy(dstRepo.arr, targetRepository, pus_ST23_MAX_SIZE_REPOSITORY_PATH - 1);
-	dstRepo.nCount = strlen((char*)dstRepo.arr) + 1;
+	dstRepo.nCount = len -1;
 
 	return pus_tc_23_14_createCopyFileRequest(outTc, apid, sequenceCount, &srcRepo, &srcFile, &dstRepo, &dstFile);
 }
 
 pusError_t pus_tc_tm_23_X_setFileName_(pusPacket_t* outTc, const char* file) {
 	pusSt23FileName_t fileName;
-	memcpy(fileName.arr, file, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	fileName.nCount = strlen((char*)fileName.arr) + 1;
+	size_t len = (strlen(file) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(file)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(fileName.arr, file, len);
+	fileName.nCount = len -1;
 
 	return pus_tc_tm_23_X_setFileName(outTc, &fileName);
 }
@@ -608,8 +697,9 @@ char *pus_tc_tm_23_X_getFileName_(char *file, const pusPacket_t* outTc) {
 
 pusError_t pus_tc_tm_23_X_setRepositoryPath_(pusPacket_t* outTc, const char* repository) {
 	pusSt23RepositoryPath_t repo;
-	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	repo.nCount = strlen((char*)repo.arr) + 1;
+	size_t len = (strlen(repository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(repository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+	memcpy(repo.arr, repository, len);
+	repo.nCount = len -1;
 
 	return pus_tc_tm_23_X_setRepositoryPath(outTc, &repo);
 }
@@ -634,8 +724,9 @@ pusSt23MaximumSize_t pus_tc_tm_23_1_4_getMaximumSize_(const pusPacket_t* outTc) 
 //! Setter for the source file name of a TC[23,14] packet
 pusError_t pus_tc_23_14_setSourceFileName_(pusPacket_t* outTc, const char* file) {
 	pusSt23FileName_t fileName;
-	memcpy(fileName.arr, file, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	fileName.nCount = strlen((char*)fileName.arr) + 1;
+	size_t len = (strlen(file) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(file)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(fileName.arr, file, len);
+	fileName.nCount = len -1;
 
 	return pus_tc_23_14_setSourceFileName(outTc, &fileName);
 }
@@ -655,8 +746,9 @@ char *pus_tc_23_14_getSourceFileName_(const pusPacket_t* outTc) {
 //! Setter for the target file name of a TC[23,14] packet
 pusError_t pus_tc_23_14_setTargetFileName_(pusPacket_t* outTc, const char* file) {
 	pusSt23FileName_t fileName;
-	memcpy(fileName.arr, file, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	fileName.nCount = strlen((char*)fileName.arr) + 1;
+	size_t len = (strlen(file) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(file) +1 : pus_ST23_MAX_SIZE_FILE_PATH;
+	memcpy(fileName.arr, file, len);
+	fileName.nCount = len -1;
 
 	return pus_tc_tm_23_X_setFileName(outTc, &fileName);
 }
@@ -676,8 +768,9 @@ char *pus_tc_23_14_getTargetFileName_(const pusPacket_t* outTc) {
 //! Setter for the source repository path of a TC[23,14] packet
 pusError_t pus_tc_23_14_setSourceRepositoryPath_(pusPacket_t* outTc, const char* repository) {
 	pusSt23RepositoryPath_t repo;
-	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	repo.nCount = strlen((char*)repo.arr) + 1;
+	size_t len = (strlen(repository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(repository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+	memcpy(repo.arr, repository, len);
+	repo.nCount = len -1;
 
 	return pus_tc_23_14_setSourceRepositoryPath(outTc, &repo);
 }
@@ -697,8 +790,9 @@ char *pus_tc_23_14_getSourceRepositoryPath_(const pusPacket_t* outTc) {
 //! Setter for the target repository path of a TC[23,14] packet
 pusError_t pus_tc_23_14_setTargetRepositoryPath_(pusPacket_t* outTc, const char* repository) {
 	pusSt23RepositoryPath_t repo;
-	memcpy(repo.arr, repository, pus_ST23_MAX_SIZE_FILE_PATH - 1);
-	repo.nCount = strlen((char*)repo.arr) + 1;
+	size_t len = (strlen(repository) < pus_ST23_MAX_SIZE_REPOSITORY_PATH) ? strlen(repository) +1 : pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+	memcpy(repo.arr, repository, len);
+	repo.nCount = len -1;
 
 	return pus_tc_23_14_setTargetRepositoryPath(outTc, &repo);
 }
