@@ -20,6 +20,7 @@
 #include "pus_st20_packets.h"
 #include "pus_st23_packets.h"
 #include "pus_housekeeping.h"
+#include "pus_stored_param.h"
 #include "pus_time.h"
 #include "pus_events.h"
 #include "pus_notify.h"
@@ -46,9 +47,8 @@ extern "C" {
 }
 
 pusError_t getError()
-{	pusError_t error = pusError_t::PUS_NO_ERROR;
-	pus_getError(&error, NULL, NULL);
-	return error;
+{
+	return PUS_GET_ERROR();
 }
 
 namespace py = pybind11;
@@ -89,6 +89,15 @@ PYBIND11_MODULE(pusbinding, m) {
 	        .value("PUS_ERROR_REPORT_LENGTH",pusError_t::PUS_ERROR_REPORT_LENGTH)
 	        .value("PUS_LAST_ERROR",pusError_t::PUS_LAST_ERROR)
 	        .export_values();
+
+	py::enum_<pusParamType_t>(m, "pusParamType_t")
+		        .value("PUS_INT32",pusParamType_t::PUS_INT32)
+		        .value("PUS_UINT32",pusParamType_t::PUS_UINT32)
+		        .value("PUS_REAL64",pusParamType_t::PUS_REAL64)
+		        .value("PUS_BYTE",pusParamType_t::PUS_BYTE)
+		        .value("PUS_BOOL",pusParamType_t::PUS_BOOL)
+		        .export_values();
+
 
 	m.def("getError", getError, "");
 	m.def("ret_packets", ret_packets);
@@ -250,6 +259,13 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_3_25_getParameterValue", &pus_tm_3_25_getParameterValue_, "Binding for pus_tm_3_25_getParameterValue");
 	m.def("pus_tm_3_25_getNumParameters", &pus_tm_3_25_getNumParameters_, "Binding for pus_tm_3_25_getNumParameters");
 	m.def("pus_tm_3_25_setNumParameters", &pus_tm_3_25_setNumParameters, "Binding for pus_tm_3_25_setNumParameters");
+	m.def("pus_st03_getHkReportInfoName", &pus_st03_getHkReportInfoName, "Binding for pus_st03_getHkReportInfoName");
+	m.def("pus_st03_getHkReportInfoType", &pus_st03_getHkReportInfoType, "Binding for pus_st03_getHkReportInfoType");
+	m.def("pus_paramToUint32", &pus_paramToUint32_, "Binding for pus_paramToUint32");
+	m.def("pus_paramToInt32", &pus_paramToInt32_, "Binding for pus_paramToInt32");
+	m.def("pus_paramToReal64", &pus_paramToReal64_, "Binding for pus_paramToReal64");
+	m.def("pus_paramToBool", &pus_paramToBool_, "Binding for pus_paramToBool");
+	m.def("pus_paramToByte", &pus_paramToByte_, "Binding for pus_paramToByte");
 	m.def("pus_expectSt03Tm", &pus_expectSt03Tm, "Binding for pus_expectSt03Tm");
 
 	py::class_<st05Event>(m, "st05Event")

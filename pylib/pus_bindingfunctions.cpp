@@ -278,6 +278,66 @@ size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm)
 	return n_p;
 }
 
+char *pus_st03_getHkReportInfoName(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex, char *name) {
+	if (reportIndex < pus_ST03_PARAM_LIMIT) {
+		 name = strdup(pus_st03_paramInfo[pus_st03_defaultHkReportInfo.paramIds[reportIndex]].label);
+		 return name;
+	}
+	return NULL;
+}
+
+pusParamType_t pus_st03_getHkReportInfoType(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex) {
+	if (reportIndex < pus_ST03_PARAM_LIMIT) {
+		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
+		return pus_st03_paramInfo[pus_st03_defaultHkReportInfo.paramIds[reportIndex]].type;
+	}
+	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
+	return pusParamType_t::PUS_BOOL;
+}
+
+uint32_t pus_paramToUint32_(pusStoredParam_t paramValue) {
+	uint32_t outValue = 0;
+	pusError_t error;
+	error = pus_paramToUint32(&outValue, paramValue);
+	PUS_SET_ERROR(error);
+	return outValue;
+}
+
+int32_t pus_paramToInt32_(pusStoredParam_t paramValue) {
+	int32_t outValue = 0;
+	pusError_t error;
+	error = pus_paramToInt32(&outValue, paramValue);
+	PUS_SET_ERROR(error);
+	return outValue;
+}
+
+double pus_paramToReal64_(pusStoredParam_t paramValue) {
+	double outValue = 0;
+	pusError_t error;
+	error = pus_paramToReal64(&outValue, paramValue);
+	PUS_SET_ERROR(error);
+	return outValue;
+}
+
+
+bool pus_paramToBool_(pusStoredParam_t paramValue) {
+	bool outValue = false;
+	pusError_t error;
+	error = pus_paramToBool(&outValue, paramValue);
+	PUS_SET_ERROR(error);
+	return outValue;
+}
+
+
+uint8_t pus_paramToByte_(pusStoredParam_t paramValue) {
+	uint8_t outValue = 0;
+	pusError_t error;
+	error = pus_paramToByte(&outValue, paramValue);
+	PUS_SET_ERROR(error);
+	return outValue;
+}
+
+
 pusSt05Event_t parse_pusSt05EventStruct_(st05Event event)
 {
 	pusSt05Event_t pusEvent;

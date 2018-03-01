@@ -31,8 +31,6 @@ void trigger_PI_PmonTrigger()
 void trigger_PI_HkReportTrigger()
 {
     /* Write your code here! */
-	return;
-
     trigger_RI_HkReportTrigger();
 }
 
