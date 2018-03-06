@@ -329,12 +329,16 @@ bool pus_paramToBool_(pusStoredParam_t paramValue) {
 }
 
 
-uint8_t pus_paramToByte_(pusStoredParam_t paramValue) {
+std::string pus_paramToByte_(pusStoredParam_t paramValue) {
 	uint8_t outValue = 0;
+	std::string byte;
+	char byteAux[4];
 	pusError_t error;
 	error = pus_paramToByte(&outValue, paramValue);
+	sprintf(byteAux, "%x", outValue);
+	byte = std::string(byteAux);
 	PUS_SET_ERROR(error);
-	return outValue;
+	return byte;
 }
 
 

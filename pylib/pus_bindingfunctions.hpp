@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <string>
 #include "pus_packet.h"
 #include "pus_apid.h"
 #include "pus_time.h"
@@ -77,7 +78,7 @@ uint32_t pus_paramToUint32_(pusStoredParam_t paramValue);
 int32_t pus_paramToInt32_(pusStoredParam_t paramValue);
 double pus_paramToReal64_(pusStoredParam_t paramValue);
 bool pus_paramToBool_(pusStoredParam_t paramValue);
-uint8_t pus_paramToByte_(pusStoredParam_t paramValue);
+std::string pus_paramToByte_(pusStoredParam_t paramValue);
 
 typedef struct
 {

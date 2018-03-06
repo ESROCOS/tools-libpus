@@ -17,12 +17,12 @@ void housekeeping_startup()
        but do not make any call to a required interface. */
 	pus_hk_initialize(NULL);
 
-	pus_hk_setHK_PARAM_INT01(5);
-	pus_hk_setHK_PARAM_REAL01(6);
-	pus_hk_setHK_PARAM_INT02(4);
-	pus_hk_setHK_PARAM_UINT01(12);
+	pus_hk_setHK_PARAM_INT01(1);
+	pus_hk_setHK_PARAM_REAL01(-6.58);
+	pus_hk_setHK_PARAM_INT02(2);
+	pus_hk_setHK_PARAM_UINT01(10);
 	pus_hk_setHK_PARAM_BYTE01(0x23);
-	pus_hk_setHK_PARAM_BOOL01(false);
+	pus_hk_setHK_PARAM_BOOL01(true);
 }
 
 void housekeeping_PI_getParamValue(const asn1SccPusSt03ParameterId *IN_paramId,
