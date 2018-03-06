@@ -34,11 +34,11 @@ int main()
 	pusPacket_t tc;
 	pus_tc_17_1_createConnectionTestRequest(&tc, apid.apid, pus_getNextPacketCount(&apid));
 	pus_setTcAckFlags(&tc, true, false, false, true);
-	pus_packetQueues_push(&tc, pus_TC_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tc, TC_QUEUE_ONBOARD);
 	printf("TC_17_1 pushed in TCqueue.\n");
 
 	pus_tc_8_1_createPerformFuctionRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_01);
-	pus_packetQueues_push(&tc, pus_TC_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tc, TC_QUEUE_ONBOARD);
 	printf("TC_8_1 pushed in TCqueue.\n");
 
 
@@ -67,30 +67,30 @@ int main()
 	pusPacket_t tcAction;
 	pus_tc_8_1_createPerformFuctionRequest(&tcAction, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_02);
 	pus_tc_19_1_createAddEventActionDefinitionsRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), eventInfo.eventId, &tcAction);
-	pus_packetQueues_push(&tc, pus_TC_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tc, TC_QUEUE_ONBOARD);
 	printf("TC_19_1 pushed in TCqueue.\n");
 
 	pus_tc_19_4_createEnableEventActionDefinitions(&tc, apid.apid, pus_getNextPacketCount(&apid), eventInfo.eventId);
-	pus_packetQueues_push(&tc, pus_TC_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tc, TC_QUEUE_ONBOARD);
 	printf("TC_19_4 pushed in TCqueue.\n");
 
 	//Event TM packets to TMqueue
 	pusPacket_t tm;
 
 	pus_tm_5_1_createInformativeEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventInfo, pus_st05_getEventDestination());
-	pus_packetQueues_push(&tm, pus_TM_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tm, TM_QUEUE_ONBOARD);
 	printf("TM_5_1 pushed in TMqueue.\n");
 
 	pus_tm_5_2_createLowSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventLow, pus_st05_getEventDestination());
-	pus_packetQueues_push(&tm, pus_TM_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tm, TM_QUEUE_ONBOARD);
 	printf("TM_5_2 pushed in TMqueue.\n");
 
 	pus_tm_5_3_createMediumSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventMid, pus_st05_getEventDestination());
-	pus_packetQueues_push(&tm, pus_TM_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tm, TM_QUEUE_ONBOARD);
 	printf("TM_5_3 pushed in TMqueue.\n");
 
 	pus_tm_5_4_createHighSeverityEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventHi, pus_st05_getEventDestination());
-	pus_packetQueues_push(&tm, pus_TM_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tm, TM_QUEUE_ONBOARD);
 	printf("TM_5_4 pushed in TMqueue.\n");
 
 
@@ -104,7 +104,7 @@ int main()
 
 	while (noTc<2 || noTm<2)
 	{
-		if ( PUS_NO_ERROR == pus_packetQueues_pop(&tcRead, pus_TC_QUEUE_ONBOARD) )
+		if ( PUS_NO_ERROR == pus_packetQueues_pop(&tcRead, TC_QUEUE_ONBOARD) )
 		{
 			noTc = 0;
 
@@ -145,7 +145,7 @@ int main()
 		}
 
 
-		if ( PUS_NO_ERROR == pus_packetQueues_pop(&tmRead, pus_TM_QUEUE_ONBOARD) )
+		if ( PUS_NO_ERROR == pus_packetQueues_pop(&tmRead, TM_QUEUE_ONBOARD) )
 		{
 			noTm = 0;
 			//printf("pus_getTcService(&tmRead): %d", pus_getTmService(&tmRead))
@@ -211,7 +211,7 @@ pusError_t example_function()
 	pusPacket_t tm;
 
 	pus_tm_5_1_createInformativeEventReport(&tm, apid.apid, pus_getNextPacketCount(&apid), &eventInfo, pus_st05_getEventDestination());
-	pus_packetQueues_push(&tm, pus_TM_QUEUE_ONBOARD);
+	pus_packetQueues_push(&tm, TM_QUEUE_ONBOARD);
 	printf("TM_5_1 pushed in TMqueue FROM function.\n");
 
 	return PUS_NO_ERROR;
@@ -326,7 +326,7 @@ pusError_t pus_st17_processTcPacket(pusPacket_t* tcRead, pusApidInfo_t* apid)
 	{
 		pusPacket_t tmResponse;
 		pus_st17_createTestResponse(&tmResponse, apid, tcRead);
-		pus_packetQueues_push(&tmResponse, pus_TM_QUEUE_ONBOARD);
+		pus_packetQueues_push(&tmResponse, TM_QUEUE_ONBOARD);
 		printf("TM_17_2(response) pushed in TMqueue.\n");
 	}
 	else
@@ -352,7 +352,7 @@ pusError_t pus_st19_processEventActionService()
 			{
 				pusPacket_t tcAction;
 				pus_eventAction_getAction(&tcAction, event.eventId);
-				pus_packetQueues_push(&tcAction, pus_TC_QUEUE_ONBOARD);
+				pus_packetQueues_push(&tcAction, TC_QUEUE_ONBOARD);
 			}
 		}
 
@@ -546,7 +546,7 @@ pusError_t pus_st01_pushTmAceptanceReportIfNeeded(pusPacket_t* tcRead, pusApidIn
 		{
 			pus_tm_1_2_createAcceptanceReportFailure(&tmAcceptance, apid->apid, pus_getNextPacketCount(apid), tcRead, error, NULL); //TODO error info Null
 		}
-		return pus_packetQueues_push(&tmAcceptance, pus_TM_QUEUE_ONBOARD);
+		return pus_packetQueues_push(&tmAcceptance, TM_QUEUE_ONBOARD);
 	}
 	return PUS_NO_ERROR;
 }
@@ -565,7 +565,7 @@ pusError_t pus_st01_pushTmStartReportIfNeeded(pusPacket_t* tcRead, pusApidInfo_t
 		{
 			pus_tm_1_4_createStartReportFailure(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead, error, NULL);
 		}
-		return pus_packetQueues_push(&tmCompletion, pus_TM_QUEUE_ONBOARD);
+		return pus_packetQueues_push(&tmCompletion, TM_QUEUE_ONBOARD);
 	}
 	return PUS_NO_ERROR;
 }
@@ -585,7 +585,7 @@ pusError_t pus_st01_pushTmProgressReportIfNeeded(pusPacket_t* tcRead, pusApidInf
 		{
 			pus_tm_1_6_createProgressReportFailure(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead, step, error, NULL);
 		}
-		return pus_packetQueues_push(&tmCompletion, pus_TM_QUEUE_ONBOARD);
+		return pus_packetQueues_push(&tmCompletion, TM_QUEUE_ONBOARD);
 	}
 	return PUS_NO_ERROR;
 }
@@ -605,7 +605,7 @@ pusError_t pus_st01_pushTmCompletionReportIfNeeded(pusPacket_t* tcRead, pusApidI
 		{
 			pus_tm_1_8_createCompletionReportFailure(&tmCompletion, apid->apid, pus_getNextPacketCount(apid), tcRead, error, NULL);
 		}
-		return pus_packetQueues_push(&tmCompletion, pus_TM_QUEUE_ONBOARD);
+		return pus_packetQueues_push(&tmCompletion, TM_QUEUE_ONBOARD);
 	}
 	return PUS_NO_ERROR;
 }

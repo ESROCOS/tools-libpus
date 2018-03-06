@@ -25,7 +25,7 @@ extern "C" {
 <% count = 0 %>
 % for queue in config['queues']:
 #define ${queue['label']} ((pusPacketQueueId_t) ${count})
-const pusPacketQueueId_t pus_${queue['label']} = ${count};
+//const pusPacketQueueId_t pus_${queue['label']} = ${count};
 
 <% count = count + 1 %>
 % endfor

@@ -94,8 +94,8 @@ bool pus_files_isSameFileName(pusSt23FileName_t* fileName1, pusSt23FileName_t* f
 pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23FileName_t* sourceFileName,
 								pusSt23RepositoryPath_t* targetRepository, pusSt23FileName_t* targetFileName);
 
-pusError_t pus_files_copyFileLinux(pusSt23RepositoryDomain_t* sourceDomain, pusSt23FileName_t* sourceFileName,
-									pusSt23RepositoryDomain_t* targetDomain, pusSt23FileName_t* targetFileName);
+pusError_t pus_files_copyFileLinuxLocalToLinuxLocal(pusSt23RepositoryDomain_t* sourceDomain, pusSt23FileName_t* sourceFileName,
+										pusSt23RepositoryDomain_t* targetDomain, pusSt23FileName_t* targetFileName);
 
 pusError_t pus_files_getRepositoryPathFromId(pusSt23RepositoryPath_t* path, pusSt23RepositoryId_t id);
 

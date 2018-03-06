@@ -126,7 +126,6 @@ void packets_st23()
 	CU_ASSERT_EQUAL(0, memcmp(repo2.arr, repo3.arr, 10));
 
 
-
 	pus_clearError();
 
 	pusPacket_t tm2, tc2;

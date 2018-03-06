@@ -47,7 +47,7 @@ void st03_PI_HkReportTrigger()
 	pus_tm_3_25_setNumParameters(&tm, reportInfo.numParams);
 	pusStoredParam_t paramValue;
 	pusSt01FailureCode_t isAvailable;
-	for( size_t i =0; i < reportInfo.numParams; i++)
+	for( size_t i = 0; i < reportInfo.numParams; i++)
 	{
 		st03_RI_getParamValue(&reportInfo.paramIds[i], &paramValue, &isAvailable);
 		printf("i: %lu, id: %llu, param:%llu\n", i, reportInfo.paramIds[i], paramValue);

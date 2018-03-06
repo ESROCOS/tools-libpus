@@ -272,7 +272,7 @@ pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23File
 }
 
 
-pusError_t pus_files_copyFileLinux(pusSt23RepositoryDomain_t* sourceDomain, pusSt23FileName_t* sourceFileName,
+pusError_t pus_files_copyFileLinuxLocalToLinuxLocal(pusSt23RepositoryDomain_t* sourceDomain, pusSt23FileName_t* sourceFileName,
 									pusSt23RepositoryDomain_t* targetDomain, pusSt23FileName_t* targetFileName)
 {
 	/*char command[200];
@@ -432,7 +432,7 @@ pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23
 		pusSt23RepositoryDomain_t sourceDomain, targetDomain;
 		pus_files_getDomainFromRepositoryPath(&sourceDomain, sourceRepository);
 		pus_files_getDomainFromRepositoryPath(&targetDomain, targetRepository);
-		return pus_files_copyFileLinux( &sourceDomain, sourceFileName, &targetDomain, targetFileName);
+		return pus_files_copyFileLinuxLocalToLinuxLocal( &sourceDomain, sourceFileName, &targetDomain, targetFileName);
 	}
 	else if ( true == sourceLocal && false == targetLocal)
 	{
