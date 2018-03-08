@@ -27,7 +27,7 @@ void tmqueue_PI_tmRequest(asn1SccPusPacket *OUT_tmPacket, asn1SccT_Boolean *OUT_
 {
 	*OUT_isAvailable = false;
 
-	pusError_t error = pus_packetQueues_pop(OUT_tmPacket, pus_TM_QUEUE_ONBOARD);
+	pusError_t error = pus_packetQueues_pop(OUT_tmPacket, TM_QUEUE_ONBOARD);
 	if ( PUS_NO_ERROR == error )
 	{
 		//printf("TmQUEUE: TM%llu_%llu to TcDispatch.\n", pus_getTmService(OUT_tmPacket), pus_getTmSubtype(OUT_tmPacket));
@@ -56,7 +56,7 @@ void tmqueue_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 	}
 
 
-	error = pus_packetQueues_push(IN_tmPacket, pus_TM_QUEUE_ONBOARD);
+	error = pus_packetQueues_push(IN_tmPacket, TM_QUEUE_ONBOARD);
 	if( PUS_NO_ERROR == error )
 	{
 		printf("TmQUEUE: TM%llu_%llu inserted in TmQueue.\n", pus_getTmService(IN_tmPacket), pus_getTmSubtype(IN_tmPacket));
@@ -65,7 +65,7 @@ void tmqueue_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 		tmqueue_RI_incCount(&tmPacket, &available);
 		if( PUS_NO_ERROR == available)
 		{
-			while(PUS_NO_ERROR != pus_packetQueues_push(&tmPacket, pus_TM_QUEUE_ONBOARD));
+			while(PUS_NO_ERROR != pus_packetQueues_push(&tmPacket, TM_QUEUE_ONBOARD));
 			pus_clearError();
 		}
 	}

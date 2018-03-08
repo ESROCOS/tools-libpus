@@ -1,0 +1,33 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package vt_trigger_hkreporttrigger_CV_Thread
+public
+	with Deployment;
+	with process_package;
+THREAD vt_trigger_hkreporttrigger_vt_trigger_hkreporttrigger
+features
+	OUTPORT_tmTrigger_vt : OUT EVENT PORT;
+	OUTPORT_HkReportTrigger_vt : OUT EVENT PORT;
+	OUTPORT_PmonTrigger_vt : OUT EVENT PORT;
+	OUTPORT_EventReportTrigger_vt : OUT EVENT PORT;
+	OUTPORT_tcTrigger_vt : OUT EVENT PORT;
+	OUTPORT_debugEventsTrigger_vt : OUT EVENT PORT;
+	OUTPORT_EventActionTrigger_vt : OUT EVENT PORT;
+END vt_trigger_hkreporttrigger_vt_trigger_hkreporttrigger;
+
+THREAD IMPLEMENTATION vt_trigger_hkreporttrigger_vt_trigger_hkreporttrigger.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "trigger_wrappers.C_Init_trigger";
+	Compute_Entrypoint_Source_Text => "vt_trigger_hkreporttrigger_wrappers.artificial_HkReportTrigger";
+	Dispatch_Protocol => Periodic;
+	Period            => 10000 ms;
+	Dispatch_Offset   => 0 ms;
+	Compute_Execution_Time => 0 ms .. 0 ms;
+	Stack_Size => 5 KByte;
+	Priority => 1;
+END vt_trigger_hkreporttrigger_vt_trigger_hkreporttrigger.others;
+
+end vt_trigger_hkreporttrigger_CV_Thread;
