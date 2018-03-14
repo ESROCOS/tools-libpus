@@ -118,6 +118,7 @@ PYBIND11_MODULE(pusbinding, m) {
 			.def(py::init<>());
 	m.def("pus_now", &pus_now, "Binding for pus_now");
 	m.def("pus_time2posix", &pus_time2posix_, "Binding for pus_time2posix");
+	m.def("pus_posix2time", &pus_posix2time_, "Binding for pus_posix2time");
 
 	py::class_<pusPacketReduced_t>(m, "pusPacketReduced_t")
 			.def(py::init<>());
@@ -272,7 +273,6 @@ PYBIND11_MODULE(pusbinding, m) {
 			.def(py::init<>());
 	m.doc() = "pus_st05_packets binding";
 	m.def("pus_events_initialize", &pus_events_initialize, "Binding for pus_events_initialize");
-	m.def("pus_events_initialize_null", &pus_events_initialize_null_, "Binding for pus_events_initialize_null_");
 	m.def("pus_events_finalize", &pus_events_finalize, "Binding for pus_events_finalize");
 	m.def("pus_events_isInitialized", &pus_events_isInitialized, "Binding for pus_events_isInitialized");
 	m.def("pus_events_init_struct", &pus_event_init_struct_, "Binding for pus_event_init");
@@ -284,6 +284,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_get_5_X_event_id", &pus_tm_get_5_X_event_id_, "Binding for pus_events_getEventId");
 	m.def("pus_tm_get_5_X_event_auxdata1", &pus_tm_get_5_X_event_auxdata1_, "Binding for pus_events_getEventAuxData");
 	m.def("pus_tm_get_5_X_event_auxdata2", &pus_tm_get_5_X_event_auxdata2_, "Binding for pus_events_getEventAuxData1");
+	m.def("pus_st05_getEventName", &pus_st05_getEventName, "Binding for pus_st05_getEventName");
+	m.def("pus_st05_getDataType1", &pus_st05_getDataType1, "Binding for pus_st05_getDataType1");
+	m.def("pus_st05_getDataType2", &pus_st05_getDataType2, "Binding for pus_st05_getDataType2");
 
 
 	m.doc() = "pus_st08_packets binding";

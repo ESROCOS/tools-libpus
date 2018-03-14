@@ -357,8 +357,7 @@ pusError_t pus_expectTmHeader(const pusPacket_t* packet, const char* funcname, p
 /*! If packet is as expected, returns PUS_NO_ERROR; otherwise, sets error condition
  *  with pus_setError and returns the error code. Use with macros for convenience.
  *  \param[in] packet The packet to check
- *  \param[in] function Name of the function to log in case of error
- *  \param[in] data Data to log in case of error
+ *  \param[in] function Name of the function to log in case of errorº
  *  \return PUS_NO_ERROR if OK, or error code set otherwise
  */
 pusError_t pus_expectTmNoHeader(const pusPacket_t* packet, const char* funcname, pusErrorData_t data);

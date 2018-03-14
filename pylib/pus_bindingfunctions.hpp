@@ -28,6 +28,7 @@
 #include "pus_st20_packets.h"
 #include "pus_st23_packets.h"
 #include "pus_st03_config.h"
+#include "pus_st05_config.h"
 #include "pus_events.h"
 #include "pus_threads.h"
 #include "pus_notify.h"
@@ -42,6 +43,7 @@ typedef long long int ll;
 int ret_packets(pusPacket_t *tm, int i);
 
 time_t pus_time2posix_(pusTime_t* outPusTime);
+pusTime_t pus_posix2time_(time_t time);
 
 pusError_t pus_initApidInfo_null(pusApidInfo_t* obj, pusApid_t apid);
 uint pus_getPacketVersion_(const pusPacket_t* packet);
@@ -101,7 +103,9 @@ pusError_t pus_tm_5_4_createHighSeverityEventReport_(pusPacket_t* outTm, pusApid
 ull pus_tm_get_5_X_event_id_(const pusPacket_t *packet);
 ull pus_tm_get_5_X_event_auxdata1_(const pusPacket_t *packet);
 ull pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet);
-pusError_t pus_events_initialize_null_();
+std::string pus_st05_getEventName(pusSt05EventId_t eventIndex);
+int pus_st05_getDataType1(pusSt05EventId_t eventIndex);
+int pus_st05_getDataType2(pusSt05EventId_t eventIndex);
 
 pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet);
 

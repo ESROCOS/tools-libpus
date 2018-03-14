@@ -106,6 +106,14 @@ time_t pus_time2posix_(pusTime_t* time) {
 	return t.tv_sec;
 }
 
+pusTime_t pus_posix2time_(time_t time) {
+	struct timespec t;
+	pusTime_t pusTime;
+	t.tv_sec = time;
+	pus_posix2time(&pusTime, &t);
+	return pusTime;
+}
+
 pusError_t pus_initApidInfo_null(pusApidInfo_t *obj, pusApid_t apid)
 {
 	return pus_initApidInfo(obj, apid, NULL);
@@ -414,9 +422,31 @@ ull pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet)
 	return pus_events_getEventAuxData2((const pusSt05EventAuxData_t *)&auxdata);
 }
 
-pusError_t pus_events_initialize_null_()
-{
-	return pus_events_initialize(NULL);
+std::string pus_st05_getEventName(pusSt05EventId_t eventIndex) {
+	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT) {
+		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
+		return std::string(pus_st05_eventInfoList[eventIndex].label);
+	}
+	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
+	return NULL;
+}
+
+int pus_st05_getDataType1(pusSt05EventId_t eventIndex) {
+	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT) {
+		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
+		return pus_st05_eventInfoList[eventIndex].data.dataType1;
+	}
+	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
+	return -1;
+}
+
+int pus_st05_getDataType2(pusSt05EventId_t eventIndex) {
+	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT) {
+		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
+		return pus_st05_eventInfoList[eventIndex].data.dataType2;
+	}
+	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
+	return -1;
 }
 
 pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet)

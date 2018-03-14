@@ -24,7 +24,6 @@ void trigger_PI_PmonTrigger()
 {
     /* Write your code here! */
 	return;
-
     trigger_RI_PmonTrigger();
 }
 
