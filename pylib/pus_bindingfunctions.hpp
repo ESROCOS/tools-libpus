@@ -29,6 +29,7 @@
 #include "pus_st23_packets.h"
 #include "pus_st03_config.h"
 #include "pus_st05_config.h"
+#include "pus_st20_config.h"
 #include "pus_events.h"
 #include "pus_threads.h"
 #include "pus_notify.h"
@@ -36,11 +37,6 @@
 typedef unsigned int uint;
 typedef unsigned long long int ull;
 typedef long long int ll;
-
-/**
- * This function has been done with testing purposes only.
- */
-int ret_packets(pusPacket_t *tm, int i);
 
 time_t pus_time2posix_(pusTime_t* outPusTime);
 pusTime_t pus_posix2time_(time_t time);
@@ -74,13 +70,19 @@ void pus_setSt01FailureInfo_(pusPacket_t *tm, ull code, ll subcode, ll data, ull
 pusError_t pus_hk_initialize_null_();
 pusStoredParam_t pus_tm_3_25_getParameterValue_(const pusPacket_t* tm, size_t index);
 size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm);
-char *pus_st03_getHkReportInfoName(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex, char *name);
+char *pus_st03_getHkReportInfoName(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex);
 pusParamType_t pus_st03_getHkReportInfoType(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex);
+
 uint32_t pus_paramToUint32_(pusStoredParam_t paramValue);
 int32_t pus_paramToInt32_(pusStoredParam_t paramValue);
 double pus_paramToReal64_(pusStoredParam_t paramValue);
 bool pus_paramToBool_(pusStoredParam_t paramValue);
 std::string pus_paramToByte_(pusStoredParam_t paramValue);
+pusStoredParam_t pus_uint32ToParam_(uint32_t inValue);
+pusStoredParam_t pus_int32ToParam_(int32_t inValue);
+pusStoredParam_t pus_real64ToParam_(double inValue);
+pusStoredParam_t pus_boolToParam_(bool inValue);
+pusStoredParam_t pus_byteToParam_(uint8_t inValue);
 
 typedef struct
 {
@@ -103,7 +105,7 @@ pusError_t pus_tm_5_4_createHighSeverityEventReport_(pusPacket_t* outTm, pusApid
 ull pus_tm_get_5_X_event_id_(const pusPacket_t *packet);
 ull pus_tm_get_5_X_event_auxdata1_(const pusPacket_t *packet);
 ull pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet);
-std::string pus_st05_getEventName(pusSt05EventId_t eventIndex);
+char *pus_st05_getEventName(pusSt05EventId_t eventIndex);
 int pus_st05_getDataType1(pusSt05EventId_t eventIndex);
 int pus_st05_getDataType2(pusSt05EventId_t eventIndex);
 
@@ -139,6 +141,9 @@ pusError_t pus_tc_18_13_setFileName_(pusPacket_t* outTc, const char* fileName);
 char *pus_tc_18_13_getFileName_(char* fileName, const pusPacket_t* outTc);
 pusError_t pus_tc_18_13_setRepositoryPath_(pusPacket_t* outTc, const char* repository);
 char *pus_tc_18_13_getRepositoryPath_(char* repository, const pusPacket_t* outTc);
+
+char *pus_st20_getOnBoardReportInfoName(pusSt20OnBoardParamId_t paramId);
+pusParamType_t pus_st20_getOnBoardReportInfoType(pusSt20OnBoardParamId_t paramId);
 
 pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize);
 pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName);

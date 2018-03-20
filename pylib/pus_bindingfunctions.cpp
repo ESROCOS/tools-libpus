@@ -6,100 +6,6 @@
 
 #include "pus_bindingfunctions.hpp"
 
-int ret_packets(pusPacket_t *tm, int i)
-{
-	pusPacket_t tc;
-	//pusTime_t tv, now;
-	pusApidInfo_t apid;
-
-	pus_initApidInfo(&apid, 33, NULL);
-
-	// Test TC
-	pus_initTcPacket(&tc);
-	pus_setTcSource(&tc, 11);
-	pus_setSequenceCount(&tc, 22);
-
-	// Test failures
-	pusSt01FailureInfo_t info1/*, info2*/;
-	pus_setSt01FailureInfo(&info1, 101, 102, 103);
-
-	// TM[1,1]
-	if (i==0) pus_tm_1_1_createAcceptanceReportSuccess(tm, apid.apid, i, &tc);
-
-
-	// TM[1,2]
-	else if (i==1) pus_tm_1_2_createAcceptanceReportFailure(tm, apid.apid, i, &tc, pus_ST01_ERROR_SERVICE_UNAVAILABLE, &info1);
-
-
-	// TM[1,3]
-	else if (i==2) pus_tm_1_3_createStartReportSuccess(tm, apid.apid, i, &tc);
-
-	// TM[1,4]
-	else if (i==3) pus_tm_1_4_createStartReportFailure(tm, apid.apid, i, &tc, pus_ST01_ERROR_WRONG_FORMAT, NULL);
-
-
-	// TM[1,5]
-	else if (i==4) pus_tm_1_5_createProgressReportSuccess(tm, apid.apid, i, &tc, 71);
-
-	// TM[1,6]
-	else if (i==5) pus_tm_1_6_createProgressReportFailure(tm, apid.apid, i, &tc, 72, pus_ST01_ERROR_SUBTYPE_UNAVAILABLE, NULL);
-
-
-	// TM[1,7]
-	else if (i==6) pus_tm_1_7_createCompletionReportSuccess(tm, apid.apid, i, &tc);
-
-
-	// TM[1,8]
-	else if (i==7) pus_tm_1_8_createCompletionReportFailure(tm, apid.apid, i, &tc, pus_ST01_ERROR_WRONG_FORMAT, NULL);
-
-	else if (i==8)
-	{
-		pus_hk_initialize(NULL);
-		pus_tm_3_25_createHousekeepingReportDefault(tm, apid.apid, i, 55);
-		pus_tm_3_25_setNumParameters(tm, 3);
-		pus_tm_3_25_setParameterValue(tm, 0, 1);
-		pus_tm_3_25_setParameterValue(tm, 1, 2);
-		pus_tm_3_25_setParameterValue(tm, 2, 3);
-		pus_hk_finalize();
-	}
-	else if (i == 9)
-	{
-		pus_tc_11_1_createEnableTimeBasedSchedule(tm, apid.apid, i);
-	}
-	else if (i == 10)
-	{
-		pusSt05Event_t event = parse_pusSt05EventStruct_(pus_event_init_struct_(1, 2, 3));
-		pus_events_initialize(NULL);
-		pus_tm_5_1_createInformativeEventReport(tm, apid.apid, i, &event, 1);
-		pus_events_finalize();
-	}
-	else if (i == 11)
-	{
-		pus_tm_20_2_createParameterValueReport(tm, apid.apid, i, apid.apid, 1, 2);
-	}
-	else if (i == 12)
-	{
-		pusSt23RepositoryPath_t repo;
-		pusSt23FileName_t file;
-		pusSt23MaximumSize_t size;
-		memcpy(repo.arr, "987654321\0", 10);
-		memcpy(file.arr, "987654321\0", 10);
-		size = 9;
-		pus_tm_23_4_createReportFileAtributesReport(tm, 1, 1, 1, &repo, &file, size);
-	}
-	else if (i==9) {
-		pus_tm_9_2_createCucTimeReport(tm, apid.apid, 27);
-	}
-	return 0;
-
-
-	// TC without header
-	//CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_initTcPacketNoHeader(&tc));
-	//pus_tm_1_1_createAcceptanceReportSuccess(&tm, apid.apid, pus_getNextPacketCount(&apid), &tc);
-	//CU_ASSERT_FALSE(pus_tm_1_X_getSecondaryHeaderFlag(&tm));
-
-}
-
 time_t pus_time2posix_(pusTime_t* time) {
 	struct timespec t;
 	pus_time2posix(&t, time);
@@ -286,10 +192,9 @@ size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm)
 	return n_p;
 }
 
-char *pus_st03_getHkReportInfoName(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex, char *name) {
+char *pus_st03_getHkReportInfoName(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex) {
 	if (reportIndex < pus_ST03_PARAM_LIMIT) {
-		 name = strdup(pus_st03_paramInfo[pus_st03_defaultHkReportInfo.paramIds[reportIndex]].label);
-		 return name;
+		 return strdup(pus_st03_paramInfo[pus_st03_defaultHkReportInfo.paramIds[reportIndex]].label);
 	}
 	return NULL;
 }
@@ -349,6 +254,45 @@ std::string pus_paramToByte_(pusStoredParam_t paramValue) {
 	return byte;
 }
 
+pusStoredParam_t pus_uint32ToParam_(uint32_t inValue) {
+	pusError_t error;
+	pusStoredParam_t param;
+	error = pus_uint32ToParam(&param, inValue);
+	PUS_SET_ERROR(error);
+	return param;
+}
+
+pusStoredParam_t pus_int32ToParam_(int32_t inValue) {
+	pusError_t error;
+	pusStoredParam_t param;
+	error = pus_int32ToParam(&param, inValue);
+	PUS_SET_ERROR(error);
+	return param;
+}
+
+pusStoredParam_t pus_real64ToParam_(double inValue) {
+	pusError_t error;
+	pusStoredParam_t param;
+	error = pus_real64ToParam(&param, inValue);
+	PUS_SET_ERROR(error);
+	return param;
+}
+
+pusStoredParam_t pus_boolToParam_(bool inValue) {
+	pusError_t error;
+	pusStoredParam_t param;
+	error = pus_boolToParam(&param, inValue);
+	PUS_SET_ERROR(error);
+	return param;
+}
+
+pusStoredParam_t pus_byteToParam_(uint8_t inValue) {
+	pusError_t error;
+	pusStoredParam_t param;
+	error = pus_boolToParam(&param, inValue);
+	PUS_SET_ERROR(error);
+	return param;
+}
 
 pusSt05Event_t parse_pusSt05EventStruct_(st05Event event)
 {
@@ -422,13 +366,13 @@ ull pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet)
 	return pus_events_getEventAuxData2((const pusSt05EventAuxData_t *)&auxdata);
 }
 
-std::string pus_st05_getEventName(pusSt05EventId_t eventIndex) {
+char *pus_st05_getEventName(pusSt05EventId_t eventIndex) {
 	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT) {
 		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
-		return std::string(pus_st05_eventInfoList[eventIndex].label);
+		return strdup(pus_st05_eventInfoList[eventIndex].label);
 	}
 	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
-	return NULL;
+	return 	NULL;
 }
 
 int pus_st05_getDataType1(pusSt05EventId_t eventIndex) {
@@ -687,6 +631,21 @@ char *pus_tc_18_13_getRepositoryPath_(char* repository, const pusPacket_t* outTc
 	}
 	PUS_SET_ERROR(error);
 	return NULL;
+}
+
+char *pus_st20_getOnBoardReportInfoName(pusSt20OnBoardParamId_t paramId) {
+	if (paramId < pus_ST20_PARAM_LIMIT) {
+		 return strdup(pus_st20_paramInfo[paramId].label);
+	}
+	return NULL;
+}
+
+pusParamType_t pus_st20_getOnBoardReportInfoType(pusSt20OnBoardParamId_t paramId) {
+	if (paramId < pus_ST20_PARAM_LIMIT) {
+		return pus_st20_paramInfo[paramId].type;
+	}
+	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
+	return pusParamType_t::PUS_BOOL;
 }
 
 

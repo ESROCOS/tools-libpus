@@ -100,7 +100,6 @@ PYBIND11_MODULE(pusbinding, m) {
 
 
 	m.def("getError", getError, "");
-	m.def("ret_packets", ret_packets);
 	m.def("pus_notify_readTm", &pus_notify_readTm);
 	m.def("pus_notify_writeTm", &pus_notify_writeTm);
 	m.def("pus_notify_readTc", &pus_notify_readTc);
@@ -262,12 +261,18 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_3_25_setNumParameters", &pus_tm_3_25_setNumParameters, "Binding for pus_tm_3_25_setNumParameters");
 	m.def("pus_st03_getHkReportInfoName", &pus_st03_getHkReportInfoName, "Binding for pus_st03_getHkReportInfoName");
 	m.def("pus_st03_getHkReportInfoType", &pus_st03_getHkReportInfoType, "Binding for pus_st03_getHkReportInfoType");
+	m.def("pus_expectSt03Tm", &pus_expectSt03Tm, "Binding for pus_expectSt03Tm");
+
 	m.def("pus_paramToUint32", &pus_paramToUint32_, "Binding for pus_paramToUint32");
 	m.def("pus_paramToInt32", &pus_paramToInt32_, "Binding for pus_paramToInt32");
 	m.def("pus_paramToReal64", &pus_paramToReal64_, "Binding for pus_paramToReal64");
 	m.def("pus_paramToBool", &pus_paramToBool_, "Binding for pus_paramToBool");
 	m.def("pus_paramToByte", &pus_paramToByte_, "Binding for pus_paramToByte");
-	m.def("pus_expectSt03Tm", &pus_expectSt03Tm, "Binding for pus_expectSt03Tm");
+	m.def("pus_uint32ToParam", &pus_uint32ToParam_, "Binding for pus_uint32ToParam");
+	m.def("pus_int32ToParam", &pus_int32ToParam_, "Binding for pus_int32ToParam");
+	m.def("pus_real64ToParam", &pus_real64ToParam_, "Binding for pus_real64ToParam");
+	m.def("pus_boolToParam", &pus_boolToParam_, "Binding for pus_boolToParam");
+	m.def("pus_byteToParam", &pus_byteToParam_, "Binding for pus_byteToParam");
 
 	py::class_<st05Event>(m, "st05Event")
 			.def(py::init<>());
@@ -382,7 +387,6 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_19_1_getAction", &pus_tc_19_1_getAction, "Binding for pus_tc_19_1_getAction");
 	m.def("pus_expectSt19Tc", &pus_expectSt19Tc, "Binding for pus_expectSt19Tc");
 
-
 	m.doc() = "pus_st20_packets binding";
 	m.def("pus_tc_20_1_createParameterValueRequest", &pus_tc_20_1_createParameterValueRequest, "Binding for pus_tc_20_1_createParameterValueRequest");
 	m.def("pus_tm_20_2_createParameterValueReport", &pus_tm_20_2_createParameterValueReport, "Binding for pus_tm_20_2_createParameterValueReport");
@@ -395,6 +399,8 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_20_2_getParamId", &pus_tm_20_2_getParamId, "Binding for pus_tm_20_2_getParamId");
 	m.def("pus_tm_20_2_setParamValue", &pus_tm_20_2_setParamValue, "Binding for pus_tm_20_2_setParamValue");
 	m.def("pus_tm_20_2_getParamValue", &pus_tm_20_2_getParamValue, "Binding for pus_tm_20_2_getParamValue");
+	m.def("pus_st20_getOnBoardReportInfoName", &pus_st20_getOnBoardReportInfoName, "Binding for pus_st20_getOnBoardReportInfoName");
+	m.def("pus_st20_getOnBoardReportInfoType", &pus_st20_getOnBoardReportInfoType, "Binding for pus_st20_getOnBoardReportInfoType");
 	m.def("pus_expectSt20Tc", &pus_expectSt20Tc, "Binding for pus_expectSt20Tc");
 	m.def("pus_expectSt20Tm", &pus_expectSt20Tm, "Binding for pus_expectSt20Tm");
 
