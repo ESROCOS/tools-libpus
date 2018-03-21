@@ -16,12 +16,15 @@ pusError_t (*pus_st08_functionTable[${config['functions'].__len__()}])();
 
 const size_t pus_st08_limitFunctions = ${config['functions'].__len__()};
 
+pusSt08FunctionInfo_t pus_st08_functionInfoList[${config['functions'].__len__()}];
 
 pusError_t pus_st08_configure()
 {
 	% for function in config['functions']:
 	extern pusError_t ${function['name']}();
 	pus_st08_functionTable[${function['label']}] = &${function['name']};
+	
+	pus_st08_functionInfoList[${function['label']}].label = "${function['label']}";
 		
 	% endfor
 			

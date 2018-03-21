@@ -200,6 +200,7 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t* next, uint64_t* actualCou
 		}
 	}
 
+	//TODO behavior if no next (jump number)
 
 	if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 	{

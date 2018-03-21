@@ -26,6 +26,12 @@
 extern "C" {
 #endif
 
+//! Type to describe a function: label, ..
+typedef struct
+{
+	const char* label; //!< Name of the event, for debugging purposes
+} pusSt08FunctionInfo_t;
+
 //! Function to initialize the service ST[08] configuration
 /*! This function is generated from the mission database, and it should be declared
  *  in \ref pus_st08_config.h

@@ -79,6 +79,9 @@ void st08_PI_tc08(const asn1SccPusPacket *IN_tcPacket)
 		//send acceptance failure
 		printf(" - ST08: send pus_TM_1_2_failedAcceptance \n");
 		//st08_RI_ACK(IN_tcPacket, &pus_TM_1_2_failedAcceptance, &errorExpect, NULL, NULL);
+		/*subtype = pus_TM_1_2_failedAcceptance;
+		errorCode = errorExpect;
+		st08_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);*/
 		return;
 	}
 }
