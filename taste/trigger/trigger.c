@@ -23,7 +23,7 @@ void trigger_PI_TcDispatchTrigger()
 void trigger_PI_PmonTrigger()
 {
     /* Write your code here! */
-	return;
+	//return;
     trigger_RI_PmonTrigger();
 }
 

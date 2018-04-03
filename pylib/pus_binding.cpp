@@ -290,6 +290,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_get_5_X_event_auxdata1", &pus_tm_get_5_X_event_auxdata1_, "Binding for pus_events_getEventAuxData");
 	m.def("pus_tm_get_5_X_event_auxdata2", &pus_tm_get_5_X_event_auxdata2_, "Binding for pus_events_getEventAuxData1");
 	m.def("pus_st05_getEventName", &pus_st05_getEventName, "Binding for pus_st05_getEventName");
+	m.def("pus_st05_getEventId", &pus_st05_getEventId, "Binding for pus_st05_getEventId");
 	m.def("pus_st05_getDataType1", &pus_st05_getDataType1, "Binding for pus_st05_getDataType1");
 	m.def("pus_st05_getDataType2", &pus_st05_getDataType2, "Binding for pus_st05_getDataType2");
 
@@ -382,7 +383,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	//m.def("pus_tc_19_X_setPacketTcData", &pus_tc_19_X_setPacketTcData, "Binding for pus_tc_19_X_setPacketTcData");
 	m.def("pus_packetReduced_createPacketFromPacketReduced", &pus_packetReduced_createPacketFromPacketReduced, "Binding for pus_tc_19_X_createPacketFromPacketReduced");
 	m.def("pus_tc_19_X_setEventId", &pus_tc_19_X_setEventId, "Binding for pus_tc_19_X_setEventId");
-	m.def("pus_tc_19_X_getEventId", &pus_tc_19_X_getEventId, "Binding for pus_tc_19_X_getEventId");
+	m.def("pus_tc_19_X_getEventId", &pus_tc_19_X_getEventId_, "Binding for pus_tc_19_X_getEventId");
 	m.def("pus_tc_19_1_setAction", &pus_tc_19_1_setAction, "Binding for pus_tc_19_1_setAction");
 	m.def("pus_tc_19_1_getAction", &pus_tc_19_1_getAction, "Binding for pus_tc_19_1_getAction");
 	m.def("pus_expectSt19Tc", &pus_expectSt19Tc, "Binding for pus_expectSt19Tc");

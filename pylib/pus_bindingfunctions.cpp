@@ -366,8 +366,10 @@ ull pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet)
 	return pus_events_getEventAuxData2((const pusSt05EventAuxData_t *)&auxdata);
 }
 
-char *pus_st05_getEventName(pusSt05EventId_t eventIndex) {
-	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT) {
+char *pus_st05_getEventName(pusSt05EventId_t eventIndex)
+{
+	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT)
+	{
 		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
 		return strdup(pus_st05_eventInfoList[eventIndex].label);
 	}
@@ -375,8 +377,29 @@ char *pus_st05_getEventName(pusSt05EventId_t eventIndex) {
 	return 	NULL;
 }
 
-int pus_st05_getDataType1(pusSt05EventId_t eventIndex) {
-	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT) {
+pusSt05EventId_t pus_st05_getEventId(char *eventName)
+{
+	pusSt05EventId_t i;
+	PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
+
+	if (eventName == NULL)
+	{
+		PUS_SET_ERROR(pusError_t::PUS_ERROR_NULLPTR);
+		return -1;
+	}
+
+	for (i = 0; i < PUS_ST05_EVENT_BUFFER_LIMIT; i++)
+		if (strcmp(pus_st05_eventInfoList[i].label, eventName)==0)
+			return i;
+
+	PUS_SET_ERROR(pusError_t::PUS_ERROR_DEFINITION_NOT_FOUND);
+	return -1;
+}
+
+int pus_st05_getDataType1(pusSt05EventId_t eventIndex)
+{
+	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT)
+	{
 		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
 		return pus_st05_eventInfoList[eventIndex].data.dataType1;
 	}
@@ -384,8 +407,10 @@ int pus_st05_getDataType1(pusSt05EventId_t eventIndex) {
 	return -1;
 }
 
-int pus_st05_getDataType2(pusSt05EventId_t eventIndex) {
-	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT) {
+int pus_st05_getDataType2(pusSt05EventId_t eventIndex)
+{
+	if (eventIndex < PUS_ST05_EVENT_BUFFER_LIMIT)
+	{
 		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
 		return pus_st05_eventInfoList[eventIndex].data.dataType2;
 	}
@@ -631,6 +656,17 @@ char *pus_tc_18_13_getRepositoryPath_(char* repository, const pusPacket_t* outTc
 	}
 	PUS_SET_ERROR(error);
 	return NULL;
+}
+
+pusSt05EventId_t pus_tc_19_X_getEventId_(const pusPacket_t* outTc) {
+	pusSt05EventId_t eventId = 0;
+	pusError_t error = pusError_t::PUS_NO_ERROR;
+	error = pus_tc_19_X_getEventId(&eventId, outTc);
+	if (error != pusError_t::PUS_NO_ERROR) {
+		PUS_SET_ERROR(error);
+		return -1;
+	}
+	return eventId;
 }
 
 char *pus_st20_getOnBoardReportInfoName(pusSt20OnBoardParamId_t paramId) {

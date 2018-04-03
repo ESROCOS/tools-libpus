@@ -106,6 +106,7 @@ ull pus_tm_get_5_X_event_id_(const pusPacket_t *packet);
 ull pus_tm_get_5_X_event_auxdata1_(const pusPacket_t *packet);
 ull pus_tm_get_5_X_event_auxdata2_(const pusPacket_t *packet);
 char *pus_st05_getEventName(pusSt05EventId_t eventIndex);
+pusSt05EventId_t pus_st05_getEventId(char *eventName);
 int pus_st05_getDataType1(pusSt05EventId_t eventIndex);
 int pus_st05_getDataType2(pusSt05EventId_t eventIndex);
 
@@ -141,6 +142,8 @@ pusError_t pus_tc_18_13_setFileName_(pusPacket_t* outTc, const char* fileName);
 char *pus_tc_18_13_getFileName_(char* fileName, const pusPacket_t* outTc);
 pusError_t pus_tc_18_13_setRepositoryPath_(pusPacket_t* outTc, const char* repository);
 char *pus_tc_18_13_getRepositoryPath_(char* repository, const pusPacket_t* outTc);
+
+pusSt05EventId_t pus_tc_19_X_getEventId_(const pusPacket_t* outTc);
 
 char *pus_st20_getOnBoardReportInfoName(pusSt20OnBoardParamId_t paramId);
 pusParamType_t pus_st20_getOnBoardReportInfoType(pusSt20OnBoardParamId_t paramId);
