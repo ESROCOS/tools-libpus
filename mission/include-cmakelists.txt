@@ -43,6 +43,7 @@ file(GLOB C_FILES "${OUT_DIR}/src/*.c")
 # Define the mission-specific library
 set(MISSION_LIB "esrocos_pus_mission_${MISSION}")
 add_library(${MISSION_LIB} SHARED ${C_FILES})
+#include_directories(../../include/obcp) # To include OBCP files¿?? JMSM
 target_include_directories(${MISSION_LIB} BEFORE PUBLIC ${OUT_DIR}/include)
 set_target_properties(${MISSION_LIB} PROPERTIES LINKER_LANGUAGE C)
 set_target_properties(${MISSION_LIB} PROPERTIES POSITION_INDEPENDENT_CODE TRUE)

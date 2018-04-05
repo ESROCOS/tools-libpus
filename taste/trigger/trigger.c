@@ -23,14 +23,17 @@ void trigger_PI_TcDispatchTrigger()
 void trigger_PI_PmonTrigger()
 {
     /* Write your code here! */
-	//return;
-    trigger_RI_PmonTrigger();
+	return;
+
+	trigger_RI_PmonTrigger();
 }
 
 void trigger_PI_HkReportTrigger()
 {
     /* Write your code here! */
-    trigger_RI_HkReportTrigger();
+    return;
+
+	trigger_RI_HkReportTrigger();
 }
 
 void trigger_PI_EventReportTrigger()

@@ -15,6 +15,8 @@ bool pus_st08_initializedFlag = false;
 //! Event information list
 extern pusSt08FunctionInfo_t pus_st08_functionInfoList[];
 
+
+
 pusError_t pus_st08_initialize(pusMutex_t* mutex)
 {
 	if (pus_st08_isInitialized())

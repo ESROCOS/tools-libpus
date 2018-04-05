@@ -3,72 +3,72 @@ find_package(CUnit REQUIRED)
 
 # Test executables
 add_executable(test_pus_01 test_pus_01.c)
-target_link_libraries(test_pus_01 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_pus_01 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_pus_01 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_pus_01)
 
 add_executable(test_pus_02 test_pus_02.c)
-target_link_libraries(test_pus_02 esrocos_pus_nothreads esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES})
+target_link_libraries(test_pus_02 esrocos_pus_nothreads esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES})
 target_include_directories(test_pus_02 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_pus_02)
 
 add_executable(test_st01 test_st01.c)
-target_link_libraries(test_st01 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st01 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st01 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st01)
 
 add_executable(test_st03 test_st03.c)
-target_link_libraries(test_st03 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st03 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st03 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st03)
 
 add_executable(test_st05 test_st05.c)
-target_link_libraries(test_st05 esrocos_pus_mission_test_01 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st05 esrocos_pus_mission_test_01 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st05 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st05)
 
 add_executable(test_st08 test_st08.c)
-target_link_libraries(test_st08 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st08 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st08 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st08)
 
 add_executable(test_st09 test_st09.c)
-target_link_libraries(test_st09 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st09 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st09 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st09)
 
 add_executable(test_st11 test_st11.c)
-target_link_libraries(test_st11 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st11 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st11 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st11)
 
 add_executable(test_st12 test_st12.c)
-target_link_libraries(test_st12 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st12 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st12 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st12)
 
 add_executable(test_st17 test_st17.c)
-target_link_libraries(test_st17 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st17 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st17 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st17)
 
 add_executable(test_st18 test_st18.c)
-target_link_libraries(test_st18 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st18 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st18 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st18)
 
 add_executable(test_st19 test_st19.c)
-target_link_libraries(test_st19 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st19 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st19 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st19)
 
 add_executable(test_st20 test_st20.c)
-target_link_libraries(test_st20 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st20 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st20 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st20)
 
 add_executable(test_st23 test_st23.c)
-target_link_libraries(test_st23 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_st23 esrocos_pus esrocos_pus_asn1 esrocos_pus_asn1common esrocos_pus_mission_test_01 esrocos_mpy m ${CUNIT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(test_st23 PUBLIC ${CUNIT_INCLUDE_DIRS})
 add_coverage(test_st23)
 
@@ -93,4 +93,5 @@ add_test(st23 test_st23)
 
 # The ASN.1 autogenerated test is built in the asn folder
 add_test(asn1 ${CMAKE_BINARY_DIR}/asn1/test_asn1)
+
 

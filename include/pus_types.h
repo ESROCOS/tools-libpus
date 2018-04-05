@@ -85,6 +85,7 @@ typedef asn1SccPusSt18ObcpCode pusSt18ObcpCode_t; //! Obcp procedure code
 typedef asn1SccPusSt18ObcpChecksum pusSt18ObcpChecksum_t; //! Obcp procedure checksum
 typedef asn1SccPusSt18ObservabilityLevel pusSt18ObservabilityLevel_t; //! Obcp observability level
 typedef asn1SccPusUInt32 pusSt18ObcpStepId_t; //! OBCP step id
+typedef asn1SccPusUInt32 pusSt18ObcpStatus_t; //! OBCP status
 
 typedef asn1SccPusSt20OnBoardParameterId pusSt20OnBoardParamId_t; //!< Identifier of on-board parameters
 
@@ -99,10 +100,6 @@ typedef asn1SccPusUInt32 pusSt23RepositoryId_t; //! RepositoryId
 typedef asn1SccPusUInt64 pusPacketQueueId_t;
 
 
-#define PUS_ST18_OBSERVABILITY_NONE 0
-#define PUS_ST18_OBSERVABILITY_PROCEDURE 1
-#define PUS_ST18_OBSERVABILITY_STEP 2
-#define PUS_ST18_OBSERVABILITY_DETAILED 3
 
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
@@ -198,6 +195,17 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 
 #define pus_ST23_MAX_SIZE_FILE pus_ST23_MAX_SIZE_FILE
 
+
+//! OBCP observability and status
+#define PUS_OBCP_OBSERVABILITY_NONE 0
+#define PUS_OBCP_OBSERVABILITY_PROCEDURE 1
+#define PUS_OBCP_OBSERVABILITY_STEP 2
+#define PUS_OBCP_OBSERVABILITY_DETAILED 3
+
+#define PUS_OBCP_STATUS_UNLOAD 0
+#define PUS_OBCP_STATUS_INACTIVE 1
+#define PUS_OBCP_STATUS_ACTIVE_RUNNING 2
+#define PUS_OBCP_STATUS_ACTIVE_HELD 3
 
 #ifdef  __cplusplus
 }

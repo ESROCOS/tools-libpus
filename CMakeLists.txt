@@ -53,11 +53,16 @@ add_compile_options(-Wall -Wextra)
 # Location of the generated ASN.1 headers
 include_directories(include ${CMAKE_BINARY_DIR}/asn1/generated)
 
+include_directories(include ${CMAKE_BINARY_DIR}/mpy/mpy/)
+
+
+
 add_subdirectory(asn1)
 add_subdirectory(doc)
 add_subdirectory(python)
 add_subdirectory(mission)
 add_subdirectory(src)
+add_subdirectory(mpy)
 add_subdirectory(test)
 add_subdirectory(pylib)
 add_subdirectory(taste)
