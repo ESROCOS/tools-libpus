@@ -1,0 +1,13 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "https://github.com/esrocos/TBD",
+	"title": "OBCP management configuration",
+	"description": "OBCP management configuration",
+	"type": "object",
+	"properties": {
+		"maximumObcp": {
+			"type": "integer"
+			}
+		},
+	"required": ["maximumObcp"]
+}

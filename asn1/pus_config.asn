@@ -31,7 +31,7 @@ BEGIN
     pus-ST18-SIZE-OBCP-ID PusUInt32 ::= 10
     
     -- Maximun number of character in OBCP Code TC[18,1] 
-    pus-ST18-MAX-SIZE-OBCP-CODE PusUInt32 ::= 1000
+    pus-ST18-MAX-SIZE-OBCP-CODE PusUInt32 ::= 10000
     
     -- Maximun number of bits in OBCP CHECKSUM (ST18)
     pus-ST18-SIZE-OBCP-CHECKSUM PusUInt32 ::= 16

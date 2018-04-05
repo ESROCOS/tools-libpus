@@ -27,6 +27,7 @@ void onboardsoftware_PI_debugTrigger()
 			pusSt05Event_t event;
 			pus_events_createEVENT_INFO_01(&event, 23, 54);
 			onboardsoftware_RI_pushNewEvent(&event);
+			break;
 		}
 		case 1:
 		{
