@@ -11,6 +11,7 @@ from mako.exceptions import text_error_template
 from .utils import loadJson, perror
 
 
+
 def generate_st03_config(jsonDir, outDir):
     '''Generate the C files for the PUS ST[03] service configuration'''
     # File paths
