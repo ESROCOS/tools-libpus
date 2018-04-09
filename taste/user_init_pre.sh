@@ -20,4 +20,3 @@ ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/tools-libp
 ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/libesrocos_pus_mission_test_01_st08_functions.so"
 
 echo "ORCHESTRATOR_OPTIONS=$ORCHESTRATOR_OPTIONS" 
-

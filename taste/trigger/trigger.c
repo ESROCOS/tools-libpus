@@ -24,8 +24,7 @@ void trigger_PI_PmonTrigger()
 {
     /* Write your code here! */
 	return;
-
-	trigger_RI_PmonTrigger();
+    trigger_RI_PmonTrigger();
 }
 
 void trigger_PI_HkReportTrigger()
