@@ -12,8 +12,6 @@
 
 #include "pus_st18_config.h"
 
-volatile bool pus_obcp_engineStopped = true;
-
 const size_t pus_obcp_ObcpLimit = MAXIMUN_OBCP;
 
 pusObcpInfo_t pus_obcp_infoList[MAXIMUN_OBCP];

@@ -44,10 +44,13 @@ typedef struct
     pusSt18ObcpId_t id;
     pusSt18ObservabilityLevel_t observability; //0 procedure(status), step(status at steps), detailed, none
     volatile pusSt18ObcpStatus_t status; //0: unload, 1:inactive, 2:active and running, 3: active and held
+    volatile pusSt18ObcpConfirmationStatus_t confirmation;
     pusSt18ObcpStepId_t actual_step;
     pusSt18ObcpStepId_t next_step;
 
     pusSt18ObcpCode_t code;
+
+
 
     //heap / stack / ctx
     mp_state_ctx_t mp_ctx;
@@ -77,6 +80,7 @@ pusError_t pus_obcp_initialize(); //TODO Mutex as param
 //TODO
 bool pus_obcp_isInitialized();
 
+pusError_t pus_obcp_finalize();
 
 //! Start the OBCP engine
 /*! Start the OBCP engine
@@ -92,6 +96,12 @@ pusError_t pus_obcp_stopEngine();
 
 //TODO
 bool pus_obcp_isEngineRunning();
+
+uint32_t pus_obcp_getObcpLoadedActives();
+
+uint32_t pus_obcp_getObcpLoadedInactives();
+
+uint32_t pus_obcp_getObcpSlotNotLoaded();
 
 //! Loab an OBCP into the engine
 /*! Loab an OBCP into the engine
@@ -134,6 +144,8 @@ bool pus_obcp_IsObcpLoaded( pusSt18ObcpId_t* id, size_t* index);
 pusError_t pus_obcp_waitForActivation(pusObcpInfo_t* obcpInfo);
 
 pusError_t pus_obcp_setStatusAferExecution(pusObcpInfo_t* obcpInfo);
+
+pusError_t pus_obcp_setConfirmationStatus(pusSt18ObcpId_t* id, pusSt18ObcpConfirmationStatus_t status);
 
 ///////////////
 pusError_t pus_obcp_setLoadInfo(pusObcpInfo_t* obcpInfo, pusSt18ObcpId_t* id, pusSt18ObcpStatus_t status, pusSt18ObcpCode_t* code);

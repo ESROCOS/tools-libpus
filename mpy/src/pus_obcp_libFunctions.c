@@ -46,46 +46,6 @@ bool pusTime_to_double(double* time_d, pusTime_t* time)
     return true;
 }
 
-/*STATIC mp_obj_t createObj(mp_obj_t what)
-{
-    printf("Creating INT: %ld\n", mp_obj_get_int(what));
-    int* p_obj = (int*) malloc(sizeof(int));
-    *p_obj = mp_obj_get_int(what);
-    return MP_OBJ_FROM_PTR(p_obj);
-}
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_createObj_obj, createObj);
-
-
-STATIC mp_obj_t incrObj(mp_obj_t what)
-{
-    int* p2 = (int*)MP_OBJ_TO_PTR(what);
-    printf("Pre INCR: %d\n", *p2);
-    *p2 = *p2 + 1;
-    printf("Post INCR: %d\n", *p2);
-    return mp_const_none;
-}
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_incrObj_obj, incrObj);
-
-
-STATIC mp_obj_t delObj(mp_obj_t what)
-{
-    printf("Deleting INT\n");
-    free((int*)MP_OBJ_TO_PTR(what));
-    return mp_const_none;
-}
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_delObj_obj, delObj);
-
-STATIC mp_obj_t mymodule_wait(void) {
-    return mp_obj_new_bool(wait());
-}
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mymodule_wait_obj, mymodule_wait);
-
-STATIC mp_obj_t mymodule_produce(void) {
-    return mp_obj_new_bool(producing());
-}
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mymodule_produce_obj, mymodule_produce);
-*/
-
 // get Time now FLOAT
 STATIC mp_obj_t mymodule_getTimeNowFloat() {
     
@@ -761,15 +721,32 @@ STATIC mp_obj_t mymodule_executeSt08Function( mp_obj_t py_functionId ) {
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_executeSt08Function_obj, mymodule_executeSt08Function);
 
 
+// Execute ST08 Function
+STATIC mp_obj_t mymodule_setConfirmationValue( mp_obj_t py_id, mp_obj_t py_confirmation ) {
+    int status = mp_obj_get_int(py_confirmation);
+
+    if(strlen(mp_obj_str_get_str(py_id)) > 10)
+    {
+    	return mp_const_false;
+    }
+
+    pusSt18ObcpId_t id;
+    memcpy(id.arr, mp_obj_str_get_str(py_id), 10);
+    printf("CAD2: --%s--, %d\n", id.arr, strlen(id.arr));
+
+    if(PUS_NO_ERROR != pus_obcp_setConfirmationStatus(&id, status))
+    {
+    	return mp_const_false;
+    }
+
+    return mp_const_true;
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mymodule_setConfirmationValue_obj, mymodule_setConfirmationValue);
+
+
 STATIC const mp_map_elem_t obcpModule_globals_table[] = {
     { MP_OBJ_NEW_QSTR(MP_QSTR___name__), MP_OBJ_NEW_QSTR(MP_QSTR_mymodule) },
-    /*{ MP_OBJ_NEW_QSTR(MP_QSTR_createObj), (mp_obj_t)&mymodule_createObj_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_incrObj), (mp_obj_t)&mymodule_incrObj_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_delObj), (mp_obj_t)&mymodule_delObj_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_wait), (mp_obj_t)&mymodule_wait_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_produce), (mp_obj_t)&mymodule_produce_obj },*/
     { MP_OBJ_NEW_QSTR(MP_QSTR_sleepInterval), (mp_obj_t)&mymodule_sleepInterval_obj },
-   // { MP_OBJ_NEW_QSTR(MP_QSTR_testfun), (mp_obj_t)&mymodule_testfun_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_getDictHkParams), (mp_obj_t)&mymodule_getDictHkParams_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_getDictOnBoardParams), (mp_obj_t)&mymodule_getDictOnBoardParams_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_getDictEvents), (mp_obj_t)&mymodule_getDictEvents_obj },
@@ -785,6 +762,7 @@ STATIC const mp_map_elem_t obcpModule_globals_table[] = {
     { MP_OBJ_NEW_QSTR(MP_QSTR_getNextEvent), (mp_obj_t)&mymodule_getNextEvent_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_getNextEventBlocking), (mp_obj_t)&mymodule_getNextEventBlocking_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_executeSt08Function), (mp_obj_t)&mymodule_executeSt08Function_obj },
+	{ MP_OBJ_NEW_QSTR(MP_QSTR_setConfirmationValue), (mp_obj_t)&mymodule_setConfirmationValue_obj },
 };
 
 STATIC MP_DEFINE_CONST_DICT (

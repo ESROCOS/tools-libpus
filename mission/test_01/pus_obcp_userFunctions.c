@@ -8,7 +8,7 @@
 STATIC mp_obj_t exampleFunction(mp_obj_t what)
 {
     int aux =  mp_obj_get_int(what);
-    printf("User fun: Integer param read: %d\n", aux);
+    printf("User fun: Integer param read sadf sadfsa: %d\n", aux);
     return mp_const_true;
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(userFunctions_exampleFunction_obj, exampleFunction);

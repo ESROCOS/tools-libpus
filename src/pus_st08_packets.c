@@ -54,6 +54,20 @@ bool pus_st08_isInitialized()
 	return pus_st08_initializedFlag;
 }
 
+pusError_t pus_st08_finalize()
+{
+	if (!pus_st08_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else
+	{
+		pus_st08_mutex = NULL;
+		pus_st08_initializedFlag = false;
+		return PUS_NO_ERROR;
+	}
+}
+
 pusError_t pus_tc_8_1_createPerformFuctionRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt08FunctiontId_t functionId)
 {
 	if (NULL == outTc)

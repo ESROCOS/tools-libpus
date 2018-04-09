@@ -58,7 +58,7 @@ typedef struct
 //! Type to describe the structure that the events' table save
 typedef struct {
 	pusSt05Event_t event; //!< Event in table
-    size_t eventBufferCounter; //!< Counter of the events' number in table.
+    size_t eventBufferCounter; //!< Counter of the events number in table.
 } pusSt05EventInBuffer_t;
 
 

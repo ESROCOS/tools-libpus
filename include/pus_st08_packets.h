@@ -41,6 +41,9 @@ extern pusError_t pus_st08_configure();
 //! Function that initialize the ST08 service.
 pusError_t pus_st08_initialize(pusMutex_t* mutex);
 
+//! Finalize the service
+pusError_t pus_st08_finalize();
+
 //! Check if the ST08 is initalized.
 bool pus_st08_isInitialized();
 

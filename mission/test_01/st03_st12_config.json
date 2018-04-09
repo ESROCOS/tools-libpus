@@ -7,6 +7,12 @@
 			"high_limit": 10
 		},
 		{
+			"label": "OBCP_ACTIVES",
+			"type": "UINT32",
+			"low_limit": 0,
+			"high_limit": 100
+		},
+		{
 			"label": "HK_PARAM_REAL01",
 			"type": "REAL64",
 			"low_limit": -23,

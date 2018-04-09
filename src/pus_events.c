@@ -27,7 +27,7 @@ size_t pus_st05_eventBufferIn;
 extern const pusApid_t pus_st05_eventReportDestination;
 
 //! Event information list
-extern pusSt05EventInfo_t pus_st05_eventInfoList[];
+//extern pusSt05EventInfo_t pus_st05_eventInfoList[];
 
 //! Size of the event information list
 extern const size_t pus_st05_eventInfoListLength;
@@ -78,7 +78,7 @@ pusError_t pus_events_initialize(pusMutex_t* mutex)
 	aux.eventId = UINT32_MAX+1;
 	aux.data.data1 = 0;
 	aux.data.data2 = 0;
-	for(size_t i; i < pus_st05_eventBufferLength; i++)
+	for(size_t i = 0; i < pus_st05_eventBufferLength; i++)
 	{
 		pus_st05_eventBuffer[i].event = aux;
 		pus_st05_eventBuffer[i].eventBufferCounter = 0;

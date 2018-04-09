@@ -14,7 +14,7 @@
 extern pthread_mutex_t pus_obcp_mutexEngine;
 extern pthread_cond_t pus_obcp_condEngine;
 
-extern volatile bool pus_obcp_engineStopped;
+
 
 extern const size_t pus_obcp_ObcpLimit;
 extern pusObcpInfo_t pus_obcp_infoList[];
@@ -23,13 +23,37 @@ extern pusError_t pus_obcp_configure();
 // Initialized flag
 bool pus_obcp_initializedFlag = false;
 
+bool pus_obcp_engineRunning = false;
+
+//MUTEX
+pusMutex_t* pus_obcp_mutex;
+
 pusError_t pus_obcp_initialize()
 {
 	pus_obcp_configure(); //TODO
 
 	pus_obcp_initializedFlag = true;
 
+	pus_obcp_engineRunning = false;
+
+	//TODO
+	pus_obcp_startEngine();
+
 	return PUS_NO_ERROR;
+}
+
+pusError_t pus_obcp_finalize()
+{
+	if (!pus_obcp_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+	}
+	else
+	{
+		pus_obcp_mutex = NULL;
+		pus_obcp_initializedFlag = false;
+		return PUS_NO_ERROR;
+	}
 }
 
 bool pus_obcp_isInitialized()
@@ -46,13 +70,13 @@ pusError_t pus_obcp_startEngine()
 
 	pthread_mutex_lock(&pus_obcp_mutexEngine);
 
-	if( pus_obcp_engineStopped == false )
+	if( pus_obcp_engineRunning == true )
 	{
 		pthread_mutex_unlock(&pus_obcp_mutexEngine);
 		return PUS_ERROR_OBCP_ENGINE_ALREADY_RUNNING;
 	}
 
-	pus_obcp_engineStopped = false;
+	pus_obcp_engineRunning = true;
 
 	pthread_mutex_unlock(&pus_obcp_mutexEngine);
 
@@ -70,13 +94,13 @@ pusError_t pus_obcp_stopEngine()
 
 	pthread_mutex_lock(&pus_obcp_mutexEngine);
 
-	if( pus_obcp_engineStopped == true )
+	if( pus_obcp_engineRunning == false )
 	{
 		pthread_mutex_unlock(&pus_obcp_mutexEngine);
 		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
 	}
 
-	pus_obcp_engineStopped = true;
+	pus_obcp_engineRunning = false;
 
 	pthread_mutex_unlock(&pus_obcp_mutexEngine);
 
@@ -85,10 +109,100 @@ pusError_t pus_obcp_stopEngine()
 
 bool pus_obcp_isEngineRunning()
 {
-	return !pus_obcp_engineStopped;
+	if(!pus_obcp_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	return pus_obcp_engineRunning;
 }
 
+uint32_t pus_obcp_getObcpLoadedActives()
+{
+	if(!pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
 
+	uint32_t cont = 0;
+	for(size_t i = 0; i < pus_obcp_ObcpLimit; i++)
+	{
+		if(0 != pthread_mutex_lock(&pus_obcp_infoList[i].mutex))
+		{
+			return 0;
+		}
+
+		if( PUS_OBCP_STATUS_ACTIVE_RUNNING == pus_obcp_infoList[i].status)
+		{
+			cont++;
+		}
+
+		if(0 != pthread_mutex_unlock(&pus_obcp_infoList[i].mutex))
+		{
+			return 0;
+		}
+	}
+
+	return cont;
+}
+
+uint32_t pus_obcp_getObcpLoadedInactives()
+{
+	if(!pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	uint32_t cont = 0;
+	for(size_t i = 0; i < pus_obcp_ObcpLimit; i++)
+	{
+		if(0 != pthread_mutex_lock(&pus_obcp_infoList[i].mutex))
+		{
+			return 0;
+		}
+
+		if( PUS_OBCP_STATUS_INACTIVE == pus_obcp_infoList[i].status)
+		{
+			cont++;
+		}
+
+		if(0 != pthread_mutex_unlock(&pus_obcp_infoList[i].mutex))
+		{
+			return 0;
+		}
+	}
+
+	return cont;
+}
+
+uint32_t pus_obcp_getObcpSlotNotLoaded()
+{
+	if(!pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	uint32_t cont = 0;
+	for(size_t i = 0; i < pus_obcp_ObcpLimit; i++)
+	{
+		if(0 != pthread_mutex_lock(&pus_obcp_infoList[i].mutex))
+		{
+			return 0;
+		}
+
+		if( PUS_OBCP_STATUS_UNLOAD == pus_obcp_infoList[i].status)
+		{
+			cont++;
+		}
+
+		if(0 != pthread_mutex_unlock(&pus_obcp_infoList[i].mutex))
+		{
+			return 0;
+		}
+	}
+
+	return cont;
+}
 
 bool pus_obcp_IsSameObcpId(pusSt18ObcpId_t* id1, pusSt18ObcpId_t* id2)
 {
@@ -169,6 +283,8 @@ pusError_t pus_obcp_loadObcp( pusSt18ObcpId_t* id, pusSt18ObcpCode_t* code )
         if( pus_obcp_infoList[i].status == PUS_OBCP_STATUS_UNLOAD )
         {
         	pus_obcp_setLoadInfo(&pus_obcp_infoList[i], id, PUS_OBCP_STATUS_INACTIVE, code);
+
+        	printf("LOADING IN %d\n", i);
 
             if(0 != pthread_mutex_unlock(&pus_obcp_infoList[i].mutex))
 			{
@@ -310,6 +426,27 @@ pusError_t pus_obcp_setStatusAferExecution(pusObcpInfo_t* obcpInfo)
 
 	return PUS_NO_ERROR;
 }
+
+pusError_t pus_obcp_setConfirmationStatus(pusSt18ObcpId_t* id, pusSt18ObcpConfirmationStatus_t status)
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+		printf("ASDSDAASD\n");
+		return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	pus_obcp_infoList[index].confirmation = status;
+
+	return PUS_NO_ERROR;
+}
+
+
 
 /////////////
 pusError_t pus_obcp_executeCode(pusObcpInfo_t* obcpInfo)

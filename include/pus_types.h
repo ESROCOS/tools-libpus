@@ -86,6 +86,8 @@ typedef asn1SccPusSt18ObcpChecksum pusSt18ObcpChecksum_t; //! Obcp procedure che
 typedef asn1SccPusSt18ObservabilityLevel pusSt18ObservabilityLevel_t; //! Obcp observability level
 typedef asn1SccPusUInt32 pusSt18ObcpStepId_t; //! OBCP step id
 typedef asn1SccPusUInt32 pusSt18ObcpStatus_t; //! OBCP status
+typedef asn1SccPusUInt32 pusSt18ObcpConfirmationStatus_t; //! OBCP status
+
 
 typedef asn1SccPusSt20OnBoardParameterId pusSt20OnBoardParamId_t; //!< Identifier of on-board parameters
 
