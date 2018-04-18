@@ -7,6 +7,7 @@
 #include "pus_types.h"
 
 #include "pus_st05_config.h"
+#include "pus_st20_config.h"
 
 void onboardsoftware_startup()
 {
@@ -18,6 +19,10 @@ void onboardsoftware_PI_debugTrigger()
 {
     /* Write your code here! */
 	int test = 0;
+	pusSt20OnBoardParamId_t changeHkParam = SET_HK_OUT_OF_RANGE;
+	pusSt03ParamId_t hkParam = HK_PARAM_BOOL01;
+	pusStoredParam_t value;
+	pusSt01FailureCode_t error;
 
 	switch(test)
 	{
@@ -27,11 +32,16 @@ void onboardsoftware_PI_debugTrigger()
 			pusSt05Event_t event;
 			pus_events_createEVENT_INFO_01(&event, 23, 54);
 			onboardsoftware_RI_pushNewEvent(&event);
+			onboardsoftware_RI_getOnBoardParam(&changeHkParam, &value, &error);
+			if (PUS_NO_ERROR == error && value == 1) {
+				onboardsoftware_RI_setParamValue(&hkParam, 1); //Sets HK_PARAM_BOOL01 out of range
+				onboardsoftware_RI_setOnBoardParam(&changeHkParam, 0);
+			}
 			break;
 		}
 		case 1:
 		{
-
+			break;
 		}
 		default:
 			printf("No test\n");

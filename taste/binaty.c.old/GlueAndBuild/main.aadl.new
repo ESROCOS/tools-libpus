@@ -1,0 +1,24 @@
+
+--  FILE GENERATED AUTOMATICALLY, DO NOT EDIT
+--  This file is used internally by the Ocarina code generator
+--  to list all AADL files used, the name of the generator and AADL
+--  property files of relevance.
+system ASSERT_System
+properties
+ Ocarina_Config::AADL_Files => ("__iv_1_3.aadl", "__dv_1_3.aadl", "vt_trigger_tcdispatchtrigger_CV_Thread.aadl", "vt_trigger_debugeventtrigger_CV_Thread.aadl", "tcdispatch_CV_Thread.aadl", "st03_CV_Thread.aadl", "vt_tcqueue_newtc_CV_Thread.aadl", "st05_CV_Thread.aadl", "vt_st19_eventactiontrigger_CV_Thread.aadl", "vt_trigger_eventactiontrigger_CV_Thread.aadl", "vt_ground_newtm_CV_Thread.aadl", "vt_events_debugeventstrigger_CV_Thread.aadl", "vt_trigger_tmdispatchtrigger_CV_Thread.aadl", "vt_trigger_eventreporttrigger_CV_Thread.aadl", "tmdispatch_CV_Thread.aadl", "vt_ground_triggertmgui_CV_Thread.aadl", "process.aadl", "vt_trigger_pmontrigger_CV_Thread.aadl", "vt_st12_pmontrigger_CV_Thread.aadl", "vt_trigger_hkreporttrigger_CV_Thread.aadl", "onboardsoftware_CV_Thread.aadl", "D_view.aadl", "ocarina_components.aadl", "TASTE_IV_Properties.aadl", "TASTE_DV_Properties.aadl");
+ Ocarina_Config::Generator => polyorb_hi_c;
+ Ocarina_Config::Generator_Options => ();
+ Ocarina_Config::AADL_Version => AADLv2;
+ Ocarina_Config::Needed_Property_Sets => (
+   
+  "data_model",
+  "base_types",
+  value (Ocarina_Config::arinc653_properties),
+  value (Ocarina_Config::Deployment),
+  value (Ocarina_Config::Cheddar_Properties),
+  value (Ocarina_Config::TASTE_Properties));
+  Ocarina_Config::Root_System_name => "deploymentview.final";
+end ASSERT_System;
+
+system implementation ASSERT_System.Impl
+end ASSERT_System.Impl;

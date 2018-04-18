@@ -1,0 +1,27 @@
+-- Automatically Generated - For use with AADL2GlueC only - Do NOT modify! --
+
+SUBPROGRAM setOnBoardParam
+FEATURES
+	paramId:IN PARAMETER DataView::PusSt20OnBoardParameterId {encoding=>NATIVE;};
+	paramValue:IN PARAMETER DataView::PusSt20StoredParam {encoding=>NATIVE;};
+END setOnBoardParam;
+
+SUBPROGRAM IMPLEMENTATION setOnBoardParam.C
+PROPERTIES
+	FV_Name => "onboardparams";
+	Source_Language => C;
+END setOnBoardParam.C;
+
+SUBPROGRAM getOnBoardParam
+FEATURES
+	paramId:IN PARAMETER DataView::PusSt20OnBoardParameterId {encoding=>NATIVE;};
+	paramValue:OUT PARAMETER DataView::PusSt20StoredParam {encoding=>NATIVE;};
+	isAvailable:OUT PARAMETER DataView::PusSt01FailureCode {encoding=>NATIVE;};
+END getOnBoardParam;
+
+SUBPROGRAM IMPLEMENTATION getOnBoardParam.C
+PROPERTIES
+	FV_Name => "onboardparams";
+	Source_Language => C;
+END getOnBoardParam.C;
+

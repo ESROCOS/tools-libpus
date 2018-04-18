@@ -1,0 +1,46 @@
+-- Automatically Generated - For use with AADL2GlueC only - Do NOT modify! --
+
+SUBPROGRAM getNextEvent
+FEATURES
+	actualCounter:IN PARAMETER DataView::PusUInt64 {encoding=>NATIVE;};
+	eventInfo:OUT PARAMETER DataView::PusSt05Event {encoding=>NATIVE;};
+	nextCounter:OUT PARAMETER DataView::PusUInt64 {encoding=>NATIVE;};
+END getNextEvent;
+
+SUBPROGRAM IMPLEMENTATION getNextEvent.C
+PROPERTIES
+	FV_Name => "events";
+	Source_Language => C;
+END getNextEvent.C;
+
+SUBPROGRAM pushNewEvent
+FEATURES
+	eventInfo:IN PARAMETER DataView::PusSt05Event {encoding=>NATIVE;};
+END pushNewEvent;
+
+SUBPROGRAM IMPLEMENTATION pushNewEvent.C
+PROPERTIES
+	FV_Name => "events";
+	Source_Language => C;
+END pushNewEvent.C;
+
+SUBPROGRAM debugEventsTrigger
+END debugEventsTrigger;
+
+SUBPROGRAM IMPLEMENTATION debugEventsTrigger.C
+PROPERTIES
+	FV_Name => "events";
+	Source_Language => C;
+END debugEventsTrigger.C;
+
+SUBPROGRAM check_queue
+FEATURES
+	res:IN PARAMETER DataView::T_Boolean {encoding=>NATIVE;};
+END check_queue;
+
+SUBPROGRAM IMPLEMENTATION check_queue.C
+PROPERTIES
+	FV_Name => "events";
+	Source_Language => C;
+END check_queue.C;
+

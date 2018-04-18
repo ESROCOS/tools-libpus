@@ -1,0 +1,94 @@
+-- Automatically Generated - For use with AADL2GlueC only - Do NOT modify! --
+
+SUBPROGRAM artificial_TmDispatchTrigger
+END artificial_TmDispatchTrigger;
+
+SUBPROGRAM IMPLEMENTATION artificial_TmDispatchTrigger.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END artificial_TmDispatchTrigger.C;
+
+SUBPROGRAM TmDispatchTrigger
+END TmDispatchTrigger;
+
+SUBPROGRAM IMPLEMENTATION TmDispatchTrigger.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END TmDispatchTrigger.C;
+
+SUBPROGRAM tmTrigger_vt
+END tmTrigger_vt;
+
+SUBPROGRAM IMPLEMENTATION tmTrigger_vt.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END tmTrigger_vt.C;
+
+SUBPROGRAM HkReportTrigger_vt
+END HkReportTrigger_vt;
+
+SUBPROGRAM IMPLEMENTATION HkReportTrigger_vt.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END HkReportTrigger_vt.C;
+
+SUBPROGRAM PmonTrigger_vt
+END PmonTrigger_vt;
+
+SUBPROGRAM IMPLEMENTATION PmonTrigger_vt.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END PmonTrigger_vt.C;
+
+SUBPROGRAM EventReportTrigger_vt
+END EventReportTrigger_vt;
+
+SUBPROGRAM IMPLEMENTATION EventReportTrigger_vt.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END EventReportTrigger_vt.C;
+
+SUBPROGRAM tcTrigger_vt
+END tcTrigger_vt;
+
+SUBPROGRAM IMPLEMENTATION tcTrigger_vt.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END tcTrigger_vt.C;
+
+SUBPROGRAM debugEventsTrigger_vt
+END debugEventsTrigger_vt;
+
+SUBPROGRAM IMPLEMENTATION debugEventsTrigger_vt.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END debugEventsTrigger_vt.C;
+
+SUBPROGRAM EventActionTrigger_vt
+END EventActionTrigger_vt;
+
+SUBPROGRAM IMPLEMENTATION EventActionTrigger_vt.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END EventActionTrigger_vt.C;
+
+SUBPROGRAM check_queue_vt
+FEATURES
+	res:IN PARAMETER DataView::T_Boolean {encoding=>NATIVE;};
+END check_queue_vt;
+
+SUBPROGRAM IMPLEMENTATION check_queue_vt.C
+PROPERTIES
+	FV_Name => "vt_trigger_tmdispatchtrigger";
+	Source_Language => C;
+END check_queue_vt.C;
+

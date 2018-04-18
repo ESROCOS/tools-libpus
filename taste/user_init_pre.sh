@@ -20,3 +20,10 @@ ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/tools-libp
 ORCHESTRATOR_OPTIONS+=" -l x86_partition:/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/libesrocos_pus_mission_test_01_st08_functions.so"
 
 echo "ORCHESTRATOR_OPTIONS=$ORCHESTRATOR_OPTIONS" 
+<<<<<<< HEAD
+=======
+
+#gcc -I. main.c libEsrocosUpy.a -o main  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wswitch-enum -lpthread -lrt -lm -L/home/esrocos/esrocos-ws-pus/tools-libpus/debug/src -lesrocos_pus -L/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01 -lesrocos_pus_mission_test_01 -lesrocos_pus_mission_test_01_st08_functions  -L/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1 -lesrocos_pus_asn1 -lesrocos_pus_asn1common
+
+
+>>>>>>> taste_working

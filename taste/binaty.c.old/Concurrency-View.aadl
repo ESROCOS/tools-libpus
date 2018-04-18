@@ -1,0 +1,2969 @@
+--  TASTE - Warning: This is NOT the real Concurrency view  --
+--  This file was automatically generated and should remain read-only
+--  Open it with TASTE-IV
+--  The only intended use of this file is visualization - not processing.
+
+package generated_cv::IV::ConcurrencyView
+public
+with dataview; 
+with exportedComponent::FV;
+with taste;
+
+  --{ interfaceview obj6480 10 10
+  --TASTE-generated concurrency view
+  --For visualization purposes.
+  --}
+
+  system exportedComponent
+  end exportedComponent;
+
+  system implementation exportedComponent.others
+    subcomponents
+	ground : system interfaceview::IV::PASSIVE_ground.others;
+	tcqueue : system interfaceview::IV::PASSIVE_tcqueue.others;
+	tcdispatch : system interfaceview::IV::THREAD_tcdispatch.others;
+	tmdispatch : system interfaceview::IV::THREAD_tmdispatch.others;
+	tmqueue : system interfaceview::IV::PASSIVE_tmqueue.others;
+	st17 : system interfaceview::IV::PASSIVE_st17.others;
+	st01 : system interfaceview::IV::PASSIVE_st01.others;
+	st08 : system interfaceview::IV::PASSIVE_st08.others;
+	onboardapid : system interfaceview::IV::PASSIVE_onboardapid.others;
+	st09 : system interfaceview::IV::PASSIVE_st09.others;
+	timereportapid : system interfaceview::IV::PASSIVE_timereportapid.others;
+	events : system interfaceview::IV::PASSIVE_events.others;
+	st05 : system interfaceview::IV::THREAD_st05.others;
+	st19 : system interfaceview::IV::PASSIVE_st19.others;
+	housekeeping : system interfaceview::IV::PASSIVE_housekeeping.others;
+	st03 : system interfaceview::IV::THREAD_st03.others;
+	st12 : system interfaceview::IV::PASSIVE_st12.others;
+	st11 : system interfaceview::IV::PASSIVE_st11.others;
+	st18 : system interfaceview::IV::PASSIVE_st18.others;
+	obcpengine : system interfaceview::IV::PASSIVE_obcpengine.others;
+	st23 : system interfaceview::IV::PASSIVE_st23.others;
+	filemanagement : system interfaceview::IV::PASSIVE_filemanagement.others;
+	st20 : system interfaceview::IV::PASSIVE_st20.others;
+	onboardparams : system interfaceview::IV::PASSIVE_onboardparams.others;
+	trigger : system interfaceview::IV::PASSIVE_trigger.others;
+	onboardsoftware : system interfaceview::IV::THREAD_onboardsoftware.others;
+	x86_partition_taste_api : system interfaceview::IV::PASSIVE_x86_partition_taste_api.others;
+	vt_ground_newtm : system interfaceview::IV::THREAD_vt_ground_newtm.others;
+	vt_ground_triggertmgui : system interfaceview::IV::THREAD_vt_ground_triggertmgui.others;
+	vt_tcqueue_newtc : system interfaceview::IV::THREAD_vt_tcqueue_newtc.others;
+	vt_events_debugeventstrigger : system interfaceview::IV::THREAD_vt_events_debugeventstrigger.others;
+	vt_st19_eventactiontrigger : system interfaceview::IV::THREAD_vt_st19_eventactiontrigger.others;
+	vt_st12_pmontrigger : system interfaceview::IV::THREAD_vt_st12_pmontrigger.others;
+	vt_trigger_hkreporttrigger : system interfaceview::IV::THREAD_vt_trigger_hkreporttrigger.others;
+	vt_trigger_tmdispatchtrigger : system interfaceview::IV::THREAD_vt_trigger_tmdispatchtrigger.others;
+	vt_trigger_eventactiontrigger : system interfaceview::IV::THREAD_vt_trigger_eventactiontrigger.others;
+	vt_trigger_tcdispatchtrigger : system interfaceview::IV::THREAD_vt_trigger_tcdispatchtrigger.others;
+	vt_trigger_pmontrigger : system interfaceview::IV::THREAD_vt_trigger_pmontrigger.others;
+	vt_trigger_eventreporttrigger : system interfaceview::IV::THREAD_vt_trigger_eventreporttrigger.others;
+	vt_trigger_debugeventtrigger : system interfaceview::IV::THREAD_vt_trigger_debugeventtrigger.others;
+    connections
+	sporadic_artificial_newTc : subprogram access THREAD_vt_tcqueue_newtc.artificial_newTc -> PASSIVE_ground.newTc;
+	unprotected_ground_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.ground_has_pending_msg -> PASSIVE_ground.check_queue;
+	unprotected_tcqueue_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.tcqueue_has_pending_msg -> PASSIVE_tcqueue.check_queue;
+	protected_tcRequest : subprogram access PASSIVE_tcqueue.tcRequest -> THREAD_tcdispatch.tcRequest;
+	protected_tc17 : subprogram access PASSIVE_st17.tc17 -> THREAD_tcdispatch.tc17;
+	protected_tc08 : subprogram access PASSIVE_st08.tc08 -> THREAD_tcdispatch.tc08;
+	protected_tc19 : subprogram access PASSIVE_st19.tc19 -> THREAD_tcdispatch.tc19;
+	protected_tc09 : subprogram access PASSIVE_st09.tc09 -> THREAD_tcdispatch.tc09;
+	protected_tc12 : subprogram access PASSIVE_st12.tc12 -> THREAD_tcdispatch.tc12;
+	protected_tc11 : subprogram access PASSIVE_st11.tc11 -> THREAD_tcdispatch.tc11;
+	protected_tc18 : subprogram access PASSIVE_st18.tc18 -> THREAD_tcdispatch.tc18;
+	protected_tc23 : subprogram access PASSIVE_st23.tc23 -> THREAD_tcdispatch.tc23;
+	protected_tc20 : subprogram access PASSIVE_st20.tc20 -> THREAD_tcdispatch.tc20;
+	unprotected_tcdispatch_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.tcdispatch_has_pending_msg -> THREAD_tcdispatch.check_queue;
+	unprotected_tcqueue_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.tcqueue_has_pending_msg -> THREAD_tcdispatch.check_queue_vt;
+	protected_incCount : subprogram access PASSIVE_st09.incCount -> THREAD_tcdispatch.incCount_vt;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> THREAD_tcdispatch.ACK_vt;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> THREAD_tcdispatch.getApid_vt;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> THREAD_tcdispatch.getSequenceCount_vt;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> THREAD_tcdispatch.newTm_vt;
+	protected_getNextEvent : subprogram access PASSIVE_events.getNextEvent -> THREAD_tcdispatch.getNextEvent_vt;
+	sporadic_artificial_newTc : subprogram access THREAD_vt_tcqueue_newtc.artificial_newTc -> THREAD_tcdispatch.newTc_vt;
+	protected_pushNewEvent : subprogram access PASSIVE_events.pushNewEvent -> THREAD_tcdispatch.pushNewEvent_vt;
+	protected_getParamValue : subprogram access PASSIVE_housekeeping.getParamValue -> THREAD_tcdispatch.getParamValue_vt;
+	protected_loadDirect : subprogram access PASSIVE_obcpengine.loadDirect -> THREAD_tcdispatch.loadDirect_vt;
+	protected_loadReference : subprogram access PASSIVE_obcpengine.loadReference -> THREAD_tcdispatch.loadReference_vt;
+	protected_getOnBoardParam : subprogram access PASSIVE_onboardparams.getOnBoardParam -> THREAD_tcdispatch.getOnBoardParam_vt;
+	protected_setOnBoardParam : subprogram access PASSIVE_onboardparams.setOnBoardParam -> THREAD_tcdispatch.setOnBoardParam_vt;
+	protected_copy : subprogram access PASSIVE_filemanagement.copy -> THREAD_tcdispatch.copy_vt;
+	protected_delete : subprogram access PASSIVE_filemanagement.delete -> THREAD_tcdispatch.delete_vt;
+	protected_create : subprogram access PASSIVE_filemanagement.create -> THREAD_tcdispatch.create_vt;
+	protected_getAttributes : subprogram access PASSIVE_filemanagement.getAttributes -> THREAD_tcdispatch.getAttributes_vt;
+	sporadic_artificial_newTm : subprogram access THREAD_vt_ground_newtm.artificial_newTm -> THREAD_tmdispatch.newTm;
+	protected_tmRequest : subprogram access PASSIVE_tmqueue.tmRequest -> THREAD_tmdispatch.tmRequest;
+	unprotected_tmdispatch_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.tmdispatch_has_pending_msg -> THREAD_tmdispatch.check_queue;
+	protected_incCount : subprogram access PASSIVE_st09.incCount -> THREAD_tmdispatch.incCount_vt;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> THREAD_tmdispatch.newTm_vt;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> THREAD_tmdispatch.getSequenceCount_vt;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> THREAD_tmdispatch.getApid_vt;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> THREAD_tmdispatch.ACK_vt;
+	protected_incCount : subprogram access PASSIVE_st09.incCount -> PASSIVE_tmqueue.incCount;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st17.ACK;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> PASSIVE_st17.getApid;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> PASSIVE_st17.getSequenceCount;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> PASSIVE_st17.newTm;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> PASSIVE_st01.newTm;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> PASSIVE_st01.getSequenceCount;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> PASSIVE_st01.getApid;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st08.ACK;
+	unprotected_getApid : subprogram access PASSIVE_timereportapid.getApid -> PASSIVE_st09.getApid;
+	protected_getSequenceCount : subprogram access PASSIVE_timereportapid.getSequenceCount -> PASSIVE_st09.getSequenceCount;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st09.ACK;
+	unprotected_events_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.events_has_pending_msg -> PASSIVE_events.check_queue;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> THREAD_st05.newTmNoInherit;
+	protected_getNextEvent : subprogram access PASSIVE_events.getNextEvent -> THREAD_st05.getNextEvent;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> THREAD_st05.getApid;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> THREAD_st05.getSequenceCount;
+	unprotected_st05_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.st05_has_pending_msg -> THREAD_st05.check_queue;
+	protected_incCount : subprogram access PASSIVE_st09.incCount -> THREAD_st05.incCount_vt;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> THREAD_st05.newTm_vt;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> THREAD_st05.getSequenceCount_vt;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> THREAD_st05.getApid_vt;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> THREAD_st05.ACK_vt;
+	unprotected_events_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.events_has_pending_msg -> THREAD_st05.check_queue_vt;
+	protected_getNextEvent : subprogram access PASSIVE_events.getNextEvent -> PASSIVE_st19.getNextEvent;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st19.ACK;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> PASSIVE_st19.newTm;
+	sporadic_artificial_newTc : subprogram access THREAD_vt_tcqueue_newtc.artificial_newTc -> PASSIVE_st19.newTc;
+	unprotected_st19_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.st19_has_pending_msg -> PASSIVE_st19.check_queue;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> THREAD_st03.newTm;
+	protected_getParamValue : subprogram access PASSIVE_housekeeping.getParamValue -> THREAD_st03.getParamValue;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> THREAD_st03.getApid;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> THREAD_st03.getSequenceCount;
+	unprotected_st03_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.st03_has_pending_msg -> THREAD_st03.check_queue;
+	protected_incCount : subprogram access PASSIVE_st09.incCount -> THREAD_st03.incCount_vt;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> THREAD_st03.newTm_vt;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> THREAD_st03.getSequenceCount_vt;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> THREAD_st03.getApid_vt;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> THREAD_st03.ACK_vt;
+	protected_pushNewEvent : subprogram access PASSIVE_events.pushNewEvent -> PASSIVE_st12.pushNewEvent;
+	protected_getParamValue : subprogram access PASSIVE_housekeeping.getParamValue -> PASSIVE_st12.getParamValue;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st12.ACK;
+	unprotected_st12_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.st12_has_pending_msg -> PASSIVE_st12.check_queue;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st11.ACK;
+	sporadic_artificial_newTc : subprogram access THREAD_vt_tcqueue_newtc.artificial_newTc -> PASSIVE_st11.newTc;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st18.ACK;
+	protected_loadDirect : subprogram access PASSIVE_obcpengine.loadDirect -> PASSIVE_st18.loadDirect;
+	protected_loadReference : subprogram access PASSIVE_obcpengine.loadReference -> PASSIVE_st18.loadReference;
+	sporadic_artificial_newTc : subprogram access THREAD_vt_tcqueue_newtc.artificial_newTc -> PASSIVE_obcpengine.newTc;
+	protected_getOnBoardParam : subprogram access PASSIVE_onboardparams.getOnBoardParam -> PASSIVE_obcpengine.getOnBoardParam;
+	protected_setOnBoardParam : subprogram access PASSIVE_onboardparams.setOnBoardParam -> PASSIVE_obcpengine.setOnBoardParam;
+	protected_pushNewEvent : subprogram access PASSIVE_events.pushNewEvent -> PASSIVE_obcpengine.pushNewEvent;
+	protected_copy : subprogram access PASSIVE_filemanagement.copy -> PASSIVE_st23.copy;
+	protected_delete : subprogram access PASSIVE_filemanagement.delete -> PASSIVE_st23.delete;
+	protected_create : subprogram access PASSIVE_filemanagement.create -> PASSIVE_st23.create;
+	protected_getAttributes : subprogram access PASSIVE_filemanagement.getAttributes -> PASSIVE_st23.getAttributes;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> PASSIVE_st23.newTm;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> PASSIVE_st23.getApid;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> PASSIVE_st23.getSequenceCount;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st23.ACK;
+	protected_setOnBoardParam : subprogram access PASSIVE_onboardparams.setOnBoardParam -> PASSIVE_st20.setOnBoardParam;
+	protected_getOnBoardParam : subprogram access PASSIVE_onboardparams.getOnBoardParam -> PASSIVE_st20.getOnBoardParam;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> PASSIVE_st20.newTm;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> PASSIVE_st20.ACK;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> PASSIVE_st20.getApid;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> PASSIVE_st20.getSequenceCount;
+	sporadic_tmTrigger : subprogram access THREAD_tmdispatch.tmTrigger -> PASSIVE_trigger.tmTrigger;
+	sporadic_HkReportTrigger : subprogram access THREAD_st03.HkReportTrigger -> PASSIVE_trigger.HkReportTrigger;
+	sporadic_artificial_PmonTrigger : subprogram access THREAD_vt_st12_pmontrigger.artificial_PmonTrigger -> PASSIVE_trigger.PmonTrigger;
+	sporadic_EventReportTrigger : subprogram access THREAD_st05.EventReportTrigger -> PASSIVE_trigger.EventReportTrigger;
+	sporadic_tcTrigger : subprogram access THREAD_tcdispatch.tcTrigger -> PASSIVE_trigger.tcTrigger;
+	sporadic_artificial_debugEventsTrigger : subprogram access THREAD_vt_events_debugeventstrigger.artificial_debugEventsTrigger -> PASSIVE_trigger.debugEventsTrigger;
+	sporadic_artificial_EventActionTrigger : subprogram access THREAD_vt_st19_eventactiontrigger.artificial_EventActionTrigger -> PASSIVE_trigger.EventActionTrigger;
+	unprotected_trigger_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.trigger_has_pending_msg -> PASSIVE_trigger.check_queue;
+	protected_setParamValue : subprogram access PASSIVE_housekeeping.setParamValue -> THREAD_onboardsoftware.setParamValue;
+	protected_getParamValue : subprogram access PASSIVE_housekeeping.getParamValue -> THREAD_onboardsoftware.getParamValue;
+	protected_pushNewEvent : subprogram access PASSIVE_events.pushNewEvent -> THREAD_onboardsoftware.pushNewEvent;
+	protected_setOnBoardParam : subprogram access PASSIVE_onboardparams.setOnBoardParam -> THREAD_onboardsoftware.setOnBoardParam;
+	protected_getOnBoardParam : subprogram access PASSIVE_onboardparams.getOnBoardParam -> THREAD_onboardsoftware.getOnBoardParam;
+	unprotected_onboardsoftware_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.onboardsoftware_has_pending_msg -> THREAD_onboardsoftware.check_queue;
+	unprotected_events_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.events_has_pending_msg -> THREAD_onboardsoftware.check_queue_vt;
+	protected_newTm : subprogram access PASSIVE_ground.newTm -> THREAD_vt_ground_newtm.newTm;
+	sporadic_artificial_newTc : subprogram access THREAD_vt_tcqueue_newtc.artificial_newTc -> THREAD_vt_ground_newtm.newTc_vt;
+	unprotected_ground_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.ground_has_pending_msg -> THREAD_vt_ground_newtm.check_queue_vt;
+	protected_triggerTmGUI : subprogram access PASSIVE_ground.triggerTmGUI -> THREAD_vt_ground_triggertmgui.triggerTmGUI;
+	sporadic_artificial_newTc : subprogram access THREAD_vt_tcqueue_newtc.artificial_newTc -> THREAD_vt_ground_triggertmgui.newTc_vt;
+	unprotected_ground_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.ground_has_pending_msg -> THREAD_vt_ground_triggertmgui.check_queue_vt;
+	protected_newTc : subprogram access PASSIVE_tcqueue.newTc -> THREAD_vt_tcqueue_newtc.newTc;
+	unprotected_tcqueue_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.tcqueue_has_pending_msg -> THREAD_vt_tcqueue_newtc.check_queue_vt;
+	protected_debugEventsTrigger : subprogram access PASSIVE_events.debugEventsTrigger -> THREAD_vt_events_debugeventstrigger.debugEventsTrigger;
+	unprotected_events_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.events_has_pending_msg -> THREAD_vt_events_debugeventstrigger.check_queue_vt;
+	protected_EventActionTrigger : subprogram access PASSIVE_st19.EventActionTrigger -> THREAD_vt_st19_eventactiontrigger.EventActionTrigger;
+	protected_incCount : subprogram access PASSIVE_st09.incCount -> THREAD_vt_st19_eventactiontrigger.incCount_vt;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> THREAD_vt_st19_eventactiontrigger.newTm_vt;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> THREAD_vt_st19_eventactiontrigger.getSequenceCount_vt;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> THREAD_vt_st19_eventactiontrigger.getApid_vt;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> THREAD_vt_st19_eventactiontrigger.ACK_vt;
+	unprotected_events_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.events_has_pending_msg -> THREAD_vt_st19_eventactiontrigger.check_queue_vt;
+	protected_getNextEvent : subprogram access PASSIVE_events.getNextEvent -> THREAD_vt_st19_eventactiontrigger.getNextEvent_vt;
+	sporadic_artificial_newTc : subprogram access THREAD_vt_tcqueue_newtc.artificial_newTc -> THREAD_vt_st19_eventactiontrigger.newTc_vt;
+	protected_PmonTrigger : subprogram access PASSIVE_st12.PmonTrigger -> THREAD_vt_st12_pmontrigger.PmonTrigger;
+	protected_incCount : subprogram access PASSIVE_st09.incCount -> THREAD_vt_st12_pmontrigger.incCount_vt;
+	protected_newTm : subprogram access PASSIVE_tmqueue.newTm -> THREAD_vt_st12_pmontrigger.newTm_vt;
+	protected_getSequenceCount : subprogram access PASSIVE_onboardapid.getSequenceCount -> THREAD_vt_st12_pmontrigger.getSequenceCount_vt;
+	unprotected_getApid : subprogram access PASSIVE_onboardapid.getApid -> THREAD_vt_st12_pmontrigger.getApid_vt;
+	protected_ACK : subprogram access PASSIVE_st01.ACK -> THREAD_vt_st12_pmontrigger.ACK_vt;
+	unprotected_events_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.events_has_pending_msg -> THREAD_vt_st12_pmontrigger.check_queue_vt;
+	protected_pushNewEvent : subprogram access PASSIVE_events.pushNewEvent -> THREAD_vt_st12_pmontrigger.pushNewEvent_vt;
+	protected_getParamValue : subprogram access PASSIVE_housekeeping.getParamValue -> THREAD_vt_st12_pmontrigger.getParamValue_vt;
+	protected_HkReportTrigger : subprogram access PASSIVE_trigger.HkReportTrigger -> THREAD_vt_trigger_hkreporttrigger.HkReportTrigger;
+	sporadic_tmTrigger : subprogram access THREAD_tmdispatch.tmTrigger -> THREAD_vt_trigger_hkreporttrigger.tmTrigger_vt;
+	sporadic_HkReportTrigger : subprogram access THREAD_st03.HkReportTrigger -> THREAD_vt_trigger_hkreporttrigger.HkReportTrigger_vt;
+	sporadic_artificial_PmonTrigger : subprogram access THREAD_vt_st12_pmontrigger.artificial_PmonTrigger -> THREAD_vt_trigger_hkreporttrigger.PmonTrigger_vt;
+	sporadic_EventReportTrigger : subprogram access THREAD_st05.EventReportTrigger -> THREAD_vt_trigger_hkreporttrigger.EventReportTrigger_vt;
+	sporadic_tcTrigger : subprogram access THREAD_tcdispatch.tcTrigger -> THREAD_vt_trigger_hkreporttrigger.tcTrigger_vt;
+	sporadic_artificial_debugEventsTrigger : subprogram access THREAD_vt_events_debugeventstrigger.artificial_debugEventsTrigger -> THREAD_vt_trigger_hkreporttrigger.debugEventsTrigger_vt;
+	sporadic_artificial_EventActionTrigger : subprogram access THREAD_vt_st19_eventactiontrigger.artificial_EventActionTrigger -> THREAD_vt_trigger_hkreporttrigger.EventActionTrigger_vt;
+	unprotected_trigger_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.trigger_has_pending_msg -> THREAD_vt_trigger_hkreporttrigger.check_queue_vt;
+	protected_TmDispatchTrigger : subprogram access PASSIVE_trigger.TmDispatchTrigger -> THREAD_vt_trigger_tmdispatchtrigger.TmDispatchTrigger;
+	sporadic_tmTrigger : subprogram access THREAD_tmdispatch.tmTrigger -> THREAD_vt_trigger_tmdispatchtrigger.tmTrigger_vt;
+	sporadic_HkReportTrigger : subprogram access THREAD_st03.HkReportTrigger -> THREAD_vt_trigger_tmdispatchtrigger.HkReportTrigger_vt;
+	sporadic_artificial_PmonTrigger : subprogram access THREAD_vt_st12_pmontrigger.artificial_PmonTrigger -> THREAD_vt_trigger_tmdispatchtrigger.PmonTrigger_vt;
+	sporadic_EventReportTrigger : subprogram access THREAD_st05.EventReportTrigger -> THREAD_vt_trigger_tmdispatchtrigger.EventReportTrigger_vt;
+	sporadic_tcTrigger : subprogram access THREAD_tcdispatch.tcTrigger -> THREAD_vt_trigger_tmdispatchtrigger.tcTrigger_vt;
+	sporadic_artificial_debugEventsTrigger : subprogram access THREAD_vt_events_debugeventstrigger.artificial_debugEventsTrigger -> THREAD_vt_trigger_tmdispatchtrigger.debugEventsTrigger_vt;
+	sporadic_artificial_EventActionTrigger : subprogram access THREAD_vt_st19_eventactiontrigger.artificial_EventActionTrigger -> THREAD_vt_trigger_tmdispatchtrigger.EventActionTrigger_vt;
+	unprotected_trigger_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.trigger_has_pending_msg -> THREAD_vt_trigger_tmdispatchtrigger.check_queue_vt;
+	protected_EventActionTrigger : subprogram access PASSIVE_trigger.EventActionTrigger -> THREAD_vt_trigger_eventactiontrigger.EventActionTrigger;
+	sporadic_tmTrigger : subprogram access THREAD_tmdispatch.tmTrigger -> THREAD_vt_trigger_eventactiontrigger.tmTrigger_vt;
+	sporadic_HkReportTrigger : subprogram access THREAD_st03.HkReportTrigger -> THREAD_vt_trigger_eventactiontrigger.HkReportTrigger_vt;
+	sporadic_artificial_PmonTrigger : subprogram access THREAD_vt_st12_pmontrigger.artificial_PmonTrigger -> THREAD_vt_trigger_eventactiontrigger.PmonTrigger_vt;
+	sporadic_EventReportTrigger : subprogram access THREAD_st05.EventReportTrigger -> THREAD_vt_trigger_eventactiontrigger.EventReportTrigger_vt;
+	sporadic_tcTrigger : subprogram access THREAD_tcdispatch.tcTrigger -> THREAD_vt_trigger_eventactiontrigger.tcTrigger_vt;
+	sporadic_artificial_debugEventsTrigger : subprogram access THREAD_vt_events_debugeventstrigger.artificial_debugEventsTrigger -> THREAD_vt_trigger_eventactiontrigger.debugEventsTrigger_vt;
+	sporadic_artificial_EventActionTrigger : subprogram access THREAD_vt_st19_eventactiontrigger.artificial_EventActionTrigger -> THREAD_vt_trigger_eventactiontrigger.EventActionTrigger_vt;
+	unprotected_trigger_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.trigger_has_pending_msg -> THREAD_vt_trigger_eventactiontrigger.check_queue_vt;
+	protected_TcDispatchTrigger : subprogram access PASSIVE_trigger.TcDispatchTrigger -> THREAD_vt_trigger_tcdispatchtrigger.TcDispatchTrigger;
+	sporadic_tmTrigger : subprogram access THREAD_tmdispatch.tmTrigger -> THREAD_vt_trigger_tcdispatchtrigger.tmTrigger_vt;
+	sporadic_HkReportTrigger : subprogram access THREAD_st03.HkReportTrigger -> THREAD_vt_trigger_tcdispatchtrigger.HkReportTrigger_vt;
+	sporadic_artificial_PmonTrigger : subprogram access THREAD_vt_st12_pmontrigger.artificial_PmonTrigger -> THREAD_vt_trigger_tcdispatchtrigger.PmonTrigger_vt;
+	sporadic_EventReportTrigger : subprogram access THREAD_st05.EventReportTrigger -> THREAD_vt_trigger_tcdispatchtrigger.EventReportTrigger_vt;
+	sporadic_tcTrigger : subprogram access THREAD_tcdispatch.tcTrigger -> THREAD_vt_trigger_tcdispatchtrigger.tcTrigger_vt;
+	sporadic_artificial_debugEventsTrigger : subprogram access THREAD_vt_events_debugeventstrigger.artificial_debugEventsTrigger -> THREAD_vt_trigger_tcdispatchtrigger.debugEventsTrigger_vt;
+	sporadic_artificial_EventActionTrigger : subprogram access THREAD_vt_st19_eventactiontrigger.artificial_EventActionTrigger -> THREAD_vt_trigger_tcdispatchtrigger.EventActionTrigger_vt;
+	unprotected_trigger_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.trigger_has_pending_msg -> THREAD_vt_trigger_tcdispatchtrigger.check_queue_vt;
+	protected_PmonTrigger : subprogram access PASSIVE_trigger.PmonTrigger -> THREAD_vt_trigger_pmontrigger.PmonTrigger;
+	sporadic_tmTrigger : subprogram access THREAD_tmdispatch.tmTrigger -> THREAD_vt_trigger_pmontrigger.tmTrigger_vt;
+	sporadic_HkReportTrigger : subprogram access THREAD_st03.HkReportTrigger -> THREAD_vt_trigger_pmontrigger.HkReportTrigger_vt;
+	sporadic_artificial_PmonTrigger : subprogram access THREAD_vt_st12_pmontrigger.artificial_PmonTrigger -> THREAD_vt_trigger_pmontrigger.PmonTrigger_vt;
+	sporadic_EventReportTrigger : subprogram access THREAD_st05.EventReportTrigger -> THREAD_vt_trigger_pmontrigger.EventReportTrigger_vt;
+	sporadic_tcTrigger : subprogram access THREAD_tcdispatch.tcTrigger -> THREAD_vt_trigger_pmontrigger.tcTrigger_vt;
+	sporadic_artificial_debugEventsTrigger : subprogram access THREAD_vt_events_debugeventstrigger.artificial_debugEventsTrigger -> THREAD_vt_trigger_pmontrigger.debugEventsTrigger_vt;
+	sporadic_artificial_EventActionTrigger : subprogram access THREAD_vt_st19_eventactiontrigger.artificial_EventActionTrigger -> THREAD_vt_trigger_pmontrigger.EventActionTrigger_vt;
+	unprotected_trigger_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.trigger_has_pending_msg -> THREAD_vt_trigger_pmontrigger.check_queue_vt;
+	protected_EventReportTrigger : subprogram access PASSIVE_trigger.EventReportTrigger -> THREAD_vt_trigger_eventreporttrigger.EventReportTrigger;
+	sporadic_tmTrigger : subprogram access THREAD_tmdispatch.tmTrigger -> THREAD_vt_trigger_eventreporttrigger.tmTrigger_vt;
+	sporadic_HkReportTrigger : subprogram access THREAD_st03.HkReportTrigger -> THREAD_vt_trigger_eventreporttrigger.HkReportTrigger_vt;
+	sporadic_artificial_PmonTrigger : subprogram access THREAD_vt_st12_pmontrigger.artificial_PmonTrigger -> THREAD_vt_trigger_eventreporttrigger.PmonTrigger_vt;
+	sporadic_EventReportTrigger : subprogram access THREAD_st05.EventReportTrigger -> THREAD_vt_trigger_eventreporttrigger.EventReportTrigger_vt;
+	sporadic_tcTrigger : subprogram access THREAD_tcdispatch.tcTrigger -> THREAD_vt_trigger_eventreporttrigger.tcTrigger_vt;
+	sporadic_artificial_debugEventsTrigger : subprogram access THREAD_vt_events_debugeventstrigger.artificial_debugEventsTrigger -> THREAD_vt_trigger_eventreporttrigger.debugEventsTrigger_vt;
+	sporadic_artificial_EventActionTrigger : subprogram access THREAD_vt_st19_eventactiontrigger.artificial_EventActionTrigger -> THREAD_vt_trigger_eventreporttrigger.EventActionTrigger_vt;
+	unprotected_trigger_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.trigger_has_pending_msg -> THREAD_vt_trigger_eventreporttrigger.check_queue_vt;
+	protected_debugEventTrigger : subprogram access PASSIVE_trigger.debugEventTrigger -> THREAD_vt_trigger_debugeventtrigger.debugEventTrigger;
+	sporadic_tmTrigger : subprogram access THREAD_tmdispatch.tmTrigger -> THREAD_vt_trigger_debugeventtrigger.tmTrigger_vt;
+	sporadic_HkReportTrigger : subprogram access THREAD_st03.HkReportTrigger -> THREAD_vt_trigger_debugeventtrigger.HkReportTrigger_vt;
+	sporadic_artificial_PmonTrigger : subprogram access THREAD_vt_st12_pmontrigger.artificial_PmonTrigger -> THREAD_vt_trigger_debugeventtrigger.PmonTrigger_vt;
+	sporadic_EventReportTrigger : subprogram access THREAD_st05.EventReportTrigger -> THREAD_vt_trigger_debugeventtrigger.EventReportTrigger_vt;
+	sporadic_tcTrigger : subprogram access THREAD_tcdispatch.tcTrigger -> THREAD_vt_trigger_debugeventtrigger.tcTrigger_vt;
+	sporadic_artificial_debugEventsTrigger : subprogram access THREAD_vt_events_debugeventstrigger.artificial_debugEventsTrigger -> THREAD_vt_trigger_debugeventtrigger.debugEventsTrigger_vt;
+	sporadic_artificial_EventActionTrigger : subprogram access THREAD_vt_st19_eventactiontrigger.artificial_EventActionTrigger -> THREAD_vt_trigger_debugeventtrigger.EventActionTrigger_vt;
+	unprotected_trigger_has_pending_msg : subprogram access PASSIVE_x86_partition_taste_api.trigger_has_pending_msg -> THREAD_vt_trigger_debugeventtrigger.check_queue_vt;
+  end exportedComponent.others;
+
+  system PASSIVE_ground
+    features
+	newTm : provides subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "200 215 200 215";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	triggerTmGUI : provides subprogram access exportedComponent::fv::triggerTmGUI.others
+	  { taste::Coordinates => "200 260 200 260";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 500;};
+	newTc : requires subprogram access exportedComponent::fv::artificial_newTc.others
+	  { taste::Coordinates => "450 215 450 215";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::ground_has_pending_msg.others
+	  { taste::Coordinates => "450 260 450 260";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "200 200 450 290";
+	taste::instance_name => "ground";
+  end PASSIVE_ground;
+
+  system implementation PASSIVE_ground.others
+    subcomponents
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	triggerTmGUI_impl : subprogram exportedComponent::FV::triggerTmGUI.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_impl : subprogram exportedComponent::FV::artificial_newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::ground_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access newTm_impl -> newTm;
+	subprogram access triggerTmGUI_impl -> triggerTmGUI;
+	subprogram access newTc_impl -> newTc;
+	subprogram access check_queue_impl -> check_queue;
+  end PASSIVE_ground.others;
+
+  system PASSIVE_tcqueue
+    features
+	newTc : provides subprogram access exportedComponent::fv::newTc.others
+	  { taste::Coordinates => "600 215 600 215";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tcRequest : provides subprogram access exportedComponent::fv::tcRequest.others
+	  { taste::Coordinates => "600 260 600 260";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::tcqueue_has_pending_msg.others
+	  { taste::Coordinates => "850 215 850 215";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "600 200 850 290";
+	taste::instance_name => "tcqueue";
+  end PASSIVE_tcqueue;
+
+  system implementation PASSIVE_tcqueue.others
+    subcomponents
+	newTc_impl : subprogram exportedComponent::FV::newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcRequest_impl : subprogram exportedComponent::FV::tcRequest.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::tcqueue_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access newTc_impl -> newTc;
+	subprogram access tcRequest_impl -> tcRequest;
+	subprogram access check_queue_impl -> check_queue;
+  end PASSIVE_tcqueue.others;
+
+  system THREAD_tcdispatch
+    features
+	tcTrigger : provides subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "1000 215 1000 215";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcRequest : requires subprogram access exportedComponent::fv::tcRequest.others
+	  { taste::Coordinates => "1250 215 1250 215";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc17 : requires subprogram access exportedComponent::fv::tc17.others
+	  { taste::Coordinates => "1250 260 1250 260";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc08 : requires subprogram access exportedComponent::fv::tc08.others
+	  { taste::Coordinates => "1250 305 1250 305";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc19 : requires subprogram access exportedComponent::fv::tc19.others
+	  { taste::Coordinates => "1250 350 1250 350";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc09 : requires subprogram access exportedComponent::fv::tc09.others
+	  { taste::Coordinates => "1250 395 1250 395";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc12 : requires subprogram access exportedComponent::fv::tc12.others
+	  { taste::Coordinates => "1250 440 1250 440";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc11 : requires subprogram access exportedComponent::fv::tc11.others
+	  { taste::Coordinates => "1250 485 1250 485";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc18 : requires subprogram access exportedComponent::fv::tc18.others
+	  { taste::Coordinates => "1250 530 1250 530";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc23 : requires subprogram access exportedComponent::fv::tc23.others
+	  { taste::Coordinates => "1250 575 1250 575";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc20 : requires subprogram access exportedComponent::fv::tc20.others
+	  { taste::Coordinates => "1250 620 1250 620";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::tcdispatch_has_pending_msg.others
+	  { taste::Coordinates => "1250 665 1250 665";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::tcqueue_has_pending_msg.others
+	  { taste::Coordinates => "1250 710 1250 710";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	incCount_vt : requires subprogram access exportedComponent::fv::incCount.others
+	  { taste::Coordinates => "1250 755 1250 755";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK_vt : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "1250 800 1250 800";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid_vt : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1250 845 1250 845";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount_vt : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1250 890 1250 890";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm_vt : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1250 935 1250 935";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getNextEvent_vt : requires subprogram access exportedComponent::fv::getNextEvent.others
+	  { taste::Coordinates => "1250 980 1250 980";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTc_vt : requires subprogram access exportedComponent::fv::artificial_newTc.others
+	  { taste::Coordinates => "1250 1025 1250 1025";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	pushNewEvent_vt : requires subprogram access exportedComponent::fv::pushNewEvent.others
+	  { taste::Coordinates => "1250 1070 1250 1070";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getParamValue_vt : requires subprogram access exportedComponent::fv::getParamValue.others
+	  { taste::Coordinates => "1250 1115 1250 1115";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	loadDirect_vt : requires subprogram access exportedComponent::fv::loadDirect.others
+	  { taste::Coordinates => "1250 1160 1250 1160";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	loadReference_vt : requires subprogram access exportedComponent::fv::loadReference.others
+	  { taste::Coordinates => "1250 1205 1250 1205";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getOnBoardParam_vt : requires subprogram access exportedComponent::fv::getOnBoardParam.others
+	  { taste::Coordinates => "1250 1250 1250 1250";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	setOnBoardParam_vt : requires subprogram access exportedComponent::fv::setOnBoardParam.others
+	  { taste::Coordinates => "1250 1295 1250 1295";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	copy_vt : requires subprogram access exportedComponent::fv::copy.others
+	  { taste::Coordinates => "1250 1340 1250 1340";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	delete_vt : requires subprogram access exportedComponent::fv::delete.others
+	  { taste::Coordinates => "1250 1385 1250 1385";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	create_vt : requires subprogram access exportedComponent::fv::create.others
+	  { taste::Coordinates => "1250 1430 1250 1430";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getAttributes_vt : requires subprogram access exportedComponent::fv::getAttributes.others
+	  { taste::Coordinates => "1250 1475 1250 1475";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1000 200 1250 1505";
+	taste::instance_name => "tcdispatch";
+  end THREAD_tcdispatch;
+
+  system implementation THREAD_tcdispatch.others
+    subcomponents
+	tcTrigger_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcRequest_impl : subprogram exportedComponent::FV::tcRequest.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc17_impl : subprogram exportedComponent::FV::tc17.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc08_impl : subprogram exportedComponent::FV::tc08.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc19_impl : subprogram exportedComponent::FV::tc19.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc09_impl : subprogram exportedComponent::FV::tc09.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc12_impl : subprogram exportedComponent::FV::tc12.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc11_impl : subprogram exportedComponent::FV::tc11.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc18_impl : subprogram exportedComponent::FV::tc18.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc23_impl : subprogram exportedComponent::FV::tc23.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc20_impl : subprogram exportedComponent::FV::tc20.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::tcdispatch_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::tcqueue_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+	incCount_vt_impl : subprogram exportedComponent::FV::incCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_vt_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_vt_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_vt_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_vt_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getNextEvent_vt_impl : subprogram exportedComponent::FV::getNextEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_vt_impl : subprogram exportedComponent::FV::artificial_newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	pushNewEvent_vt_impl : subprogram exportedComponent::FV::pushNewEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	getParamValue_vt_impl : subprogram exportedComponent::FV::getParamValue.others
+	  { compute_execution_time => 0ms..0ms;};
+	loadDirect_vt_impl : subprogram exportedComponent::FV::loadDirect.others
+	  { compute_execution_time => 0ms..0ms;};
+	loadReference_vt_impl : subprogram exportedComponent::FV::loadReference.others
+	  { compute_execution_time => 0ms..0ms;};
+	getOnBoardParam_vt_impl : subprogram exportedComponent::FV::getOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	setOnBoardParam_vt_impl : subprogram exportedComponent::FV::setOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	copy_vt_impl : subprogram exportedComponent::FV::copy.others
+	  { compute_execution_time => 0ms..0ms;};
+	delete_vt_impl : subprogram exportedComponent::FV::delete.others
+	  { compute_execution_time => 0ms..0ms;};
+	create_vt_impl : subprogram exportedComponent::FV::create.others
+	  { compute_execution_time => 0ms..0ms;};
+	getAttributes_vt_impl : subprogram exportedComponent::FV::getAttributes.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tcTrigger_impl -> tcTrigger;
+	subprogram access tcRequest_impl -> tcRequest;
+	subprogram access tc17_impl -> tc17;
+	subprogram access tc08_impl -> tc08;
+	subprogram access tc19_impl -> tc19;
+	subprogram access tc09_impl -> tc09;
+	subprogram access tc12_impl -> tc12;
+	subprogram access tc11_impl -> tc11;
+	subprogram access tc18_impl -> tc18;
+	subprogram access tc23_impl -> tc23;
+	subprogram access tc20_impl -> tc20;
+	subprogram access check_queue_impl -> check_queue;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+	subprogram access incCount_vt_impl -> incCount_vt;
+	subprogram access ACK_vt_impl -> ACK_vt;
+	subprogram access getApid_vt_impl -> getApid_vt;
+	subprogram access getSequenceCount_vt_impl -> getSequenceCount_vt;
+	subprogram access newTm_vt_impl -> newTm_vt;
+	subprogram access getNextEvent_vt_impl -> getNextEvent_vt;
+	subprogram access newTc_vt_impl -> newTc_vt;
+	subprogram access pushNewEvent_vt_impl -> pushNewEvent_vt;
+	subprogram access getParamValue_vt_impl -> getParamValue_vt;
+	subprogram access loadDirect_vt_impl -> loadDirect_vt;
+	subprogram access loadReference_vt_impl -> loadReference_vt;
+	subprogram access getOnBoardParam_vt_impl -> getOnBoardParam_vt;
+	subprogram access setOnBoardParam_vt_impl -> setOnBoardParam_vt;
+	subprogram access copy_vt_impl -> copy_vt;
+	subprogram access delete_vt_impl -> delete_vt;
+	subprogram access create_vt_impl -> create_vt;
+	subprogram access getAttributes_vt_impl -> getAttributes_vt;
+  end THREAD_tcdispatch.others;
+
+  system THREAD_tmdispatch
+    features
+	tmTrigger : provides subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "1400 215 1400 215";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 1000;};
+	newTm : requires subprogram access exportedComponent::fv::artificial_newTm.others
+	  { taste::Coordinates => "1650 215 1650 215";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tmRequest : requires subprogram access exportedComponent::fv::tmRequest.others
+	  { taste::Coordinates => "1650 260 1650 260";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::tmdispatch_has_pending_msg.others
+	  { taste::Coordinates => "1650 305 1650 305";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	incCount_vt : requires subprogram access exportedComponent::fv::incCount.others
+	  { taste::Coordinates => "1650 350 1650 350";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm_vt : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1650 395 1650 395";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount_vt : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1650 440 1650 440";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid_vt : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1650 485 1650 485";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	ACK_vt : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "1650 530 1650 530";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1400 200 1650 560";
+	taste::instance_name => "tmdispatch";
+  end THREAD_tmdispatch;
+
+  system implementation THREAD_tmdispatch.others
+    subcomponents
+	tmTrigger_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::artificial_newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmRequest_impl : subprogram exportedComponent::FV::tmRequest.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::tmdispatch_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+	incCount_vt_impl : subprogram exportedComponent::FV::incCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_vt_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_vt_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_vt_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_vt_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tmTrigger_impl -> tmTrigger;
+	subprogram access newTm_impl -> newTm;
+	subprogram access tmRequest_impl -> tmRequest;
+	subprogram access check_queue_impl -> check_queue;
+	subprogram access incCount_vt_impl -> incCount_vt;
+	subprogram access newTm_vt_impl -> newTm_vt;
+	subprogram access getSequenceCount_vt_impl -> getSequenceCount_vt;
+	subprogram access getApid_vt_impl -> getApid_vt;
+	subprogram access ACK_vt_impl -> ACK_vt;
+  end THREAD_tmdispatch.others;
+
+  system PASSIVE_tmqueue
+    features
+	tmRequest : provides subprogram access exportedComponent::fv::tmRequest.others
+	  { taste::Coordinates => "1800 215 1800 215";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm : provides subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1800 260 1800 260";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	incCount : requires subprogram access exportedComponent::fv::incCount.others
+	  { taste::Coordinates => "2050 215 2050 215";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1800 200 2050 290";
+	taste::instance_name => "tmqueue";
+  end PASSIVE_tmqueue;
+
+  system implementation PASSIVE_tmqueue.others
+    subcomponents
+	tmRequest_impl : subprogram exportedComponent::FV::tmRequest.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	incCount_impl : subprogram exportedComponent::FV::incCount.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tmRequest_impl -> tmRequest;
+	subprogram access newTm_impl -> newTm;
+	subprogram access incCount_impl -> incCount;
+  end PASSIVE_tmqueue.others;
+
+  system PASSIVE_st17
+    features
+	tc17 : provides subprogram access exportedComponent::fv::tc17.others
+	  { taste::Coordinates => "2200 215 2200 215";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "2450 215 2450 215";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "2450 260 2450 260";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "2450 305 2450 305";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "2450 350 2450 350";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "2200 200 2450 380";
+	taste::instance_name => "st17";
+  end PASSIVE_st17;
+
+  system implementation PASSIVE_st17.others
+    subcomponents
+	tc17_impl : subprogram exportedComponent::FV::tc17.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tc17_impl -> tc17;
+	subprogram access ACK_impl -> ACK;
+	subprogram access getApid_impl -> getApid;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+	subprogram access newTm_impl -> newTm;
+  end PASSIVE_st17.others;
+
+  system PASSIVE_st01
+    features
+	ACK : provides subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "200 1820 200 1820";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "450 1820 450 1820";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "450 1865 450 1865";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "450 1910 450 1910";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "200 1805 450 1940";
+	taste::instance_name => "st01";
+  end PASSIVE_st01;
+
+  system implementation PASSIVE_st01.others
+    subcomponents
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access ACK_impl -> ACK;
+	subprogram access newTm_impl -> newTm;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+	subprogram access getApid_impl -> getApid;
+  end PASSIVE_st01.others;
+
+  system PASSIVE_st08
+    features
+	tc08 : provides subprogram access exportedComponent::fv::tc08.others
+	  { taste::Coordinates => "600 1820 600 1820";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "850 1820 850 1820";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "600 1805 850 1850";
+	taste::instance_name => "st08";
+  end PASSIVE_st08;
+
+  system implementation PASSIVE_st08.others
+    subcomponents
+	tc08_impl : subprogram exportedComponent::FV::tc08.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tc08_impl -> tc08;
+	subprogram access ACK_impl -> ACK;
+  end PASSIVE_st08.others;
+
+  system PASSIVE_onboardapid
+    features
+	getApid : provides subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1000 1820 1000 1820";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : provides subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1000 1865 1000 1865";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1000 1805 1250 1895";
+	taste::instance_name => "onboardapid";
+  end PASSIVE_onboardapid;
+
+  system implementation PASSIVE_onboardapid.others
+    subcomponents
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access getApid_impl -> getApid;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+  end PASSIVE_onboardapid.others;
+
+  system PASSIVE_st09
+    features
+	incCount : provides subprogram access exportedComponent::fv::incCount.others
+	  { taste::Coordinates => "1400 1820 1400 1820";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc09 : provides subprogram access exportedComponent::fv::tc09.others
+	  { taste::Coordinates => "1400 1865 1400 1865";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1650 1820 1650 1820";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1650 1865 1650 1865";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "1650 1910 1650 1910";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1400 1805 1650 1940";
+	taste::instance_name => "st09";
+  end PASSIVE_st09;
+
+  system implementation PASSIVE_st09.others
+    subcomponents
+	incCount_impl : subprogram exportedComponent::FV::incCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc09_impl : subprogram exportedComponent::FV::tc09.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access incCount_impl -> incCount;
+	subprogram access tc09_impl -> tc09;
+	subprogram access getApid_impl -> getApid;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+	subprogram access ACK_impl -> ACK;
+  end PASSIVE_st09.others;
+
+  system PASSIVE_timereportapid
+    features
+	getApid : provides subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1800 1820 1800 1820";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : provides subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1800 1865 1800 1865";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1800 1805 2050 1895";
+	taste::instance_name => "timereportapid";
+  end PASSIVE_timereportapid;
+
+  system implementation PASSIVE_timereportapid.others
+    subcomponents
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access getApid_impl -> getApid;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+  end PASSIVE_timereportapid.others;
+
+  system PASSIVE_events
+    features
+	getNextEvent : provides subprogram access exportedComponent::fv::getNextEvent.others
+	  { taste::Coordinates => "2200 1820 2200 1820";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	pushNewEvent : provides subprogram access exportedComponent::fv::pushNewEvent.others
+	  { taste::Coordinates => "2200 1865 2200 1865";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger : provides subprogram access exportedComponent::fv::debugEventsTrigger.others
+	  { taste::Coordinates => "2200 1910 2200 1910";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::events_has_pending_msg.others
+	  { taste::Coordinates => "2450 1820 2450 1820";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "2200 1805 2450 1940";
+	taste::instance_name => "events";
+  end PASSIVE_events;
+
+  system implementation PASSIVE_events.others
+    subcomponents
+	getNextEvent_impl : subprogram exportedComponent::FV::getNextEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	pushNewEvent_impl : subprogram exportedComponent::FV::pushNewEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_impl : subprogram exportedComponent::FV::debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::events_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access getNextEvent_impl -> getNextEvent;
+	subprogram access pushNewEvent_impl -> pushNewEvent;
+	subprogram access debugEventsTrigger_impl -> debugEventsTrigger;
+	subprogram access check_queue_impl -> check_queue;
+  end PASSIVE_events.others;
+
+  system THREAD_st05
+    features
+	EventReportTrigger : provides subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "200 2255 200 2255";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	newTmNoInherit : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "450 2255 450 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getNextEvent : requires subprogram access exportedComponent::fv::getNextEvent.others
+	  { taste::Coordinates => "450 2300 450 2300";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "450 2345 450 2345";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "450 2390 450 2390";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::st05_has_pending_msg.others
+	  { taste::Coordinates => "450 2435 450 2435";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	incCount_vt : requires subprogram access exportedComponent::fv::incCount.others
+	  { taste::Coordinates => "450 2480 450 2480";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm_vt : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "450 2525 450 2525";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount_vt : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "450 2570 450 2570";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid_vt : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "450 2615 450 2615";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	ACK_vt : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "450 2660 450 2660";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::events_has_pending_msg.others
+	  { taste::Coordinates => "450 2705 450 2705";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "200 2240 450 2735";
+	taste::instance_name => "st05";
+  end THREAD_st05;
+
+  system implementation THREAD_st05.others
+    subcomponents
+	EventReportTrigger_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTmNoInherit_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getNextEvent_impl : subprogram exportedComponent::FV::getNextEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::st05_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+	incCount_vt_impl : subprogram exportedComponent::FV::incCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_vt_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_vt_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_vt_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_vt_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::events_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access EventReportTrigger_impl -> EventReportTrigger;
+	subprogram access newTmNoInherit_impl -> newTmNoInherit;
+	subprogram access getNextEvent_impl -> getNextEvent;
+	subprogram access getApid_impl -> getApid;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+	subprogram access check_queue_impl -> check_queue;
+	subprogram access incCount_vt_impl -> incCount_vt;
+	subprogram access newTm_vt_impl -> newTm_vt;
+	subprogram access getSequenceCount_vt_impl -> getSequenceCount_vt;
+	subprogram access getApid_vt_impl -> getApid_vt;
+	subprogram access ACK_vt_impl -> ACK_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_st05.others;
+
+  system PASSIVE_st19
+    features
+	tc19 : provides subprogram access exportedComponent::fv::tc19.others
+	  { taste::Coordinates => "600 2255 600 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger : provides subprogram access exportedComponent::fv::EventActionTrigger.others
+	  { taste::Coordinates => "600 2300 600 2300";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getNextEvent : requires subprogram access exportedComponent::fv::getNextEvent.others
+	  { taste::Coordinates => "850 2255 850 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "850 2300 850 2300";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "850 2345 850 2345";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTc : requires subprogram access exportedComponent::fv::artificial_newTc.others
+	  { taste::Coordinates => "850 2390 850 2390";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::st19_has_pending_msg.others
+	  { taste::Coordinates => "850 2435 850 2435";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "600 2240 850 2465";
+	taste::instance_name => "st19";
+  end PASSIVE_st19;
+
+  system implementation PASSIVE_st19.others
+    subcomponents
+	tc19_impl : subprogram exportedComponent::FV::tc19.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_impl : subprogram exportedComponent::FV::EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	getNextEvent_impl : subprogram exportedComponent::FV::getNextEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_impl : subprogram exportedComponent::FV::artificial_newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::st19_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tc19_impl -> tc19;
+	subprogram access EventActionTrigger_impl -> EventActionTrigger;
+	subprogram access getNextEvent_impl -> getNextEvent;
+	subprogram access ACK_impl -> ACK;
+	subprogram access newTm_impl -> newTm;
+	subprogram access newTc_impl -> newTc;
+	subprogram access check_queue_impl -> check_queue;
+  end PASSIVE_st19.others;
+
+  system PASSIVE_housekeeping
+    features
+	setParamValue : provides subprogram access exportedComponent::fv::setParamValue.others
+	  { taste::Coordinates => "1000 2255 1000 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getParamValue : provides subprogram access exportedComponent::fv::getParamValue.others
+	  { taste::Coordinates => "1000 2300 1000 2300";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1000 2240 1250 2330";
+	taste::instance_name => "housekeeping";
+  end PASSIVE_housekeeping;
+
+  system implementation PASSIVE_housekeeping.others
+    subcomponents
+	setParamValue_impl : subprogram exportedComponent::FV::setParamValue.others
+	  { compute_execution_time => 0ms..0ms;};
+	getParamValue_impl : subprogram exportedComponent::FV::getParamValue.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access setParamValue_impl -> setParamValue;
+	subprogram access getParamValue_impl -> getParamValue;
+  end PASSIVE_housekeeping.others;
+
+  system THREAD_st03
+    features
+	HkReportTrigger : provides subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "1400 2255 1400 2255";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	newTm : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1650 2255 1650 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getParamValue : requires subprogram access exportedComponent::fv::getParamValue.others
+	  { taste::Coordinates => "1650 2300 1650 2300";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1650 2345 1650 2345";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1650 2390 1650 2390";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::st03_has_pending_msg.others
+	  { taste::Coordinates => "1650 2435 1650 2435";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	incCount_vt : requires subprogram access exportedComponent::fv::incCount.others
+	  { taste::Coordinates => "1650 2480 1650 2480";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm_vt : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1650 2525 1650 2525";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount_vt : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1650 2570 1650 2570";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid_vt : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1650 2615 1650 2615";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	ACK_vt : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "1650 2660 1650 2660";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1400 2240 1650 2690";
+	taste::instance_name => "st03";
+  end THREAD_st03;
+
+  system implementation THREAD_st03.others
+    subcomponents
+	HkReportTrigger_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getParamValue_impl : subprogram exportedComponent::FV::getParamValue.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::st03_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+	incCount_vt_impl : subprogram exportedComponent::FV::incCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_vt_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_vt_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_vt_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_vt_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access HkReportTrigger_impl -> HkReportTrigger;
+	subprogram access newTm_impl -> newTm;
+	subprogram access getParamValue_impl -> getParamValue;
+	subprogram access getApid_impl -> getApid;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+	subprogram access check_queue_impl -> check_queue;
+	subprogram access incCount_vt_impl -> incCount_vt;
+	subprogram access newTm_vt_impl -> newTm_vt;
+	subprogram access getSequenceCount_vt_impl -> getSequenceCount_vt;
+	subprogram access getApid_vt_impl -> getApid_vt;
+	subprogram access ACK_vt_impl -> ACK_vt;
+  end THREAD_st03.others;
+
+  system PASSIVE_st12
+    features
+	PmonTrigger : provides subprogram access exportedComponent::fv::PmonTrigger.others
+	  { taste::Coordinates => "1800 2255 1800 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	tc12 : provides subprogram access exportedComponent::fv::tc12.others
+	  { taste::Coordinates => "1800 2300 1800 2300";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	pushNewEvent : requires subprogram access exportedComponent::fv::pushNewEvent.others
+	  { taste::Coordinates => "2050 2255 2050 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getParamValue : requires subprogram access exportedComponent::fv::getParamValue.others
+	  { taste::Coordinates => "2050 2300 2050 2300";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "2050 2345 2050 2345";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::st12_has_pending_msg.others
+	  { taste::Coordinates => "2050 2390 2050 2390";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1800 2240 2050 2420";
+	taste::instance_name => "st12";
+  end PASSIVE_st12;
+
+  system implementation PASSIVE_st12.others
+    subcomponents
+	PmonTrigger_impl : subprogram exportedComponent::FV::PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tc12_impl : subprogram exportedComponent::FV::tc12.others
+	  { compute_execution_time => 0ms..0ms;};
+	pushNewEvent_impl : subprogram exportedComponent::FV::pushNewEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	getParamValue_impl : subprogram exportedComponent::FV::getParamValue.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::st12_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access PmonTrigger_impl -> PmonTrigger;
+	subprogram access tc12_impl -> tc12;
+	subprogram access pushNewEvent_impl -> pushNewEvent;
+	subprogram access getParamValue_impl -> getParamValue;
+	subprogram access ACK_impl -> ACK;
+	subprogram access check_queue_impl -> check_queue;
+  end PASSIVE_st12.others;
+
+  system PASSIVE_st11
+    features
+	tc11 : provides subprogram access exportedComponent::fv::tc11.others
+	  { taste::Coordinates => "2200 2255 2200 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "2450 2255 2450 2255";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTc : requires subprogram access exportedComponent::fv::artificial_newTc.others
+	  { taste::Coordinates => "2450 2300 2450 2300";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "2200 2240 2450 2330";
+	taste::instance_name => "st11";
+  end PASSIVE_st11;
+
+  system implementation PASSIVE_st11.others
+    subcomponents
+	tc11_impl : subprogram exportedComponent::FV::tc11.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_impl : subprogram exportedComponent::FV::artificial_newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tc11_impl -> tc11;
+	subprogram access ACK_impl -> ACK;
+	subprogram access newTc_impl -> newTc;
+  end PASSIVE_st11.others;
+
+  system PASSIVE_st18
+    features
+	tc18 : provides subprogram access exportedComponent::fv::tc18.others
+	  { taste::Coordinates => "200 3050 200 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "450 3050 450 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	loadDirect : requires subprogram access exportedComponent::fv::loadDirect.others
+	  { taste::Coordinates => "450 3095 450 3095";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	loadReference : requires subprogram access exportedComponent::fv::loadReference.others
+	  { taste::Coordinates => "450 3140 450 3140";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "200 3035 450 3170";
+	taste::instance_name => "st18";
+  end PASSIVE_st18;
+
+  system implementation PASSIVE_st18.others
+    subcomponents
+	tc18_impl : subprogram exportedComponent::FV::tc18.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	loadDirect_impl : subprogram exportedComponent::FV::loadDirect.others
+	  { compute_execution_time => 0ms..0ms;};
+	loadReference_impl : subprogram exportedComponent::FV::loadReference.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tc18_impl -> tc18;
+	subprogram access ACK_impl -> ACK;
+	subprogram access loadDirect_impl -> loadDirect;
+	subprogram access loadReference_impl -> loadReference;
+  end PASSIVE_st18.others;
+
+  system PASSIVE_obcpengine
+    features
+	loadDirect : provides subprogram access exportedComponent::fv::loadDirect.others
+	  { taste::Coordinates => "600 3050 600 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	loadReference : provides subprogram access exportedComponent::fv::loadReference.others
+	  { taste::Coordinates => "600 3095 600 3095";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTc : requires subprogram access exportedComponent::fv::artificial_newTc.others
+	  { taste::Coordinates => "850 3050 850 3050";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	getOnBoardParam : requires subprogram access exportedComponent::fv::getOnBoardParam.others
+	  { taste::Coordinates => "850 3095 850 3095";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	setOnBoardParam : requires subprogram access exportedComponent::fv::setOnBoardParam.others
+	  { taste::Coordinates => "850 3140 850 3140";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	pushNewEvent : requires subprogram access exportedComponent::fv::pushNewEvent.others
+	  { taste::Coordinates => "850 3185 850 3185";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "600 3035 850 3215";
+	taste::instance_name => "obcpengine";
+  end PASSIVE_obcpengine;
+
+  system implementation PASSIVE_obcpengine.others
+    subcomponents
+	loadDirect_impl : subprogram exportedComponent::FV::loadDirect.others
+	  { compute_execution_time => 0ms..0ms;};
+	loadReference_impl : subprogram exportedComponent::FV::loadReference.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_impl : subprogram exportedComponent::FV::artificial_newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	getOnBoardParam_impl : subprogram exportedComponent::FV::getOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	setOnBoardParam_impl : subprogram exportedComponent::FV::setOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	pushNewEvent_impl : subprogram exportedComponent::FV::pushNewEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access loadDirect_impl -> loadDirect;
+	subprogram access loadReference_impl -> loadReference;
+	subprogram access newTc_impl -> newTc;
+	subprogram access getOnBoardParam_impl -> getOnBoardParam;
+	subprogram access setOnBoardParam_impl -> setOnBoardParam;
+	subprogram access pushNewEvent_impl -> pushNewEvent;
+  end PASSIVE_obcpengine.others;
+
+  system PASSIVE_st23
+    features
+	tc23 : provides subprogram access exportedComponent::fv::tc23.others
+	  { taste::Coordinates => "1000 3050 1000 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	copy : requires subprogram access exportedComponent::fv::copy.others
+	  { taste::Coordinates => "1250 3050 1250 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	delete : requires subprogram access exportedComponent::fv::delete.others
+	  { taste::Coordinates => "1250 3095 1250 3095";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	create : requires subprogram access exportedComponent::fv::create.others
+	  { taste::Coordinates => "1250 3140 1250 3140";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getAttributes : requires subprogram access exportedComponent::fv::getAttributes.others
+	  { taste::Coordinates => "1250 3185 1250 3185";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1250 3230 1250 3230";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1250 3275 1250 3275";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1250 3320 1250 3320";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "1250 3365 1250 3365";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1000 3035 1250 3395";
+	taste::instance_name => "st23";
+  end PASSIVE_st23;
+
+  system implementation PASSIVE_st23.others
+    subcomponents
+	tc23_impl : subprogram exportedComponent::FV::tc23.others
+	  { compute_execution_time => 0ms..0ms;};
+	copy_impl : subprogram exportedComponent::FV::copy.others
+	  { compute_execution_time => 0ms..0ms;};
+	delete_impl : subprogram exportedComponent::FV::delete.others
+	  { compute_execution_time => 0ms..0ms;};
+	create_impl : subprogram exportedComponent::FV::create.others
+	  { compute_execution_time => 0ms..0ms;};
+	getAttributes_impl : subprogram exportedComponent::FV::getAttributes.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tc23_impl -> tc23;
+	subprogram access copy_impl -> copy;
+	subprogram access delete_impl -> delete;
+	subprogram access create_impl -> create;
+	subprogram access getAttributes_impl -> getAttributes;
+	subprogram access newTm_impl -> newTm;
+	subprogram access getApid_impl -> getApid;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+	subprogram access ACK_impl -> ACK;
+  end PASSIVE_st23.others;
+
+  system PASSIVE_filemanagement
+    features
+	copy : provides subprogram access exportedComponent::fv::copy.others
+	  { taste::Coordinates => "1400 3050 1400 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	delete : provides subprogram access exportedComponent::fv::delete.others
+	  { taste::Coordinates => "1400 3095 1400 3095";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	create : provides subprogram access exportedComponent::fv::create.others
+	  { taste::Coordinates => "1400 3140 1400 3140";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getAttributes : provides subprogram access exportedComponent::fv::getAttributes.others
+	  { taste::Coordinates => "1400 3185 1400 3185";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1400 3035 1650 3215";
+	taste::instance_name => "filemanagement";
+  end PASSIVE_filemanagement;
+
+  system implementation PASSIVE_filemanagement.others
+    subcomponents
+	copy_impl : subprogram exportedComponent::FV::copy.others
+	  { compute_execution_time => 0ms..0ms;};
+	delete_impl : subprogram exportedComponent::FV::delete.others
+	  { compute_execution_time => 0ms..0ms;};
+	create_impl : subprogram exportedComponent::FV::create.others
+	  { compute_execution_time => 0ms..0ms;};
+	getAttributes_impl : subprogram exportedComponent::FV::getAttributes.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access copy_impl -> copy;
+	subprogram access delete_impl -> delete;
+	subprogram access create_impl -> create;
+	subprogram access getAttributes_impl -> getAttributes;
+  end PASSIVE_filemanagement.others;
+
+  system PASSIVE_st20
+    features
+	tc20 : provides subprogram access exportedComponent::fv::tc20.others
+	  { taste::Coordinates => "1800 3050 1800 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	setOnBoardParam : requires subprogram access exportedComponent::fv::setOnBoardParam.others
+	  { taste::Coordinates => "2050 3050 2050 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getOnBoardParam : requires subprogram access exportedComponent::fv::getOnBoardParam.others
+	  { taste::Coordinates => "2050 3095 2050 3095";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "2050 3140 2050 3140";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	ACK : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "2050 3185 2050 3185";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "2050 3230 2050 3230";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "2050 3275 2050 3275";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1800 3035 2050 3305";
+	taste::instance_name => "st20";
+  end PASSIVE_st20;
+
+  system implementation PASSIVE_st20.others
+    subcomponents
+	tc20_impl : subprogram exportedComponent::FV::tc20.others
+	  { compute_execution_time => 0ms..0ms;};
+	setOnBoardParam_impl : subprogram exportedComponent::FV::setOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	getOnBoardParam_impl : subprogram exportedComponent::FV::getOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access tc20_impl -> tc20;
+	subprogram access setOnBoardParam_impl -> setOnBoardParam;
+	subprogram access getOnBoardParam_impl -> getOnBoardParam;
+	subprogram access newTm_impl -> newTm;
+	subprogram access ACK_impl -> ACK;
+	subprogram access getApid_impl -> getApid;
+	subprogram access getSequenceCount_impl -> getSequenceCount;
+  end PASSIVE_st20.others;
+
+  system PASSIVE_onboardparams
+    features
+	setOnBoardParam : provides subprogram access exportedComponent::fv::setOnBoardParam.others
+	  { taste::Coordinates => "2200 3050 2200 3050";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getOnBoardParam : provides subprogram access exportedComponent::fv::getOnBoardParam.others
+	  { taste::Coordinates => "2200 3095 2200 3095";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "2200 3035 2450 3125";
+	taste::instance_name => "onboardparams";
+  end PASSIVE_onboardparams;
+
+  system implementation PASSIVE_onboardparams.others
+    subcomponents
+	setOnBoardParam_impl : subprogram exportedComponent::FV::setOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	getOnBoardParam_impl : subprogram exportedComponent::FV::getOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access setOnBoardParam_impl -> setOnBoardParam;
+	subprogram access getOnBoardParam_impl -> getOnBoardParam;
+  end PASSIVE_onboardparams.others;
+
+  system PASSIVE_trigger
+    features
+	HkReportTrigger : provides subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "200 3710 200 3710";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 10000;};
+	TmDispatchTrigger : provides subprogram access exportedComponent::fv::TmDispatchTrigger.others
+	  { taste::Coordinates => "200 3755 200 3755";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 1000;};
+	EventActionTrigger : provides subprogram access exportedComponent::fv::EventActionTrigger.others
+	  { taste::Coordinates => "200 3800 200 3800";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 10000;};
+	TcDispatchTrigger : provides subprogram access exportedComponent::fv::TcDispatchTrigger.others
+	  { taste::Coordinates => "200 3845 200 3845";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 1000;};
+	PmonTrigger : provides subprogram access exportedComponent::fv::PmonTrigger.others
+	  { taste::Coordinates => "200 3890 200 3890";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 10000;};
+	EventReportTrigger : provides subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "200 3935 200 3935";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 1000;};
+	debugEventTrigger : provides subprogram access exportedComponent::fv::debugEventTrigger.others
+	  { taste::Coordinates => "200 3980 200 3980";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 15000;};
+	tmTrigger : requires subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "450 3710 450 3710";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	HkReportTrigger : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "450 3755 450 3755";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger : requires subprogram access exportedComponent::fv::artificial_PmonTrigger.others
+	  { taste::Coordinates => "450 3800 450 3800";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventReportTrigger : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "450 3845 450 3845";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcTrigger : requires subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "450 3890 450 3890";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger : requires subprogram access exportedComponent::fv::artificial_debugEventsTrigger.others
+	  { taste::Coordinates => "450 3935 450 3935";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger : requires subprogram access exportedComponent::fv::artificial_EventActionTrigger.others
+	  { taste::Coordinates => "450 3980 450 3980";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::trigger_has_pending_msg.others
+	  { taste::Coordinates => "450 4025 450 4025";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "200 3695 450 4055";
+	taste::instance_name => "trigger";
+  end PASSIVE_trigger;
+
+  system implementation PASSIVE_trigger.others
+    subcomponents
+	HkReportTrigger_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	TmDispatchTrigger_impl : subprogram exportedComponent::FV::TmDispatchTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_impl : subprogram exportedComponent::FV::EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	TcDispatchTrigger_impl : subprogram exportedComponent::FV::TcDispatchTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_impl : subprogram exportedComponent::FV::PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventTrigger_impl : subprogram exportedComponent::FV::debugEventTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmTrigger_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_impl : subprogram exportedComponent::FV::artificial_PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcTrigger_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_impl : subprogram exportedComponent::FV::artificial_debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_impl : subprogram exportedComponent::FV::artificial_EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::trigger_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access HkReportTrigger_impl -> HkReportTrigger;
+	subprogram access TmDispatchTrigger_impl -> TmDispatchTrigger;
+	subprogram access EventActionTrigger_impl -> EventActionTrigger;
+	subprogram access TcDispatchTrigger_impl -> TcDispatchTrigger;
+	subprogram access PmonTrigger_impl -> PmonTrigger;
+	subprogram access EventReportTrigger_impl -> EventReportTrigger;
+	subprogram access debugEventTrigger_impl -> debugEventTrigger;
+	subprogram access tmTrigger_impl -> tmTrigger;
+	subprogram access HkReportTrigger_impl -> HkReportTrigger;
+	subprogram access PmonTrigger_impl -> PmonTrigger;
+	subprogram access EventReportTrigger_impl -> EventReportTrigger;
+	subprogram access tcTrigger_impl -> tcTrigger;
+	subprogram access debugEventsTrigger_impl -> debugEventsTrigger;
+	subprogram access EventActionTrigger_impl -> EventActionTrigger;
+	subprogram access check_queue_impl -> check_queue;
+  end PASSIVE_trigger.others;
+
+  system THREAD_onboardsoftware
+    features
+	debugTrigger : provides subprogram access exportedComponent::fv::debugTrigger.others
+	  { taste::Coordinates => "600 3710 600 3710";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 15000;};
+	setParamValue : requires subprogram access exportedComponent::fv::setParamValue.others
+	  { taste::Coordinates => "850 3710 850 3710";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getParamValue : requires subprogram access exportedComponent::fv::getParamValue.others
+	  { taste::Coordinates => "850 3755 850 3755";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	pushNewEvent : requires subprogram access exportedComponent::fv::pushNewEvent.others
+	  { taste::Coordinates => "850 3800 850 3800";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	setOnBoardParam : requires subprogram access exportedComponent::fv::setOnBoardParam.others
+	  { taste::Coordinates => "850 3845 850 3845";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getOnBoardParam : requires subprogram access exportedComponent::fv::getOnBoardParam.others
+	  { taste::Coordinates => "850 3890 850 3890";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue : requires subprogram access exportedComponent::fv::onboardsoftware_has_pending_msg.others
+	  { taste::Coordinates => "850 3935 850 3935";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::events_has_pending_msg.others
+	  { taste::Coordinates => "850 3980 850 3980";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "600 3695 850 4010";
+	taste::instance_name => "onboardsoftware";
+  end THREAD_onboardsoftware;
+
+  system implementation THREAD_onboardsoftware.others
+    subcomponents
+	debugTrigger_impl : subprogram exportedComponent::FV::debugTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	setParamValue_impl : subprogram exportedComponent::FV::setParamValue.others
+	  { compute_execution_time => 0ms..0ms;};
+	getParamValue_impl : subprogram exportedComponent::FV::getParamValue.others
+	  { compute_execution_time => 0ms..0ms;};
+	pushNewEvent_impl : subprogram exportedComponent::FV::pushNewEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	setOnBoardParam_impl : subprogram exportedComponent::FV::setOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	getOnBoardParam_impl : subprogram exportedComponent::FV::getOnBoardParam.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_impl : subprogram exportedComponent::FV::onboardsoftware_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::events_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access debugTrigger_impl -> debugTrigger;
+	subprogram access setParamValue_impl -> setParamValue;
+	subprogram access getParamValue_impl -> getParamValue;
+	subprogram access pushNewEvent_impl -> pushNewEvent;
+	subprogram access setOnBoardParam_impl -> setOnBoardParam;
+	subprogram access getOnBoardParam_impl -> getOnBoardParam;
+	subprogram access check_queue_impl -> check_queue;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_onboardsoftware.others;
+
+  system PASSIVE_x86_partition_taste_api
+    features
+	ground_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 3710 1000 3710";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	tcqueue_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 3755 1000 3755";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	tcdispatch_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 3800 1000 3800";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	tmdispatch_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 3845 1000 3845";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	events_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 3890 1000 3890";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	st05_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 3935 1000 3935";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	st19_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 3980 1000 3980";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	st03_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 4025 1000 4025";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	st12_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 4070 1000 4070";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	trigger_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 4115 1000 4115";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	onboardsoftware_has_pending_msg : provides subprogram access exportedComponent::fv::check_queue.others
+	  { taste::Coordinates => "1000 4160 1000 4160";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1000 3695 1250 4190";
+	taste::instance_name => "x86_partition_taste_api";
+  end PASSIVE_x86_partition_taste_api;
+
+  system implementation PASSIVE_x86_partition_taste_api.others
+    subcomponents
+	ground_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcqueue_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcdispatch_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmdispatch_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	events_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	st05_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	st19_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	st03_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	st12_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	trigger_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+	onboardsoftware_has_pending_msg_impl : subprogram exportedComponent::FV::check_queue.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access ground_has_pending_msg_impl -> ground_has_pending_msg;
+	subprogram access tcqueue_has_pending_msg_impl -> tcqueue_has_pending_msg;
+	subprogram access tcdispatch_has_pending_msg_impl -> tcdispatch_has_pending_msg;
+	subprogram access tmdispatch_has_pending_msg_impl -> tmdispatch_has_pending_msg;
+	subprogram access events_has_pending_msg_impl -> events_has_pending_msg;
+	subprogram access st05_has_pending_msg_impl -> st05_has_pending_msg;
+	subprogram access st19_has_pending_msg_impl -> st19_has_pending_msg;
+	subprogram access st03_has_pending_msg_impl -> st03_has_pending_msg;
+	subprogram access st12_has_pending_msg_impl -> st12_has_pending_msg;
+	subprogram access trigger_has_pending_msg_impl -> trigger_has_pending_msg;
+	subprogram access onboardsoftware_has_pending_msg_impl -> onboardsoftware_has_pending_msg;
+  end PASSIVE_x86_partition_taste_api.others;
+
+  system THREAD_vt_ground_newtm
+    features
+	artificial_newTm : provides subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1400 3710 1400 3710";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	newTm : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1650 3710 1650 3710";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTc_vt : requires subprogram access exportedComponent::fv::artificial_newTc.others
+	  { taste::Coordinates => "1650 3755 1650 3755";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::ground_has_pending_msg.others
+	  { taste::Coordinates => "1650 3800 1650 3800";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1400 3695 1650 3830";
+	taste::instance_name => "vt_ground_newtm";
+  end THREAD_vt_ground_newtm;
+
+  system implementation THREAD_vt_ground_newtm.others
+    subcomponents
+	artificial_newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_vt_impl : subprogram exportedComponent::FV::artificial_newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::ground_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_newTm_impl -> artificial_newTm;
+	subprogram access newTm_impl -> newTm;
+	subprogram access newTc_vt_impl -> newTc_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_ground_newtm.others;
+
+  system THREAD_vt_ground_triggertmgui
+    features
+	artificial_triggerTmGUI : provides subprogram access exportedComponent::fv::triggerTmGUI.others
+	  { taste::Coordinates => "1800 3710 1800 3710";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 500;};
+	triggerTmGUI : requires subprogram access exportedComponent::fv::triggerTmGUI.others
+	  { taste::Coordinates => "2050 3710 2050 3710";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 500;};
+	newTc_vt : requires subprogram access exportedComponent::fv::artificial_newTc.others
+	  { taste::Coordinates => "2050 3755 2050 3755";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::ground_has_pending_msg.others
+	  { taste::Coordinates => "2050 3800 2050 3800";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1800 3695 2050 3830";
+	taste::instance_name => "vt_ground_triggertmgui";
+  end THREAD_vt_ground_triggertmgui;
+
+  system implementation THREAD_vt_ground_triggertmgui.others
+    subcomponents
+	artificial_triggerTmGUI_impl : subprogram exportedComponent::FV::triggerTmGUI.others
+	  { compute_execution_time => 0ms..0ms;};
+	triggerTmGUI_impl : subprogram exportedComponent::FV::triggerTmGUI.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_vt_impl : subprogram exportedComponent::FV::artificial_newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::ground_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_triggerTmGUI_impl -> artificial_triggerTmGUI;
+	subprogram access triggerTmGUI_impl -> triggerTmGUI;
+	subprogram access newTc_vt_impl -> newTc_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_ground_triggertmgui.others;
+
+  system THREAD_vt_tcqueue_newtc
+    features
+	artificial_newTc : provides subprogram access exportedComponent::fv::newTc.others
+	  { taste::Coordinates => "2200 3710 2200 3710";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	newTc : requires subprogram access exportedComponent::fv::newTc.others
+	  { taste::Coordinates => "2450 3710 2450 3710";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::tcqueue_has_pending_msg.others
+	  { taste::Coordinates => "2450 3755 2450 3755";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "2200 3695 2450 3785";
+	taste::instance_name => "vt_tcqueue_newtc";
+  end THREAD_vt_tcqueue_newtc;
+
+  system implementation THREAD_vt_tcqueue_newtc.others
+    subcomponents
+	artificial_newTc_impl : subprogram exportedComponent::FV::newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_impl : subprogram exportedComponent::FV::newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::tcqueue_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_newTc_impl -> artificial_newTc;
+	subprogram access newTc_impl -> newTc;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_tcqueue_newtc.others;
+
+  system THREAD_vt_events_debugeventstrigger
+    features
+	artificial_debugEventsTrigger : provides subprogram access exportedComponent::fv::debugEventsTrigger.others
+	  { taste::Coordinates => "200 4505 200 4505";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger : requires subprogram access exportedComponent::fv::debugEventsTrigger.others
+	  { taste::Coordinates => "450 4505 450 4505";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::events_has_pending_msg.others
+	  { taste::Coordinates => "450 4550 450 4550";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "200 4490 450 4580";
+	taste::instance_name => "vt_events_debugeventstrigger";
+  end THREAD_vt_events_debugeventstrigger;
+
+  system implementation THREAD_vt_events_debugeventstrigger.others
+    subcomponents
+	artificial_debugEventsTrigger_impl : subprogram exportedComponent::FV::debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_impl : subprogram exportedComponent::FV::debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::events_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_debugEventsTrigger_impl -> artificial_debugEventsTrigger;
+	subprogram access debugEventsTrigger_impl -> debugEventsTrigger;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_events_debugeventstrigger.others;
+
+  system THREAD_vt_st19_eventactiontrigger
+    features
+	artificial_EventActionTrigger : provides subprogram access exportedComponent::fv::EventActionTrigger.others
+	  { taste::Coordinates => "600 4505 600 4505";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger : requires subprogram access exportedComponent::fv::EventActionTrigger.others
+	  { taste::Coordinates => "850 4505 850 4505";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	incCount_vt : requires subprogram access exportedComponent::fv::incCount.others
+	  { taste::Coordinates => "850 4550 850 4550";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm_vt : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "850 4595 850 4595";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount_vt : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "850 4640 850 4640";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid_vt : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "850 4685 850 4685";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	ACK_vt : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "850 4730 850 4730";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::events_has_pending_msg.others
+	  { taste::Coordinates => "850 4775 850 4775";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	getNextEvent_vt : requires subprogram access exportedComponent::fv::getNextEvent.others
+	  { taste::Coordinates => "850 4820 850 4820";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTc_vt : requires subprogram access exportedComponent::fv::artificial_newTc.others
+	  { taste::Coordinates => "850 4865 850 4865";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "600 4490 850 4895";
+	taste::instance_name => "vt_st19_eventactiontrigger";
+  end THREAD_vt_st19_eventactiontrigger;
+
+  system implementation THREAD_vt_st19_eventactiontrigger.others
+    subcomponents
+	artificial_EventActionTrigger_impl : subprogram exportedComponent::FV::EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_impl : subprogram exportedComponent::FV::EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	incCount_vt_impl : subprogram exportedComponent::FV::incCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_vt_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_vt_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_vt_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_vt_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::events_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+	getNextEvent_vt_impl : subprogram exportedComponent::FV::getNextEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTc_vt_impl : subprogram exportedComponent::FV::artificial_newTc.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_EventActionTrigger_impl -> artificial_EventActionTrigger;
+	subprogram access EventActionTrigger_impl -> EventActionTrigger;
+	subprogram access incCount_vt_impl -> incCount_vt;
+	subprogram access newTm_vt_impl -> newTm_vt;
+	subprogram access getSequenceCount_vt_impl -> getSequenceCount_vt;
+	subprogram access getApid_vt_impl -> getApid_vt;
+	subprogram access ACK_vt_impl -> ACK_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+	subprogram access getNextEvent_vt_impl -> getNextEvent_vt;
+	subprogram access newTc_vt_impl -> newTc_vt;
+  end THREAD_vt_st19_eventactiontrigger.others;
+
+  system THREAD_vt_st12_pmontrigger
+    features
+	artificial_PmonTrigger : provides subprogram access exportedComponent::fv::PmonTrigger.others
+	  { taste::Coordinates => "1000 4505 1000 4505";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger : requires subprogram access exportedComponent::fv::PmonTrigger.others
+	  { taste::Coordinates => "1250 4505 1250 4505";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	incCount_vt : requires subprogram access exportedComponent::fv::incCount.others
+	  { taste::Coordinates => "1250 4550 1250 4550";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	newTm_vt : requires subprogram access exportedComponent::fv::newTm.others
+	  { taste::Coordinates => "1250 4595 1250 4595";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getSequenceCount_vt : requires subprogram access exportedComponent::fv::getSequenceCount.others
+	  { taste::Coordinates => "1250 4640 1250 4640";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getApid_vt : requires subprogram access exportedComponent::fv::getApid.others
+	  { taste::Coordinates => "1250 4685 1250 4685";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	ACK_vt : requires subprogram access exportedComponent::fv::ACK.others
+	  { taste::Coordinates => "1250 4730 1250 4730";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::events_has_pending_msg.others
+	  { taste::Coordinates => "1250 4775 1250 4775";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+	pushNewEvent_vt : requires subprogram access exportedComponent::fv::pushNewEvent.others
+	  { taste::Coordinates => "1250 4820 1250 4820";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+	getParamValue_vt : requires subprogram access exportedComponent::fv::getParamValue.others
+	  { taste::Coordinates => "1250 4865 1250 4865";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1000 4490 1250 4895";
+	taste::instance_name => "vt_st12_pmontrigger";
+  end THREAD_vt_st12_pmontrigger;
+
+  system implementation THREAD_vt_st12_pmontrigger.others
+    subcomponents
+	artificial_PmonTrigger_impl : subprogram exportedComponent::FV::PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_impl : subprogram exportedComponent::FV::PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	incCount_vt_impl : subprogram exportedComponent::FV::incCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	newTm_vt_impl : subprogram exportedComponent::FV::newTm.others
+	  { compute_execution_time => 0ms..0ms;};
+	getSequenceCount_vt_impl : subprogram exportedComponent::FV::getSequenceCount.others
+	  { compute_execution_time => 0ms..0ms;};
+	getApid_vt_impl : subprogram exportedComponent::FV::getApid.others
+	  { compute_execution_time => 0ms..0ms;};
+	ACK_vt_impl : subprogram exportedComponent::FV::ACK.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::events_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+	pushNewEvent_vt_impl : subprogram exportedComponent::FV::pushNewEvent.others
+	  { compute_execution_time => 0ms..0ms;};
+	getParamValue_vt_impl : subprogram exportedComponent::FV::getParamValue.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_PmonTrigger_impl -> artificial_PmonTrigger;
+	subprogram access PmonTrigger_impl -> PmonTrigger;
+	subprogram access incCount_vt_impl -> incCount_vt;
+	subprogram access newTm_vt_impl -> newTm_vt;
+	subprogram access getSequenceCount_vt_impl -> getSequenceCount_vt;
+	subprogram access getApid_vt_impl -> getApid_vt;
+	subprogram access ACK_vt_impl -> ACK_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+	subprogram access pushNewEvent_vt_impl -> pushNewEvent_vt;
+	subprogram access getParamValue_vt_impl -> getParamValue_vt;
+  end THREAD_vt_st12_pmontrigger.others;
+
+  system THREAD_vt_trigger_hkreporttrigger
+    features
+	artificial_HkReportTrigger : provides subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "1400 4505 1400 4505";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 10000;};
+	HkReportTrigger : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "1650 4505 1650 4505";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 10000;};
+	tmTrigger_vt : requires subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "1650 4550 1650 4550";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	HkReportTrigger_vt : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "1650 4595 1650 4595";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger_vt : requires subprogram access exportedComponent::fv::artificial_PmonTrigger.others
+	  { taste::Coordinates => "1650 4640 1650 4640";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventReportTrigger_vt : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "1650 4685 1650 4685";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcTrigger_vt : requires subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "1650 4730 1650 4730";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger_vt : requires subprogram access exportedComponent::fv::artificial_debugEventsTrigger.others
+	  { taste::Coordinates => "1650 4775 1650 4775";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger_vt : requires subprogram access exportedComponent::fv::artificial_EventActionTrigger.others
+	  { taste::Coordinates => "1650 4820 1650 4820";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::trigger_has_pending_msg.others
+	  { taste::Coordinates => "1650 4865 1650 4865";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1400 4490 1650 4895";
+	taste::instance_name => "vt_trigger_hkreporttrigger";
+  end THREAD_vt_trigger_hkreporttrigger;
+
+  system implementation THREAD_vt_trigger_hkreporttrigger.others
+    subcomponents
+	artificial_HkReportTrigger_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmTrigger_vt_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_vt_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_vt_impl : subprogram exportedComponent::FV::artificial_PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_vt_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcTrigger_vt_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_vt_impl : subprogram exportedComponent::FV::artificial_debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_vt_impl : subprogram exportedComponent::FV::artificial_EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::trigger_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_HkReportTrigger_impl -> artificial_HkReportTrigger;
+	subprogram access HkReportTrigger_impl -> HkReportTrigger;
+	subprogram access tmTrigger_vt_impl -> tmTrigger_vt;
+	subprogram access HkReportTrigger_vt_impl -> HkReportTrigger_vt;
+	subprogram access PmonTrigger_vt_impl -> PmonTrigger_vt;
+	subprogram access EventReportTrigger_vt_impl -> EventReportTrigger_vt;
+	subprogram access tcTrigger_vt_impl -> tcTrigger_vt;
+	subprogram access debugEventsTrigger_vt_impl -> debugEventsTrigger_vt;
+	subprogram access EventActionTrigger_vt_impl -> EventActionTrigger_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_trigger_hkreporttrigger.others;
+
+  system THREAD_vt_trigger_tmdispatchtrigger
+    features
+	artificial_TmDispatchTrigger : provides subprogram access exportedComponent::fv::TmDispatchTrigger.others
+	  { taste::Coordinates => "1800 4505 1800 4505";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 1000;};
+	TmDispatchTrigger : requires subprogram access exportedComponent::fv::TmDispatchTrigger.others
+	  { taste::Coordinates => "2050 4505 2050 4505";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 1000;};
+	tmTrigger_vt : requires subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "2050 4550 2050 4550";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	HkReportTrigger_vt : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "2050 4595 2050 4595";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger_vt : requires subprogram access exportedComponent::fv::artificial_PmonTrigger.others
+	  { taste::Coordinates => "2050 4640 2050 4640";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventReportTrigger_vt : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "2050 4685 2050 4685";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcTrigger_vt : requires subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "2050 4730 2050 4730";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger_vt : requires subprogram access exportedComponent::fv::artificial_debugEventsTrigger.others
+	  { taste::Coordinates => "2050 4775 2050 4775";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger_vt : requires subprogram access exportedComponent::fv::artificial_EventActionTrigger.others
+	  { taste::Coordinates => "2050 4820 2050 4820";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::trigger_has_pending_msg.others
+	  { taste::Coordinates => "2050 4865 2050 4865";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1800 4490 2050 4895";
+	taste::instance_name => "vt_trigger_tmdispatchtrigger";
+  end THREAD_vt_trigger_tmdispatchtrigger;
+
+  system implementation THREAD_vt_trigger_tmdispatchtrigger.others
+    subcomponents
+	artificial_TmDispatchTrigger_impl : subprogram exportedComponent::FV::TmDispatchTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	TmDispatchTrigger_impl : subprogram exportedComponent::FV::TmDispatchTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmTrigger_vt_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_vt_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_vt_impl : subprogram exportedComponent::FV::artificial_PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_vt_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcTrigger_vt_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_vt_impl : subprogram exportedComponent::FV::artificial_debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_vt_impl : subprogram exportedComponent::FV::artificial_EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::trigger_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_TmDispatchTrigger_impl -> artificial_TmDispatchTrigger;
+	subprogram access TmDispatchTrigger_impl -> TmDispatchTrigger;
+	subprogram access tmTrigger_vt_impl -> tmTrigger_vt;
+	subprogram access HkReportTrigger_vt_impl -> HkReportTrigger_vt;
+	subprogram access PmonTrigger_vt_impl -> PmonTrigger_vt;
+	subprogram access EventReportTrigger_vt_impl -> EventReportTrigger_vt;
+	subprogram access tcTrigger_vt_impl -> tcTrigger_vt;
+	subprogram access debugEventsTrigger_vt_impl -> debugEventsTrigger_vt;
+	subprogram access EventActionTrigger_vt_impl -> EventActionTrigger_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_trigger_tmdispatchtrigger.others;
+
+  system THREAD_vt_trigger_eventactiontrigger
+    features
+	artificial_EventActionTrigger : provides subprogram access exportedComponent::fv::EventActionTrigger.others
+	  { taste::Coordinates => "2200 4505 2200 4505";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 10000;};
+	EventActionTrigger : requires subprogram access exportedComponent::fv::EventActionTrigger.others
+	  { taste::Coordinates => "2450 4505 2450 4505";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 10000;};
+	tmTrigger_vt : requires subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "2450 4550 2450 4550";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	HkReportTrigger_vt : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "2450 4595 2450 4595";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger_vt : requires subprogram access exportedComponent::fv::artificial_PmonTrigger.others
+	  { taste::Coordinates => "2450 4640 2450 4640";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventReportTrigger_vt : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "2450 4685 2450 4685";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcTrigger_vt : requires subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "2450 4730 2450 4730";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger_vt : requires subprogram access exportedComponent::fv::artificial_debugEventsTrigger.others
+	  { taste::Coordinates => "2450 4775 2450 4775";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger_vt : requires subprogram access exportedComponent::fv::artificial_EventActionTrigger.others
+	  { taste::Coordinates => "2450 4820 2450 4820";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::trigger_has_pending_msg.others
+	  { taste::Coordinates => "2450 4865 2450 4865";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "2200 4490 2450 4895";
+	taste::instance_name => "vt_trigger_eventactiontrigger";
+  end THREAD_vt_trigger_eventactiontrigger;
+
+  system implementation THREAD_vt_trigger_eventactiontrigger.others
+    subcomponents
+	artificial_EventActionTrigger_impl : subprogram exportedComponent::FV::EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_impl : subprogram exportedComponent::FV::EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmTrigger_vt_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_vt_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_vt_impl : subprogram exportedComponent::FV::artificial_PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_vt_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcTrigger_vt_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_vt_impl : subprogram exportedComponent::FV::artificial_debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_vt_impl : subprogram exportedComponent::FV::artificial_EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::trigger_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_EventActionTrigger_impl -> artificial_EventActionTrigger;
+	subprogram access EventActionTrigger_impl -> EventActionTrigger;
+	subprogram access tmTrigger_vt_impl -> tmTrigger_vt;
+	subprogram access HkReportTrigger_vt_impl -> HkReportTrigger_vt;
+	subprogram access PmonTrigger_vt_impl -> PmonTrigger_vt;
+	subprogram access EventReportTrigger_vt_impl -> EventReportTrigger_vt;
+	subprogram access tcTrigger_vt_impl -> tcTrigger_vt;
+	subprogram access debugEventsTrigger_vt_impl -> debugEventsTrigger_vt;
+	subprogram access EventActionTrigger_vt_impl -> EventActionTrigger_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_trigger_eventactiontrigger.others;
+
+  system THREAD_vt_trigger_tcdispatchtrigger
+    features
+	artificial_TcDispatchTrigger : provides subprogram access exportedComponent::fv::TcDispatchTrigger.others
+	  { taste::Coordinates => "200 5210 200 5210";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 1000;};
+	TcDispatchTrigger : requires subprogram access exportedComponent::fv::TcDispatchTrigger.others
+	  { taste::Coordinates => "450 5210 450 5210";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 1000;};
+	tmTrigger_vt : requires subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "450 5255 450 5255";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	HkReportTrigger_vt : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "450 5300 450 5300";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger_vt : requires subprogram access exportedComponent::fv::artificial_PmonTrigger.others
+	  { taste::Coordinates => "450 5345 450 5345";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventReportTrigger_vt : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "450 5390 450 5390";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcTrigger_vt : requires subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "450 5435 450 5435";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger_vt : requires subprogram access exportedComponent::fv::artificial_debugEventsTrigger.others
+	  { taste::Coordinates => "450 5480 450 5480";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger_vt : requires subprogram access exportedComponent::fv::artificial_EventActionTrigger.others
+	  { taste::Coordinates => "450 5525 450 5525";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::trigger_has_pending_msg.others
+	  { taste::Coordinates => "450 5570 450 5570";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "200 5195 450 5600";
+	taste::instance_name => "vt_trigger_tcdispatchtrigger";
+  end THREAD_vt_trigger_tcdispatchtrigger;
+
+  system implementation THREAD_vt_trigger_tcdispatchtrigger.others
+    subcomponents
+	artificial_TcDispatchTrigger_impl : subprogram exportedComponent::FV::TcDispatchTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	TcDispatchTrigger_impl : subprogram exportedComponent::FV::TcDispatchTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmTrigger_vt_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_vt_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_vt_impl : subprogram exportedComponent::FV::artificial_PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_vt_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcTrigger_vt_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_vt_impl : subprogram exportedComponent::FV::artificial_debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_vt_impl : subprogram exportedComponent::FV::artificial_EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::trigger_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_TcDispatchTrigger_impl -> artificial_TcDispatchTrigger;
+	subprogram access TcDispatchTrigger_impl -> TcDispatchTrigger;
+	subprogram access tmTrigger_vt_impl -> tmTrigger_vt;
+	subprogram access HkReportTrigger_vt_impl -> HkReportTrigger_vt;
+	subprogram access PmonTrigger_vt_impl -> PmonTrigger_vt;
+	subprogram access EventReportTrigger_vt_impl -> EventReportTrigger_vt;
+	subprogram access tcTrigger_vt_impl -> tcTrigger_vt;
+	subprogram access debugEventsTrigger_vt_impl -> debugEventsTrigger_vt;
+	subprogram access EventActionTrigger_vt_impl -> EventActionTrigger_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_trigger_tcdispatchtrigger.others;
+
+  system THREAD_vt_trigger_pmontrigger
+    features
+	artificial_PmonTrigger : provides subprogram access exportedComponent::fv::PmonTrigger.others
+	  { taste::Coordinates => "600 5210 600 5210";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 10000;};
+	PmonTrigger : requires subprogram access exportedComponent::fv::PmonTrigger.others
+	  { taste::Coordinates => "850 5210 850 5210";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 10000;};
+	tmTrigger_vt : requires subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "850 5255 850 5255";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	HkReportTrigger_vt : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "850 5300 850 5300";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger_vt : requires subprogram access exportedComponent::fv::artificial_PmonTrigger.others
+	  { taste::Coordinates => "850 5345 850 5345";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventReportTrigger_vt : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "850 5390 850 5390";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcTrigger_vt : requires subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "850 5435 850 5435";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger_vt : requires subprogram access exportedComponent::fv::artificial_debugEventsTrigger.others
+	  { taste::Coordinates => "850 5480 850 5480";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger_vt : requires subprogram access exportedComponent::fv::artificial_EventActionTrigger.others
+	  { taste::Coordinates => "850 5525 850 5525";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::trigger_has_pending_msg.others
+	  { taste::Coordinates => "850 5570 850 5570";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "600 5195 850 5600";
+	taste::instance_name => "vt_trigger_pmontrigger";
+  end THREAD_vt_trigger_pmontrigger;
+
+  system implementation THREAD_vt_trigger_pmontrigger.others
+    subcomponents
+	artificial_PmonTrigger_impl : subprogram exportedComponent::FV::PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_impl : subprogram exportedComponent::FV::PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmTrigger_vt_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_vt_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_vt_impl : subprogram exportedComponent::FV::artificial_PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_vt_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcTrigger_vt_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_vt_impl : subprogram exportedComponent::FV::artificial_debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_vt_impl : subprogram exportedComponent::FV::artificial_EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::trigger_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_PmonTrigger_impl -> artificial_PmonTrigger;
+	subprogram access PmonTrigger_impl -> PmonTrigger;
+	subprogram access tmTrigger_vt_impl -> tmTrigger_vt;
+	subprogram access HkReportTrigger_vt_impl -> HkReportTrigger_vt;
+	subprogram access PmonTrigger_vt_impl -> PmonTrigger_vt;
+	subprogram access EventReportTrigger_vt_impl -> EventReportTrigger_vt;
+	subprogram access tcTrigger_vt_impl -> tcTrigger_vt;
+	subprogram access debugEventsTrigger_vt_impl -> debugEventsTrigger_vt;
+	subprogram access EventActionTrigger_vt_impl -> EventActionTrigger_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_trigger_pmontrigger.others;
+
+  system THREAD_vt_trigger_eventreporttrigger
+    features
+	artificial_EventReportTrigger : provides subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "1000 5210 1000 5210";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 1000;};
+	EventReportTrigger : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "1250 5210 1250 5210";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 1000;};
+	tmTrigger_vt : requires subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "1250 5255 1250 5255";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	HkReportTrigger_vt : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "1250 5300 1250 5300";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger_vt : requires subprogram access exportedComponent::fv::artificial_PmonTrigger.others
+	  { taste::Coordinates => "1250 5345 1250 5345";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventReportTrigger_vt : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "1250 5390 1250 5390";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcTrigger_vt : requires subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "1250 5435 1250 5435";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger_vt : requires subprogram access exportedComponent::fv::artificial_debugEventsTrigger.others
+	  { taste::Coordinates => "1250 5480 1250 5480";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger_vt : requires subprogram access exportedComponent::fv::artificial_EventActionTrigger.others
+	  { taste::Coordinates => "1250 5525 1250 5525";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::trigger_has_pending_msg.others
+	  { taste::Coordinates => "1250 5570 1250 5570";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1000 5195 1250 5600";
+	taste::instance_name => "vt_trigger_eventreporttrigger";
+  end THREAD_vt_trigger_eventreporttrigger;
+
+  system implementation THREAD_vt_trigger_eventreporttrigger.others
+    subcomponents
+	artificial_EventReportTrigger_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmTrigger_vt_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_vt_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_vt_impl : subprogram exportedComponent::FV::artificial_PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_vt_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcTrigger_vt_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_vt_impl : subprogram exportedComponent::FV::artificial_debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_vt_impl : subprogram exportedComponent::FV::artificial_EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::trigger_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_EventReportTrigger_impl -> artificial_EventReportTrigger;
+	subprogram access EventReportTrigger_impl -> EventReportTrigger;
+	subprogram access tmTrigger_vt_impl -> tmTrigger_vt;
+	subprogram access HkReportTrigger_vt_impl -> HkReportTrigger_vt;
+	subprogram access PmonTrigger_vt_impl -> PmonTrigger_vt;
+	subprogram access EventReportTrigger_vt_impl -> EventReportTrigger_vt;
+	subprogram access tcTrigger_vt_impl -> tcTrigger_vt;
+	subprogram access debugEventsTrigger_vt_impl -> debugEventsTrigger_vt;
+	subprogram access EventActionTrigger_vt_impl -> EventActionTrigger_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_trigger_eventreporttrigger.others;
+
+  system THREAD_vt_trigger_debugeventtrigger
+    features
+	artificial_debugEventTrigger : provides subprogram access exportedComponent::fv::debugEventTrigger.others
+	  { taste::Coordinates => "1400 5210 1400 5210";
+	    taste::RCMoperationKind => cyclic;
+	    taste::RCMperiod => 15000;};
+	debugEventTrigger : requires subprogram access exportedComponent::fv::debugEventTrigger.others
+	  { taste::Coordinates => "1650 5210 1650 5210";
+	    taste::RCMoperationKind => protected;
+	    taste::RCMperiod => 15000;};
+	tmTrigger_vt : requires subprogram access exportedComponent::fv::tmTrigger.others
+	  { taste::Coordinates => "1650 5255 1650 5255";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	HkReportTrigger_vt : requires subprogram access exportedComponent::fv::HkReportTrigger.others
+	  { taste::Coordinates => "1650 5300 1650 5300";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	PmonTrigger_vt : requires subprogram access exportedComponent::fv::artificial_PmonTrigger.others
+	  { taste::Coordinates => "1650 5345 1650 5345";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventReportTrigger_vt : requires subprogram access exportedComponent::fv::EventReportTrigger.others
+	  { taste::Coordinates => "1650 5390 1650 5390";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	tcTrigger_vt : requires subprogram access exportedComponent::fv::tcTrigger.others
+	  { taste::Coordinates => "1650 5435 1650 5435";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	debugEventsTrigger_vt : requires subprogram access exportedComponent::fv::artificial_debugEventsTrigger.others
+	  { taste::Coordinates => "1650 5480 1650 5480";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	EventActionTrigger_vt : requires subprogram access exportedComponent::fv::artificial_EventActionTrigger.others
+	  { taste::Coordinates => "1650 5525 1650 5525";
+	    taste::RCMoperationKind => sporadic;
+	    taste::RCMperiod => 0;};
+	check_queue_vt : requires subprogram access exportedComponent::fv::trigger_has_pending_msg.others
+	  { taste::Coordinates => "1650 5570 1650 5570";
+	    taste::RCMoperationKind => unprotected;
+	    taste::RCMperiod => 0;};
+    properties
+	source_language => C;
+	taste::coordinates => "1400 5195 1650 5600";
+	taste::instance_name => "vt_trigger_debugeventtrigger";
+  end THREAD_vt_trigger_debugeventtrigger;
+
+  system implementation THREAD_vt_trigger_debugeventtrigger.others
+    subcomponents
+	artificial_debugEventTrigger_impl : subprogram exportedComponent::FV::debugEventTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventTrigger_impl : subprogram exportedComponent::FV::debugEventTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tmTrigger_vt_impl : subprogram exportedComponent::FV::tmTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	HkReportTrigger_vt_impl : subprogram exportedComponent::FV::HkReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	PmonTrigger_vt_impl : subprogram exportedComponent::FV::artificial_PmonTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventReportTrigger_vt_impl : subprogram exportedComponent::FV::EventReportTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	tcTrigger_vt_impl : subprogram exportedComponent::FV::tcTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	debugEventsTrigger_vt_impl : subprogram exportedComponent::FV::artificial_debugEventsTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	EventActionTrigger_vt_impl : subprogram exportedComponent::FV::artificial_EventActionTrigger.others
+	  { compute_execution_time => 0ms..0ms;};
+	check_queue_vt_impl : subprogram exportedComponent::FV::trigger_has_pending_msg.others
+	  { compute_execution_time => 0ms..0ms;};
+    connections
+	subprogram access artificial_debugEventTrigger_impl -> artificial_debugEventTrigger;
+	subprogram access debugEventTrigger_impl -> debugEventTrigger;
+	subprogram access tmTrigger_vt_impl -> tmTrigger_vt;
+	subprogram access HkReportTrigger_vt_impl -> HkReportTrigger_vt;
+	subprogram access PmonTrigger_vt_impl -> PmonTrigger_vt;
+	subprogram access EventReportTrigger_vt_impl -> EventReportTrigger_vt;
+	subprogram access tcTrigger_vt_impl -> tcTrigger_vt;
+	subprogram access debugEventsTrigger_vt_impl -> debugEventsTrigger_vt;
+	subprogram access EventActionTrigger_vt_impl -> EventActionTrigger_vt;
+	subprogram access check_queue_vt_impl -> check_queue_vt;
+  end THREAD_vt_trigger_debugeventtrigger.others;
+
+properties
+  taste::coordinates => "0 0 2970 2100";
+
+end generated_cv::IV;
+
+package exportedComponent::FV
+public
+with dataview;
+with taste;
+
+  subprogram newTm
+  end newTm;
+
+  subprogram triggerTmGUI
+  end triggerTmGUI;
+
+  subprogram artificial_newTc
+  end artificial_newTc;
+
+  subprogram ground_has_pending_msg
+  end ground_has_pending_msg;
+
+  subprogram newTc
+  end newTc;
+
+  subprogram tcRequest
+  end tcRequest;
+
+  subprogram tcqueue_has_pending_msg
+  end tcqueue_has_pending_msg;
+
+  subprogram tcTrigger
+  end tcTrigger;
+
+  subprogram tc17
+  end tc17;
+
+  subprogram tc08
+  end tc08;
+
+  subprogram tc19
+  end tc19;
+
+  subprogram tc09
+  end tc09;
+
+  subprogram tc12
+  end tc12;
+
+  subprogram tc11
+  end tc11;
+
+  subprogram tc18
+  end tc18;
+
+  subprogram tc23
+  end tc23;
+
+  subprogram tc20
+  end tc20;
+
+  subprogram tcdispatch_has_pending_msg
+  end tcdispatch_has_pending_msg;
+
+  subprogram incCount
+  end incCount;
+
+  subprogram ACK
+  end ACK;
+
+  subprogram getApid
+  end getApid;
+
+  subprogram getSequenceCount
+  end getSequenceCount;
+
+  subprogram getNextEvent
+  end getNextEvent;
+
+  subprogram pushNewEvent
+  end pushNewEvent;
+
+  subprogram getParamValue
+  end getParamValue;
+
+  subprogram loadDirect
+  end loadDirect;
+
+  subprogram loadReference
+  end loadReference;
+
+  subprogram getOnBoardParam
+  end getOnBoardParam;
+
+  subprogram setOnBoardParam
+  end setOnBoardParam;
+
+  subprogram copy
+  end copy;
+
+  subprogram delete
+  end delete;
+
+  subprogram create
+  end create;
+
+  subprogram getAttributes
+  end getAttributes;
+
+  subprogram tmTrigger
+  end tmTrigger;
+
+  subprogram artificial_newTm
+  end artificial_newTm;
+
+  subprogram tmRequest
+  end tmRequest;
+
+  subprogram tmdispatch_has_pending_msg
+  end tmdispatch_has_pending_msg;
+
+  subprogram debugEventsTrigger
+  end debugEventsTrigger;
+
+  subprogram events_has_pending_msg
+  end events_has_pending_msg;
+
+  subprogram EventReportTrigger
+  end EventReportTrigger;
+
+  subprogram st05_has_pending_msg
+  end st05_has_pending_msg;
+
+  subprogram EventActionTrigger
+  end EventActionTrigger;
+
+  subprogram st19_has_pending_msg
+  end st19_has_pending_msg;
+
+  subprogram setParamValue
+  end setParamValue;
+
+  subprogram HkReportTrigger
+  end HkReportTrigger;
+
+  subprogram st03_has_pending_msg
+  end st03_has_pending_msg;
+
+  subprogram PmonTrigger
+  end PmonTrigger;
+
+  subprogram st12_has_pending_msg
+  end st12_has_pending_msg;
+
+  subprogram TmDispatchTrigger
+  end TmDispatchTrigger;
+
+  subprogram TcDispatchTrigger
+  end TcDispatchTrigger;
+
+  subprogram debugEventTrigger
+  end debugEventTrigger;
+
+  subprogram artificial_PmonTrigger
+  end artificial_PmonTrigger;
+
+  subprogram artificial_debugEventsTrigger
+  end artificial_debugEventsTrigger;
+
+  subprogram artificial_EventActionTrigger
+  end artificial_EventActionTrigger;
+
+  subprogram trigger_has_pending_msg
+  end trigger_has_pending_msg;
+
+  subprogram debugTrigger
+  end debugTrigger;
+
+  subprogram onboardsoftware_has_pending_msg
+  end onboardsoftware_has_pending_msg;
+
+  subprogram check_queue
+  end check_queue;
+
+end exportedComponent::FV;

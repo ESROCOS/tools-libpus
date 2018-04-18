@@ -1,0 +1,38 @@
+-- Automatically Generated - For use with AADL2GlueC only - Do NOT modify! --
+
+SUBPROGRAM copy
+END copy;
+
+SUBPROGRAM IMPLEMENTATION copy.C
+PROPERTIES
+	FV_Name => "filemanagement";
+	Source_Language => C;
+END copy.C;
+
+SUBPROGRAM delete
+END delete;
+
+SUBPROGRAM IMPLEMENTATION delete.C
+PROPERTIES
+	FV_Name => "filemanagement";
+	Source_Language => C;
+END delete.C;
+
+SUBPROGRAM create
+END create;
+
+SUBPROGRAM IMPLEMENTATION create.C
+PROPERTIES
+	FV_Name => "filemanagement";
+	Source_Language => C;
+END create.C;
+
+SUBPROGRAM getAttributes
+END getAttributes;
+
+SUBPROGRAM IMPLEMENTATION getAttributes.C
+PROPERTIES
+	FV_Name => "filemanagement";
+	Source_Language => C;
+END getAttributes.C;
+

@@ -1,0 +1,215 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package process_package
+public
+	with Deployment;
+	with DataView;
+	with interfaceview::IV;
+	with deploymentview::DV;
+	with ocarina_processors_x86;
+	with tcdispatch_CV_Thread;
+	with tmdispatch_CV_Thread;
+	with st05_CV_Thread;
+	with st03_CV_Thread;
+	with onboardsoftware_CV_Thread;
+	with vt_ground_newtm_CV_Thread;
+	with vt_ground_triggertmgui_CV_Thread;
+	with vt_tcqueue_newtc_CV_Thread;
+	with vt_events_debugeventstrigger_CV_Thread;
+	with vt_st19_eventactiontrigger_CV_Thread;
+	with vt_st12_pmontrigger_CV_Thread;
+	with vt_trigger_hkreporttrigger_CV_Thread;
+	with vt_trigger_tmdispatchtrigger_CV_Thread;
+	with vt_trigger_eventactiontrigger_CV_Thread;
+	with vt_trigger_tcdispatchtrigger_CV_Thread;
+	with vt_trigger_pmontrigger_CV_Thread;
+	with vt_trigger_eventreporttrigger_CV_Thread;
+	with vt_trigger_debugeventtrigger_CV_Thread;
+
+DATA TASTE_Protected
+PROPERTIES
+	Concurrency_Control_Protocol => Protected_Access;
+END TASTE_Protected;
+
+DATA IMPLEMENTATION TASTE_Protected.Object
+PROPERTIES
+	Concurrency_Control_Protocol => Protected_Access;
+END TASTE_Protected.Object;
+
+
+process x86_partition extends deploymentview::DV::node1::x86_partition
+end x86_partition;
+
+process implementation x86_partition.final
+subcomponents
+	ground_protected : data TASTE_Protected.Object;
+	tcqueue_protected : data TASTE_Protected.Object;
+	tcdispatch : thread tcdispatch_CV_Thread::tcdispatch_tcdispatch.others;
+	tmdispatch : thread tmdispatch_CV_Thread::tmdispatch_tmdispatch.others;
+	tmqueue_protected : data TASTE_Protected.Object;
+	st17_protected : data TASTE_Protected.Object;
+	st01_protected : data TASTE_Protected.Object;
+	st08_protected : data TASTE_Protected.Object;
+	onboardapid_protected : data TASTE_Protected.Object;
+	st09_protected : data TASTE_Protected.Object;
+	timereportapid_protected : data TASTE_Protected.Object;
+	events_protected : data TASTE_Protected.Object;
+	st05 : thread st05_CV_Thread::st05_st05.others;
+	st19_protected : data TASTE_Protected.Object;
+	housekeeping_protected : data TASTE_Protected.Object;
+	st03 : thread st03_CV_Thread::st03_st03.others;
+	st12_protected : data TASTE_Protected.Object;
+	st11_protected : data TASTE_Protected.Object;
+	st18_protected : data TASTE_Protected.Object;
+	obcpengine_protected : data TASTE_Protected.Object;
+	st23_protected : data TASTE_Protected.Object;
+	filemanagement_protected : data TASTE_Protected.Object;
+	st20_protected : data TASTE_Protected.Object;
+	onboardparams_protected : data TASTE_Protected.Object;
+	trigger_protected : data TASTE_Protected.Object;
+	onboardsoftware : thread onboardsoftware_CV_Thread::onboardsoftware_onboardsoftware.others;
+	vt_ground_newtm : thread vt_ground_newtm_CV_Thread::vt_ground_newtm_vt_ground_newtm.others;
+	vt_ground_triggertmgui : thread vt_ground_triggertmgui_CV_Thread::vt_ground_triggertmgui_vt_ground_triggertmgui.others;
+	vt_tcqueue_newtc : thread vt_tcqueue_newtc_CV_Thread::vt_tcqueue_newtc_vt_tcqueue_newtc.others;
+	vt_events_debugeventstrigger : thread vt_events_debugeventstrigger_CV_Thread::vt_events_debugeventstrigger_vt_events_debugeventstrigger.others;
+	vt_st19_eventactiontrigger : thread vt_st19_eventactiontrigger_CV_Thread::vt_st19_eventactiontrigger_vt_st19_eventactiontrigger.others;
+	vt_st12_pmontrigger : thread vt_st12_pmontrigger_CV_Thread::vt_st12_pmontrigger_vt_st12_pmontrigger.others;
+	vt_trigger_hkreporttrigger : thread vt_trigger_hkreporttrigger_CV_Thread::vt_trigger_hkreporttrigger_vt_trigger_hkreporttrigger.others;
+	vt_trigger_tmdispatchtrigger : thread vt_trigger_tmdispatchtrigger_CV_Thread::vt_trigger_tmdispatchtrigger_vt_trigger_tmdispatchtrigger.others;
+	vt_trigger_eventactiontrigger : thread vt_trigger_eventactiontrigger_CV_Thread::vt_trigger_eventactiontrigger_vt_trigger_eventactiontrigger.others;
+	vt_trigger_tcdispatchtrigger : thread vt_trigger_tcdispatchtrigger_CV_Thread::vt_trigger_tcdispatchtrigger_vt_trigger_tcdispatchtrigger.others;
+	vt_trigger_pmontrigger : thread vt_trigger_pmontrigger_CV_Thread::vt_trigger_pmontrigger_vt_trigger_pmontrigger.others;
+	vt_trigger_eventreporttrigger : thread vt_trigger_eventreporttrigger_CV_Thread::vt_trigger_eventreporttrigger_vt_trigger_eventreporttrigger.others;
+	vt_trigger_debugeventtrigger : thread vt_trigger_debugeventtrigger_CV_Thread::vt_trigger_debugeventtrigger_vt_trigger_debugeventtrigger.others;
+connections
+	PORT tcdispatch.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT tmdispatch.OUTPORT_newTm -> vt_ground_newtm.INPORT_artificial_newTm;
+	PORT vt_ground_newtm.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT vt_ground_triggertmgui.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT vt_st19_eventactiontrigger.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT vt_trigger_hkreporttrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_trigger_hkreporttrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_trigger_hkreporttrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_trigger_hkreporttrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_trigger_hkreporttrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_trigger_hkreporttrigger.OUTPORT_debugEventsTrigger_vt -> vt_events_debugeventstrigger.INPORT_artificial_debugEventsTrigger;
+	PORT vt_trigger_hkreporttrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_trigger_tmdispatchtrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_trigger_tmdispatchtrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_trigger_tmdispatchtrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_trigger_tmdispatchtrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_trigger_tmdispatchtrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_trigger_tmdispatchtrigger.OUTPORT_debugEventsTrigger_vt -> vt_events_debugeventstrigger.INPORT_artificial_debugEventsTrigger;
+	PORT vt_trigger_tmdispatchtrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_trigger_eventactiontrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_trigger_eventactiontrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_trigger_eventactiontrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_trigger_eventactiontrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_trigger_eventactiontrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_trigger_eventactiontrigger.OUTPORT_debugEventsTrigger_vt -> vt_events_debugeventstrigger.INPORT_artificial_debugEventsTrigger;
+	PORT vt_trigger_eventactiontrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_trigger_tcdispatchtrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_trigger_tcdispatchtrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_trigger_tcdispatchtrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_trigger_tcdispatchtrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_trigger_tcdispatchtrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_trigger_tcdispatchtrigger.OUTPORT_debugEventsTrigger_vt -> vt_events_debugeventstrigger.INPORT_artificial_debugEventsTrigger;
+	PORT vt_trigger_tcdispatchtrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_trigger_pmontrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_trigger_pmontrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_trigger_pmontrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_trigger_pmontrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_trigger_pmontrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_trigger_pmontrigger.OUTPORT_debugEventsTrigger_vt -> vt_events_debugeventstrigger.INPORT_artificial_debugEventsTrigger;
+	PORT vt_trigger_pmontrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_trigger_eventreporttrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_trigger_eventreporttrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_trigger_eventreporttrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_trigger_eventreporttrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_trigger_eventreporttrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_trigger_eventreporttrigger.OUTPORT_debugEventsTrigger_vt -> vt_events_debugeventstrigger.INPORT_artificial_debugEventsTrigger;
+	PORT vt_trigger_eventreporttrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_trigger_debugeventtrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_trigger_debugeventtrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_trigger_debugeventtrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_trigger_debugeventtrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_trigger_debugeventtrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_trigger_debugeventtrigger.OUTPORT_debugEventsTrigger_vt -> vt_events_debugeventstrigger.INPORT_artificial_debugEventsTrigger;
+	PORT vt_trigger_debugeventtrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	tcdispatch_tcqueue: data access tcqueue_protected -> tcdispatch.tcqueue_protected;
+	tcdispatch_st17: data access st17_protected -> tcdispatch.st17_protected;
+	tcdispatch_st08: data access st08_protected -> tcdispatch.st08_protected;
+	tcdispatch_st19: data access st19_protected -> tcdispatch.st19_protected;
+	tcdispatch_st09: data access st09_protected -> tcdispatch.st09_protected;
+	tcdispatch_st12: data access st12_protected -> tcdispatch.st12_protected;
+	tcdispatch_st11: data access st11_protected -> tcdispatch.st11_protected;
+	tcdispatch_st18: data access st18_protected -> tcdispatch.st18_protected;
+	tcdispatch_st23: data access st23_protected -> tcdispatch.st23_protected;
+	tcdispatch_st20: data access st20_protected -> tcdispatch.st20_protected;
+	tcdispatch_st01: data access st01_protected -> tcdispatch.st01_protected;
+	tcdispatch_onboardapid: data access onboardapid_protected -> tcdispatch.onboardapid_protected;
+	tcdispatch_tmqueue: data access tmqueue_protected -> tcdispatch.tmqueue_protected;
+	tcdispatch_events: data access events_protected -> tcdispatch.events_protected;
+	tcdispatch_housekeeping: data access housekeeping_protected -> tcdispatch.housekeeping_protected;
+	tcdispatch_obcpengine: data access obcpengine_protected -> tcdispatch.obcpengine_protected;
+	tcdispatch_onboardparams: data access onboardparams_protected -> tcdispatch.onboardparams_protected;
+	tcdispatch_filemanagement: data access filemanagement_protected -> tcdispatch.filemanagement_protected;
+	tmdispatch_tmqueue: data access tmqueue_protected -> tmdispatch.tmqueue_protected;
+	tmdispatch_st09: data access st09_protected -> tmdispatch.st09_protected;
+	tmdispatch_onboardapid: data access onboardapid_protected -> tmdispatch.onboardapid_protected;
+	tmdispatch_st01: data access st01_protected -> tmdispatch.st01_protected;
+	st05_tmqueue: data access tmqueue_protected -> st05.tmqueue_protected;
+	st05_events: data access events_protected -> st05.events_protected;
+	st05_onboardapid: data access onboardapid_protected -> st05.onboardapid_protected;
+	st05_st09: data access st09_protected -> st05.st09_protected;
+	st05_st01: data access st01_protected -> st05.st01_protected;
+	st03_tmqueue: data access tmqueue_protected -> st03.tmqueue_protected;
+	st03_housekeeping: data access housekeeping_protected -> st03.housekeeping_protected;
+	st03_onboardapid: data access onboardapid_protected -> st03.onboardapid_protected;
+	st03_st09: data access st09_protected -> st03.st09_protected;
+	st03_st01: data access st01_protected -> st03.st01_protected;
+	onboardsoftware_housekeeping: data access housekeeping_protected -> onboardsoftware.housekeeping_protected;
+	onboardsoftware_events: data access events_protected -> onboardsoftware.events_protected;
+	onboardsoftware_onboardparams: data access onboardparams_protected -> onboardsoftware.onboardparams_protected;
+	vt_ground_newtm_ground: data access ground_protected -> vt_ground_newtm.ground_protected;
+	vt_ground_triggertmgui_ground: data access ground_protected -> vt_ground_triggertmgui.ground_protected;
+	vt_tcqueue_newtc_tcqueue: data access tcqueue_protected -> vt_tcqueue_newtc.tcqueue_protected;
+	vt_events_debugeventstrigger_events: data access events_protected -> vt_events_debugeventstrigger.events_protected;
+	vt_st19_eventactiontrigger_st19: data access st19_protected -> vt_st19_eventactiontrigger.st19_protected;
+	vt_st19_eventactiontrigger_st09: data access st09_protected -> vt_st19_eventactiontrigger.st09_protected;
+	vt_st19_eventactiontrigger_tmqueue: data access tmqueue_protected -> vt_st19_eventactiontrigger.tmqueue_protected;
+	vt_st19_eventactiontrigger_onboardapid: data access onboardapid_protected -> vt_st19_eventactiontrigger.onboardapid_protected;
+	vt_st19_eventactiontrigger_st01: data access st01_protected -> vt_st19_eventactiontrigger.st01_protected;
+	vt_st19_eventactiontrigger_events: data access events_protected -> vt_st19_eventactiontrigger.events_protected;
+	vt_st12_pmontrigger_st12: data access st12_protected -> vt_st12_pmontrigger.st12_protected;
+	vt_st12_pmontrigger_st09: data access st09_protected -> vt_st12_pmontrigger.st09_protected;
+	vt_st12_pmontrigger_tmqueue: data access tmqueue_protected -> vt_st12_pmontrigger.tmqueue_protected;
+	vt_st12_pmontrigger_onboardapid: data access onboardapid_protected -> vt_st12_pmontrigger.onboardapid_protected;
+	vt_st12_pmontrigger_st01: data access st01_protected -> vt_st12_pmontrigger.st01_protected;
+	vt_st12_pmontrigger_events: data access events_protected -> vt_st12_pmontrigger.events_protected;
+	vt_st12_pmontrigger_housekeeping: data access housekeeping_protected -> vt_st12_pmontrigger.housekeeping_protected;
+	vt_trigger_hkreporttrigger_trigger: data access trigger_protected -> vt_trigger_hkreporttrigger.trigger_protected;
+	vt_trigger_tmdispatchtrigger_trigger: data access trigger_protected -> vt_trigger_tmdispatchtrigger.trigger_protected;
+	vt_trigger_eventactiontrigger_trigger: data access trigger_protected -> vt_trigger_eventactiontrigger.trigger_protected;
+	vt_trigger_tcdispatchtrigger_trigger: data access trigger_protected -> vt_trigger_tcdispatchtrigger.trigger_protected;
+	vt_trigger_pmontrigger_trigger: data access trigger_protected -> vt_trigger_pmontrigger.trigger_protected;
+	vt_trigger_eventreporttrigger_trigger: data access trigger_protected -> vt_trigger_eventreporttrigger.trigger_protected;
+	vt_trigger_debugeventtrigger_trigger: data access trigger_protected -> vt_trigger_debugeventtrigger.trigger_protected;
+end x86_partition.final;
+
+system deploymentview
+end deploymentview;
+
+system implementation deploymentview.final
+subcomponents
+  x86_partition: process x86_partition.final;
+  node1_x86_linux_cv : processor ocarina_processors_x86::x86.linux;
+properties
+  Actual_Processor_Binding => (reference (node1_x86_linux_cv)) applies to x86_partition;
+end deploymentview.final;
+end process_package;
+
+-- deploymentview.final

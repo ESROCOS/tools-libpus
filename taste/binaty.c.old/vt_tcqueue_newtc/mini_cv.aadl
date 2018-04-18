@@ -1,0 +1,35 @@
+-- Automatically Generated - For use with AADL2GlueC only - Do NOT modify! --
+
+SUBPROGRAM artificial_newTc
+FEATURES
+	tcPacket:IN PARAMETER DataView::PusPacket {encoding=>NATIVE;};
+END artificial_newTc;
+
+SUBPROGRAM IMPLEMENTATION artificial_newTc.C
+PROPERTIES
+	FV_Name => "vt_tcqueue_newtc";
+	Source_Language => C;
+END artificial_newTc.C;
+
+SUBPROGRAM newTc
+FEATURES
+	tcPacket:OUT PARAMETER DataView::PusPacket {encoding=>NATIVE;};
+END newTc;
+
+SUBPROGRAM IMPLEMENTATION newTc.C
+PROPERTIES
+	FV_Name => "vt_tcqueue_newtc";
+	Source_Language => C;
+END newTc.C;
+
+SUBPROGRAM check_queue_vt
+FEATURES
+	res:IN PARAMETER DataView::T_Boolean {encoding=>NATIVE;};
+END check_queue_vt;
+
+SUBPROGRAM IMPLEMENTATION check_queue_vt.C
+PROPERTIES
+	FV_Name => "vt_tcqueue_newtc";
+	Source_Language => C;
+END check_queue_vt.C;
+

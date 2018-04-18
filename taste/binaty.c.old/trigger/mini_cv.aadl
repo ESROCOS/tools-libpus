@@ -1,0 +1,139 @@
+-- Automatically Generated - For use with AADL2GlueC only - Do NOT modify! --
+
+SUBPROGRAM HkReportTrigger
+END HkReportTrigger;
+
+SUBPROGRAM IMPLEMENTATION HkReportTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END HkReportTrigger.C;
+
+SUBPROGRAM TmDispatchTrigger
+END TmDispatchTrigger;
+
+SUBPROGRAM IMPLEMENTATION TmDispatchTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END TmDispatchTrigger.C;
+
+SUBPROGRAM EventActionTrigger
+END EventActionTrigger;
+
+SUBPROGRAM IMPLEMENTATION EventActionTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END EventActionTrigger.C;
+
+SUBPROGRAM TcDispatchTrigger
+END TcDispatchTrigger;
+
+SUBPROGRAM IMPLEMENTATION TcDispatchTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END TcDispatchTrigger.C;
+
+SUBPROGRAM PmonTrigger
+END PmonTrigger;
+
+SUBPROGRAM IMPLEMENTATION PmonTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END PmonTrigger.C;
+
+SUBPROGRAM EventReportTrigger
+END EventReportTrigger;
+
+SUBPROGRAM IMPLEMENTATION EventReportTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END EventReportTrigger.C;
+
+SUBPROGRAM debugEventTrigger
+END debugEventTrigger;
+
+SUBPROGRAM IMPLEMENTATION debugEventTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END debugEventTrigger.C;
+
+SUBPROGRAM tmTrigger
+END tmTrigger;
+
+SUBPROGRAM IMPLEMENTATION tmTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END tmTrigger.C;
+
+SUBPROGRAM HkReportTrigger
+END HkReportTrigger;
+
+SUBPROGRAM IMPLEMENTATION HkReportTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END HkReportTrigger.C;
+
+SUBPROGRAM PmonTrigger
+END PmonTrigger;
+
+SUBPROGRAM IMPLEMENTATION PmonTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END PmonTrigger.C;
+
+SUBPROGRAM EventReportTrigger
+END EventReportTrigger;
+
+SUBPROGRAM IMPLEMENTATION EventReportTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END EventReportTrigger.C;
+
+SUBPROGRAM tcTrigger
+END tcTrigger;
+
+SUBPROGRAM IMPLEMENTATION tcTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END tcTrigger.C;
+
+SUBPROGRAM debugEventsTrigger
+END debugEventsTrigger;
+
+SUBPROGRAM IMPLEMENTATION debugEventsTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END debugEventsTrigger.C;
+
+SUBPROGRAM EventActionTrigger
+END EventActionTrigger;
+
+SUBPROGRAM IMPLEMENTATION EventActionTrigger.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END EventActionTrigger.C;
+
+SUBPROGRAM check_queue
+FEATURES
+	res:IN PARAMETER DataView::T_Boolean {encoding=>NATIVE;};
+END check_queue;
+
+SUBPROGRAM IMPLEMENTATION check_queue.C
+PROPERTIES
+	FV_Name => "trigger";
+	Source_Language => C;
+END check_queue.C;
+

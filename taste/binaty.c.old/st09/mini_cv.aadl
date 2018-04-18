@@ -1,0 +1,62 @@
+-- Automatically Generated - For use with AADL2GlueC only - Do NOT modify! --
+
+SUBPROGRAM incCount
+FEATURES
+	tmPacket:OUT PARAMETER DataView::PusPacket {encoding=>NATIVE;};
+	isAvailable:OUT PARAMETER DataView::PusSt01FailureCode {encoding=>NATIVE;};
+END incCount;
+
+SUBPROGRAM IMPLEMENTATION incCount.C
+PROPERTIES
+	FV_Name => "st09";
+	Source_Language => C;
+END incCount.C;
+
+SUBPROGRAM tc09
+FEATURES
+	tcPacket:IN PARAMETER DataView::PusPacket {encoding=>NATIVE;};
+END tc09;
+
+SUBPROGRAM IMPLEMENTATION tc09.C
+PROPERTIES
+	FV_Name => "st09";
+	Source_Language => C;
+END tc09.C;
+
+SUBPROGRAM getApid
+FEATURES
+	apid:IN PARAMETER DataView::PusApid {encoding=>NATIVE;};
+END getApid;
+
+SUBPROGRAM IMPLEMENTATION getApid.C
+PROPERTIES
+	FV_Name => "st09";
+	Source_Language => C;
+END getApid.C;
+
+SUBPROGRAM getSequenceCount
+FEATURES
+	sequenceCount:IN PARAMETER DataView::PusSequenceCount {encoding=>NATIVE;};
+END getSequenceCount;
+
+SUBPROGRAM IMPLEMENTATION getSequenceCount.C
+PROPERTIES
+	FV_Name => "st09";
+	Source_Language => C;
+END getSequenceCount.C;
+
+SUBPROGRAM ACK
+FEATURES
+	tcPacket:OUT PARAMETER DataView::PusPacket {encoding=>NATIVE;};
+	reportType:OUT PARAMETER DataView::PusSubserviceType {encoding=>NATIVE;};
+	error:OUT PARAMETER DataView::PusSt01FailureCode {encoding=>NATIVE;};
+	errorInfo:OUT PARAMETER DataView::PusSt01FailureInfo {encoding=>NATIVE;};
+	step:OUT PARAMETER DataView::PusStepId {encoding=>NATIVE;};
+END ACK;
+
+SUBPROGRAM IMPLEMENTATION ACK.C
+PROPERTIES
+	FV_Name => "st09";
+	Source_Language => C;
+END ACK.C;
+

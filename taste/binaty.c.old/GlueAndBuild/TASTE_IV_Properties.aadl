@@ -1,0 +1,12 @@
+-- mapping TASTE : AADL
+-- Container : Package
+-- Function : System
+-- Interface : Subprogram
+property set TASTE_IV_Properties is
+--  MyBoolean: aadlboolean applies to (System, Package);
+--  MyString: aadlstring applies to (System, Subprogram);
+    Version: aadlstring applies to (System);
+--  MyInt: aadlinteger applies to (System);
+--  MyReal: aadlreal applies to (System);
+--  MyEnum: enumeration  (val1, val2, val3, val4) applies to (System);
+end TASTE_IV_Properties;

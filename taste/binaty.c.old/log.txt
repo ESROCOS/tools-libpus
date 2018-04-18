@@ -1,0 +1,1130 @@
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+"$DMT/asn1scc/taste-extract-asn-from-design.exe" -i "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/__iv_1_3.aadl" -k "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.asn" -c "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.acn"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+cp "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.asn" . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+cp "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.acn" . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+cp "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.acn" . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+"$DMT/asn1scc/taste-extract-asn-from-design.exe" -i "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/__iv_1_3.aadl" -j "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.asn"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+"$DMT/asn1scc/taste-extract-asn-from-design.exe" -i "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/__iv_1_3.aadl" -k "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.asn"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src
+cp "$DMT"/AutoGUI/debug_messages.? .
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src
+cp "$DMT"/AutoGUI/timeInMS.? .
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src
+cp "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.asn" .
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src
+cp "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/dataview-uniq.acn" .
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src
+msgPrinter "dataview-uniq.asn"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src
+msgPrinterASN1 "dataview-uniq.asn"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st11.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11
+find "st11"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/obcpengine.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine
+find "obcpengine"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st17.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17
+find "st17"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st12.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12
+find "st12"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/timereportapid.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid
+find "timereportapid"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardparams.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams
+find "onboardparams"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st18.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18
+find "st18"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st19.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19
+find "st19"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardsoftware.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware
+find "onboardsoftware"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/trigger.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger
+find "trigger"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tmdispatch.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch
+find "tmdispatch"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/ground.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground
+find "ground"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/events.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events
+find "events"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tmqueue.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue
+find "tmqueue"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcqueue.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue
+find "tcqueue"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st01.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01
+find "st01"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st03.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03
+find "st03"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st05.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05
+find "st05"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st09.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09
+find "st09"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st08.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08
+find "st08"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcdispatch.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch
+find "tcdispatch"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/filemanagement.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement
+find "filemanagement"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/housekeeping.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping
+find "housekeeping"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st23.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23
+find "st23"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st20.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20
+find "st20"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+unzip -o "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardapid.zip"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ ! -type d -exec chmod -x '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ -exec touch '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ -type f -iname '*.o' -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ -type f -iname xer.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ -type f -iname ber.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ -type f -iname real.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ -type f -iname asn1crt.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ -type f -iname and -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid
+find "onboardapid"/ -type f -iname acn.c -exec rm -f '{}' ';'
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+cp $(ocarina-config --resources)/AADLv2/ocarina_components.aadl .
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+cleanupDV.pl "__dv_1_3.aadl" > a_temp_name && mv a_temp_name "__dv_1_3.aadl"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+"buildsupport"  -x 100  -g  --keep-case  --gw --glue -i "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/__iv_1_3.aadl"  -c "__dv_1_3.aadl" ocarina_components.aadl  -d D_view_aadlv2.aadl --polyorb-hi-c --smp2 /home/esrocos/tool-inst/share/config_ellidiss/TASTE_IV_Properties.aadl /home/esrocos/tool-inst/share/config_ellidiss/TASTE_DV_Properties.aadl
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+TASTE-CV --edit-aadl "ConcurrencyView/vt_trigger_tcdispatchtrigger_CV_Thread.aadl","ConcurrencyView/vt_trigger_debugeventtrigger_CV_Thread.aadl","ConcurrencyView/tcdispatch_CV_Thread.aadl","ConcurrencyView/st03_CV_Thread.aadl","ConcurrencyView/vt_tcqueue_newtc_CV_Thread.aadl","ConcurrencyView/st05_CV_Thread.aadl","ConcurrencyView/vt_st19_eventactiontrigger_CV_Thread.aadl","ConcurrencyView/vt_trigger_eventactiontrigger_CV_Thread.aadl","ConcurrencyView/vt_ground_newtm_CV_Thread.aadl","ConcurrencyView/vt_events_debugeventstrigger_CV_Thread.aadl","ConcurrencyView/vt_trigger_tmdispatchtrigger_CV_Thread.aadl","ConcurrencyView/vt_trigger_eventreporttrigger_CV_Thread.aadl","ConcurrencyView/tmdispatch_CV_Thread.aadl","ConcurrencyView/vt_ground_triggertmgui_CV_Thread.aadl","ConcurrencyView/vt_trigger_pmontrigger_CV_Thread.aadl","ConcurrencyView/vt_st12_pmontrigger_CV_Thread.aadl","ConcurrencyView/vt_trigger_hkreporttrigger_CV_Thread.aadl","ConcurrencyView/onboardsoftware_CV_Thread.aadl" --update-properties "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/ConcurrencyView_Properties.aadl" --show false
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild
+cp $(ocarina-config --resources)/AADLv2/ocarina_components.aadl .
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild
+cleanupDV.pl "__dv_1_3.aadl" > a_temp_name && mv a_temp_name "__dv_1_3.aadl"
+for x86_partition, identified CC:
+gcc
+for x86_partition, identified CFLAGS:
+-DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT
+for x86_partition, identified LDFLAGS:
+-lpthread -lrt -lm
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild
+cp "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl/dataview-uniq.asn" .
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/glueobcpengine
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest11
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest17
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluetimereportapid
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest12
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/glueonboardparams
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest19
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/glueonboardsoftware
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest18
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluetrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluetmdispatch
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/glueground
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/glueevents
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluetmqueue
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluetcqueue
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest03
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest01
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest05
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest09
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest08
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluetcdispatch
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluehousekeeping
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest23
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild
+aadl2glueC -o "gluefilemanagement" ../D_view.aadl "../filemanagement/mini_cv.aadl"
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluest20
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/glueonboardapid
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_ground_newtm
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_events_debugeventstrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_ground_triggertmgui
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_st12_pmontrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_st19_eventactiontrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_tcqueue_newtc
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_trigger_debugeventtrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_trigger_eventactiontrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_trigger_eventreporttrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_trigger_hkreporttrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_trigger_pmontrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_trigger_tmdispatchtrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluex86_partition_taste_api
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/gluevt_trigger_tcdispatchtrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g    -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../auto-src    -I "../../st11/st11/" -I "../../obcpengine/obcpengine/" -I "../../st17/st17/" -I "../../st12/st12/" -I "../../timereportapid/timereportapid/" -I "../../onboardparams/onboardparams/" -I "../../st18/st18/" -I "../../st19/st19/" -I "../../onboardsoftware/onboardsoftware/" -I "../../trigger/trigger/" -I "../../tmdispatch/tmdispatch/" -I "../../ground/ground/" -I "../../events/events/" -I "../../tmqueue/tmqueue/" -I "../../tcqueue/tcqueue/" -I "../../st01/st01/" -I "../../st03/st03/" -I "../../st05/st05/" -I "../../st09/st09/" -I "../../st08/st08/" -I "../../tcdispatch/tcdispatch/" -I "../../filemanagement/filemanagement/" -I "../../housekeeping/housekeeping/" -I "../../st23/st23/" -I "../../st20/st20/" -I "../../onboardapid/onboardapid/"       *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11/st11
+for i in st11_vm_if.c st11_vm_if.h st11.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11/st11
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11/st11
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11/st11
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11/st11
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11/st11
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11/st11
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest11/  -I ../../GlueAndBuild/gluest11/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine/obcpengine
+for i in obcpengine_vm_if.c obcpengine_vm_if.h obcpengine.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine/obcpengine
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine/obcpengine
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine/obcpengine
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine/obcpengine
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine/obcpengine
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine/obcpengine
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/glueobcpengine/  -I ../../GlueAndBuild/glueobcpengine/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17/st17
+for i in st17_vm_if.c st17_vm_if.h st17.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17/st17
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17/st17
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17/st17
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17/st17
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17/st17
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17/st17
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest17/  -I ../../GlueAndBuild/gluest17/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12/st12
+for i in st12_vm_if.c st12_vm_if.h st12.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12/st12
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12/st12
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12/st12
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12/st12
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12/st12
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12/st12
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest12/  -I ../../GlueAndBuild/gluest12/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid/timereportapid
+for i in timereportapid_vm_if.c timereportapid_vm_if.h timereportapid.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid/timereportapid
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid/timereportapid
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid/timereportapid
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid/timereportapid
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid/timereportapid
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid/timereportapid
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluetimereportapid/  -I ../../GlueAndBuild/gluetimereportapid/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams/onboardparams
+for i in onboardparams_vm_if.c onboardparams_vm_if.h onboardparams.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams/onboardparams
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams/onboardparams
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams/onboardparams
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams/onboardparams
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams/onboardparams
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams/onboardparams
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/glueonboardparams/  -I ../../GlueAndBuild/glueonboardparams/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18/st18
+for i in st18_vm_if.c st18_vm_if.h st18.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18/st18
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18/st18
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18/st18
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18/st18
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18/st18
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18/st18
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest18/  -I ../../GlueAndBuild/gluest18/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19/st19
+for i in st19_vm_if.c st19_vm_if.h st19.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19/st19
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19/st19
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19/st19
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19/st19
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19/st19
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19/st19
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest19/  -I ../../GlueAndBuild/gluest19/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware/onboardsoftware
+for i in onboardsoftware_vm_if.c onboardsoftware_vm_if.h onboardsoftware.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware/onboardsoftware
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware/onboardsoftware
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware/onboardsoftware
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware/onboardsoftware
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware/onboardsoftware
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware/onboardsoftware
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/glueonboardsoftware/  -I ../../GlueAndBuild/glueonboardsoftware/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger/trigger
+for i in trigger_vm_if.c trigger_vm_if.h trigger.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger/trigger
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger/trigger
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger/trigger
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger/trigger
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger/trigger
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger/trigger
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluetrigger/  -I ../../GlueAndBuild/gluetrigger/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch/tmdispatch
+for i in tmdispatch_vm_if.c tmdispatch_vm_if.h tmdispatch.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch/tmdispatch
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch/tmdispatch
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch/tmdispatch
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch/tmdispatch
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch/tmdispatch
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch/tmdispatch
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluetmdispatch/  -I ../../GlueAndBuild/gluetmdispatch/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground/ground
+for i in ground_vm_if.c ground_vm_if.h ground.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground/ground
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground/ground
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground/ground
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground/ground
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground/ground
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground/ground
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/glueground/  -I ../../GlueAndBuild/glueground/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events/events
+for i in events_vm_if.c events_vm_if.h events.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events/events
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events/events
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events/events
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events/events
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events/events
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events/events
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/glueevents/  -I ../../GlueAndBuild/glueevents/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue/tmqueue
+for i in tmqueue_vm_if.c tmqueue_vm_if.h tmqueue.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue/tmqueue
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue/tmqueue
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue/tmqueue
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue/tmqueue
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue/tmqueue
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue/tmqueue
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluetmqueue/  -I ../../GlueAndBuild/gluetmqueue/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue/tcqueue
+for i in tcqueue_vm_if.c tcqueue_vm_if.h tcqueue.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue/tcqueue
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue/tcqueue
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue/tcqueue
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue/tcqueue
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue/tcqueue
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue/tcqueue
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluetcqueue/  -I ../../GlueAndBuild/gluetcqueue/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01/st01
+for i in st01_vm_if.c st01_vm_if.h st01.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01/st01
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01/st01
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01/st01
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01/st01
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01/st01
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01/st01
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest01/  -I ../../GlueAndBuild/gluest01/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03/st03
+for i in st03_vm_if.c st03_vm_if.h st03.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03/st03
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03/st03
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03/st03
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03/st03
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03/st03
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03/st03
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest03/  -I ../../GlueAndBuild/gluest03/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05/st05
+for i in st05_vm_if.c st05_vm_if.h st05.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05/st05
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05/st05
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05/st05
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05/st05
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05/st05
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05/st05
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest05/  -I ../../GlueAndBuild/gluest05/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09/st09
+for i in st09_vm_if.c st09_vm_if.h st09.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09/st09
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09/st09
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09/st09
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09/st09
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09/st09
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09/st09
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest09/  -I ../../GlueAndBuild/gluest09/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08/st08
+for i in st08_vm_if.c st08_vm_if.h st08.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08/st08
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08/st08
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08/st08
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08/st08
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08/st08
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08/st08
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest08/  -I ../../GlueAndBuild/gluest08/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch/tcdispatch
+for i in tcdispatch_vm_if.c tcdispatch_vm_if.h tcdispatch.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch/tcdispatch
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch/tcdispatch
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch/tcdispatch
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch/tcdispatch
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch/tcdispatch
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch/tcdispatch
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluetcdispatch/  -I ../../GlueAndBuild/gluetcdispatch/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement/filemanagement
+for i in filemanagement_vm_if.c filemanagement_vm_if.h filemanagement.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement/filemanagement
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement/filemanagement
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement/filemanagement
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement/filemanagement
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement/filemanagement
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement/filemanagement
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluefilemanagement/  -I ../../GlueAndBuild/gluefilemanagement/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping/housekeeping
+for i in housekeeping_vm_if.c housekeeping_vm_if.h housekeeping.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping/housekeeping
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping/housekeeping
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping/housekeeping
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping/housekeeping
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping/housekeeping
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping/housekeeping
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluehousekeeping/  -I ../../GlueAndBuild/gluehousekeeping/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23/st23
+for i in st23_vm_if.c st23_vm_if.h st23.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23/st23
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23/st23
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23/st23
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23/st23
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23/st23
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23/st23
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest23/  -I ../../GlueAndBuild/gluest23/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20/st20
+for i in st20_vm_if.c st20_vm_if.h st20.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20/st20
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20/st20
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20/st20
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20/st20
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20/st20
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20/st20
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/gluest20/  -I ../../GlueAndBuild/gluest20/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid/onboardapid
+for i in onboardapid_vm_if.c onboardapid_vm_if.h onboardapid.h ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid/onboardapid
+for i in hpredef.h invoke_ri.c ; do if [ -f ../$i ] ; then cp ../$i . ; fi ; done
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid/onboardapid
+cp ../*polyorb_interface.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid/onboardapid
+cp ../Context-*.? . 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid/onboardapid
+rm -f ../*-uniq.? *-uniq.? 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid/onboardapid
+rm -f ../dataview.[ch] dataview.* 2>/dev/null || exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid/onboardapid
+"$GNATGCC" -c -I . -DSTATIC="" -g -I "/usr/include/python3.5m" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/include" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated" -I "/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include"    -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../../GlueAndBuild/glueonboardapid/  -I ../../GlueAndBuild/glueonboardapid/ -I ../../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_events_debugeventstrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_events_debugeventstrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_ground_newtm
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_ground_newtm/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_ground_triggertmgui
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_ground_triggertmgui/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_st12_pmontrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_st12_pmontrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_st19_eventactiontrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_st19_eventactiontrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_tcqueue_newtc
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_tcqueue_newtc/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_debugeventtrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_trigger_debugeventtrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_eventactiontrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_trigger_eventactiontrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_eventreporttrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_trigger_eventreporttrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_hkreporttrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_trigger_hkreporttrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_pmontrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_trigger_pmontrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_tcdispatchtrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_trigger_tcdispatchtrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_tmdispatchtrigger
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluevt_trigger_tmdispatchtrigger/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/x86_partition_taste_api
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild/deploymentview_final/x86_partition -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  -I ../GlueAndBuild/gluex86_partition_taste_api/ -I ../auto-src/ *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest11/*.o st11/st11/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/glueobcpengine/*.o obcpengine/obcpengine/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest17/*.o st17/st17/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest12/*.o st12/st12/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluetimereportapid/*.o timereportapid/timereportapid/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/glueonboardparams/*.o onboardparams/onboardparams/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest18/*.o st18/st18/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest19/*.o st19/st19/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/glueonboardsoftware/*.o onboardsoftware/onboardsoftware/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluetrigger/*.o trigger/trigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluetmdispatch/*.o tmdispatch/tmdispatch/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/glueground/*.o ground/ground/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/glueevents/*.o events/events/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluetmqueue/*.o tmqueue/tmqueue/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluetcqueue/*.o tcqueue/tcqueue/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest01/*.o st01/st01/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest03/*.o st03/st03/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest05/*.o st05/st05/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest09/*.o st09/st09/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest08/*.o st08/st08/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluetcdispatch/*.o tcdispatch/tcdispatch/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluehousekeeping/*.o housekeeping/housekeeping/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest23/*.o st23/st23/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluest20/*.o st20/st20/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/glueonboardapid/*.o onboardapid/onboardapid/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_events_debugeventstrigger/*.o vt_events_debugeventstrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_ground_newtm/*.o vt_ground_newtm/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_ground_triggertmgui/*.o vt_ground_triggertmgui/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_st12_pmontrigger/*.o vt_st12_pmontrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_st19_eventactiontrigger/*.o vt_st19_eventactiontrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_tcqueue_newtc/*.o vt_tcqueue_newtc/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_trigger_debugeventtrigger/*.o vt_trigger_debugeventtrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_trigger_eventactiontrigger/*.o vt_trigger_eventactiontrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_trigger_eventreporttrigger/*.o vt_trigger_eventreporttrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_trigger_hkreporttrigger/*.o vt_trigger_hkreporttrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_trigger_pmontrigger/*.o vt_trigger_pmontrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_trigger_tcdispatchtrigger/*.o vt_trigger_tcdispatchtrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluevt_trigger_tmdispatchtrigger/*.o vt_trigger_tmdispatchtrigger/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+mv GlueAndBuild/gluex86_partition_taste_api/*.o x86_partition_taste_api/
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+patchAPLCs.py  "st11/st11/" "st11_renamed" "st11/st11/" "st11" "obcpengine/obcpengine/" "obcpengine_renamed" "obcpengine/obcpengine/" "obcpengine" "st17/st17/" "st17_renamed" "st17/st17/" "st17" "st12/st12/" "st12_renamed" "st12/st12/" "st12" "timereportapid/timereportapid/" "timereportapid_renamed" "timereportapid/timereportapid/" "timereportapid" "onboardparams/onboardparams/" "onboardparams_renamed" "onboardparams/onboardparams/" "onboardparams" "st18/st18/" "st18_renamed" "st18/st18/" "st18" "st19/st19/" "st19_renamed" "st19/st19/" "st19" "onboardsoftware/onboardsoftware/" "onboardsoftware_renamed" "onboardsoftware/onboardsoftware/" "onboardsoftware" "trigger/trigger/" "trigger_renamed" "trigger/trigger/" "trigger" "tmdispatch/tmdispatch/" "tmdispatch_renamed" "tmdispatch/tmdispatch/" "tmdispatch" "ground/ground/" "ground_renamed" "ground/ground/" "ground" "events/events/" "events_renamed" "events/events/" "events" "tmqueue/tmqueue/" "tmqueue_renamed" "tmqueue/tmqueue/" "tmqueue" "tcqueue/tcqueue/" "tcqueue_renamed" "tcqueue/tcqueue/" "tcqueue" "st01/st01/" "st01_renamed" "st01/st01/" "st01" "st03/st03/" "st03_renamed" "st03/st03/" "st03" "st05/st05/" "st05_renamed" "st05/st05/" "st05" "st09/st09/" "st09_renamed" "st09/st09/" "st09" "st08/st08/" "st08_renamed" "st08/st08/" "st08" "tcdispatch/tcdispatch/" "tcdispatch_renamed" "tcdispatch/tcdispatch/" "tcdispatch" "filemanagement/filemanagement/" "filemanagement_renamed" "filemanagement/filemanagement/" "filemanagement" "housekeeping/housekeeping/" "housekeeping_renamed" "housekeeping/housekeeping/" "housekeeping" "st23/st23/" "st23_renamed" "st23/st23/" "st23" "st20/st20/" "st20_renamed" "st20/st20/" "st20" "onboardapid/onboardapid/" "onboardapid_renamed" "onboardapid/onboardapid/" "onboardapid" "vt_events_debugeventstrigger/" "vt_events_debugeventstrigger_renamed" "vt_events_debugeventstrigger/" "vt_events_debugeventstrigger" "vt_ground_newtm/" "vt_ground_newtm_renamed" "vt_ground_newtm/" "vt_ground_newtm" "vt_ground_triggertmgui/" "vt_ground_triggertmgui_renamed" "vt_ground_triggertmgui/" "vt_ground_triggertmgui" "vt_st12_pmontrigger/" "vt_st12_pmontrigger_renamed" "vt_st12_pmontrigger/" "vt_st12_pmontrigger" "vt_st19_eventactiontrigger/" "vt_st19_eventactiontrigger_renamed" "vt_st19_eventactiontrigger/" "vt_st19_eventactiontrigger" "vt_tcqueue_newtc/" "vt_tcqueue_newtc_renamed" "vt_tcqueue_newtc/" "vt_tcqueue_newtc" "vt_trigger_debugeventtrigger/" "vt_trigger_debugeventtrigger_renamed" "vt_trigger_debugeventtrigger/" "vt_trigger_debugeventtrigger" "vt_trigger_eventactiontrigger/" "vt_trigger_eventactiontrigger_renamed" "vt_trigger_eventactiontrigger/" "vt_trigger_eventactiontrigger" "vt_trigger_eventreporttrigger/" "vt_trigger_eventreporttrigger_renamed" "vt_trigger_eventreporttrigger/" "vt_trigger_eventreporttrigger" "vt_trigger_hkreporttrigger/" "vt_trigger_hkreporttrigger_renamed" "vt_trigger_hkreporttrigger/" "vt_trigger_hkreporttrigger" "vt_trigger_pmontrigger/" "vt_trigger_pmontrigger_renamed" "vt_trigger_pmontrigger/" "vt_trigger_pmontrigger" "vt_trigger_tcdispatchtrigger/" "vt_trigger_tcdispatchtrigger_renamed" "vt_trigger_tcdispatchtrigger/" "vt_trigger_tcdispatchtrigger" "vt_trigger_tmdispatchtrigger/" "vt_trigger_tmdispatchtrigger_renamed" "vt_trigger_tmdispatchtrigger/" "vt_trigger_tmdispatchtrigger" "x86_partition_taste_api/" "x86_partition_taste_api_renamed" "x86_partition_taste_api/" "x86_partition_taste_api" auto-src_PLATFORM_NATIVE/ auto-src_PLATFORM_NATIVE
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+rm -rf "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src_PLATFORM_NATIVE" 2>/dev/null ; exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src_PLATFORM_NATIVE
+cp ../auto-src/*.[ch] .
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src_PLATFORM_NATIVE
+"$GNATGCC" -c -I . -DSTATIC="" -g   -I /home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/include/   -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE  -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align -Wjump-misses-init -Wswitch-enum -D__PO_HI_USE_TRANSPORT  *.c
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/GlueAndBuild
+cd './deploymentview_final/x86_partition' && ADA_INCLUDE_PATH="/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_tcqueue_newtc:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_st19_eventactiontrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_events_debugeventstrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_debugeventtrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_st12_pmontrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_eventreporttrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_tmdispatchtrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_eventactiontrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_pmontrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_ground_newtm:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_hkreporttrigger:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_ground_triggertmgui:/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_tcdispatchtrigger"  USER_CFLAGS="${USER_CFLAGS} -g -D__PO_HI_USE_VCD=1 -I . -DSTATIC=\"\" " USER_LDFLAGS="${USER_LDFLAGS} -g -lm -lpthread -lrt " EXTERNAL_OBJECTS="-lrt /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/auto-src_PLATFORM_NATIVE/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/ground/ground/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcqueue/tcqueue/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tcdispatch/tcdispatch/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmdispatch/tmdispatch/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/tmqueue/tmqueue/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st17/st17/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st01/st01/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st08/st08/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardapid/onboardapid/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st09/st09/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/timereportapid/timereportapid/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/events/events/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st05/st05/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st19/st19/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/housekeeping/housekeeping/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st03/st03/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st12/st12/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st11/st11/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st18/st18/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/obcpengine/obcpengine/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st23/st23/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/filemanagement/filemanagement/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/st20/st20/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardparams/onboardparams/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/trigger/trigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/onboardsoftware/onboardsoftware/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/x86_partition_taste_api/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_ground_newtm/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_ground_triggertmgui/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_tcqueue_newtc/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_events_debugeventstrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_st19_eventactiontrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_st12_pmontrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_hkreporttrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_tmdispatchtrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_eventactiontrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_tcdispatchtrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_pmontrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_eventreporttrigger/*.o /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/vt_trigger_debugeventtrigger/*.o /usr/lib/x86_64-linux-gnu/libpython3.5m.so /home/esrocos/esrocos-ws-pus/tools-libpus/debug/src/libesrocos_pus.so /home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/libesrocos_pus_mission_test_01.so /home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/libesrocos_pus_mission_test_01_st08_functions.so " make
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+find '/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c'/GlueAndBuild -type f -perm /111 ! -iname '*.so' -a ! -iname '*.pyd' | while read ANS ; do file "$ANS" | egrep 'ELF|PE32' >/dev/null 2>/dev/null && mv "$ANS" "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/binaries/" ; done ; exit 0
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c
+find '/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c'/ -name binaries -prune -o -type f -perm /111 -iname '*_GUI' -exec bash -c 'F="{}"; D=$(dirname "$F"); B=$(basename "$F") ; B="${B/_GUI/}"; mv "$F" "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/binaries/" ; mv "$D"/../../../${B}.pl "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/binaries/" ; mv "$D"/../../../${B}_RunAndPlot.sh "/home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/binaries/" ; ' ';' 2>/dev/null
+From: /home/esrocos/esrocos-ws-pus/tools-libpus/taste/binary.c/binaries
+rm -rf "/tmp/uniqhomeesrocosesrocos-ws-pustools-libpustaste__iv_1_3.aadl"

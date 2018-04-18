@@ -1,0 +1,37 @@
+-- Automatically Generated - For use with AADL2GlueC only - Do NOT modify! --
+
+SUBPROGRAM tmRequest
+FEATURES
+	tmPacket:OUT PARAMETER DataView::PusPacket {encoding=>NATIVE;};
+	isAvailable:OUT PARAMETER DataView::T_Boolean {encoding=>NATIVE;};
+END tmRequest;
+
+SUBPROGRAM IMPLEMENTATION tmRequest.C
+PROPERTIES
+	FV_Name => "tmqueue";
+	Source_Language => C;
+END tmRequest.C;
+
+SUBPROGRAM newTm
+FEATURES
+	tmPacket:IN PARAMETER DataView::PusPacket {encoding=>NATIVE;};
+END newTm;
+
+SUBPROGRAM IMPLEMENTATION newTm.C
+PROPERTIES
+	FV_Name => "tmqueue";
+	Source_Language => C;
+END newTm.C;
+
+SUBPROGRAM incCount
+FEATURES
+	tmPacket:IN PARAMETER DataView::PusPacket {encoding=>NATIVE;};
+	isAvailable:IN PARAMETER DataView::PusSt01FailureCode {encoding=>NATIVE;};
+END incCount;
+
+SUBPROGRAM IMPLEMENTATION incCount.C
+PROPERTIES
+	FV_Name => "tmqueue";
+	Source_Language => C;
+END incCount.C;
+
