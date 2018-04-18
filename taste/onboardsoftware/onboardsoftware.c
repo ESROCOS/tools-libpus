@@ -34,7 +34,8 @@ void onboardsoftware_PI_debugTrigger()
 			onboardsoftware_RI_pushNewEvent(&event);
 			onboardsoftware_RI_getOnBoardParam(&changeHkParam, &value, &error);
 			if (PUS_NO_ERROR == error && value == 1) {
-				onboardsoftware_RI_setParamValue(&hkParam, 1); //Sets HK_PARAM_BOOL01 out of range
+				pusStoredParam_t val = 1;
+				onboardsoftware_RI_setParamValue(&hkParam, &val); //Sets HK_PARAM_BOOL01 out of range
 				onboardsoftware_RI_setOnBoardParam(&changeHkParam, 0);
 			}
 			break;

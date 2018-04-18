@@ -33,7 +33,7 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/pus-mission-stamp
 
 # Target for mission code generation; uses stamp file to run dependent targets only if changed
 add_custom_target(
-    mission_generate_code
+    mission_generate_code_${MISSION}
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/pus-mission-stamp
 )
 
@@ -46,7 +46,7 @@ add_library(${MISSION_LIB} SHARED ${C_FILES})
 target_include_directories(${MISSION_LIB} BEFORE PUBLIC ${OUT_DIR}/include)
 set_target_properties(${MISSION_LIB} PROPERTIES LINKER_LANGUAGE C)
 set_target_properties(${MISSION_LIB} PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
-add_dependencies(${MISSION_LIB} mission_generate_code )
+add_dependencies(${MISSION_LIB} mission_generate_code_${MISSION} )
 add_coverage(${MISSION_LIB})
 
 #add_library(test01 OBJECT ${C_FILES})

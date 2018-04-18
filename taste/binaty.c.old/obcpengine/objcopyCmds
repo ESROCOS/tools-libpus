@@ -1,7 +1,0 @@
-OUT_buf_paramValue.8504 assert_obcpengine_OUT_buf_paramValue.8504
-init.6328 assert_obcpengine_init.6328
-OUT_buf_isAvailable.8506 assert_obcpengine_OUT_buf_isAvailable.8506
-IN_buf_paramId.8502 assert_obcpengine_IN_buf_paramId.8502
-IN_buf_tcPacket.8486 assert_obcpengine_IN_buf_tcPacket.8486
-innerMsc.8500 assert_obcpengine_innerMsc.8500
-innerMsc.8484 assert_obcpengine_innerMsc.8484
