@@ -23,24 +23,20 @@ void tmqueue_startup()
 
 
 
-void tmqueue_PI_tmRequest(asn1SccPusPacket *OUT_tmPacket, asn1SccT_Boolean *OUT_isAvailable)
+void tmqueue_PI_tmRequest(asn1SccPusPacket *OUT_tmPacket, asn1SccPusSt01FailureCode *OUT_isAvailable)
 {
-	*OUT_isAvailable = false;
-
 	pusError_t error = pus_packetQueues_pop(OUT_tmPacket, TM_QUEUE_ONBOARD);
-	if ( PUS_NO_ERROR == error )
-	{
-		//printf("TmQUEUE: TM%llu_%llu to TcDispatch.\n", pus_getTmService(OUT_tmPacket), pus_getTmSubtype(OUT_tmPacket));
-		*OUT_isAvailable = true;
-	}
-	else if ( PUS_ERROR_EMPTY_QUEUE == error)
+	*OUT_isAvailable = error;
+
+	if ( PUS_ERROR_EMPTY_QUEUE == error)
 	{
 		//printf("Error in tmqueue_PI_tmRequest EMPTY QUEUE, %d (no exit)\n", error);
 		pus_clearError();
 	}
 	else
 	{
-		printf("Error in tmqueue_PI_tmRequest, %d\n", error);
+		//printf("Error in tmqueue_PI_tmRequest, %d\n", error);
+		pus_clearError();
 		return;
 	}
 }

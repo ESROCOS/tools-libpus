@@ -18,7 +18,7 @@ void tmdispatch_PI_tmTrigger();
 extern void tmdispatch_RI_newTm(const asn1SccPusPacket *);
 
 extern void tmdispatch_RI_tmRequest(asn1SccPusPacket *,
-                                    asn1SccT_Boolean *);
+                                    asn1SccPusSt01FailureCode *);
 
 #ifdef __cplusplus
 }

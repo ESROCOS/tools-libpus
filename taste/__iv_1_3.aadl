@@ -72,7 +72,7 @@ FEATURES
   tcPacket : OUT PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-  isAvailable : OUT PARAMETER DataView::T_Boolean {
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
 PROPERTIES
@@ -107,7 +107,7 @@ FEATURES
   tcPacket : OUT PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-  isAvailable : OUT PARAMETER DataView::T_Boolean {
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
 END RI_tcRequest;
@@ -239,6 +239,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcqueue.zip");
 END TcQueue;
 
 SYSTEM IMPLEMENTATION TcQueue.others
@@ -316,6 +317,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcdispatch.zip");
 END TcDispatch;
 
 SYSTEM IMPLEMENTATION TcDispatch.others
@@ -356,7 +358,7 @@ FEATURES
   tmPacket : OUT PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-  isAvailable : OUT PARAMETER DataView::T_Boolean {
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
 END RI_tmRequest;
@@ -377,7 +379,7 @@ FEATURES
   tmPacket : OUT PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-  isAvailable : OUT PARAMETER DataView::T_Boolean {
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
 PROPERTIES
@@ -452,6 +454,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tmdispatch.zip");
 END TmDispatch;
 
 SYSTEM IMPLEMENTATION TmDispatch.others
@@ -482,6 +485,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tmqueue.zip");
 END TmQueue;
 
 SYSTEM IMPLEMENTATION TmQueue.others
@@ -872,6 +876,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st19.zip");
 END ST09;
 
 SYSTEM IMPLEMENTATION ST09.others
@@ -896,6 +901,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/timereportapid.zip");
 END TimeReportAPID;
 
 SYSTEM IMPLEMENTATION TimeReportAPID.others
@@ -1154,6 +1160,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/events.zip");
 END Events;
 
 SYSTEM IMPLEMENTATION Events.others
@@ -1195,6 +1202,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st05.zip");
 END ST05;
 
 SYSTEM IMPLEMENTATION ST05.others
@@ -1243,6 +1251,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st19.zip");
 END ST19;
 
 SYSTEM IMPLEMENTATION ST19.others
@@ -1473,6 +1482,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/housekeeping.zip");
 END Housekeeping;
 
 SYSTEM IMPLEMENTATION Housekeeping.others
@@ -1514,6 +1524,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st03.zip");
 END ST03;
 
 SYSTEM IMPLEMENTATION ST03.others
@@ -1556,6 +1567,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st12.zip");
 END ST12;
 
 SYSTEM IMPLEMENTATION ST12.others
@@ -1816,6 +1828,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st18.zip");
 END ST18;
 
 SYSTEM IMPLEMENTATION ST18.others
@@ -1864,6 +1877,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/obcpengine.zip");
 END ObcpEngine;
 
 SYSTEM IMPLEMENTATION ObcpEngine.others
@@ -2086,6 +2100,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st23.zip");
 END ST23;
 
 SYSTEM IMPLEMENTATION ST23.others
@@ -2124,6 +2139,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/filemanagement.zip");
 END FileManagement;
 
 SYSTEM IMPLEMENTATION FileManagement.others
@@ -2340,6 +2356,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st20.zip");
 END ST20;
 
 SYSTEM IMPLEMENTATION ST20.others
@@ -2364,6 +2381,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardparams.zip");
 END OnBoardParams;
 
 SYSTEM IMPLEMENTATION OnBoardParams.others
@@ -2550,6 +2568,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st17.zip");
 END ST17;
 
 SYSTEM IMPLEMENTATION ST17.others
@@ -2585,6 +2604,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st01.zip");
 END ST01;
 
 SYSTEM IMPLEMENTATION ST01.others
@@ -2608,6 +2628,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st08.zip");
 END ST08;
 
 SYSTEM IMPLEMENTATION ST08.others
@@ -2632,6 +2653,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardapid.zip");
 END OnBoardAPID;
 
 SYSTEM IMPLEMENTATION OnBoardAPID.others
@@ -2665,6 +2687,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st11.zip");
 END ST11;
 
 SYSTEM IMPLEMENTATION ST11.others
@@ -2766,6 +2789,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/trigger.zip");
 END trigger;
 
 SYSTEM IMPLEMENTATION trigger.others

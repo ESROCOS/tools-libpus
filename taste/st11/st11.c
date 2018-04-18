@@ -17,6 +17,7 @@ void st11_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
+	pus_scheduling_initialize(NULL);
 }
 
 void st11_PI_tc11(const asn1SccPusPacket *IN_tcPacket)

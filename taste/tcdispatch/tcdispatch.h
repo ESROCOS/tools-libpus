@@ -16,7 +16,7 @@ void tcdispatch_startup();
 void tcdispatch_PI_tcTrigger();
 
 extern void tcdispatch_RI_tcRequest(asn1SccPusPacket *,
-                                    asn1SccT_Boolean *);
+                                    asn1SccPusSt01FailureCode *);
 
 extern void tcdispatch_RI_tc17(const asn1SccPusPacket *);
 

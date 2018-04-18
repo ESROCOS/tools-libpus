@@ -24,6 +24,7 @@
 
 #include "pus_parameter_management.h"
 #include "pus_events.h"
+#include "pus_obcp_engine.h"
 
 
 //TODO where¿
@@ -47,7 +48,7 @@ bool pusTime_to_double(double* time_d, pusTime_t* time)
 }
 
 // get Time now FLOAT
-STATIC mp_obj_t mymodule_getTimeNowFloat() {
+STATIC mp_obj_t obcpModule_getTimeNowFloat() {
     
     pusTime_t time;
     pus_now(&time);
@@ -58,10 +59,10 @@ STATIC mp_obj_t mymodule_getTimeNowFloat() {
     
     return mp_obj_new_float(timeFloat);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mymodule_getTimeNowFloat_obj, mymodule_getTimeNowFloat);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(obcpModule_getTimeNowFloat_obj, obcpModule_getTimeNowFloat);
 
 // get Time now LIST
-STATIC mp_obj_t mymodule_getTimeNowList() {
+STATIC mp_obj_t obcpModule_getTimeNowList() {
     pusTime_t time;
     pus_now(&time);
     
@@ -70,10 +71,10 @@ STATIC mp_obj_t mymodule_getTimeNowList() {
     list[1] = mp_obj_new_int(time.tv_nsec);
     return mp_obj_new_list(2, list); 
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mymodule_getTimeNowList_obj, mymodule_getTimeNowList);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(obcpModule_getTimeNowList_obj, obcpModule_getTimeNowList);
 
 // get Time now
-STATIC mp_obj_t mymodule_timeoutReached(mp_obj_t py_time_seconds, mp_obj_t py_time_nseconds, mp_obj_t py_timeout) {
+STATIC mp_obj_t obcpModule_timeoutReached(mp_obj_t py_time_seconds, mp_obj_t py_time_nseconds, mp_obj_t py_timeout) {
     
     double timeout = mp_obj_get_float(py_timeout);
     int seconds = mp_obj_get_int(py_time_seconds);
@@ -105,11 +106,11 @@ STATIC mp_obj_t mymodule_timeoutReached(mp_obj_t py_time_seconds, mp_obj_t py_ti
 
     return mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mymodule_timeoutReached_obj, mymodule_timeoutReached);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(obcpModule_timeoutReached_obj, obcpModule_timeoutReached);
 
 
 // SLEEP sec, nanosec
-STATIC mp_obj_t mymodule_sleepInterval(mp_obj_t py_sec_float) {
+STATIC mp_obj_t obcpModule_sleepInterval(mp_obj_t py_sec_float) {
     
     struct timespec tim;
     //tim.tv_sec = mp_obj_get_int(sec);
@@ -128,11 +129,11 @@ STATIC mp_obj_t mymodule_sleepInterval(mp_obj_t py_sec_float) {
     else
         return mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_sleepInterval_obj, mymodule_sleepInterval);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_sleepInterval_obj, obcpModule_sleepInterval);
 
 
 // Get LABEL hk param
-STATIC mp_obj_t mymodule_getDictHkParams( void ) {
+STATIC mp_obj_t obcpModule_getDictHkParams( void ) {
     if (!pus_hk_isInitialized())
 	{
 		return mp_obj_new_dict(0);
@@ -154,10 +155,10 @@ STATIC mp_obj_t mymodule_getDictHkParams( void ) {
     
     return dict;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mymodule_getDictHkParams_obj, mymodule_getDictHkParams);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(obcpModule_getDictHkParams_obj, obcpModule_getDictHkParams);
 
 // Get LABEL ST20 param
-STATIC mp_obj_t mymodule_getDictOnBoardParams( void ) {
+STATIC mp_obj_t obcpModule_getDictOnBoardParams( void ) {
     if (!pus_parameters_isInitialized())
 	{
 		return mp_obj_new_dict(0);
@@ -177,10 +178,10 @@ STATIC mp_obj_t mymodule_getDictOnBoardParams( void ) {
     }
     return dict;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mymodule_getDictOnBoardParams_obj, mymodule_getDictOnBoardParams);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(obcpModule_getDictOnBoardParams_obj, obcpModule_getDictOnBoardParams);
 
 // Get LABEL events
-STATIC mp_obj_t mymodule_getDictEvents( void ) {
+STATIC mp_obj_t obcpModule_getDictEvents( void ) {
     if (!pus_events_isInitialized())
 	{
 		return mp_obj_new_dict(0);
@@ -200,11 +201,11 @@ STATIC mp_obj_t mymodule_getDictEvents( void ) {
     }
     return dict;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mymodule_getDictEvents_obj, mymodule_getDictEvents);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(obcpModule_getDictEvents_obj, obcpModule_getDictEvents);
 
 
 // Get LABEL functions
-STATIC mp_obj_t mymodule_getDictFunctions( void ) {
+STATIC mp_obj_t obcpModule_getDictFunctions( void ) {
     if (!pus_st08_isInitialized())
 	{
 		return mp_obj_new_dict(0);
@@ -224,10 +225,10 @@ STATIC mp_obj_t mymodule_getDictFunctions( void ) {
     }
     return dict;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mymodule_getDictFunctions_obj, mymodule_getDictFunctions);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(obcpModule_getDictFunctions_obj, obcpModule_getDictFunctions);
 
 // Get Hk param value
-STATIC mp_obj_t mymodule_getHkParamValue( mp_obj_t py_paramId ) {
+STATIC mp_obj_t obcpModule_getHkParamValue( mp_obj_t py_paramId ) {
     size_t paramId = mp_obj_get_int(py_paramId);
     
     if (!pus_hk_isInitialized())
@@ -279,10 +280,10 @@ STATIC mp_obj_t mymodule_getHkParamValue( mp_obj_t py_paramId ) {
         
     return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_getHkParamValue_obj, mymodule_getHkParamValue);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_getHkParamValue_obj, obcpModule_getHkParamValue);
 
 // Get OnBoard param value
-STATIC mp_obj_t mymodule_getOnBoardParamValue( mp_obj_t py_paramId ) {
+STATIC mp_obj_t obcpModule_getOnBoardParamValue( mp_obj_t py_paramId ) {
     size_t paramId = mp_obj_get_int(py_paramId);
     
     if (!pus_parameters_isInitialized())
@@ -333,11 +334,11 @@ STATIC mp_obj_t mymodule_getOnBoardParamValue( mp_obj_t py_paramId ) {
         
     return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_getOnBoardParamValue_obj, mymodule_getOnBoardParamValue);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_getOnBoardParamValue_obj, obcpModule_getOnBoardParamValue);
 
 
 // Set Hk param value
-STATIC mp_obj_t mymodule_setHkParamValue( mp_obj_t py_paramId, mp_obj_t py_value ) {
+STATIC mp_obj_t obcpModule_setHkParamValue( mp_obj_t py_paramId, mp_obj_t py_value ) {
     size_t paramId = mp_obj_get_int(py_paramId);
     
     if (!pus_hk_isInitialized())
@@ -389,10 +390,10 @@ STATIC mp_obj_t mymodule_setHkParamValue( mp_obj_t py_paramId, mp_obj_t py_value
         
     return mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mymodule_setHkParamValue_obj, mymodule_setHkParamValue);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(obcpModule_setHkParamValue_obj, obcpModule_setHkParamValue);
 
 // Set Onboard param value
-STATIC mp_obj_t mymodule_setOnBoardParamValue( mp_obj_t py_paramId , mp_obj_t py_value) {
+STATIC mp_obj_t obcpModule_setOnBoardParamValue( mp_obj_t py_paramId , mp_obj_t py_value) {
     size_t paramId = mp_obj_get_int(py_paramId);
     
     if (!pus_parameters_isInitialized())
@@ -444,7 +445,7 @@ STATIC mp_obj_t mymodule_setOnBoardParamValue( mp_obj_t py_paramId , mp_obj_t py
         
     return mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mymodule_setOnBoardParamValue_obj, mymodule_setOnBoardParamValue);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(obcpModule_setOnBoardParamValue_obj, obcpModule_setOnBoardParamValue);
 
 
 bool auxFunction_getParamFromObj(pusStoredParam_t * param, pusParamType_t type, mp_obj_t py_obj)
@@ -493,7 +494,7 @@ bool auxFunction_getParamFromObj(pusStoredParam_t * param, pusParamType_t type, 
 
 
 // Raise event
-STATIC mp_obj_t mymodule_raiseEvent( mp_obj_t py_eventId , mp_obj_t py_data1, mp_obj_t py_data2) {
+STATIC mp_obj_t obcpModule_raiseEvent( mp_obj_t py_eventId , mp_obj_t py_data1, mp_obj_t py_data2) {
     pusSt05EventId_t eventId = mp_obj_get_int(py_eventId);
     
     pusSt05Event_t event;
@@ -538,7 +539,7 @@ STATIC mp_obj_t mymodule_raiseEvent( mp_obj_t py_eventId , mp_obj_t py_data1, mp
         return mp_const_false; 
     } 
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mymodule_raiseEvent_obj, mymodule_raiseEvent);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(obcpModule_raiseEvent_obj, obcpModule_raiseEvent);
 
 
 mp_obj_t auxFunction_getObjFromParam(pusStoredParam_t param, pusParamType_t type)
@@ -583,7 +584,7 @@ mp_obj_t auxFunction_getObjFromParam(pusStoredParam_t param, pusParamType_t type
 }
 
 //GET NEXT EVENT
-STATIC mp_obj_t mymodule_getNextEvent( mp_obj_t py_counter) {
+STATIC mp_obj_t obcpModule_getNextEvent( mp_obj_t py_counter) {
     size_t counter = mp_obj_get_int(py_counter);
     
     pusSt05Event_t event;
@@ -626,12 +627,12 @@ STATIC mp_obj_t mymodule_getNextEvent( mp_obj_t py_counter) {
     
     return mp_obj_new_list(2, list);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_getNextEvent_obj, mymodule_getNextEvent);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_getNextEvent_obj, obcpModule_getNextEvent);
 
 
 
 //GET NEXT EVENT
-STATIC mp_obj_t mymodule_getNextEventBlocking( mp_obj_t py_eventId, mp_obj_t py_counter, mp_obj_t py_timeout) {
+STATIC mp_obj_t obcpModule_getNextEventBlocking( mp_obj_t py_eventId, mp_obj_t py_counter, mp_obj_t py_timeout) {
     size_t counter = mp_obj_get_int(py_counter);
     size_t eventId = mp_obj_get_int(py_eventId);
     double timeout_d = mp_obj_get_float(py_timeout);
@@ -653,7 +654,6 @@ STATIC mp_obj_t mymodule_getNextEventBlocking( mp_obj_t py_eventId, mp_obj_t py_
     pus_now(&time);
     pusTime_to_double(&time_start, &time);
     
-    printf("Now2 %f, +tim %f\n", time_start, time_start+timeout_d);
     
     while(1)
     {
@@ -665,12 +665,11 @@ STATIC mp_obj_t mymodule_getNextEventBlocking( mp_obj_t py_eventId, mp_obj_t py_
                 pusTime_to_double(&time_now, &time);
                 if( time_now >= (time_start + timeout_d) )
                 {
-                    //printf("Timeout reached: Now %f, +tim %f\n", time_now, time_start+timeout_d);
                     return mp_obj_new_list(2, list); //NONE
                 }
             }
             //sleep 10ms = 0.01s
-            mymodule_sleepInterval(mp_obj_new_float(0.01));            
+            obcpModule_sleepInterval(mp_obj_new_float(0.01));
         }
         
         if( event.eventId == eventId )
@@ -699,11 +698,11 @@ STATIC mp_obj_t mymodule_getNextEventBlocking( mp_obj_t py_eventId, mp_obj_t py_
     return mp_obj_new_list(2, list);
 
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mymodule_getNextEventBlocking_obj, mymodule_getNextEventBlocking);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(obcpModule_getNextEventBlocking_obj, obcpModule_getNextEventBlocking);
 
 
 // Execute ST08 Function
-STATIC mp_obj_t mymodule_executeSt08Function( mp_obj_t py_functionId ) {
+STATIC mp_obj_t obcpModule_executeSt08Function( mp_obj_t py_functionId ) {
     pusSt08FunctiontId_t functionId = mp_obj_get_int(py_functionId);
         
     if (!pus_st08_isInitialized())
@@ -718,11 +717,11 @@ STATIC mp_obj_t mymodule_executeSt08Function( mp_obj_t py_functionId ) {
     
     return mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mymodule_executeSt08Function_obj, mymodule_executeSt08Function);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_executeSt08Function_obj, obcpModule_executeSt08Function);
 
 
-// Execute ST08 Function
-STATIC mp_obj_t mymodule_setConfirmationValue( mp_obj_t py_id, mp_obj_t py_confirmation ) {
+// Set Confirmation value
+STATIC mp_obj_t obcpModule_setConfirmationValue( mp_obj_t py_id, mp_obj_t py_confirmation ) {
     int status = mp_obj_get_int(py_confirmation);
 
     if(strlen(mp_obj_str_get_str(py_id)) > 10)
@@ -732,7 +731,7 @@ STATIC mp_obj_t mymodule_setConfirmationValue( mp_obj_t py_id, mp_obj_t py_confi
 
     pusSt18ObcpId_t id;
     memcpy(id.arr, mp_obj_str_get_str(py_id), 10);
-    printf("CAD2: --%s--, %d\n", id.arr, strlen(id.arr));
+    //printf("CAD2: --%s--, %lu\n", id.arr, strlen((char*)id.arr));
 
     if(PUS_NO_ERROR != pus_obcp_setConfirmationStatus(&id, status))
     {
@@ -741,28 +740,156 @@ STATIC mp_obj_t mymodule_setConfirmationValue( mp_obj_t py_id, mp_obj_t py_confi
 
     return mp_const_true;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mymodule_setConfirmationValue_obj, mymodule_setConfirmationValue);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(obcpModule_setConfirmationValue_obj, obcpModule_setConfirmationValue);
 
+// Check_suspend request
+STATIC mp_obj_t obcpModule_checkSuspendRequest( mp_obj_t py_id ) {
+
+    if(strlen(mp_obj_str_get_str(py_id)) > 10)
+    {
+    	return mp_const_false;
+    }
+    pusSt18ObcpId_t id;
+    memcpy(id.arr, mp_obj_str_get_str(py_id), 10);
+    //printf("CAD2: --%s--, %lu\n", id.arr, strlen((char*)id.arr));
+
+    if(PUS_OBCP_STATUS_ACTIVE_HELD_REQUEST != pus_obcp_getStatus(&id))
+    {
+    	return mp_const_false;
+    }
+
+    //SUSPEND
+    if(PUS_NO_ERROR != pus_obcp_waitForResumeById(&id))
+    {
+    	return mp_const_false;
+    }
+
+    return mp_const_true;
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_checkSuspendRequest_obj, obcpModule_checkSuspendRequest);
+
+// Check stop request
+STATIC mp_obj_t obcpModule_checkStopRequest( mp_obj_t py_id ) {
+
+    if(strlen(mp_obj_str_get_str(py_id)) > 10)
+    {
+    	return mp_const_false;
+    }
+    pusSt18ObcpId_t id;
+    memcpy(id.arr, mp_obj_str_get_str(py_id), 10);
+
+    if(PUS_OBCP_STATUS_ACTIVE_STOP_REQUEST != pus_obcp_getStatus(&id))
+    {
+    	return mp_const_false;
+    }
+
+    //SET STATUS & confirmation
+    pus_obcp_setStatus(&id, PUS_OBCP_STATUS_INACTIVE);
+    pus_obcp_setConfirmationStatus(&id, PUS_OBCP_CONFIRMATION_STATUS_STOPPED);
+
+    return mp_const_true;
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_checkStopRequest_obj, obcpModule_checkStopRequest);
+
+// Check abort request
+STATIC mp_obj_t obcpModule_checkAbortRequest( mp_obj_t py_id ) {
+
+    if(strlen(mp_obj_str_get_str(py_id)) > 10)
+    {
+    	return mp_const_false;
+    }
+    pusSt18ObcpId_t id;
+    memcpy(id.arr, mp_obj_str_get_str(py_id), 10);
+
+    if(PUS_OBCP_STATUS_ACTIVE_ABORT_REQUEST != pus_obcp_getStatus(&id))
+    {
+    	return mp_const_false;
+    }
+
+    //SET STATUS & confirmation
+    pus_obcp_setStatus(&id, PUS_OBCP_STATUS_INACTIVE);
+    pus_obcp_setConfirmationStatus(&id, PUS_OBCP_CONFIRMATION_STATUS_ABORTED);
+    //pus_events_createEVENT_OBCP_ABORTED(pusSt05Event_t* event, UINT32 data1, UINT32 data2)
+
+    return mp_const_true;
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_checkAbortRequest_obj, obcpModule_checkAbortRequest);
+
+// Check abort request
+STATIC mp_obj_t obcpModule_activateObcp( mp_obj_t py_id ) {
+
+    if(strlen(mp_obj_str_get_str(py_id)) > 10)
+    {
+    	return mp_const_false;
+    }
+    pusSt18ObcpId_t id;
+    memcpy(id.arr, mp_obj_str_get_str(py_id), 10);
+
+
+    if( PUS_NO_ERROR != pus_obcp_activateObcp(&id))
+    {
+    	return mp_const_false;
+    }
+
+    return mp_const_true;
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_activateObcp_obj, obcpModule_activateObcp);
+
+// Check abort request
+
+STATIC mp_obj_t obcpModule_getThreadFromId( mp_obj_t py_id ) {
+
+    if(strlen(mp_obj_str_get_str(py_id)) > 10)
+    {
+    	return mp_const_none;
+    }
+    pusSt18ObcpId_t id;
+    memcpy(id.arr, mp_obj_str_get_str(py_id), 10);
+
+
+    size_t index;
+	if( false == pus_obcp_IsObcpLoaded(&id, &index) )
+	{
+	  return mp_const_none;
+	}
+
+	return mp_obj_new_int_from_uint(index);
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(obcpModule_getThreadFromId_obj, obcpModule_getThreadFromId);
+
+
+STATIC mp_obj_t obcpModule_getLastEventCounter() {
+
+	return mp_obj_new_int_from_uint(pus_events_getLastEventCounter());
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(obcpModule_getLastEventCounter_obj, obcpModule_getLastEventCounter);
 
 STATIC const mp_map_elem_t obcpModule_globals_table[] = {
-    { MP_OBJ_NEW_QSTR(MP_QSTR___name__), MP_OBJ_NEW_QSTR(MP_QSTR_mymodule) },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_sleepInterval), (mp_obj_t)&mymodule_sleepInterval_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getDictHkParams), (mp_obj_t)&mymodule_getDictHkParams_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getDictOnBoardParams), (mp_obj_t)&mymodule_getDictOnBoardParams_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getDictEvents), (mp_obj_t)&mymodule_getDictEvents_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getDictFunctions), (mp_obj_t)&mymodule_getDictFunctions_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getHkParamValue), (mp_obj_t)&mymodule_getHkParamValue_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getOnBoardParamValue), (mp_obj_t)&mymodule_getOnBoardParamValue_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_setHkParamValue), (mp_obj_t)&mymodule_setHkParamValue_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_setOnBoardParamValue), (mp_obj_t)&mymodule_setOnBoardParamValue_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getTimeNowFloat), (mp_obj_t)&mymodule_getTimeNowFloat_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getTimeNowList), (mp_obj_t)&mymodule_getTimeNowList_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_timeoutReached), (mp_obj_t)&mymodule_timeoutReached_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_raiseEvent), (mp_obj_t)&mymodule_raiseEvent_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getNextEvent), (mp_obj_t)&mymodule_getNextEvent_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_getNextEventBlocking), (mp_obj_t)&mymodule_getNextEventBlocking_obj },
-    { MP_OBJ_NEW_QSTR(MP_QSTR_executeSt08Function), (mp_obj_t)&mymodule_executeSt08Function_obj },
-	{ MP_OBJ_NEW_QSTR(MP_QSTR_setConfirmationValue), (mp_obj_t)&mymodule_setConfirmationValue_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR___name__), MP_OBJ_NEW_QSTR(MP_QSTR_obcpModule) },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_sleepInterval), (mp_obj_t)&obcpModule_sleepInterval_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getDictHkParams), (mp_obj_t)&obcpModule_getDictHkParams_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getDictOnBoardParams), (mp_obj_t)&obcpModule_getDictOnBoardParams_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getDictEvents), (mp_obj_t)&obcpModule_getDictEvents_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getDictFunctions), (mp_obj_t)&obcpModule_getDictFunctions_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getHkParamValue), (mp_obj_t)&obcpModule_getHkParamValue_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getOnBoardParamValue), (mp_obj_t)&obcpModule_getOnBoardParamValue_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_setHkParamValue), (mp_obj_t)&obcpModule_setHkParamValue_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_setOnBoardParamValue), (mp_obj_t)&obcpModule_setOnBoardParamValue_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getTimeNowFloat), (mp_obj_t)&obcpModule_getTimeNowFloat_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getTimeNowList), (mp_obj_t)&obcpModule_getTimeNowList_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_timeoutReached), (mp_obj_t)&obcpModule_timeoutReached_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_raiseEvent), (mp_obj_t)&obcpModule_raiseEvent_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getNextEvent), (mp_obj_t)&obcpModule_getNextEvent_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_getNextEventBlocking), (mp_obj_t)&obcpModule_getNextEventBlocking_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_executeSt08Function), (mp_obj_t)&obcpModule_executeSt08Function_obj },
+	{ MP_OBJ_NEW_QSTR(MP_QSTR_setConfirmationValue), (mp_obj_t)&obcpModule_setConfirmationValue_obj },
+	{ MP_OBJ_NEW_QSTR(MP_QSTR_checkSuspendRequest), (mp_obj_t)&obcpModule_checkSuspendRequest_obj },
+	{ MP_OBJ_NEW_QSTR(MP_QSTR_checkStopRequest), (mp_obj_t)&obcpModule_checkStopRequest_obj },
+	{ MP_OBJ_NEW_QSTR(MP_QSTR_checkAbortRequest), (mp_obj_t)&obcpModule_checkAbortRequest_obj },
+	{ MP_OBJ_NEW_QSTR(MP_QSTR_activateObcp), (mp_obj_t)&obcpModule_activateObcp_obj },
+	{ MP_OBJ_NEW_QSTR(MP_QSTR_getThreadFromId), (mp_obj_t)&obcpModule_getThreadFromId_obj },
+	{ MP_OBJ_NEW_QSTR(MP_QSTR_getLastEventCounter), (mp_obj_t)&obcpModule_getLastEventCounter_obj },
+
 };
 
 STATIC MP_DEFINE_CONST_DICT (

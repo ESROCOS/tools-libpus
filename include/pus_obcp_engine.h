@@ -50,8 +50,6 @@ typedef struct
 
     pusSt18ObcpCode_t code;
 
-
-
     //heap / stack / ctx
     mp_state_ctx_t mp_ctx;
     uint64_t mp_heap[PUS_OBCP_HEAP_SIZE];
@@ -60,6 +58,7 @@ typedef struct
 	#ifndef PUS_DISABLE_THREADS
     	pthread_mutex_t mutex;
     	pthread_cond_t cond;
+    	pthread_cond_t cond_suspend;
 	#endif
 
     bool interpreterInitialized;
@@ -125,6 +124,21 @@ pusError_t pus_obcp_unloadObcp( pusSt18ObcpId_t* id);
  */
 pusError_t pus_obcp_activateObcp( pusSt18ObcpId_t* id);
 
+pusError_t pus_obcp_abortObcp(pusSt18ObcpId_t* id);
+
+pusError_t pus_obcp_stopObcp(pusSt18ObcpId_t* id);
+
+pusError_t pus_obcp_resumeObcp( pusSt18ObcpId_t* id );
+
+//! Execute an OBCP
+/*! Execute an OBCP activated in the engine
+ *  \param[in] id Identifier of the OBCP
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_obcp_executeObcp(pusSt18ObcpId_t* id);
+
+pusError_t pus_obcp_suspendObcp(pusSt18ObcpId_t* id);
+
 //! Check if two OBCP identifier are the same
 /*! Check if two OBCP identifier are the same
  *  \param[in] id1 Identifier of the OBCP1
@@ -143,18 +157,28 @@ bool pus_obcp_IsObcpLoaded( pusSt18ObcpId_t* id, size_t* index);
 
 pusError_t pus_obcp_waitForActivation(pusObcpInfo_t* obcpInfo);
 
+pusError_t pus_obcp_waitForResume(pusObcpInfo_t* obcpInfo);
+
+pusError_t pus_obcp_waitForResumeById(pusSt18ObcpId_t* id);
+
 pusError_t pus_obcp_setStatusAferExecution(pusObcpInfo_t* obcpInfo);
 
 pusError_t pus_obcp_setConfirmationStatus(pusSt18ObcpId_t* id, pusSt18ObcpConfirmationStatus_t status);
+
+pusSt18ObcpStatus_t pus_obcp_getStatus(pusSt18ObcpId_t* id);
+
+pusError_t pus_obcp_setStatus(pusSt18ObcpId_t* id, pusSt18ObcpStatus_t status);
+
 
 ///////////////
 pusError_t pus_obcp_setLoadInfo(pusObcpInfo_t* obcpInfo, pusSt18ObcpId_t* id, pusSt18ObcpStatus_t status, pusSt18ObcpCode_t* code);
 
 pusError_t pus_obcp_executeCode(pusObcpInfo_t* obcpInfo);
 
+
 pusError_t pus_obcp_initUPyInterpreter(pusObcpInfo_t* obcpInfo);
 
-void* thread_obcp( void * arg);
+void* pus_obcp_thread( void * arg);
 
 #ifdef  __cplusplus
 }

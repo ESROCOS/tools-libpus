@@ -228,16 +228,9 @@ void test_st18_engine1()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_parameters_initialize( NULL ));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_initialize( NULL ));
 
-	pus_obcp_initialize();
+	pus_obcp_initialize(NULL);
 	pus_obcp_startEngine();
 
-	mp_init_context_arrays();
-
-	pthread_t tid[pus_obcp_ObcpLimit];
-	for(size_t i = 0; i < pus_obcp_ObcpLimit; i++)
-	{
-		pthread_create(&tid[i], NULL, thread_obcp, (void*)i);
-	}
 
 	pusSt18ObcpId_t id1 ,id2;
 	memcpy(id1.arr, "OBCP_1\0", 10);
@@ -256,58 +249,23 @@ void test_st18_engine1()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_activateObcp(&id1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_activateObcp(&id2));
 
-	/*for(size_t i = 0; i < pus_obcp_ObcpLimit; i++)
-	{
-		pthread_join(tid[i], NULL);
-	}*/
-	sleep(2); //wait to the end of the test
+
+	sleep(3); //wait to the end of the test
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_unloadObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_unloadObcp(&id2));
 	printf("-------------\n");
 }
 
 
-void test_st18_engine_struct()
-{
-	pus_hk_finalize();
-	pus_events_finalize();
-	pus_parameters_finalize();
-	pus_st08_finalize();
-	pus_obcp_finalize();
-
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_initialize( NULL ));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_events_initialize( NULL ));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_parameters_initialize( NULL ));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_initialize( NULL ));
-
-	pus_obcp_initialize();
-	pus_obcp_startEngine();
-
-	mp_init_context_arrays();
-
-	pusObcpInfo_t obcpInfo;
-	pusSt18ObcpId_t idX;
-	pusSt18ObcpCode_t codeX;
-
-	memcpy(idX.arr, "OBCP_1\0", 10);
-
-	memcpy(codeX.arr, mpy_script_data[CODE1], mpy_script_len[CODE1]);
-	codeX.nCount = mpy_script_len[CODE1];
-
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_initUPyInterpreter(&obcpInfo));
-
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_setLoadInfo(&obcpInfo, &idX, PUS_OBCP_STATUS_INACTIVE, &codeX));
-
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_executeCode(&obcpInfo));
-
-	//sleep(2); //wait to the end of the test
-}
-
 void test_st18_testCode()
 {
-	pus_hk_finalize();
+	/*pus_hk_finalize();
 	pus_events_finalize();
 	pus_parameters_finalize();
 	pus_st08_finalize();
 	pus_obcp_finalize();
+
+	//mp_init_context_arrays();
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_hk_initialize( NULL ));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_events_initialize( NULL ));
@@ -315,30 +273,35 @@ void test_st18_testCode()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_initialize( NULL ));
 
 	pus_obcp_initialize();
-	pus_obcp_startEngine();
+	pus_obcp_startEngine();*/
 
-	mp_init_context_arrays();
-
-	extern pusObcpInfo_t pus_obcp_infoList[];
-
-	pus_obcp_initUPyInterpreter(& pus_obcp_infoList[0]);
-
-	pusSt18ObcpId_t id1;
+	pusSt18ObcpId_t id1, id2;
 	memcpy(id1.arr, "OBCP_TEST\0", 10);
+	memcpy(id2.arr, "OBCP_HI\0", 10);
 
 	pusSt18ObcpCode_t code1;
 	memcpy(code1.arr, mpy_script_data[CODE3], mpy_script_len[CODE3]);
 	code1.nCount = mpy_script_len[CODE3];
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id1, &code1));
+	//TODO RESET
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id1, &code1)); //FULL¿
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_activateObcp(&id1));
+	memcpy(code1.arr, mpy_script_data[HELLO], mpy_script_len[HELLO]);
+	code1.nCount = mpy_script_len[HELLO];
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id2, &code1));
 
 	printf("\n============ TEST ============\n");
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_executeCode(&pus_obcp_infoList[0]));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_activateObcp(&id1));
+	sleep(2);
+	printf("TEST: abort request %d\n", pus_obcp_abortObcp(&id2));
 
-	printf("Confirmation status: %llu\n", pus_obcp_infoList[0].confirmation);
-	//sleep(2); //wait to the end of the test
+	/*sleep(2);
+
+	printf("TEST: resume request %d\n",pus_obcp_resumeObcp(&id));*/
+
+	sleep(1); //wait to the end of the test
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_unloadObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_unloadObcp(&id2));
 }
 
 int main()
@@ -363,7 +326,6 @@ int main()
     if ((NULL == CU_add_test(pSuite, "test_st18_packets", test_st18_packets)) ||
     	(NULL == CU_add_test(pSuite, "test_st18_uPy", test_st18_uPy)) ||
 		(NULL == CU_add_test(pSuite, "test_st18_engine1", test_st18_engine1)) ||
-		(NULL == CU_add_test(pSuite, "test_st18_engine_struct", test_st18_engine_struct)) ||
 		(NULL == CU_add_test(pSuite, "test_st18_testCode", test_st18_testCode)) ||
 		0)
     {

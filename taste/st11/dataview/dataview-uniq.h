@@ -43,14 +43,14 @@ flag asn1SccPusTC_18_2_6_12_Data_IsConstraintValid(const asn1SccPusTC_18_2_6_12_
 
 typedef struct {    int nCount; 
     
-    byte arr[1000];
+    byte arr[15000];
 } asn1SccPusSt18ObcpCode;
 
-#define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_ENCODING       1002 
-#define asn1SccPusSt18ObcpCode_REQUIRED_BITS_FOR_ENCODING        8010
-#define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_ACN_ENCODING   1002 
-#define asn1SccPusSt18ObcpCode_REQUIRED_BITS_FOR_ACN_ENCODING    8010
-#define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_XER_ENCODING   2035
+#define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_ENCODING       15002 
+#define asn1SccPusSt18ObcpCode_REQUIRED_BITS_FOR_ENCODING        120014
+#define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_ACN_ENCODING   15002 
+#define asn1SccPusSt18ObcpCode_REQUIRED_BITS_FOR_ACN_ENCODING    120014
+#define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_XER_ENCODING   30035
 
 void asn1SccPusSt18ObcpCode_Initialize(asn1SccPusSt18ObcpCode* pVal);
 flag asn1SccPusSt18ObcpCode_IsConstraintValid(const asn1SccPusSt18ObcpCode* val, int* pErrCode);
@@ -570,11 +570,11 @@ typedef struct {
     asn1SccPusSt18ObcpChecksum checksum;
 } asn1SccPusTC_18_1_Data;
 
-#define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_ENCODING       1014 
-#define asn1SccPusTC_18_1_Data_REQUIRED_BITS_FOR_ENCODING        8106
-#define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_ACN_ENCODING   1014 
-#define asn1SccPusTC_18_1_Data_REQUIRED_BITS_FOR_ACN_ENCODING    8106
-#define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_XER_ENCODING   2134
+#define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_ENCODING       15014 
+#define asn1SccPusTC_18_1_Data_REQUIRED_BITS_FOR_ENCODING        120110
+#define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_ACN_ENCODING   15014 
+#define asn1SccPusTC_18_1_Data_REQUIRED_BITS_FOR_ACN_ENCODING    120110
+#define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_XER_ENCODING   30134
 
 void asn1SccPusTC_18_1_Data_Initialize(asn1SccPusTC_18_1_Data* pVal);
 flag asn1SccPusTC_18_1_Data_IsConstraintValid(const asn1SccPusTC_18_1_Data* val, int* pErrCode);
@@ -982,7 +982,6 @@ typedef struct {
         PusTcApplicationDataReduced_st_8_1_PRESENT,
         PusTcApplicationDataReduced_st_9_1_PRESENT,
         PusTcApplicationDataReduced_st_12_1_2_PRESENT,
-        PusTcApplicationDataReduced_st_18_1_PRESENT,
         PusTcApplicationDataReduced_st_18_2_6_12_PRESENT,
         PusTcApplicationDataReduced_st_18_3_PRESENT,
         PusTcApplicationDataReduced_st_18_4_5_PRESENT,
@@ -997,7 +996,6 @@ typedef struct {
         asn1SccPusTC_8_1_Data st_8_1;
         asn1SccPusTC_9_1_Data st_9_1;
         asn1SccPusTC_12_1_2_Data st_12_1_2;
-        asn1SccPusTC_18_1_Data st_18_1;
         asn1SccPusTC_18_2_6_12_Data st_18_2_6_12;
         asn1SccPusTC_18_3_Data st_18_3;
         asn1SccPusTC_18_4_5_Data st_18_4_5;
@@ -1010,11 +1008,11 @@ typedef struct {
     } u; 
 } asn1SccPusTcApplicationDataReduced;
 
-#define asn1SccPusTcApplicationDataReduced_REQUIRED_BYTES_FOR_ENCODING       1014 
-#define asn1SccPusTcApplicationDataReduced_REQUIRED_BITS_FOR_ENCODING        8110
-#define asn1SccPusTcApplicationDataReduced_REQUIRED_BYTES_FOR_ACN_ENCODING   1014 
-#define asn1SccPusTcApplicationDataReduced_REQUIRED_BITS_FOR_ACN_ENCODING    8110
-#define asn1SccPusTcApplicationDataReduced_REQUIRED_BYTES_FOR_XER_ENCODING   2177
+#define asn1SccPusTcApplicationDataReduced_REQUIRED_BYTES_FOR_ENCODING       123 
+#define asn1SccPusTcApplicationDataReduced_REQUIRED_BITS_FOR_ENCODING        984
+#define asn1SccPusTcApplicationDataReduced_REQUIRED_BYTES_FOR_ACN_ENCODING   123 
+#define asn1SccPusTcApplicationDataReduced_REQUIRED_BITS_FOR_ACN_ENCODING    984
+#define asn1SccPusTcApplicationDataReduced_REQUIRED_BYTES_FOR_XER_ENCODING   460
 
 void asn1SccPusTcApplicationDataReduced_Initialize(asn1SccPusTcApplicationDataReduced* pVal);
 flag asn1SccPusTcApplicationDataReduced_IsConstraintValid(const asn1SccPusTcApplicationDataReduced* val, int* pErrCode);
@@ -1027,11 +1025,11 @@ typedef struct {
     asn1SccPusTcApplicationDataReduced data;
 } asn1SccPusPacketDataReduced_tcData;
 
-#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BYTES_FOR_ENCODING       1018 
-#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BITS_FOR_ENCODING        8143
-#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BYTES_FOR_ACN_ENCODING   1018 
-#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BITS_FOR_ACN_ENCODING    8143
-#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BYTES_FOR_XER_ENCODING   2645
+#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BYTES_FOR_ENCODING       128 
+#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BITS_FOR_ENCODING        1017
+#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BYTES_FOR_ACN_ENCODING   128 
+#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BITS_FOR_ACN_ENCODING    1017
+#define asn1SccPusPacketDataReduced_tcData_REQUIRED_BYTES_FOR_XER_ENCODING   928
 
 void asn1SccPusPacketDataReduced_tcData_Initialize(asn1SccPusPacketDataReduced_tcData* pVal);
 flag asn1SccPusPacketDataReduced_tcData_IsConstraintValid(const asn1SccPusPacketDataReduced_tcData* val, int* pErrCode);
@@ -1225,11 +1223,11 @@ typedef struct {
     } u; 
 } asn1SccPusPacketDataReduced;
 
-#define asn1SccPusPacketDataReduced_REQUIRED_BYTES_FOR_ENCODING       1019 
-#define asn1SccPusPacketDataReduced_REQUIRED_BITS_FOR_ENCODING        8146
-#define asn1SccPusPacketDataReduced_REQUIRED_BYTES_FOR_ACN_ENCODING   1019 
-#define asn1SccPusPacketDataReduced_REQUIRED_BITS_FOR_ACN_ENCODING    8146
-#define asn1SccPusPacketDataReduced_REQUIRED_BYTES_FOR_XER_ENCODING   2648
+#define asn1SccPusPacketDataReduced_REQUIRED_BYTES_FOR_ENCODING       185 
+#define asn1SccPusPacketDataReduced_REQUIRED_BITS_FOR_ENCODING        1479
+#define asn1SccPusPacketDataReduced_REQUIRED_BYTES_FOR_ACN_ENCODING   185 
+#define asn1SccPusPacketDataReduced_REQUIRED_BITS_FOR_ACN_ENCODING    1479
+#define asn1SccPusPacketDataReduced_REQUIRED_BYTES_FOR_XER_ENCODING   1755
 
 void asn1SccPusPacketDataReduced_Initialize(asn1SccPusPacketDataReduced* pVal);
 flag asn1SccPusPacketDataReduced_IsConstraintValid(const asn1SccPusPacketDataReduced* val, int* pErrCode);
@@ -1248,11 +1246,11 @@ typedef struct {
     asn1SccPusPacketDataReduced data;
 } asn1SccPusPacketReduced;
 
-#define asn1SccPusPacketReduced_REQUIRED_BYTES_FOR_ENCODING       1024 
-#define asn1SccPusPacketReduced_REQUIRED_BITS_FOR_ENCODING        8189
-#define asn1SccPusPacketReduced_REQUIRED_BYTES_FOR_ACN_ENCODING   1024 
-#define asn1SccPusPacketReduced_REQUIRED_BITS_FOR_ACN_ENCODING    8189
-#define asn1SccPusPacketReduced_REQUIRED_BYTES_FOR_XER_ENCODING   3012
+#define asn1SccPusPacketReduced_REQUIRED_BYTES_FOR_ENCODING       191 
+#define asn1SccPusPacketReduced_REQUIRED_BITS_FOR_ENCODING        1522
+#define asn1SccPusPacketReduced_REQUIRED_BYTES_FOR_ACN_ENCODING   191 
+#define asn1SccPusPacketReduced_REQUIRED_BITS_FOR_ACN_ENCODING    1522
+#define asn1SccPusPacketReduced_REQUIRED_BYTES_FOR_XER_ENCODING   2119
 
 void asn1SccPusPacketReduced_Initialize(asn1SccPusPacketReduced* pVal);
 flag asn1SccPusPacketReduced_IsConstraintValid(const asn1SccPusPacketReduced* val, int* pErrCode);
@@ -1263,11 +1261,11 @@ typedef struct {
     asn1SccPusPacketReduced packetReduced;
 } asn1SccPusTC_19_1_Data;
 
-#define asn1SccPusTC_19_1_Data_REQUIRED_BYTES_FOR_ENCODING       1028 
-#define asn1SccPusTC_19_1_Data_REQUIRED_BITS_FOR_ENCODING        8221
-#define asn1SccPusTC_19_1_Data_REQUIRED_BYTES_FOR_ACN_ENCODING   1028 
-#define asn1SccPusTC_19_1_Data_REQUIRED_BITS_FOR_ACN_ENCODING    8221
-#define asn1SccPusTC_19_1_Data_REQUIRED_BYTES_FOR_XER_ENCODING   3080
+#define asn1SccPusTC_19_1_Data_REQUIRED_BYTES_FOR_ENCODING       195 
+#define asn1SccPusTC_19_1_Data_REQUIRED_BITS_FOR_ENCODING        1554
+#define asn1SccPusTC_19_1_Data_REQUIRED_BYTES_FOR_ACN_ENCODING   195 
+#define asn1SccPusTC_19_1_Data_REQUIRED_BITS_FOR_ACN_ENCODING    1554
+#define asn1SccPusTC_19_1_Data_REQUIRED_BYTES_FOR_XER_ENCODING   2187
 
 void asn1SccPusTC_19_1_Data_Initialize(asn1SccPusTC_19_1_Data* pVal);
 flag asn1SccPusTC_19_1_Data_IsConstraintValid(const asn1SccPusTC_19_1_Data* val, int* pErrCode);
@@ -1278,11 +1276,11 @@ typedef struct {
     asn1SccPusPacketReduced packetReduced;
 } asn1SccPusTcScheduledActivity;
 
-#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_ENCODING       1040 
-#define asn1SccPusTcScheduledActivity_REQUIRED_BITS_FOR_ENCODING        8317
-#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_ACN_ENCODING   1040 
-#define asn1SccPusTcScheduledActivity_REQUIRED_BITS_FOR_ACN_ENCODING    8317
-#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_XER_ENCODING   3144
+#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_ENCODING       207 
+#define asn1SccPusTcScheduledActivity_REQUIRED_BITS_FOR_ENCODING        1650
+#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_ACN_ENCODING   207 
+#define asn1SccPusTcScheduledActivity_REQUIRED_BITS_FOR_ACN_ENCODING    1650
+#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_XER_ENCODING   2251
 
 void asn1SccPusTcScheduledActivity_Initialize(asn1SccPusTcScheduledActivity* pVal);
 flag asn1SccPusTcScheduledActivity_IsConstraintValid(const asn1SccPusTcScheduledActivity* val, int* pErrCode);
@@ -1293,11 +1291,11 @@ typedef struct {    int nCount;
     asn1SccPusTcScheduledActivity arr[5];
 } asn1SccPusTC_11_4_Data;
 
-#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ENCODING       5199 
-#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ENCODING        41588
-#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ACN_ENCODING   5199 
-#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ACN_ENCODING    41588
-#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_XER_ENCODING   15755
+#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ENCODING       1032 
+#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ENCODING        8253
+#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ACN_ENCODING   1032 
+#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ACN_ENCODING    8253
+#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_XER_ENCODING   11290
 
 void asn1SccPusTC_11_4_Data_Initialize(asn1SccPusTC_11_4_Data* pVal);
 flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data* val, int* pErrCode);
@@ -1311,7 +1309,6 @@ typedef struct {
         PusTcApplicationData_st_8_1_PRESENT,
         PusTcApplicationData_st_9_1_PRESENT,
         PusTcApplicationData_st_12_1_2_PRESENT,
-        PusTcApplicationData_st_18_1_PRESENT,
         PusTcApplicationData_st_18_2_6_12_PRESENT,
         PusTcApplicationData_st_18_3_PRESENT,
         PusTcApplicationData_st_18_4_5_PRESENT,
@@ -1322,13 +1319,13 @@ typedef struct {
         PusTcApplicationData_st_23_2_3_PRESENT,
         PusTcApplicationData_st_23_14_PRESENT,
         st_11_4_PRESENT,
+        st_18_1_PRESENT,
         st_19_1_PRESENT 
     } kind;
     union {
         asn1SccPusTC_8_1_Data st_8_1;
         asn1SccPusTC_9_1_Data st_9_1;
         asn1SccPusTC_12_1_2_Data st_12_1_2;
-        asn1SccPusTC_18_1_Data st_18_1;
         asn1SccPusTC_18_2_6_12_Data st_18_2_6_12;
         asn1SccPusTC_18_3_Data st_18_3;
         asn1SccPusTC_18_4_5_Data st_18_4_5;
@@ -1339,15 +1336,16 @@ typedef struct {
         asn1SccPusTC_23_2_3_Data st_23_2_3;
         asn1SccPusTC_23_14_Data st_23_14;
         asn1SccPusTC_11_4_Data st_11_4;
+        asn1SccPusTC_18_1_Data st_18_1;
         asn1SccPusTC_19_1_Data st_19_1;
     } u; 
 } asn1SccPusTcApplicationData;
 
-#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ENCODING       5199 
-#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ENCODING        41592
-#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ACN_ENCODING   5199 
-#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ACN_ENCODING    41592
-#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_XER_ENCODING   15784
+#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ENCODING       15015 
+#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ENCODING        120114
+#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ACN_ENCODING   15015 
+#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ACN_ENCODING    120114
+#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_XER_ENCODING   30163
 
 void asn1SccPusTcApplicationData_Initialize(asn1SccPusTcApplicationData* pVal);
 flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplicationData* val, int* pErrCode);
@@ -1360,11 +1358,11 @@ typedef struct {
     asn1SccPusTcApplicationData data;
 } asn1SccPusPacketData_tcData;
 
-#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_ENCODING       5204 
-#define asn1SccPusPacketData_tcData_REQUIRED_BITS_FOR_ENCODING        41625
-#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_ACN_ENCODING   5204 
-#define asn1SccPusPacketData_tcData_REQUIRED_BITS_FOR_ACN_ENCODING    41625
-#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_XER_ENCODING   16252
+#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_ENCODING       15019 
+#define asn1SccPusPacketData_tcData_REQUIRED_BITS_FOR_ENCODING        120147
+#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_ACN_ENCODING   15019 
+#define asn1SccPusPacketData_tcData_REQUIRED_BITS_FOR_ACN_ENCODING    120147
+#define asn1SccPusPacketData_tcData_REQUIRED_BYTES_FOR_XER_ENCODING   30631
 
 void asn1SccPusPacketData_tcData_Initialize(asn1SccPusPacketData_tcData* pVal);
 flag asn1SccPusPacketData_tcData_IsConstraintValid(const asn1SccPusPacketData_tcData* val, int* pErrCode);
@@ -1386,11 +1384,11 @@ typedef struct {
     } u; 
 } asn1SccPusPacketData;
 
-#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ENCODING       5204 
-#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ENCODING        41628
-#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ACN_ENCODING   5204 
-#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ACN_ENCODING    41628
-#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_XER_ENCODING   16255
+#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ENCODING       15019 
+#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ENCODING        120150
+#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ACN_ENCODING   15019 
+#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ACN_ENCODING    120150
+#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_XER_ENCODING   30634
 
 void asn1SccPusPacketData_Initialize(asn1SccPusPacketData* pVal);
 flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData* val, int* pErrCode);
@@ -1409,11 +1407,11 @@ typedef struct {
     asn1SccPusPacketData data;
 } asn1SccPusPacket;
 
-#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ENCODING       5209 
-#define asn1SccPusPacket_REQUIRED_BITS_FOR_ENCODING        41671
-#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ACN_ENCODING   5209 
-#define asn1SccPusPacket_REQUIRED_BITS_FOR_ACN_ENCODING    41671
-#define asn1SccPusPacket_REQUIRED_BYTES_FOR_XER_ENCODING   16619
+#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ENCODING       15025 
+#define asn1SccPusPacket_REQUIRED_BITS_FOR_ENCODING        120193
+#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ACN_ENCODING   15025 
+#define asn1SccPusPacket_REQUIRED_BITS_FOR_ACN_ENCODING    120193
+#define asn1SccPusPacket_REQUIRED_BYTES_FOR_XER_ENCODING   30998
 
 void asn1SccPusPacket_Initialize(asn1SccPusPacket* pVal);
 flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket* val, int* pErrCode);
@@ -1733,7 +1731,6 @@ flag asn1SccTASTE_Boolean_Decode(asn1SccTASTE_Boolean* pVal, BitStream* pBitStrm
 #define CHOICE_PusTcApplicationDataReduced_st_8_1_PRESENT	asn1SccPusTcApplicationDataReduced::PusTcApplicationDataReduced_st_8_1_PRESENT
 #define CHOICE_PusTcApplicationDataReduced_st_9_1_PRESENT	asn1SccPusTcApplicationDataReduced::PusTcApplicationDataReduced_st_9_1_PRESENT
 #define CHOICE_PusTcApplicationDataReduced_st_12_1_2_PRESENT	asn1SccPusTcApplicationDataReduced::PusTcApplicationDataReduced_st_12_1_2_PRESENT
-#define CHOICE_PusTcApplicationDataReduced_st_18_1_PRESENT	asn1SccPusTcApplicationDataReduced::PusTcApplicationDataReduced_st_18_1_PRESENT
 #define CHOICE_PusTcApplicationDataReduced_st_18_2_6_12_PRESENT	asn1SccPusTcApplicationDataReduced::PusTcApplicationDataReduced_st_18_2_6_12_PRESENT
 #define CHOICE_PusTcApplicationDataReduced_st_18_3_PRESENT	asn1SccPusTcApplicationDataReduced::PusTcApplicationDataReduced_st_18_3_PRESENT
 #define CHOICE_PusTcApplicationDataReduced_st_18_4_5_PRESENT	asn1SccPusTcApplicationDataReduced::PusTcApplicationDataReduced_st_18_4_5_PRESENT
@@ -1756,7 +1753,6 @@ flag asn1SccTASTE_Boolean_Decode(asn1SccTASTE_Boolean* pVal, BitStream* pBitStrm
 #define CHOICE_PusTcApplicationData_st_8_1_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_8_1_PRESENT
 #define CHOICE_PusTcApplicationData_st_9_1_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_9_1_PRESENT
 #define CHOICE_PusTcApplicationData_st_12_1_2_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_12_1_2_PRESENT
-#define CHOICE_PusTcApplicationData_st_18_1_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_18_1_PRESENT
 #define CHOICE_PusTcApplicationData_st_18_2_6_12_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_18_2_6_12_PRESENT
 #define CHOICE_PusTcApplicationData_st_18_3_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_18_3_PRESENT
 #define CHOICE_PusTcApplicationData_st_18_4_5_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_18_4_5_PRESENT
@@ -1767,6 +1763,7 @@ flag asn1SccTASTE_Boolean_Decode(asn1SccTASTE_Boolean* pVal, BitStream* pBitStrm
 #define CHOICE_PusTcApplicationData_st_23_2_3_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_23_2_3_PRESENT
 #define CHOICE_PusTcApplicationData_st_23_14_PRESENT	asn1SccPusTcApplicationData::PusTcApplicationData_st_23_14_PRESENT
 #define CHOICE_st_11_4_PRESENT	asn1SccPusTcApplicationData::st_11_4_PRESENT
+#define CHOICE_st_18_1_PRESENT	asn1SccPusTcApplicationData::st_18_1_PRESENT
 #define CHOICE_st_19_1_PRESENT	asn1SccPusTcApplicationData::st_19_1_PRESENT
 #define CHOICE_PusPacketData_tmData_PRESENT	asn1SccPusPacketData::PusPacketData_tmData_PRESENT
 #define CHOICE_PusPacketData_tmDataNoHeader_PRESENT	asn1SccPusPacketData::PusPacketData_tmDataNoHeader_PRESENT

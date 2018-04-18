@@ -14,7 +14,7 @@ extern "C" {
 void tmqueue_startup();
 
 void tmqueue_PI_tmRequest(asn1SccPusPacket *,
-                          asn1SccT_Boolean *);
+                          asn1SccPusSt01FailureCode *);
 
 void tmqueue_PI_newTm(const asn1SccPusPacket *);
 

@@ -1681,9 +1681,6 @@ flag asn1SccPusTcApplicationDataReduced_IsConstraintValid(const asn1SccPusTcAppl
 	    case PusTcApplicationDataReduced_st_12_1_2_PRESENT :
 	        ret = asn1SccPusTC_12_1_2_Data_IsConstraintValid(&pVal->u.st_12_1_2, pErrCode);
 	        break;
-	    case PusTcApplicationDataReduced_st_18_1_PRESENT :
-	        ret = asn1SccPusTC_18_1_Data_IsConstraintValid(&pVal->u.st_18_1, pErrCode);
-	        break;
 	    case PusTcApplicationDataReduced_st_18_2_6_12_PRESENT :
 	        ret = asn1SccPusTC_18_2_6_12_Data_IsConstraintValid(&pVal->u.st_18_2_6_12, pErrCode);
 	        break;
@@ -2568,9 +2565,6 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
 	    case PusTcApplicationData_st_12_1_2_PRESENT :
 	        ret = asn1SccPusTC_12_1_2_Data_IsConstraintValid(&pVal->u.st_12_1_2, pErrCode);
 	        break;
-	    case PusTcApplicationData_st_18_1_PRESENT :
-	        ret = asn1SccPusTC_18_1_Data_IsConstraintValid(&pVal->u.st_18_1, pErrCode);
-	        break;
 	    case PusTcApplicationData_st_18_2_6_12_PRESENT :
 	        ret = asn1SccPusTC_18_2_6_12_Data_IsConstraintValid(&pVal->u.st_18_2_6_12, pErrCode);
 	        break;
@@ -2600,6 +2594,9 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
 	        break;
 	    case st_11_4_PRESENT :
 	        ret = asn1SccPusTC_11_4_Data_IsConstraintValid(&pVal->u.st_11_4, pErrCode);
+	        break;
+	    case st_18_1_PRESENT :
+	        ret = asn1SccPusTC_18_1_Data_IsConstraintValid(&pVal->u.st_18_1, pErrCode);
 	        break;
 	    case st_19_1_PRESENT :
 	        ret = asn1SccPusTC_19_1_Data_IsConstraintValid(&pVal->u.st_19_1, pErrCode);
@@ -2887,7 +2884,7 @@ const asn1SccPusUInt32 pus_ST11_MAX_SCHEDULED_ACTIVITIES = 5;
 
 const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_ID = 10;
 
-const asn1SccPusUInt32 pus_ST18_MAX_SIZE_OBCP_CODE = 1000;
+const asn1SccPusUInt32 pus_ST18_MAX_SIZE_OBCP_CODE = 15000;
 
 const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_CHECKSUM = 16;
 

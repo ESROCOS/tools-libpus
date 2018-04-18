@@ -16,7 +16,7 @@ void tcqueue_startup();
 void tcqueue_PI_newTc(const asn1SccPusPacket *);
 
 void tcqueue_PI_tcRequest(asn1SccPusPacket *,
-                          asn1SccT_Boolean *);
+                          asn1SccPusSt01FailureCode *);
 
 #ifdef __cplusplus
 }

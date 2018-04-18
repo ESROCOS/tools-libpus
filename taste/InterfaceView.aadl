@@ -103,11 +103,9 @@ FEATURES
   tcPacket : OUT PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-  isAvailable : OUT PARAMETER DataView::T_Boolean {
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_tcRequest;
 
 SUBPROGRAM IMPLEMENTATION PI_tcRequest.others
@@ -127,13 +125,13 @@ FEATURES
   PI_tcRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_tcRequest.others {
     Taste::coordinates => "97390 44267";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tcRequest";
   };
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcqueue.zip");
 END TcQueue;
 
 SYSTEM IMPLEMENTATION TcQueue.others
@@ -172,7 +170,7 @@ FEATURES
   tcPacket : OUT PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-  isAvailable : OUT PARAMETER DataView::T_Boolean {
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
 END RI_tcRequest;
@@ -338,6 +336,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcdispatch.zip");
 END TcDispatch;
 
 SYSTEM IMPLEMENTATION TcDispatch.others
@@ -629,7 +628,7 @@ FEATURES
   tmPacket : OUT PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-  isAvailable : OUT PARAMETER DataView::T_Boolean {
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
 END RI_tmRequest;
@@ -661,6 +660,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tmdispatch.zip");
 END TmDispatch;
 
 SYSTEM IMPLEMENTATION TmDispatch.others
@@ -680,11 +680,9 @@ FEATURES
   tmPacket : OUT PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
-  isAvailable : OUT PARAMETER DataView::T_Boolean {
+  isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_tmRequest;
 
 SUBPROGRAM IMPLEMENTATION PI_tmRequest.others
@@ -724,7 +722,6 @@ FEATURES
   PI_tmRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmQueue::PI_tmRequest.others {
     Taste::coordinates => "104006 98988";
     Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmRequest";
   };
@@ -744,6 +741,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tmqueue.zip");
 END TmQueue;
 
 SYSTEM IMPLEMENTATION TmQueue.others
@@ -980,6 +978,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st17.zip");
 END ST17;
 
 SYSTEM IMPLEMENTATION ST17.others
@@ -1081,6 +1080,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st01.zip");
 END ST01;
 
 SYSTEM IMPLEMENTATION ST01.others
@@ -1149,6 +1149,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st08.zip");
 END ST08;
 
 SYSTEM IMPLEMENTATION ST08.others
@@ -1209,6 +1210,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardapid.zip");
 END OnBoardAPID;
 
 SYSTEM IMPLEMENTATION OnBoardAPID.others
@@ -1338,6 +1340,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st19.zip");
 END ST09;
 
 SYSTEM IMPLEMENTATION ST09.others
@@ -1398,6 +1401,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/timereportapid.zip");
 END TimeReportAPID;
 
 SYSTEM IMPLEMENTATION TimeReportAPID.others
@@ -1602,6 +1606,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/events.zip");
 END Events;
 
 SYSTEM IMPLEMENTATION Events.others
@@ -1710,6 +1715,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st05.zip");
 END ST05;
 
 SYSTEM IMPLEMENTATION ST05.others
@@ -1852,6 +1858,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st19.zip");
 END ST19;
 
 SYSTEM IMPLEMENTATION ST19.others
@@ -2149,6 +2156,8 @@ FEATURES
   paramValue : IN PARAMETER DataView::PusSt03StoredParam {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_setParamValue;
 
 SUBPROGRAM IMPLEMENTATION PI_setParamValue.others
@@ -2181,6 +2190,7 @@ FEATURES
   PI_setParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_setParamValue.others {
     Taste::coordinates => "162990 70150";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setParamValue";
   };
@@ -2194,6 +2204,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/housekeeping.zip");
 END Housekeeping;
 
 SYSTEM IMPLEMENTATION Housekeeping.others
@@ -2302,6 +2313,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st03.zip");
 END ST03;
 
 SYSTEM IMPLEMENTATION ST03.others
@@ -2427,6 +2439,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st12.zip");
 END ST12;
 
 SYSTEM IMPLEMENTATION ST12.others
@@ -2489,6 +2502,8 @@ FEATURES
   paramValue : IN PARAMETER DataView::PusSt03StoredParam {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_setParamValue;
 
 SUBPROGRAM IMPLEMENTATION PI_setParamValue.others
@@ -2604,6 +2619,7 @@ FEATURES
   PI_setParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_setParamValue.others {
     Taste::coordinates => "167548 71593";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setParamValue";
   };
@@ -2779,6 +2795,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st11.zip");
 END ST11;
 
 SYSTEM IMPLEMENTATION ST11.others
@@ -2883,6 +2900,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st18.zip");
 END ST18;
 
 SYSTEM IMPLEMENTATION ST18.others
@@ -3022,6 +3040,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/obcpengine.zip");
 END ObcpEngine;
 
 SYSTEM IMPLEMENTATION ObcpEngine.others
@@ -3363,6 +3382,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st23.zip");
 END ST23;
 
 SYSTEM IMPLEMENTATION ST23.others
@@ -3449,6 +3469,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/filemanagement.zip");
 END FileManagement;
 
 SYSTEM IMPLEMENTATION FileManagement.others
@@ -3760,6 +3781,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st20.zip");
 END ST20;
 
 SYSTEM IMPLEMENTATION ST20.others
@@ -3781,6 +3803,8 @@ FEATURES
   paramValue : IN PARAMETER DataView::PusSt20StoredParam {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_setOnBoardParam.others
@@ -3799,6 +3823,8 @@ FEATURES
   isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_getOnBoardParam.others
@@ -3811,18 +3837,21 @@ FEATURES
   PI_setOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
     Taste::coordinates => "155480 118522";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setOnBoardParam";
   };
   PI_getOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
     Taste::coordinates => "155480 120131";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getOnBoardParam";
   };
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardparams.zip");
 END OnBoardParams;
 
 SYSTEM IMPLEMENTATION OnBoardParams.others
@@ -3863,6 +3892,8 @@ FEATURES
   paramValue : IN PARAMETER DataView::PusSt20StoredParam {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_setOnBoardParam.others
@@ -3881,6 +3912,8 @@ FEATURES
   isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_getOnBoardParam.others
@@ -3952,12 +3985,14 @@ FEATURES
   PI_setOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
     Taste::coordinates => "166115 116959";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setOnBoardParam";
   };
   PI_getOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
     Taste::coordinates => "166115 119080";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getOnBoardParam";
   };
@@ -4044,6 +4079,8 @@ WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
 SUBPROGRAM PI_HkReportTrigger
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_HkReportTrigger;
 
 SUBPROGRAM IMPLEMENTATION PI_HkReportTrigger.others
@@ -4092,6 +4129,8 @@ PROPERTIES
 END PI_PmonTrigger.others;
 
 SUBPROGRAM PI_EventReportTrigger
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_EventReportTrigger;
 
 SUBPROGRAM IMPLEMENTATION PI_EventReportTrigger.others
@@ -4100,6 +4139,8 @@ PROPERTIES
 END PI_EventReportTrigger.others;
 
 SUBPROGRAM PI_debugEventTrigger
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_debugEventTrigger;
 
 SUBPROGRAM IMPLEMENTATION PI_debugEventTrigger.others
@@ -4245,6 +4286,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/trigger.zip");
 END trigger;
 
 SYSTEM IMPLEMENTATION trigger.others
@@ -4299,6 +4341,8 @@ FEATURES
   paramValue : IN PARAMETER DataView::PusSt03StoredParam {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_setParamValue;
 
 SUBPROGRAM IMPLEMENTATION PI_setParamValue.others
@@ -4348,22 +4392,14 @@ FEATURES
   paramValue : IN PARAMETER DataView::PusSt20StoredParam {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_setOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_setOnBoardParam.others
 PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_setOnBoardParam.others;
-
-SUBPROGRAM RI_newTm
-FEATURES
-  tmPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
-  };
-END RI_newTm;
-
-SUBPROGRAM IMPLEMENTATION RI_newTm.others
-END RI_newTm.others;
 
 SUBPROGRAM PI_getOnBoardParam
 FEATURES
@@ -4376,12 +4412,24 @@ FEATURES
   isAvailable : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_getOnBoardParam;
 
 SUBPROGRAM IMPLEMENTATION PI_getOnBoardParam.others
 PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_getOnBoardParam.others;
+
+SUBPROGRAM RI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTm;
+
+SUBPROGRAM IMPLEMENTATION RI_newTm.others
+END RI_newTm.others;
 
 SYSTEM PusServices
 FEATURES
@@ -4395,6 +4443,7 @@ FEATURES
   PI_setParamValue : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_setParamValue.others {
     Taste::coordinates => "203022 69681";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setParamValue";
   };
@@ -4415,20 +4464,22 @@ FEATURES
   PI_setOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
     Taste::coordinates => "203022 106637";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setOnBoardParam";
+  };
+  PI_getOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
+    Taste::coordinates => "203022 113194";
+    Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "getOnBoardParam";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_newTm.others {
     Taste::coordinates => "76800 99327";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
-  };
-  PI_getOnBoardParam : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
-    Taste::coordinates => "203022 113194";
-    Taste::RCMoperationKind => protected;
-    Taste::Deadline => 0 ms;
-    Taste::InterfaceName => "getOnBoardParam";
   };
 PROPERTIES
   Source_Language => (C);
@@ -4671,6 +4722,8 @@ WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
 SUBPROGRAM PI_debugTrigger
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_debugTrigger;
 
 SUBPROGRAM IMPLEMENTATION PI_debugTrigger.others
@@ -4873,11 +4926,11 @@ CONNECTIONS
   PusServices_PI_setOnBoardParam_OnboardSoftware_RI_setOnBoardParam : SUBPROGRAM ACCESS PusServices.PI_setOnBoardParam -> OnboardSoftware.RI_setOnBoardParam {
     Taste::coordinates => "219639 84343 209927 84343 209927 106637 203022 106637";
   };
-  OnBoard_RI_newTm_PusServices_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> PusServices.RI_newTm {
-    Taste::coordinates => "76800 99327 71940 99327 71940 90896 66854 90896";
-  };
   PusServices_PI_getOnBoardParam_OnboardSoftware_RI_getOnBoardParam : SUBPROGRAM ACCESS PusServices.PI_getOnBoardParam -> OnboardSoftware.RI_getOnBoardParam {
     Taste::coordinates => "219639 91417 212991 91417 212991 113194 203022 113194";
+  };
+  OnBoard_RI_newTm_PusServices_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> PusServices.RI_newTm {
+    Taste::coordinates => "76800 99327 71940 99327 71940 90896 66854 90896";
   };
 END OnBoard.others;
 

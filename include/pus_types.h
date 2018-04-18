@@ -154,7 +154,7 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define pus_TC_DATA_ST_9_1		((pusTcDataKind_t) PusTcApplicationData_st_9_1_PRESENT)
 #define pus_TC_DATA_ST_11_4		((pusTcDataKind_t) st_11_4_PRESENT)
 #define pus_TC_DATA_ST_12_1_2	((pusTcDataKind_t) PusTcApplicationData_st_12_1_2_PRESENT)
-#define pus_TC_DATA_ST_18_1		((pusTcDataKind_t) PusTcApplicationData_st_18_1_PRESENT)
+#define pus_TC_DATA_ST_18_1		((pusTcDataKind_t) st_18_1_PRESENT)
 #define pus_TC_DATA_ST_18_2_6_12 ((pusTcDataKind_t) PusTcApplicationData_st_18_2_6_12_PRESENT)
 #define pus_TC_DATA_ST_18_3		((pusTcDataKind_t) PusTcApplicationData_st_18_3_PRESENT)
 #define pus_TC_DATA_ST_18_4_5	((pusTcDataKind_t) PusTcApplicationData_st_18_4_5_PRESENT)
@@ -207,7 +207,17 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 #define PUS_OBCP_STATUS_UNLOAD 0
 #define PUS_OBCP_STATUS_INACTIVE 1
 #define PUS_OBCP_STATUS_ACTIVE_RUNNING 2
-#define PUS_OBCP_STATUS_ACTIVE_HELD 3
+#define PUS_OBCP_STATUS_ACTIVE_HELD_REQUEST 3
+#define PUS_OBCP_STATUS_ACTIVE_HELD 4
+#define PUS_OBCP_STATUS_ACTIVE_RESUME_REQUEST 5
+#define PUS_OBCP_STATUS_ACTIVE_STOP_REQUEST 6
+#define PUS_OBCP_STATUS_ACTIVE_ABORT_REQUEST 7
+
+#define PUS_OBCP_CONFIRMATION_STATUS_NOT_COMPLETED 0
+#define PUS_OBCP_CONFIRMATION_STATUS_SUCCESS 1
+#define PUS_OBCP_CONFIRMATION_STATUS_STOPPED 2
+#define PUS_OBCP_CONFIRMATION_STATUS_ABORTED 3
+
 
 #ifdef  __cplusplus
 }

@@ -28,8 +28,7 @@ extern "C" {
 #define MAXIMUN_OBCP ${config['maximumObcp']}
 
 #ifndef PUS_DISABLE_THREADS
-extern pthread_mutex_t pus_obcp_mutexEngine;
-extern pthread_cond_t pus_obcp_condEngine;
+extern pthread_t pus_obcp_threads[];
 #endif
 
 

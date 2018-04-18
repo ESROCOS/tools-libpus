@@ -11,11 +11,6 @@
 
 #ifndef PUS_DISABLE_THREADS // PUS_DISABLE_THREADS //TODO
 
-extern pthread_mutex_t pus_obcp_mutexEngine;
-extern pthread_cond_t pus_obcp_condEngine;
-
-
-
 extern const size_t pus_obcp_ObcpLimit;
 extern pusObcpInfo_t pus_obcp_infoList[];
 extern pusError_t pus_obcp_configure();
@@ -25,16 +20,50 @@ bool pus_obcp_initializedFlag = false;
 
 bool pus_obcp_engineRunning = false;
 
-//MUTEX
-pusMutex_t* pus_obcp_mutex;
 
-pusError_t pus_obcp_initialize()
+
+//MUTEX
+pusMutex_t* pus_obcp_mutex = NULL;
+
+pusError_t pus_obcp_initialize(pusMutex_t* mutex) //TODO
 {
-	pus_obcp_configure(); //TODO
+	if (pus_obcp_isInitialized())
+	{
+		return PUS_SET_ERROR(PUS_ERROR_ALREADY_INITIALIZED);
+	}
+
+	pus_obcp_mutex = mutex;
+
+	if (NULL != pus_obcp_mutex && !pus_mutexLockOk(pus_obcp_mutex))
+	{
+		return PUS_ERROR_INITIALIZATION;
+	}
+
+	mp_init_context_arrays();
+
+	if( PUS_NO_ERROR != pus_obcp_configure()) //TODO
+	{
+		if (NULL != pus_obcp_mutex)
+		{
+			(void) pus_mutexUnlockOk(pus_obcp_mutex);
+		}
+		return PUS_SET_ERROR(PUS_ERROR_INITIALIZATION);
+	}
 
 	pus_obcp_initializedFlag = true;
 
 	pus_obcp_engineRunning = false;
+
+	if (NULL != pus_obcp_mutex && !pus_mutexUnlockOk(pus_obcp_mutex))
+	{
+		return PUS_ERROR_INITIALIZATION;
+	}
+
+	extern pthread_t pus_obcp_threads[];
+	for(size_t i = 0; i < pus_obcp_ObcpLimit; i++)
+	{
+		pthread_create(&pus_obcp_threads[i], NULL, pus_obcp_thread, (void*)i);
+	}
 
 	//TODO
 	pus_obcp_startEngine();
@@ -68,18 +97,12 @@ pusError_t pus_obcp_startEngine()
 		return PUS_ERROR_NOT_INITIALIZED;
 	}
 
-	pthread_mutex_lock(&pus_obcp_mutexEngine);
-
 	if( pus_obcp_engineRunning == true )
 	{
-		pthread_mutex_unlock(&pus_obcp_mutexEngine);
 		return PUS_ERROR_OBCP_ENGINE_ALREADY_RUNNING;
 	}
 
 	pus_obcp_engineRunning = true;
-
-	pthread_mutex_unlock(&pus_obcp_mutexEngine);
-
 
 	return PUS_NO_ERROR;
 }
@@ -92,17 +115,12 @@ pusError_t pus_obcp_stopEngine()
 		return PUS_ERROR_NOT_INITIALIZED;
 	}
 
-	pthread_mutex_lock(&pus_obcp_mutexEngine);
-
 	if( pus_obcp_engineRunning == false )
 	{
-		pthread_mutex_unlock(&pus_obcp_mutexEngine);
 		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
 	}
 
 	pus_obcp_engineRunning = false;
-
-	pthread_mutex_unlock(&pus_obcp_mutexEngine);
 
 	return PUS_NO_ERROR;
 }
@@ -111,7 +129,7 @@ bool pus_obcp_isEngineRunning()
 {
 	if(!pus_obcp_isInitialized())
 	{
-		return PUS_ERROR_NOT_INITIALIZED;
+		return false;
 	}
 
 	return pus_obcp_engineRunning;
@@ -121,7 +139,7 @@ uint32_t pus_obcp_getObcpLoadedActives()
 {
 	if(!pus_obcp_isEngineRunning())
 	{
-		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+		return 0;
 	}
 
 	uint32_t cont = 0;
@@ -150,7 +168,7 @@ uint32_t pus_obcp_getObcpLoadedInactives()
 {
 	if(!pus_obcp_isEngineRunning())
 	{
-		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+		return 0;
 	}
 
 	uint32_t cont = 0;
@@ -179,7 +197,7 @@ uint32_t pus_obcp_getObcpSlotNotLoaded()
 {
 	if(!pus_obcp_isEngineRunning())
 	{
-		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+		return 0;
 	}
 
 	uint32_t cont = 0;
@@ -251,17 +269,16 @@ bool pus_obcp_IsObcpLoaded( pusSt18ObcpId_t* id, size_t* index )
 	return false;
 }
 
+
 pusError_t pus_obcp_setLoadInfo(pusObcpInfo_t* obcpInfo, pusSt18ObcpId_t* id, pusSt18ObcpStatus_t status, pusSt18ObcpCode_t* code)
 {
 	obcpInfo->id = *id;
 	obcpInfo->status = status;
 	obcpInfo->code = *code;
+	obcpInfo->confirmation = PUS_OBCP_CONFIRMATION_STATUS_NOT_COMPLETED;
 
 	return PUS_NO_ERROR;
 }
-
-
-
 
 
 pusError_t pus_obcp_loadObcp( pusSt18ObcpId_t* id, pusSt18ObcpCode_t* code )
@@ -282,9 +299,8 @@ pusError_t pus_obcp_loadObcp( pusSt18ObcpId_t* id, pusSt18ObcpCode_t* code )
     	}
         if( pus_obcp_infoList[i].status == PUS_OBCP_STATUS_UNLOAD )
         {
+        	//pus_obcp_initUPyInterpreter(& pus_obcp_infoList[i]);
         	pus_obcp_setLoadInfo(&pus_obcp_infoList[i], id, PUS_OBCP_STATUS_INACTIVE, code);
-
-        	printf("LOADING IN %d\n", i);
 
             if(0 != pthread_mutex_unlock(&pus_obcp_infoList[i].mutex))
 			{
@@ -300,7 +316,6 @@ pusError_t pus_obcp_loadObcp( pusSt18ObcpId_t* id, pusSt18ObcpCode_t* code )
 
     return PUS_ERROR_OBCP_FULL_BUFFER;
 }
-
 
 
 pusError_t pus_obcp_unloadObcp( pusSt18ObcpId_t* id )
@@ -342,6 +357,7 @@ pusError_t pus_obcp_unloadObcp( pusSt18ObcpId_t* id )
 
 	return PUS_NO_ERROR;
 }
+
 
 pusError_t pus_obcp_activateObcp( pusSt18ObcpId_t* id )
 {
@@ -394,6 +410,146 @@ pusError_t pus_obcp_activateObcp( pusSt18ObcpId_t* id )
 }
 
 
+pusError_t pus_obcp_executeObcp(pusSt18ObcpId_t* id)
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+	  return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	if( false == &pus_obcp_infoList[index].interpreterInitialized )
+	{
+		return PUS_ERROR_OBCP_INTERPRETER_NOT_INIT;
+	}
+
+	if( 0 != mp_exec_mpy(pus_obcp_infoList[index].code.arr, pus_obcp_infoList[index].code.nCount))
+	{
+		return PUS_ERROR_EXECUTING_OBCP;
+	}
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_obcp_stopObcp(pusSt18ObcpId_t* id)
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+	  return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	pthread_mutex_lock(&pus_obcp_infoList[index].mutex);
+	if( pus_obcp_infoList[index].status !=  PUS_OBCP_STATUS_ACTIVE_RUNNING )
+	{
+		pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
+		return PUS_ERROR_OBCP_IS_RUNNING;
+	}
+
+	//TODO else error
+	pus_obcp_infoList[index].status = PUS_OBCP_STATUS_ACTIVE_STOP_REQUEST;
+	pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
+
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_obcp_suspendObcp(pusSt18ObcpId_t* id)
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+	  return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	pthread_mutex_lock(&pus_obcp_infoList[index].mutex);
+	if( pus_obcp_infoList[index].status ==  PUS_OBCP_STATUS_ACTIVE_RUNNING )
+	{
+		pus_obcp_infoList[index].status = PUS_OBCP_STATUS_ACTIVE_HELD_REQUEST;
+	}
+	pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
+
+	//TODO else error
+
+	return PUS_NO_ERROR;
+}
+
+
+pusError_t pus_obcp_abortObcp(pusSt18ObcpId_t* id)
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+	  return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	pthread_mutex_lock(&pus_obcp_infoList[index].mutex);
+	pus_obcp_infoList[index].status = PUS_OBCP_STATUS_ACTIVE_ABORT_REQUEST;
+	pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
+
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_obcp_resumeObcp( pusSt18ObcpId_t* id )
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+	  return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	if(0 != pthread_mutex_lock(&pus_obcp_infoList[index].mutex))
+	{
+		return PUS_ERROR_THREADS;
+	}
+
+	if (pus_obcp_infoList[index].status != PUS_OBCP_STATUS_ACTIVE_HELD)
+	{
+			if(0 != pthread_mutex_unlock(&pus_obcp_infoList[index].mutex))
+			{
+				return PUS_ERROR_THREADS;
+			}
+			return PUS_ERROR_OBCP_NOT_HELD;
+	}
+
+	pus_obcp_infoList[index].status = PUS_OBCP_STATUS_ACTIVE_RESUME_REQUEST;
+
+	if(0 != pthread_cond_signal(&pus_obcp_infoList[index].cond_suspend))
+	{
+		return PUS_ERROR_THREADS;
+	}
+	if(0 != pthread_mutex_unlock(&pus_obcp_infoList[index].mutex))
+	{
+		return PUS_ERROR_THREADS;
+	}
+
+	return PUS_NO_ERROR;
+}
+
+
 pusError_t pus_obcp_waitForActivation(pusObcpInfo_t* obcpInfo)
 {
 	pthread_mutex_lock(&obcpInfo->mutex);
@@ -408,10 +564,53 @@ pusError_t pus_obcp_waitForActivation(pusObcpInfo_t* obcpInfo)
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_obcp_waitForEngineRunning(size_t index)
+pusError_t pus_obcp_waitForActivationById(pusSt18ObcpId_t* id)
 {
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+		return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	return pus_obcp_waitForActivation(&pus_obcp_infoList[index]);
+}
+
+pusError_t pus_obcp_waitForResume(pusObcpInfo_t* obcpInfo)
+{
+	pthread_mutex_lock(&obcpInfo->mutex);
+
+	while( obcpInfo->status != PUS_OBCP_STATUS_ACTIVE_RESUME_REQUEST )
+	{
+		printf("OBCP suspended\n");
+		pthread_cond_wait (&obcpInfo->cond_suspend, &obcpInfo->mutex);
+	}
+
+	pthread_mutex_unlock(&obcpInfo->mutex);
 
 	return PUS_NO_ERROR;
+}
+
+pusError_t pus_obcp_waitForResumeById(pusSt18ObcpId_t* id)
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+		return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	pus_obcp_infoList[index].status = PUS_OBCP_STATUS_ACTIVE_HELD;
+
+	return pus_obcp_waitForResume(&pus_obcp_infoList[index]);
 }
 
 pusError_t pus_obcp_setStatusAferExecution(pusObcpInfo_t* obcpInfo)
@@ -427,6 +626,7 @@ pusError_t pus_obcp_setStatusAferExecution(pusObcpInfo_t* obcpInfo)
 	return PUS_NO_ERROR;
 }
 
+
 pusError_t pus_obcp_setConfirmationStatus(pusSt18ObcpId_t* id, pusSt18ObcpConfirmationStatus_t status)
 {
 	if( false == pus_obcp_isEngineRunning())
@@ -437,7 +637,6 @@ pusError_t pus_obcp_setConfirmationStatus(pusSt18ObcpId_t* id, pusSt18ObcpConfir
 	size_t index;
 	if( false == pus_obcp_IsObcpLoaded(id, &index) )
 	{
-		printf("ASDSDAASD\n");
 		return PUS_ERROR_OBCP_NOT_LOADED;
 	}
 
@@ -447,6 +646,49 @@ pusError_t pus_obcp_setConfirmationStatus(pusSt18ObcpId_t* id, pusSt18ObcpConfir
 }
 
 
+pusError_t pus_obcp_setStatus(pusSt18ObcpId_t* id, pusSt18ObcpStatus_t status)
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+		return PUS_ERROR_OBCP_NOT_LOADED;
+	}
+
+	pthread_mutex_lock(&pus_obcp_infoList[index].mutex);
+
+	pus_obcp_infoList[index].status = status;
+
+	pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
+
+	return PUS_NO_ERROR;
+}
+
+pusSt18ObcpStatus_t pus_obcp_getStatus(pusSt18ObcpId_t* id)
+{
+	if( false == pus_obcp_isEngineRunning())
+	{
+		return PUS_OBCP_STATUS_UNLOAD;
+	}
+
+	size_t index;
+	if( false == pus_obcp_IsObcpLoaded(id, &index) )
+	{
+		return PUS_OBCP_STATUS_UNLOAD;
+	}
+
+	pthread_mutex_lock(&pus_obcp_infoList[index].mutex);
+
+	pusSt18ObcpStatus_t status = pus_obcp_infoList[index].status;
+
+	pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
+
+	return status;
+}
 
 /////////////
 pusError_t pus_obcp_executeCode(pusObcpInfo_t* obcpInfo)
@@ -483,10 +725,8 @@ pusError_t pus_obcp_initUPyInterpreter(pusObcpInfo_t* obcpInfo)
 	return PUS_NO_ERROR;
 }
 
-void* thread_obcp( void * arg)
+void* pus_obcp_thread( void * arg )
 {
-
-
     size_t id = (size_t)arg;
     printf("Pthread %lu created\n", id);
 

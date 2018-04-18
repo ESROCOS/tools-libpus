@@ -6,11 +6,9 @@
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
-#define __NEED_T_Boolean_NATIVE
+#define __NEED_PusSt01FailureCode_NATIVE
 #define __NEED_PusPacket_NATIVE
-#define __NEED_T_Boolean_NATIVE
-#define __NEED_PusPacket_NATIVE
-#define __NEED_PusPacket_NATIVE
+#define __NEED_PusSt01FailureCode_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
@@ -19,9 +17,11 @@
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
-#define __NEED_T_Boolean_NATIVE
 #define __NEED_PusPacket_NATIVE
-#define __NEED_T_Boolean_NATIVE
+#define __NEED_PusPacket_NATIVE
+#define __NEED_PusSt01FailureCode_NATIVE
+#define __NEED_PusPacket_NATIVE
+#define __NEED_PusSt01FailureCode_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusSt01FailureCode_NATIVE

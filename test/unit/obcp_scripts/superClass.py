@@ -1,6 +1,12 @@
 import obcpModule as module
 
-import gc
+import micropython, gc
+
+class obcp_AbortException(Exception):
+    pass
+    
+class obcp_StopException(Exception):
+    pass
 
 class PreconditionsFailure(Exception):
     pass
@@ -55,7 +61,8 @@ obcp_HkParam = module.getDictHkParams()
 obcp_OnBoardParam = module.getDictOnBoardParams()
 obcp_Event = module.getDictEvents()
 obcp_Function = module.getDictFunctions()
-obcp_Status = {'NOT_COMPLETED': 0, 'SUCCESS': 1, 'FAILURE': 2}
+obcp_Status = {'NOT_COMPLETED': 0, 'SUCCESS': 1, 'STOPPED': 2, 'ABORTED': 3}
+
 
 class Obcp:
     #initiation time, start time, termination time or completion time of the last execution of an activity
@@ -66,8 +73,8 @@ class Obcp:
         self.stepExecuting = 0
         #if suspended
         self.nextStep = 1
+        self.eventCounter = module.getLastEventCounter()
         
-        self.eventCounter = 0
 
     def declarations(self):
         print("- Declaration body", self.id)
@@ -81,6 +88,7 @@ class Obcp:
 
     def confirmation(self):
         print("- Confirmation body", self.id)
+        self.obcp_set_confirmation_status(obcp_Status['SUCCESS'])
         return True
 
     def contingency(self, exception):
@@ -91,22 +99,39 @@ class Obcp:
 
     def run(self):
         try:
+            self.obcp_yield()
+            
             self.declarations()
+            
+            self.obcp_yield()
             
             if True != self.preconditions():
                 raise PreconditionsFailure()
                 
+            self.obcp_yield()
+                
             self.main()
+            
+            self.obcp_yield()
             
             if True != self.confirmation():
                 raise ConfirmationFailure()
+            
+            self.obcp_yield()
                 
             self.set_results()
             
         #Unknown exception catched
         except Exception as err:
-            print("Exception catched while running OBCP,", err.args)
-            self.contingency(err)
+            if not isinstance(err, obcp_AbortException) and not isinstance(err, obcp_StopException):
+                print("Exception catched while running OBCP,", err.args)
+                self.contingency(err)
+            elif isinstance(err, obcp_AbortException):
+                print(self.id, "ABORTED")
+                self.obcp_set_confirmation_status(obcp_Status["ABORTED"])
+            elif isinstance(err, obcp_StopException):
+                print(self.id, "STOPPED")
+                self.obcp_set_confirmation_status(obcp_Status["STOPPED"])
 
 ################### functions API ####################
 
@@ -216,7 +241,7 @@ class Obcp:
             event = pus_Event(event_dict["id"], event_dict["data1"], event_dict["data2"])
             return event
 
-    def obcp_raise_event( self, event: int ) -> bool:
+    def obcp_raise_event( self, event ) -> bool:
         """
         This method insert a new event into the events table
         :param event: event
@@ -248,7 +273,44 @@ class Obcp:
         
 ################### Auxiliar functions ###############
 
+    def obcp_yield(self):
+        #print("yield, checking for abort ..")
+        abort = module.checkAbortRequest(self.id) #true / false
+        if abort == True:
+            raise obcp_AbortException()
+        
+        #print("yield, checking for stop ..")
+        stop = module.checkStopRequest(self.id) #true / false
+        if abort == True:
+            raise obcp_StopException()
+        
+        #print("yield, checking for suspension ..")
+        module.checkSuspendRequest(self.id) #blocking if suspend request received
+        return False
+        
+        
+    def obcp_set_confirmation_status(self, status):
+        module.setConfirmationValue(self.id, status)
+        
+        obcp_thread = module.getThreadFromId(self.id)
+        if obcp_thread != None:
+            module.raiseEvent(obcp_Event["EVENT_OBCP_FINISHED"], obcp_thread, status)
+        
 
+    def obcp_activate_obcp(self, obcpId: str) -> bool: 
+        return module.activateObcp(obcpId)
+    
+    
+    def obcp_wait_obcp_finish(self, obcpId: str, attempt=20) -> bool:
+        threadId = module.getThreadFromId(obcpId)
+        if threadId == None:
+            return False
+        for i in range(attempt):
+            event_rcv1 = self.obcp_wait_event(obcp_Event["EVENT_OBCP_FINISHED"])
+            
+            print("Read Event: id:", event_rcv1.id, ", data1:", event_rcv1.data1, ", data2:", event_rcv1.data2)
+            if event_rcv1.data1 == threadId:
+                return event_rcv1.data2 #return state
 
 
 ################### END fun.py #######################

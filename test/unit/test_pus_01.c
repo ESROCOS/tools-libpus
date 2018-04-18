@@ -505,11 +505,6 @@ void test_packetReduced()
 	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
 
-	pus_setTcDataKind(&packet, pus_TC_DATA_ST_18_1);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
-	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketFromPacketReduced(&packet, &packetR));
-
 	pus_setTcDataKind(&packet, pus_TC_DATA_ST_18_2_6_12);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_packetReduced_createPacketReducedFromPacket(&packetR, &packet));
 	CU_ASSERT_EQUAL(packetR.data.kind, packet.data.kind);

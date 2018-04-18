@@ -23,10 +23,10 @@ void tmdispatch_PI_tmTrigger()
 	//printf("TmDispatch: ");
 
 	pusPacket_t tm;
-	asn1SccT_Boolean isAvailable;
+	asn1SccPusSt01FailureCode isAvailable;
 
 	tmdispatch_RI_tmRequest(&tm, &isAvailable);
-	if( false == isAvailable )
+	if( PUS_NO_ERROR != isAvailable )
 	{
 		///¡printf("NO DATA READ\n");
 		pus_clearError();

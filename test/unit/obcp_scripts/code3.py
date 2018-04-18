@@ -1,31 +1,19 @@
-try:
-    import superClass
-except:
-    pass
 
-
-import micropython, gc
 
 class ObcpTest(Obcp):
-    
-    def preconditions(self):
-        print("- Preconditions body", self.id)
-        return True
-    
+        
     def main(self):
-        print("- Main body TEST", self.id)
+        print("- Main body ", self.id)
         
-        #setter of an onboard parameter value 
-        self.obcp_set_onboard_parameter(obcp_OnBoardParam["ONBOARD_PARAM_REAL01"], 5.23)
+        self.obcp_wait_interval_time(0.5)
         
-        #getter of an onboard parameter value
-        param1 = self.obcp_get_onboard_parameter(obcp_OnBoardParam["ONBOARD_PARAM_REAL01"])
-               
-            
-    def confirmation(self):
-        print("- Preconditions body", self.id)
-        print("SETTING CONF:", module.setConfirmationValue(self.id, obcp_Status["FAILURE"]))
-        return True    
+        while self.obcp_get_next_event() != None:
+            pass
+        
+        print("Activate :",  self.obcp_activate_obcp("OBCP_HI"))
+        
+        print("Waitting finish:", self.obcp_wait_obcp_finish("OBCP_HI"))
+
         
 a = ObcpTest("OBCP_TEST")
 a.run()

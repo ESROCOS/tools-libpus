@@ -12,6 +12,7 @@ declare -a obcpScripts=(
 	"EventsControl.py"
 	"ParametersControl.py"
 	"WaitStatement.py"
+	"hello.py"
 	)
 
 MPY_FILES=()

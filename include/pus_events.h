@@ -101,6 +101,8 @@ bool pus_events_isInitialized();
 
 bool pus_events_isInInfoList(pusSt05Event_t * event);
 
+size_t pus_events_getLastEventCounter();
+
 //
 // Buffer control
 //

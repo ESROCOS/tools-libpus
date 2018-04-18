@@ -140,7 +140,21 @@ bool pus_events_isInInfoList(pusSt05Event_t* event)
 	}
 }
 
+size_t pus_events_getLastEventCounter()
+{
+	if (NULL != pus_events_mutex && !pus_mutexLockOk(pus_events_mutex))
+	{
+		return PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT;
+	}
 
+	size_t aux  = (pus_st05_eventBufferCounter - 1 + PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT) % PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT;
+
+	if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
+	{
+		return PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT;
+	}
+	return aux;
+}
 
 pusError_t pus_st05_pushBufferEvent(const pusSt05Event_t * event)
 {
@@ -185,7 +199,7 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t* next, uint64_t* actualCou
 		return PUS_SET_ERROR(PUS_ERROR_OUT_OF_RANGE);
 	}
 
-	if( 0 == pus_st05_eventBufferCounter )
+	if( 1 == pus_st05_eventBufferCounter )
 	{
 		return PUS_SET_ERROR(PUS_ERROR_EMPTY_BUFFER);
 	}
@@ -196,11 +210,41 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t* next, uint64_t* actualCou
 		{
 			*next = pus_st05_eventBuffer[i].event;
 			*actualCounter = pus_st05_eventBuffer[i].eventBufferCounter;
+
+			if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
+			{
+				return PUS_ERROR_THREADS;
+			}
+
 			return PUS_SET_ERROR(PUS_NO_ERROR); // NO_ERROR
 		}
 	}
 
-	//TODO behavior if no next (jump number)
+	size_t last = pus_events_getLastEventCounter();
+	if(last == *actualCounter)
+	{
+		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
+		{
+			return PUS_ERROR_THREADS;
+		}
+		return PUS_SET_ERROR(PUS_ERROR_NEXT_EVENT_NOT_FOUND);
+	}
+
+	for(size_t i = 0; i < pus_st05_eventBufferLength; i++)
+	{
+		if( pus_st05_eventBuffer[i].eventBufferCounter == last )
+		{
+			*next = pus_st05_eventBuffer[i].event;
+			*actualCounter = pus_st05_eventBuffer[i].eventBufferCounter;
+
+			if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
+			{
+				return PUS_ERROR_THREADS;
+			}
+
+			return PUS_SET_ERROR(PUS_NO_ERROR); // NO_ERROR
+		}
+	}
 
 	if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 	{

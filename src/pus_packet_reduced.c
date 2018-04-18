@@ -81,10 +81,6 @@ pusError_t pus_packetReduced_setDataFromPacketToPacketReduced(pusPacketReduced_t
 			outTcR->data.u.tcData.data.u.st_12_1_2 = inTc->data.u.tcData.data.u.st_12_1_2;
 			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
-		case pus_TC_DATA_ST_18_1:
-			outTcR->data.u.tcData.data.u.st_18_1 = inTc->data.u.tcData.data.u.st_18_1;
-			return PUS_SET_ERROR(PUS_NO_ERROR);
-			break;
 		case pus_TC_DATA_ST_18_2_6_12:
 			outTcR->data.u.tcData.data.u.st_18_2_6_12 = inTc->data.u.tcData.data.u.st_18_2_6_12;
 			return PUS_SET_ERROR(PUS_NO_ERROR);
@@ -150,10 +146,6 @@ pusError_t pus_packetReduced_setDataFromPacketReducedToPacket(pusPacket_t* outTc
 			break;
 		case pus_TC_DATA_ST_12_1_2:
 			outTc->data.u.tcData.data.u.st_12_1_2 = inTcR->data.u.tcData.data.u.st_12_1_2;
-			return PUS_SET_ERROR(PUS_NO_ERROR);
-			break;
-		case pus_TC_DATA_ST_18_1:
-			outTc->data.u.tcData.data.u.st_18_1 = inTcR->data.u.tcData.data.u.st_18_1;
 			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		case pus_TC_DATA_ST_18_2_6_12:

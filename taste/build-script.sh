@@ -33,6 +33,9 @@ fi
 # Use PolyORB-HI-C runtime
 USE_POHIC=1
 
+# Set Debug mode by default
+DEBUG_MODE=--debug
+
 # Detect models from Ellidiss tools v2, and convert them to 1.3
 INTERFACEVIEW=InterfaceView.aadl
 grep "version => \"2" InterfaceView.aadl >/dev/null && {
@@ -56,7 +59,7 @@ grep "version => \"2" "$DEPLOYMENTVIEW" >/dev/null && {
 SKELS="./"
 
 # Check if Dataview references existing files 
-taste-extract-asn-from-design.exe -i "$INTERFACEVIEW" -j /tmp/dv.asn
+mono $(which taste-extract-asn-from-design.exe) -i "$INTERFACEVIEW" -j /tmp/dv.asn
 
 cd "$SKELS" && rm -f ground.zip && zip ground ground/* && cd $OLDPWD
 
@@ -115,12 +118,20 @@ cd "$SKELS" && rm -f onboardsoftware.zip && zip onboardsoftware onboardsoftware/
 if [ -f ConcurrencyView.pro ]
 then
     ORCHESTRATOR_OPTIONS+=" -w ConcurrencyView.pro "
+elif [ -f ConcurrencyView_Properties.aadl ]
+then
+    ORCHESTRATOR_OPTIONS+=" -w ConcurrencyView_Properties.aadl "
 fi
 
 if [ -f user_init_post.sh ]
 then
     echo -e "${INFO} Executing user-defined post-init script"
     source user_init_post.sh
+fi
+
+if [ -f additionalCommands.sh ]
+then
+    source additionalCommands.sh
 fi
 
 if [ ! -z "$USE_POHIC" ]
@@ -136,7 +147,7 @@ fi
 
 cd "$CWD" && assert-builder-ocarina.py \
 	--fast \
-	--debug \
+	$DEBUG_MODE \
 	--aadlv2 \
 	--keep-case \
 	--interfaceView "$INTERFACEVIEW" \

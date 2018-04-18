@@ -9,6 +9,14 @@
 			]
 		},
 		{
+			"label": "EVENT_OBCP_FINISHED",
+			"defaultSeverity": "INFO",
+			"data": [
+				"UINT32",
+				"UINT32"
+			]
+		},
+		{
 			"label": "EVENT_INFO_01",
 			"defaultSeverity": "INFO",
 			"data": [

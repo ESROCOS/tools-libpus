@@ -47,18 +47,15 @@ void tcqueue_PI_newTc(const asn1SccPusPacket *IN_tcPacket)
 	}
 }
 
-void tcqueue_PI_tcRequest(asn1SccPusPacket *OUT_tcPacket, asn1SccT_Boolean *OUT_isAvailable)
+void tcqueue_PI_tcRequest(asn1SccPusPacket *OUT_tcPacket, asn1SccPusSt01FailureCode *OUT_isAvailable)
 {
     /* Write your code here! */
-	*OUT_isAvailable = false;
+
 
 	pusError_t error = pus_packetQueues_pop(OUT_tcPacket, TC_QUEUE_ONBOARD);
-	if ( PUS_NO_ERROR == error )
-	{
-		//printf("TC%llu_%llu to TcDispatch.\n", pus_getTcService(OUT_tcPacket), pus_getTcSubtype(OUT_tcPacket));
-		*OUT_isAvailable = true;
-	}
-	else if ( PUS_ERROR_EMPTY_QUEUE == error)
+	*OUT_isAvailable = error;
+
+	if ( PUS_ERROR_EMPTY_QUEUE == error)
 	{
 		//printf("Error in tcqueue_PI_tcRequest EMPTY QUEUE, %d (no exit)\n", error);
 		pus_clearError();

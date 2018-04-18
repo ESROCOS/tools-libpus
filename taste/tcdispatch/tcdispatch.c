@@ -24,11 +24,11 @@ void tcdispatch_PI_tcTrigger()
 {
     /* Write your code here! */
 	pusPacket_t tc;
-	asn1SccT_Boolean isAvailable;
+	asn1SccPusSt01FailureCode isAvailable;
 	//printf("TcDispatch: ");
 
 	tcdispatch_RI_tcRequest(&tc, &isAvailable);
-	if( false == isAvailable )
+	if( PUS_NO_ERROR != isAvailable )
 	{
 		//printf("NO DATA READ\n");
 		pus_clearError();

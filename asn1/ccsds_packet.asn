@@ -101,7 +101,6 @@ BEGIN
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,
-    	st-18-1 	PusTC-18-1-Data,
     	st-18-2-6-12 PusTC-18-2-6-12-Data,
     	st-18-3		PusTC-18-3-Data,
     	st-18-4-5	PusTC-18-4-5-Data,
@@ -111,8 +110,9 @@ BEGIN
     	st-23-1		PusTC-TM-23-1-4-Data,
     	st-23-2-3	PusTC-23-2-3-Data,
     	st-23-14	PusTC-23-14-Data,
-    	-- with packet reduced
+    	-- No packet reduced
     	st-11-4 	PusTC-11-4-Data,
+    	st-18-1 	PusTC-18-1-Data,
     	st-19-1 	PusTC-19-1-Data
     }
     
@@ -121,7 +121,6 @@ BEGIN
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,
-    	st-18-1 	PusTC-18-1-Data,
     	st-18-2-6-12 PusTC-18-2-6-12-Data,
     	st-18-3		PusTC-18-3-Data,
     	st-18-4-5	PusTC-18-4-5-Data,
