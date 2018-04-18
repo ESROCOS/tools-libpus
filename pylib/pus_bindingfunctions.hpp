@@ -120,7 +120,7 @@ pusSt09ExponentialRate_t pus_tm_9_2_getDataField_(const pusPacket_t* tm, pusTime
 void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *outTc, long max);
 time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, long max);
 
-pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code, const int codelength);
+pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const uint8_t* code, const size_t codelength);
 pusError_t pus_tc_18_2_createUnloadObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* id);
 pusError_t pus_tc_18_3_createActivateObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char *id, int observability);
 pusError_t pus_tc_18_4_createStopObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
@@ -133,7 +133,7 @@ pusError_t pus_tc_18_13_createLoadObcpReferenceRequest_(pusPacket_t* outTc, pusA
 		const char* id, const char* repository, const char* fileName);
 pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char* obcpId);
 char *pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc);
-pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code, const int codelength);
+pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const uint8_t* code, const size_t codelength);
 char *pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc);
 pusError_t pus_tc_18_3_setObservabilityLevel_(pusPacket_t* outTc, int observability);
 int pus_tc_18_3_getObservabilityLevel_(const pusPacket_t* outTc);
