@@ -469,14 +469,14 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 	return pmon;
 }
 
-pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code) {
+pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code, const int codelength) {
 	pusSt18ObcpId_t id;
 	pusSt18ObcpCode_t obcpCode;
 	size_t len = (strlen(obcpId) < pus_ST18_SIZE_OBCP_ID) ? strlen(obcpId)+1 : pus_ST18_SIZE_OBCP_ID;
 	memcpy(id.arr, obcpId, len);
-	len = (strlen(code) < pus_ST18_MAX_SIZE_OBCP_CODE) ? strlen(code)+1 : pus_ST18_MAX_SIZE_OBCP_CODE;
+	len = (codelength < pus_ST18_MAX_SIZE_OBCP_CODE) ? codelength : pus_ST18_MAX_SIZE_OBCP_CODE;
 	memcpy(obcpCode.arr, code, len);
-	obcpCode.nCount = len-1;
+	obcpCode.nCount = len;
 
 	return pus_tc_18_1_createLoadObcpDirectRequest(outTc, apid, sequenceCount, &id, &obcpCode);
 }

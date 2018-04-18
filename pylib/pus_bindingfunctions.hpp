@@ -120,7 +120,7 @@ pusSt09ExponentialRate_t pus_tm_9_2_getDataField_(const pusPacket_t* tm, pusTime
 void pus_tc_11_4_get_request(long index, const pusPacket_t *inTc, pusPacket_t *outTc, long max);
 time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t *inTc, long max);
 
-pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code);
+pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const char* code, const int codelength);
 pusError_t pus_tc_18_2_createUnloadObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* id);
 pusError_t pus_tc_18_3_createActivateObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char *id, int observability);
 pusError_t pus_tc_18_4_createStopObcpRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
