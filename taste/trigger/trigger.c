@@ -43,7 +43,7 @@ void trigger_PI_EventReportTrigger()
 void trigger_PI_EventActionTrigger()
 {
     /* Write your code here! */
-	return;
+	//return;
 
     trigger_RI_EventActionTrigger();
 }
