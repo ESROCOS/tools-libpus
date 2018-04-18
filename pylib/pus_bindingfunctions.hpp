@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <string>
 #include "pus_packet.h"
@@ -135,7 +136,7 @@ pusError_t pus_tc_18_13_createLoadObcpReferenceRequest_(pusPacket_t* outTc, pusA
 pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char* obcpId);
 char *pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc);
 pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const std::vector<uint8_t> code, const size_t codelength);
-char *pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc);
+std::vector<uint8_t> pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc);
 pusError_t pus_tc_18_3_setObservabilityLevel_(pusPacket_t* outTc, int observability);
 int pus_tc_18_3_getObservabilityLevel_(const pusPacket_t* outTc);
 pusSt18ObcpStepId_t pus_tc_18_4_5_getObcpStepId_(const pusPacket_t* outTc);

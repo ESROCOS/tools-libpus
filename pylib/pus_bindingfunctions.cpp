@@ -576,18 +576,18 @@ pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const std::vector<uint8_
 	return pus_tc_18_1_setObcpCode(outTc, &obcpCode);
 }
 
-	char *pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc) {
+std::vector<uint8_t> pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc) {
 	pusSt18ObcpCode_t obcpCode;
 	pusError_t error;
-
+	std::vector<uint8_t> code_;
 	error = pus_tc_18_1_getObcpCode(&obcpCode, outTc);
 	if (pusError_t::PUS_NO_ERROR == error) {
-		code = strdup((char *) obcpCode.arr);
-		return code;
+		code_ = std::vector<uint8_t>(obcpCode.arr, obcpCode.arr+obcpCode.nCount);
+		return code_;
 	}
 
 	PUS_SET_ERROR(error);
-	return NULL;
+	return std::vector<uint8_t>();
 }
 
 pusError_t pus_tc_18_3_setObservabilityLevel_(pusPacket_t* outTc, int observability) {
