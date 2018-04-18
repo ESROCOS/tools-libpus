@@ -568,11 +568,11 @@ char *pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc) {
 	return NULL;
 }
 
-pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code) {
+pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code, const int codelength) {
 	pusSt18ObcpCode_t obcpCode;
-	size_t len = (strlen(code) < pus_ST18_MAX_SIZE_OBCP_CODE) ? strlen(code)+1 : pus_ST18_MAX_SIZE_OBCP_CODE;
+	size_t len = (codelength < pus_ST18_MAX_SIZE_OBCP_CODE) ? codelength : pus_ST18_MAX_SIZE_OBCP_CODE;
 	memcpy(obcpCode.arr, code, len);
-	obcpCode.nCount = len-1;
+	obcpCode.nCount = len;
 	return pus_tc_18_1_setObcpCode(outTc, &obcpCode);
 }
 

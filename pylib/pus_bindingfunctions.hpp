@@ -133,7 +133,7 @@ pusError_t pus_tc_18_13_createLoadObcpReferenceRequest_(pusPacket_t* outTc, pusA
 		const char* id, const char* repository, const char* fileName);
 pusError_t pus_tc_18_X_setObcpId_(pusPacket_t* outTc, const char* obcpId);
 char *pus_tc_18_X_getObcpId_(char* id, const pusPacket_t* outTc);
-pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code);
+pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const char* code, const int codelength);
 char *pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc);
 pusError_t pus_tc_18_3_setObservabilityLevel_(pusPacket_t* outTc, int observability);
 int pus_tc_18_3_getObservabilityLevel_(const pusPacket_t* outTc);
