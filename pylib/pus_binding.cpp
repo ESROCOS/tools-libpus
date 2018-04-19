@@ -263,6 +263,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tm_3_25_setNumParameters", &pus_tm_3_25_setNumParameters, "Binding for pus_tm_3_25_setNumParameters");
 	m.def("pus_st03_getHkReportInfoName", &pus_st03_getHkReportInfoName, "Binding for pus_st03_getHkReportInfoName");
 	m.def("pus_st03_getHkReportInfoType", &pus_st03_getHkReportInfoType, "Binding for pus_st03_getHkReportInfoType");
+	m.def("pus_st03_getHkInfoNameFromReport", &pus_st03_getHkInfoNameFromReport, "Binding for pus_st03_getHkInfoNameFromReport");
 	m.def("pus_expectSt03Tm", &pus_expectSt03Tm, "Binding for pus_expectSt03Tm");
 
 	m.def("pus_paramToUint32", &pus_paramToUint32_, "Binding for pus_paramToUint32");

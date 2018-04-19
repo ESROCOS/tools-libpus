@@ -19,7 +19,7 @@ void onboardsoftware_PI_debugTrigger()
 {
     /* Write your code here! */
 	int test = 0;
-	pusSt20OnBoardParamId_t changeHkParam = SET_HK_OUT_OF_RANGE_PARAM;
+	pusSt20OnBoardParamId_t changeHkParam = SET_HK_OUT_OF_RANGE_PARAM, throwEventsParam = SET_THROW_EVENTS_PARAM;
 	pusSt03ParamId_t hkParam = HK_PARAM_BOOL01;
 	pusStoredParam_t value;
 	pusSt01FailureCode_t error;
@@ -29,9 +29,18 @@ void onboardsoftware_PI_debugTrigger()
 		case 0:
 		{
 			printf(" - ON BOARD SOFTWARE: Event raised\n");
-			pusSt05Event_t event;
-			pus_events_createEVENT_INFO_01(&event, 23, 54);
-			onboardsoftware_RI_pushNewEvent(&event);
+			onboardsoftware_RI_getOnBoardParam(&throwEventsParam, &value, &error);
+			if (PUS_NO_ERROR == error && value == 1) {
+				pusSt05Event_t event;
+				pus_events_createEVENT_INFO_01(&event, 23, 54);
+				onboardsoftware_RI_pushNewEvent(&event);
+				pus_events_createEVENT_LOW_02(&event, 23, 54);
+				onboardsoftware_RI_pushNewEvent(&event);
+				pus_events_createEVENT_MEDIUM_03(&event, 23, 54);
+				onboardsoftware_RI_pushNewEvent(&event);
+				pus_events_createEVENT_HIGH_04(&event, 23, 54);
+				onboardsoftware_RI_pushNewEvent(&event);
+			}
 			onboardsoftware_RI_getOnBoardParam(&changeHkParam, &value, &error);
 			if (PUS_NO_ERROR == error && value == 1) {
 				pusStoredParam_t val1 = 1;

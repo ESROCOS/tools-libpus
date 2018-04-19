@@ -192,20 +192,27 @@ size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm)
 	return n_p;
 }
 
-char *pus_st03_getHkReportInfoName(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex) {
-	if (reportIndex < pus_ST03_PARAM_LIMIT) {
-		 return strdup(pus_st03_paramInfo[pus_st03_defaultHkReportInfo.paramIds[reportIndex]].label);
+char *pus_st03_getHkReportInfoName(pusSt03ParamId_t paramIndex) {
+	if (paramIndex < pus_ST03_PARAM_LIMIT) {
+		 return strdup(pus_st03_paramInfo[paramIndex].label);
 	}
 	return NULL;
 }
 
-pusParamType_t pus_st03_getHkReportInfoType(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex) {
-	if (reportIndex < pus_ST03_PARAM_LIMIT) {
+pusParamType_t pus_st03_getHkReportInfoType(pusSt03ParamId_t paramIndex) {
+	if (paramIndex < pus_ST03_PARAM_LIMIT) {
 		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
-		return pus_st03_paramInfo[pus_st03_defaultHkReportInfo.paramIds[reportIndex]].type;
+		return pus_st03_paramInfo[paramIndex].type;
 	}
 	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
 	return pusParamType_t::PUS_BOOL;
+}
+
+pusSt03ParamId_t pus_st03_getHkInfoNameFromReport(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIdx) {
+	if (reportIdx < pus_ST03_PARAM_LIMIT) {
+		 return pus_st03_defaultHkReportInfo.paramIds[reportIdx];
+	}
+	return -1;
 }
 
 uint32_t pus_paramToUint32_(pusStoredParam_t paramValue) {

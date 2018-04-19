@@ -23,6 +23,10 @@
 		{
 			"label": "SET_HK_OUT_OF_RANGE_PARAM",
 			"type": "BOOL"
+		},
+		{
+			"label": "SET_THROW_EVENTS_PARAM",
+			"type": "BOOL"
 		}
 		
 	]

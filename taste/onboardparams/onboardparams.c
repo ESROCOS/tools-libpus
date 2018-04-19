@@ -19,6 +19,9 @@ void onboardparams_startup()
 	pus_hk_setONBOARD_PARAM_UINT01(36);
 	pus_hk_setONBOARD_PARAM_BYTE01(0x23);
 	pus_hk_setONBOARD_PARAM_BOOL01(true);
+	pus_hk_setSET_HK_OUT_OF_RANGE_PARAM(false);
+	pus_hk_setSET_THROW_EVENTS_PARAM(false);
+
 }
 
 void onboardparams_PI_setOnBoardParam(const asn1SccPusSt20OnBoardParameterId *IN_paramId,

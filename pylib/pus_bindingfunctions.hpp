@@ -72,8 +72,9 @@ void pus_setSt01FailureInfo_(pusPacket_t *tm, ull code, ll subcode, ll data, ull
 pusError_t pus_hk_initialize_null_();
 pusStoredParam_t pus_tm_3_25_getParameterValue_(const pusPacket_t* tm, size_t index);
 size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm);
-char *pus_st03_getHkReportInfoName(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex);
-pusParamType_t pus_st03_getHkReportInfoType(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIndex);
+char *pus_st03_getHkReportInfoName(pusSt03ParamId_t paramIndex);
+pusParamType_t pus_st03_getHkReportInfoType(pusSt03ParamId_t paramIndex);
+pusSt03ParamId_t pus_st03_getHkInfoNameFromReport(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIdx);
 
 uint32_t pus_paramToUint32_(pusStoredParam_t paramValue);
 int32_t pus_paramToInt32_(pusStoredParam_t paramValue);
