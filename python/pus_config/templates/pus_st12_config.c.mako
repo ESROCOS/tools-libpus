@@ -66,7 +66,7 @@ pusSt12PmonDefinition pus_pmon_definitionList[PUS_ST12_PARAM_LIMIT];
 pusError_t pus_pmon_configure()
 {
 	% for param in config['parameters']:
-	pus_pmon_definitionList[${param['label']}].status = true;
+	pus_pmon_definitionList[${param['label']}].status = false;
 	pus_pmon_definitionList[${param['label']}].check.low_limit.${param['type']} = ${param['low_limit']};
 	pus_pmon_definitionList[${param['label']}].check.high_limit.${param['type']} = ${param['high_limit']};
 	

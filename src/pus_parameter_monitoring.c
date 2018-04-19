@@ -51,7 +51,7 @@ pusError_t pus_pmon_initialize(pusMutex_t* mutex)
 
 	// Flag service initialized = true
 	pus_pmon_initializedFlag = true;
-	pus_pmon_functionStatus = true;
+	pus_pmon_functionStatus = false;
 	return PUS_NO_ERROR;
 }
 
