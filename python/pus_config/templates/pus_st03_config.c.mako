@@ -52,6 +52,8 @@ pusError_t pus_hk_configure()
     tempvars['paramsCount'] = tempvars['paramsCount'] + 1
     tempvars['paramIndex'][param['label']] = tempvars['paramsCount']
 %>
+    
+    pus_st03_params[${param['label']}] = 0;
     pus_st03_paramInfo[${param['label']}].label = "${param['label']}";
     pus_st03_paramInfo[${param['label']}].type = PUS_${param['type']};
 % endfor

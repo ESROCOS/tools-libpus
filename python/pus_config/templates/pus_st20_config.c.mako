@@ -64,10 +64,12 @@ pusError_t pus_parameters_configure()
 {
 	// Store parameters info
 % for param in config['parameters']:
+	pus_st20_params[${param['label']}] = 0;
+
     pus_st20_paramInfo[${param['label']}].label = "${param['label']}";
     pus_st20_paramInfo[${param['label']}].type = PUS_${param['type']};
 % endfor
-
+	
     return PUS_NO_ERROR;
 }
 
