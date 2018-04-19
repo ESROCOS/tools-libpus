@@ -21,7 +21,7 @@
 			"type": "BOOL"
 		},
 		{
-			"label": "SET_HK_OUT_OF_RANGE",
+			"label": "SET_HK_OUT_OF_RANGE_PARAM",
 			"type": "BOOL"
 		}
 		

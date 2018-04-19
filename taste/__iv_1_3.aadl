@@ -3001,6 +3001,9 @@ CONNECTIONS
 END Ground.others;
 
 SYSTEM interfaceview
+PROPERTIES
+  Taste::dataView => ("DataView");
+  Taste::dataViewPath => ("DataView.aadl");
 END interfaceview;
 
 SYSTEM IMPLEMENTATION interfaceview.others
