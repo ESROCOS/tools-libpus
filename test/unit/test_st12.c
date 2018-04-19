@@ -119,6 +119,12 @@ void test_st12()
 	CU_ASSERT_TRUE(pus_mutexInitOk(&mutex));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_initialize(&mutex));
 
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_enableFunction());
+	for(pusSt03ParamId_t i = 0; i < PUS_ST12_PARAM_LIMIT; i++)
+	{
+		CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_enableDefinition(i));
+	}
+
 	CU_ASSERT_TRUE(pus_pmon_isFunctionActivated());
 	CU_ASSERT_TRUE(pus_pmon_isInitialized());
 
@@ -160,6 +166,11 @@ void test_checks()
 
 	pus_pmon_finalize(); pus_clearError();
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_initialize(NULL));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_enableFunction());
+	for(pusSt03ParamId_t i = 0; i < PUS_ST12_PARAM_LIMIT; i++)
+	{
+		CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_pmon_enableDefinition(i));
+	}
 
 	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkParameter(456));
 	CU_ASSERT_EQUAL(PUS_ERROR_INVALID_ID, pus_pmon_checkLimitInt32(23, 1));
