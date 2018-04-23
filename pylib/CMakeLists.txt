@@ -6,13 +6,13 @@
 set(SOURCES
 	pus_binding.cpp
 	pus_bindingfunctions.cpp
-) # Duda he de poner aqui
+)
 
 
 # Define the PUS library
-pybind11_add_module(pusbinding  ${SOURCES})
-set_target_properties(pusbinding PROPERTIES LINKER_LANGUAGE CXX)
-target_link_libraries(pusbinding PUBLIC esrocos_pus PUBLIC esrocos_pus_asn1 PUBLIC esrocos_pus_asn1common PUBLIC esrocos_pus_mission_test_01)
+pybind11_add_module(${LIBPUS_MISSION}_py ${SOURCES})
+set_target_properties(${LIBPUS_MISSION}_py PROPERTIES LINKER_LANGUAGE CXX)
+target_link_libraries(${LIBPUS_MISSION}_py PUBLIC ${LIBPUS_MISSION})
 
 
 

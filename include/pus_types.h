@@ -18,20 +18,20 @@
 
 // to prevent redefinition of types when it is used whith taste (dataview_unique.h)
 #ifndef GENERATED_ASN1SCC_DATAVIEW_UNIQ_H
-#include "asn1/ccsds_packet.h"
-#include "asn1/ccsds_packet_fields.h"
-#include "asn1/pus_config.h"
-#include "asn1/pus_st01.h"
-#include "asn1/pus_st03.h"
-#include "asn1/pus_st05.h"
-#include "asn1/pus_st08.h"
-#include "asn1/pus_st09.h"
-#include "asn1/pus_st12.h"
-#include "asn1/pus_st18.h"
-#include "asn1/pus_st19.h"
-#include "asn1/pus_st20.h"
-#include "asn1/pus_st23.h"
-#include "asn1/pus_services.h"
+#include "ccsds_packet.h"
+#include "ccsds_packet_fields.h"
+#include "pus_config.h"
+#include "pus_st01.h"
+#include "pus_st03.h"
+#include "pus_st05.h"
+#include "pus_st08.h"
+#include "pus_st09.h"
+#include "pus_st12.h"
+#include "pus_st18.h"
+#include "pus_st19.h"
+#include "pus_st20.h"
+#include "pus_st23.h"
+#include "pus_services.h"
 #endif
 
 #ifdef  __cplusplus

@@ -36,19 +36,26 @@ set(SOURCES
 )
 
 # Define the PUS library
-add_library(esrocos_pus SHARED ${SOURCES})
-set_target_properties(esrocos_pus PROPERTIES LINKER_LANGUAGE C)
-set_target_properties(esrocos_pus PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
-add_dependencies(esrocos_pus esrocos_pus_asn1)
+add_library(esrocos_pus STATIC ${SOURCES})
+target_link_libraries(esrocos_pus 
+    esrocos_mpy 
+    ${LIBPUS_MISSION}
+    ${CMAKE_THREAD_LIBS_INIT}
+)
+set_target_properties(esrocos_pus PROPERTIES 
+    LINKER_LANGUAGE C
+    POSITION_INDEPENDENT_CODE TRUE
+)
+target_include_directories(esrocos_pus PUBLIC ${CMAKE_BINARY_DIR}/asn1)
 add_coverage(esrocos_pus)
 
 # Define the PUS library with threads disabled
-add_library(esrocos_pus_nothreads SHARED ${SOURCES})
-set_target_properties(esrocos_pus_nothreads PROPERTIES LINKER_LANGUAGE C)
-set_target_properties(esrocos_pus_nothreads PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
-target_compile_options(esrocos_pus_nothreads PUBLIC -DPUS_DISABLE_THREADS)
-add_dependencies(esrocos_pus_nothreads esrocos_pus_asn1)
-add_coverage(esrocos_pus_nothreads)
+#add_library(esrocos_pus_nothreads SHARED ${SOURCES})
+#set_target_properties(esrocos_pus_nothreads PROPERTIES LINKER_LANGUAGE C)
+#set_target_properties(esrocos_pus_nothreads PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
+#target_include_directories(esrocos_pus PUBLIC ${CMAKE_BINARY_DIR}/asn1)
+#target_compile_options(esrocos_pus_nothreads PUBLIC -DPUS_DISABLE_THREADS)
+#add_coverage(esrocos_pus_nothreads)
 
 #add_library(esrocos_pus_nothreads2 OBJECT ${SOURCES})
 #set_target_properties(esrocos_pus_nothreads2 PROPERTIES LINKER_LANGUAGE C)

@@ -8,63 +8,65 @@
 cmake_minimum_required(VERSION 3.3)
 # required version 3.3: provides "IN_LIST" operator in if()
 
-### Autoproj and SARGON stuff commented ###
 
-# Check autoproj environment
-#if (NOT DEFINED ENV{AUTOPROJ_CURRENT_ROOT})
-#    message(FATAL_ERROR "Environment variable AUTOPROJ_CURRENT_ROOT not set. Run env.sh.")
-#endif()
+project(pus LANGUAGES C CXX)
 
-#find_package(Sargon)
+include($ENV{ESROCOS_CMAKE})
+esrocos_init()
 
-#set(SARGON_USE_CXX11 TRUE)
-#set(CMAKE_BUILD_TYPE $ENV{CMAKE_BUILD_TYPE})
-#set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-#sargon_init(asn1_types 1.0)
-#sargon_standard_layout()
-
-###########################################
+# The project version number (for pkg-config)
+set(VERSION_MAJOR   0   CACHE STRING "Project major version number.")
+set(VERSION_MINOR   1   CACHE STRING "Project minor version number.")
+set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
+mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
 
-project(ESROCOS_PUS LANGUAGES C CXX)
 
 #
-# CMake modules
+# Required packages
 #
 
-# Local directory with CMake modules
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules;${CMAKE_MODULE_PATH}")
-set(pybind11_DIR ${CMAKE_SOURCE_DIR}/cmake/PyBind11)
-# codecov module
+# Code coverage
 find_package(codecov REQUIRED)
 if (NOT ENABLE_COVERAGE)
 	message(STATUS "Configure with -DENABLE_COVERAGE=On to collect coverage metrics")
 endif()
 
-# Include for tests automation
+# Tests automation
 include(CTest)
 
-# Find libpthread
+# POSIX threads
 find_package(Threads REQUIRED)
+
+# PyBind11 library for Python-C++ binding (for PUS console)
+set(pybind11_DIR "${CMAKE_INSTALL_PREFIX}/cmake_modules/pybind11")
 find_package(pybind11 CONFIG)
 
+
+#
+# Global compile settings
+#
+
 add_compile_options(-Wall -Wextra)
-
-# Location of the generated ASN.1 headers
-include_directories(include ${CMAKE_BINARY_DIR}/asn1/generated)
-
-include_directories(include ${CMAKE_BINARY_DIR}/mpy/mpy/)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 
+#
+# Package components
+#
+
+# The PUS library is missionized with the definitions of parameters, events, etc. needed 
+# for the application. The PUS library depends on generated code, created from the 
+# configurations defined in the mission directory. For this reason, one instance of the
+# PUS library is created for each of the mission configurations. In order to do this, 
+# the directories src, mpy and pylib are added from the CMakeLists.txt in the mission 
+# directory.
 
 add_subdirectory(asn1)
 add_subdirectory(doc)
 add_subdirectory(python)
 add_subdirectory(mission)
-add_subdirectory(src)
-add_subdirectory(mpy)
 add_subdirectory(test)
-add_subdirectory(pylib)
 add_subdirectory(taste)
 
 ### Install stuff commented ###
@@ -75,11 +77,6 @@ add_subdirectory(taste)
 
 ###############################
 
-# The project version number.
-set(VERSION_MAJOR   0   CACHE STRING "Project major version number.")
-set(VERSION_MINOR   1   CACHE STRING "Project minor version number.")
-set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
-mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
 coverage_evaluate()
 

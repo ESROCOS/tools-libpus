@@ -2,6 +2,35 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
+# This file is included from the CMakeLists.txt file in each missionization directory, and 
+# creates the missionized instance of the PUS library. This includes creating:
+#  - an instance of the PUS library (which also generates the files for the ASN.1 data types)
+#  - an instance of the Micropython (mpy) library, used to implement the service 18 (OBCP)
+#  - an instance of the Python bindings for the PUS library (pylib), for use by the PUS console GUI
+#  - the missionized PUS library, including the mission definitions and linking with the above instances
+#
+# The file creates the targets:
+#  - esrocos_pus_${MISSION}
+# where ${MISSION} is the configuration name, usually the name of the directory with the configuration files.
+
+
+# The mission-specific PUS library
+set(LIBPUS_MISSION "esrocos_pus_${MISSION}")
+
+
+#
+# Build the instances of the PUS, Micropython and bindings library, including the common code and the mission definitions
+#
+
+add_subdirectory(${CMAKE_SOURCE_DIR}/src ${CMAKE_CURRENT_BINARY_DIR}/pus)
+add_subdirectory(${CMAKE_SOURCE_DIR}/mpy ${CMAKE_CURRENT_BINARY_DIR}/mpy)
+add_subdirectory(${CMAKE_SOURCE_DIR}/pylib ${CMAKE_CURRENT_BINARY_DIR}/pylib)
+
+
+#
+# Generate the code for the mission-specific definitions
+#
+
 # Input and ouput directories
 set(JSON_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(OUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
@@ -37,18 +66,35 @@ add_custom_target(
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/pus-mission-stamp
 )
 
-# Get generated .c files 
-file(GLOB C_FILES "${OUT_DIR}/src/*.c")
+# Mission-specific C files
+file(GLOB GENERATED_C_FILES "${OUT_DIR}/src/*.c")
+file(GLOB USER_C_FILES "${JSON_DIR}/*.c")
+set(C_FILES ${GENERATED_C_FILES} ${USER_C_FILES})
+
+
+#
+# Create the mission-specific library, linking with the PUS library instance (mutual dependency)
+#
 
 # Define the mission-specific library
-set(MISSION_LIB "esrocos_pus_mission_${MISSION}")
-add_library(${MISSION_LIB} SHARED ${C_FILES})
-target_include_directories(${MISSION_LIB} BEFORE PUBLIC ${OUT_DIR}/include)
-set_target_properties(${MISSION_LIB} PROPERTIES LINKER_LANGUAGE C)
-set_target_properties(${MISSION_LIB} PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
-add_dependencies(${MISSION_LIB} mission_generate_code_${MISSION} )
-add_coverage(${MISSION_LIB})
+add_library(${LIBPUS_MISSION} STATIC ${C_FILES})
+target_link_libraries(${LIBPUS_MISSION} esrocos_pus)
+target_include_directories(${LIBPUS_MISSION} PUBLIC ${OUT_DIR}/include)
+set_target_properties(${LIBPUS_MISSION} PROPERTIES 
+    LINKER_LANGUAGE C
+    POSITION_INDEPENDENT_CODE TRUE
+)
+add_dependencies(${LIBPUS_MISSION} mission_generate_code_${MISSION})
+add_coverage(${LIBPUS_MISSION})
 
-#add_library(test01 OBJECT ${C_FILES})
-#set_target_properties(test01 PROPERTIES LINKER_LANGUAGE C)
-#add_dependencies(test01 mission_generate_code)
+
+
+#
+# Installation
+#
+
+install(TARGETS ${LIBPUS_MISSION}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+

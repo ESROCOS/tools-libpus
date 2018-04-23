@@ -1,0 +1,12 @@
+<package>
+    <description brief="PUS Services library">
+        This package provides an implementation of a set of PUS services
+        for use in TASTE models.
+    </description>
+    <author>GMV Aerospace & Defence S.A.U.</author>
+    <copyright>GMV 2018</copyright>
+    <license>GPLv2</license>
+
+    <depend package="base/cmake"/>
+    <depend package="tools/config"/>
+</package>
