@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "id": "https://github.com/esrocos/TBD", 
+  "type": "object", 
+  "properties": {
+    "primary_header": {
+      "type": "object", 
+      "properties": {
+        "pck_id": {
+          "type": "object", 
+          "properties": {
+            "apid": {
+              "type": "integer"
+            }, 
+            "pck_type": {
+              "type": "integer"
+            }, 
+            "sec_head_flg": {
+              "type": "boolean"
+            }
+          }
+        }, 
+        "pck_version": {
+          "type": "integer"
+        }, 
+        "pck_data_len": {
+          "type": "integer"
+        }, 
+        "pck_seq_ctrl": {
+          "type": "object", 
+          "properties": {
+            "pck_seq": {
+              "type": "integer"
+            }, 
+            "pck_seq_flg": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }, 
+    "data": {
+      "type": "object", 
+      "properties": {
+        "pck_sec_head": {
+          "type": "object", 
+          "properties": {
+            "spare": {
+              "type": "integer"
+            }, 
+            "tc_packet_pus_version_number": {
+              "type": "integer"
+            }, 
+            "src_id": {
+              "type": "integer"
+            }, 
+            "msg_type_id": {
+              "type": "object", 
+              "properties": {
+                "service_type_id": {
+                  "type": "integer"
+                }, 
+                "msg_subtype_id": {
+                  "type": "integer"
+                }
+              }
+            }, 
+            "ack_flags": {
+              "type": "object", 
+              "properties": {
+                "ack_flag_acceptance": {
+                  "type": "boolean"
+                }, 
+                "ack_flag_completion": {
+                  "type": "boolean"
+                }, 
+                "ack_flag_start": {
+                  "type": "boolean"
+                }, 
+                "ack_flag_progress": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }, 
+        "user_data": {
+          "type": "object", 
+          "properties": {
+            "src_data": {
+              "type": "object", 
+              "properties": {}
+            }, 
+            "spare": {
+              "type": "integer"
+            }, 
+            "pack_error_ctrl": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}
