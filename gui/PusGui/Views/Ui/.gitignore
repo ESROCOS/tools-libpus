@@ -1,0 +1,3 @@
+# Ignore Python files (generated), except __init__.py
+*.py
+!__init__.py

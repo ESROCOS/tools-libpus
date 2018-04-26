@@ -73,11 +73,11 @@ set(C_FILES ${GENERATED_C_FILES} ${USER_C_FILES})
 
 
 #
-# Create the mission-specific library, linking with the PUS library instance (mutual dependency)
+# Create the mission-specific libraries, linking with the PUS library instance (mutual dependency)
 #
 
-# Define the mission-specific library
-add_library(${LIBPUS_MISSION} STATIC ${C_FILES})
+# Shared
+add_library(${LIBPUS_MISSION} SHARED ${C_FILES})
 target_link_libraries(${LIBPUS_MISSION} esrocos_pus)
 target_include_directories(${LIBPUS_MISSION} PUBLIC ${OUT_DIR}/include)
 set_target_properties(${LIBPUS_MISSION} PROPERTIES 
@@ -87,13 +87,30 @@ set_target_properties(${LIBPUS_MISSION} PROPERTIES
 add_dependencies(${LIBPUS_MISSION} mission_generate_code_${MISSION})
 add_coverage(${LIBPUS_MISSION})
 
+# Static
+add_library(${LIBPUS_MISSION}_static STATIC ${C_FILES})
+set_target_properties(${LIBPUS_MISSION}_static PROPERTIES OUTPUT_NAME ${LIBPUS_MISSION})
+target_link_libraries(${LIBPUS_MISSION}_static esrocos_pus_static)
+target_include_directories(${LIBPUS_MISSION}_static PUBLIC ${OUT_DIR}/include)
+set_target_properties(${LIBPUS_MISSION} PROPERTIES 
+    LINKER_LANGUAGE C
+    POSITION_INDEPENDENT_CODE TRUE
+)
+add_dependencies(${LIBPUS_MISSION} mission_generate_code_${MISSION})
+add_coverage(${LIBPUS_MISSION}_static)
+
+# PUS types
+add_library(${LIBPUS_MISSION}_types SHARED ${esrocos_pustypes_C_SOURCES})
+
+add_library(${LIBPUS_MISSION}_types_static STATIC ${esrocos_pustypes_C_SOURCES})
+set_target_properties(${LIBPUS_MISSION}_types_static PROPERTIES OUTPUT_NAME ${LIBPUS_MISSION}_types)
 
 
 #
 # Installation
 #
 
-install(TARGETS ${LIBPUS_MISSION}
+install(TARGETS ${LIBPUS_MISSION} ${LIBPUS_MISSION}_static ${LIBPUS_MISSION}_types
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)

@@ -139,15 +139,42 @@ ADD_CUSTOM_TARGET(qstrdefs.generated DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/genhdr
 file(GLOB UPY_CORE_SRC
 	${CMAKE_CURRENT_BINARY_DIR}/*.c )
 
-	
-add_library(esrocos_mpy STATIC ${UPY_CORE_SRC})
+
+#
+# Create esrocos_mpy libraary
+#
+
+# Static
+add_library(esrocos_mpy_static STATIC ${UPY_CORE_SRC})
+set_target_properties(esrocos_mpy_static PROPERTIES OUTPUT_NAME esrocos_mpy)
+target_link_libraries(esrocos_mpy_static m)
+set_target_properties(esrocos_mpy_static PROPERTIES 
+    LINKER_LANGUAGE C
+    POSITION_INDEPENDENT_CODE TRUE
+)
+target_include_directories(esrocos_mpy_static PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+
+# Shared
+add_library(esrocos_mpy SHARED ${UPY_CORE_SRC})
 target_link_libraries(esrocos_mpy m)
 set_target_properties(esrocos_mpy PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
 target_include_directories(esrocos_mpy PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
-#add_dependencies(esrocos_mpy esrocos_pus)
+
+
+
+#
+# Installation
+#
+
+install(TARGETS esrocos_mpy esrocos_mpy_static
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+
+
 
 #TODO TASTE INCLUDES
 file(GLOB TASTE_INCLUDES
