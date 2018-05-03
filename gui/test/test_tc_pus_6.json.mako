@@ -1,6 +1,11 @@
 { "activities": [
   {
     "interval": 0,
+    "action": "setfilter",
+    "params": {"type": "", "svc": [11, 17], "msg": [4, 2]}
+  },
+  {
+    "interval": 0,
     "comment": "Changes rate report to 1 every telemetry",
     "packet": {
       ${macros.primary_header_defaults()},
@@ -68,5 +73,10 @@
         }
       }
     }
+  },
+  {
+    "interval": 1,
+    "action": "savedb",
+    "params": "dump_test_st06.db"
   }
 ]}

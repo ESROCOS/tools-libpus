@@ -267,9 +267,8 @@ class CreateTCController(object):
         elif (svc, msg) == (17, 1):
             pb.pus_tc_17_1_createConnectionTestRequest(packet, apid, seq)
         elif (svc, msg) == (18, 1):
-            obcpid, obcpcode = self.open_obcp_add_code_window()
-            obcpcode = list(bytes.fromhex(obcpcode.replace("\\x", "")))
-            pb.pus_tc_18_1_createLoadObcpDirectRequest(packet, apid, seq, obcpid, obcpcode, len(obcpcode))
+            obcpid, length, obcpcode = self.open_obcp_add_code_window()
+            pb.pus_tc_18_1_createLoadObcpDirectRequest(packet, apid, seq, obcpid, obcpcode, length)
         elif (svc, msg) == (18, 2):
             pb.pus_tc_18_2_createUnloadObcpRequest(packet, apid, seq, "")
         elif (svc, msg) == (18, 3):
@@ -346,13 +345,15 @@ class CreateTCController(object):
         view = CodeView()
         controller = CodeController(None, view)
         self.opened_windows.append(controller)
-        obcpid, obcpcode = controller.show()
+        obcpid, length, obcpcode = controller.show()
+        if length is None:
+            length = 0
         if obcpid is None:
             obcpid = ""
         if obcpcode is None:
             obcpcode = ""
 
-        return obcpid, obcpcode
+        return obcpid, length, obcpcode
 
     def destroy(self):
         self.view.destroy()

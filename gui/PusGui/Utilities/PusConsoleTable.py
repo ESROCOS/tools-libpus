@@ -1,4 +1,4 @@
-class Table(list):
+class PusConsoleTable(list):
     """
     This class override the list class to be able
     to implement events when an element is added

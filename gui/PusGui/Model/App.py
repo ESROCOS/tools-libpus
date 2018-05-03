@@ -5,7 +5,7 @@
 import os, json, sys, time
 from PySide.QtCore import Slot
 
-from PusGui.Utilities import Table
+from PusGui.Utilities import PusConsoleTable
 from PusGui.Utilities import PacketTranslator
 
 from PusGui import pb
@@ -21,14 +21,14 @@ class App(object):
         """
         Constructor of the class
         """
-        self.table = Table()
+        self.table = PusConsoleTable()
         self.parameters_report_values = {"spacecraftTime": None}
         self.st3_param_numbers = list()
         self.tc_apid = pb.pusApidInfo_t()
         self.currentFilter = None
         self.elem_count = 0
 
-        with open('apid.json', 'r') as json_apid:
+        with open('config.json', 'r') as json_apid:
             apid_value = json.load(json_apid)['apid']
             pb.pus_initApidInfo_null(self.tc_apid, apid_value)
 

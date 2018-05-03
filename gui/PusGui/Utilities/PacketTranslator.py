@@ -12,6 +12,7 @@ class PacketTranslator(object):
     This class implements the functionality to parse between
     json and packet.
     """
+
     def packet2json(self, pack):
         """
         This method creates a json from a packet format

@@ -25,7 +25,7 @@
     }
   },
   {
-    "interval": 10,
+    "interval": 12,
     "packet": {
       ${macros.primary_header_defaults()},
       "data": {

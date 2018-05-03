@@ -49,6 +49,9 @@ class CodeView:
         else:
             self.resizeFlag = True
 
+    def set_code(self, data):
+        self.window.obcpCodeTextEdit.setPlainText(data)
+
     def get_code(self):
         return self.window.obcpCodeTextEdit.toPlainText()
 
@@ -61,6 +64,9 @@ class CodeView:
         by this class
         """
         return self.view.exec_()
+
+    def set_close_event(self, fun):
+        self.view.closeEvent = fun
 
     def destroy(self):
         self.view.destroy()

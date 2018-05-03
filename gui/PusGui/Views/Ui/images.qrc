@@ -1,0 +1,6 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+   <qresource>
+      <file alias="logo_gmv.svg">images/logo_gmv.svg</file>
+   </qresource>
+</RCC>

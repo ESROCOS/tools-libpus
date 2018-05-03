@@ -151,10 +151,11 @@ class MainViewController(object):
 
     def load_tcs_callback(self):
         file = QtGui.QFileDialog.getOpenFileName()
-        if file is None or "":
+        file = file[0]
+        if file is None or file is "":
             return
 
-        file = file[0]
+        
         if not file.endswith(".json.mako"):
             msg_box = QtGui.QMessageBox()
             msg_box.setText('Please select a .json.mako file')

@@ -1,4 +1,9 @@
 { "activities": [
+   {
+    "interval": 0,
+    "action": "setfilter",
+    "params": {"type": "", "svc": [8], "msg": 0}
+  },
   {
     "interval": 0,
     "comment": "Runs function 0",
@@ -78,5 +83,10 @@
         }
       }
     }
+  },
+  {
+    "interval": 1,
+    "action": "savedb",
+    "params": "dump_test_st04.db"
   }
 ]}

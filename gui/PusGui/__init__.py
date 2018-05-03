@@ -35,7 +35,7 @@ import builtins
 
 def check_configuration():
     '''Check that the required configuration values are defined with "builtins"'''
-    return hasattr(builtins, "ESROCOS_PUSGUI_MODULE") and hasattr(builtins, "ESROCOS_PUSGUI_APIDJSON") and hasattr(builtins, "ESROCOS_PUSGUI_SERVICES")
+    return hasattr(builtins, "ESROCOS_PUSGUI_MODULE") and hasattr(builtins, "ESROCOS_PUSGUI_CONFIG")
 
 def usage():
     """Print error message."""

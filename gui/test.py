@@ -20,8 +20,7 @@ if len(sys.argv) != 2:
 
 import builtins
 builtins.ESROCOS_PUSGUI_MODULE = sys.argv[1]
-builtins.ESROCOS_PUSGUI_APIDJSON = "apid.json"
-builtins.ESROCOS_PUSGUI_SERVICES = "services.txt"
+builtins.ESROCOS_PUSGUI_CONFIG = "config.json"
 import PusGui
 
 

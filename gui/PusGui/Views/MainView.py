@@ -51,11 +51,11 @@ class MainView:
         self.window.packagesTable.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
         self.view.setStyleSheet("background-color: white")
         self.window.menubar.setStyleSheet("background: 3c3b37")
-        self.window.label.setText(
-            QtGui.QApplication.translate("MainView", "<html><head/><body><p>"
-                                                     "<img src=\"Views/Views_Ui/images/logo_gmv.svg\""
-                                                     "width=\"60\" height=\"35\"/></p></body></html>",
-                                         None, QtGui.QApplication.UnicodeUTF8))
+        # self.window.label.setText(
+        #     QtGui.QApplication.translate("MainView", "<html><head/><body><p>"
+        #                                              "<img src=\"Views/Views_Ui/images/logo_gmv.svg\""
+        #                                              "width=\"60\" height=\"35\"/></p></body></html>",
+        #                                  None, QtGui.QApplication.UnicodeUTF8))
         header.sortIndicatorOrder()
         self.window.packagesTable.verticalHeader().setVisible(False)
         self.window.packagesTable.sortByColumn(0, QtCore.Qt.AscendingOrder)
