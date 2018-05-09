@@ -30,6 +30,12 @@
 
 #include "pus_bindingfunctions.hpp"
 
+// In order to be able to tailor the library to an application/mission, the Python module 
+// name is parametrized with the following compiler macro
+#ifndef ESROCOS_PYMODULE_NAME
+#error "Compiler macro ESROCOS_MODULE_NAME is not defined."
+#endif
+
 // We had to define this function to make sure st08 works
 extern "C" {
 	pusError_t example_function()
@@ -55,7 +61,7 @@ pusError_t getError()
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(pusbinding, m) {
+PYBIND11_MODULE(ESROCOS_PYMODULE_NAME, m) {
 	m.doc() = "pus_packet binding";
 	py::enum_<pusError_t>(m, "pusError_t")
 	        .value("PUS_NO_ERROR",pusError_t::PUS_NO_ERROR)

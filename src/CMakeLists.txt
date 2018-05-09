@@ -35,11 +35,30 @@ set(SOURCES
 	pus_timebased_scheduling.c
 )
 
-# Define the PUS library
-add_library(esrocos_pus STATIC ${SOURCES})
+
+#
+# Define the PUS library 
+#
+
+# Static
+add_library(esrocos_pus_static STATIC ${SOURCES})
+set_target_properties(esrocos_pus_static PROPERTIES OUTPUT_NAME esrocos_pus)
+target_link_libraries(esrocos_pus_static 
+    esrocos_mpy_static
+    ${LIBPUS_MISSION}_static
+    ${CMAKE_THREAD_LIBS_INIT}
+)
+set_target_properties(esrocos_pus_static PROPERTIES 
+    LINKER_LANGUAGE C
+    POSITION_INDEPENDENT_CODE TRUE
+)
+target_include_directories(esrocos_pus_static PUBLIC ${CMAKE_BINARY_DIR}/asn1)
+add_coverage(esrocos_pus_static)
+
+# Shared
+add_library(esrocos_pus SHARED ${SOURCES})
 target_link_libraries(esrocos_pus 
     esrocos_mpy 
-    ${LIBPUS_MISSION}
     ${CMAKE_THREAD_LIBS_INIT}
 )
 set_target_properties(esrocos_pus PROPERTIES 
@@ -48,6 +67,17 @@ set_target_properties(esrocos_pus PROPERTIES
 )
 target_include_directories(esrocos_pus PUBLIC ${CMAKE_BINARY_DIR}/asn1)
 add_coverage(esrocos_pus)
+
+
+#
+# Installation
+#
+
+install(TARGETS esrocos_pus esrocos_pus_static
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+
 
 # Define the PUS library with threads disabled
 #add_library(esrocos_pus_nothreads SHARED ${SOURCES})

@@ -67,7 +67,9 @@ add_subdirectory(doc)
 add_subdirectory(python)
 add_subdirectory(mission)
 add_subdirectory(test)
-add_subdirectory(taste)
+add_subdirectory(gui)
+#add_subdirectory(taste)
+
 
 ### Install stuff commented ###
 

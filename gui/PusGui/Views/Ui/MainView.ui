@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainView</class>
+ <widget class="QMainWindow" name="MainView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1201</width>
+    <height>596</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Pus Console</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>0</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;Views/Views_Ui/images/logo_gmv.svg&quot; width=&quot;125&quot; height=&quot;70&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1181</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="packetTab">
+     <attribute name="title">
+      <string>Packets</string>
+     </attribute>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="packagesTable">
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Type</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Service ID</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Message ID</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Time</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Source</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Destination</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Sequence</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Status</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Information</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="statusTab">
+     <attribute name="title">
+      <string>System status</string>
+     </attribute>
+     <widget class="QListWidget" name="hkParamList">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>361</width>
+        <height>431</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="spacecraftTimeLbl">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>121</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>SpacecraftTime:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="hkParamsLbl">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>191</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Housekeeping parameters</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="sysParamsLabel">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>40</y>
+        <width>141</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>System parameters</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="sysParamsList">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>60</y>
+        <width>361</width>
+        <height>431</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1201</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSave_as"/>
+    <addaction name="actionLoad"/>
+    <addaction name="separator"/>
+    <addaction name="actionCreate_TC"/>
+    <addaction name="actionLoad_TCs"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_GMV"/>
+   </widget>
+   <widget class="QMenu" name="menuFilter">
+    <property name="title">
+     <string>Filter</string>
+    </property>
+    <addaction name="actionCreate_filter"/>
+    <addaction name="actionDelete_filter"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuFilter"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNew_connection">
+   <property name="text">
+    <string>New connection</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save as ...</string>
+   </property>
+  </action>
+  <action name="actionLoad">
+   <property name="text">
+    <string>Load</string>
+   </property>
+  </action>
+  <action name="actionAbout_GMV">
+   <property name="text">
+    <string>About GMV</string>
+   </property>
+  </action>
+  <action name="actionCreate_TC">
+   <property name="text">
+    <string>Create TC</string>
+   </property>
+  </action>
+  <action name="actionCreate_filter">
+   <property name="text">
+    <string>Create filter</string>
+   </property>
+  </action>
+  <action name="actionDelete_filter">
+   <property name="text">
+    <string>Delete filter</string>
+   </property>
+  </action>
+  <action name="actionLoad_TCs">
+   <property name="text">
+    <string>Load TCs</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
+ <connections/>
+</ui>

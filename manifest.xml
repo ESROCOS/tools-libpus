@@ -9,4 +9,6 @@
 
     <depend package="base/cmake"/>
     <depend package="tools/config"/>
+    <depend package="python3-pyside"/>
+    <depend package="pyside-tools"/>
 </package>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DetailsView</class>
+ <widget class="QWidget" name="DetailsView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>563</width>
+    <height>689</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>More details</string>
+  </property>
+  <widget class="QLabel" name="informationLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>91</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Details:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="informationValueLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>541</width>
+     <height>641</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
