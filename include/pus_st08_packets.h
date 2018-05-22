@@ -18,6 +18,8 @@
 
 
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST08_ENABLED
+
 #include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_apid.h"
@@ -86,6 +88,8 @@ pusError_t pus_expectSt08(const pusPacket_t* packet, pusSubservice_t expectedSub
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif

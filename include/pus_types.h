@@ -13,6 +13,25 @@
 #ifndef PUS_TYPES_H
 #define PUS_TYPES_H
 
+#include "pus_enable_services.h"
+
+#if (defined(PUS_CONFIGURE_ST05_ENABLED) || defined(PUS_CONFIGURE_ST18_ENABLED) || defined(PUS_CONFIGURE_ST19_ENABLED) ) && !defined( PUS_CONFIGURE_EVENTS_TABLE )
+#error "Any service need events-table but it is not enabled!"
+#endif
+
+#if (defined(PUS_CONFIGURE_ST03_ENABLED) || defined(PUS_CONFIGURE_ST12_ENABLED) || defined(PUS_CONFIGURE_ST18_ENABLED) ) && !defined( PUS_CONFIGURE_HK_PARAMS_TABLE )
+#error "Any service need Hk parameters table but it is not enabled!"
+#endif
+
+#if (defined(PUS_CONFIGURE_ST18_ENABLED) || defined(PUS_CONFIGURE_ST20_ENABLED) ) && !defined( PUS_CONFIGURE_ONBOARD_PARAMS_TABLE )
+#error "Any service need on-board parameters table but it is not enabled!"
+#endif
+
+#if (defined(PUS_CONFIGURE_ST18_ENABLED  && !defined( PUS_CONFIGURE_OBCP_ENGINE ))
+#error "Any service need OBCP-engine table but it is not enabled!"
+#endif
+
+
 #include <stdint.h>
 #include <stdbool.h>
 

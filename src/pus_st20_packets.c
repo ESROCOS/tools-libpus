@@ -4,12 +4,10 @@
  * Licence: GPLv2
  */
 
-#include "pus_threads.h"
-#include "pus_error.h"
-#include "pus_packet.h"
-#include <string.h>
+
 
 #include "pus_st20_packets.h"
+#ifdef PUS_CONFIGURE_ST20_ENABLED
 
 
 
@@ -313,3 +311,4 @@ pusError_t pus_expectSt20Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 	}
 }
 
+#endif

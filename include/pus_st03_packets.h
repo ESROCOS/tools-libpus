@@ -17,11 +17,17 @@
 #ifndef PUS_ST03_PACKETS_H
 #define PUS_ST03_PACKETS_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST03_ENABLED
+
 #include "pus_apid.h"
 #include "pus_error.h"
 #include "pus_housekeeping.h"
 #include "pus_threads.h"
-#include "pus_types.h"
+#include "pus_packet.h"
+#include <string.h>
+
+
 
 #ifdef  __cplusplus
 extern "C" {
@@ -113,5 +119,7 @@ pusError_t pus_expectSt03Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 #ifdef  __cplusplus
 }
 #endif
+
+#endif //service enabled
 
 #endif // PUS_ST03_PACKETS_H

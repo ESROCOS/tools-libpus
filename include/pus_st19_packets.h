@@ -20,11 +20,14 @@
 #ifndef PUS_ST19_PACKETS_H
 #define PUS_ST19_PACKETS_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST19_ENABLED
+
 
 #include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_apid.h"
-#include "pus_types.h"
+
 
 #include "pus_packet_reduced.h"
 
@@ -98,6 +101,8 @@ pusError_t pus_expectSt19Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif

@@ -21,10 +21,15 @@
 #define PUS_EVENTS_H
 
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_EVENTS_TABLE
+
+
 #include "pus_error.h"
 #include "pus_apid.h"
 #include "pus_threads.h"
 #include "pus_stored_param.h"
+#include "pus_packet.h"
+#include <string.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -171,6 +176,8 @@ void pus_events_setEventAuxData2(pusSt05EventAuxData_t* data, pusStoredParam_t d
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif // PUS_EVENTS_H

@@ -4,13 +4,9 @@
  * Licence: GPLv2
  */
 
-#include "pus_threads.h"
-#include "pus_error.h"
-#include "pus_packet.h"
-#include <string.h>
 
 #include "pus_st23_packets.h"
-
+#ifdef PUS_CONFIGURE_ST23_ENABLED
 
 
 pusError_t pus_tc_23_X_createDefaultRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype)
@@ -602,3 +598,4 @@ pusError_t pus_expectSt23Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 	}
 }
 
+#endif

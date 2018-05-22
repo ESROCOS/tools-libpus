@@ -4,7 +4,9 @@
  * Licence: GPLv2
  */
 
- #include "pus_st11_packets.h"
+#include "pus_st11_packets.h"
+
+#ifdef PUS_CONFIGURE_ST11_ENABLED
 #include <stdio.h>
 
 pusError_t pus_tc_11_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype)
@@ -243,3 +245,6 @@ pusError_t pus_expectSt11Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 		return expectResult;
 	}
 }
+
+#endif
+

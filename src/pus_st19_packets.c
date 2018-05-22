@@ -5,6 +5,7 @@
  */
 
 #include "pus_st19_packets.h"
+#ifdef PUS_CONFIGURE_ST19_ENABLED
 
 
 
@@ -238,3 +239,5 @@ pusError_t pus_expectSt19Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 		return expectResult;
 	}
 }
+
+#endif

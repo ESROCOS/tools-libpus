@@ -17,8 +17,10 @@
 #ifndef PUS_ST09_PACKETS_H
 #define PUS_ST09_PACKETS_H
 
-#include "pus_time.h"
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST09_ENABLED
+
+#include "pus_time.h"
 #include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_apid.h"
@@ -95,6 +97,8 @@ pusError_t pus_expectSt09Tm(const pusPacket_t* packet, const char* function);
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif

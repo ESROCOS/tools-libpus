@@ -20,15 +20,19 @@
 #ifndef PUS_ST12_PACKETS_H
 #define PUS_ST12_PACKETS_H
 
-#ifdef  __cplusplus
-extern "C" {
-#endif
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST12_ENABLED
 
 #include "pus_apid.h"
 #include "pus_error.h"
 #include "pus_threads.h"
-#include "pus_types.h"
 #include "pus_packet.h"
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
+
+
 
 
 //! Build the common part of the TC[12] request
@@ -96,6 +100,8 @@ pusError_t pus_expectSt12Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif

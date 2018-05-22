@@ -6,6 +6,9 @@
 
 #include "pus_st08_packets.h"
 
+#ifdef PUS_CONFIGURE_ST08_ENABLED
+
+
 extern const size_t pus_st08_limitFunctions;
 
 pusMutex_t* pus_st08_mutex;
@@ -198,3 +201,5 @@ pusError_t pus_expectSt08(const pusPacket_t* packet, pusSubservice_t expectedSub
 		return expectResult;
 	}
 }
+
+#endif

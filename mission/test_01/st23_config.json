@@ -8,7 +8,7 @@
 		},
 		{
 			"label": "PUS_REPOSITORY_ONBOARD",
-			"domain": "",
+			"domain": "/",
 			"system": "LINUX"
 		}
 	]

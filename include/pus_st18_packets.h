@@ -28,10 +28,13 @@
 #ifndef PUS_ST18_PACKETS_H
 #define PUS_ST18_PACKETS_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST18_ENABLED
 
 #include "pus_apid.h"
 #include "pus_error.h"
-#include "pus_types.h"
+#include "pus_packet.h"
+#include <string.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -195,6 +198,8 @@ pusError_t pus_expectSt18Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif

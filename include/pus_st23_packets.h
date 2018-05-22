@@ -20,10 +20,15 @@
 #ifndef PUS_ST23_PACKETS_H
 #define PUS_ST23_PACKETS_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST23_ENABLED
+
 #include "pus_apid.h"
 #include "pus_error.h"
 #include "pus_threads.h"
-#include "pus_types.h"
+#include "pus_packet.h"
+#include <string.h>
+
 
 #ifdef  __cplusplus
 extern "C" {
@@ -157,6 +162,8 @@ pusError_t pus_expectSt23Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif // PUS_ST20_PACKETS_H

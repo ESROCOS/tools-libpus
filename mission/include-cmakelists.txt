@@ -78,8 +78,8 @@ set(C_FILES ${GENERATED_C_FILES} ${USER_C_FILES})
 
 # Shared
 add_library(${LIBPUS_MISSION} SHARED ${C_FILES})
-target_link_libraries(${LIBPUS_MISSION} esrocos_pus)
-target_include_directories(${LIBPUS_MISSION} PUBLIC ${OUT_DIR}/include)
+target_link_libraries(${LIBPUS_MISSION} esrocos_pus_aux_${MISSION})
+target_include_directories(${LIBPUS_MISSION} PUBLIC ${OUT_DIR}/include ${JSON_DIR})
 set_target_properties(${LIBPUS_MISSION} PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
@@ -90,8 +90,8 @@ add_coverage(${LIBPUS_MISSION})
 # Static
 add_library(${LIBPUS_MISSION}_static STATIC ${C_FILES})
 set_target_properties(${LIBPUS_MISSION}_static PROPERTIES OUTPUT_NAME ${LIBPUS_MISSION})
-target_link_libraries(${LIBPUS_MISSION}_static esrocos_pus_static)
-target_include_directories(${LIBPUS_MISSION}_static PUBLIC ${OUT_DIR}/include)
+target_link_libraries(${LIBPUS_MISSION}_static esrocos_pus_static_aux_${MISSION})
+target_include_directories(${LIBPUS_MISSION}_static PUBLIC ${OUT_DIR}/include ${JSON_DIR})
 set_target_properties(${LIBPUS_MISSION} PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE

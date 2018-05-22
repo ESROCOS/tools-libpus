@@ -93,7 +93,7 @@ endforeach(file $(UPY_CORE_SRC))
 #MESSAGE(STATUS ${FILES})
 
 #g++ -E -DNO_QSTR -I . -DSTATIC="" -g  py_*.c mymodule.c > ./genhdr/qstr.i.last -I/home/esrocos/esrocos-ws-pus/tools-libpus/include/ -I/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated/ -I/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include/ 
-SET( COMMAND_GENERATE_QSTRLAST "${CMAKE_CXX_COMPILER} -E -DNO_QSTR -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" ${FILES}  -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_BINARY_DIR}/asn1/esrocos_pustypes >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last")
+SET( COMMAND_GENERATE_QSTRLAST "${CMAKE_CXX_COMPILER} -E -DNO_QSTR -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" ${FILES}  -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/mission/${MISSION}/ -I${CMAKE_BINARY_DIR}/asn1/esrocos_pustypes >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last")
 #python $(taste-config --prefix)/../tool-src/upython-taste/py/makeqstrdefs.py split ./genhdr/qstr.i.last ./genhdr/qstr ./genhdr/qstrdefs.collected.h
 SET( COMMAND_GENERATE_QSTRDEFS_COLLECTED1 "python ${TASTE_UPY}/py/makeqstrdefs.py split ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h")
 #python $(taste-config --prefix)/../tool-src/upython-taste/py/makeqstrdefs.py cat ./genhdr/qstr.i.last ./genhdr/qstr ./genhdr/qstrdefs.collected.h
@@ -133,7 +133,7 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.
 	DEPENDS ${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c
 	COMMENT "Generating12 ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h"
 )
-ADD_CUSTOM_TARGET(qstrdefs.generated DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h")
+ADD_CUSTOM_TARGET(qstrdefs.generated_${MISSION} DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h")
 	
 #gcc -c -DSTATIC="" -g  -I. -std=c99 -Wno-switch -Wno-override-init -Wno-jump-misses-init -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align *.c
 file(GLOB UPY_CORE_SRC
@@ -145,23 +145,23 @@ file(GLOB UPY_CORE_SRC
 #
 
 # Static
-add_library(esrocos_mpy_static STATIC ${UPY_CORE_SRC})
-set_target_properties(esrocos_mpy_static PROPERTIES OUTPUT_NAME esrocos_mpy)
-target_link_libraries(esrocos_mpy_static m)
-set_target_properties(esrocos_mpy_static PROPERTIES 
+add_library(esrocos_mpy_static_aux_${MISSION} STATIC ${UPY_CORE_SRC})
+set_target_properties(esrocos_mpy_static_aux_${MISSION} PROPERTIES OUTPUT_NAME esrocos_mpy_aux_${MISSION})
+target_link_libraries(esrocos_mpy_static_aux_${MISSION} m)
+set_target_properties(esrocos_mpy_static_aux_${MISSION} PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_mpy_static PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(esrocos_mpy_static_aux_${MISSION} PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
 
 # Shared
-add_library(esrocos_mpy SHARED ${UPY_CORE_SRC})
-target_link_libraries(esrocos_mpy m)
-set_target_properties(esrocos_mpy PROPERTIES 
+add_library(esrocos_mpy_aux_${MISSION} SHARED ${UPY_CORE_SRC})
+target_link_libraries(esrocos_mpy_aux_${MISSION} m)
+set_target_properties(esrocos_mpy_aux_${MISSION} PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_mpy PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(esrocos_mpy_aux_${MISSION} PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
 
 
 
@@ -169,7 +169,7 @@ target_include_directories(esrocos_mpy PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${
 # Installation
 #
 
-install(TARGETS esrocos_mpy esrocos_mpy_static
+install(TARGETS esrocos_mpy_aux_${MISSION} esrocos_mpy_static_aux_${MISSION}
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)

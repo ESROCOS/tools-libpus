@@ -13,6 +13,8 @@
 #define PUS_OBCP_ENGINE_H
 
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_OBCP_ENGINE
+
 #include "pus_error.h"
 #include "pus_threads.h"
 

@@ -4,11 +4,10 @@
  * Licence: GPLv2
  */
 
-#include "pus_threads.h"
-#include "pus_error.h"
-#include "pus_packet.h"
-#include <string.h>
+
 #include "pus_st03_packets.h"
+
+#ifdef PUS_CONFIGURE_ST03_ENABLED
 
 // Mutex defined in pus_housekeeping.c
 extern pusMutex_t* pus_hk_mutex;
@@ -296,3 +295,4 @@ pusError_t pus_expectSt03Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 	}
 }
 
+#endif

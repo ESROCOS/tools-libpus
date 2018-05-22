@@ -218,7 +218,6 @@ void test_st18_uPy()
 
 #include <unistd.h>
 
-extern const size_t pus_obcp_ObcpLimit;
 
 //Scripts
 #include "obcp_scripts/code.mpy.h"

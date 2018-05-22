@@ -19,16 +19,19 @@
 #ifndef PUS_ST11_PACKETS_H
 #define PUS_ST11_PACKETS_H
 
-#ifdef  __cplusplus
-extern "C" {
-#endif
+
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST11_ENABLED
 
 #include "pus_apid.h"
 #include "pus_error.h"
 #include "pus_threads.h"
-#include "pus_types.h"
 #include "pus_packet.h"
 #include "pus_packet_reduced.h"
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 //! Build the common part of the ST[11] TC packets
 /*! Builds a TC[11,X] packet in the packet passed as parameter.
@@ -93,8 +96,12 @@ pusError_t pus_expectSt11Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 //! Helper macro for pus_expectSt12; adds function name
 #define PUS_EXPECT_ST11TC(packet, subtype) pus_expectSt11Tc((packet), (subtype), __func__)
 
+
 #ifdef  __cplusplus
 }
 #endif
+
+#endif
+
 
 #endif

@@ -16,8 +16,11 @@
 #define PUS_ST01_PACKETS_H
 
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST01_ENABLED
+
 #include "pus_error.h"
 #include "pus_apid.h"
+
 
 
 #ifdef  __cplusplus
@@ -225,6 +228,8 @@ pusError_t pus_expectSt01Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif // PUS_ST01_PACKETS_H

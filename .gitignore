@@ -7,6 +7,7 @@
 .settings/*
 *.log
 
+mission/test_02
 build/*
 buildRtems/*
 pylib/bind.py
@@ -26,3 +27,4 @@ asn1/generated/asn1/*
 !asn1/generated/asn1/CMakeLists.txt
 
 /install.sh
+/.metadata/
