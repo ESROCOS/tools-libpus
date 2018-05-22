@@ -2,12 +2,12 @@
 #include "CUnit/Console.h"
 #include "CUnit/Automated.h"
 
+#include "pus_types.h"
 #include "pus_apid.h"
 #include "pus_error.h"
 #include "pus_packet.h"
 #include "pus_time.h"
 #include "pus_stored_param.h"
-#include "pus_types.h"
 
 #include <stdio.h>
 #include <math.h>

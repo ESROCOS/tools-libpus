@@ -96,124 +96,6 @@ void pus_setTmPacketTime_(pusPacket_t *packet, time_t time_)
 	pus_setTmPacketTime(packet, &time);
 }
 
-uint pus_tm_1_X_getPacketVersionNumber_(pusPacket_t *tm)
-{
-	return (uint) pus_tm_1_X_getPacketVersionNumber(tm);
-}
-
-void pus_tm_1_X_setPacketVersionNumber_(pusPacket_t *tm, uint version)
-{
-	pusPacketVersion_t vers = static_cast<pusPacketVersion_t>(version);
-	pus_tm_1_X_setPacketVersionNumber(tm, vers);
-}
-
-uint pus_tm_1_X_getPacketType_(pusPacket_t* tm)
-{
-	return (uint) pus_tm_1_X_getPacketType(tm);
-}
-
-void pus_tm_1_X_setPacketType_(pusPacket_t* tm, uint type)
-{
-	pusPacketType_t typ = static_cast<pusPacketType_t>(type);
-	pus_tm_1_X_setPacketType(tm, typ);
-}
-
-uint pus_tm_1_X_getSequenceFlags_(pusPacket_t* tm)
-{
-	return (uint) pus_tm_1_X_getSequenceFlags(tm);
-}
-
-void pus_tm_1_X_setSequenceFlags_(pusPacket_t* tm, uint seq_flags)
-{
-	pusSequenceFlags_t flags = static_cast<pusSequenceFlags_t>(seq_flags);
-	pus_tm_1_X_setSequenceFlags(tm, flags);
-}
-
-ull pus_tm_1_X_getFailureCode_(const pusPacket_t *tm)
-{
-	return pus_tm_1_X_getFailureInfo(tm, NULL);
-}
-
-ll pus_getSt01FailureSubcode_(const pusPacket_t *tm)
-{
-	pusSt01FailureInfo_t failureInfo;
-	pus_tm_1_X_getFailureInfo(tm, &failureInfo);
-	return pus_getSt01FailureSubcode(&failureInfo);
-}
-
-ll pus_getSt01FailureData_(const pusPacket_t *tm)
-{
-	pusSt01FailureInfo_t failureInfo;
-	pus_tm_1_X_getFailureInfo(tm, &failureInfo);
-	return pus_getSt01FailureData(&failureInfo);
-}
-
-ull pus_getSt01FailureAddress_(const pusPacket_t *tm)
-{
-	pusSt01FailureInfo_t failureInfo;
-	pus_tm_1_X_getFailureInfo(tm, &failureInfo);
-	return pus_getSt01FailureAddress(&failureInfo);
-}
-
-void pus_setSt01FailureInfo_(pusPacket_t *tm, ull code, ll subcode, ll data, ull address)
-{
-	pusSt01FailureInfo_t failureInfo;
-	pus_setSt01FailureInfo(&failureInfo, subcode, data, address);
-	pus_tm_1_X_setFailureInfo(tm, code, &failureInfo);
-}
-
-pusError_t pus_hk_initialize_null_()
-{
-	return pus_hk_initialize(NULL);
-}
-
-
-st05Event pus_event_init_struct_(ull event_id, ull auxdata1, ull auxdata2)
-{
-	st05Event event;
-	event.event_id = event_id;
-	event.auxdata.data1 = auxdata1;
-	event.auxdata.data2 = auxdata2;
-
-	return event;
-}
-
-pusStoredParam_t pus_tm_3_25_getParameterValue_(const pusPacket_t* tm, size_t index)
-{
-	pusStoredParam_t v;
-	pus_tm_3_25_getParameterValue(tm, index, &v);
-	return v;
-}
-
-size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm)
-{
-	size_t n_p;
-	pus_tm_3_25_getNumParameters(tm, &n_p);
-	return n_p;
-}
-
-char *pus_st03_getHkReportInfoName(pusSt03ParamId_t paramIndex) {
-	if (paramIndex < pus_ST03_PARAM_LIMIT) {
-		 return strdup(pus_st03_paramInfo[paramIndex].label);
-	}
-	return NULL;
-}
-
-pusParamType_t pus_st03_getHkReportInfoType(pusSt03ParamId_t paramIndex) {
-	if (paramIndex < pus_ST03_PARAM_LIMIT) {
-		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
-		return pus_st03_paramInfo[paramIndex].type;
-	}
-	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
-	return pusParamType_t::PUS_BOOL;
-}
-
-pusSt03ParamId_t pus_st03_getHkInfoNameFromReport(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIdx) {
-	if (reportIdx < pus_ST03_PARAM_LIMIT) {
-		 return pus_st03_defaultHkReportInfo.paramIds[reportIdx];
-	}
-	return -1;
-}
 
 uint32_t pus_paramToUint32_(pusStoredParam_t paramValue) {
 	uint32_t outValue = 0;
@@ -299,6 +181,132 @@ pusStoredParam_t pus_byteToParam_(uint8_t inValue) {
 	error = pus_boolToParam(&param, inValue);
 	PUS_SET_ERROR(error);
 	return param;
+}
+
+
+#ifdef PUS_CONFIGURE_ST01_ENABLED
+uint pus_tm_1_X_getPacketVersionNumber_(pusPacket_t *tm)
+{
+	return (uint) pus_tm_1_X_getPacketVersionNumber(tm);
+}
+
+void pus_tm_1_X_setPacketVersionNumber_(pusPacket_t *tm, uint version)
+{
+	pusPacketVersion_t vers = static_cast<pusPacketVersion_t>(version);
+	pus_tm_1_X_setPacketVersionNumber(tm, vers);
+}
+
+uint pus_tm_1_X_getPacketType_(pusPacket_t* tm)
+{
+	return (uint) pus_tm_1_X_getPacketType(tm);
+}
+
+void pus_tm_1_X_setPacketType_(pusPacket_t* tm, uint type)
+{
+	pusPacketType_t typ = static_cast<pusPacketType_t>(type);
+	pus_tm_1_X_setPacketType(tm, typ);
+}
+
+uint pus_tm_1_X_getSequenceFlags_(pusPacket_t* tm)
+{
+	return (uint) pus_tm_1_X_getSequenceFlags(tm);
+}
+
+void pus_tm_1_X_setSequenceFlags_(pusPacket_t* tm, uint seq_flags)
+{
+	pusSequenceFlags_t flags = static_cast<pusSequenceFlags_t>(seq_flags);
+	pus_tm_1_X_setSequenceFlags(tm, flags);
+}
+
+ull pus_tm_1_X_getFailureCode_(const pusPacket_t *tm)
+{
+	return pus_tm_1_X_getFailureInfo(tm, NULL);
+}
+
+ll pus_getSt01FailureSubcode_(const pusPacket_t *tm)
+{
+	pusSt01FailureInfo_t failureInfo;
+	pus_tm_1_X_getFailureInfo(tm, &failureInfo);
+	return pus_getSt01FailureSubcode(&failureInfo);
+}
+
+ll pus_getSt01FailureData_(const pusPacket_t *tm)
+{
+	pusSt01FailureInfo_t failureInfo;
+	pus_tm_1_X_getFailureInfo(tm, &failureInfo);
+	return pus_getSt01FailureData(&failureInfo);
+}
+
+ull pus_getSt01FailureAddress_(const pusPacket_t *tm)
+{
+	pusSt01FailureInfo_t failureInfo;
+	pus_tm_1_X_getFailureInfo(tm, &failureInfo);
+	return pus_getSt01FailureAddress(&failureInfo);
+}
+
+void pus_setSt01FailureInfo_(pusPacket_t *tm, ull code, ll subcode, ll data, ull address)
+{
+	pusSt01FailureInfo_t failureInfo;
+	pus_setSt01FailureInfo(&failureInfo, subcode, data, address);
+	pus_tm_1_X_setFailureInfo(tm, code, &failureInfo);
+}
+#endif
+
+#ifdef PUS_CONFIGURE_ST03_ENABLED
+pusError_t pus_hk_initialize_null_()
+{
+	return pus_hk_initialize(NULL);
+}
+
+pusStoredParam_t pus_tm_3_25_getParameterValue_(const pusPacket_t* tm, size_t index)
+{
+	pusStoredParam_t v;
+	pus_tm_3_25_getParameterValue(tm, index, &v);
+	return v;
+}
+
+size_t pus_tm_3_25_getNumParameters_(const pusPacket_t* tm)
+{
+	size_t n_p;
+	pus_tm_3_25_getNumParameters(tm, &n_p);
+	return n_p;
+}
+
+char *pus_st03_getHkReportInfoName(pusSt03ParamId_t paramIndex) {
+	if (paramIndex < pus_ST03_PARAM_LIMIT) {
+		 return strdup(pus_st03_paramInfo[paramIndex].label);
+	}
+	return NULL;
+}
+
+pusParamType_t pus_st03_getHkReportInfoType(pusSt03ParamId_t paramIndex) {
+	if (paramIndex < pus_ST03_PARAM_LIMIT) {
+		PUS_SET_ERROR(pusError_t::PUS_NO_ERROR);
+		return pus_st03_paramInfo[paramIndex].type;
+	}
+	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
+	return pusParamType_t::PUS_BOOL;
+}
+
+pusSt03ParamId_t pus_st03_getHkInfoNameFromReport(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIdx) {
+	(void)reportId; //unused
+	if (reportIdx < pus_ST03_PARAM_LIMIT) {
+		 return pus_st03_defaultHkReportInfo.paramIds[reportIdx];
+	}
+	return -1;
+}
+
+#endif
+
+#ifdef PUS_CONFIGURE_ST05_ENABLED
+st05Event pus_event_init_struct_(ull event_id, ull auxdata1, ull auxdata2)
+{
+	st05Event event;
+	event.event_id = event_id;
+	event.auxdata.data1 = auxdata1;
+	event.auxdata.data2 = auxdata2;
+
+	return event;
 }
 
 pusSt05Event_t parse_pusSt05EventStruct_(st05Event event)
@@ -424,14 +432,18 @@ int pus_st05_getDataType2(pusSt05EventId_t eventIndex)
 	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
 	return -1;
 }
+#endif
 
+#ifdef PUS_CONFIGURE_ST08_ENABLED
 pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet)
 {
 	pusSt08FunctiontId_t functionId;
 	pus_tc_8_1_getFunctionId(&functionId, packet);
 	return functionId;
 }
+#endif
 
+#ifdef PUS_CONFIGURE_ST09_ENABLED
 pusSt09ExponentialRate_t pus_tc_9_1_getExponentialRate_(pusPacket_t* tcPacket)
 {
 	pusSt09ExponentialRate_t tExp;
@@ -445,7 +457,9 @@ pusSt09ExponentialRate_t pus_tm_9_2_getDataField_(const pusPacket_t* tm, pusTime
 	pus_tm_9_2_getDataField(tm, time, &rate);
 	return rate;
 }
+#endif
 
+#ifdef PUS_CONFIGURE_ST11_ENABLED
 void pus_tc_11_4_get_request(long index, const pusPacket_t* inTc, pusPacket_t *outTc, long max)
 {
 	pusSt11ScheduledActivity_t activities[10];
@@ -467,7 +481,9 @@ time_t pus_tc_11_4_get_release_time(long index, const pusPacket_t* inTc, long ma
 	pus_time2posix(&time_struct, &time_);
 	return time_struct.tv_sec;
 }
+#endif
 
+#ifdef PUS_CONFIGURE_ST12_ENABLED
 pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 {
 	pusSt12PmonId_t pmon;
@@ -475,7 +491,9 @@ pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket)
 	PUS_SET_ERROR(error);
 	return pmon;
 }
+#endif
 
+#ifdef PUS_CONFIGURE_ST18_ENABLED
 pusError_t pus_tc_18_1_createLoadObcpDirectRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* obcpId, const std::vector<uint8_t> code, const size_t codelength) {
 	pusSt18ObcpId_t id;
 	pusSt18ObcpCode_t obcpCode;
@@ -584,6 +602,7 @@ pusError_t pus_tc_18_1_setObcpCode_(pusPacket_t* outTc, const std::vector<uint8_
 }
 
 std::vector<uint8_t> pus_tc_18_1_getObcpCode_(char* code, const pusPacket_t* outTc) {
+	(void)code; //unused
 	pusSt18ObcpCode_t obcpCode;
 	pusError_t error;
 	std::vector<uint8_t> code_;
@@ -664,7 +683,9 @@ char *pus_tc_18_13_getRepositoryPath_(char* repository, const pusPacket_t* outTc
 	PUS_SET_ERROR(error);
 	return NULL;
 }
+#endif
 
+#ifdef PUS_CONFIGURE_ST19_ENABLED
 pusSt05EventId_t pus_tc_19_X_getEventId_(const pusPacket_t* outTc) {
 	pusSt05EventId_t eventId = 0;
 	pusError_t error = pusError_t::PUS_NO_ERROR;
@@ -675,7 +696,9 @@ pusSt05EventId_t pus_tc_19_X_getEventId_(const pusPacket_t* outTc) {
 	}
 	return eventId;
 }
+#endif
 
+#ifdef PUS_CONFIGURE_ST20_ENABLED
 char *pus_st20_getOnBoardReportInfoName(pusSt20OnBoardParamId_t paramId) {
 	if (paramId < pus_ST20_PARAM_LIMIT) {
 		 return strdup(pus_st20_paramInfo[paramId].label);
@@ -690,9 +713,9 @@ pusParamType_t pus_st20_getOnBoardReportInfoType(pusSt20OnBoardParamId_t paramId
 	PUS_SET_ERROR(pusError_t::PUS_ERROR_LIMIT);
 	return pusParamType_t::PUS_BOOL;
 }
+#endif
 
-
-
+#ifdef PUS_CONFIGURE_ST23_ENABLED
 pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
 		const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize) {
 	pusSt23FileName_t file;
@@ -904,5 +927,5 @@ char *pus_tc_23_14_getTargetRepositoryPath_(const pusPacket_t* outTc) {
 	}
 	return NULL;
 }
-
+#endif
 

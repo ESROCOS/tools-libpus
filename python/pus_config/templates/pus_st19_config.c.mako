@@ -11,6 +11,7 @@
 
 
 #include "pus_st19_config.h"
+#ifdef PUS_CONFIGURE_ST19_ENABLED
 
 #include "pus_st05_config.h"
 
@@ -27,3 +28,5 @@ pusError_t pus_eventAction_configure()
 			
 	return PUS_NO_ERROR;
 }
+
+#endif

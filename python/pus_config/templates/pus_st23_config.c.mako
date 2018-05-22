@@ -19,6 +19,8 @@
 
 
 #include "pus_st23_config.h"
+#ifdef PUS_CONFIGURE_ST23_ENABLED
+
 #include "pus_file_management.h"
 #include "pus_types.h"
 #include <string.h>
@@ -52,6 +54,6 @@ pusError_t pus_files_configure()
     return PUS_NO_ERROR;
 }
 
-
+#endif
 
 

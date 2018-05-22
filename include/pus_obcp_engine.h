@@ -186,4 +186,7 @@ void* pus_obcp_thread( void * arg);
 }
 #endif
 
+#endif
+
 #endif // PUS_OBCP_ENGINE_H
+

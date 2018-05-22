@@ -29,6 +29,8 @@ tempvars['paramIndex'] = dict()
 
 
 #include "pus_st03_config.h"
+#ifdef PUS_CONFIGURE_HK_PARAMS_TABLE
+
 #include <string.h> //memcpy
 
 // ST[03] arrays
@@ -118,4 +120,6 @@ pusError_t pus_hk_get${param['label']}(${param['type']}* value)
 }
 
 % endfor
+
+#endif
 

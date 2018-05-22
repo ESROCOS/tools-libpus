@@ -13,13 +13,16 @@
 #ifndef PUS_ST11_CONFIG_H
 #define PUS_ST11_CONFIG_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST11_ENABLED
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-
 #include "pus_error.h"
-#include "pus_types.h"
+
 
 #include "pus_timebased_scheduling.h"
 
@@ -35,5 +38,6 @@ extern pusSt11ScheduledActivity_t pus_scheduling_tableAuxiliar[];
 }
 #endif
 
+#endif
  
 #endif

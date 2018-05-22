@@ -49,6 +49,8 @@ def getAliasName( configType ):
 
 
 #include "pus_st20_config.h"
+#ifdef PUS_CONFIGURE_ST20_ENABLED
+
 #include "pus_parameter_management.h"
 
 // ST[20] arrays
@@ -88,5 +90,6 @@ pusError_t pus_hk_get${param['label']}(${getCTypes(param['type'])}* value)
 
 % endfor
 
+#endif
 
 

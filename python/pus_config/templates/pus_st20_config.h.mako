@@ -36,13 +36,16 @@ def getCTypes( configType ):
 #ifndef PUS_ST20_CONFIG_H
 #define PUS_ST20_CONFIG_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST20_ENABLED
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
 #include "pus_error.h"
-#include "pus_types.h"
+
 #include "pus_parameter_management.h"
 
 
@@ -81,5 +84,6 @@ pusError_t pus_hk_get${param['label']}(${getCTypes(param['type'])}* value);
 }
 #endif
 
+#endif
 
 #endif // PUS_ST03_CONFIG_H

@@ -13,9 +13,11 @@
 #ifndef PUS_ST08_CONFIG_H
 #define PUS_ST08_CONFIG_H
 
-#include "pus_error.h"
-#include "pus_types.h"
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST08_ENABLED
+
+#include "pus_error.h"
 #include "pus_st08_packets.h"
 
 #ifdef __cplusplus
@@ -43,5 +45,6 @@ extern pusSt08FunctionInfo_t pus_st08_functionInfoList[];
 }
 #endif
 
+#endif
  
  #endif

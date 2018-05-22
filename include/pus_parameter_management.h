@@ -22,7 +22,7 @@
 #include "pus_threads.h"
 #include "pus_stored_param.h"
 #include "pus_packet.h"
-
+#include <string.h>
 
 #ifdef  __cplusplus
 extern "C" {

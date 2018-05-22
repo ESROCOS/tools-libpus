@@ -27,7 +27,7 @@
 #error "Any service need on-board parameters table but it is not enabled!"
 #endif
 
-#if (defined(PUS_CONFIGURE_ST18_ENABLED  && !defined( PUS_CONFIGURE_OBCP_ENGINE ))
+#if (defined(PUS_CONFIGURE_ST18_ENABLED)  && !defined( PUS_CONFIGURE_OBCP_ENGINE ))
 #error "Any service need OBCP-engine table but it is not enabled!"
 #endif
 

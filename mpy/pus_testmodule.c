@@ -1,3 +1,5 @@
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_OBCP_ENGINE
 
 #include "py/nlr.h"
 #include "py/obj.h"
@@ -29,3 +31,6 @@ const mp_obj_module_t mp_module_testmodule = {
     .base = { &mp_type_module },
     .globals = (mp_obj_dict_t*)&mp_module_testmodule_globals,
 };
+
+#endif
+

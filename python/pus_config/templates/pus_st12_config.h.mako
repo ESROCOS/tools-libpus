@@ -21,13 +21,16 @@
 #ifndef PUS_ST12_CONFIG_H
 #define PUS_ST12_CONFIG_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST12_ENABLED
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
+
 #include "pus_error.h"
-#include "pus_types.h"
 #include "pus_st03_config.h"
 #include "pus_parameter_monitoring.h"
 
@@ -43,5 +46,6 @@ extern pusError_t pus_pmon_configure();
 }
 #endif
 
+#endif
 
 #endif // PUS_ST03_CONFIG_H

@@ -5,10 +5,8 @@
  */
 
 
-
 #include "pus_st20_packets.h"
 #ifdef PUS_CONFIGURE_ST20_ENABLED
-
 
 
 pusError_t pus_tc_20_1_createParameterValueRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt20OnBoardParamId_t param)
