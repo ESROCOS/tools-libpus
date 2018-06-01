@@ -3,7 +3,10 @@
 # Licence: GPLv2
 
 
-# Preinstall headers and libraries for first build
+# Preinstall ASN.1 types, headers and libraries for first build
+file(GLOB ASN1 ${CMAKE_SOURCE_DIR}/asn1/*.asn)
+esrocos_preinstall_files(pus_asn1 types/pus ${ASN1})
+
 file(GLOB HEADERS ${CMAKE_SOURCE_DIR}/include/*.h)
 esrocos_preinstall_files(pus_headers include/pus ${HEADERS})
 
@@ -47,6 +50,7 @@ esrocos_build_taste(pus_test_01
     BINARIES
     binary.c/binaries/x86_partition
     DEPENDS
+    pus_asn1
     pus_headers
     pus_mission_headers
     pus_libs
