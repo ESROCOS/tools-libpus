@@ -16,8 +16,6 @@ debug/*
 release/*
 CMakeFiles
 cmake_install.cmake
-taste/binary.c/*
-taste/*.zip
 
 __pycache__
 *.pyc
@@ -28,3 +26,10 @@ asn1/generated/asn1/*
 
 /install.sh
 /.metadata/
+
+taste/*.zip
+taste/__*.aadl
+taste/*.md5
+taste/*.pro
+taste/*.old
+taste/binary.c

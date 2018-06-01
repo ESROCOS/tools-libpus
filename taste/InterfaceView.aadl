@@ -71,6 +71,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/ground.zip");
 END Ground;
 
 SYSTEM IMPLEMENTATION Ground.others
@@ -134,7 +135,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcqueue.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/tcqueue.zip");
 END TcQueue;
 
 SYSTEM IMPLEMENTATION TcQueue.others
@@ -339,7 +340,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcdispatch.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/tcdispatcher.zip");
 END TcDispatch;
 
 SYSTEM IMPLEMENTATION TcDispatch.others
@@ -663,7 +664,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tmdispatch.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/tmdispatch.zip");
 END TmDispatch;
 
 SYSTEM IMPLEMENTATION TmDispatch.others
@@ -747,7 +748,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/tcqueue.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/tmqueue.zip");
 END TmQueue;
 
 SYSTEM IMPLEMENTATION TmQueue.others
@@ -984,7 +985,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st17.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st17.zip");
 END ST17;
 
 SYSTEM IMPLEMENTATION ST17.others
@@ -1086,7 +1087,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st01.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st01.zip");
 END ST01;
 
 SYSTEM IMPLEMENTATION ST01.others
@@ -1155,7 +1156,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st08.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st08.zip");
 END ST08;
 
 SYSTEM IMPLEMENTATION ST08.others
@@ -1216,7 +1217,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardapid.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/onboardapid.zip");
 END OnBoardAPID;
 
 SYSTEM IMPLEMENTATION OnBoardAPID.others
@@ -1346,7 +1347,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st09.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st09.zip");
 END ST09;
 
 SYSTEM IMPLEMENTATION ST09.others
@@ -1407,7 +1408,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/timereportapid.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/timereport.zip");
 END TimeReportAPID;
 
 SYSTEM IMPLEMENTATION TimeReportAPID.others
@@ -1612,7 +1613,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/events.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/events.zip");
 END Events;
 
 SYSTEM IMPLEMENTATION Events.others
@@ -1721,7 +1722,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st05.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st05.zip");
 END ST05;
 
 SYSTEM IMPLEMENTATION ST05.others
@@ -1864,7 +1865,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st19.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st19.zip");
 END ST19;
 
 SYSTEM IMPLEMENTATION ST19.others
@@ -2210,7 +2211,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/housekeeping.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/housekeeping.zip");
 END Housekeeping;
 
 SYSTEM IMPLEMENTATION Housekeeping.others
@@ -2319,7 +2320,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st03.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st03.zip");
 END ST03;
 
 SYSTEM IMPLEMENTATION ST03.others
@@ -2445,7 +2446,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st12.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st12.zip");
 END ST12;
 
 SYSTEM IMPLEMENTATION ST12.others
@@ -2801,7 +2802,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st11.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st11.zip");
 END ST11;
 
 SYSTEM IMPLEMENTATION ST11.others
@@ -2870,7 +2871,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st18.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st18.zip");
 END ST18;
 
 SYSTEM IMPLEMENTATION ST18.others
@@ -3114,7 +3115,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st23.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st23.zip");
 END ST23;
 
 SYSTEM IMPLEMENTATION ST23.others
@@ -3201,7 +3202,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/filemanagement.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/filemanagement.zip");
 END FileManagement;
 
 SYSTEM IMPLEMENTATION FileManagement.others
@@ -3513,7 +3514,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/st20.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/st20.zip");
 END ST20;
 
 SYSTEM IMPLEMENTATION ST20.others
@@ -3583,7 +3584,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/onboardparams.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/onboardparams.zip");
 END OnBoardParams;
 
 SYSTEM IMPLEMENTATION OnBoardParams.others
@@ -4018,7 +4019,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos-ws-pus/tools-libpus/taste/trigger.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/trigger.zip");
 END trigger;
 
 SYSTEM IMPLEMENTATION trigger.others
@@ -4561,6 +4562,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/onboardsoftware.zip");
 END OnboardSoftware;
 
 SYSTEM IMPLEMENTATION OnboardSoftware.others
@@ -4665,6 +4667,9 @@ WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
 SYSTEM interfaceview
+PROPERTIES
+  Taste::dataView => ("DataView");
+  Taste::dataViewPath => ("DataView.aadl");
 END interfaceview;
 
 SYSTEM IMPLEMENTATION interfaceview.others

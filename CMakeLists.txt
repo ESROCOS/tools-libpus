@@ -68,18 +68,11 @@ add_subdirectory(python)
 add_subdirectory(mission)
 add_subdirectory(test)
 add_subdirectory(gui)
-#add_subdirectory(taste)
+add_subdirectory(include)
+add_subdirectory(taste)
 
 
-### Install stuff commented ###
-
-#install(DIRECTORY ${CMAKE_SOURCE_DIR}/asn/base DESTINATION share/taste/asn1_types)
-#install(DIRECTORY ${CMAKE_SOURCE_DIR}/asn/drivers DESTINATION share/taste/asn1_types)
-#install(DIRECTORY ${CMAKE_SOURCE_DIR}/asn/sargon DESTINATION share/taste/asn1_types)
-
-###############################
-
-
+# Coverage for tests
 coverage_evaluate()
 
 

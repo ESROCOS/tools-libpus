@@ -41,39 +41,39 @@ set(SOURCES
 #
 
 # Static
-add_library(esrocos_pus_static_aux_${MISSION} STATIC ${SOURCES})
-set_target_properties(esrocos_pus_static_aux_${MISSION} PROPERTIES OUTPUT_NAME esrocos_pus_aux_${MISSION})
-target_link_libraries(esrocos_pus_static_aux_${MISSION} 
-    esrocos_mpy_static_aux_${MISSION}
+add_library(esrocos_pus_static_core_${MISSION} STATIC ${SOURCES})
+set_target_properties(esrocos_pus_static_core_${MISSION} PROPERTIES OUTPUT_NAME esrocos_pus_core_${MISSION})
+target_link_libraries(esrocos_pus_static_core_${MISSION} 
+    esrocos_mpy_static_core_${MISSION}
     ${LIBPUS_MISSION}_static
     ${CMAKE_THREAD_LIBS_INIT}
 )
-set_target_properties(esrocos_pus_static_aux_${MISSION} PROPERTIES 
+set_target_properties(esrocos_pus_static_core_${MISSION} PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_pus_static_aux_${MISSION} PUBLIC ${CMAKE_BINARY_DIR}/asn1 ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
-add_coverage(esrocos_pus_static_aux_${MISSION})
+target_include_directories(esrocos_pus_static_core_${MISSION} PUBLIC ${CMAKE_BINARY_DIR}/asn1 ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
+add_coverage(esrocos_pus_static_core_${MISSION})
 
 # Shared
-add_library(esrocos_pus_aux_${MISSION} SHARED ${SOURCES})
-target_link_libraries(esrocos_pus_aux_${MISSION} 
-    esrocos_mpy_aux_${MISSION} 
+add_library(esrocos_pus_core_${MISSION} SHARED ${SOURCES})
+target_link_libraries(esrocos_pus_core_${MISSION} 
+    esrocos_mpy_core_${MISSION} 
     ${CMAKE_THREAD_LIBS_INIT}
 )
-set_target_properties(esrocos_pus_aux_${MISSION} PROPERTIES 
+set_target_properties(esrocos_pus_core_${MISSION} PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_pus_aux_${MISSION} PUBLIC ${CMAKE_BINARY_DIR}/asn1 ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
-add_coverage(esrocos_pus_aux_${MISSION})
+target_include_directories(esrocos_pus_core_${MISSION} PUBLIC ${CMAKE_BINARY_DIR}/asn1 ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
+add_coverage(esrocos_pus_core_${MISSION})
 
 
 #
 # Installation
 #
 
-install(TARGETS esrocos_pus_aux_${MISSION} esrocos_pus_static_aux_${MISSION}
+install(TARGETS esrocos_pus_core_${MISSION} esrocos_pus_static_core_${MISSION}
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)

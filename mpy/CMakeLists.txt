@@ -29,12 +29,14 @@ SET( TASTE_UPY_ESA_PORT ${TASTE_UPY}/ports/esa-taste)
 #Copying OWN files 
 set(SRC_FILES
 	mpcontext.c
-	mpcontext.h
 	pus_testmodule.c
 	pus_obcp_libFunctions.c
+)
+set(HDR_FILES
+	mpcontext.h
 	mpconfigport.h
 )
-foreach(file ${SRC_FILES})
+foreach(file ${SRC_FILES} ${HDR_FILES})
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${file} ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 endforeach(file $(SRC_FILES))
 
@@ -42,15 +44,12 @@ endforeach(file $(SRC_FILES))
 #Coping userFunctions.c (from mission or src(default))
 SET(MISSION_NAME "test_01")
 if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c")
-   MESSAGE( STATUS "EXISTS pus_obcp_userFunctions.c in mission, ${CMAKE_CURRENT_BINARY_DIR}")
-   #configure_file(${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR}/pus_obcp_userFunctions.c COPYONLY)
-   file(COPY ${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+    message( STATUS "Using pus_obcp_userFunctions.c in mission, ${CMAKE_CURRENT_BINARY_DIR}")
+    configure_file(${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 else()
-	MESSAGE( STATUS "DOESN'T EXIST pus_obcp_userFunctions.c in mission, ${CMAKE_CURRENT_BINARY_DIR}")
-   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
-   #file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../src/pus_obcp_userFunctions.c DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/pus_obcp_userFunctions.c)
+    message( STATUS "Not found pus_obcp_userFunctions.c in mission, ${CMAKE_CURRENT_BINARY_DIR}; using default")
+    configure_file(${CMAKE_SOURCE_DIR}/${MISSION_NAME}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 endif()
-
 
 #Copying configuration files from TASTE ESA port
 configure_file(${TASTE_UPY_ESA_PORT}/mphalport_taste_x86.h ${CMAKE_CURRENT_BINARY_DIR}/mphalport.h COPYONLY)
@@ -59,8 +58,7 @@ configure_file(${TASTE_UPY_ESA_PORT}/mputil.h ${CMAKE_CURRENT_BINARY_DIR}/mputil
 configure_file(${TASTE_UPY_ESA_PORT}/mputil.c ${CMAKE_CURRENT_BINARY_DIR}/mputil.c COPYONLY)
 
 #Copy .c files from core uPython
-file(GLOB UPY_CORE_SRC
-	${TASTE_UPY}/py/*.c )
+file(GLOB UPY_CORE_SRC ${TASTE_UPY}/py/*.c)
 	
 foreach(file ${UPY_CORE_SRC})
 	file(RELATIVE_PATH file_name "${TASTE_UPY}/py/" ${file} )
@@ -68,8 +66,7 @@ foreach(file ${UPY_CORE_SRC})
 endforeach(file $(UPY_CORE_SRC))
 
 #Copy .h files from core uPython
-file(GLOB UPY_CORE_HEADERS
-	${TASTE_UPY}/py/*.h )
+file(GLOB UPY_CORE_HEADERS ${TASTE_UPY}/py/*.h )
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/py/)
 
@@ -78,48 +75,41 @@ foreach(file ${UPY_CORE_HEADERS})
 	configure_file(${file} ${CMAKE_CURRENT_BINARY_DIR}/py/${file_name} COPYONLY)
 endforeach(file $(UPY_CORE_HEADERS))
 
-#Generate QSTR //TODO
+#Generate QSTR files
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/genhdr/)
 
-SET( COMMAND_GENERATE_MPVERSION "python ${TASTE_UPY}/py/makeversionhdr.py  ${CMAKE_CURRENT_BINARY_DIR}/genhdr/mpversion.h")
+set(COMMAND_GENERATE_MPVERSION "python ${TASTE_UPY}/py/makeversionhdr.py  ${CMAKE_CURRENT_BINARY_DIR}/genhdr/mpversion.h")
 
+file(GLOB_RECURSE QSTR_SRC ${CMAKE_CURRENT_BINARY_DIR}/*.c )
 
-file(GLOB_RECURSE UPY_CORE_SRC ${CMAKE_CURRENT_BINARY_DIR}/*.c )
-	
-foreach(file ${UPY_CORE_SRC})
-	SET(FILES "${FILES} ${file}")
-endforeach(file $(UPY_CORE_SRC))
-#MESSAGE(STATUS ${FILES})
+foreach(file ${QSTR_SRC})
+	set(QSTR_SRC_STR "${QSTR_SRC_STR} ${file}")
+endforeach(file $(QSTR_SRC))
 
 #g++ -E -DNO_QSTR -I . -DSTATIC="" -g  py_*.c mymodule.c > ./genhdr/qstr.i.last -I/home/esrocos/esrocos-ws-pus/tools-libpus/include/ -I/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated/ -I/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include/ 
-SET( COMMAND_GENERATE_QSTRLAST "${CMAKE_CXX_COMPILER} -E -DNO_QSTR -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" ${FILES}  -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/mission/${MISSION}/ -I${CMAKE_BINARY_DIR}/asn1/esrocos_pustypes >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last")
+set(COMMAND_GENERATE_QSTRLAST "${CMAKE_CXX_COMPILER} -E -DNO_QSTR -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" ${QSTR_SRC_STR}  -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/mission/${MISSION}/ -I${CMAKE_BINARY_DIR}/asn1/esrocos_pustypes >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last")
 #python $(taste-config --prefix)/../tool-src/upython-taste/py/makeqstrdefs.py split ./genhdr/qstr.i.last ./genhdr/qstr ./genhdr/qstrdefs.collected.h
-SET( COMMAND_GENERATE_QSTRDEFS_COLLECTED1 "python ${TASTE_UPY}/py/makeqstrdefs.py split ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h")
+set(COMMAND_GENERATE_QSTRDEFS_COLLECTED1 "python ${TASTE_UPY}/py/makeqstrdefs.py split ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h")
 #python $(taste-config --prefix)/../tool-src/upython-taste/py/makeqstrdefs.py cat ./genhdr/qstr.i.last ./genhdr/qstr ./genhdr/qstrdefs.collected.h
-SET( COMMAND_GENERATE_QSTRDEFS_COLLECTED2 "python ${TASTE_UPY}/py/makeqstrdefs.py cat ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h")
+set(COMMAND_GENERATE_QSTRDEFS_COLLECTED2 "python ${TASTE_UPY}/py/makeqstrdefs.py cat ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h")
 #cat ./py/qstrdefs.h ./genhdr/qstrdefs.collected.h | sed 's/^Q(.*)/"&"/' | g++ -E -I. -DSTATIC="" -g - | sed 's/^"\(Q(.*)\)"/\1/' > ./genhdr/qstrdefs.preprocessed.h
-SET( COMMAND_GENERATE_QSTRDEFS_PRE "cat ${CMAKE_CURRENT_BINARY_DIR}/py/qstrdefs.h ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h | sed 's/^Q(.*)/\"&\"/' | g++ -E -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" - | sed 's/^\"\\(Q(.*)\\)\"/\\1/' > ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.preprocessed.h")
+set(COMMAND_GENERATE_QSTRDEFS_PRE "cat ${CMAKE_CURRENT_BINARY_DIR}/py/qstrdefs.h ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h | sed 's/^Q(.*)/\"&\"/' | g++ -E -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" - | sed 's/^\"\\(Q(.*)\\)\"/\\1/' > ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.preprocessed.h")
 #python $(taste-config --prefix)/../tool-src/upython-taste/py/makeqstrdata.py ./genhdr/qstrdefs.preprocessed.h > ./genhdr/qstrdefs.generated.h
-SET( COMMAND_GENERATE_QSTRDEFS_GEN "python ${TASTE_UPY}/py/makeqstrdata.py ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.preprocessed.h >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h")
+set(COMMAND_GENERATE_QSTRDEFS_GEN "python ${TASTE_UPY}/py/makeqstrdata.py ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.preprocessed.h >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h")
 
-
-#if(NOT (EXISTS ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h))
-#message(STATUS "1 ${COMMAND_GENERATE_MPVERSION}")
+# Execute QSTR files generation at configure time
 execute_process ( COMMAND bash -c "${COMMAND_GENERATE_MPVERSION}")
-#message(STATUS "2 ${COMMAND_GENERATE_QSTRLAST}")
 execute_process ( COMMAND bash -c "${COMMAND_GENERATE_QSTRLAST}")
-#message(STATUS "3 ${COMMAND_GENERATE_QSTRDEFS_COLLECTED1}")
 execute_process ( COMMAND bash -c "${COMMAND_GENERATE_QSTRDEFS_COLLECTED1}")
-#message(STATUS "4 ${COMMAND_GENERATE_QSTRDEFS_COLLECTED2}")
 execute_process ( COMMAND bash -c "${COMMAND_GENERATE_QSTRDEFS_COLLECTED2}")
-#message(STATUS "5 ${COMMAND_GENERATE_QSTRDEFS_PRE}")
 execute_process ( COMMAND bash -c "${COMMAND_GENERATE_QSTRDEFS_PRE}")
-#message(STATUS "6 ${COMMAND_GENERATE_QSTRDEFS_GEN}")
 execute_process ( COMMAND bash -c "${COMMAND_GENERATE_QSTRDEFS_GEN}")
-#endif()
 
-SET( COMMAND_GENERATE_QSTRDEFS_PRE2 "cat ${CMAKE_CURRENT_BINARY_DIR}/py/qstrdefs.h ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h \\|sed 's/^Q\\(.*\\)/\"&\"/' \\|g++ -E -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" - \\|sed 's/^\"\\\\(Q(.*)\\\\)\"/\\\\1/' >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.preprocessed.h")
+file(GLOB QSTR_HDR ${CMAKE_CURRENT_BINARY_DIR}/genhdr/*.h)
+
+
+set(COMMAND_GENERATE_QSTRDEFS_PRE2 "cat ${CMAKE_CURRENT_BINARY_DIR}/py/qstrdefs.h ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h \\|sed 's/^Q\\(.*\\)/\"&\"/' \\|g++ -E -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" - \\|sed 's/^\"\\\\(Q(.*)\\\\)\"/\\\\1/' >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.preprocessed.h")
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h
 	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR}pus_obcp_userFunctions.c
@@ -136,8 +126,8 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.
 ADD_CUSTOM_TARGET(qstrdefs.generated_${MISSION} DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h")
 	
 #gcc -c -DSTATIC="" -g  -I. -std=c99 -Wno-switch -Wno-override-init -Wno-jump-misses-init -DPOSIX -D_POSIX_SOURCE -D_GNU_SOURCE -g -Wall -Wextra -fdiagnostics-show-option -Wcast-align *.c
-file(GLOB UPY_CORE_SRC
-	${CMAKE_CURRENT_BINARY_DIR}/*.c )
+file(GLOB UPY_CORE_SRC ${CMAKE_CURRENT_BINARY_DIR}/*.c )
+
 
 
 #
@@ -145,23 +135,23 @@ file(GLOB UPY_CORE_SRC
 #
 
 # Static
-add_library(esrocos_mpy_static_aux_${MISSION} STATIC ${UPY_CORE_SRC})
-set_target_properties(esrocos_mpy_static_aux_${MISSION} PROPERTIES OUTPUT_NAME esrocos_mpy_aux_${MISSION})
-target_link_libraries(esrocos_mpy_static_aux_${MISSION} m)
-set_target_properties(esrocos_mpy_static_aux_${MISSION} PROPERTIES 
+add_library(esrocos_mpy_static_core_${MISSION} STATIC ${UPY_CORE_SRC})
+set_target_properties(esrocos_mpy_static_core_${MISSION} PROPERTIES OUTPUT_NAME esrocos_mpy_core_${MISSION})
+target_link_libraries(esrocos_mpy_static_core_${MISSION} m)
+set_target_properties(esrocos_mpy_static_core_${MISSION} PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_mpy_static_aux_${MISSION} PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
+target_include_directories(esrocos_mpy_static_core_${MISSION} PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
 
 # Shared
-add_library(esrocos_mpy_aux_${MISSION} SHARED ${UPY_CORE_SRC})
-target_link_libraries(esrocos_mpy_aux_${MISSION} m)
-set_target_properties(esrocos_mpy_aux_${MISSION} PROPERTIES 
+add_library(esrocos_mpy_core_${MISSION} SHARED ${UPY_CORE_SRC})
+target_link_libraries(esrocos_mpy_core_${MISSION} m)
+set_target_properties(esrocos_mpy_core_${MISSION} PROPERTIES 
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_mpy_aux_${MISSION} PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
+target_include_directories(esrocos_mpy_core_${MISSION} PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
 
 
 
@@ -169,11 +159,16 @@ target_include_directories(esrocos_mpy_aux_${MISSION} PUBLIC ${esrocos_pustypes_
 # Installation
 #
 
-install(TARGETS esrocos_mpy_aux_${MISSION} esrocos_mpy_static_aux_${MISSION}
+install(TARGETS esrocos_mpy_core_${MISSION} esrocos_mpy_static_core_${MISSION}
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 
+#install(FILES ${UPY_CORE_HEADERS} DESTINATION include/mpy/py)
+#install(FILES ${HDR_FILES} DESTINATION include/mpy)
+#install(FILES ${QSTR_HDR} DESTINATION include/mpy/genhdr)
+
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/ DESTINATION include/mpy)
 
 
 #TODO TASTE INCLUDES

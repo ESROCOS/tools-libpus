@@ -99,8 +99,6 @@ cd "$SKELS" && rm -f st11.zip && zip st11 st11/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f st18.zip && zip st18 st18/* && cd $OLDPWD
 
-cd "$SKELS" && rm -f obcpengine.zip && zip obcpengine obcpengine/* && cd $OLDPWD
-
 cd "$SKELS" && rm -f st23.zip && zip st23 st23/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f filemanagement.zip && zip filemanagement filemanagement/* && cd $OLDPWD
@@ -172,7 +170,6 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC st12:"$SKELS"/st12.zip \
 	--subC st11:"$SKELS"/st11.zip \
 	--subC st18:"$SKELS"/st18.zip \
-	--subC obcpengine:"$SKELS"/obcpengine.zip \
 	--subC st23:"$SKELS"/st23.zip \
 	--subC filemanagement:"$SKELS"/filemanagement.zip \
 	--subC st20:"$SKELS"/st20.zip \

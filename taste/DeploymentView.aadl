@@ -41,7 +41,6 @@ WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03;
 WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12;
 WITH interfaceview::IV::OnBoard::PusServices::ST11;
 WITH interfaceview::IV::OnBoard::PusServices::OBCP::ST18;
-WITH interfaceview::IV::OnBoard::PusServices::OBCP::ObcpEngine;
 WITH interfaceview::IV::OnBoard::PusServices::FilesService::ST23;
 WITH interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement;
 WITH interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20;
@@ -116,9 +115,6 @@ SUBCOMPONENTS
   IV_ST18 : SYSTEM interfaceview::IV::OnBoard::PusServices::OBCP::ST18::ST18.others {
     Taste::FunctionName => "ST18";
   };
-  IV_ObcpEngine : SYSTEM interfaceview::IV::OnBoard::PusServices::OBCP::ObcpEngine::ObcpEngine.others {
-    Taste::FunctionName => "ObcpEngine";
-  };
   IV_ST23 : SYSTEM interfaceview::IV::OnBoard::PusServices::FilesService::ST23::ST23.others {
     Taste::FunctionName => "ST23";
   };
@@ -164,7 +160,6 @@ PROPERTIES
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST12;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST11;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST18;
-  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ObcpEngine;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST23;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_FileManagement;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_ST20;
@@ -189,6 +184,6 @@ PROPERTIES
   Taste::coordinates => "0 0 297000 210000";
   Taste::version => "2.0";
   Taste::interfaceView => "InterfaceView.aadl";
-  Taste::HWLibraries => ("../../../tool-inst/share/ocarina/AADLv2/ocarina_components.aadl");
+  Taste::HWLibraries => ("");
 END deploymentview::DV;
 

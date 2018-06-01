@@ -67,6 +67,7 @@ add_custom_target(
 )
 
 # Mission-specific C files
+file(GLOB GENERATED_H_FILES "${OUT_DIR}/include/*.h")
 file(GLOB GENERATED_C_FILES "${OUT_DIR}/src/*.c")
 file(GLOB USER_C_FILES "${JSON_DIR}/*.c")
 set(C_FILES ${GENERATED_C_FILES} ${USER_C_FILES})
@@ -78,7 +79,7 @@ set(C_FILES ${GENERATED_C_FILES} ${USER_C_FILES})
 
 # Shared
 add_library(${LIBPUS_MISSION} SHARED ${C_FILES})
-target_link_libraries(${LIBPUS_MISSION} esrocos_pus_aux_${MISSION})
+target_link_libraries(${LIBPUS_MISSION} esrocos_pus_core_${MISSION})
 target_include_directories(${LIBPUS_MISSION} PUBLIC ${OUT_DIR}/include ${JSON_DIR})
 set_target_properties(${LIBPUS_MISSION} PROPERTIES 
     LINKER_LANGUAGE C
@@ -90,7 +91,7 @@ add_coverage(${LIBPUS_MISSION})
 # Static
 add_library(${LIBPUS_MISSION}_static STATIC ${C_FILES})
 set_target_properties(${LIBPUS_MISSION}_static PROPERTIES OUTPUT_NAME ${LIBPUS_MISSION})
-target_link_libraries(${LIBPUS_MISSION}_static esrocos_pus_static_aux_${MISSION})
+target_link_libraries(${LIBPUS_MISSION}_static esrocos_pus_static_core_${MISSION})
 target_include_directories(${LIBPUS_MISSION}_static PUBLIC ${OUT_DIR}/include ${JSON_DIR})
 set_target_properties(${LIBPUS_MISSION} PROPERTIES 
     LINKER_LANGUAGE C
@@ -114,4 +115,7 @@ install(TARGETS ${LIBPUS_MISSION} ${LIBPUS_MISSION}_static ${LIBPUS_MISSION}_typ
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
+
+install(FILES ${GENERATED_H_FILES} pus_enable_services.h DESTINATION include/pus/missions/${MISSION})
+install(FILES ${JSON} DESTINATION share/pus/missions/${MISSION})
 
