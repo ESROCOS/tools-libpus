@@ -168,7 +168,7 @@ install(TARGETS esrocos_mpy_core_${MISSION} esrocos_mpy_static_core_${MISSION}
 #install(FILES ${HDR_FILES} DESTINATION include/mpy)
 #install(FILES ${QSTR_HDR} DESTINATION include/mpy/genhdr)
 
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/ DESTINATION include/mpy)
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/ DESTINATION include/pus/mission/${MISSION}/mpy)
 
 
 #TODO TASTE INCLUDES
