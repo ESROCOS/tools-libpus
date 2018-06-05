@@ -11,6 +11,7 @@
 
 
 #include "pus_st18_config.h"
+#ifdef PUS_CONFIGURE_OBCP_ENGINE
 
 const size_t pus_obcp_ObcpLimit = MAXIMUN_OBCP;
 
@@ -39,3 +40,4 @@ pusError_t pus_obcp_configure()
 	return PUS_NO_ERROR;
 }
 
+#endif

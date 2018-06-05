@@ -4,14 +4,9 @@
  * Licence: GPLv2
  */
 
-#include "pus_threads.h"
-#include "pus_error.h"
-#include "pus_packet.h"
-#include <string.h>
 
-#include "pus_stored_param.h"
 #include "pus_parameter_management.h"
-
+#ifdef PUS_CONFIGURE_ONBOARD_PARAMS_TABLE
 
 // Mutex to lock access to the housekeeping parameter tables
 pusMutex_t* pus_parameters_mutex = NULL;
@@ -572,3 +567,7 @@ pusError_t pus_parameters_getParamType(pusSt20OnBoardParamId_t param, pusParamTy
 		return result;
 	}
 }
+
+#endif
+
+

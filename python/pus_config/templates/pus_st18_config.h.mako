@@ -13,12 +13,15 @@
 #ifndef PUS_ST18_CONFIG_H
 #define PUS_ST18_CONFIG_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_OBCP_ENGINE
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
-#include "pus_types.h"
+
 #include "pus_threads.h"
 #include <string.h>
 
@@ -41,5 +44,6 @@ extern pusObcpInfo_t pus_obcp_infoList[];
 }
 #endif
 
- 
- #endif
+#endif 
+
+#endif

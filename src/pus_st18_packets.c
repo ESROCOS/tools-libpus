@@ -5,9 +5,8 @@
  */
 
 #include "pus_st18_packets.h"
-#include "pus_error.h"
-#include "pus_packet.h"
-#include <string.h>
+#ifdef PUS_CONFIGURE_ST18_ENABLED
+
 
 pusError_t pus_tc_18_X_createDefaultRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype)
 {
@@ -576,4 +575,4 @@ pusError_t pus_expectSt18Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 	}
 }
 
-
+#endif

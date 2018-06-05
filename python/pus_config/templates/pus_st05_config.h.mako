@@ -13,6 +13,9 @@
 #ifndef PUS_ST05_CONFIG_H
 #define PUS_ST05_CONFIG_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_EVENTS_TABLE
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -20,7 +23,7 @@ extern "C" {
 
 
 #include "pus_error.h"
-#include "pus_types.h"
+
 #include "pus_events.h"
 
 #include "pus_st03_config.h" //TODO cambiar tipos
@@ -64,5 +67,6 @@ pusError_t pus_events_create${event['label']}(pusSt05Event_t* event, ${event['da
 #endif
 
 
+#endif
 
 #endif

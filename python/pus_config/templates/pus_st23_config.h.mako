@@ -22,13 +22,16 @@
 #ifndef PUS_ST23_CONFIG_H
 #define PUS_ST23_CONFIG_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST23_ENABLED
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
 #include "pus_error.h"
-#include "pus_types.h"
+
 #include "pus_file_management.h"
 
 
@@ -52,12 +55,10 @@ extern pusSt23Repository_t pus_files_repositoriesTable[];
 pusError_t pus_files_configure();
 
 
-
-
-
 #ifdef __cplusplus
 }
 #endif
 
+#endif
 
 #endif // PUS_ST03_CONFIG_H

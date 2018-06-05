@@ -15,10 +15,14 @@
 #define PUS_PARAMETER_MANAGEMENT_H
 
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_ONBOARD_PARAMS_TABLE
+
 #include "pus_error.h"
 #include "pus_apid.h"
 #include "pus_threads.h"
 #include "pus_stored_param.h"
+#include "pus_packet.h"
+#include <string.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -183,6 +187,8 @@ pusError_t pus_parameters_getParamType(pusSt20OnBoardParamId_t param, pusParamTy
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif // PUS_HOUSEKEEPING_H

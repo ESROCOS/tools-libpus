@@ -4,12 +4,17 @@
  * Licence: GPLv2
  */
 
+
+
 #include <stddef.h>
 #include <assert.h>
 
 #include "pus_st01_packets.h"
 #include "pus_packet.h"
 #include "pus_packet_queues.h"
+
+
+#ifdef PUS_CONFIGURE_ST01_ENABLED
 
 //
 // Creation of TC acceptance report
@@ -523,4 +528,4 @@ pusError_t pus_expectSt01Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 	}
 }
 
-
+#endif

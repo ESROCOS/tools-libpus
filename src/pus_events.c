@@ -4,11 +4,9 @@
  * Licence: GPLv2
  */
 
-#include "pus_threads.h"
-#include "pus_error.h"
-#include "pus_packet.h"
-#include <string.h>
+
 #include "pus_events.h"
+#ifdef PUS_CONFIGURE_EVENTS_TABLE
 
 
 // Mutex to lock access to the event tables
@@ -401,3 +399,4 @@ void pus_events_setEventAuxData2(pusSt05EventAuxData_t* data, pusStoredParam_t d
 }
 
 
+#endif

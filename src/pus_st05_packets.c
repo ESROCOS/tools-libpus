@@ -4,14 +4,10 @@
  * Licence: GPLv2
  */
 
-#include "pus_threads.h"
-#include "pus_error.h"
-#include "pus_packet.h"
-#include "pus_stored_param.h"
+
 #include "pus_st05_packets.h"
+#ifdef PUS_CONFIGURE_ST05_ENABLED
 
-
-#include "pus_events.h"
 
 
 pusError_t pus_tm_5_X_createEventReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, const pusSt05Event_t* event, pusApid_t destination, pusSubservice_t subtype)
@@ -217,3 +213,4 @@ pusError_t pus_expectSt05Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 	}
 }
 
+#endif

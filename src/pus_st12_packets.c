@@ -5,6 +5,7 @@
  */
 
 #include "pus_st12_packets.h"
+#ifdef PUS_CONFIGURE_ST12_ENABLED
 
 
 pusError_t pus_tc_12_X_createDefaultPacket(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSubservice_t subtype)
@@ -190,3 +191,5 @@ pusError_t pus_expectSt12Tc(const pusPacket_t* packet, pusSubservice_t expectedS
 		return expectResult;
 	}
 }
+
+#endif

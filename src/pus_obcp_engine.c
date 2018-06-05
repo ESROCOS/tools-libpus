@@ -5,6 +5,7 @@
  */
 
 #include "pus_obcp_engine.h"
+#ifdef PUS_CONFIGURE_OBCP_ENGINE
 
 #include <string.h>
 #include <stdio.h>
@@ -752,3 +753,4 @@ void* pus_obcp_thread( void * arg )
 
 #endif // PUS_DISABLE_THREADS //TODO
 
+#endif

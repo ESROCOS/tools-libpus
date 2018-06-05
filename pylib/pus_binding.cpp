@@ -7,6 +7,8 @@
 #include "pybind11/pybind11.h"
 #include "pybind11/stl.h"
 
+//#include "pus_types.h"
+
 #include "pus_apid.h"
 #include "pus_st01_packets.h"
 #include "pus_st03_packets.h"
@@ -207,6 +209,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_getInfoApid", &pus_getInfoApid, "Binding for pus_getInfoApid");
 	m.def("pus_getNextPacketCount", &pus_getNextPacketCount, "Binding for pus_getNextPacketCount");
 
+#ifdef PUS_CONFIGURE_ST01_ENABLED
 	m.doc() = "pus_st01_packets binding";
 	m.def("pus_tm_1_X_createReport", &pus_tm_1_X_createReport, "Binding for pus_tm_1_X_createReport");
 	m.def("pus_tm_1_1_createAcceptanceReportSuccess", &pus_tm_1_1_createAcceptanceReportSuccess, "Binding for pus_tm_1_1_createAcceptanceReportSuccess");
@@ -240,7 +243,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_getSt01FailureData", &pus_getSt01FailureData_, "Binding for pus_getSt01FailureData");
 	m.def("pus_getSt01FailureAddress", &pus_getSt01FailureAddress_, "Binding for pus_getSt01FailureAddress");
 	m.def("pus_expectSt01Tm", &pus_expectSt01Tm, "Binding for pus_expectSt01Tm");
+#endif
 
+#ifdef PUS_CONFIGURE_ST03_ENABLED
 	m.doc() = "pus_st03_packets binding";
 	m.def("pus_tm_3_25_createHousekeepingReportDefault", &pus_tm_3_25_createHousekeepingReportDefault, "Binding for pus_tm_3_25_createHousekeepingReportDefault");
 	m.def("pus_tm_3_25_createHousekeepingReport", &pus_tm_3_25_createHousekeepingReport, "Binding for pus_tm_3_25_createHousekeepingReport");
@@ -276,7 +281,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_real64ToParam", &pus_real64ToParam_, "Binding for pus_real64ToParam");
 	m.def("pus_boolToParam", &pus_boolToParam_, "Binding for pus_boolToParam");
 	m.def("pus_byteToParam", &pus_byteToParam_, "Binding for pus_byteToParam");
+#endif
 
+#ifdef PUS_CONFIGURE_ST05_ENABLED
 	py::class_<st05Event>(m, "st05Event")
 			.def(py::init<>());
 	m.doc() = "pus_st05_packets binding";
@@ -296,8 +303,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_st05_getEventId", &pus_st05_getEventId, "Binding for pus_st05_getEventId");
 	m.def("pus_st05_getDataType1", &pus_st05_getDataType1, "Binding for pus_st05_getDataType1");
 	m.def("pus_st05_getDataType2", &pus_st05_getDataType2, "Binding for pus_st05_getDataType2");
+#endif
 
-
+#ifdef PUS_CONFIGURE_ST08_ENABLED
 	m.doc() = "pus_st08_packets binding";
 	m.def("pus_st08_initialize", &pus_st08_initialize, "Binding for pus_st08_initialize");
 	m.def("pus_st08_isInitialized", &pus_st08_isInitialized, "Binding for pus_st08_isInitialized");
@@ -306,7 +314,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_8_1_getFunctionId", &pus_tc_8_1_getFunctionId_, "Binding for pus_tc_8_1_getFunctionId");
 	m.def("pus_st08_isInFunctionTable", &pus_st08_isInFunctionTable, "Binding for pus_st08_isInFunctionTable");
 	m.def("pus_expectSt08", &pus_expectSt08, "Binding for pus_expectSt08");
+#endif
 
+#ifdef PUS_CONFIGURE_ST09_ENABLED
 	m.def("pus_tc_9_1_createSetTimeReportRate", &pus_tc_9_1_createSetTimeReportRate, "Binding for pus_tc_9_1_createSetTimeReportRate");
 	m.def("pus_tm_9_2_createCucTimeReport", &pus_tm_9_2_createCucTimeReport, "Binding for pus_tm_9_2_createCucTimeReport");
 	m.def("pus_tc_9_1_setExponentialRate", &pus_tc_9_1_setExponentialRate, "Binding for pus_tc_9_1_setExponentialRate");
@@ -318,7 +328,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_time_getReportGenerationRate", &pus_time_getReportGenerationRate, "Binding for pus_time_getReportGenerationRate");
 	m.def("pus_expectSt09Tc", &pus_expectSt09Tc, "Binding for pus_expectSt09Tc");
 	m.def("pus_expectSt09Tm", &pus_expectSt09Tm, "Binding for pus_expectSt09Tm");
+#endif
 
+#ifdef PUS_CONFIGURE_ST11_ENABLED
 	m.doc() = "pus_st11_packets binding";
 	m.def("pus_tc_11_X_createDefaultPacket", &pus_tc_11_X_createDefaultPacket, "Binding for pus_tc_11_X_createDefaultPacket");
 	m.def("pus_tc_11_1_createEnableTimeBasedSchedule", &pus_tc_11_1_createEnableTimeBasedSchedule, "Binding for pus_tc_11_1_createEnableTimeBasedSchedule");
@@ -332,7 +344,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_11_4_get_request", &pus_tc_11_4_get_request, "Binding for pus_tc_11_4_get_request");
 	m.def("pus_tc_11_4_get_release_time", &pus_tc_11_4_get_release_time, "Binding for pus_tc_11_4_get_release_time");
 	m.def("pus_expectSt11Tc", &pus_expectSt11Tc, "Binding for pus_expectSt11Tc");
+#endif
 
+#ifdef PUS_CONFIGURE_ST12_ENABLED
 	m.doc() = "pus_st12_packets binding";
 	m.def("pus_tc_12_X_createDefaultPacket", &pus_tc_12_X_createDefaultPacket, "Binding for pus_tc_12_X_createDefaultPacket");
 	m.def("pus_tc_12_1_createEnableParameterMonitoringDefinitions", &pus_tc_12_1_createEnableParameterMonitoringDefinitions, "Binding for pus_tc_12_1_createEnableParameterMonitoringDefinitions");
@@ -342,14 +356,18 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_12_1_2_setPmonId", &pus_tc_12_1_2_setPmonId, "Binding for pus_tc_12_1_2_setPmonId");
 	m.def("pus_tc_12_1_2_getPmonId", &pus_tc_12_1_2_getPmonId_, "Binding for pus_tc_12_1_2_getPmonId");
 	m.def("pus_expectSt12Tc", &pus_expectSt12Tc, "Binding for pus_expectSt12Tc");
+#endif
 
+#ifdef PUS_CONFIGURE_ST17_ENABLED
 	m.doc() = "pus_st17_packets binding";
 	m.def("pus_tc_17_1_createConnectionTestRequest", &pus_tc_17_1_createConnectionTestRequest, "Binding for pus_tc_17_1_createConnectionTestRequest");
 	m.def("pus_tm_17_2_createConnectionTestReport", &pus_tm_17_2_createConnectionTestReport, "Binding for pus_tm_17_2_createConnectionTestReport");
 	m.def("pus_st17_createTestResponse", &pus_st17_createTestResponse, "Binding for pus_st17_createTestResponse");
 	m.def("pus_expectSt17Tc", &pus_expectSt17Tc, "Binding for pus_expectSt17Tc");
 	m.def("pus_expectSt17Tm", &pus_expectSt17Tm, "Binding for pus_expectSt17Tm");
+#endif
 
+#ifdef PUS_CONFIGURE_ST18_ENABLED
 	m.def("pus_tc_18_X_createDefaultRequest", &pus_tc_18_X_createDefaultRequest, "Binding f	or pus_tc_18_X_createDefaultRequest");
 	m.def("pus_tc_18_1_createLoadObcpDirectRequest", &pus_tc_18_1_createLoadObcpDirectRequest_, "Binding for pus_tc_18_1_createLoadObcpDirectRequest");
 	m.def("pus_tc_18_2_createUnloadObcpRequest", &pus_tc_18_2_createUnloadObcpRequest_, "Binding for pus_tc_18_2_createUnloadObcpRequest");
@@ -374,7 +392,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_18_13_setRepositoryPath", &pus_tc_18_13_setRepositoryPath_, "Binding for pus_tc_18_13_setRepositoryPath");
 	m.def("pus_tc_18_13_getRepositoryPath", &pus_tc_18_13_getRepositoryPath_, "Binding for pus_tc_18_13_getRepositoryPath");
 	m.def("pus_expectSt18Tc", &pus_expectSt18Tc, "Binding for pus_expectSt18Tc");
+#endif
 
+#ifdef PUS_CONFIGURE_ST19_ENABLED
 	m.doc() = "pus_st19_packets binding";
 	m.def("pus_tc_19_X_createDefaultEventActionRequest", &pus_tc_19_X_createDefaultEventActionRequest, "Binding for pus_tc_19_X_createDefaultEventActionRequest");
 	m.def("pus_tc_19_1_createAddEventActionDefinitionsRequest", &pus_tc_19_1_createAddEventActionDefinitionsRequest, "Binding for pus_tc_19_1_createAddEventActionDefinitionsRequest");
@@ -390,7 +410,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_19_1_setAction", &pus_tc_19_1_setAction, "Binding for pus_tc_19_1_setAction");
 	m.def("pus_tc_19_1_getAction", &pus_tc_19_1_getAction, "Binding for pus_tc_19_1_getAction");
 	m.def("pus_expectSt19Tc", &pus_expectSt19Tc, "Binding for pus_expectSt19Tc");
+#endif
 
+#ifdef PUS_CONFIGURE_ST20_ENABLED
 	m.doc() = "pus_st20_packets binding";
 	m.def("pus_tc_20_1_createParameterValueRequest", &pus_tc_20_1_createParameterValueRequest, "Binding for pus_tc_20_1_createParameterValueRequest");
 	m.def("pus_tm_20_2_createParameterValueReport", &pus_tm_20_2_createParameterValueReport, "Binding for pus_tm_20_2_createParameterValueReport");
@@ -407,7 +429,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_st20_getOnBoardReportInfoType", &pus_st20_getOnBoardReportInfoType, "Binding for pus_st20_getOnBoardReportInfoType");
 	m.def("pus_expectSt20Tc", &pus_expectSt20Tc, "Binding for pus_expectSt20Tc");
 	m.def("pus_expectSt20Tm", &pus_expectSt20Tm, "Binding for pus_expectSt20Tm");
+#endif
 
+#ifdef PUS_CONFIGURE_ST23_ENABLED
 	m.doc() = "pus_st23_packets binding";
 	m.def("pus_tc_23_1_createCreateFileRequest", &pus_tc_23_1_createCreateFileRequest_, "Binding for pus_tc_23_1_createCreateFileRequest");
 	m.def("pus_tc_23_2_createDeleteFileRequest", &pus_tc_23_2_createDeleteFileRequest_, "Binding for pus_tc_23_2_createDeleteFileRequest");
@@ -427,4 +451,5 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_23_14_getSourceRepositoryPath", &pus_tc_23_14_getSourceRepositoryPath_, "Binding for pus_tc_23_14_getSourceRepositoryPath");
 	m.def("pus_tc_23_14_getTargetRepositoryPath", &pus_tc_23_14_getTargetRepositoryPath_, "Binding for pus_tc_23_14_getTargetRepositoryPath");
 	m.def("pus_tc_tm_23_1_4_getMaximumSize", &pus_tc_tm_23_1_4_getMaximumSize_, "Binding for pus_tc_tm_23_1_4_getMaximumSize");
+#endif
 }

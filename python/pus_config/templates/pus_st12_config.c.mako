@@ -56,6 +56,7 @@ def getAliasName( configType ):
 
 
 #include "pus_st12_config.h"
+#ifdef PUS_CONFIGURE_ST12_ENABLED
 
 // ST[12] constants
 const pusSt12PmonId_t pus_ST12_PARAM_LIMIT = PUS_ST12_PARAM_LIMIT;
@@ -74,7 +75,5 @@ pusError_t pus_pmon_configure()
     return PUS_NO_ERROR;
 }
 
-
-
-
+#endif
 

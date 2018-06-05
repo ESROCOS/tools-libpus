@@ -21,8 +21,16 @@
 
 
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST05_ENABLED
+
+
 #include "pus_error.h"
 #include "pus_apid.h"
+#include "pus_threads.h"
+#include "pus_packet.h"
+#include "pus_stored_param.h"
+
+#include "pus_events.h"
 
 #ifdef  __cplusplus
 extern "C" {
@@ -102,6 +110,8 @@ pusError_t pus_expectSt05Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif // PUS_ST05_PACKETS_H

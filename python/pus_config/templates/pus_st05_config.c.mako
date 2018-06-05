@@ -26,6 +26,8 @@ tempvars['eventCount'] = 0
 
 
 #include "pus_st05_config.h"
+#ifdef PUS_CONFIGURE_EVENTS_TABLE
+
 #include "pus_stored_param.h" 
 
 
@@ -98,3 +100,4 @@ pusError_t pus_events_create${event['label']}(pusSt05Event_t* event, ${event['da
 % endfor
 
 
+#endif

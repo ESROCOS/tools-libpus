@@ -21,6 +21,9 @@
 #ifndef PUS_ST03_CONFIG_H
 #define PUS_ST03_CONFIG_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_HK_PARAMS_TABLE
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -75,5 +78,6 @@ pusError_t pus_hk_get${param['label']}(${param['type']}* value);
 }
 #endif
 
+#endif
 
 #endif // PUS_ST03_CONFIG_H

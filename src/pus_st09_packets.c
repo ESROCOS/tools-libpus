@@ -5,6 +5,8 @@
  */
 
 #include "pus_st09_packets.h"
+#ifdef PUS_CONFIGURE_ST09_ENABLED
+
 #include <math.h>
 
 pusSt09ExponentialRate_t pus_time_reportGenerationExponentialRate;
@@ -278,3 +280,4 @@ pusError_t pus_expectSt09Tm(const pusPacket_t* packet, const char* function)
 }
 
 
+#endif

@@ -5,8 +5,7 @@
  */
 
 #include "pus_st17_packets.h"
-#include "pus_error.h"
-#include "pus_packet.h"
+#ifdef PUS_CONFIGURE_ST17_ENABLED
 
 
 pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
@@ -182,3 +181,4 @@ pusError_t pus_expectSt17Tm(const pusPacket_t* packet, pusSubservice_t expectedS
 	}
 }
 
+#endif

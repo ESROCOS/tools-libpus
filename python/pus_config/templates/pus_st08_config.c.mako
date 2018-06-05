@@ -10,7 +10,10 @@
 //                     -- DO NOT MODIFY --
 
 
+
 #include "pus_st08_config.h"
+#ifdef PUS_CONFIGURE_ST08_ENABLED
+
 
 pusError_t (*pus_st08_functionTable[${config['functions'].__len__()}])();
 
@@ -30,3 +33,5 @@ pusError_t pus_st08_configure()
 			
 	return PUS_NO_ERROR;
 }
+
+#endif

@@ -11,7 +11,7 @@
 
 
 #include "pus_st11_config.h"
-
+#ifdef PUS_CONFIGURE_ST11_ENABLED
 
 pusSchedulingActivity_t pus_scheduling_table[${config['maximumActivities']}];
 
@@ -23,3 +23,5 @@ pusError_t pus_scheduling_configure()
 {
 	return PUS_NO_ERROR;
 }
+
+#endif
