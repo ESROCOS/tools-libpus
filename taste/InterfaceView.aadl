@@ -340,7 +340,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/tcdispatcher.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/tcdispatch.zip");
 END TcDispatch;
 
 SYSTEM IMPLEMENTATION TcDispatch.others
@@ -1408,7 +1408,7 @@ FEATURES
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/timereport.zip");
+  Source_Text => ("/home/esrocos/esrocos_workspace/install/share/taste_components/pus_test_01/timereportapid.zip");
 END TimeReportAPID;
 
 SYSTEM IMPLEMENTATION TimeReportAPID.others
@@ -2950,7 +2950,7 @@ SUBCOMPONENTS
   };
 CONNECTIONS
   ST18_PI_tc18_OBCP_PI_tc18 : SUBPROGRAM ACCESS ST18.PI_tc18 -> PI_tc18 {
-    Taste::coordinates => "142230 108634 140088 108634 140088 107301 148661 107301";
+    Taste::coordinates => "142230 108634 146085 108634 146085 107301 148661 107301";
   };
   OBCP_RI_ACK_ST18_RI_ACK : SUBPROGRAM ACCESS RI_ACK -> ST18.RI_ACK {
     Taste::coordinates => "155171 108726 159416 108726 159416 112101 163653 112101";
@@ -4667,9 +4667,6 @@ WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
 SYSTEM interfaceview
-PROPERTIES
-  Taste::dataView => ("DataView");
-  Taste::dataViewPath => ("DataView.aadl");
 END interfaceview;
 
 SYSTEM IMPLEMENTATION interfaceview.others
@@ -4685,7 +4682,7 @@ CONNECTIONS
     Taste::coordinates => "66854 90896 62370 90896 62370 76607 57092 76607";
   };
   OnBoard_PI_newTc_Ground_RI_newTc : SUBPROGRAM ACCESS OnBoard.PI_newTc -> Ground.RI_newTc {
-    Taste::coordinates => "57092 65981 64654 65981 64654 58403 66854 58403";
+    Taste::coordinates => "57092 65981 61439 65981 61439 58403 66854 58403";
   };
 END interfaceview.others;
 

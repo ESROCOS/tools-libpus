@@ -26,7 +26,7 @@ bool pus_obcp_engineRunning = false;
 //MUTEX
 pusMutex_t* pus_obcp_mutex = NULL;
 
-pusError_t pus_obcp_initialize(pusMutex_t* mutex) //TODO
+pusError_t pus_obcp_initialize(pusMutex_t* mutex)
 {
 	if (pus_obcp_isInitialized())
 	{
@@ -42,7 +42,7 @@ pusError_t pus_obcp_initialize(pusMutex_t* mutex) //TODO
 
 	mp_init_context_arrays();
 
-	if( PUS_NO_ERROR != pus_obcp_configure()) //TODO
+	if( PUS_NO_ERROR != pus_obcp_configure())
 	{
 		if (NULL != pus_obcp_mutex)
 		{
@@ -66,7 +66,6 @@ pusError_t pus_obcp_initialize(pusMutex_t* mutex) //TODO
 		pthread_create(&pus_obcp_threads[i], NULL, pus_obcp_thread, (void*)i);
 	}
 
-	//TODO
 	pus_obcp_startEngine();
 
 	return PUS_NO_ERROR;
@@ -751,6 +750,6 @@ void* pus_obcp_thread( void * arg )
     return NULL;
 }
 
-#endif // PUS_DISABLE_THREADS //TODO
+#endif // PUS_DISABLE_THREADS
 
 #endif

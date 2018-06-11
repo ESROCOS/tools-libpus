@@ -26,7 +26,7 @@ BEGIN
 
 
 	IMPORTS 
-	PusUInt16, PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+	PusUInt16, PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
 	
 	PusSt23RepositoryPath, PusSt23FileName FROM PUS-ST23
 	

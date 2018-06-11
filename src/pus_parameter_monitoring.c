@@ -5,6 +5,7 @@
  */
 
 #include "pus_parameter_monitoring.h"
+#ifdef PUS_CONFIGURE_ST12_ENABLED
 
 
 // Mutex to lock access to the event tables
@@ -374,3 +375,5 @@ pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id, bool value)
 		return PUS_NO_ERROR;
 	}
 }
+
+#endif

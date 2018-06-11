@@ -33,11 +33,10 @@ BEGIN
   	
   	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
   	
-  	PusUInt32 FROM PUS-NbitIntegers
+  	PusUInt32 FROM PUS-TypesDefinitions
   	
   	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
   	;
-
 
     -- TM secondary header
     PusTmHeader ::= SEQUENCE

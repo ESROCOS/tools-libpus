@@ -4,6 +4,9 @@
  * Licence: GPLv2
  */
 
+#include "pus_housekeeping.h"
+#ifdef PUS_CONFIGURE_HK_PARAMS_TABLE
+
 #include "pus_threads.h"
 #include "pus_error.h"
 #include "pus_packet.h"
@@ -516,4 +519,5 @@ pusError_t pus_hk_getParamType(pusSt03ParamId_t param, pusParamType_t* type)
 	}
 }
 
+#endif
 

@@ -15,8 +15,10 @@
 #ifndef PUS_EVENT_ACTION_H
 #define PUS_EVENT_ACTION_H
 
-
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST19_ENABLED
+
+
 #include "pus_error.h"
 #include "pus_threads.h"
 #include "pus_events.h"
@@ -79,5 +81,6 @@ pusError_t pus_eventAction_getAction(pusPacket_t* tcAction , pusSt05EventId_t ev
 }
 #endif
 
+#endif
 
 #endif

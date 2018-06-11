@@ -14,7 +14,7 @@ PUS-ST05 DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-NbitIntegers
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
     ;
     
     -- Event definition identifier

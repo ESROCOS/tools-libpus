@@ -215,7 +215,7 @@ pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23File
 					return PUS_SET_ERROR(PUS_ERROR_CREATING_FILE);
 				}
 
-				/* TODO todo 0
+				/* TODO
 				fseek(fp, size-1, 0);
 				fputs("5", fp);
 				if( (uint32_t)ftell(fp) != size)

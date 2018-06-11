@@ -8,12 +8,12 @@
 # See the esrocos.cmake file for details on the variables and targets created 
 # to build the ASN.1 types.
 
-esrocos_asn1_types_package(esrocos_pustypes
-    ccsds_packet.asn
+esrocos_asn1_types_package(esrocos_pustypes_${MISSION}
+    ${CCDS_PACKET_PATH_${MISSION}}ccsds_packet.asn
     ccsds_packet_fields.asn
     pus_config.asn
-    pus_nbit_integers.asn
-    pus_services.asn
+    pus_types_definitions.asn
+    ${SERVICES_PATH_${MISSION}}pus_services.asn
     pus_st01.asn
     pus_st03.asn
     pus_st05.asn
@@ -25,9 +25,10 @@ esrocos_asn1_types_package(esrocos_pustypes
     pus_st20.asn
     pus_st23.asn
     pus_time.asn
+    ${${MISSION}_ASN1}
 )
 
-esrocos_asn1_types_build_test(esrocos_pustypes)
-esrocos_asn1_types_install(esrocos_pustypes ${CMAKE_INSTALL_PREFIX}/types/pus)
+esrocos_asn1_types_build_test(esrocos_pustypes_${MISSION})
+esrocos_asn1_types_install(esrocos_pustypes_${MISSION} ${CMAKE_INSTALL_PREFIX}/types/pus)
 
 

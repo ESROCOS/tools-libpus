@@ -18,10 +18,34 @@
 set(LIBPUS_MISSION "esrocos_pus_${MISSION}")
 
 
+# CCSDS packets missionization (path to the file relative to libpus/asn1/)
+if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION}/ccsds_packet.asn")
+	set(CCDS_PACKET_PATH_${MISSION} "../mission/${MISSION}/")
+else()
+	set(CCDS_PACKET_PATH_${MISSION} "")
+endif()
+
+# Services/subservices missionization
+if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_services.asn")
+	set(SERVICES_PATH_${MISSION} "../mission/${MISSION}/")
+else()
+	set(SERVICES_PATH_${MISSION} "")
+endif()
+
+# Mission configuration new ASN1 files
+file(GLOB ${MISSION}_ASN1_FILES "${CMAKE_CURRENT_SOURCE_DIR}/pus_st*.asn")
+
+SET(${MISSION}_ASN1 "")
+foreach(asn1_file ${${MISSION}_ASN1_FILES})
+	get_filename_component(aux ${asn1_file} NAME)
+	SET(${MISSION}_ASN1 ${${MISSION}_ASN1} "../mission/${MISSION}/${aux}")
+endforeach()
+
 #
 # Build the instances of the PUS, Micropython and bindings library, including the common code and the mission definitions
 #
 
+add_subdirectory(${CMAKE_SOURCE_DIR}/asn1 ${CMAKE_CURRENT_BINARY_DIR}/asn1)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src ${CMAKE_CURRENT_BINARY_DIR}/pus)
 add_subdirectory(${CMAKE_SOURCE_DIR}/mpy ${CMAKE_CURRENT_BINARY_DIR}/mpy)
 add_subdirectory(${CMAKE_SOURCE_DIR}/pylib ${CMAKE_CURRENT_BINARY_DIR}/pylib)
@@ -101,9 +125,9 @@ add_dependencies(${LIBPUS_MISSION} mission_generate_code_${MISSION})
 add_coverage(${LIBPUS_MISSION}_static)
 
 # PUS types
-add_library(${LIBPUS_MISSION}_types SHARED ${esrocos_pustypes_C_SOURCES})
+add_library(${LIBPUS_MISSION}_types SHARED ${esrocos_pustypes_${MISSION}_C_SOURCES})
 
-add_library(${LIBPUS_MISSION}_types_static STATIC ${esrocos_pustypes_C_SOURCES})
+add_library(${LIBPUS_MISSION}_types_static STATIC ${esrocos_pustypes_${MISSION}_C_SOURCES})
 set_target_properties(${LIBPUS_MISSION}_types_static PROPERTIES OUTPUT_NAME ${LIBPUS_MISSION}_types)
 
 
@@ -116,6 +140,6 @@ install(TARGETS ${LIBPUS_MISSION} ${LIBPUS_MISSION}_static ${LIBPUS_MISSION}_typ
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 
-install(FILES ${GENERATED_H_FILES} pus_enable_services.h DESTINATION include/pus/missions/${MISSION})
-install(FILES ${JSON} DESTINATION share/pus/missions/${MISSION})
+install(FILES ${GENERATED_H_FILES} pus_enable_services.h pus_mission_types.h DESTINATION include/pus/mission/${MISSION})
+install(FILES ${JSON} DESTINATION share/pus/mission/${MISSION})
 

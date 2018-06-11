@@ -9,7 +9,7 @@ PUS-CcsdsPacketFields DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
-    PusUInt4, PusUInt11, PusUInt14, PusUInt16, PusUInt32 FROM PUS-NbitIntegers
+    PusUInt4, PusUInt11, PusUInt14, PusUInt16, PusUInt32 FROM PUS-TypesDefinitions
     PusServiceType, PusSubserviceType FROM PUS-Services;
 
 

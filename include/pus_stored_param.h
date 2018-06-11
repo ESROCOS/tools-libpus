@@ -12,10 +12,11 @@
 #ifndef PUS_STORED_PARAM_H
 #define PUS_STORED_PARAM_H
 
+#include "pus_types.h"
 #include "pus_threads.h"
 #include "pus_error.h"
 #include "pus_packet.h"
-#include "pus_types.h"
+
 
 #ifdef  __cplusplus
 extern "C" {

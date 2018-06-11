@@ -5,8 +5,7 @@
  */
 
 #include "pus_event_action.h"
-
-
+#ifdef PUS_CONFIGURE_ST19_ENABLED
 
 pusMutex_t* pus_eventAction_mutex;
 
@@ -212,3 +211,4 @@ pusError_t pus_eventAction_getAction(pusPacket_t* tcAction , pusSt05EventId_t ev
 	return PUS_NO_ERROR;
 }
 
+#endif

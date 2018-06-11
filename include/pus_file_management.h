@@ -13,6 +13,8 @@
 #define PUS_FILE_MANAGEMENT_H
 
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST23_ENABLED
+
 #include "pus_error.h"
 #include "pus_threads.h"
 
@@ -106,6 +108,8 @@ pusError_t pus_files_getDomainFromRepositoryPath(pusSt23RepositoryDomain_t* doma
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif // PUS_FILE_MANAGEMENT_H
