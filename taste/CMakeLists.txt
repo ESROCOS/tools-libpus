@@ -14,7 +14,7 @@ file(GLOB HEADERS ${CMAKE_SOURCE_DIR}/include/*.h)
 esrocos_preinstall_files(pus_headers_${COMPONENT_NAME} include/pus ${HEADERS})
 
 file(GLOB JSON_HEADERS ${CMAKE_BINARY_DIR}/mission/test_01/generated/include/*.h)
-esrocos_preinstall_files(pus_mission_headers_${COMPONENT_NAME} include/pus/mission/test_01 ${JSON_HEADERS} ${CMAKE_SOURCE_DIR}/mission/test_01/pus_enable_services.h)
+esrocos_preinstall_files(pus_mission_headers_${COMPONENT_NAME} include/pus/mission/test_01 ${JSON_HEADERS} ${CMAKE_SOURCE_DIR}/mission/test_01/pus_enable_services.h ${CMAKE_SOURCE_DIR}/mission/test_01/pus_mission_types.h)
 
 esrocos_preinstall_directories(mpy_headers_${COMPONENT_NAME} include/pus/mission/test_01/mpy ${CMAKE_BINARY_DIR}/mission/test_01/mpy/include)
 
