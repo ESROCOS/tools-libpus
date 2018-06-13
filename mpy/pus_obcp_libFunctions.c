@@ -150,7 +150,7 @@ STATIC mp_obj_t obcpModule_getDictHkParams( void ) {
     mp_obj_t dict = mp_obj_new_dict(0);
     for(size_t i = 0; i < pus_ST03_PARAM_LIMIT; i++)
     {
-        label = mp_obj_new_str(pus_st03_paramInfo[i].label, strlen(pus_st03_paramInfo[i].label), false);
+        label = mp_obj_new_str(pus_st03_paramInfo[i].label, strlen(pus_st03_paramInfo[i].label));
         id = mp_obj_new_int(i);
         mp_obj_dict_store(dict, label, id);
     }
@@ -174,7 +174,7 @@ STATIC mp_obj_t obcpModule_getDictOnBoardParams( void ) {
     mp_obj_t dict = mp_obj_new_dict(0);
     for(size_t i = 0; i < pus_ST20_PARAM_LIMIT; i++)
     {
-        label = mp_obj_new_str(pus_st20_paramInfo[i].label, strlen(pus_st20_paramInfo[i].label), false);
+        label = mp_obj_new_str(pus_st20_paramInfo[i].label, strlen(pus_st20_paramInfo[i].label));
         id = mp_obj_new_int(i);
         mp_obj_dict_store(dict, label, id);
     }
@@ -197,7 +197,7 @@ STATIC mp_obj_t obcpModule_getDictEvents( void ) {
     mp_obj_t dict = mp_obj_new_dict(0);
     for(size_t i = 0; i < pus_st05_eventInfoListLength; i++)
     {
-        label = mp_obj_new_str(pus_st05_eventInfoList[i].label, strlen(pus_st05_eventInfoList[i].label), false);
+        label = mp_obj_new_str(pus_st05_eventInfoList[i].label, strlen(pus_st05_eventInfoList[i].label));
         id = mp_obj_new_int(i);
         mp_obj_dict_store(dict, label, id);
     }
@@ -221,7 +221,7 @@ STATIC mp_obj_t obcpModule_getDictFunctions( void ) {
     mp_obj_t dict = mp_obj_new_dict(0);
     for(size_t i = 0; i < pus_st08_limitFunctions; i++)
     {
-        label = mp_obj_new_str(pus_st08_functionInfoList[i].label, strlen(pus_st08_functionInfoList[i].label), false);
+        label = mp_obj_new_str(pus_st08_functionInfoList[i].label, strlen(pus_st08_functionInfoList[i].label));
         id = mp_obj_new_int(i);
         mp_obj_dict_store(dict, label, id);
     }
@@ -610,17 +610,17 @@ STATIC mp_obj_t obcpModule_getNextEvent( mp_obj_t py_counter) {
         
         mp_obj_t dict = mp_obj_new_dict(3);
        
-        mp_obj_dict_store(dict, mp_obj_new_str("id", 2, false) ,  mp_obj_new_int(event.eventId));
+        mp_obj_dict_store(dict, mp_obj_new_str("id", 2) ,  mp_obj_new_int(event.eventId));
         
         extern pusSt05EventInfo_t pus_st05_eventInfoList[];
     
         pusParamType_t type1 = pus_st05_eventInfoList[event.eventId].data.dataType1;
         mp_obj_t data1 = auxFunction_getObjFromParam(event.data.data1, type1);
-        mp_obj_dict_store(dict, mp_obj_new_str("data1", 5, false) ,  data1);
+        mp_obj_dict_store(dict, mp_obj_new_str("data1", 5) ,  data1);
         
         pusParamType_t type2 = pus_st05_eventInfoList[event.eventId].data.dataType2;
         mp_obj_t data2 = auxFunction_getObjFromParam(event.data.data2, type2);
-        mp_obj_dict_store(dict, mp_obj_new_str("data2", 5, false) ,  data2);
+        mp_obj_dict_store(dict, mp_obj_new_str("data2", 5) ,  data2);
         
         
         list[0] = dict;
@@ -682,17 +682,17 @@ STATIC mp_obj_t obcpModule_getNextEventBlocking( mp_obj_t py_eventId, mp_obj_t p
     
     mp_obj_t dict = mp_obj_new_dict(3);
    
-    mp_obj_dict_store(dict, mp_obj_new_str("id", 2, false) ,  mp_obj_new_int(event.eventId));
+    mp_obj_dict_store(dict, mp_obj_new_str("id", 2) ,  mp_obj_new_int(event.eventId));
     
     extern pusSt05EventInfo_t pus_st05_eventInfoList[];
 
     pusParamType_t type1 = pus_st05_eventInfoList[event.eventId].data.dataType1;
     mp_obj_t data1 = auxFunction_getObjFromParam(event.data.data1, type1);
-    mp_obj_dict_store(dict, mp_obj_new_str("data1", 5, false) ,  data1);
+    mp_obj_dict_store(dict, mp_obj_new_str("data1", 5) ,  data1);
     
     pusParamType_t type2 = pus_st05_eventInfoList[event.eventId].data.dataType2;
     mp_obj_t data2 = auxFunction_getObjFromParam(event.data.data2, type2);
-    mp_obj_dict_store(dict, mp_obj_new_str("data2", 5, false) ,  data2);
+    mp_obj_dict_store(dict, mp_obj_new_str("data2", 5) ,  data2);
     
     
     list[0] = dict;

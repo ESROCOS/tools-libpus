@@ -14,7 +14,7 @@ BEGIN
 
 	
 	IMPORTS 
-	PusUInt32 FROM PUS-NbitIntegers
+	PusUInt32 FROM PUS-TypesDefinitions
 	;
 	
 	 -- PMON identifier

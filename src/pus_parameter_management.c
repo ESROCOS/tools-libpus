@@ -9,7 +9,7 @@
 #ifdef PUS_CONFIGURE_ONBOARD_PARAMS_TABLE
 
 // Mutex to lock access to the housekeeping parameter tables
-pusMutex_t* pus_parameters_mutex = NULL;
+pusMutex_t* pus_robot_control_mutex = NULL;
 
 // Initialized flag
 bool pus_parameters_initializedFlag = false;
@@ -30,23 +30,23 @@ pusError_t pus_parameters_initialize(pusMutex_t* mutex)
 		return PUS_SET_ERROR(PUS_ERROR_ALREADY_INITIALIZED);
 	}
 
-	pus_parameters_mutex = mutex;
+	pus_robot_control_mutex = mutex;
 
-	if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+	if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 	{
 		return PUS_ERROR_INITIALIZATION;
 	}
 
 	if (PUS_NO_ERROR != pus_parameters_configure())
 	{
-		if (NULL != pus_parameters_mutex)
+		if (NULL != pus_robot_control_mutex)
 		{
-			(void) pus_mutexUnlockOk(pus_parameters_mutex);
+			(void) pus_mutexUnlockOk(pus_robot_control_mutex);
 		}
 		return PUS_SET_ERROR(PUS_ERROR_INITIALIZATION);
 	}
 
-	if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+	if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 	{
 		return PUS_ERROR_INITIALIZATION;
 	}
@@ -63,7 +63,7 @@ pusError_t pus_parameters_finalize()
 	}
 	else
 	{
-		pus_parameters_mutex = NULL;
+		pus_robot_control_mutex = NULL;
 		pus_parameters_initializedFlag = false;
 		return PUS_NO_ERROR;
 	}
@@ -91,14 +91,14 @@ pusError_t pus_parameters_getStoredParam(pusSt20OnBoardParamId_t param, pusStore
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
 
 		*outValue = pus_st20_params[param];
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -119,14 +119,14 @@ pusError_t pus_parameters_setStoredParam(pusSt20OnBoardParamId_t param, pusStore
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
 
 		pus_st20_params[param] = outValue;
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -152,7 +152,7 @@ pusError_t pus_parameters_getUInt32Param(pusSt20OnBoardParamId_t param, uint32_t
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -168,7 +168,7 @@ pusError_t pus_parameters_getUInt32Param(pusSt20OnBoardParamId_t param, uint32_t
 			result = pus_paramToUint32(outValue, pus_st20_params[param]);
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -189,7 +189,7 @@ pusError_t pus_parameters_setUInt32Param(pusSt20OnBoardParamId_t param, uint32_t
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -206,7 +206,7 @@ pusError_t pus_parameters_setUInt32Param(pusSt20OnBoardParamId_t param, uint32_t
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -231,7 +231,7 @@ pusError_t pus_parameters_getInt32Param(pusSt20OnBoardParamId_t param, int32_t* 
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -247,7 +247,7 @@ pusError_t pus_parameters_getInt32Param(pusSt20OnBoardParamId_t param, int32_t* 
 			result = pus_paramToInt32(outValue, pus_st20_params[param]);
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -268,7 +268,7 @@ pusError_t pus_parameters_setInt32Param(pusSt20OnBoardParamId_t param, int32_t v
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -286,7 +286,7 @@ pusError_t pus_parameters_setInt32Param(pusSt20OnBoardParamId_t param, int32_t v
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -311,7 +311,7 @@ pusError_t pus_parameters_getReal64Param(pusSt20OnBoardParamId_t param, double* 
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -327,7 +327,7 @@ pusError_t pus_parameters_getReal64Param(pusSt20OnBoardParamId_t param, double* 
 			result = pus_paramToReal64(outValue, pus_st20_params[param]);
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -348,7 +348,7 @@ pusError_t pus_parameters_setReal64Param(pusSt20OnBoardParamId_t param, double v
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -366,7 +366,7 @@ pusError_t pus_parameters_setReal64Param(pusSt20OnBoardParamId_t param, double v
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -391,7 +391,7 @@ pusError_t pus_parameters_getBoolParam(pusSt20OnBoardParamId_t param, bool* outV
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -407,7 +407,7 @@ pusError_t pus_parameters_getBoolParam(pusSt20OnBoardParamId_t param, bool* outV
 			result = pus_paramToBool(outValue, pus_st20_params[param]);
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -428,7 +428,7 @@ pusError_t pus_parameters_setBoolParam(pusSt20OnBoardParamId_t param, bool value
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -445,7 +445,7 @@ pusError_t pus_parameters_setBoolParam(pusSt20OnBoardParamId_t param, bool value
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -470,7 +470,7 @@ pusError_t pus_parameters_getByteParam(pusSt20OnBoardParamId_t param, uint8_t* o
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -486,7 +486,7 @@ pusError_t pus_parameters_getByteParam(pusSt20OnBoardParamId_t param, uint8_t* o
 			result = pus_paramToByte(outValue, pus_st20_params[param]);
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -507,7 +507,7 @@ pusError_t pus_parameters_setByteParam(pusSt20OnBoardParamId_t param, uint8_t va
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -524,7 +524,7 @@ pusError_t pus_parameters_setByteParam(pusSt20OnBoardParamId_t param, uint8_t va
 			result = PUS_NO_ERROR;
 		}
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}
@@ -549,7 +549,7 @@ pusError_t pus_parameters_getParamType(pusSt20OnBoardParamId_t param, pusParamTy
 	}
 	else
 	{
-		if (NULL != pus_parameters_mutex && !pus_mutexLockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexLockOk(pus_robot_control_mutex))
 		{
 			return PUS_ERROR_THREADS;
 		}
@@ -559,7 +559,7 @@ pusError_t pus_parameters_getParamType(pusSt20OnBoardParamId_t param, pusParamTy
 		*type = pus_st20_paramInfo[param].type;
 
 
-		if (NULL != pus_parameters_mutex && !pus_mutexUnlockOk(pus_parameters_mutex))
+		if (NULL != pus_robot_control_mutex && !pus_mutexUnlockOk(pus_robot_control_mutex))
 		{
 			result = PUS_ERROR_THREADS;
 		}

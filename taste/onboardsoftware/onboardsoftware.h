@@ -15,6 +15,8 @@ void onboardsoftware_startup();
 
 void onboardsoftware_PI_debugTrigger();
 
+void onboardsoftware_PI_pusTrigger();
+
 extern void onboardsoftware_RI_setParamValue(const asn1SccPusSt03ParameterId *,
                                              const asn1SccPusSt03StoredParam *);
 
@@ -30,6 +32,22 @@ extern void onboardsoftware_RI_setOnBoardParam(const asn1SccPusSt20OnBoardParame
 extern void onboardsoftware_RI_getOnBoardParam(const asn1SccPusSt20OnBoardParameterId *,
                                                asn1SccPusSt20StoredParam *,
                                                asn1SccPusSt01FailureCode *);
+
+extern void onboardsoftware_RI_getNextEvent(const asn1SccPusUInt64 *,
+                                            asn1SccPusSt05Event *,
+                                            asn1SccPusUInt64 *);
+
+extern void onboardsoftware_RI_tcTrigger();
+
+extern void onboardsoftware_RI_tmTrigger();
+
+extern void onboardsoftware_RI_EventReportTrigger();
+
+extern void onboardsoftware_RI_EventActionTrigger();
+
+extern void onboardsoftware_RI_HkReportTrigger();
+
+extern void onboardsoftware_RI_PmonTrigger();
 
 #ifdef __cplusplus
 }

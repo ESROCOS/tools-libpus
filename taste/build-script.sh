@@ -30,6 +30,10 @@ then
     source user_init_pre.sh
 fi
 
+# Set up the cache to limit the calls to ASN1SCC in DMT tools
+mkdir -p .cache
+export PROJECT_CACHE=$(pwd)/.cache
+
 # Use PolyORB-HI-C runtime
 USE_POHIC=1
 
@@ -107,8 +111,6 @@ cd "$SKELS" && rm -f st20.zip && zip st20 st20/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f onboardparams.zip && zip onboardparams onboardparams/* && cd $OLDPWD
 
-cd "$SKELS" && rm -f trigger.zip && zip trigger trigger/* && cd $OLDPWD
-
 cd "$SKELS" && rm -f onboardsoftware.zip && zip onboardsoftware onboardsoftware/* && cd $OLDPWD
 
 [ ! -z "$CLEANUP" ] && rm -rf binary*
@@ -174,7 +176,6 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC filemanagement:"$SKELS"/filemanagement.zip \
 	--subC st20:"$SKELS"/st20.zip \
 	--subC onboardparams:"$SKELS"/onboardparams.zip \
-	--subC trigger:"$SKELS"/trigger.zip \
 	--subC onboardsoftware:"$SKELS"/onboardsoftware.zip \
 	$ORCHESTRATOR_OPTIONS
 

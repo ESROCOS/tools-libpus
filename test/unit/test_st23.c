@@ -156,26 +156,26 @@ void packets_st23()
 void test_st23()
 {
 	pusSt23RepositoryPath_t repo;
-	//pus_files_getRepositoryPathFromId(&repo, PUS_REPOSITORY_GROUND);
+	//pus_files_getRepositoryPathFromId(&repo, PUS_REPOSITORY_TEST);
 	system("mkdir -p /tmp/pus");
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_finalize());
 	CU_ASSERT_FALSE(pus_files_isInitialized());
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(NULL, PUS_REPOSITORY_GROUND));
-	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_files_initialize(NULL, PUS_REPOSITORY_GROUND));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(NULL, PUS_REPOSITORY_TEST));
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_files_initialize(NULL, PUS_REPOSITORY_TEST));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_finalize());
 
 	pusMutex_t mutex;
 	pus_mutexInitOk(&mutex);
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(&mutex, PUS_REPOSITORY_GROUND));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(&mutex, PUS_REPOSITORY_TEST));
 	CU_ASSERT_TRUE(pus_files_isInitialized());
 
 	pusSt23FileName_t file, file2;
 	pusSt23MaximumSize_t size = 300;
 
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_getRepositoryPathFromId(&repo, PUS_REPOSITORY_GROUND));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_getRepositoryPathFromId(&repo, PUS_REPOSITORY_TEST));
 
 	memcpy(file.arr, "hello.txt\0", pus_ST23_MAX_SIZE_FILE_PATH - 1);
 	file.nCount = strlen((char*)file.arr) + 1;

@@ -15,7 +15,7 @@ PUS-Config DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
-    PusUInt32 FROM PUS-NbitIntegers
+    PusUInt32 FROM PUS-TypesDefinitions
     ;
     
     -- Dummy type, workaround for missing include bug in asn1.exe (TO-DO: remove when fixed)

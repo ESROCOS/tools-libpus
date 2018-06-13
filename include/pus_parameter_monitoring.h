@@ -14,6 +14,9 @@
 #ifndef PUS_PARAMETER_MONITORING_H
 #define PUS_PARAMETER_MONITORING_H
 
+#include "pus_types.h"
+#ifdef PUS_CONFIGURE_ST12_ENABLED
+
 #ifdef  __cplusplus
 extern "C" {
 #endif
@@ -21,7 +24,7 @@ extern "C" {
 #include "pus_apid.h"
 #include "pus_error.h"
 #include "pus_threads.h"
-#include "pus_types.h"
+
 #include "pus_packet.h"
 #include "pus_stored_param.h"
 #include "pus_housekeeping.h"
@@ -143,6 +146,8 @@ pusError_t pus_pmon_checkLimitBool(pusSt12PmonId_t id, bool value);
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif

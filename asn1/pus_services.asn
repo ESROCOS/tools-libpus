@@ -10,7 +10,7 @@ PUS-Services DEFINITIONS ::=
 
 BEGIN
 
-	IMPORTS PusUInt8 FROM PUS-NbitIntegers;
+	IMPORTS PusUInt8 FROM PUS-TypesDefinitions;
 
     -- PUS service types
     PusServiceType     ::= PusUInt8

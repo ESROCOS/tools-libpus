@@ -1,0 +1,26 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for small N-bit integers and types used in PUS packets
+
+PUS-TypesDefinitions DEFINITIONS ::=
+BEGIN
+
+	PusUInt3  ::= INTEGER (0 .. 7)
+	PusUInt4  ::= INTEGER (0 .. 5)
+	PusUInt8  ::= INTEGER (0 .. 255)
+	PusUInt11 ::= INTEGER (0 .. 2047)
+	PusUInt14 ::= INTEGER (0 .. 16383)
+	PusUInt16 ::= INTEGER (0 .. 65535)
+	PusUInt32 ::= INTEGER (0 .. 4294967295)
+	PusUInt64 ::= INTEGER (0..9223372036854775807)
+	
+	PusInt32 ::= INTEGER (-2147483648 .. 2147483647)
+	PusInt64 ::= INTEGER (-9223372036854775808 .. 9223372036854775807)
+	
+	PusDouble ::= REAL (-1.7976931348623157e+308..1.7976931348623157E308)
+	
+	PusMemAddr ::= PusUInt64
+
+END

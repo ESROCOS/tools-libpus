@@ -14,7 +14,7 @@ BEGIN
 
     IMPORTS 
     PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount, PusStepId FROM PUS-CcsdsPacketFields
-    PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-NbitIntegers;
+    PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-TypesDefinitions;
     
     -- Type to represent failure codes used by service ST[01]
     PusSt01FailureCode ::= PusUInt32

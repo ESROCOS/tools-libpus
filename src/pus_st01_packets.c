@@ -10,11 +10,13 @@
 #include <assert.h>
 
 #include "pus_st01_packets.h"
+#ifdef PUS_CONFIGURE_ST01_ENABLED
+
 #include "pus_packet.h"
 #include "pus_packet_queues.h"
 
 
-#ifdef PUS_CONFIGURE_ST01_ENABLED
+
 
 //
 // Creation of TC acceptance report

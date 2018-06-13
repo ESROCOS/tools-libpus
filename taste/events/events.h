@@ -19,8 +19,6 @@ void events_PI_getNextEvent(const asn1SccPusUInt64 *,
 
 void events_PI_pushNewEvent(const asn1SccPusSt05Event *);
 
-void events_PI_debugEventsTrigger();
-
 #ifdef __cplusplus
 }
 #endif

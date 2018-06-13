@@ -52,7 +52,7 @@ set_target_properties(esrocos_pus_static_core_${MISSION} PROPERTIES
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_pus_static_core_${MISSION} PUBLIC ${CMAKE_BINARY_DIR}/asn1 ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
+target_include_directories(esrocos_pus_static_core_${MISSION} PUBLIC ${CMAKE_BINARY_DIR}/mission/${MISSION}/asn1/esrocos_pustypes_${MISSION} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
 add_coverage(esrocos_pus_static_core_${MISSION})
 
 # Shared
@@ -65,7 +65,7 @@ set_target_properties(esrocos_pus_core_${MISSION} PROPERTIES
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_pus_core_${MISSION} PUBLIC ${CMAKE_BINARY_DIR}/asn1 ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
+target_include_directories(esrocos_pus_core_${MISSION} PUBLIC ${CMAKE_BINARY_DIR}/mission/${MISSION}/asn1/esrocos_pustypes_${MISSION} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
 add_coverage(esrocos_pus_core_${MISSION})
 
 

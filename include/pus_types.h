@@ -35,8 +35,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-// to prevent redefinition of types when it is used whith taste (dataview_unique.h)
-#ifndef GENERATED_ASN1SCC_DATAVIEW_UNIQ_H
+// to prevent redefinition of types when it is used with taste (dataview_unique.h)
+#if(!defined(GENERATED_ASN1SCC_DATAVIEW_UNIQ_H) && !defined(GENERATED_ASN1SCC_dataview_uniq_H))
 #include "ccsds_packet.h"
 #include "ccsds_packet_fields.h"
 #include "pus_config.h"
@@ -52,6 +52,8 @@
 #include "pus_st23.h"
 #include "pus_services.h"
 #endif
+
+#include "pus_mission_types.h"
 
 #ifdef  __cplusplus
 extern "C" {

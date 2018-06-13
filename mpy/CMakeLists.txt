@@ -88,7 +88,7 @@ foreach(file ${QSTR_SRC})
 endforeach(file $(QSTR_SRC))
 
 #g++ -E -DNO_QSTR -I . -DSTATIC="" -g  py_*.c mymodule.c > ./genhdr/qstr.i.last -I/home/esrocos/esrocos-ws-pus/tools-libpus/include/ -I/home/esrocos/esrocos-ws-pus/tools-libpus/debug/asn1/generated/ -I/home/esrocos/esrocos-ws-pus/tools-libpus/debug/mission/test_01/generated/include/ 
-set(COMMAND_GENERATE_QSTRLAST "${CMAKE_CXX_COMPILER} -E -DNO_QSTR -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" ${QSTR_SRC_STR}  -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/mission/${MISSION}/ -I${CMAKE_BINARY_DIR}/asn1/esrocos_pustypes >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last")
+set(COMMAND_GENERATE_QSTRLAST "${CMAKE_CXX_COMPILER} -E -DNO_QSTR -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" ${QSTR_SRC_STR}  -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/mission/${MISSION}/ -I${CMAKE_BINARY_DIR}/mission/${MISSION}/asn1/esrocos_pustypes_${MISSION} >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last")
 #python $(taste-config --prefix)/../tool-src/upython-taste/py/makeqstrdefs.py split ./genhdr/qstr.i.last ./genhdr/qstr ./genhdr/qstrdefs.collected.h
 set(COMMAND_GENERATE_QSTRDEFS_COLLECTED1 "python ${TASTE_UPY}/py/makeqstrdefs.py split ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr.i.last ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstr ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h")
 #python $(taste-config --prefix)/../tool-src/upython-taste/py/makeqstrdefs.py cat ./genhdr/qstr.i.last ./genhdr/qstr ./genhdr/qstrdefs.collected.h
@@ -134,6 +134,8 @@ file(GLOB UPY_CORE_SRC ${CMAKE_CURRENT_BINARY_DIR}/*.c )
 # Create esrocos_mpy libraary
 #
 
+#${CMAKE_BINARY_DIR}/mission/${MISSION}/asn1/esrocos_pustypes_${MISSION}
+
 # Static
 add_library(esrocos_mpy_static_core_${MISSION} STATIC ${UPY_CORE_SRC})
 set_target_properties(esrocos_mpy_static_core_${MISSION} PROPERTIES OUTPUT_NAME esrocos_mpy_core_${MISSION})
@@ -142,7 +144,7 @@ set_target_properties(esrocos_mpy_static_core_${MISSION} PROPERTIES
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_mpy_static_core_${MISSION} PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
+target_include_directories(esrocos_mpy_static_core_${MISSION} PUBLIC ${esrocos_pustypes_${MISSION}_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
 
 # Shared
 add_library(esrocos_mpy_core_${MISSION} SHARED ${UPY_CORE_SRC})
@@ -151,7 +153,7 @@ set_target_properties(esrocos_mpy_core_${MISSION} PROPERTIES
     LINKER_LANGUAGE C
     POSITION_INDEPENDENT_CODE TRUE
 )
-target_include_directories(esrocos_mpy_core_${MISSION} PUBLIC ${esrocos_pustypes_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
+target_include_directories(esrocos_mpy_core_${MISSION} PUBLIC ${esrocos_pustypes_${MISSION}_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/mission/${MISSION}/)
 
 
 

@@ -18,12 +18,12 @@ THREAD IMPLEMENTATION vt_ground_triggertmgui_vt_ground_triggertmgui.others
 PROPERTIES
 	Initialize_Entrypoint_Source_Text => "ground_wrappers.C_Init_ground";
 	Compute_Entrypoint_Source_Text => "vt_ground_triggertmgui_wrappers.artificial_triggerTmGUI";
-	Dispatch_Protocol => Periodic;
-	Period            => 500 ms;
-	Dispatch_Offset   => 0 ms;
-	Compute_Execution_Time => 0 ms .. 0 ms;
-	Stack_Size => 5 KByte;
-	Priority => 4;
+	Dispatch_Protocol      => Periodic;
+	Period                 => 500 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 100 KByte;
+	Priority               => 4;
 END vt_ground_triggertmgui_vt_ground_triggertmgui.others;
 
 end vt_ground_triggertmgui_CV_Thread;

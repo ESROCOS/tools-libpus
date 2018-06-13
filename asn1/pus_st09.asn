@@ -13,7 +13,7 @@ PUS-ST09 DEFINITIONS ::=
 BEGIN
 
   IMPORTS 
-  PusUInt32 FROM PUS-NbitIntegers
+  PusUInt32 FROM PUS-TypesDefinitions
   PusTime FROM PUS-Time
   ;
     

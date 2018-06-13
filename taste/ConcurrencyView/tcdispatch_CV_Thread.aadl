@@ -21,12 +21,12 @@ END tcdispatch_tcdispatch;
 THREAD IMPLEMENTATION tcdispatch_tcdispatch.others
 PROPERTIES
 	Initialize_Entrypoint_Source_Text => "tcdispatch_wrappers.C_Init_tcdispatch";
-	Dispatch_Protocol => Sporadic;
-	Period            => 1 ms;
-	Dispatch_Offset   => 0 ms;
-	Compute_Execution_Time => 0 ms .. 0 ms;
-	Stack_Size => 5 KByte;
-	Priority => 10;
+	Dispatch_Protocol      => Sporadic;
+	Period                 => 1 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 100 KByte;
+	Priority               => 10;
 END tcdispatch_tcdispatch.others;
 
 end tcdispatch_CV_Thread;

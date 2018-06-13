@@ -15,6 +15,8 @@
 #define PUS_HOUSEKEEPING_H
 
 #include "pus_types.h"
+#ifdef PUS_CONFIGURE_HK_PARAMS_TABLE
+
 #include "pus_error.h"
 #include "pus_apid.h"
 #include "pus_threads.h"
@@ -185,6 +187,8 @@ pusError_t pus_hk_getParamType(pusSt03ParamId_t param, pusParamType_t* type);
 
 #ifdef  __cplusplus
 }
+#endif
+
 #endif
 
 #endif // PUS_HOUSEKEEPING_H

@@ -9,10 +9,13 @@
 #include "pus_st05_config.h"
 #include "pus_st20_config.h"
 
+
+int varReports;
 void onboardsoftware_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
+	varReports = 0;
 }
 
 void onboardsoftware_PI_debugTrigger()
@@ -58,7 +61,24 @@ void onboardsoftware_PI_debugTrigger()
 		default:
 			printf("No test\n");
 	}
-
-
 }
 
+
+void onboardsoftware_PI_pusTrigger()
+{
+	onboardsoftware_RI_tcTrigger();
+
+	onboardsoftware_RI_tmTrigger();
+
+	onboardsoftware_RI_EventActionTrigger();
+
+	onboardsoftware_RI_PmonTrigger();
+
+	if(varReports == 3)
+	{
+		onboardsoftware_RI_HkReportTrigger();
+		onboardsoftware_RI_EventReportTrigger();
+		varReports = 0;
+	}
+	varReports++;
+}

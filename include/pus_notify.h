@@ -39,7 +39,7 @@ pusError_t pus_notify_finalize();
  *  \param[in] packet Packet that is going to be pushed
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_notify_writeTm(pusPacket_t *packet);
+pusError_t pus_notify_writeTm(const pusPacket_t *packet);
 
 //! Pop packet from its queue
 /*! Pop packet from its queue checking if it is possible
@@ -55,7 +55,7 @@ pusError_t pus_notify_readTm(pusPacket_t *packet);
  *  \param[in] packet Packet that is going to be pushed
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_notify_writeTc(pusPacket_t *packet);
+pusError_t pus_notify_writeTc(const pusPacket_t *packet);
 
 //! Pop packet from its queue
 /*! Pop packet from its queue checking if it is possible
@@ -71,7 +71,7 @@ pusError_t pus_notify_readTc(pusPacket_t *packet);
  */
 size_t pus_notify_getTmQueueNumPackets();
 
-pusError_t pus_notify_sendPacket(pusPacket_t *packet);
+pusError_t pus_notify_sendPacket(const pusPacket_t *packet);
 
 //void set_fun_pointer(void (*sending_interface_)(pusPacket_t *));
 

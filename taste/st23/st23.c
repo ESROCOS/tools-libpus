@@ -8,7 +8,7 @@ void st23_startup()
        but do not make any call to a required interface. */
 }
 
-void st23_PI_tc23()
+void st23_PI_tc23(const asn1SccPusPacket *IN_tcPacket)
 {
     /* Write your code here! */
 }

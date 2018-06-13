@@ -78,9 +78,13 @@ typedef struct
  */
 pusError_t pus_obcp_initialize(); //TODO Mutex as param
 
-//TODO
+// Check if the OBCP service is initialized
 bool pus_obcp_isInitialized();
 
+//! Finalize the OBCP service
+/*! Finalize the OBCP service
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_finalize();
 
 //! Start the OBCP engine
@@ -95,13 +99,28 @@ pusError_t pus_obcp_startEngine();
  */
 pusError_t pus_obcp_stopEngine();
 
-//TODO
+//! Check if OBCP engine is running
+/*! Check if OBCP engine is running
+ *  \return Boolean
+ */
 bool pus_obcp_isEngineRunning();
 
+//! Get the number of OBCPs loaded and activates
+/*! Get the number of OBCPs loaded and activates
+ *  \return The number of OBCPs
+ */
 uint32_t pus_obcp_getObcpLoadedActives();
 
+//! Get the number of OBCPs loaded and inactives
+/*! Get the number of OBCPs loaded and inactives
+ *  \return The number of OBCPs
+ */
 uint32_t pus_obcp_getObcpLoadedInactives();
 
+//! Get the number of OBCPs slot not loaded
+/*! Get the number of OBCPs slot not loaded
+ *  \return The number of OBCPs
+ */
 uint32_t pus_obcp_getObcpSlotNotLoaded();
 
 //! Loab an OBCP into the engine
@@ -126,10 +145,25 @@ pusError_t pus_obcp_unloadObcp( pusSt18ObcpId_t* id);
  */
 pusError_t pus_obcp_activateObcp( pusSt18ObcpId_t* id);
 
+//! Abort an OBCP
+/*! Abort an OBCP loaded in the engine
+ *  \param[in] id Identifier of the OBCP
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_abortObcp(pusSt18ObcpId_t* id);
 
+//! Stop an OBCP
+/*! Stop an OBCP loaded in the engine
+ *  \param[in] id Identifier of the OBCP
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_stopObcp(pusSt18ObcpId_t* id);
 
+//! Resume an OBCP
+/*! Resume an OBCP loaded in the engine and suspended
+ *  \param[in] id Identifier of the OBCP
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_resumeObcp( pusSt18ObcpId_t* id );
 
 //! Execute an OBCP
@@ -139,6 +173,12 @@ pusError_t pus_obcp_resumeObcp( pusSt18ObcpId_t* id );
  */
 pusError_t pus_obcp_executeObcp(pusSt18ObcpId_t* id);
 
+
+//! Suspend an OBCP
+/*! Suspend an OBCP running in the engine
+ *  \param[in] id Identifier of the OBCP
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_suspendObcp(pusSt18ObcpId_t* id);
 
 //! Check if two OBCP identifier are the same
@@ -157,27 +197,80 @@ bool pus_obcp_IsSameObcpId(pusSt18ObcpId_t* id1, pusSt18ObcpId_t* id2);
  */
 bool pus_obcp_IsObcpLoaded( pusSt18ObcpId_t* id, size_t* index);
 
+//! Wait until an obcp is activated
+/*! Wait until an obcp is activated
+ *  \param[in] obcpInfo Info struct
+ *  \return True if the OBCP are activated, false if error
+ */
 pusError_t pus_obcp_waitForActivation(pusObcpInfo_t* obcpInfo);
 
+//! Wait until an obcp is resumed
+/*! Wait until an obcp is resumed
+ *  \param[in] obcpInfo OBCP info struct
+ *  \return True if the OBCP are activated, false if error
+ */
 pusError_t pus_obcp_waitForResume(pusObcpInfo_t* obcpInfo);
 
+//! Wait until an obcp is resumed
+/*! Wait until an obcp is resumed
+ *  \param[in] id Identifier of the OBCP
+ *  \return True if the OBCP are activated, false if error
+ */
 pusError_t pus_obcp_waitForResumeById(pusSt18ObcpId_t* id);
 
+//! Set the status of an obcp after its execution
+/*! Set the status of an obcp after its execution
+ *  \param[in] obcpInfo OBCP info struct
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_setStatusAferExecution(pusObcpInfo_t* obcpInfo);
 
+//! Set the confirmation status of an obcp
+/*! Set the confirmation status of an obcp
+ *  \param[in] id Identifier of the OBCP
+ *  \param[in] status Status to set
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_setConfirmationStatus(pusSt18ObcpId_t* id, pusSt18ObcpConfirmationStatus_t status);
 
+//! Get the status of an obcp
+/*! Get the status of an obcp
+ *  \param[in] id Identifier of the OBCP
+ *  \return Status of the OBCP
+ */
 pusSt18ObcpStatus_t pus_obcp_getStatus(pusSt18ObcpId_t* id);
 
+//! Set the status of an obcp
+/*! Set the status of an obcp
+ *  \param[in] id Identifier of the OBCP
+ *  \param[in] status Status to set
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_setStatus(pusSt18ObcpId_t* id, pusSt18ObcpStatus_t status);
 
 
-///////////////
+//! Set the load information of an OBCP
+/*! Set the load information of an OBCP
+ *  \param[in] obcpInfo OBCP info struct
+ *  \param[in] id Identifier of the OBCP
+ *  \param[in] status Status to set
+ *  \param[in] code Code of the OBCP
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_setLoadInfo(pusObcpInfo_t* obcpInfo, pusSt18ObcpId_t* id, pusSt18ObcpStatus_t status, pusSt18ObcpCode_t* code);
 
+//! Execute the code of an OBCP
+/*! Execute the code of an OBCP
+ *  \param[in] obcpInfo OBCP info struct
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_executeCode(pusObcpInfo_t* obcpInfo);
 
-
+//! Init the uPy interpreter
+/*! Init the uPy interpreter
+ *  \param[in] obcpInfo OBCP info struct
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
 pusError_t pus_obcp_initUPyInterpreter(pusObcpInfo_t* obcpInfo);
 
 void* pus_obcp_thread( void * arg);
