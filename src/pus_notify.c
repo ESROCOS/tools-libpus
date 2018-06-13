@@ -63,7 +63,7 @@ pusError_t pus_notify_finalize()
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_notify_writeTm(pusPacket_t *packet)
+pusError_t pus_notify_writeTm(const pusPacket_t *packet)
 {
 	return pus_packetQueues_pushGeneric(packet, &pus_queueTmGUI);
 }
@@ -73,7 +73,7 @@ pusError_t pus_notify_readTm(pusPacket_t *packet)
 	return pus_packetQueues_popGeneric(packet, &pus_queueTmGUI);
 }
 
-pusError_t pus_notify_writeTc(pusPacket_t *packet)
+pusError_t pus_notify_writeTc(const pusPacket_t *packet)
 {
 	return pus_packetQueues_pushGeneric(packet, &pus_queueTcGUI);
 }
@@ -83,7 +83,7 @@ pusError_t pus_notify_readTc(pusPacket_t *packet)
 	return pus_packetQueues_popGeneric(packet, &pus_queueTcGUI);
 }
 
-pusError_t pus_notify_sendPacket(pusPacket_t *packet)
+pusError_t pus_notify_sendPacket(const pusPacket_t *packet)
 {
 	return pus_notify_writeTc(packet);
 }

@@ -79,7 +79,7 @@ void st12_PI_tc12(const asn1SccPusPacket *IN_tcPacket)
 		//send 1.2
 		printf(" -ST12: pus_TM_1_2_failedAcceptance\n");
 		subtype = pus_TM_1_2_failedAcceptance;
-		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -87,14 +87,14 @@ void st12_PI_tc12(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
 		printf("Error 19.4 %llu", errorCode);
-		st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
 

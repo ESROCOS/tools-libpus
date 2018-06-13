@@ -39,9 +39,9 @@ typedef struct
 	pusSt23RepositoryPath_t repository; //!< Repository of the file
 	pusSt23FileName_t fileName; //!< File name
 	pusSt23MaximumSize_t maxSize; //!< Size  of the file
-	bool opened; //!< True if file is opened
+	//bool opened; //!< True if file is opened
 	bool deleted; //!< True if file is deleted
-	pusSt23FileDescriptor_t* file; //descriptor
+	//pusSt23FileDescriptor_t* file; //descriptor
 }pusSt23File_t;
 
 //! Type to manage files
@@ -83,28 +83,26 @@ pusError_t pus_files_finalize();
 //! Check if the files manager is initialized
 bool pus_files_isInitialized();
 
-pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, pusSt23MaximumSize_t size);
+pusError_t pus_files_createFile(const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName, pusSt23MaximumSize_t size);
 
-pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName);
+pusError_t pus_files_deleteFile(const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName);
 
-bool pus_files_isFileInTable(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, size_t* index);
+pusError_t pus_files_copyFile(const pusSt23RepositoryPath_t* sourceRepository, const pusSt23FileName_t* sourceFileName,
+							const pusSt23RepositoryPath_t* targetRepository, const pusSt23FileName_t* targetFileName);
 
-bool pus_files_isSameRepository(pusSt23RepositoryPath_t* repository1, pusSt23RepositoryPath_t* repository2);
+bool pus_files_isFileInTable(const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName, size_t* index);
 
-bool pus_files_isSameFileName(pusSt23FileName_t* fileName1, pusSt23FileName_t* fileName2);
+bool pus_files_isSameRepository(const pusSt23RepositoryPath_t* repository1, const pusSt23RepositoryPath_t* repository2);
 
-pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23FileName_t* sourceFileName,
-								pusSt23RepositoryPath_t* targetRepository, pusSt23FileName_t* targetFileName);
-
-pusError_t pus_files_copyFileLinuxLocalToLinuxLocal(pusSt23RepositoryDomain_t* sourceDomain, pusSt23FileName_t* sourceFileName,
-										pusSt23RepositoryDomain_t* targetDomain, pusSt23FileName_t* targetFileName);
+bool pus_files_isSameFileName(const pusSt23FileName_t* fileName1, const pusSt23FileName_t* fileName2);
 
 pusError_t pus_files_getRepositoryPathFromId(pusSt23RepositoryPath_t* path, pusSt23RepositoryId_t id);
 
-pusError_t pus_files_copyFromLocalToLocalLinux(pusSt23FileName_t* sourceFileName, pusSt23FileName_t* targetFileName);
+pusError_t pus_files_getDomainFromRepositoryPath(pusSt23RepositoryDomain_t* domain, const pusSt23RepositoryPath_t* repositoryPath);
 
+pusError_t pus_files_getFileMaxSize(pusSt23MaximumSize_t* maxSize, const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName);
 
-pusError_t pus_files_getDomainFromRepositoryPath(pusSt23RepositoryDomain_t* domain, pusSt23RepositoryPath_t* repositoryPath);
+pusError_t pus_files_getSystemFromRepositoryPath(pusSt23RepositorySystem_t* system, const pusSt23RepositoryPath_t* repositoryPath);
 
 #ifdef  __cplusplus
 }

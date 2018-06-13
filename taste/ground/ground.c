@@ -23,12 +23,15 @@
 
 void *myThreadFun(void* arg)
 {
+	(void) *arg;
     Py_Initialize();
     PyRun_SimpleString("import sys\n");
     PyRun_SimpleString("sys.path.insert(0, '/home/esrocos/esrocos-ws-pus/tools-pusconsole/app')\n");
     PyRun_SimpleString("import Main\n");
     PyRun_SimpleString("Main.main()\n");
     Py_Finalize();
+
+    return NULL;
 }
 
 void ground_startup()

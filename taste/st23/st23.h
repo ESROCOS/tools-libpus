@@ -13,15 +13,27 @@ extern "C" {
 
 void st23_startup();
 
-void st23_PI_tc23();
+void st23_PI_tc23(const asn1SccPusPacket *);
 
-extern void st23_RI_copy();
+extern void st23_RI_copy(const asn1SccPusSt23RepositoryPath *,
+                         const asn1SccPusSt23FileName *,
+                         const asn1SccPusSt23RepositoryPath *,
+                         const asn1SccPusSt23FileName *,
+                         asn1SccPusSt01FailureCode *);
 
-extern void st23_RI_delete();
+extern void st23_RI_delete(const asn1SccPusSt23RepositoryPath *,
+                           const asn1SccPusSt23FileName *,
+                           asn1SccPusSt01FailureCode *);
 
-extern void st23_RI_create();
+extern void st23_RI_create(const asn1SccPusSt23RepositoryPath *,
+                           const asn1SccPusSt23FileName *,
+                           const asn1SccPusUInt64 *,
+                           asn1SccPusSt01FailureCode *);
 
-extern void st23_RI_getAttributes();
+extern void st23_RI_getAttributes(const asn1SccPusSt23RepositoryPath *,
+                                  const asn1SccPusSt23FileName *,
+                                  asn1SccPusUInt64 *,
+                                  asn1SccPusSt01FailureCode *);
 
 extern void st23_RI_newTm(const asn1SccPusPacket *);
 

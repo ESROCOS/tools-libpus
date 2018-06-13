@@ -57,7 +57,7 @@ pusError_t pus_files_initialize(pusMutex_t* mutex, pusSt23RepositoryId_t reposit
 	// Init values
 	for(size_t i = 0; i < pus_files_filesTableSize; i++)
 	{
-		pus_files_filesTable[i].opened = false;
+		//pus_files_filesTable[i].opened = false;
 		pus_files_filesTable[i].deleted = true;
 	}
 
@@ -94,7 +94,7 @@ bool pus_files_isInitialized()
 	return pus_files_initializedFlag;
 }
 
-bool pus_files_isSameRepository(pusSt23RepositoryPath_t* repository1, pusSt23RepositoryPath_t* repository2)
+bool pus_files_isSameRepository(const pusSt23RepositoryPath_t* repository1, const pusSt23RepositoryPath_t* repository2)
 {
 	if( NULL == repository1 || NULL == repository2 )
 	{
@@ -112,7 +112,7 @@ bool pus_files_isSameRepository(pusSt23RepositoryPath_t* repository1, pusSt23Rep
 }
 
 
-bool pus_files_isSameFileName( pusSt23FileName_t* fileName1, pusSt23FileName_t* fileName2)
+bool pus_files_isSameFileName( const pusSt23FileName_t* fileName1, const  pusSt23FileName_t* fileName2)
 {
 	if( NULL == fileName1 || NULL == fileName2 )
 	{
@@ -129,30 +129,33 @@ bool pus_files_isSameFileName( pusSt23FileName_t* fileName1, pusSt23FileName_t* 
 	return false;
 }
 
-bool pus_files_isFileInTable(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, size_t* index)
+bool pus_files_isFileInTable(const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName, size_t* index)
 {
 	if( NULL == repository || NULL == fileName )
 	{
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return false;
 	}
-	if( false == pus_files_isSameRepository(repository, &serviceRepository))
+	/*if( false == pus_files_isSameRepository(repository, &serviceRepository))
 	{
 		PUS_SET_ERROR(PUS_ERROR_FILE_REPOSITORY);
 		return false;
-	}
+	}*/
 	for(size_t i = 0; i < pus_files_filesTableSize; i++)
 	{
 		if( pus_files_filesTable[i].deleted == false )
 		{
-			if(pus_files_isSameFileName(fileName, &pus_files_filesTable[i].fileName))
+			if(pus_files_isSameRepository(repository, &pus_files_filesTable[i].repository))
 			{
-				if( NULL != index)
+				if(pus_files_isSameFileName(fileName, &pus_files_filesTable[i].fileName))
 				{
-					*index = i;
+					if( NULL != index)
+					{
+						*index = i;
+					}
+					PUS_SET_ERROR( PUS_NO_ERROR );
+					return true;
 				}
-				PUS_SET_ERROR( PUS_NO_ERROR );
-				return true;
 			}
 		}
 	}
@@ -182,7 +185,7 @@ pusError_t pus_files_getRepositoryPathFromId(pusSt23RepositoryPath_t* path, pusS
 }
 
 
-pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName, pusSt23MaximumSize_t size)
+pusError_t pus_files_createFile(const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName, pusSt23MaximumSize_t size)
 {
 	if( NULL == repository || NULL == fileName )
 	{
@@ -240,7 +243,7 @@ pusError_t pus_files_createFile(pusSt23RepositoryPath_t* repository, pusSt23File
 }
 
 
-pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName)
+pusError_t pus_files_deleteFile(const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName)
 {
 	if( NULL == repository || NULL == fileName )
 	{
@@ -250,6 +253,12 @@ pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23File
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
 	}
+
+	if( false == pus_files_isSameRepository(repository, &serviceRepository))
+	{
+		return PUS_SET_ERROR(PUS_ERROR_FILE_REPOSITORY);
+	}
+
 	size_t index;
 	if( false == pus_files_isFileInTable(repository, fileName, &index))
 	{
@@ -271,25 +280,49 @@ pusError_t pus_files_deleteFile(pusSt23RepositoryPath_t* repository, pusSt23File
 	}
 }
 
-
-pusError_t pus_files_copyFileLinuxLocalToLinuxLocal(pusSt23RepositoryDomain_t* sourceDomain, pusSt23FileName_t* sourceFileName,
-									pusSt23RepositoryDomain_t* targetDomain, pusSt23FileName_t* targetFileName)
+pusError_t pus_files_copyFile(const pusSt23RepositoryPath_t* sourceRepository, const pusSt23FileName_t* sourceFileName,
+								const pusSt23RepositoryPath_t* targetRepository, const pusSt23FileName_t* targetFileName)
 {
-	/*char command[200];
-	sprintf(command, "scp %s%s %s%s", (char*)sourceDomain->arr, (char*)sourceFileName->arr, (char*)targetDomain->arr, (char*)targetFileName->arr);
-
-	if ( 0 == system(command) )
+	if( NULL == sourceRepository || NULL == sourceFileName || NULL == targetRepository || NULL == targetFileName)
 	{
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 
-	return PUS_SET_ERROR(PUS_ERROR_COPYING_FILE);*/
+	size_t index;
+
+	if( true == pus_files_isSameRepository(sourceRepository, &serviceRepository))
+	{
+		if( false == pus_files_isFileInTable(sourceRepository, sourceFileName, &index))
+		{
+			(void)index;
+			return PUS_GET_ERROR();
+		}
+	}
+
+	if( true == pus_files_isSameRepository(targetRepository, &serviceRepository))
+	{
+		if( true == pus_files_isFileInTable(targetRepository, targetFileName, &index))
+		{
+
+			return PUS_SET_ERROR(PUS_ERROR_FILE_IN_TABLE);
+		}
+
+		if( PUS_NO_ERROR != pus_files_createFile(targetRepository, targetFileName, pus_ST23_MAX_SIZE_FILE))
+		{
+			return PUS_GET_ERROR();
+		}
+	}
+	(void)index; //avoid unused variable warning
+
+	pusSt23RepositoryDomain_t sourceDomain, targetDomain;
+	pus_files_getDomainFromRepositoryPath(&sourceDomain, sourceRepository);
+	pus_files_getDomainFromRepositoryPath(&targetDomain, targetRepository);
 
 	char ch, source_file[200], target_file[200];
 	FILE *source, *target;
 
-	sprintf( source_file, "%s%s", (char*)sourceDomain->arr, (char*)sourceFileName->arr);
-	sprintf( target_file, "%s%s", (char*)targetDomain->arr, (char*)targetFileName->arr);
+	sprintf( source_file, "%s%s", (char*)sourceDomain.arr, (char*)sourceFileName->arr);
+	sprintf( target_file, "%s%s", (char*)targetDomain.arr, (char*)targetFileName->arr);
 
 	source = fopen(source_file, "r");
 	if( source == NULL )
@@ -313,7 +346,8 @@ pusError_t pus_files_copyFileLinuxLocalToLinuxLocal(pusSt23RepositoryDomain_t* s
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_files_getFileMaxSize(pusSt23MaximumSize_t* maxSize, pusSt23RepositoryPath_t* repository, pusSt23FileName_t* fileName)
+
+pusError_t pus_files_getFileMaxSize(pusSt23MaximumSize_t* maxSize, const pusSt23RepositoryPath_t* repository, const pusSt23FileName_t* fileName)
 {
 	if( NULL == repository || NULL == fileName )
 	{
@@ -338,7 +372,7 @@ pusError_t pus_files_getFileMaxSize(pusSt23MaximumSize_t* maxSize, pusSt23Reposi
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_files_getDomainFromRepositoryPath(pusSt23RepositoryDomain_t* domain, pusSt23RepositoryPath_t* repositoryPath)
+pusError_t pus_files_getDomainFromRepositoryPath(pusSt23RepositoryDomain_t* domain, const pusSt23RepositoryPath_t* repositoryPath)
 {
 	if( NULL == domain || NULL == repositoryPath )
 	{
@@ -360,7 +394,7 @@ pusError_t pus_files_getDomainFromRepositoryPath(pusSt23RepositoryDomain_t* doma
 	return PUS_SET_ERROR(PUS_ERROR_FILE_REPOSITORY);
 }
 
-pusError_t pus_files_getSystemFromRepositoryPath(pusSt23RepositorySystem_t* system, pusSt23RepositoryPath_t* repositoryPath)
+pusError_t pus_files_getSystemFromRepositoryPath(pusSt23RepositorySystem_t* system, const pusSt23RepositoryPath_t* repositoryPath)
 {
 	if( NULL == system || NULL == repositoryPath )
 	{
@@ -382,72 +416,6 @@ pusError_t pus_files_getSystemFromRepositoryPath(pusSt23RepositorySystem_t* syst
 	return PUS_SET_ERROR(PUS_ERROR_FILE_REPOSITORY);
 }
 
-pusError_t pus_files_copyFile(pusSt23RepositoryPath_t* sourceRepository, pusSt23FileName_t* sourceFileName,
-								pusSt23RepositoryPath_t* targetRepository, pusSt23FileName_t* targetFileName)
-{
-	bool sourceLocal = false; //True if local, false if remote
-	bool targetLocal = false; //True if local, false if remote
 
-	/*bool sourceLinux = false;
-	bool sourceRtems = false;
-	bool targetLinux = false;
-	bool targetRtems = false;*/
-
-	// from service
-	if( pus_files_isSameRepository(sourceRepository, &serviceRepository) )
-	{
-		size_t index;
-		if( false == pus_files_isFileInTable(sourceRepository, sourceFileName, &index))
-		{
-			return PUS_GET_ERROR();
-		}
-		sourceLocal = true;
-		//TODO check Linux/Rtems
-
-		//return PUS_NO_ERROR;
-	}
-
-	// to service
-	if( pus_files_isSameRepository(targetRepository, &serviceRepository) )
-	{
-		if( PUS_NO_ERROR != pus_files_createFile(targetRepository, targetFileName, pus_ST23_MAX_SIZE_FILE))
-		{
-			return PUS_GET_ERROR();
-		}
-		/*
-		size_t index;
-		if( false == pus_files_isFileInTable(targetRepository, targetFileName, &index))
-		{
-			return PUS_GET_ERROR();
-		}*/
-		targetLocal = true;
-		//TODO check Linux/Rtems
-
-
-		//return PUS_NO_ERROR;
-	}
-
-	if( true == sourceLocal && true == targetLocal)
-	{
-		pusSt23RepositoryDomain_t sourceDomain, targetDomain;
-		pus_files_getDomainFromRepositoryPath(&sourceDomain, sourceRepository);
-		pus_files_getDomainFromRepositoryPath(&targetDomain, targetRepository);
-		return pus_files_copyFileLinuxLocalToLinuxLocal( &sourceDomain, sourceFileName, &targetDomain, targetFileName);
-	}
-	else if ( true == sourceLocal && false == targetLocal)
-	{
-
-	}
-	else if ( false == sourceLocal && true == targetLocal)
-	{
-
-	}
-	else if ( false == sourceLocal && false == targetLocal)
-	{
-
-	}
-
-	return PUS_SET_ERROR(PUS_ERROR_COPYING_FILE);
-}
 
 

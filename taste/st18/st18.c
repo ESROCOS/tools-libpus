@@ -1,6 +1,7 @@
 /* User code: This file will not be overwritten by TASTE. */
 
 #include "st18.h"
+#include <stdio.h>
 
 #include "pus_st18_packets.h"
 #include "pus_obcp_engine.h"
