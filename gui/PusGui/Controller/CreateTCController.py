@@ -315,6 +315,9 @@ class CreateTCController(object):
                 pb.pus_tc_23_3_createReportFileAtributesRequest(packet, apid, seq, "", "")
             elif msg == 14:
                 pb.pus_tc_23_14_createCopyFileRequest(packet, apid, seq, "", "", "", "")
+        elif svc == 200:
+            if msg == 1:
+                pb.pus_tc_200_1_createControlCameraRequest(packet, apid, seq, 0)
         else:
             pass
         return packet_translator.packet2json(packet), packet
