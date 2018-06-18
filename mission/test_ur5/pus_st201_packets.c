@@ -8,9 +8,8 @@
 #ifdef PUS_CONFIGURE_ST201_ENABLED
 
 
-pusError_t pus_tc_201_1_createSetHomeRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_201_1_createSetHomeRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt201Position* position, pusSt201Orientation* orientation)
 {
-
 	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
@@ -30,10 +29,12 @@ pusError_t pus_tc_201_1_createSetHomeRequest(pusPacket_t* outTc, pusApid_t apid,
 		pus_setTcSource(outTc, apid);
 
 		// Service identification
-		//pus_setTcService(outTc, pus_ST17_test);
-		//pus_setTcSubtype(outTc, pus_TC_17_1_connectionTest);
+		pus_setTcService(outTc, pus_ST201_robotMoveControl);
+		pus_setTcSubtype(outTc, pus_TC_201_1_setHomeRequest);
 
-		//TODO set data
+		// set data
+		pus_tc_201_1_3_setOrientationPoints(outTc, orientation->arr[0], orientation->arr[1], orientation->arr[2]);
+		pus_tc_201_1_3_setPositionPoints(outTc, position->arr[0], position->arr[1], position->arr[2]);
 
 		return PUS_GET_ERROR();
 	}
@@ -43,7 +44,6 @@ pusError_t pus_tc_201_1_createSetHomeRequest(pusPacket_t* outTc, pusApid_t apid,
 
 pusError_t pus_tc_201_2_createPlanHomeRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
 {
-
 	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
@@ -63,10 +63,8 @@ pusError_t pus_tc_201_2_createPlanHomeRequest(pusPacket_t* outTc, pusApid_t apid
 		pus_setTcSource(outTc, apid);
 
 		// Service identification
-		//pus_setTcService(outTc, pus_ST17_test);
-		//pus_setTcSubtype(outTc, pus_TC_17_1_connectionTest);
-
-		//TODO set data
+		pus_setTcService(outTc, pus_ST201_robotMoveControl);
+		pus_setTcSubtype(outTc, pus_TC_201_2_planHomeRequest);
 
 		return PUS_GET_ERROR();
 	}
@@ -74,9 +72,8 @@ pusError_t pus_tc_201_2_createPlanHomeRequest(pusPacket_t* outTc, pusApid_t apid
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt201Position* position, pusSt201Orientation* orientation)
 {
-
 	if (NULL == outTc)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
@@ -96,10 +93,12 @@ pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid
 		pus_setTcSource(outTc, apid);
 
 		// Service identification
-		//pus_setTcService(outTc, pus_ST17_test);
-		//pus_setTcSubtype(outTc, pus_TC_17_1_connectionTest);
+		pus_setTcService(outTc, pus_ST201_robotMoveControl);
+		pus_setTcSubtype(outTc, pus_TC_201_3_planMoveRequest);
 
-		//TODO set data
+		// Set data
+		pus_tc_201_1_3_setOrientationPoints(outTc, orientation->arr[0], orientation->arr[1], orientation->arr[2]);
+		pus_tc_201_1_3_setPositionPoints(outTc, position->arr[0], position->arr[1], position->arr[2]);
 
 		return PUS_GET_ERROR();
 	}
@@ -107,7 +106,7 @@ pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination)
+pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination, pusSt201PlanObservation observation)
 {
 	if (NULL == outTm )
 	{
@@ -132,10 +131,11 @@ pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pus
 		pus_setTmPacketTimeNow(outTm);
 
 		// Service identification
-		//pus_setTmService(outTm, pus_ST17_test);
-		//pus_setTmSubtype(outTm, pus_TM_17_2_connectionTest);
+		pus_setTmService(outTm, pus_ST201_robotMoveControl);
+		pus_setTmSubtype(outTm, pus_TM_201_4_planReport);
 
 		//TODO set data
+		pus_tm_201_4_setPlanObservation(outTm, observation);
 
 		return PUS_GET_ERROR();
 	}

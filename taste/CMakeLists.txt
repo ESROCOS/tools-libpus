@@ -8,7 +8,7 @@ set(COMPONENT_NAME "pus_test_01")
 
 # Preinstall ASN.1 types, headers and libraries for first build
 file(GLOB ASN1 ${CMAKE_SOURCE_DIR}/asn1/*.asn)
-esrocos_preinstall_files(pus_asn1_${COMPONENT_NAME} types/pus ${ASN1})
+esrocos_preinstall_files(pus_asn1_${COMPONENT_NAME} types/pus/${MISSION} ${ASN1})
 
 file(GLOB HEADERS ${CMAKE_SOURCE_DIR}/include/*.h)
 esrocos_preinstall_files(pus_headers_${COMPONENT_NAME} include/pus ${HEADERS})

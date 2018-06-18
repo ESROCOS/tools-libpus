@@ -32,6 +32,12 @@
 
 #include "pus_bindingfunctions.hpp"
 
+// In order to be able to tailor the library to an application/mission, the Python module
+// name is parametrized with the following compiler macro
+#ifndef ESROCOS_PYMODULE_NAME
+#error "Compiler macro ESROCOS_MODULE_NAME is not defined."
+#endif
+
 // We had to define this function to make sure st08 works
 extern "C" {
 	pusError_t example_function()
@@ -57,7 +63,12 @@ pusError_t getError()
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(pusbinding, m) {
+#ifdef MISSION_BINDING
+	extern void init_mission_module(py::module &);
+#endif
+
+
+PYBIND11_MODULE(ESROCOS_PYMODULE_NAME, m) {
 	m.doc() = "pus_packet binding";
 	py::enum_<pusError_t>(m, "pusError_t")
 	        .value("PUS_NO_ERROR",pusError_t::PUS_NO_ERROR)
@@ -358,6 +369,7 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_expectSt12Tc", &pus_expectSt12Tc, "Binding for pus_expectSt12Tc");
 #endif
 
+
 #ifdef PUS_CONFIGURE_ST17_ENABLED
 	m.doc() = "pus_st17_packets binding";
 	m.def("pus_tc_17_1_createConnectionTestRequest", &pus_tc_17_1_createConnectionTestRequest, "Binding for pus_tc_17_1_createConnectionTestRequest");
@@ -451,5 +463,9 @@ PYBIND11_MODULE(pusbinding, m) {
 	m.def("pus_tc_23_14_getSourceRepositoryPath", &pus_tc_23_14_getSourceRepositoryPath_, "Binding for pus_tc_23_14_getSourceRepositoryPath");
 	m.def("pus_tc_23_14_getTargetRepositoryPath", &pus_tc_23_14_getTargetRepositoryPath_, "Binding for pus_tc_23_14_getTargetRepositoryPath");
 	m.def("pus_tc_tm_23_1_4_getMaximumSize", &pus_tc_tm_23_1_4_getMaximumSize_, "Binding for pus_tc_tm_23_1_4_getMaximumSize");
+#endif
+
+#ifdef MISSION_BINDING
+	init_mission_module(m);
 #endif
 }

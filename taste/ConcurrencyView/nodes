@@ -18,7 +18,6 @@ timereportapid
 events
 st05
 st19
-housekeeping
 st03
 st12
 st11
@@ -28,6 +27,7 @@ filemanagement
 st20
 onboardparams
 onboardsoftware
+housekeeping
 x86_partition_taste_api
 vt_ground_newtm
 vt_ground_triggertmgui

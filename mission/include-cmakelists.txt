@@ -41,6 +41,13 @@ foreach(asn1_file ${${MISSION}_ASN1_FILES})
 	SET(${MISSION}_ASN1 ${${MISSION}_ASN1} "../mission/${MISSION}/${aux}")
 endforeach()
 
+# Missionization pusbinding
+if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_binding_mission.cpp")
+	set(PUS_BINDING_MISISON_${MISSION} "${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_binding_mission.cpp")
+else()
+	set(PUS_BINDING_MISISON_${MISSION} "")
+endif()
+
 #
 # Build the instances of the PUS, Micropython and bindings library, including the common code and the mission definitions
 #
@@ -140,6 +147,8 @@ install(TARGETS ${LIBPUS_MISSION} ${LIBPUS_MISSION}_static ${LIBPUS_MISSION}_typ
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 
-install(FILES ${GENERATED_H_FILES} pus_enable_services.h pus_mission_types.h DESTINATION include/pus/mission/${MISSION})
+
+file(GLOB MISSION_HEADERS "${CMAKE_SOURCE_DIR}/mission/${MISSION}/*.h")
+install(FILES ${GENERATED_H_FILES} ${MISSION_HEADERS} DESTINATION include/pus/mission/${MISSION})
 install(FILES ${JSON} DESTINATION share/pus/mission/${MISSION})
 

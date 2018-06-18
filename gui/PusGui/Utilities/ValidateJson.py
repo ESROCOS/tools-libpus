@@ -2,7 +2,7 @@ import jsonschema
 from jsonschema.exceptions import ValidationError
 import json
 
-
+import os
 class ValidateJson(object):
     """
     This class uses jsonschema to validate every packet in json format
@@ -13,7 +13,7 @@ class ValidateJson(object):
         :param packet: The packet to be checked
         :except: This method raises an exception when the packet is not correct
         """
-        dir = "Schemas/"
+        dir = os.environ['AUTOPROJ_CURRENT_ROOT'] + '/install/lib/python/PusGui/Schemas/'
         svc = packet["data"]["pck_sec_head"]["msg_type_id"]["service_type_id"]
         msg = packet["data"]["pck_sec_head"]["msg_type_id"]["msg_subtype_id"]
 

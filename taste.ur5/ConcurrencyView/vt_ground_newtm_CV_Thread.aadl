@@ -1,0 +1,32 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package vt_ground_newtm_CV_Thread
+public
+	with Deployment;
+	with process_package;
+	with Dataview;
+
+THREAD vt_ground_newtm_vt_ground_newtm
+features
+	INPORT_artificial_newTm : IN EVENT DATA PORT DataView::PusPacket_Buffer.impl
+		{ Compute_Execution_Time => 0 ms .. 0 ms;
+		  Queue_Size => 1;
+		  Compute_Entrypoint_Source_Text => "vt_ground_newtm_wrappers.artificial_newTm"; };
+	OUTPORT_newTc_vt : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+END vt_ground_newtm_vt_ground_newtm;
+
+THREAD IMPLEMENTATION vt_ground_newtm_vt_ground_newtm.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "ground_wrappers.C_Init_ground";
+	Dispatch_Protocol      => Sporadic;
+	Period                 => 1 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 100 KByte;
+	Priority               => 10;
+END vt_ground_newtm_vt_ground_newtm.others;
+
+end vt_ground_newtm_CV_Thread;

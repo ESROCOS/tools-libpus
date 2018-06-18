@@ -1,0 +1,40 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package tcdispatch_CV_Thread
+public
+	with Deployment;
+	with process_package;
+	with Dataview;
+
+THREAD tcdispatch_tcdispatch
+features
+	INPORT_tcTrigger : IN EVENT PORT
+		{ Compute_Execution_Time => 0 ms .. 0 ms;
+		  Queue_Size => 1;
+		  Compute_Entrypoint_Source_Text => "tcdispatch_wrappers.tcTrigger"; };
+	OUTPORT_newTc_vt : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+	OUTPORT_tcTrigger_vt : OUT EVENT PORT;
+	OUTPORT_tmTrigger_vt : OUT EVENT PORT;
+	OUTPORT_EventReportTrigger_vt : OUT EVENT PORT;
+	OUTPORT_EventActionTrigger_vt : OUT EVENT PORT;
+	OUTPORT_HkReportTrigger_vt : OUT EVENT PORT;
+	OUTPORT_PmonTrigger_vt : OUT EVENT PORT;
+	OUTPORT_planHomeReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
+	OUTPORT_planMoveReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
+END tcdispatch_tcdispatch;
+
+THREAD IMPLEMENTATION tcdispatch_tcdispatch.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "tcdispatch_wrappers.C_Init_tcdispatch";
+	Dispatch_Protocol      => Sporadic;
+	Period                 => 1 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 100 KByte;
+	Priority               => 10;
+END tcdispatch_tcdispatch.others;
+
+end tcdispatch_CV_Thread;

@@ -14,11 +14,12 @@
  */
 
 
-#ifndef PUS_ST17_PACKETS_H
-#define PUS_ST17_PACKETS_H
+#ifndef PUS_ST201_PACKETS_H
+#define PUS_ST201_PACKETS_H
 
 #include "pus_types.h"
-#ifdef PUS_CONFIGURE_ST17_ENABLED
+//#ifdef PUS_CONFIGURE_ST17_ENABLED
+#ifdef PUS_CONFIGURE_ST201_ENABLED
 
 #include "pus_apid.h"
 #include "pus_error.h"
@@ -33,7 +34,7 @@ extern "C" {
  *  \param[in] apid APID of the process sending the report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_201_1_createSetHomeRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_201_1_createSetHomeRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt201Position* position, pusSt201Orientation* orientation);
 
 /*! Builds a TC[201,2] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
@@ -47,14 +48,14 @@ pusError_t pus_tc_201_2_createPlanHomeRequest(pusPacket_t* outTc, pusApid_t apid
  *  \param[in] apid APID of the process sending the report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount);
+pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt201Position* position, pusSt201Orientation* orientation);
 
 /*! Builds a TM[201,4] packet in the packet passed as parameter.
  *  \param[out] outTm Packet variable to build the TM
  *  \param[in] apid APID of the process sending the report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination);
+pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination, pusSt201PlanObservation observation);
 
 
 pusError_t pus_tc_201_1_3_setOrientationPoints(pusPacket_t* outTc, pusSt201Point point1, pusSt201Point point2, pusSt201Point point3);

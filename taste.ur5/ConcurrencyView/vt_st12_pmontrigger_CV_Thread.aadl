@@ -1,0 +1,31 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package vt_st12_pmontrigger_CV_Thread
+public
+	with Deployment;
+	with process_package;
+	with Dataview;
+
+THREAD vt_st12_pmontrigger_vt_st12_pmontrigger
+features
+	INPORT_artificial_PmonTrigger : IN EVENT PORT
+		{ Compute_Execution_Time => 0 ms .. 0 ms;
+		  Queue_Size => 1;
+		  Compute_Entrypoint_Source_Text => "vt_st12_pmontrigger_wrappers.artificial_PmonTrigger"; };
+END vt_st12_pmontrigger_vt_st12_pmontrigger;
+
+THREAD IMPLEMENTATION vt_st12_pmontrigger_vt_st12_pmontrigger.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "st12_wrappers.C_Init_st12";
+	Dispatch_Protocol      => Sporadic;
+	Period                 => 1 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 100 KByte;
+	Priority               => 10;
+END vt_st12_pmontrigger_vt_st12_pmontrigger.others;
+
+end vt_st12_pmontrigger_CV_Thread;

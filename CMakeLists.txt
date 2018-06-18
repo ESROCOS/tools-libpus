@@ -68,7 +68,7 @@ add_subdirectory(mission)
 add_subdirectory(test)
 add_subdirectory(gui)
 add_subdirectory(include)
-add_subdirectory(taste)
+#add_subdirectory(taste)
 
 
 # Coverage for tests

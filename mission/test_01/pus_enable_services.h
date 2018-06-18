@@ -23,9 +23,10 @@
 #define PUS_CONFIGURE_OBCP_ENGINE
 
 
-//private services
+// TODO delete, it is just to avoid eclipse colors
 #define PUS_CONFIGURE_ST200_ENABLED
 #define PUS_CONFIGURE_ST201_ENABLED
+
 
 
 

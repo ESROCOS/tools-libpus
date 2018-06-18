@@ -29,6 +29,6 @@ esrocos_asn1_types_package(esrocos_pustypes_${MISSION}
 )
 
 esrocos_asn1_types_build_test(esrocos_pustypes_${MISSION})
-esrocos_asn1_types_install(esrocos_pustypes_${MISSION} ${CMAKE_INSTALL_PREFIX}/types/pus)
+esrocos_asn1_types_install(esrocos_pustypes_${MISSION} ${CMAKE_INSTALL_PREFIX}/types/pus/${MISSION})
 
 

@@ -2,9 +2,11 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-import os, sys, collections, time, datetime, json
+import os, sys, collections, time, datetime, json, builtins
 
 from PusGui import pb
+sys.path.insert(0, builtins.ESROCOS_PUSGUI_MISSION)
+import pus_config_gui as pfun
 
 
 class PacketTranslator(object):
@@ -95,8 +97,6 @@ class PacketTranslator(object):
         elif srvc_type_id == 19:
             if msg_type_id == 1:
                 jsn["data"]["user_data"]["src_data"] = self.tc_19_1_get_data(pack)
-                print("-----------------------------")
-                print(jsn["data"]["user_data"]["src_data"])
             else:
                 jsn["data"]["user_data"]["src_data"] = self.tc_19_2_4_5_get_data(pack)
         elif srvc_type_id == 20:
@@ -113,11 +113,8 @@ class PacketTranslator(object):
                 jsn["data"]["user_data"]["src_data"] = self.tc_23_2_3_get_data(pack)
             elif msg_type_id == 14:
                 jsn["data"]["user_data"]["src_data"] = self.tc_23_14_get_data(pack)
-        elif srvc_type_id == 200:
-            if msg_type_id == 1:
-                jsn["data"]["user_data"]["src_data"] = self.tc_200_1_get_data(pack)
-            elif msg_type_id == 2:
-                jsn["data"]["user_data"]["src_data"] = self.tm_200_2_get_data(pack)
+        else:
+            jsn["data"]["user_data"]["src_data"] = pfun.mission_get_data(pack, srvc_type_id, msg_type_id)
 
         return jsn
 
@@ -228,9 +225,8 @@ class PacketTranslator(object):
                 self.tc_23_2_3_set_data(pack, data)
             elif msg_type_id == 14:
                 self.tc_23_14_set_data(pack, data)
-        elif srvc_type_id == 200:
-            if msg_type_id == 1:
-                self.tc_200_1_set_data(pack, data)
+        else:
+            pfun.mission_set_data(pack, srvc_type_id, msg_type_id, data)
         return pack
 
     @staticmethod
@@ -307,13 +303,9 @@ class PacketTranslator(object):
             pb.pus_tc_23_3_createReportFileAtributesRequest(packet, 0, 0, "", "")
         elif (svc, msg) == (23, 14):
             pb.pus_tc_23_14_createCopyFileRequest(packet, 0, 0, "", "", "", "")
-        elif (svc, msg) == (200, 1):
-            pb.pus_tc_200_1_createControlCameraRequest(packet, 0, 0, 0)
         else:
-            pass
-        """
-            REVISAR Haria falta meter el 11 ??? y las telemetrias???
-        """
+            pfun.mission_create_packets(packet, svc, msg)
+      
         return packet
 
     @staticmethod
@@ -867,22 +859,4 @@ class PacketTranslator(object):
         data["source_file"] = pb.pus_tc_23_14_getSourceFileName(packet)
         data["target_repository"] = pb.pus_tc_23_14_getTargetRepositoryPath(packet)
         data["target_file"] = pb.pus_tc_23_14_getTargetFileName(packet)
-        return data
-
-    @staticmethod
-    def tc_200_1_set_data(packet, data):
-        obs = data["operation"]
-        pb.pus_tc_200_1_setControlId(packet, obs)
-        return packet
-
-    @staticmethod
-    def tc_200_1_get_data(packet):
-        data = dict()
-        data["operation"] = pb.pus_tc_200_1_getControlId(packet)
-        return data
-
-    @staticmethod
-    def tc_200_2_get_data(packet):
-        data = dict()
-        data["observation"] = pb.pus_tm_200_2_getObservation(packet)
         return data

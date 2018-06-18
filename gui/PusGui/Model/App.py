@@ -2,7 +2,7 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-import os, json, sys, time
+import os, json, sys, time, builtins
 from PySide.QtCore import Slot
 
 from PusGui.Utilities import PusConsoleTable
@@ -28,7 +28,7 @@ class App(object):
         self.currentFilter = None
         self.elem_count = 0
 
-        with open('config.json', 'r') as json_apid:
+        with open(builtins.ESROCOS_PUSGUI_CONFIG, 'r') as json_apid:
             apid_value = json.load(json_apid)['apid']
             pb.pus_initApidInfo_null(self.tc_apid, apid_value)
 

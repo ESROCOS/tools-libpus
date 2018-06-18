@@ -15,11 +15,11 @@
  */
 
 
-#ifndef PUS_ST17_PACKETS_H
-#define PUS_ST17_PACKETS_H
+#ifndef PUS_ST200_PACKETS_H
+#define PUS_ST200_PACKETS_H
 
 #include "pus_types.h"
-#ifdef PUS_CONFIGURE_ST17_ENABLED
+#ifdef PUS_CONFIGURE_ST200_ENABLED
 
 #include "pus_apid.h"
 #include "pus_error.h"
@@ -47,13 +47,13 @@ pusError_t pus_tm_200_2_createControlCameraReport(pusPacket_t* outTm, pusApid_t 
 pusError_t pus_tc_200_1_setControlId(pusPacket_t* outTc, pusSt200ControlId operation);
 
 //! Getter for the controlId of a TC[200,1] packet
-pusError_t pus_tc_200_1_getControlId(pusSt200ControlId* operation, const pusPacket_t* inTc);
+pusSt200ControlId pus_tc_200_1_getControlId(const pusPacket_t* inTc);
 
 //! Setter for the observation of a TM[200,2] packet
 pusError_t pus_tm_200_2_setObservation(pusPacket_t* outTm, pusSt200Observation observation);
 
 //! Getter for the observation of a TM[200,2] packet
-pusError_t pus_tm_200_2_getObservation(pusSt200Observation* observation, const pusPacket_t* inTM);
+pusSt200Observation pus_tm_200_2_getObservation(const pusPacket_t* inTM);
 
 
 //! Check that a packet is of a PUS ST[20] TC kind

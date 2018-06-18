@@ -34,5 +34,10 @@ taste/*.pro
 taste/*.old
 taste/binary.c
 
+taste.ur5/*.zip
+taste.ur5/__*.aadl
+taste.ur5/*.md5
+taste.ur5/*.pro
+taste.ur5/*.old
+taste.ur5/binary.c
 
-taste.org

@@ -539,7 +539,7 @@ FEATURES
     Taste::labelInheritance => "true";
   };
   RI_tc23 : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::ST23::PI_tc23.others {
-    Taste::coordinates => "113431 50868";
+    Taste::coordinates => "113431 50197";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "tc23";
     Taste::labelInheritance => "true";
@@ -595,7 +595,7 @@ CONNECTIONS
     Taste::coordinates => "109366 46715 111398 46715 111398 48162 113431 48162";
   };
   TC_RI_tc23_TcDispatch_RI_tc23 : SUBPROGRAM ACCESS RI_tc23 -> TcDispatch.RI_tc23 {
-    Taste::coordinates => "109366 48463 111398 48463 111398 50868 113431 50868";
+    Taste::coordinates => "109366 48463 111398 48463 111398 50197 113431 50197";
   };
   TC_RI_tc20_TcDispatch_RI_tc20 : SUBPROGRAM ACCESS RI_tc20 -> TcDispatch.RI_tc20 {
     Taste::coordinates => "109366 47491 111398 47491 111398 49267 113431 49267";
@@ -2956,6 +2956,8 @@ FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_tc23;
 
 SUBPROGRAM IMPLEMENTATION PI_tc23.others
@@ -3096,6 +3098,7 @@ FEATURES
   PI_tc23 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::ST23::PI_tc23.others {
     Taste::coordinates => "144907 131027";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc23";
   };
@@ -3180,6 +3183,8 @@ FEATURES
   confirmation : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_copy;
 
 SUBPROGRAM IMPLEMENTATION PI_copy.others
@@ -3198,6 +3203,8 @@ FEATURES
   confirmation : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_delete;
 
 SUBPROGRAM IMPLEMENTATION PI_delete.others
@@ -3219,6 +3226,8 @@ FEATURES
   confirmation : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_create;
 
 SUBPROGRAM IMPLEMENTATION PI_create.others
@@ -3240,6 +3249,8 @@ FEATURES
   confirmation : OUT PARAMETER DataView::PusSt01FailureCode {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_getAttributes;
 
 SUBPROGRAM IMPLEMENTATION PI_getAttributes.others
@@ -3252,24 +3263,28 @@ FEATURES
   PI_copy : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_copy.others {
     Taste::coordinates => "153404 131112";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "copy";
   };
   PI_delete : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_delete.others {
     Taste::coordinates => "153404 130333";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "delete";
   };
   PI_create : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_create.others {
     Taste::coordinates => "153404 129526";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "create";
   };
   PI_getAttributes : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::PI_getAttributes.others {
     Taste::coordinates => "153404 131823";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "getAttributes";
   };
@@ -3299,6 +3314,8 @@ FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_tc23;
 
 SUBPROGRAM IMPLEMENTATION PI_tc23.others
@@ -3363,6 +3380,7 @@ FEATURES
   PI_tc23 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::FilesService::ST23::PI_tc23.others {
     Taste::coordinates => "141895 131681";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc23";
   };
@@ -4272,7 +4290,7 @@ CONNECTIONS
     Taste::coordinates => "113431 48162 136874 48162 136874 108634 142230 108634";
   };
   FilesService_PI_tc23_TC_RI_tc23 : SUBPROGRAM ACCESS FilesService.PI_tc23 -> TC.RI_tc23 {
-    Taste::coordinates => "113431 50868 134808 50868 134808 131681 141895 131681";
+    Taste::coordinates => "113431 50197 134808 50197 134808 131681 141895 131681";
   };
   ParameterManagement_PI_tc20_TC_RI_tc20 : SUBPROGRAM ACCESS ParameterManagement.PI_tc20 -> TC.RI_tc20 {
     Taste::coordinates => "113431 49267 135841 49267 135841 118608 141021 118608";
@@ -4597,13 +4615,13 @@ FEATURES
     Taste::labelInheritance => "true";
   };
   RI_setOnBoardParam : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_setOnBoardParam.others {
-    Taste::coordinates => "219639 73714";
+    Taste::coordinates => "219639 105950";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "setOnBoardParam";
     Taste::labelInheritance => "true";
   };
   RI_getOnBoardParam : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::PI_getOnBoardParam.others {
-    Taste::coordinates => "219639 75014";
+    Taste::coordinates => "219639 117065";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "getOnBoardParam";
     Taste::labelInheritance => "true";
@@ -4717,10 +4735,10 @@ END OnBoard;
 SYSTEM IMPLEMENTATION OnBoard.others
 SUBCOMPONENTS
   PusServices : SYSTEM interfaceview::IV::OnBoard::PusServices::PusServices.others {
-    Taste::coordinates => "76928 33193 203150 139274";
+    Taste::coordinates => "76928 33193 203150 142673";
   };
   OnboardSoftware : SYSTEM interfaceview::IV::OnBoard::OnboardSoftware::OnboardSoftware.others {
-    Taste::coordinates => "219639 44167 238379 98482";
+    Taste::coordinates => "219639 44167 238379 142988";
   };
 CONNECTIONS
   PusServices_PI_newTc_OnBoard_PI_newTc : SUBPROGRAM ACCESS PusServices.PI_newTc -> PI_newTc {
@@ -4736,10 +4754,10 @@ CONNECTIONS
     Taste::coordinates => "219639 56026 211887 56026 211887 51769 203150 51769";
   };
   PusServices_PI_setOnBoardParam_OnboardSoftware_RI_setOnBoardParam : SUBPROGRAM ACCESS PusServices.PI_setOnBoardParam -> OnboardSoftware.RI_setOnBoardParam {
-    Taste::coordinates => "219639 73714 209927 73714 209927 106637 203150 106637";
+    Taste::coordinates => "219639 105950 209927 105950 209927 106637 203150 106637";
   };
   PusServices_PI_getOnBoardParam_OnboardSoftware_RI_getOnBoardParam : SUBPROGRAM ACCESS PusServices.PI_getOnBoardParam -> OnboardSoftware.RI_getOnBoardParam {
-    Taste::coordinates => "219639 75014 212991 75014 212991 113194 203150 113194";
+    Taste::coordinates => "219639 117065 212991 117065 212991 113194 203150 113194";
   };
   PusServices_PI_getNextEvent_OnboardSoftware_RI_getNextEvent : SUBPROGRAM ACCESS PusServices.PI_getNextEvent -> OnboardSoftware.RI_getNextEvent {
     Taste::coordinates => "219639 49818 208687 49818 208687 55970 203150 55970";
@@ -4789,7 +4807,7 @@ SUBCOMPONENTS
     Taste::coordinates => "25410 59924 57092 83155";
   };
   OnBoard : SYSTEM interfaceview::IV::OnBoard::OnBoard.others {
-    Taste::coordinates => "66854 18968 241992 150587";
+    Taste::coordinates => "66854 18968 241992 146768";
   };
 CONNECTIONS
   Ground_PI_newTm_OnBoard_RI_newTm : SUBPROGRAM ACCESS Ground.PI_newTm -> OnBoard.RI_newTm {

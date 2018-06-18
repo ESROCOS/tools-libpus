@@ -2,7 +2,7 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-import os, sys, json
+import os, sys, json, builtins
 from jsonschema.exceptions import ValidationError
 from json.decoder import JSONDecodeError
 from PySide import QtGui
@@ -15,6 +15,8 @@ from .AddTCController import AddTCController
 from .CodeController import CodeController
 
 from PusGui import pb
+sys.path.insert(0, builtins.ESROCOS_PUSGUI_MISSION)
+import pus_config_gui as pfun
 
 
 class CreateTCController(object):
@@ -94,6 +96,7 @@ class CreateTCController(object):
             return
 
         self.command, self.command_packet = self.show_packet_json(svc_type, msg_type)
+        print(self.command)
         if self.command is not None:
             pck_sec_head = json.dumps(self.command["data"]["pck_sec_head"], indent=2)
             source_data = json.dumps(self.command["data"]["user_data"]["src_data"], indent=2)
@@ -315,11 +318,8 @@ class CreateTCController(object):
                 pb.pus_tc_23_3_createReportFileAtributesRequest(packet, apid, seq, "", "")
             elif msg == 14:
                 pb.pus_tc_23_14_createCopyFileRequest(packet, apid, seq, "", "", "", "")
-        elif svc == 200:
-            if msg == 1:
-                pb.pus_tc_200_1_createControlCameraRequest(packet, apid, seq, 0)
         else:
-            pass
+            pfun.mission_create_packets(packet, svc, msg, apid, seq)
         return packet_translator.packet2json(packet), packet
 
     def show(self):

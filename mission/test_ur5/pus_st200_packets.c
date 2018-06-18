@@ -30,10 +30,11 @@ pusError_t pus_tc_200_1_createControlCameraRequest(pusPacket_t* outTc, pusApid_t
 		pus_setTcSource(outTc, apid);
 
 		// Service identification
-		//pus_setTcService(outTc, pus_ST17_test);
-		//pus_setTcSubtype(outTc, pus_TC_17_1_connectionTest);
+		pus_setTcService(outTc, pus_ST200_cameraControl);
+		pus_setTcSubtype(outTc, pus_TC_200_1_controlRequest);
 
 		//TODO set data
+		pus_tc_200_1_setControlId(outTc, operation);
 
 		return PUS_GET_ERROR();
 	}
@@ -66,10 +67,11 @@ pusError_t pus_tm_200_2_createControlCameraReport(pusPacket_t* outTm, pusApid_t 
 		pus_setTmPacketTimeNow(outTm);
 
 		// Service identification
-		//pus_setTmService(outTm, pus_ST17_test);
-		//pus_setTmSubtype(outTm, pus_TM_17_2_connectionTest);
+		pus_setTmService(outTm, pus_ST200_cameraControl);
+		pus_setTmSubtype(outTm, pus_TM_200_2_controlReport);
 
 		//TODO set data
+		pus_tm_200_2_setObservation(outTm, observation);
 
 		return PUS_GET_ERROR();
 	}
@@ -93,19 +95,20 @@ pusError_t pus_tc_200_1_setControlId(pusPacket_t* outTc, pusSt200ControlId opera
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_tc_200_1_getControlId(pusSt200ControlId* operation, const pusPacket_t* inTc)
+pusSt200ControlId pus_tc_200_1_getControlId(const pusPacket_t* inTc)
 {
 	if( NULL == inTc  )
 	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return -1;
 	}
 	if( PUS_NO_ERROR != PUS_EXPECT_ST200TC(inTc, pus_TC_200_1_controlRequest))
 	{
-		return PUS_GET_ERROR();
+		return -1;
 	}
-	*operation = inTc->data.u.tcData.data.u.st_200_1.controlId;
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+	PUS_SET_ERROR(PUS_NO_ERROR);
+	return inTc->data.u.tcData.data.u.st_200_1.controlId;
 }
 
 
@@ -124,19 +127,20 @@ pusError_t pus_tm_200_2_setObservation(pusPacket_t* outTm, pusSt200Observation o
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_tm_200_2_getObservation(pusSt200Observation* observation, const pusPacket_t* inTM)
+pusSt200Observation pus_tm_200_2_getObservation(const pusPacket_t* inTM)
 {
 	if( NULL == inTM  )
 	{
-		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return -1;
 	}
 	if( PUS_NO_ERROR != PUS_EXPECT_ST200TM(inTM, pus_TM_200_2_controlReport))
 	{
-		return PUS_GET_ERROR();
+		return -1;
 	}
-	*observation = inTM->data.u.tmData.data.u.st_200_2.observation;
 
-	return PUS_SET_ERROR(PUS_NO_ERROR);
+	PUS_SET_ERROR(PUS_NO_ERROR);
+	return inTM->data.u.tmData.data.u.st_200_2.observation;
 }
 
 pusError_t pus_expectSt200Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)

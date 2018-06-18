@@ -30,7 +30,7 @@ BEGIN
     	controlId PusSt200ControlId
     }
     
-    -- Data for TM[200,1]
+    -- Data for TM[200,2]
     PusTM-200-2-Data  ::= SEQUENCE
     {
     	observation PusSt200Observation
