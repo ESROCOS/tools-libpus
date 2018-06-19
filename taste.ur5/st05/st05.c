@@ -27,7 +27,7 @@ void st05_PI_EventReportTrigger()
 	asn1SccPusUInt64 lastCounter = counter;
 	st05_RI_getNextEvent(&lastCounter, &event, &counter);
 
-	printf("lastCounter %llu, counter %llu\n");
+	printf("lastCounter %llu, counter %llu\n", lastCounter, counter);
 	if(lastCounter != counter)
 	{
 		printf(" -ST05: New event read. ID: %llu, count: %llu\n", pus_events_getEventId(&event), counter);

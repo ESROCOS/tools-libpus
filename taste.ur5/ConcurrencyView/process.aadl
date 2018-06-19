@@ -48,6 +48,8 @@ subcomponents
 	vt_onboardsoftware_planmove : thread vt_onboardsoftware_planmove_CV_Thread::vt_onboardsoftware_planmove_vt_onboardsoftware_planmove.others;
 connections
 	PORT tcdispatch.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT tcdispatch.OUTPORT_planMove_vt -> vt_onboardsoftware_planmove.INPORT_artificial_planMove;
+	PORT tcdispatch.OUTPORT_planHome_vt -> vt_onboardsoftware_planhome.INPORT_artificial_planHome;
 	PORT tcdispatch.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
 	PORT tcdispatch.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
 	PORT tcdispatch.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
@@ -60,6 +62,10 @@ connections
 	PORT vt_ground_newtm.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
 	PORT vt_ground_triggertmgui.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
 	PORT vt_st19_eventactiontrigger.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT vt_robot_control_planhomereport.OUTPORT_planMove_vt -> vt_onboardsoftware_planmove.INPORT_artificial_planMove;
+	PORT vt_robot_control_planhomereport.OUTPORT_planHome_vt -> vt_onboardsoftware_planhome.INPORT_artificial_planHome;
+	PORT vt_robot_control_planmovereport.OUTPORT_planMove_vt -> vt_onboardsoftware_planmove.INPORT_artificial_planMove;
+	PORT vt_robot_control_planmovereport.OUTPORT_planHome_vt -> vt_onboardsoftware_planhome.INPORT_artificial_planHome;
 	PORT vt_onboardsoftware_debugtrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
 	PORT vt_onboardsoftware_debugtrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
 	PORT vt_onboardsoftware_debugtrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;

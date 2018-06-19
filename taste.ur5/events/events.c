@@ -29,14 +29,15 @@ void events_PI_getNextEvent(const asn1SccPusUInt64 *IN_actualCounter,
 	if( PUS_NO_ERROR == error )
 	{
 		//printf(" -EVENTS: getNextEvent successfully.\n");
-
+		*OUT_nextCounter = counter;
 	}
 	else
 	{
-		//printf(" -EVENTS: getNextEvent fail %d\n", error);
+		printf(" -EVENTS: getNextEvent fail %d\n", error);
+		*OUT_nextCounter = *IN_actualCounter;
 		pus_clearError();
 	}
-	*OUT_nextCounter = counter;
+
 	//printf(" -EVENTS: *OUT_nextCounter %llu, *IN_actualCounter %llu\n", *OUT_nextCounter, *IN_actualCounter);
 }
 

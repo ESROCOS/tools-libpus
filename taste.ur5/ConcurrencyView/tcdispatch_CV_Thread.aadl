@@ -16,6 +16,8 @@ features
 		  Queue_Size => 1;
 		  Compute_Entrypoint_Source_Text => "tcdispatch_wrappers.tcTrigger"; };
 	OUTPORT_newTc_vt : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+	OUTPORT_planMove_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
+	OUTPORT_planHome_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
 	OUTPORT_tcTrigger_vt : OUT EVENT PORT;
 	OUTPORT_tmTrigger_vt : OUT EVENT PORT;
 	OUTPORT_EventReportTrigger_vt : OUT EVENT PORT;

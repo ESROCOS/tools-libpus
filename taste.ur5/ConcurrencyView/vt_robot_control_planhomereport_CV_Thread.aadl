@@ -15,6 +15,8 @@ features
 		{ Compute_Execution_Time => 0 ms .. 0 ms;
 		  Queue_Size => 1;
 		  Compute_Entrypoint_Source_Text => "vt_robot_control_planhomereport_wrappers.artificial_planHomeReport"; };
+	OUTPORT_planMove_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
+	OUTPORT_planHome_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
 END vt_robot_control_planhomereport_vt_robot_control_planhomereport;
 
 THREAD IMPLEMENTATION vt_robot_control_planhomereport_vt_robot_control_planhomereport.others
