@@ -211,7 +211,7 @@ pusError_t pus_files_createFile(const pusSt23RepositoryPath_t* repository, const
 				pusSt23RepositoryDomain_t domain;
 				pus_files_getDomainFromRepositoryPath(&domain, repository);
 				sprintf(path, "%s%s", (char*)domain.arr, (char*)fileName->arr);
-				//printf("Path: %s\n", path);
+				printf("Path: %s\n", path);
 				fp = fopen(path, "w");
 				if(fp == NULL)
 				{
@@ -388,6 +388,8 @@ pusError_t pus_files_getDomainFromRepositoryPath(pusSt23RepositoryDomain_t* doma
 		if( pus_files_isSameRepository(repositoryPath, &pus_files_repositoriesTable[i].repository))
 		{
 			*domain = pus_files_repositoriesTable[i].domain;
+			printf("domain: %s \n", (char*)domain->arr);
+			return PUS_SET_ERROR(PUS_NO_ERROR);
 		}
 	}
 

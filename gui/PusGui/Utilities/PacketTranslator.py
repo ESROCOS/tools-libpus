@@ -821,15 +821,6 @@ class PacketTranslator(object):
         return data
 
     @staticmethod
-    def tc_23_3_set_data(packet, data):
-        return packet
-
-    @staticmethod
-    def tc_23_3_get_data(packet):
-        data = dict()
-        return data
-
-    @staticmethod
     def tc_23_4_set_data(packet, data):
         return packet
 
