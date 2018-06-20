@@ -33,7 +33,7 @@ void events_PI_getNextEvent(const asn1SccPusUInt64 *IN_actualCounter,
 	}
 	else
 	{
-		printf(" -EVENTS: getNextEvent fail %d\n", error);
+		//printf(" -EVENTS: getNextEvent fail %d\n", error);
 		*OUT_nextCounter = *IN_actualCounter;
 		pus_clearError();
 	}

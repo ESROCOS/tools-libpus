@@ -11,4 +11,8 @@
     <depend package="tools/config"/>
     <depend package="python3-pyside"/>
     <depend package="pyside-tools"/>
+    <depend package="python3-jsonschema"/>
+    <depend package="python3-mako"/>
+    <depend package="python3-simplejson"/>
+    <depend package="cunit"/>
 </package>

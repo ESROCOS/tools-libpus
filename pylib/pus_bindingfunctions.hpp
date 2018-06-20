@@ -151,7 +151,7 @@ pusSt05EventId_t pus_tc_19_X_getEventId_(const pusPacket_t* outTc);
 char *pus_st20_getOnBoardReportInfoName(pusSt20OnBoardParamId_t paramId);
 pusParamType_t pus_st20_getOnBoardReportInfoType(pusSt20OnBoardParamId_t paramId);
 
-pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName, pusSt23MaximumSize_t maxSize);
+pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, std::string repository, std::string fileName, pusSt23MaximumSize_t maxSize);
 pusError_t pus_tc_23_2_createDeleteFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName);
 pusError_t pus_tc_23_3_createReportFileAtributesRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, const char* repository, const char* fileName);
 pusError_t pus_tc_23_14_createCopyFileRequest_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount,
