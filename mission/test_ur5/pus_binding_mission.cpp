@@ -44,6 +44,55 @@ pusError_t pus_tc_201_3_createPlanMoveRequest_(pusPacket_t* outTc, pusApid_t api
 	return pus_tc_201_3_createPlanMoveRequest(outTc, apid, sequenceCount, &stPos, &stOri);
 }
 
+std::vector<pusSt201Point> pus_tc_201_1_3_getOrientationPoints_(const pusPacket_t* inTc) {
+	pusSt201Point x = 0, y = 0, z = 0;
+	pusError_t error = pus_tc_201_1_3_getOrientationPoints(&x, &y, &z, inTc);
+	PUS_SET_ERROR(error);
+	std::vector<pusSt201Point> orientation;
+	if (error == PUS_NO_ERROR) {
+		orientation.push_back(x);
+		orientation.push_back(y);
+		orientation.push_back(z);
+	}
+	else {
+		orientation.push_back(0);
+		orientation.push_back(0);
+		orientation.push_back(0);
+	}
+
+	return orientation;
+}
+
+std::vector<pusSt201Point> pus_tc_201_1_3_getPositionPoints_(const pusPacket_t* inTc) {
+	pusSt201Point x = 0, y = 0, z = 0;
+	pusError_t error = pus_tc_201_1_3_getPositionPoints(&x, &y, &z, inTc);
+	PUS_SET_ERROR(error);
+	std::vector<pusSt201Point> position;
+	if (error == PUS_NO_ERROR) {
+		position.push_back(x);
+		position.push_back(y);
+		position.push_back(z);
+	}
+	else {
+		position.push_back(0);
+		position.push_back(0);
+		position.push_back(0);
+	}
+
+	return position;
+}
+
+pusSt201PlanObservation pus_tm_201_4_getPlanObservation_(const pusPacket_t* inTM) {
+	pusSt201PlanObservation observation;
+	pusError_t error = pus_tm_201_4_getPlanObservation(&observation, inTM);
+	PUS_SET_ERROR(error);
+	if (error == PUS_NO_ERROR)
+		return observation;
+	else
+		return 0;
+}
+
+
 
 void init_mission_module(py::module &m)
 {
@@ -61,9 +110,9 @@ void init_mission_module(py::module &m)
 	m.def("pus_tc_201_3_createPlanMoveRequest", &pus_tc_201_3_createPlanMoveRequest_, "pus_tc_201_3_createPlanMoveRequest");
 	m.def("pus_tm_201_4_createPlanReport", &pus_tm_201_4_createPlanReport, "pus_tm_201_4_createPlanReport");
 	m.def("pus_tc_201_1_3_setOrientationPoints", &pus_tc_201_1_3_setOrientationPoints, "pus_tc_201_1_3_setOrientationPoints");
-	m.def("pus_tc_201_1_3_getOrientationPoints", &pus_tc_201_1_3_getOrientationPoints, "pus_tc_201_1_3_getOrientationPoints");
+	m.def("pus_tc_201_1_3_getOrientationPoints", &pus_tc_201_1_3_getOrientationPoints_, "pus_tc_201_1_3_getOrientationPoints");
 	m.def("pus_tc_201_1_3_setPositionPoints", &pus_tc_201_1_3_setPositionPoints, "pus_tc_201_1_3_setPositionPoints");
-	m.def("pus_tc_201_1_3_getPositionPoints", &pus_tc_201_1_3_getPositionPoints, "pus_tc_201_1_3_getPositionPoints");
+	m.def("pus_tc_201_1_3_getPositionPoints", &pus_tc_201_1_3_getPositionPoints_, "pus_tc_201_1_3_getPositionPoints");
 	m.def("pus_tm_201_4_getPlanObservation", &pus_tm_201_4_getPlanObservation, "pus_tm_201_4_getPlanObservation");
 }
 

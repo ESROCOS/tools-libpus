@@ -33,6 +33,7 @@ pusError_t pus_tc_201_1_createSetHomeRequest(pusPacket_t* outTc, pusApid_t apid,
 		pus_setTcSubtype(outTc, pus_TC_201_1_setHomeRequest);
 
 		// set data
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_201_1_3);
 		pus_tc_201_1_3_setOrientationPoints(outTc, orientation->arr[0], orientation->arr[1], orientation->arr[2]);
 		pus_tc_201_1_3_setPositionPoints(outTc, position->arr[0], position->arr[1], position->arr[2]);
 
@@ -97,6 +98,7 @@ pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid
 		pus_setTcSubtype(outTc, pus_TC_201_3_planMoveRequest);
 
 		// Set data
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_201_1_3);
 		pus_tc_201_1_3_setOrientationPoints(outTc, orientation->arr[0], orientation->arr[1], orientation->arr[2]);
 		pus_tc_201_1_3_setPositionPoints(outTc, position->arr[0], position->arr[1], position->arr[2]);
 
@@ -133,6 +135,7 @@ pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pus
 		// Service identification
 		pus_setTmService(outTm, pus_ST201_robotMoveControl);
 		pus_setTmSubtype(outTm, pus_TM_201_4_planReport);
+
 
 		//TODO set data
 		pus_tm_201_4_setPlanObservation(outTm, observation);
@@ -278,7 +281,7 @@ pusError_t pus_expectSt201Tc(const pusPacket_t* packet, pusSubservice_t expected
 		pusService_t service = pus_getTcService(packet);
 		pusSubservice_t subtype = pus_getTcSubtype(packet);
 
-		if (service != pus_ST17_test)
+		if (service != pus_ST201_robotMoveControl)
 		{
 			pus_setError(PUS_ERROR_TC_SERVICE, function, (pusErrorData_t){.integer=service});
 			return PUS_ERROR_TC_SERVICE;
@@ -287,7 +290,7 @@ pusError_t pus_expectSt201Tc(const pusPacket_t* packet, pusSubservice_t expected
 		if (expectedSubtype == pusSubtype_NONE)
 		{
 			// Check that subtype corresponds to ST[200]
-			if (subtype != pus_TC_17_1_connectionTest)
+			if ((subtype != pus_TC_201_1_setHomeRequest) && (subtype != pus_TC_201_2_planHomeRequest) && (subtype != pus_TC_201_3_planMoveRequest))
 			{
 				pus_setError(PUS_ERROR_TC_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
 				return PUS_ERROR_TC_SUBTYPE;
@@ -303,12 +306,12 @@ pusError_t pus_expectSt201Tc(const pusPacket_t* packet, pusSubservice_t expected
 			}
 		}
 
-		pusPacketDataKind_t kind = pus_getTcDataKind(packet);
+		/*pusPacketDataKind_t kind = pus_getTcDataKind(packet);
 		if ((kind != pus_TC_DATA_ST_200_1) && (kind != pus_TC_DATA_NONE ))
 		{
 			pus_setError(PUS_ERROR_TC_KIND, function, (pusErrorData_t){.integer=kind});
 			return PUS_ERROR_TC_KIND;
-		}
+		}*/
 
 		return PUS_NO_ERROR;
 	}
@@ -326,7 +329,7 @@ pusError_t pus_expectSt201Tm(const pusPacket_t* packet, pusSubservice_t expected
 		pusService_t service = pus_getTmService(packet);
 		pusSubservice_t subtype = pus_getTmSubtype(packet);
 
-		if (service != pus_ST17_test)
+		if (service != pus_ST201_robotMoveControl)
 		{
 			pus_setError(PUS_ERROR_TM_SERVICE, function, (pusErrorData_t){.integer=service});
 			return PUS_ERROR_TM_SERVICE;
@@ -335,7 +338,7 @@ pusError_t pus_expectSt201Tm(const pusPacket_t* packet, pusSubservice_t expected
 		if (expectedSubtype == pusSubtype_NONE)
 		{
 			// Check that subtype corresponds to ST[200]
-			if (subtype != pus_TM_17_2_connectionTest)
+			if (subtype != pus_TM_201_4_planReport)
 			{
 				pus_setError(PUS_ERROR_TM_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
 				return PUS_ERROR_TM_SUBTYPE;
@@ -351,12 +354,12 @@ pusError_t pus_expectSt201Tm(const pusPacket_t* packet, pusSubservice_t expected
 			}
 		}
 
-		pusPacketDataKind_t kind = pus_getTmDataKind(packet);
-		if (kind != pus_TM_DATA_ST_201_2)
+		/*pusPacketDataKind_t kind = pus_getTmDataKind(packet);
+		if (kind != pus_TM_DATA_ST_201)
 		{
 			pus_setError(PUS_ERROR_TM_KIND, function, (pusErrorData_t){.integer=kind});
 			return PUS_ERROR_TM_KIND;
-		}
+		}*/
 
 		return PUS_NO_ERROR;
 	}
