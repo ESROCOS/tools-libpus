@@ -1,4 +1,4 @@
-/*! \file pus_st17_packets.h
+ /*! \file pus_st17_packets.h
  *  \brief PUS service ST[201]
  *
  *  This module provides the functions to generate reports of the service ST[17],
