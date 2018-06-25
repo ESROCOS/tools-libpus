@@ -26,21 +26,27 @@ mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 # Required packages
 #
 
-# Code coverage
-find_package(codecov REQUIRED)
-if (NOT ENABLE_COVERAGE)
-	message(STATUS "Configure with -DENABLE_COVERAGE=On to collect coverage metrics")
+# Code coverage (native only)
+if(NOT CMAKE_CROSSCOMPILING)
+    find_package(codecov REQUIRED)
+    if (NOT ENABLE_COVERAGE)
+        message(STATUS "Configure with -DENABLE_COVERAGE=On to collect coverage metrics")
+    endif()
 endif()
 
 # Tests automation
 include(CTest)
 
-# POSIX threads
-find_package(Threads REQUIRED)
+# POSIX threads (skip check if using RTEMS)
+if(NOT CMAKE_CROSSCOMPILING)
+    find_package(Threads REQUIRED)
+endif()
 
-# PyBind11 library for Python-C++ binding (for PUS console)
-set(pybind11_DIR "${CMAKE_INSTALL_PREFIX}/cmake_modules/pybind11")
-find_package(pybind11 CONFIG)
+# PyBind11 library for Python-C++ binding, for PUS console (native only)
+if(NOT CMAKE_CROSSCOMPILING)
+    set(pybind11_DIR "${CMAKE_INSTALL_PREFIX}/cmake_modules/pybind11")
+    find_package(pybind11 CONFIG)
+endif()
 
 
 #
@@ -66,13 +72,15 @@ add_subdirectory(doc)
 add_subdirectory(python)
 add_subdirectory(mission)
 add_subdirectory(test)
-add_subdirectory(gui)
 add_subdirectory(include)
+if(NOT CMAKE_CROSSCOMPILING)
+    add_subdirectory(gui)
+endif()
 #add_subdirectory(taste)
 #add_subdirectory(taste.ur5)
 
 # Coverage for tests
-coverage_evaluate()
-
-
+if(NOT CMAKE_CROSSCOMPILING)
+    coverage_evaluate()
+endif()
 

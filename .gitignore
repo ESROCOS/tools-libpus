@@ -9,6 +9,7 @@
 
 mission/test_02
 build/*
+build_*/*
 buildRtems/*
 pylib/bind.py
 pylib/tempbinding.cpp
