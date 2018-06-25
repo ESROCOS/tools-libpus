@@ -69,7 +69,7 @@ add_subdirectory(test)
 add_subdirectory(gui)
 add_subdirectory(include)
 #add_subdirectory(taste)
-
+#add_subdirectory(taste.ur5)
 
 # Coverage for tests
 coverage_evaluate()

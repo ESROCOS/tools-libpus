@@ -16,8 +16,6 @@ void st23_startup()
 void st23_PI_tc23(const asn1SccPusPacket *IN_tcPacket)
 {
     /* Write your code here! */
-
-    /* Write your code here! */
 	pusSubservice_t subtype;
 	pusSt01FailureCode_t errorCode = PUS_NO_ERROR;
 	pusSt01FailureInfo_t info;

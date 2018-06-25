@@ -28,7 +28,7 @@ typedef asn1SccPusTC_201_1_3_Data_position pusSt201Position;
 typedef asn1SccPusTC_201_1_3_Data_orientation pusSt201Orientation;
 
 #define pus_TC_DATA_ST_201_1_3		((pusTcDataKind_t) PusTcApplicationData_st_201_1_3_PRESENT)
-#define pus_TM_DATA_ST_201_2		((pusTmDataKind_t) st_200_2_PRESENT)
+#define pus_TM_DATA_ST_201_4		((pusTmDataKind_t) st_201_4_PRESENT)
 
 #ifdef  __cplusplus
 }
