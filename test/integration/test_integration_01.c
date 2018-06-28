@@ -2,9 +2,21 @@
 
 
 
+#if defined(RTEMS_POSIX)
+#include <bsp.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <sched.h>
+
+int *POSIX_Init()
+#else
 int main()
+#endif
 {
 	printf("-- Test integration 01 begin.\n\n");
+	printf("%llu %llu\n", TC_QUEUE_ONBOARD, PUS_PACKET_QUEUES_LIMIT);
+
+	pusError_t err;
 
 	// Initializations
 	pusMutex_t mutexApid;
@@ -32,15 +44,14 @@ int main()
 
 	//TC creation + push on queue
 	pusPacket_t tc;
-	pus_tc_17_1_createConnectionTestRequest(&tc, apid.apid, pus_getNextPacketCount(&apid));
+	err = pus_tc_17_1_createConnectionTestRequest(&tc, apid.apid, pus_getNextPacketCount(&apid));
 	pus_setTcAckFlags(&tc, true, false, false, true);
-	pus_packetQueues_push(&tc, TC_QUEUE_ONBOARD);
+	err = pus_packetQueues_push(&tc, TC_QUEUE_ONBOARD);
 	printf("TC_17_1 pushed in TCqueue.\n");
 
 	pus_tc_8_1_createPerformFuctionRequest(&tc, apid.apid, pus_getNextPacketCount(&apid), EXAMPLE_FUNCTION_01);
 	pus_packetQueues_push(&tc, TC_QUEUE_ONBOARD);
 	printf("TC_8_1 pushed in TCqueue.\n");
-
 
 
 	pusSt05Event_t eventInfo, eventLow, eventMid, eventHi;
@@ -104,7 +115,9 @@ int main()
 
 	while (noTc<2 || noTm<2)
 	{
-		if ( PUS_NO_ERROR == pus_packetQueues_pop(&tcRead, TC_QUEUE_ONBOARD) )
+		err =  pus_packetQueues_pop(&tcRead, TC_QUEUE_ONBOARD);
+		printf("ey %d\n", err);
+		if ( PUS_NO_ERROR == err )
 		{
 			noTc = 0;
 
@@ -184,19 +197,36 @@ int main()
 			noTm++;
 		}
 	}
-
-	pus_hk_setHK_PARAM_INT01(500);
+	printf("HKS test\n");
+	pus_pmon_enableFunction();
+	pus_pmon_enableDefinition(HK_PARAM_INT01);
+	pus_hk_setHK_PARAM_INT01(5);
+	pus_pmon_enableDefinition(HK_PARAM_REAL01);
 	pus_hk_setHK_PARAM_REAL01(8.236);
-	pus_hk_setHK_PARAM_INT02(7);
-	pus_hk_setHK_PARAM_UINT01(7);
-	pus_hk_setHK_PARAM_BYTE01(2);
+	pus_pmon_enableDefinition(HK_PARAM_INT02);
+	pus_hk_setHK_PARAM_INT02(6);
+	pus_hk_setHK_PARAM_UINT01(6);
+	pus_hk_setHK_PARAM_BYTE01(4);
 	pus_hk_setHK_PARAM_BOOL01(false);
-	pus_st12_processPmonDefinitions();
+	printf("HKS test %u\n", pus_st12_processPmonDefinitions());
 
 
 	printf("\n-- Test integration 01 end.\n");
 	return 0;
 }
+
+#if defined(RTEMS_POSIX)
+#define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
+#define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+
+#define CONFIGURE_MAXIMUM_POSIX_THREADS              10
+#define CONFIGURE_POSIX_INIT_THREAD_TABLE
+
+#define CONFIGURE_INIT
+#include <rtems/confdefs.h>
+#endif
+
+
 
 pusError_t example_function()
 {

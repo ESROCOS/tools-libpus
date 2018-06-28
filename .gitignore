@@ -42,4 +42,7 @@ taste.ur5/*.pro
 taste.ur5/*.old
 taste.ur5/binary.c
 
-/.tc_history
+.tc_history
+gui/.tc_history
+taste.ur5/.tc_history
+*.tc_history

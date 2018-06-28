@@ -40,7 +40,7 @@ void *myThreadFun(void* arg)
 
     PyRun_SimpleString("import builtins\n");
     PyRun_SimpleString("builtins.ESROCOS_PUSGUI_MODULE = \"esrocos_pus_test_ur5\"\n");
-    PyRun_SimpleString("builtins.ESROCOS_PUSGUI_CONFIG = \"/home/esrocos/esrocos_workspace/tools/libpus/gui/config.json\"\n");
+    PyRun_SimpleString("builtins.ESROCOS_PUSGUI_CONFIG = \"/home/esrocos/esrocos_workspace/tools/libpus/mission/test_ur5/gui_config.json\"\n");
     PyRun_SimpleString("builtins.ESROCOS_PUSGUI_MISSION = \"/home/esrocos/esrocos_workspace/tools/libpus/mission/test_ur5\"\n");
     PyRun_SimpleString("import PusGui\n");
     PyRun_SimpleString("PusGui.create()\n");

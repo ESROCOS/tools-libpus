@@ -31,7 +31,6 @@ void housekeeping_PI_getParamValue(const asn1SccPusSt03ParameterId *IN_paramId,
 {
     /* Write your code here! */
 	*OUT_isAvailable = pus_hk_getStoredParam(*IN_paramId, OUT_paramValue);
-
 }
 
 void housekeeping_PI_setParamValue(const asn1SccPusSt03ParameterId *IN_paramId,
@@ -39,6 +38,5 @@ void housekeeping_PI_setParamValue(const asn1SccPusSt03ParameterId *IN_paramId,
 {
     /* Write your code here! */
 	pus_hk_setStoredParam(*IN_paramId, *IN_paramValue);
-
 }
 

@@ -25,6 +25,7 @@ $AUTOPROJ_CURRENT_ROOT/install/types/u5_types/buffer.asn \
 $AUTOPROJ_CURRENT_ROOT/install/types/u5_types/commandStates.asn \
 /home/esrocos/tool-inst/share/taste-types/taste-types.asn "
 echo "Updating DataView.aadl"
+
 taste-update-data-view $FILES
 
 

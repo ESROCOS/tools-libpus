@@ -12,12 +12,13 @@
 #include "pus_stored_param.h"
 #include "pus_types.h"
 
+#include <stdio.h>
 
 //! Table of packetQueues
 extern pusPacketQueue_t pus_packetQueue_table[];
 
 //! Size of the packetQueues table
-extern const size_t pus_packetQueue_tableLenght;
+extern const pusPacketQueueId_t pus_packetQueue_tableLenght;
 
 
 //! Flag to check if the
@@ -57,6 +58,7 @@ pusError_t pus_packetQueues_push(const pusPacket_t * inPacket, pusPacketQueueId_
 	}
 	else if( queueId >= pus_packetQueue_tableLenght )
 	{
+		printf("PUSH %llu %llu\n", queueId, pus_packetQueue_tableLenght);
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 
@@ -75,6 +77,7 @@ pusError_t pus_packetQueues_pop(pusPacket_t * outPacket, pusPacketQueueId_t queu
 	}
 	else if( queueId >= pus_packetQueue_tableLenght )
 	{
+		printf("POP %llu %llu\n", queueId, pus_packetQueue_tableLenght);
 		return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
 	}
 
