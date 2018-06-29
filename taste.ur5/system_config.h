@@ -210,9 +210,12 @@
 #define __NEED_PusTC_201_1_3_Data_NATIVE
 #define __NEED_PlanCmdStatus_NATIVE
 #define __NEED_PlanCmdStatus_NATIVE
+#define __NEED_T_Boolean_NATIVE
 #define __NEED_PusSt201PlanObservation_NATIVE
 #define __NEED_Base_Pose_NATIVE
+#define __NEED_T_Boolean_NATIVE
 #define __NEED_Base_Pose_NATIVE
+#define __NEED_T_Boolean_NATIVE
 #define __NEED_Base_Pose_NATIVE
 #define __NEED_Base_Pose_NATIVE
 #define __NEED_PusSt03ParameterId_NATIVE
@@ -232,3 +235,4 @@
 #define __NEED_T_UInt64_NATIVE
 #define __NEED_PlanCmdStatus_NATIVE
 #define __NEED_PlanCmdStatus_NATIVE
+#define __NEED_T_Boolean_NATIVE

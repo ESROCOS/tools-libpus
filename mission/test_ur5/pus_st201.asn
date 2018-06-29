@@ -23,7 +23,14 @@ BEGIN
     PusSt201Point ::= PusDouble --TODO
     
     -- Observation TODO enum
-    PusSt201PlanObservation ::= PusUInt32
+    PusSt201PlanObservationId ::= PusUInt32
+    PusSt201PlanObservationCode ::= PusUInt32
+    
+    PusSt201PlanObservation  ::= SEQUENCE
+    {
+    	id		PusSt201PlanObservationId,
+    	code	PusSt201PlanObservationCode
+    }
     
     
     -- Data for TC[201,1] and TC[201,3]
@@ -36,7 +43,7 @@ BEGIN
     -- Data for TM[201,1]
     PusTM-201-4-Data  ::= SEQUENCE
     {
-    	planObservation PusSt201PlanObservation
+    	observation PusSt201PlanObservation
     }
     
 END

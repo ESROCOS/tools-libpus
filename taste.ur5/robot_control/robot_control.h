@@ -23,11 +23,15 @@ void robot_control_PI_planHomeReport(const asn1SccPlanCmdStatus *);
 
 void robot_control_PI_planMoveReport(const asn1SccPlanCmdStatus *);
 
+void robot_control_PI_configHomeReport(const asn1SccT_Boolean *);
+
 extern void robot_control_RI_report(const asn1SccPusSt201PlanObservation *);
 
 extern void robot_control_RI_planMove(const asn1SccBase_Pose *);
 
-extern void robot_control_RI_planHome(const asn1SccBase_Pose *);
+extern void robot_control_RI_planHome(const asn1SccT_Boolean *);
+
+extern void robot_control_RI_configHome(const asn1SccBase_Pose *);
 
 #ifdef __cplusplus
 }

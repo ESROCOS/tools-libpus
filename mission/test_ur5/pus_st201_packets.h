@@ -55,7 +55,7 @@ pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid
  *  \param[in] apid APID of the process sending the report
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination, pusSt201PlanObservation observation);
+pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination, const pusSt201PlanObservation* observation);
 
 
 pusError_t pus_tc_201_1_3_setOrientationPoints(pusPacket_t* outTc, pusSt201Point point1, pusSt201Point point2, pusSt201Point point3);
@@ -66,7 +66,7 @@ pusError_t pus_tc_201_1_3_setPositionPoints(pusPacket_t* outTc, pusSt201Point po
 
 pusError_t pus_tc_201_1_3_getPositionPoints(pusSt201Point* point1, pusSt201Point* point2, pusSt201Point* point3, const pusPacket_t* inTc);
 
-pusError_t pus_tm_201_4_setPlanObservation(pusPacket_t* outTm, pusSt201PlanObservation observation);
+pusError_t pus_tm_201_4_setPlanObservation(pusPacket_t* outTm, const pusSt201PlanObservation* observation);
 
 pusError_t pus_tm_201_4_getPlanObservation(pusSt201PlanObservation* observation, const pusPacket_t* inTM);
 

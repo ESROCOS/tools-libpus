@@ -58,7 +58,7 @@ void st201_PI_tc201(const asn1SccPusPacket *IN_tcPacket)
 
 		//send 1.2
 		subtype = pus_TM_1_2_failedAcceptance;
-		st200_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		st201_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -66,13 +66,13 @@ void st201_PI_tc201(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		st200_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		st201_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		st200_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		st201_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
 
@@ -87,6 +87,6 @@ void st201_PI_report(const asn1SccPusSt201PlanObservation *IN_observation)
 
 	st201_RI_getApid(&apid);
 	st201_RI_getSequenceCount(&seqCount);
-	pus_tm_201_4_createPlanReport(&outTm, apid, seqCount, destination, *IN_observation);
+	pus_tm_201_4_createPlanReport(&outTm, apid, seqCount, destination, IN_observation);
 }
 

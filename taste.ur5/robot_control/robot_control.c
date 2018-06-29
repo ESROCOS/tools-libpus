@@ -18,23 +18,29 @@ void robot_control_startup()
 
 void robot_control_PI_setHome(const asn1SccPusTC_201_1_3_Data *IN_pusPose)
 {
-    /* Write your code here! */
-	pus_robotControl_setHomeOrientationPoints(IN_pusPose->orientation.arr[0], IN_pusPose->orientation.arr[1], IN_pusPose->orientation.arr[2]);
-	pus_robotControl_setHomePositionPoints(IN_pusPose->position.arr[0], IN_pusPose->position.arr[1], IN_pusPose->position.arr[2]);
+    /* Write your code here! */      
+        asn1SccBase_Pose pose;
+
+	pose.orientation.re = 0;// idk what is this :)
+	pose.orientation.im.nCount = 3;
+	pose.position.data.nCount = 3;
+
+	for(int i = 0; i<3; i++)
+	{
+		pose.orientation.im.arr[i] = IN_pusPose->orientation.arr[i];
+		pose.position.data.arr[i] = IN_pusPose->position.arr[i];
+	}
+
+	robot_control_RI_configHome(&pose);
+        
 }
 
 void robot_control_PI_planHomeRequest()
 {
     /* Write your code here! */
-	asn1SccBase_Pose poseHome;
-	pus_robotControl_getHomeOrientationPoints(&poseHome.orientation.im.arr[0], &poseHome.orientation.im.arr[1], &poseHome.orientation.im.arr[2]);
-	pus_robotControl_getHomePositionPoints(&poseHome.position.data.arr[0], &poseHome.position.data.arr[1], &poseHome.position.data.arr[2]);
+	asn1SccT_Boolean trig = 1;
 
-	poseHome.orientation.re = 0; // idk what is this :)
-	poseHome.orientation.im.nCount = 3;
-	poseHome.position.data.nCount = 3;
-
-	robot_control_RI_planHome(&poseHome);
+	robot_control_RI_planHome(&trig);
 }
 
 void robot_control_PI_planMoveRequest(const asn1SccPusTC_201_1_3_Data *IN_pusPose)
@@ -58,14 +64,26 @@ void robot_control_PI_planMoveRequest(const asn1SccPusTC_201_1_3_Data *IN_pusPos
 void robot_control_PI_planHomeReport(const asn1SccPlanCmdStatus *IN_status)
 {
     /* Write your code here! */
-	pusSt201PlanObservation obs = *IN_status;
+	pusSt201PlanObservation obs;
+	obs.id = 0;
+	obs.code = *IN_status;
 	robot_control_RI_report(&obs);
 }
 
 void robot_control_PI_planMoveReport(const asn1SccPlanCmdStatus *IN_status)
 {
     /* Write your code here! */
-	pusSt201PlanObservation obs = *IN_status;
+	pusSt201PlanObservation obs;
+	obs.id = 1;
+	obs.code = *IN_status;
 	robot_control_RI_report(&obs);
 }
 
+void robot_control_PI_configHomeReport(const asn1SccT_Boolean *IN_status)
+{
+    /* Write your code here! */
+	pusSt201PlanObservation obs;
+	obs.id = 2;
+	obs.code = *IN_status;
+	robot_control_RI_report(&obs);
+}

@@ -19,9 +19,11 @@ void onboardsoftware_PI_pusTrigger();
 
 void onboardsoftware_PI_setFrameRequest();
 
-void onboardsoftware_PI_planHome(const asn1SccBase_Pose *);
+void onboardsoftware_PI_planHome(const asn1SccT_Boolean *);
 
 void onboardsoftware_PI_planMove(const asn1SccBase_Pose *);
+
+void onboardsoftware_PI_configHome(const asn1SccBase_Pose *);
 
 extern void onboardsoftware_RI_setParamValue(const asn1SccPusSt03ParameterId *,
                                              const asn1SccPusSt03StoredParam *);
@@ -60,6 +62,8 @@ extern void onboardsoftware_RI_setCameraReport(const asn1SccT_UInt64 *);
 extern void onboardsoftware_RI_planHomeReport(const asn1SccPlanCmdStatus *);
 
 extern void onboardsoftware_RI_planMoveReport(const asn1SccPlanCmdStatus *);
+
+extern void onboardsoftware_RI_configHomeReport(const asn1SccT_Boolean *);
 
 #ifdef __cplusplus
 }

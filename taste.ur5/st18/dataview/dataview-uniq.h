@@ -256,142 +256,6 @@ flag asn1SccWrappers_geometry_SplineType_Encode(const asn1SccWrappers_geometry_S
 
 #define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINETYPE		81  /**/
 flag asn1SccWrappers_geometry_SplineType_Decode(asn1SccWrappers_geometry_SplineType* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef enum {
-    asn1Sccpus_CCSDS_V1 = 0
-} asn1SccPusPacketVersion;
-
-flag asn1SccPusPacketVersion_Equal(const asn1SccPusPacketVersion* pVal1, const asn1SccPusPacketVersion* pVal2);
-
-void asn1SccPusPacketVersion_Initialize(asn1SccPusPacketVersion* pVal);
-
-#define ERR_PUSPACKETVERSION		8010  /**/
-flag asn1SccPusPacketVersion_IsConstraintValid(const asn1SccPusPacketVersion* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSPACKETVERSION		8011  /**/
-#define asn1SccPusPacketVersion_REQUIRED_BYTES_FOR_ENCODING       0 
-#define asn1SccPusPacketVersion_REQUIRED_BITS_FOR_ENCODING        0
-
-flag asn1SccPusPacketVersion_Encode(const asn1SccPusPacketVersion* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSPACKETVERSION		8012  /**/
-flag asn1SccPusPacketVersion_Decode(asn1SccPusPacketVersion* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef enum {
-    asn1Sccpus_TM = 0,
-    asn1Sccpus_TC = 1
-} asn1SccPusPacketType;
-
-flag asn1SccPusPacketType_Equal(const asn1SccPusPacketType* pVal1, const asn1SccPusPacketType* pVal2);
-
-void asn1SccPusPacketType_Initialize(asn1SccPusPacketType* pVal);
-
-#define ERR_PUSPACKETTYPE		8017  /**/
-flag asn1SccPusPacketType_IsConstraintValid(const asn1SccPusPacketType* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSPACKETTYPE		8018  /**/
-#define asn1SccPusPacketType_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccPusPacketType_REQUIRED_BITS_FOR_ENCODING        1
-
-flag asn1SccPusPacketType_Encode(const asn1SccPusPacketType* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSPACKETTYPE		8019  /**/
-flag asn1SccPusPacketType_Decode(asn1SccPusPacketType* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef flag asn1SccPusSecondaryHeaderFlag;
-
-
-flag asn1SccPusSecondaryHeaderFlag_Equal(const asn1SccPusSecondaryHeaderFlag* pVal1, const asn1SccPusSecondaryHeaderFlag* pVal2);
-
-void asn1SccPusSecondaryHeaderFlag_Initialize(asn1SccPusSecondaryHeaderFlag* pVal);
-
-#define ERR_PUSSECONDARYHEADERFLAG		8024  /**/
-flag asn1SccPusSecondaryHeaderFlag_IsConstraintValid(const asn1SccPusSecondaryHeaderFlag* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSSECONDARYHEADERFLAG		8025  /**/
-#define asn1SccPusSecondaryHeaderFlag_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccPusSecondaryHeaderFlag_REQUIRED_BITS_FOR_ENCODING        1
-
-flag asn1SccPusSecondaryHeaderFlag_Encode(const asn1SccPusSecondaryHeaderFlag* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSSECONDARYHEADERFLAG		8026  /**/
-flag asn1SccPusSecondaryHeaderFlag_Decode(asn1SccPusSecondaryHeaderFlag* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef enum {
-    asn1Sccpus_STANDALONE_PACKET = 3
-} asn1SccPusSequenceFlags;
-
-flag asn1SccPusSequenceFlags_Equal(const asn1SccPusSequenceFlags* pVal1, const asn1SccPusSequenceFlags* pVal2);
-
-void asn1SccPusSequenceFlags_Initialize(asn1SccPusSequenceFlags* pVal);
-
-#define ERR_PUSSEQUENCEFLAGS		8042  /**/
-flag asn1SccPusSequenceFlags_IsConstraintValid(const asn1SccPusSequenceFlags* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSSEQUENCEFLAGS		8043  /**/
-#define asn1SccPusSequenceFlags_REQUIRED_BYTES_FOR_ENCODING       0 
-#define asn1SccPusSequenceFlags_REQUIRED_BITS_FOR_ENCODING        0
-
-flag asn1SccPusSequenceFlags_Encode(const asn1SccPusSequenceFlags* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSSEQUENCEFLAGS		8044  /**/
-flag asn1SccPusSequenceFlags_Decode(asn1SccPusSequenceFlags* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef enum {
-    asn1Sccpus_V0 = 0,
-    asn1Sccpus_V1 = 1,
-    asn1Sccpus_V2 = 2,
-    asn1Sccpus_INVALID_VERSION = 15
-} asn1SccPusVersionNumber;
-
-flag asn1SccPusVersionNumber_Equal(const asn1SccPusVersionNumber* pVal1, const asn1SccPusVersionNumber* pVal2);
-
-void asn1SccPusVersionNumber_Initialize(asn1SccPusVersionNumber* pVal);
-
-#define ERR_PUSVERSIONNUMBER		8071  /**/
-flag asn1SccPusVersionNumber_IsConstraintValid(const asn1SccPusVersionNumber* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSVERSIONNUMBER		8072  /**/
-#define asn1SccPusVersionNumber_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccPusVersionNumber_REQUIRED_BITS_FOR_ENCODING        2
-
-flag asn1SccPusVersionNumber_Encode(const asn1SccPusVersionNumber* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSVERSIONNUMBER		8073  /**/
-flag asn1SccPusVersionNumber_Decode(asn1SccPusVersionNumber* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    flag acceptanceReportRequested;
-    flag startReportRequested;
-    flag progressReportRequested;
-    flag completionReportRequested;
-} asn1SccPusAcknowledgementFlags;
-
-flag asn1SccPusAcknowledgementFlags_Equal(const asn1SccPusAcknowledgementFlags* pVal1, const asn1SccPusAcknowledgementFlags* pVal2);
-
-void asn1SccPusAcknowledgementFlags_Initialize(asn1SccPusAcknowledgementFlags* pVal);
-
-#define ERR_PUSACKNOWLEDGEMENTFLAGS_ACCEPTANCEREPORTREQUESTED		8100  /**/
-#define ERR_PUSACKNOWLEDGEMENTFLAGS_STARTREPORTREQUESTED		8107  /**/
-#define ERR_PUSACKNOWLEDGEMENTFLAGS_PROGRESSREPORTREQUESTED		8114  /**/
-#define ERR_PUSACKNOWLEDGEMENTFLAGS_COMPLETIONREPORTREQUESTED		8121  /**/
-flag asn1SccPusAcknowledgementFlags_IsConstraintValid(const asn1SccPusAcknowledgementFlags* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS		8128  /**/
-#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS_ACCEPTANCEREPORTREQUESTED		8101  /**/
-#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS_STARTREPORTREQUESTED		8108  /**/
-#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS_PROGRESSREPORTREQUESTED		8115  /**/
-#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS_COMPLETIONREPORTREQUESTED		8122  /**/
-#define asn1SccPusAcknowledgementFlags_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccPusAcknowledgementFlags_REQUIRED_BITS_FOR_ENCODING        4
-
-flag asn1SccPusAcknowledgementFlags_Encode(const asn1SccPusAcknowledgementFlags* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS		8129  /**/
-#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS_ACCEPTANCEREPORTREQUESTED		8102  /**/
-#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS_STARTREPORTREQUESTED		8109  /**/
-#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS_PROGRESSREPORTREQUESTED		8116  /**/
-#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS_COMPLETIONREPORTREQUESTED		8123  /**/
-flag asn1SccPusAcknowledgementFlags_Decode(asn1SccPusAcknowledgementFlags* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccPusUInt3;
 
 
@@ -399,16 +263,16 @@ flag asn1SccPusUInt3_Equal(const asn1SccPusUInt3* pVal1, const asn1SccPusUInt3* 
 
 void asn1SccPusUInt3_Initialize(asn1SccPusUInt3* pVal);
 
-#define ERR_PUSUINT3		50202  /**/
+#define ERR_PUSUINT3		8159  /**/
 flag asn1SccPusUInt3_IsConstraintValid(const asn1SccPusUInt3* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSUINT3		50203  /**/
+#define ERR_UPER_ENCODE_PUSUINT3		8160  /**/
 #define asn1SccPusUInt3_REQUIRED_BYTES_FOR_ENCODING       1 
 #define asn1SccPusUInt3_REQUIRED_BITS_FOR_ENCODING        3
 
 flag asn1SccPusUInt3_Encode(const asn1SccPusUInt3* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSUINT3		50204  /**/
+#define ERR_UPER_DECODE_PUSUINT3		8161  /**/
 flag asn1SccPusUInt3_Decode(asn1SccPusUInt3* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccPusUInt4;
 
@@ -417,16 +281,16 @@ flag asn1SccPusUInt4_Equal(const asn1SccPusUInt4* pVal1, const asn1SccPusUInt4* 
 
 void asn1SccPusUInt4_Initialize(asn1SccPusUInt4* pVal);
 
-#define ERR_PUSUINT4		50209  /**/
+#define ERR_PUSUINT4		8166  /**/
 flag asn1SccPusUInt4_IsConstraintValid(const asn1SccPusUInt4* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSUINT4		50210  /**/
+#define ERR_UPER_ENCODE_PUSUINT4		8167  /**/
 #define asn1SccPusUInt4_REQUIRED_BYTES_FOR_ENCODING       1 
 #define asn1SccPusUInt4_REQUIRED_BITS_FOR_ENCODING        3
 
 flag asn1SccPusUInt4_Encode(const asn1SccPusUInt4* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSUINT4		50211  /**/
+#define ERR_UPER_DECODE_PUSUINT4		8168  /**/
 flag asn1SccPusUInt4_Decode(asn1SccPusUInt4* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt4 asn1SccPusTimeReferenceStatus;
 
@@ -435,16 +299,16 @@ flag asn1SccPusTimeReferenceStatus_Equal(const asn1SccPusTimeReferenceStatus* pV
 
 void asn1SccPusTimeReferenceStatus_Initialize(asn1SccPusTimeReferenceStatus* pVal);
 
-#define ERR_PUSTIMEREFERENCESTATUS		8078  /**/
+#define ERR_PUSTIMEREFERENCESTATUS		51961  /**/
 flag asn1SccPusTimeReferenceStatus_IsConstraintValid(const asn1SccPusTimeReferenceStatus* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTIMEREFERENCESTATUS_2		8085  /**/
+#define ERR_UPER_ENCODE_PUSTIMEREFERENCESTATUS_2		51968  /**/
 #define asn1SccPusTimeReferenceStatus_REQUIRED_BYTES_FOR_ENCODING       1 
 #define asn1SccPusTimeReferenceStatus_REQUIRED_BITS_FOR_ENCODING        3
 
 flag asn1SccPusTimeReferenceStatus_Encode(const asn1SccPusTimeReferenceStatus* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTIMEREFERENCESTATUS_2		8086  /**/
+#define ERR_UPER_DECODE_PUSTIMEREFERENCESTATUS_2		51969  /**/
 flag asn1SccPusTimeReferenceStatus_Decode(asn1SccPusTimeReferenceStatus* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccPusUInt8;
 
@@ -453,16 +317,16 @@ flag asn1SccPusUInt8_Equal(const asn1SccPusUInt8* pVal1, const asn1SccPusUInt8* 
 
 void asn1SccPusUInt8_Initialize(asn1SccPusUInt8* pVal);
 
-#define ERR_PUSUINT8		50216  /**/
+#define ERR_PUSUINT8		8173  /**/
 flag asn1SccPusUInt8_IsConstraintValid(const asn1SccPusUInt8* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSUINT8		50217  /**/
+#define ERR_UPER_ENCODE_PUSUINT8		8174  /**/
 #define asn1SccPusUInt8_REQUIRED_BYTES_FOR_ENCODING       1 
 #define asn1SccPusUInt8_REQUIRED_BITS_FOR_ENCODING        8
 
 flag asn1SccPusUInt8_Encode(const asn1SccPusUInt8* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSUINT8		50218  /**/
+#define ERR_UPER_DECODE_PUSUINT8		8175  /**/
 flag asn1SccPusUInt8_Decode(asn1SccPusUInt8* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt8 asn1SccPusServiceType;
 
@@ -471,16 +335,16 @@ flag asn1SccPusServiceType_Equal(const asn1SccPusServiceType* pVal1, const asn1S
 
 void asn1SccPusServiceType_Initialize(asn1SccPusServiceType* pVal);
 
-#define ERR_PUSSERVICETYPE		51715  /**/
+#define ERR_PUSSERVICETYPE		52039  /**/
 flag asn1SccPusServiceType_IsConstraintValid(const asn1SccPusServiceType* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSSERVICETYPE_2		51722  /**/
+#define ERR_UPER_ENCODE_PUSSERVICETYPE_2		52046  /**/
 #define asn1SccPusServiceType_REQUIRED_BYTES_FOR_ENCODING       1 
 #define asn1SccPusServiceType_REQUIRED_BITS_FOR_ENCODING        8
 
 flag asn1SccPusServiceType_Encode(const asn1SccPusServiceType* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSSERVICETYPE_2		51723  /**/
+#define ERR_UPER_DECODE_PUSSERVICETYPE_2		52047  /**/
 flag asn1SccPusServiceType_Decode(asn1SccPusServiceType* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt8 asn1SccPusSubserviceType;
 
@@ -489,16 +353,16 @@ flag asn1SccPusSubserviceType_Equal(const asn1SccPusSubserviceType* pVal1, const
 
 void asn1SccPusSubserviceType_Initialize(asn1SccPusSubserviceType* pVal);
 
-#define ERR_PUSSUBSERVICETYPE		51726  /**/
+#define ERR_PUSSUBSERVICETYPE		52050  /**/
 flag asn1SccPusSubserviceType_IsConstraintValid(const asn1SccPusSubserviceType* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSSUBSERVICETYPE_2		51733  /**/
+#define ERR_UPER_ENCODE_PUSSUBSERVICETYPE_2		52057  /**/
 #define asn1SccPusSubserviceType_REQUIRED_BYTES_FOR_ENCODING       1 
 #define asn1SccPusSubserviceType_REQUIRED_BITS_FOR_ENCODING        8
 
 flag asn1SccPusSubserviceType_Encode(const asn1SccPusSubserviceType* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSSUBSERVICETYPE_2		51734  /**/
+#define ERR_UPER_DECODE_PUSSUBSERVICETYPE_2		52058  /**/
 flag asn1SccPusSubserviceType_Decode(asn1SccPusSubserviceType* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccPusUInt11;
 
@@ -507,16 +371,16 @@ flag asn1SccPusUInt11_Equal(const asn1SccPusUInt11* pVal1, const asn1SccPusUInt1
 
 void asn1SccPusUInt11_Initialize(asn1SccPusUInt11* pVal);
 
-#define ERR_PUSUINT11		50223  /**/
+#define ERR_PUSUINT11		8180  /**/
 flag asn1SccPusUInt11_IsConstraintValid(const asn1SccPusUInt11* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSUINT11		50224  /**/
+#define ERR_UPER_ENCODE_PUSUINT11		8181  /**/
 #define asn1SccPusUInt11_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccPusUInt11_REQUIRED_BITS_FOR_ENCODING        11
 
 flag asn1SccPusUInt11_Encode(const asn1SccPusUInt11* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSUINT11		50225  /**/
+#define ERR_UPER_DECODE_PUSUINT11		8182  /**/
 flag asn1SccPusUInt11_Decode(asn1SccPusUInt11* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt11 asn1SccPusApid;
 
@@ -525,58 +389,17 @@ flag asn1SccPusApid_Equal(const asn1SccPusApid* pVal1, const asn1SccPusApid* pVa
 
 void asn1SccPusApid_Initialize(asn1SccPusApid* pVal);
 
-#define ERR_PUSAPID		8031  /**/
+#define ERR_PUSAPID		51914  /**/
 flag asn1SccPusApid_IsConstraintValid(const asn1SccPusApid* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSAPID_2		8038  /**/
+#define ERR_UPER_ENCODE_PUSAPID_2		51921  /**/
 #define asn1SccPusApid_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccPusApid_REQUIRED_BITS_FOR_ENCODING        11
 
 flag asn1SccPusApid_Encode(const asn1SccPusApid* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSAPID_2		8039  /**/
+#define ERR_UPER_DECODE_PUSAPID_2		51922  /**/
 flag asn1SccPusApid_Decode(asn1SccPusApid* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusVersionNumber pusVersion;
-    asn1SccPusAcknowledgementFlags ackFlags;
-    asn1SccPusServiceType serviceId;
-    asn1SccPusSubserviceType subtype;
-    asn1SccPusApid source;
-} asn1SccPusTcHeader;
-
-flag asn1SccPusTcHeader_Equal(const asn1SccPusTcHeader* pVal1, const asn1SccPusTcHeader* pVal2);
-
-void asn1SccPusTcHeader_Initialize(asn1SccPusTcHeader* pVal);
-
-#define ERR_PUSTCHEADER_PUSVERSION		8770  /**/
-#define ERR_PUSTCHEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		8781  /**/
-#define ERR_PUSTCHEADER_ACKFLAGS_STARTREPORTREQUESTED		8788  /**/
-#define ERR_PUSTCHEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		8795  /**/
-#define ERR_PUSTCHEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		8802  /**/
-#define ERR_PUSTCHEADER_SERVICEID		8819  /**/
-#define ERR_PUSTCHEADER_SUBTYPE		8834  /**/
-#define ERR_PUSTCHEADER_SOURCE		8849  /**/
-flag asn1SccPusTcHeader_IsConstraintValid(const asn1SccPusTcHeader* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTCHEADER		8864  /**/
-#define ERR_UPER_ENCODE_PUSTCHEADER_PUSVERSION_2		8777  /**/
-#define ERR_UPER_ENCODE_PUSTCHEADER_ACKFLAGS_2		8815  /**/
-#define ERR_UPER_ENCODE_PUSTCHEADER_SERVICEID_2_2		8830  /**/
-#define ERR_UPER_ENCODE_PUSTCHEADER_SUBTYPE_2_2		8845  /**/
-#define ERR_UPER_ENCODE_PUSTCHEADER_SOURCE_2_2		8860  /**/
-#define asn1SccPusTcHeader_REQUIRED_BYTES_FOR_ENCODING       5 
-#define asn1SccPusTcHeader_REQUIRED_BITS_FOR_ENCODING        33
-
-flag asn1SccPusTcHeader_Encode(const asn1SccPusTcHeader* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTCHEADER		8865  /**/
-#define ERR_UPER_DECODE_PUSTCHEADER_PUSVERSION_2		8778  /**/
-#define ERR_UPER_DECODE_PUSTCHEADER_ACKFLAGS_2		8816  /**/
-#define ERR_UPER_DECODE_PUSTCHEADER_SERVICEID_2_2		8831  /**/
-#define ERR_UPER_DECODE_PUSTCHEADER_SUBTYPE_2_2		8846  /**/
-#define ERR_UPER_DECODE_PUSTCHEADER_SOURCE_2_2		8861  /**/
-flag asn1SccPusTcHeader_Decode(asn1SccPusTcHeader* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccPusUInt14;
 
 
@@ -584,16 +407,16 @@ flag asn1SccPusUInt14_Equal(const asn1SccPusUInt14* pVal1, const asn1SccPusUInt1
 
 void asn1SccPusUInt14_Initialize(asn1SccPusUInt14* pVal);
 
-#define ERR_PUSUINT14		50230  /**/
+#define ERR_PUSUINT14		8187  /**/
 flag asn1SccPusUInt14_IsConstraintValid(const asn1SccPusUInt14* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSUINT14		50231  /**/
+#define ERR_UPER_ENCODE_PUSUINT14		8188  /**/
 #define asn1SccPusUInt14_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccPusUInt14_REQUIRED_BITS_FOR_ENCODING        14
 
 flag asn1SccPusUInt14_Encode(const asn1SccPusUInt14* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSUINT14		50232  /**/
+#define ERR_UPER_DECODE_PUSUINT14		8189  /**/
 flag asn1SccPusUInt14_Decode(asn1SccPusUInt14* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt14 asn1SccPusSequenceCount;
 
@@ -602,59 +425,17 @@ flag asn1SccPusSequenceCount_Equal(const asn1SccPusSequenceCount* pVal1, const a
 
 void asn1SccPusSequenceCount_Initialize(asn1SccPusSequenceCount* pVal);
 
-#define ERR_PUSSEQUENCECOUNT		8049  /**/
+#define ERR_PUSSEQUENCECOUNT		51932  /**/
 flag asn1SccPusSequenceCount_IsConstraintValid(const asn1SccPusSequenceCount* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSSEQUENCECOUNT_2		8056  /**/
+#define ERR_UPER_ENCODE_PUSSEQUENCECOUNT_2		51939  /**/
 #define asn1SccPusSequenceCount_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccPusSequenceCount_REQUIRED_BITS_FOR_ENCODING        14
 
 flag asn1SccPusSequenceCount_Encode(const asn1SccPusSequenceCount* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSSEQUENCECOUNT_2		8057  /**/
+#define ERR_UPER_DECODE_PUSSEQUENCECOUNT_2		51940  /**/
 flag asn1SccPusSequenceCount_Decode(asn1SccPusSequenceCount* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusPacketVersion packetVersion;
-    asn1SccPusPacketType packetType;
-    asn1SccPusSecondaryHeaderFlag secondaryHeaderFlag;
-    asn1SccPusApid apid;
-    asn1SccPusSequenceFlags sequenceFlags;
-    asn1SccPusSequenceCount sequenceCount;
-} asn1SccPusSt01RequestId;
-
-flag asn1SccPusSt01RequestId_Equal(const asn1SccPusSt01RequestId* pVal1, const asn1SccPusSt01RequestId* pVal2);
-
-void asn1SccPusSt01RequestId_Initialize(asn1SccPusSt01RequestId* pVal);
-
-#define ERR_PUSST01REQUESTID_PACKETVERSION		51390  /**/
-#define ERR_PUSST01REQUESTID_PACKETTYPE		51401  /**/
-#define ERR_PUSST01REQUESTID_SECONDARYHEADERFLAG		51412  /**/
-#define ERR_PUSST01REQUESTID_APID		51423  /**/
-#define ERR_PUSST01REQUESTID_SEQUENCEFLAGS		51438  /**/
-#define ERR_PUSST01REQUESTID_SEQUENCECOUNT		51449  /**/
-flag asn1SccPusSt01RequestId_IsConstraintValid(const asn1SccPusSt01RequestId* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSST01REQUESTID		51464  /**/
-#define ERR_UPER_ENCODE_PUSST01REQUESTID_PACKETVERSION_2		51397  /**/
-#define ERR_UPER_ENCODE_PUSST01REQUESTID_PACKETTYPE_2		51408  /**/
-#define ERR_UPER_ENCODE_PUSST01REQUESTID_SECONDARYHEADERFLAG_2		51419  /**/
-#define ERR_UPER_ENCODE_PUSST01REQUESTID_APID_2_2		51434  /**/
-#define ERR_UPER_ENCODE_PUSST01REQUESTID_SEQUENCEFLAGS_2		51445  /**/
-#define ERR_UPER_ENCODE_PUSST01REQUESTID_SEQUENCECOUNT_2_2		51460  /**/
-#define asn1SccPusSt01RequestId_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusSt01RequestId_REQUIRED_BITS_FOR_ENCODING        27
-
-flag asn1SccPusSt01RequestId_Encode(const asn1SccPusSt01RequestId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSST01REQUESTID		51465  /**/
-#define ERR_UPER_DECODE_PUSST01REQUESTID_PACKETVERSION_2		51398  /**/
-#define ERR_UPER_DECODE_PUSST01REQUESTID_PACKETTYPE_2		51409  /**/
-#define ERR_UPER_DECODE_PUSST01REQUESTID_SECONDARYHEADERFLAG_2		51420  /**/
-#define ERR_UPER_DECODE_PUSST01REQUESTID_APID_2_2		51435  /**/
-#define ERR_UPER_DECODE_PUSST01REQUESTID_SEQUENCEFLAGS_2		51446  /**/
-#define ERR_UPER_DECODE_PUSST01REQUESTID_SEQUENCECOUNT_2_2		51461  /**/
-flag asn1SccPusSt01RequestId_Decode(asn1SccPusSt01RequestId* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccPusUInt16;
 
 
@@ -662,17 +443,35 @@ flag asn1SccPusUInt16_Equal(const asn1SccPusUInt16* pVal1, const asn1SccPusUInt1
 
 void asn1SccPusUInt16_Initialize(asn1SccPusUInt16* pVal);
 
-#define ERR_PUSUINT16		50237  /**/
+#define ERR_PUSUINT16		8194  /**/
 flag asn1SccPusUInt16_IsConstraintValid(const asn1SccPusUInt16* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSUINT16		50238  /**/
+#define ERR_UPER_ENCODE_PUSUINT16		8195  /**/
 #define asn1SccPusUInt16_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccPusUInt16_REQUIRED_BITS_FOR_ENCODING        16
 
 flag asn1SccPusUInt16_Encode(const asn1SccPusUInt16* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSUINT16		50239  /**/
+#define ERR_UPER_DECODE_PUSUINT16		8196  /**/
 flag asn1SccPusUInt16_Decode(asn1SccPusUInt16* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt16 asn1SccPusSt18ObcpChecksum;
+
+
+flag asn1SccPusSt18ObcpChecksum_Equal(const asn1SccPusSt18ObcpChecksum* pVal1, const asn1SccPusSt18ObcpChecksum* pVal2);
+
+void asn1SccPusSt18ObcpChecksum_Initialize(asn1SccPusSt18ObcpChecksum* pVal);
+
+#define ERR_PUSST18OBCPCHECKSUM		8362  /**/
+flag asn1SccPusSt18ObcpChecksum_IsConstraintValid(const asn1SccPusSt18ObcpChecksum* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST18OBCPCHECKSUM_2		8369  /**/
+#define asn1SccPusSt18ObcpChecksum_REQUIRED_BYTES_FOR_ENCODING       2 
+#define asn1SccPusSt18ObcpChecksum_REQUIRED_BITS_FOR_ENCODING        16
+
+flag asn1SccPusSt18ObcpChecksum_Encode(const asn1SccPusSt18ObcpChecksum* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST18OBCPCHECKSUM_2		8370  /**/
+flag asn1SccPusSt18ObcpChecksum_Decode(asn1SccPusSt18ObcpChecksum* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt16 asn1SccPusPacketDataLength;
 
 
@@ -680,16 +479,16 @@ flag asn1SccPusPacketDataLength_Equal(const asn1SccPusPacketDataLength* pVal1, c
 
 void asn1SccPusPacketDataLength_Initialize(asn1SccPusPacketDataLength* pVal);
 
-#define ERR_PUSPACKETDATALENGTH		8060  /**/
+#define ERR_PUSPACKETDATALENGTH		51943  /**/
 flag asn1SccPusPacketDataLength_IsConstraintValid(const asn1SccPusPacketDataLength* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSPACKETDATALENGTH_2		8067  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATALENGTH_2		51950  /**/
 #define asn1SccPusPacketDataLength_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccPusPacketDataLength_REQUIRED_BITS_FOR_ENCODING        16
 
 flag asn1SccPusPacketDataLength_Encode(const asn1SccPusPacketDataLength* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSPACKETDATALENGTH_2		8068  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATALENGTH_2		51951  /**/
 flag asn1SccPusPacketDataLength_Decode(asn1SccPusPacketDataLength* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt16 asn1SccPusMessageTypeCounter;
 
@@ -698,16 +497,16 @@ flag asn1SccPusMessageTypeCounter_Equal(const asn1SccPusMessageTypeCounter* pVal
 
 void asn1SccPusMessageTypeCounter_Initialize(asn1SccPusMessageTypeCounter* pVal);
 
-#define ERR_PUSMESSAGETYPECOUNTER		8089  /**/
+#define ERR_PUSMESSAGETYPECOUNTER		51972  /**/
 flag asn1SccPusMessageTypeCounter_IsConstraintValid(const asn1SccPusMessageTypeCounter* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSMESSAGETYPECOUNTER_2		8096  /**/
+#define ERR_UPER_ENCODE_PUSMESSAGETYPECOUNTER_2		51979  /**/
 #define asn1SccPusMessageTypeCounter_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccPusMessageTypeCounter_REQUIRED_BITS_FOR_ENCODING        16
 
 flag asn1SccPusMessageTypeCounter_Encode(const asn1SccPusMessageTypeCounter* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSMESSAGETYPECOUNTER_2		8097  /**/
+#define ERR_UPER_DECODE_PUSMESSAGETYPECOUNTER_2		51980  /**/
 flag asn1SccPusMessageTypeCounter_Decode(asn1SccPusMessageTypeCounter* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt16 asn1SccPusChecksum;
 
@@ -716,35 +515,17 @@ flag asn1SccPusChecksum_Equal(const asn1SccPusChecksum* pVal1, const asn1SccPusC
 
 void asn1SccPusChecksum_Initialize(asn1SccPusChecksum* pVal);
 
-#define ERR_PUSCHECKSUM		8134  /**/
+#define ERR_PUSCHECKSUM		52017  /**/
 flag asn1SccPusChecksum_IsConstraintValid(const asn1SccPusChecksum* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSCHECKSUM_2		8141  /**/
+#define ERR_UPER_ENCODE_PUSCHECKSUM_2		52024  /**/
 #define asn1SccPusChecksum_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccPusChecksum_REQUIRED_BITS_FOR_ENCODING        16
 
 flag asn1SccPusChecksum_Encode(const asn1SccPusChecksum* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSCHECKSUM_2		8142  /**/
+#define ERR_UPER_DECODE_PUSCHECKSUM_2		52025  /**/
 flag asn1SccPusChecksum_Decode(asn1SccPusChecksum* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt16 asn1SccPusSt18ObcpChecksum;
-
-
-flag asn1SccPusSt18ObcpChecksum_Equal(const asn1SccPusSt18ObcpChecksum* pVal1, const asn1SccPusSt18ObcpChecksum* pVal2);
-
-void asn1SccPusSt18ObcpChecksum_Initialize(asn1SccPusSt18ObcpChecksum* pVal);
-
-#define ERR_PUSST18OBCPCHECKSUM		50303  /**/
-flag asn1SccPusSt18ObcpChecksum_IsConstraintValid(const asn1SccPusSt18ObcpChecksum* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSST18OBCPCHECKSUM_2		50310  /**/
-#define asn1SccPusSt18ObcpChecksum_REQUIRED_BYTES_FOR_ENCODING       2 
-#define asn1SccPusSt18ObcpChecksum_REQUIRED_BITS_FOR_ENCODING        16
-
-flag asn1SccPusSt18ObcpChecksum_Encode(const asn1SccPusSt18ObcpChecksum* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSST18OBCPCHECKSUM_2		50311  /**/
-flag asn1SccPusSt18ObcpChecksum_Decode(asn1SccPusSt18ObcpChecksum* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccPusUInt32;
 
 
@@ -752,35 +533,17 @@ flag asn1SccPusUInt32_Equal(const asn1SccPusUInt32* pVal1, const asn1SccPusUInt3
 
 void asn1SccPusUInt32_Initialize(asn1SccPusUInt32* pVal);
 
-#define ERR_PUSUINT32		50244  /**/
+#define ERR_PUSUINT32		8201  /**/
 flag asn1SccPusUInt32_IsConstraintValid(const asn1SccPusUInt32* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSUINT32		50245  /**/
+#define ERR_UPER_ENCODE_PUSUINT32		8202  /**/
 #define asn1SccPusUInt32_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusUInt32_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusUInt32_Encode(const asn1SccPusUInt32* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSUINT32		50246  /**/
+#define ERR_UPER_DECODE_PUSUINT32		8203  /**/
 flag asn1SccPusUInt32_Decode(asn1SccPusUInt32* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusStepId;
-
-
-flag asn1SccPusStepId_Equal(const asn1SccPusStepId* pVal1, const asn1SccPusStepId* pVal2);
-
-void asn1SccPusStepId_Initialize(asn1SccPusStepId* pVal);
-
-#define ERR_PUSSTEPID		8145  /**/
-flag asn1SccPusStepId_IsConstraintValid(const asn1SccPusStepId* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSSTEPID_2		8152  /**/
-#define asn1SccPusStepId_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusStepId_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusStepId_Encode(const asn1SccPusStepId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSSTEPID_2		8153  /**/
-flag asn1SccPusStepId_Decode(asn1SccPusStepId* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt32 asn1SccPusSt05EventId;
 
 
@@ -788,16 +551,16 @@ flag asn1SccPusSt05EventId_Equal(const asn1SccPusSt05EventId* pVal1, const asn1S
 
 void asn1SccPusSt05EventId_Initialize(asn1SccPusSt05EventId* pVal);
 
-#define ERR_PUSST05EVENTID		50471  /**/
+#define ERR_PUSST05EVENTID		8010  /**/
 flag asn1SccPusSt05EventId_IsConstraintValid(const asn1SccPusSt05EventId* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST05EVENTID_2		50478  /**/
+#define ERR_UPER_ENCODE_PUSST05EVENTID_2		8017  /**/
 #define asn1SccPusSt05EventId_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusSt05EventId_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusSt05EventId_Encode(const asn1SccPusSt05EventId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST05EVENTID_2		50479  /**/
+#define ERR_UPER_DECODE_PUSST05EVENTID_2		8018  /**/
 flag asn1SccPusSt05EventId_Decode(asn1SccPusSt05EventId* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -808,19 +571,55 @@ flag asn1SccPusTC_19_X_Data_Equal(const asn1SccPusTC_19_X_Data* pVal1, const asn
 
 void asn1SccPusTC_19_X_Data_Initialize(asn1SccPusTC_19_X_Data* pVal);
 
-#define ERR_PUSTC_19_X_DATA_EVENTID		51806  /**/
+#define ERR_PUSTC_19_X_DATA_EVENTID		52440  /**/
 flag asn1SccPusTC_19_X_Data_IsConstraintValid(const asn1SccPusTC_19_X_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_19_X_DATA		51821  /**/
-#define ERR_UPER_ENCODE_PUSTC_19_X_DATA_EVENTID_2_2		51817  /**/
+#define ERR_UPER_ENCODE_PUSTC_19_X_DATA		52455  /**/
+#define ERR_UPER_ENCODE_PUSTC_19_X_DATA_EVENTID_2_2		52451  /**/
 #define asn1SccPusTC_19_X_Data_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusTC_19_X_Data_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusTC_19_X_Data_Encode(const asn1SccPusTC_19_X_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_19_X_DATA		51822  /**/
-#define ERR_UPER_DECODE_PUSTC_19_X_DATA_EVENTID_2_2		51818  /**/
+#define ERR_UPER_DECODE_PUSTC_19_X_DATA		52456  /**/
+#define ERR_UPER_DECODE_PUSTC_19_X_DATA_EVENTID_2_2		52452  /**/
 flag asn1SccPusTC_19_X_Data_Decode(asn1SccPusTC_19_X_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusSt03HousekeepingReportId;
+
+
+flag asn1SccPusSt03HousekeepingReportId_Equal(const asn1SccPusSt03HousekeepingReportId* pVal1, const asn1SccPusSt03HousekeepingReportId* pVal2);
+
+void asn1SccPusSt03HousekeepingReportId_Initialize(asn1SccPusSt03HousekeepingReportId* pVal);
+
+#define ERR_PUSST03HOUSEKEEPINGREPORTID		8258  /**/
+flag asn1SccPusSt03HousekeepingReportId_IsConstraintValid(const asn1SccPusSt03HousekeepingReportId* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST03HOUSEKEEPINGREPORTID_2		8265  /**/
+#define asn1SccPusSt03HousekeepingReportId_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt03HousekeepingReportId_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusSt03HousekeepingReportId_Encode(const asn1SccPusSt03HousekeepingReportId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST03HOUSEKEEPINGREPORTID_2		8266  /**/
+flag asn1SccPusSt03HousekeepingReportId_Decode(asn1SccPusSt03HousekeepingReportId* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusSt03ParameterId;
+
+
+flag asn1SccPusSt03ParameterId_Equal(const asn1SccPusSt03ParameterId* pVal1, const asn1SccPusSt03ParameterId* pVal2);
+
+void asn1SccPusSt03ParameterId_Initialize(asn1SccPusSt03ParameterId* pVal);
+
+#define ERR_PUSST03PARAMETERID		8269  /**/
+flag asn1SccPusSt03ParameterId_IsConstraintValid(const asn1SccPusSt03ParameterId* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST03PARAMETERID_2		8276  /**/
+#define asn1SccPusSt03ParameterId_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt03ParameterId_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusSt03ParameterId_Encode(const asn1SccPusSt03ParameterId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST03PARAMETERID_2		8277  /**/
+flag asn1SccPusSt03ParameterId_Decode(asn1SccPusSt03ParameterId* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt32 asn1SccPusSt09ExponentialRate;
 
 
@@ -828,16 +627,16 @@ flag asn1SccPusSt09ExponentialRate_Equal(const asn1SccPusSt09ExponentialRate* pV
 
 void asn1SccPusSt09ExponentialRate_Initialize(asn1SccPusSt09ExponentialRate* pVal);
 
-#define ERR_PUSST09EXPONENTIALRATE		50620  /**/
+#define ERR_PUSST09EXPONENTIALRATE		8530  /**/
 flag asn1SccPusSt09ExponentialRate_IsConstraintValid(const asn1SccPusSt09ExponentialRate* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST09EXPONENTIALRATE_2		50627  /**/
+#define ERR_UPER_ENCODE_PUSST09EXPONENTIALRATE_2		8537  /**/
 #define asn1SccPusSt09ExponentialRate_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusSt09ExponentialRate_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusSt09ExponentialRate_Encode(const asn1SccPusSt09ExponentialRate* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST09EXPONENTIALRATE_2		50628  /**/
+#define ERR_UPER_DECODE_PUSST09EXPONENTIALRATE_2		8538  /**/
 flag asn1SccPusSt09ExponentialRate_Decode(asn1SccPusSt09ExponentialRate* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -848,99 +647,19 @@ flag asn1SccPusTC_9_1_Data_Equal(const asn1SccPusTC_9_1_Data* pVal1, const asn1S
 
 void asn1SccPusTC_9_1_Data_Initialize(asn1SccPusTC_9_1_Data* pVal);
 
-#define ERR_PUSTC_9_1_DATA_EXPONENTIALRATE		50631  /**/
+#define ERR_PUSTC_9_1_DATA_EXPONENTIALRATE		8541  /**/
 flag asn1SccPusTC_9_1_Data_IsConstraintValid(const asn1SccPusTC_9_1_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_9_1_DATA		50646  /**/
-#define ERR_UPER_ENCODE_PUSTC_9_1_DATA_EXPONENTIALRATE_2_2		50642  /**/
+#define ERR_UPER_ENCODE_PUSTC_9_1_DATA		8556  /**/
+#define ERR_UPER_ENCODE_PUSTC_9_1_DATA_EXPONENTIALRATE_2_2		8552  /**/
 #define asn1SccPusTC_9_1_Data_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusTC_9_1_Data_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusTC_9_1_Data_Encode(const asn1SccPusTC_9_1_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_9_1_DATA		50647  /**/
-#define ERR_UPER_DECODE_PUSTC_9_1_DATA_EXPONENTIALRATE_2_2		50643  /**/
+#define ERR_UPER_DECODE_PUSTC_9_1_DATA		8557  /**/
+#define ERR_UPER_DECODE_PUSTC_9_1_DATA_EXPONENTIALRATE_2_2		8553  /**/
 flag asn1SccPusTC_9_1_Data_Decode(asn1SccPusTC_9_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusSt200ControlId;
-
-
-flag asn1SccPusSt200ControlId_Equal(const asn1SccPusSt200ControlId* pVal1, const asn1SccPusSt200ControlId* pVal2);
-
-void asn1SccPusSt200ControlId_Initialize(asn1SccPusSt200ControlId* pVal);
-
-#define ERR_PUSST200CONTROLID		50705  /**/
-flag asn1SccPusSt200ControlId_IsConstraintValid(const asn1SccPusSt200ControlId* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSST200CONTROLID_2		50712  /**/
-#define asn1SccPusSt200ControlId_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusSt200ControlId_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusSt200ControlId_Encode(const asn1SccPusSt200ControlId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSST200CONTROLID_2		50713  /**/
-flag asn1SccPusSt200ControlId_Decode(asn1SccPusSt200ControlId* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusSt200ControlId controlId;
-} asn1SccPusTC_200_1_Data;
-
-flag asn1SccPusTC_200_1_Data_Equal(const asn1SccPusTC_200_1_Data* pVal1, const asn1SccPusTC_200_1_Data* pVal2);
-
-void asn1SccPusTC_200_1_Data_Initialize(asn1SccPusTC_200_1_Data* pVal);
-
-#define ERR_PUSTC_200_1_DATA_CONTROLID		50727  /**/
-flag asn1SccPusTC_200_1_Data_IsConstraintValid(const asn1SccPusTC_200_1_Data* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTC_200_1_DATA		50742  /**/
-#define ERR_UPER_ENCODE_PUSTC_200_1_DATA_CONTROLID_2_2		50738  /**/
-#define asn1SccPusTC_200_1_Data_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusTC_200_1_Data_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusTC_200_1_Data_Encode(const asn1SccPusTC_200_1_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTC_200_1_DATA		50743  /**/
-#define ERR_UPER_DECODE_PUSTC_200_1_DATA_CONTROLID_2_2		50739  /**/
-flag asn1SccPusTC_200_1_Data_Decode(asn1SccPusTC_200_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusSt200Observation;
-
-
-flag asn1SccPusSt200Observation_Equal(const asn1SccPusSt200Observation* pVal1, const asn1SccPusSt200Observation* pVal2);
-
-void asn1SccPusSt200Observation_Initialize(asn1SccPusSt200Observation* pVal);
-
-#define ERR_PUSST200OBSERVATION		50716  /**/
-flag asn1SccPusSt200Observation_IsConstraintValid(const asn1SccPusSt200Observation* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSST200OBSERVATION_2		50723  /**/
-#define asn1SccPusSt200Observation_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusSt200Observation_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusSt200Observation_Encode(const asn1SccPusSt200Observation* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSST200OBSERVATION_2		50724  /**/
-flag asn1SccPusSt200Observation_Decode(asn1SccPusSt200Observation* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusSt200Observation observation;
-} asn1SccPusTM_200_2_Data;
-
-flag asn1SccPusTM_200_2_Data_Equal(const asn1SccPusTM_200_2_Data* pVal1, const asn1SccPusTM_200_2_Data* pVal2);
-
-void asn1SccPusTM_200_2_Data_Initialize(asn1SccPusTM_200_2_Data* pVal);
-
-#define ERR_PUSTM_200_2_DATA_OBSERVATION		50748  /**/
-flag asn1SccPusTM_200_2_Data_IsConstraintValid(const asn1SccPusTM_200_2_Data* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTM_200_2_DATA		50763  /**/
-#define ERR_UPER_ENCODE_PUSTM_200_2_DATA_OBSERVATION_2_2		50759  /**/
-#define asn1SccPusTM_200_2_Data_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusTM_200_2_Data_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusTM_200_2_Data_Encode(const asn1SccPusTM_200_2_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTM_200_2_DATA		50764  /**/
-#define ERR_UPER_DECODE_PUSTM_200_2_DATA_OBSERVATION_2_2		50760  /**/
-flag asn1SccPusTM_200_2_Data_Decode(asn1SccPusTM_200_2_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt32 asn1SccPusSt12pmonId;
 
 
@@ -948,16 +667,16 @@ flag asn1SccPusSt12pmonId_Equal(const asn1SccPusSt12pmonId* pVal1, const asn1Scc
 
 void asn1SccPusSt12pmonId_Initialize(asn1SccPusSt12pmonId* pVal);
 
-#define ERR_PUSST12PMONID		50818  /**/
+#define ERR_PUSST12PMONID		8615  /**/
 flag asn1SccPusSt12pmonId_IsConstraintValid(const asn1SccPusSt12pmonId* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST12PMONID_2		50825  /**/
+#define ERR_UPER_ENCODE_PUSST12PMONID_2		8622  /**/
 #define asn1SccPusSt12pmonId_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusSt12pmonId_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusSt12pmonId_Encode(const asn1SccPusSt12pmonId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST12PMONID_2		50826  /**/
+#define ERR_UPER_DECODE_PUSST12PMONID_2		8623  /**/
 flag asn1SccPusSt12pmonId_Decode(asn1SccPusSt12pmonId* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -968,59 +687,256 @@ flag asn1SccPusTC_12_1_2_Data_Equal(const asn1SccPusTC_12_1_2_Data* pVal1, const
 
 void asn1SccPusTC_12_1_2_Data_Initialize(asn1SccPusTC_12_1_2_Data* pVal);
 
-#define ERR_PUSTC_12_1_2_DATA_PMONID		50829  /**/
+#define ERR_PUSTC_12_1_2_DATA_PMONID		8626  /**/
 flag asn1SccPusTC_12_1_2_Data_IsConstraintValid(const asn1SccPusTC_12_1_2_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_12_1_2_DATA		50844  /**/
-#define ERR_UPER_ENCODE_PUSTC_12_1_2_DATA_PMONID_2_2		50840  /**/
+#define ERR_UPER_ENCODE_PUSTC_12_1_2_DATA		8641  /**/
+#define ERR_UPER_ENCODE_PUSTC_12_1_2_DATA_PMONID_2_2		8637  /**/
 #define asn1SccPusTC_12_1_2_Data_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusTC_12_1_2_Data_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusTC_12_1_2_Data_Encode(const asn1SccPusTC_12_1_2_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_12_1_2_DATA		50845  /**/
-#define ERR_UPER_DECODE_PUSTC_12_1_2_DATA_PMONID_2_2		50841  /**/
+#define ERR_UPER_DECODE_PUSTC_12_1_2_DATA		8642  /**/
+#define ERR_UPER_DECODE_PUSTC_12_1_2_DATA_PMONID_2_2		8638  /**/
 flag asn1SccPusTC_12_1_2_Data_Decode(asn1SccPusTC_12_1_2_Data* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusSt201PlanObservation;
+typedef asn1SccPusUInt32 asn1SccPusSt200ControlId;
 
+
+flag asn1SccPusSt200ControlId_Equal(const asn1SccPusSt200ControlId* pVal1, const asn1SccPusSt200ControlId* pVal2);
+
+void asn1SccPusSt200ControlId_Initialize(asn1SccPusSt200ControlId* pVal);
+
+#define ERR_PUSST200CONTROLID		8883  /**/
+flag asn1SccPusSt200ControlId_IsConstraintValid(const asn1SccPusSt200ControlId* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST200CONTROLID_2		8890  /**/
+#define asn1SccPusSt200ControlId_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt200ControlId_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusSt200ControlId_Encode(const asn1SccPusSt200ControlId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST200CONTROLID_2		8891  /**/
+flag asn1SccPusSt200ControlId_Decode(asn1SccPusSt200ControlId* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusSt200ControlId controlId;
+} asn1SccPusTC_200_1_Data;
+
+flag asn1SccPusTC_200_1_Data_Equal(const asn1SccPusTC_200_1_Data* pVal1, const asn1SccPusTC_200_1_Data* pVal2);
+
+void asn1SccPusTC_200_1_Data_Initialize(asn1SccPusTC_200_1_Data* pVal);
+
+#define ERR_PUSTC_200_1_DATA_CONTROLID		8905  /**/
+flag asn1SccPusTC_200_1_Data_IsConstraintValid(const asn1SccPusTC_200_1_Data* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTC_200_1_DATA		8920  /**/
+#define ERR_UPER_ENCODE_PUSTC_200_1_DATA_CONTROLID_2_2		8916  /**/
+#define asn1SccPusTC_200_1_Data_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusTC_200_1_Data_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusTC_200_1_Data_Encode(const asn1SccPusTC_200_1_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTC_200_1_DATA		8921  /**/
+#define ERR_UPER_DECODE_PUSTC_200_1_DATA_CONTROLID_2_2		8917  /**/
+flag asn1SccPusTC_200_1_Data_Decode(asn1SccPusTC_200_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusSt200Observation;
+
+
+flag asn1SccPusSt200Observation_Equal(const asn1SccPusSt200Observation* pVal1, const asn1SccPusSt200Observation* pVal2);
+
+void asn1SccPusSt200Observation_Initialize(asn1SccPusSt200Observation* pVal);
+
+#define ERR_PUSST200OBSERVATION		8894  /**/
+flag asn1SccPusSt200Observation_IsConstraintValid(const asn1SccPusSt200Observation* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST200OBSERVATION_2		8901  /**/
+#define asn1SccPusSt200Observation_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt200Observation_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusSt200Observation_Encode(const asn1SccPusSt200Observation* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST200OBSERVATION_2		8902  /**/
+flag asn1SccPusSt200Observation_Decode(asn1SccPusSt200Observation* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusSt200Observation observation;
+} asn1SccPusTM_200_2_Data;
+
+flag asn1SccPusTM_200_2_Data_Equal(const asn1SccPusTM_200_2_Data* pVal1, const asn1SccPusTM_200_2_Data* pVal2);
+
+void asn1SccPusTM_200_2_Data_Initialize(asn1SccPusTM_200_2_Data* pVal);
+
+#define ERR_PUSTM_200_2_DATA_OBSERVATION		8926  /**/
+flag asn1SccPusTM_200_2_Data_IsConstraintValid(const asn1SccPusTM_200_2_Data* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTM_200_2_DATA		8941  /**/
+#define ERR_UPER_ENCODE_PUSTM_200_2_DATA_OBSERVATION_2_2		8937  /**/
+#define asn1SccPusTM_200_2_Data_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusTM_200_2_Data_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusTM_200_2_Data_Encode(const asn1SccPusTM_200_2_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTM_200_2_DATA		8942  /**/
+#define ERR_UPER_DECODE_PUSTM_200_2_DATA_OBSERVATION_2_2		8938  /**/
+flag asn1SccPusTM_200_2_Data_Decode(asn1SccPusTM_200_2_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusStepId;
+
+
+flag asn1SccPusStepId_Equal(const asn1SccPusStepId* pVal1, const asn1SccPusStepId* pVal2);
+
+void asn1SccPusStepId_Initialize(asn1SccPusStepId* pVal);
+
+#define ERR_PUSSTEPID		52028  /**/
+flag asn1SccPusStepId_IsConstraintValid(const asn1SccPusStepId* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSSTEPID_2		52035  /**/
+#define asn1SccPusStepId_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusStepId_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusStepId_Encode(const asn1SccPusStepId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSSTEPID_2		52036  /**/
+flag asn1SccPusStepId_Decode(asn1SccPusStepId* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusSt01FailureCode;
+
+
+flag asn1SccPusSt01FailureCode_Equal(const asn1SccPusSt01FailureCode* pVal1, const asn1SccPusSt01FailureCode* pVal2);
+
+void asn1SccPusSt01FailureCode_Initialize(asn1SccPusSt01FailureCode* pVal);
+
+#define ERR_PUSST01FAILURECODE		52061  /**/
+flag asn1SccPusSt01FailureCode_IsConstraintValid(const asn1SccPusSt01FailureCode* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST01FAILURECODE_2		52068  /**/
+#define asn1SccPusSt01FailureCode_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt01FailureCode_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusSt01FailureCode_Encode(const asn1SccPusSt01FailureCode* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST01FAILURECODE_2		52069  /**/
+flag asn1SccPusSt01FailureCode_Decode(asn1SccPusSt01FailureCode* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusSt20OnBoardParameterId;
+
+
+flag asn1SccPusSt20OnBoardParameterId_Equal(const asn1SccPusSt20OnBoardParameterId* pVal1, const asn1SccPusSt20OnBoardParameterId* pVal2);
+
+void asn1SccPusSt20OnBoardParameterId_Initialize(asn1SccPusSt20OnBoardParameterId* pVal);
+
+#define ERR_PUSST20ONBOARDPARAMETERID		52489  /**/
+flag asn1SccPusSt20OnBoardParameterId_IsConstraintValid(const asn1SccPusSt20OnBoardParameterId* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST20ONBOARDPARAMETERID_2		52496  /**/
+#define asn1SccPusSt20OnBoardParameterId_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt20OnBoardParameterId_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusSt20OnBoardParameterId_Encode(const asn1SccPusSt20OnBoardParameterId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST20ONBOARDPARAMETERID_2		52497  /**/
+flag asn1SccPusSt20OnBoardParameterId_Decode(asn1SccPusSt20OnBoardParameterId* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusSt201PlanObservationId;
+
+
+flag asn1SccPusSt201PlanObservationId_Equal(const asn1SccPusSt201PlanObservationId* pVal1, const asn1SccPusSt201PlanObservationId* pVal2);
+
+void asn1SccPusSt201PlanObservationId_Initialize(asn1SccPusSt201PlanObservationId* pVal);
+
+#define ERR_PUSST201PLANOBSERVATIONID		52558  /**/
+flag asn1SccPusSt201PlanObservationId_IsConstraintValid(const asn1SccPusSt201PlanObservationId* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST201PLANOBSERVATIONID_2		52565  /**/
+#define asn1SccPusSt201PlanObservationId_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt201PlanObservationId_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusSt201PlanObservationId_Encode(const asn1SccPusSt201PlanObservationId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST201PLANOBSERVATIONID_2		52566  /**/
+flag asn1SccPusSt201PlanObservationId_Decode(asn1SccPusSt201PlanObservationId* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusSt201PlanObservationCode;
+
+
+flag asn1SccPusSt201PlanObservationCode_Equal(const asn1SccPusSt201PlanObservationCode* pVal1, const asn1SccPusSt201PlanObservationCode* pVal2);
+
+void asn1SccPusSt201PlanObservationCode_Initialize(asn1SccPusSt201PlanObservationCode* pVal);
+
+#define ERR_PUSST201PLANOBSERVATIONCODE		52569  /**/
+flag asn1SccPusSt201PlanObservationCode_IsConstraintValid(const asn1SccPusSt201PlanObservationCode* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST201PLANOBSERVATIONCODE_2		52576  /**/
+#define asn1SccPusSt201PlanObservationCode_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt201PlanObservationCode_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusSt201PlanObservationCode_Encode(const asn1SccPusSt201PlanObservationCode* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST201PLANOBSERVATIONCODE_2		52577  /**/
+flag asn1SccPusSt201PlanObservationCode_Decode(asn1SccPusSt201PlanObservationCode* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusSt201PlanObservationId id;
+    asn1SccPusSt201PlanObservationCode code;
+} asn1SccPusSt201PlanObservation;
 
 flag asn1SccPusSt201PlanObservation_Equal(const asn1SccPusSt201PlanObservation* pVal1, const asn1SccPusSt201PlanObservation* pVal2);
 
 void asn1SccPusSt201PlanObservation_Initialize(asn1SccPusSt201PlanObservation* pVal);
 
-#define ERR_PUSST201PLANOBSERVATION		50861  /**/
+#define ERR_PUSST201PLANOBSERVATION_ID		52580  /**/
+#define ERR_PUSST201PLANOBSERVATION_CODE		52595  /**/
 flag asn1SccPusSt201PlanObservation_IsConstraintValid(const asn1SccPusSt201PlanObservation* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST201PLANOBSERVATION_2		50868  /**/
-#define asn1SccPusSt201PlanObservation_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusSt201PlanObservation_REQUIRED_BITS_FOR_ENCODING        32
+#define ERR_UPER_ENCODE_PUSST201PLANOBSERVATION		52610  /**/
+#define ERR_UPER_ENCODE_PUSST201PLANOBSERVATION_ID_2_2		52591  /**/
+#define ERR_UPER_ENCODE_PUSST201PLANOBSERVATION_CODE_2_2		52606  /**/
+#define asn1SccPusSt201PlanObservation_REQUIRED_BYTES_FOR_ENCODING       8 
+#define asn1SccPusSt201PlanObservation_REQUIRED_BITS_FOR_ENCODING        64
 
 flag asn1SccPusSt201PlanObservation_Encode(const asn1SccPusSt201PlanObservation* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST201PLANOBSERVATION_2		50869  /**/
+#define ERR_UPER_DECODE_PUSST201PLANOBSERVATION		52611  /**/
+#define ERR_UPER_DECODE_PUSST201PLANOBSERVATION_ID_2_2		52592  /**/
+#define ERR_UPER_DECODE_PUSST201PLANOBSERVATION_CODE_2_2		52607  /**/
 flag asn1SccPusSt201PlanObservation_Decode(asn1SccPusSt201PlanObservation* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
-    asn1SccPusSt201PlanObservation planObservation;
+    asn1SccPusSt201PlanObservation observation;
 } asn1SccPusTM_201_4_Data;
 
 flag asn1SccPusTM_201_4_Data_Equal(const asn1SccPusTM_201_4_Data* pVal1, const asn1SccPusTM_201_4_Data* pVal2);
 
 void asn1SccPusTM_201_4_Data_Initialize(asn1SccPusTM_201_4_Data* pVal);
 
-#define ERR_PUSTM_201_4_DATA_PLANOBSERVATION		50920  /**/
+#define ERR_PUSTM_201_4_DATA_OBSERVATION_ID		52664  /**/
+#define ERR_PUSTM_201_4_DATA_OBSERVATION_CODE		52679  /**/
 flag asn1SccPusTM_201_4_Data_IsConstraintValid(const asn1SccPusTM_201_4_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTM_201_4_DATA		50935  /**/
-#define ERR_UPER_ENCODE_PUSTM_201_4_DATA_PLANOBSERVATION_2_2		50931  /**/
-#define asn1SccPusTM_201_4_Data_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusTM_201_4_Data_REQUIRED_BITS_FOR_ENCODING        32
+#define ERR_UPER_ENCODE_PUSTM_201_4_DATA		52704  /**/
+#define ERR_UPER_ENCODE_PUSTM_201_4_DATA_OBSERVATION_2		52700  /**/
+#define asn1SccPusTM_201_4_Data_REQUIRED_BYTES_FOR_ENCODING       8 
+#define asn1SccPusTM_201_4_Data_REQUIRED_BITS_FOR_ENCODING        64
 
 flag asn1SccPusTM_201_4_Data_Encode(const asn1SccPusTM_201_4_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTM_201_4_DATA		50936  /**/
-#define ERR_UPER_DECODE_PUSTM_201_4_DATA_PLANOBSERVATION_2_2		50932  /**/
+#define ERR_UPER_DECODE_PUSTM_201_4_DATA		52705  /**/
+#define ERR_UPER_DECODE_PUSTM_201_4_DATA_OBSERVATION_2		52701  /**/
 flag asn1SccPusTM_201_4_Data_Decode(asn1SccPusTM_201_4_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt32 asn1SccPusConfigDummyType;
+
+
+flag asn1SccPusConfigDummyType_Equal(const asn1SccPusConfigDummyType* pVal1, const asn1SccPusConfigDummyType* pVal2);
+
+void asn1SccPusConfigDummyType_Initialize(asn1SccPusConfigDummyType* pVal);
+
+#define ERR_PUSCONFIGDUMMYTYPE		52710  /**/
+flag asn1SccPusConfigDummyType_IsConstraintValid(const asn1SccPusConfigDummyType* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSCONFIGDUMMYTYPE_2		52717  /**/
+#define asn1SccPusConfigDummyType_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusConfigDummyType_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccPusConfigDummyType_Encode(const asn1SccPusConfigDummyType* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSCONFIGDUMMYTYPE_2		52718  /**/
+flag asn1SccPusConfigDummyType_Decode(asn1SccPusConfigDummyType* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt32 asn1SccPusSt08FunctionId;
 
 
@@ -1028,16 +944,16 @@ flag asn1SccPusSt08FunctionId_Equal(const asn1SccPusSt08FunctionId* pVal1, const
 
 void asn1SccPusSt08FunctionId_Initialize(asn1SccPusSt08FunctionId* pVal);
 
-#define ERR_PUSST08FUNCTIONID		51114  /**/
+#define ERR_PUSST08FUNCTIONID		52721  /**/
 flag asn1SccPusSt08FunctionId_IsConstraintValid(const asn1SccPusSt08FunctionId* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST08FUNCTIONID_2		51121  /**/
+#define ERR_UPER_ENCODE_PUSST08FUNCTIONID_2		52728  /**/
 #define asn1SccPusSt08FunctionId_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusSt08FunctionId_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusSt08FunctionId_Encode(const asn1SccPusSt08FunctionId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST08FUNCTIONID_2		51122  /**/
+#define ERR_UPER_DECODE_PUSST08FUNCTIONID_2		52729  /**/
 flag asn1SccPusSt08FunctionId_Decode(asn1SccPusSt08FunctionId* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1048,109 +964,19 @@ flag asn1SccPusTC_8_1_Data_Equal(const asn1SccPusTC_8_1_Data* pVal1, const asn1S
 
 void asn1SccPusTC_8_1_Data_Initialize(asn1SccPusTC_8_1_Data* pVal);
 
-#define ERR_PUSTC_8_1_DATA_FUNCTIONID		51125  /**/
+#define ERR_PUSTC_8_1_DATA_FUNCTIONID		52732  /**/
 flag asn1SccPusTC_8_1_Data_IsConstraintValid(const asn1SccPusTC_8_1_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_8_1_DATA		51140  /**/
-#define ERR_UPER_ENCODE_PUSTC_8_1_DATA_FUNCTIONID_2_2		51136  /**/
+#define ERR_UPER_ENCODE_PUSTC_8_1_DATA		52747  /**/
+#define ERR_UPER_ENCODE_PUSTC_8_1_DATA_FUNCTIONID_2_2		52743  /**/
 #define asn1SccPusTC_8_1_Data_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusTC_8_1_Data_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusTC_8_1_Data_Encode(const asn1SccPusTC_8_1_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_8_1_DATA		51141  /**/
-#define ERR_UPER_DECODE_PUSTC_8_1_DATA_FUNCTIONID_2_2		51137  /**/
+#define ERR_UPER_DECODE_PUSTC_8_1_DATA		52748  /**/
+#define ERR_UPER_DECODE_PUSTC_8_1_DATA_FUNCTIONID_2_2		52744  /**/
 flag asn1SccPusTC_8_1_Data_Decode(asn1SccPusTC_8_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusConfigDummyType;
-
-
-flag asn1SccPusConfigDummyType_Equal(const asn1SccPusConfigDummyType* pVal1, const asn1SccPusConfigDummyType* pVal2);
-
-void asn1SccPusConfigDummyType_Initialize(asn1SccPusConfigDummyType* pVal);
-
-#define ERR_PUSCONFIGDUMMYTYPE		51195  /**/
-flag asn1SccPusConfigDummyType_IsConstraintValid(const asn1SccPusConfigDummyType* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSCONFIGDUMMYTYPE_2		51202  /**/
-#define asn1SccPusConfigDummyType_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusConfigDummyType_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusConfigDummyType_Encode(const asn1SccPusConfigDummyType* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSCONFIGDUMMYTYPE_2		51203  /**/
-flag asn1SccPusConfigDummyType_Decode(asn1SccPusConfigDummyType* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusSt03HousekeepingReportId;
-
-
-flag asn1SccPusSt03HousekeepingReportId_Equal(const asn1SccPusSt03HousekeepingReportId* pVal1, const asn1SccPusSt03HousekeepingReportId* pVal2);
-
-void asn1SccPusSt03HousekeepingReportId_Initialize(asn1SccPusSt03HousekeepingReportId* pVal);
-
-#define ERR_PUSST03HOUSEKEEPINGREPORTID		51217  /**/
-flag asn1SccPusSt03HousekeepingReportId_IsConstraintValid(const asn1SccPusSt03HousekeepingReportId* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSST03HOUSEKEEPINGREPORTID_2		51224  /**/
-#define asn1SccPusSt03HousekeepingReportId_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusSt03HousekeepingReportId_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusSt03HousekeepingReportId_Encode(const asn1SccPusSt03HousekeepingReportId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSST03HOUSEKEEPINGREPORTID_2		51225  /**/
-flag asn1SccPusSt03HousekeepingReportId_Decode(asn1SccPusSt03HousekeepingReportId* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusSt03ParameterId;
-
-
-flag asn1SccPusSt03ParameterId_Equal(const asn1SccPusSt03ParameterId* pVal1, const asn1SccPusSt03ParameterId* pVal2);
-
-void asn1SccPusSt03ParameterId_Initialize(asn1SccPusSt03ParameterId* pVal);
-
-#define ERR_PUSST03PARAMETERID		51228  /**/
-flag asn1SccPusSt03ParameterId_IsConstraintValid(const asn1SccPusSt03ParameterId* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSST03PARAMETERID_2		51235  /**/
-#define asn1SccPusSt03ParameterId_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusSt03ParameterId_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusSt03ParameterId_Encode(const asn1SccPusSt03ParameterId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSST03PARAMETERID_2		51236  /**/
-flag asn1SccPusSt03ParameterId_Decode(asn1SccPusSt03ParameterId* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusSt01FailureCode;
-
-
-flag asn1SccPusSt01FailureCode_Equal(const asn1SccPusSt01FailureCode* pVal1, const asn1SccPusSt01FailureCode* pVal2);
-
-void asn1SccPusSt01FailureCode_Initialize(asn1SccPusSt01FailureCode* pVal);
-
-#define ERR_PUSST01FAILURECODE		51336  /**/
-flag asn1SccPusSt01FailureCode_IsConstraintValid(const asn1SccPusSt01FailureCode* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSST01FAILURECODE_2		51343  /**/
-#define asn1SccPusSt01FailureCode_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusSt01FailureCode_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusSt01FailureCode_Encode(const asn1SccPusSt01FailureCode* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSST01FAILURECODE_2		51344  /**/
-flag asn1SccPusSt01FailureCode_Decode(asn1SccPusSt01FailureCode* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt32 asn1SccPusSt20OnBoardParameterId;
-
-
-flag asn1SccPusSt20OnBoardParameterId_Equal(const asn1SccPusSt20OnBoardParameterId* pVal1, const asn1SccPusSt20OnBoardParameterId* pVal2);
-
-void asn1SccPusSt20OnBoardParameterId_Initialize(asn1SccPusSt20OnBoardParameterId* pVal);
-
-#define ERR_PUSST20ONBOARDPARAMETERID		51737  /**/
-flag asn1SccPusSt20OnBoardParameterId_IsConstraintValid(const asn1SccPusSt20OnBoardParameterId* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSST20ONBOARDPARAMETERID_2		51744  /**/
-#define asn1SccPusSt20OnBoardParameterId_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccPusSt20OnBoardParameterId_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccPusSt20OnBoardParameterId_Encode(const asn1SccPusSt20OnBoardParameterId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSST20ONBOARDPARAMETERID_2		51745  /**/
-flag asn1SccPusSt20OnBoardParameterId_Decode(asn1SccPusSt20OnBoardParameterId* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccPusUInt64;
 
 
@@ -1158,35 +984,17 @@ flag asn1SccPusUInt64_Equal(const asn1SccPusUInt64* pVal1, const asn1SccPusUInt6
 
 void asn1SccPusUInt64_Initialize(asn1SccPusUInt64* pVal);
 
-#define ERR_PUSUINT64		50251  /**/
+#define ERR_PUSUINT64		8208  /**/
 flag asn1SccPusUInt64_IsConstraintValid(const asn1SccPusUInt64* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSUINT64		50252  /**/
+#define ERR_UPER_ENCODE_PUSUINT64		8209  /**/
 #define asn1SccPusUInt64_REQUIRED_BYTES_FOR_ENCODING       8 
 #define asn1SccPusUInt64_REQUIRED_BITS_FOR_ENCODING        63
 
 flag asn1SccPusUInt64_Encode(const asn1SccPusUInt64* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSUINT64		50253  /**/
+#define ERR_UPER_DECODE_PUSUINT64		8210  /**/
 flag asn1SccPusUInt64_Decode(asn1SccPusUInt64* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccPusUInt64 asn1SccPusMemAddr;
-
-
-flag asn1SccPusMemAddr_Equal(const asn1SccPusMemAddr* pVal1, const asn1SccPusMemAddr* pVal2);
-
-void asn1SccPusMemAddr_Initialize(asn1SccPusMemAddr* pVal);
-
-#define ERR_PUSMEMADDR		50279  /**/
-flag asn1SccPusMemAddr_IsConstraintValid(const asn1SccPusMemAddr* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSMEMADDR_2		50286  /**/
-#define asn1SccPusMemAddr_REQUIRED_BYTES_FOR_ENCODING       8 
-#define asn1SccPusMemAddr_REQUIRED_BITS_FOR_ENCODING        63
-
-flag asn1SccPusMemAddr_Encode(const asn1SccPusMemAddr* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSMEMADDR_2		50287  /**/
-flag asn1SccPusMemAddr_Decode(asn1SccPusMemAddr* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
     asn1SccPusUInt64 data1;
@@ -1197,21 +1005,21 @@ flag asn1SccPusSt05EventAuxData_Equal(const asn1SccPusSt05EventAuxData* pVal1, c
 
 void asn1SccPusSt05EventAuxData_Initialize(asn1SccPusSt05EventAuxData* pVal);
 
-#define ERR_PUSST05EVENTAUXDATA_DATA1		50482  /**/
-#define ERR_PUSST05EVENTAUXDATA_DATA2		50493  /**/
+#define ERR_PUSST05EVENTAUXDATA_DATA1		8021  /**/
+#define ERR_PUSST05EVENTAUXDATA_DATA2		8032  /**/
 flag asn1SccPusSt05EventAuxData_IsConstraintValid(const asn1SccPusSt05EventAuxData* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST05EVENTAUXDATA		50504  /**/
-#define ERR_UPER_ENCODE_PUSST05EVENTAUXDATA_DATA1_2		50489  /**/
-#define ERR_UPER_ENCODE_PUSST05EVENTAUXDATA_DATA2_2		50500  /**/
+#define ERR_UPER_ENCODE_PUSST05EVENTAUXDATA		8043  /**/
+#define ERR_UPER_ENCODE_PUSST05EVENTAUXDATA_DATA1_2		8028  /**/
+#define ERR_UPER_ENCODE_PUSST05EVENTAUXDATA_DATA2_2		8039  /**/
 #define asn1SccPusSt05EventAuxData_REQUIRED_BYTES_FOR_ENCODING       16 
 #define asn1SccPusSt05EventAuxData_REQUIRED_BITS_FOR_ENCODING        126
 
 flag asn1SccPusSt05EventAuxData_Encode(const asn1SccPusSt05EventAuxData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST05EVENTAUXDATA		50505  /**/
-#define ERR_UPER_DECODE_PUSST05EVENTAUXDATA_DATA1_2		50490  /**/
-#define ERR_UPER_DECODE_PUSST05EVENTAUXDATA_DATA2_2		50501  /**/
+#define ERR_UPER_DECODE_PUSST05EVENTAUXDATA		8044  /**/
+#define ERR_UPER_DECODE_PUSST05EVENTAUXDATA_DATA1_2		8029  /**/
+#define ERR_UPER_DECODE_PUSST05EVENTAUXDATA_DATA2_2		8040  /**/
 flag asn1SccPusSt05EventAuxData_Decode(asn1SccPusSt05EventAuxData* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1223,22 +1031,22 @@ flag asn1SccPusSt05Event_Equal(const asn1SccPusSt05Event* pVal1, const asn1SccPu
 
 void asn1SccPusSt05Event_Initialize(asn1SccPusSt05Event* pVal);
 
-#define ERR_PUSST05EVENT_EVENTID		50510  /**/
-#define ERR_PUSST05EVENT_DATA_DATA1		50525  /**/
-#define ERR_PUSST05EVENT_DATA_DATA2		50536  /**/
+#define ERR_PUSST05EVENT_EVENTID		8049  /**/
+#define ERR_PUSST05EVENT_DATA_DATA1		8064  /**/
+#define ERR_PUSST05EVENT_DATA_DATA2		8075  /**/
 flag asn1SccPusSt05Event_IsConstraintValid(const asn1SccPusSt05Event* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST05EVENT		50557  /**/
-#define ERR_UPER_ENCODE_PUSST05EVENT_EVENTID_2_2		50521  /**/
-#define ERR_UPER_ENCODE_PUSST05EVENT_DATA_2		50553  /**/
+#define ERR_UPER_ENCODE_PUSST05EVENT		8096  /**/
+#define ERR_UPER_ENCODE_PUSST05EVENT_EVENTID_2_2		8060  /**/
+#define ERR_UPER_ENCODE_PUSST05EVENT_DATA_2		8092  /**/
 #define asn1SccPusSt05Event_REQUIRED_BYTES_FOR_ENCODING       20 
 #define asn1SccPusSt05Event_REQUIRED_BITS_FOR_ENCODING        158
 
 flag asn1SccPusSt05Event_Encode(const asn1SccPusSt05Event* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST05EVENT		50558  /**/
-#define ERR_UPER_DECODE_PUSST05EVENT_EVENTID_2_2		50522  /**/
-#define ERR_UPER_DECODE_PUSST05EVENT_DATA_2		50554  /**/
+#define ERR_UPER_DECODE_PUSST05EVENT		8097  /**/
+#define ERR_UPER_DECODE_PUSST05EVENT_EVENTID_2_2		8061  /**/
+#define ERR_UPER_DECODE_PUSST05EVENT_DATA_2		8093  /**/
 flag asn1SccPusSt05Event_Decode(asn1SccPusSt05Event* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusSt05Event asn1SccPusTM_5_X_Data;
 
@@ -1247,19 +1055,37 @@ flag asn1SccPusTM_5_X_Data_Equal(const asn1SccPusTM_5_X_Data* pVal1, const asn1S
 
 void asn1SccPusTM_5_X_Data_Initialize(asn1SccPusTM_5_X_Data* pVal);
 
-#define ERR_PUSTM_5_X_DATA_EVENTID		50563  /**/
-#define ERR_PUSTM_5_X_DATA_DATA_DATA1		50578  /**/
-#define ERR_PUSTM_5_X_DATA_DATA_DATA2		50589  /**/
+#define ERR_PUSTM_5_X_DATA_EVENTID		8102  /**/
+#define ERR_PUSTM_5_X_DATA_DATA_DATA1		8117  /**/
+#define ERR_PUSTM_5_X_DATA_DATA_DATA2		8128  /**/
 flag asn1SccPusTM_5_X_Data_IsConstraintValid(const asn1SccPusTM_5_X_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTM_5_X_DATA_2		50616  /**/
+#define ERR_UPER_ENCODE_PUSTM_5_X_DATA_2		8155  /**/
 #define asn1SccPusTM_5_X_Data_REQUIRED_BYTES_FOR_ENCODING       20 
 #define asn1SccPusTM_5_X_Data_REQUIRED_BITS_FOR_ENCODING        158
 
 flag asn1SccPusTM_5_X_Data_Encode(const asn1SccPusTM_5_X_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTM_5_X_DATA_2		50617  /**/
+#define ERR_UPER_DECODE_PUSTM_5_X_DATA_2		8156  /**/
 flag asn1SccPusTM_5_X_Data_Decode(asn1SccPusTM_5_X_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccPusUInt64 asn1SccPusMemAddr;
+
+
+flag asn1SccPusMemAddr_Equal(const asn1SccPusMemAddr* pVal1, const asn1SccPusMemAddr* pVal2);
+
+void asn1SccPusMemAddr_Initialize(asn1SccPusMemAddr* pVal);
+
+#define ERR_PUSMEMADDR		8236  /**/
+flag asn1SccPusMemAddr_IsConstraintValid(const asn1SccPusMemAddr* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSMEMADDR_2		8243  /**/
+#define asn1SccPusMemAddr_REQUIRED_BYTES_FOR_ENCODING       8 
+#define asn1SccPusMemAddr_REQUIRED_BITS_FOR_ENCODING        63
+
+flag asn1SccPusMemAddr_Encode(const asn1SccPusMemAddr* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSMEMADDR_2		8244  /**/
+flag asn1SccPusMemAddr_Decode(asn1SccPusMemAddr* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt64 asn1SccPusSt03StoredParam;
 
 
@@ -1267,16 +1093,16 @@ flag asn1SccPusSt03StoredParam_Equal(const asn1SccPusSt03StoredParam* pVal1, con
 
 void asn1SccPusSt03StoredParam_Initialize(asn1SccPusSt03StoredParam* pVal);
 
-#define ERR_PUSST03STOREDPARAM		51206  /**/
+#define ERR_PUSST03STOREDPARAM		8247  /**/
 flag asn1SccPusSt03StoredParam_IsConstraintValid(const asn1SccPusSt03StoredParam* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST03STOREDPARAM_2		51213  /**/
+#define ERR_UPER_ENCODE_PUSST03STOREDPARAM_2		8254  /**/
 #define asn1SccPusSt03StoredParam_REQUIRED_BYTES_FOR_ENCODING       8 
 #define asn1SccPusSt03StoredParam_REQUIRED_BITS_FOR_ENCODING        63
 
 flag asn1SccPusSt03StoredParam_Encode(const asn1SccPusSt03StoredParam* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST03STOREDPARAM_2		51214  /**/
+#define ERR_UPER_DECODE_PUSST03STOREDPARAM_2		8255  /**/
 flag asn1SccPusSt03StoredParam_Decode(asn1SccPusSt03StoredParam* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {    int nCount; 
@@ -1288,19 +1114,19 @@ flag asn1SccPusSt03ParameterArray_Equal(const asn1SccPusSt03ParameterArray* pVal
 
 void asn1SccPusSt03ParameterArray_Initialize(asn1SccPusSt03ParameterArray* pVal);
 
-#define ERR_PUSST03PARAMETERARRAY_ELM		51239  /**/
-#define ERR_PUSST03PARAMETERARRAY		51254  /**/
+#define ERR_PUSST03PARAMETERARRAY_ELM		8280  /**/
+#define ERR_PUSST03PARAMETERARRAY		8295  /**/
 flag asn1SccPusSt03ParameterArray_IsConstraintValid(const asn1SccPusSt03ParameterArray* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST03PARAMETERARRAY		51255  /**/
-#define ERR_UPER_ENCODE_PUSST03PARAMETERARRAY_ELM_2_2		51250  /**/
+#define ERR_UPER_ENCODE_PUSST03PARAMETERARRAY		8296  /**/
+#define ERR_UPER_ENCODE_PUSST03PARAMETERARRAY_ELM_2_2		8291  /**/
 #define asn1SccPusSt03ParameterArray_REQUIRED_BYTES_FOR_ENCODING       159 
 #define asn1SccPusSt03ParameterArray_REQUIRED_BITS_FOR_ENCODING        1265
 
 flag asn1SccPusSt03ParameterArray_Encode(const asn1SccPusSt03ParameterArray* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST03PARAMETERARRAY		51256  /**/
-#define ERR_UPER_DECODE_PUSST03PARAMETERARRAY_ELM_2_2		51251  /**/
+#define ERR_UPER_DECODE_PUSST03PARAMETERARRAY		8297  /**/
+#define ERR_UPER_DECODE_PUSST03PARAMETERARRAY_ELM_2_2		8292  /**/
 flag asn1SccPusSt03ParameterArray_Decode(asn1SccPusSt03ParameterArray* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1312,22 +1138,22 @@ flag asn1SccPusTM_3_25_Data_Equal(const asn1SccPusTM_3_25_Data* pVal1, const asn
 
 void asn1SccPusTM_3_25_Data_Initialize(asn1SccPusTM_3_25_Data* pVal);
 
-#define ERR_PUSTM_3_25_DATA_REPORTID		51261  /**/
-#define ERR_PUSTM_3_25_DATA_PARAMETERS_ELM		51276  /**/
-#define ERR_PUSTM_3_25_DATA_PARAMETERS		51291  /**/
+#define ERR_PUSTM_3_25_DATA_REPORTID		8302  /**/
+#define ERR_PUSTM_3_25_DATA_PARAMETERS_ELM		8317  /**/
+#define ERR_PUSTM_3_25_DATA_PARAMETERS		8332  /**/
 flag asn1SccPusTM_3_25_Data_IsConstraintValid(const asn1SccPusTM_3_25_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTM_3_25_DATA		51302  /**/
-#define ERR_UPER_ENCODE_PUSTM_3_25_DATA_REPORTID_2_2		51272  /**/
-#define ERR_UPER_ENCODE_PUSTM_3_25_DATA_PARAMETERS_2		51298  /**/
+#define ERR_UPER_ENCODE_PUSTM_3_25_DATA		8343  /**/
+#define ERR_UPER_ENCODE_PUSTM_3_25_DATA_REPORTID_2_2		8313  /**/
+#define ERR_UPER_ENCODE_PUSTM_3_25_DATA_PARAMETERS_2		8339  /**/
 #define asn1SccPusTM_3_25_Data_REQUIRED_BYTES_FOR_ENCODING       163 
 #define asn1SccPusTM_3_25_Data_REQUIRED_BITS_FOR_ENCODING        1297
 
 flag asn1SccPusTM_3_25_Data_Encode(const asn1SccPusTM_3_25_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTM_3_25_DATA		51303  /**/
-#define ERR_UPER_DECODE_PUSTM_3_25_DATA_REPORTID_2_2		51273  /**/
-#define ERR_UPER_DECODE_PUSTM_3_25_DATA_PARAMETERS_2		51299  /**/
+#define ERR_UPER_DECODE_PUSTM_3_25_DATA		8344  /**/
+#define ERR_UPER_DECODE_PUSTM_3_25_DATA_REPORTID_2_2		8314  /**/
+#define ERR_UPER_DECODE_PUSTM_3_25_DATA_PARAMETERS_2		8340  /**/
 flag asn1SccPusTM_3_25_Data_Decode(asn1SccPusTM_3_25_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusUInt64 asn1SccPusSt20StoredParam;
 
@@ -1336,16 +1162,16 @@ flag asn1SccPusSt20StoredParam_Equal(const asn1SccPusSt20StoredParam* pVal1, con
 
 void asn1SccPusSt20StoredParam_Initialize(asn1SccPusSt20StoredParam* pVal);
 
-#define ERR_PUSST20STOREDPARAM		51748  /**/
+#define ERR_PUSST20STOREDPARAM		52500  /**/
 flag asn1SccPusSt20StoredParam_IsConstraintValid(const asn1SccPusSt20StoredParam* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST20STOREDPARAM_2		51755  /**/
+#define ERR_UPER_ENCODE_PUSST20STOREDPARAM_2		52507  /**/
 #define asn1SccPusSt20StoredParam_REQUIRED_BYTES_FOR_ENCODING       8 
 #define asn1SccPusSt20StoredParam_REQUIRED_BITS_FOR_ENCODING        63
 
 flag asn1SccPusSt20StoredParam_Encode(const asn1SccPusSt20StoredParam* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST20STOREDPARAM_2		51756  /**/
+#define ERR_UPER_DECODE_PUSST20STOREDPARAM_2		52508  /**/
 flag asn1SccPusSt20StoredParam_Decode(asn1SccPusSt20StoredParam* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1357,21 +1183,21 @@ flag asn1SccPusTC_TM_20_X_Data_Equal(const asn1SccPusTC_TM_20_X_Data* pVal1, con
 
 void asn1SccPusTC_TM_20_X_Data_Initialize(asn1SccPusTC_TM_20_X_Data* pVal);
 
-#define ERR_PUSTC_TM_20_X_DATA_PARAMID		51759  /**/
-#define ERR_PUSTC_TM_20_X_DATA_VALUE		51774  /**/
+#define ERR_PUSTC_TM_20_X_DATA_PARAMID		52511  /**/
+#define ERR_PUSTC_TM_20_X_DATA_VALUE		52526  /**/
 flag asn1SccPusTC_TM_20_X_Data_IsConstraintValid(const asn1SccPusTC_TM_20_X_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_TM_20_X_DATA		51789  /**/
-#define ERR_UPER_ENCODE_PUSTC_TM_20_X_DATA_PARAMID_2_2		51770  /**/
-#define ERR_UPER_ENCODE_PUSTC_TM_20_X_DATA_VALUE_2_2		51785  /**/
+#define ERR_UPER_ENCODE_PUSTC_TM_20_X_DATA		52541  /**/
+#define ERR_UPER_ENCODE_PUSTC_TM_20_X_DATA_PARAMID_2_2		52522  /**/
+#define ERR_UPER_ENCODE_PUSTC_TM_20_X_DATA_VALUE_2_2		52537  /**/
 #define asn1SccPusTC_TM_20_X_Data_REQUIRED_BYTES_FOR_ENCODING       12 
 #define asn1SccPusTC_TM_20_X_Data_REQUIRED_BITS_FOR_ENCODING        95
 
 flag asn1SccPusTC_TM_20_X_Data_Encode(const asn1SccPusTC_TM_20_X_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_TM_20_X_DATA		51790  /**/
-#define ERR_UPER_DECODE_PUSTC_TM_20_X_DATA_PARAMID_2_2		51771  /**/
-#define ERR_UPER_DECODE_PUSTC_TM_20_X_DATA_VALUE_2_2		51786  /**/
+#define ERR_UPER_DECODE_PUSTC_TM_20_X_DATA		52542  /**/
+#define ERR_UPER_DECODE_PUSTC_TM_20_X_DATA_PARAMID_2_2		52523  /**/
+#define ERR_UPER_DECODE_PUSTC_TM_20_X_DATA_VALUE_2_2		52538  /**/
 flag asn1SccPusTC_TM_20_X_Data_Decode(asn1SccPusTC_TM_20_X_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccSint asn1SccPusInt32;
 
@@ -1380,16 +1206,16 @@ flag asn1SccPusInt32_Equal(const asn1SccPusInt32* pVal1, const asn1SccPusInt32* 
 
 void asn1SccPusInt32_Initialize(asn1SccPusInt32* pVal);
 
-#define ERR_PUSINT32		50258  /**/
+#define ERR_PUSINT32		8215  /**/
 flag asn1SccPusInt32_IsConstraintValid(const asn1SccPusInt32* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSINT32		50259  /**/
+#define ERR_UPER_ENCODE_PUSINT32		8216  /**/
 #define asn1SccPusInt32_REQUIRED_BYTES_FOR_ENCODING       4 
 #define asn1SccPusInt32_REQUIRED_BITS_FOR_ENCODING        32
 
 flag asn1SccPusInt32_Encode(const asn1SccPusInt32* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSINT32		50260  /**/
+#define ERR_UPER_DECODE_PUSINT32		8217  /**/
 flag asn1SccPusInt32_Decode(asn1SccPusInt32* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1402,24 +1228,24 @@ flag asn1SccPusSt01FailureInfo_Equal(const asn1SccPusSt01FailureInfo* pVal1, con
 
 void asn1SccPusSt01FailureInfo_Initialize(asn1SccPusSt01FailureInfo* pVal);
 
-#define ERR_PUSST01FAILUREINFO_SUBCODE		51347  /**/
-#define ERR_PUSST01FAILUREINFO_DATA		51358  /**/
-#define ERR_PUSST01FAILUREINFO_ADDRESS		51369  /**/
+#define ERR_PUSST01FAILUREINFO_SUBCODE		52072  /**/
+#define ERR_PUSST01FAILUREINFO_DATA		52083  /**/
+#define ERR_PUSST01FAILUREINFO_ADDRESS		52094  /**/
 flag asn1SccPusSt01FailureInfo_IsConstraintValid(const asn1SccPusSt01FailureInfo* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST01FAILUREINFO		51384  /**/
-#define ERR_UPER_ENCODE_PUSST01FAILUREINFO_SUBCODE_2		51354  /**/
-#define ERR_UPER_ENCODE_PUSST01FAILUREINFO_DATA_2		51365  /**/
-#define ERR_UPER_ENCODE_PUSST01FAILUREINFO_ADDRESS_2_2		51380  /**/
+#define ERR_UPER_ENCODE_PUSST01FAILUREINFO		52109  /**/
+#define ERR_UPER_ENCODE_PUSST01FAILUREINFO_SUBCODE_2		52079  /**/
+#define ERR_UPER_ENCODE_PUSST01FAILUREINFO_DATA_2		52090  /**/
+#define ERR_UPER_ENCODE_PUSST01FAILUREINFO_ADDRESS_2_2		52105  /**/
 #define asn1SccPusSt01FailureInfo_REQUIRED_BYTES_FOR_ENCODING       16 
 #define asn1SccPusSt01FailureInfo_REQUIRED_BITS_FOR_ENCODING        127
 
 flag asn1SccPusSt01FailureInfo_Encode(const asn1SccPusSt01FailureInfo* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST01FAILUREINFO		51385  /**/
-#define ERR_UPER_DECODE_PUSST01FAILUREINFO_SUBCODE_2		51355  /**/
-#define ERR_UPER_DECODE_PUSST01FAILUREINFO_DATA_2		51366  /**/
-#define ERR_UPER_DECODE_PUSST01FAILUREINFO_ADDRESS_2_2		51381  /**/
+#define ERR_UPER_DECODE_PUSST01FAILUREINFO		52110  /**/
+#define ERR_UPER_DECODE_PUSST01FAILUREINFO_SUBCODE_2		52080  /**/
+#define ERR_UPER_DECODE_PUSST01FAILUREINFO_DATA_2		52091  /**/
+#define ERR_UPER_DECODE_PUSST01FAILUREINFO_ADDRESS_2_2		52106  /**/
 flag asn1SccPusSt01FailureInfo_Decode(asn1SccPusSt01FailureInfo* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1431,62 +1257,24 @@ flag asn1SccPusSt01Failure_Equal(const asn1SccPusSt01Failure* pVal1, const asn1S
 
 void asn1SccPusSt01Failure_Initialize(asn1SccPusSt01Failure* pVal);
 
-#define ERR_PUSST01FAILURE_CODE		51470  /**/
-#define ERR_PUSST01FAILURE_INFO_SUBCODE		51485  /**/
-#define ERR_PUSST01FAILURE_INFO_DATA		51496  /**/
-#define ERR_PUSST01FAILURE_INFO_ADDRESS		51507  /**/
+#define ERR_PUSST01FAILURE_CODE		52195  /**/
+#define ERR_PUSST01FAILURE_INFO_SUBCODE		52210  /**/
+#define ERR_PUSST01FAILURE_INFO_DATA		52221  /**/
+#define ERR_PUSST01FAILURE_INFO_ADDRESS		52232  /**/
 flag asn1SccPusSt01Failure_IsConstraintValid(const asn1SccPusSt01Failure* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST01FAILURE		51532  /**/
-#define ERR_UPER_ENCODE_PUSST01FAILURE_CODE_2_2		51481  /**/
-#define ERR_UPER_ENCODE_PUSST01FAILURE_INFO_2		51528  /**/
+#define ERR_UPER_ENCODE_PUSST01FAILURE		52257  /**/
+#define ERR_UPER_ENCODE_PUSST01FAILURE_CODE_2_2		52206  /**/
+#define ERR_UPER_ENCODE_PUSST01FAILURE_INFO_2		52253  /**/
 #define asn1SccPusSt01Failure_REQUIRED_BYTES_FOR_ENCODING       20 
 #define asn1SccPusSt01Failure_REQUIRED_BITS_FOR_ENCODING        159
 
 flag asn1SccPusSt01Failure_Encode(const asn1SccPusSt01Failure* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST01FAILURE		51533  /**/
-#define ERR_UPER_DECODE_PUSST01FAILURE_CODE_2_2		51482  /**/
-#define ERR_UPER_DECODE_PUSST01FAILURE_INFO_2		51529  /**/
+#define ERR_UPER_DECODE_PUSST01FAILURE		52258  /**/
+#define ERR_UPER_DECODE_PUSST01FAILURE_CODE_2_2		52207  /**/
+#define ERR_UPER_DECODE_PUSST01FAILURE_INFO_2		52254  /**/
 flag asn1SccPusSt01Failure_Decode(asn1SccPusSt01Failure* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusSt01RequestId request;
-    asn1SccPusStepId step;
-    asn1SccPusSt01Failure failure;
-} asn1SccPusTM_1_X_Data;
-
-flag asn1SccPusTM_1_X_Data_Equal(const asn1SccPusTM_1_X_Data* pVal1, const asn1SccPusTM_1_X_Data* pVal2);
-
-void asn1SccPusTM_1_X_Data_Initialize(asn1SccPusTM_1_X_Data* pVal);
-
-#define ERR_PUSTM_1_X_DATA_REQUEST_PACKETVERSION		51538  /**/
-#define ERR_PUSTM_1_X_DATA_REQUEST_PACKETTYPE		51549  /**/
-#define ERR_PUSTM_1_X_DATA_REQUEST_SECONDARYHEADERFLAG		51560  /**/
-#define ERR_PUSTM_1_X_DATA_REQUEST_APID		51571  /**/
-#define ERR_PUSTM_1_X_DATA_REQUEST_SEQUENCEFLAGS		51586  /**/
-#define ERR_PUSTM_1_X_DATA_REQUEST_SEQUENCECOUNT		51597  /**/
-#define ERR_PUSTM_1_X_DATA_STEP		51622  /**/
-#define ERR_PUSTM_1_X_DATA_FAILURE_CODE		51637  /**/
-#define ERR_PUSTM_1_X_DATA_FAILURE_INFO_SUBCODE		51652  /**/
-#define ERR_PUSTM_1_X_DATA_FAILURE_INFO_DATA		51663  /**/
-#define ERR_PUSTM_1_X_DATA_FAILURE_INFO_ADDRESS		51674  /**/
-flag asn1SccPusTM_1_X_Data_IsConstraintValid(const asn1SccPusTM_1_X_Data* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTM_1_X_DATA		51709  /**/
-#define ERR_UPER_ENCODE_PUSTM_1_X_DATA_REQUEST_2		51618  /**/
-#define ERR_UPER_ENCODE_PUSTM_1_X_DATA_STEP_2_2		51633  /**/
-#define ERR_UPER_ENCODE_PUSTM_1_X_DATA_FAILURE_2		51705  /**/
-#define asn1SccPusTM_1_X_Data_REQUIRED_BYTES_FOR_ENCODING       28 
-#define asn1SccPusTM_1_X_Data_REQUIRED_BITS_FOR_ENCODING        218
-
-flag asn1SccPusTM_1_X_Data_Encode(const asn1SccPusTM_1_X_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTM_1_X_DATA		51710  /**/
-#define ERR_UPER_DECODE_PUSTM_1_X_DATA_REQUEST_2		51619  /**/
-#define ERR_UPER_DECODE_PUSTM_1_X_DATA_STEP_2_2		51634  /**/
-#define ERR_UPER_DECODE_PUSTM_1_X_DATA_FAILURE_2		51706  /**/
-flag asn1SccPusTM_1_X_Data_Decode(asn1SccPusTM_1_X_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccSint asn1SccPusInt64;
 
 
@@ -1494,16 +1282,16 @@ flag asn1SccPusInt64_Equal(const asn1SccPusInt64* pVal1, const asn1SccPusInt64* 
 
 void asn1SccPusInt64_Initialize(asn1SccPusInt64* pVal);
 
-#define ERR_PUSINT64		50265  /**/
+#define ERR_PUSINT64		8222  /**/
 flag asn1SccPusInt64_IsConstraintValid(const asn1SccPusInt64* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSINT64		50266  /**/
+#define ERR_UPER_ENCODE_PUSINT64		8223  /**/
 #define asn1SccPusInt64_REQUIRED_BYTES_FOR_ENCODING       8 
 #define asn1SccPusInt64_REQUIRED_BITS_FOR_ENCODING        64
 
 flag asn1SccPusInt64_Encode(const asn1SccPusInt64* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSINT64		50267  /**/
+#define ERR_UPER_DECODE_PUSINT64		8224  /**/
 flag asn1SccPusInt64_Decode(asn1SccPusInt64* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1515,69 +1303,22 @@ flag asn1SccPusTime_Equal(const asn1SccPusTime* pVal1, const asn1SccPusTime* pVa
 
 void asn1SccPusTime_Initialize(asn1SccPusTime* pVal);
 
-#define ERR_PUSTIME_TV_SEC		51308  /**/
-#define ERR_PUSTIME_TV_NSEC		51319  /**/
+#define ERR_PUSTIME_TV_SEC		52461  /**/
+#define ERR_PUSTIME_TV_NSEC		52472  /**/
 flag asn1SccPusTime_IsConstraintValid(const asn1SccPusTime* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTIME		51330  /**/
-#define ERR_UPER_ENCODE_PUSTIME_TV_SEC_2		51315  /**/
-#define ERR_UPER_ENCODE_PUSTIME_TV_NSEC_2		51326  /**/
+#define ERR_UPER_ENCODE_PUSTIME		52483  /**/
+#define ERR_UPER_ENCODE_PUSTIME_TV_SEC_2		52468  /**/
+#define ERR_UPER_ENCODE_PUSTIME_TV_NSEC_2		52479  /**/
 #define asn1SccPusTime_REQUIRED_BYTES_FOR_ENCODING       16 
 #define asn1SccPusTime_REQUIRED_BITS_FOR_ENCODING        128
 
 flag asn1SccPusTime_Encode(const asn1SccPusTime* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTIME		51331  /**/
-#define ERR_UPER_DECODE_PUSTIME_TV_SEC_2		51316  /**/
-#define ERR_UPER_DECODE_PUSTIME_TV_NSEC_2		51327  /**/
+#define ERR_UPER_DECODE_PUSTIME		52484  /**/
+#define ERR_UPER_DECODE_PUSTIME_TV_SEC_2		52469  /**/
+#define ERR_UPER_DECODE_PUSTIME_TV_NSEC_2		52480  /**/
 flag asn1SccPusTime_Decode(asn1SccPusTime* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusVersionNumber pusVersion;
-    asn1SccPusTimeReferenceStatus timeRefStatus;
-    asn1SccPusServiceType serviceId;
-    asn1SccPusSubserviceType subtype;
-    asn1SccPusMessageTypeCounter msgTypeCount;
-    asn1SccPusApid destination;
-    asn1SccPusTime time;
-} asn1SccPusTmHeader;
-
-flag asn1SccPusTmHeader_Equal(const asn1SccPusTmHeader* pVal1, const asn1SccPusTmHeader* pVal2);
-
-void asn1SccPusTmHeader_Initialize(asn1SccPusTmHeader* pVal);
-
-#define ERR_PUSTMHEADER_PUSVERSION		8156  /**/
-#define ERR_PUSTMHEADER_TIMEREFSTATUS		8167  /**/
-#define ERR_PUSTMHEADER_SERVICEID		8182  /**/
-#define ERR_PUSTMHEADER_SUBTYPE		8197  /**/
-#define ERR_PUSTMHEADER_MSGTYPECOUNT		8212  /**/
-#define ERR_PUSTMHEADER_DESTINATION		8227  /**/
-#define ERR_PUSTMHEADER_TIME_TV_SEC		8242  /**/
-#define ERR_PUSTMHEADER_TIME_TV_NSEC		8253  /**/
-flag asn1SccPusTmHeader_IsConstraintValid(const asn1SccPusTmHeader* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTMHEADER		8274  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADER_PUSVERSION_2		8163  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADER_TIMEREFSTATUS_2_2		8178  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADER_SERVICEID_2_2		8193  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADER_SUBTYPE_2_2		8208  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADER_MSGTYPECOUNT_2_2		8223  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADER_DESTINATION_2_2		8238  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADER_TIME_2		8270  /**/
-#define asn1SccPusTmHeader_REQUIRED_BYTES_FOR_ENCODING       22 
-#define asn1SccPusTmHeader_REQUIRED_BITS_FOR_ENCODING        176
-
-flag asn1SccPusTmHeader_Encode(const asn1SccPusTmHeader* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTMHEADER		8275  /**/
-#define ERR_UPER_DECODE_PUSTMHEADER_PUSVERSION_2		8164  /**/
-#define ERR_UPER_DECODE_PUSTMHEADER_TIMEREFSTATUS_2_2		8179  /**/
-#define ERR_UPER_DECODE_PUSTMHEADER_SERVICEID_2_2		8194  /**/
-#define ERR_UPER_DECODE_PUSTMHEADER_SUBTYPE_2_2		8209  /**/
-#define ERR_UPER_DECODE_PUSTMHEADER_MSGTYPECOUNT_2_2		8224  /**/
-#define ERR_UPER_DECODE_PUSTMHEADER_DESTINATION_2_2		8239  /**/
-#define ERR_UPER_DECODE_PUSTMHEADER_TIME_2		8271  /**/
-flag asn1SccPusTmHeader_Decode(asn1SccPusTmHeader* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
     asn1SccPusSt09ExponentialRate exponentialRate;
@@ -1588,22 +1329,22 @@ flag asn1SccPusTM_9_2_Data_Equal(const asn1SccPusTM_9_2_Data* pVal1, const asn1S
 
 void asn1SccPusTM_9_2_Data_Initialize(asn1SccPusTM_9_2_Data* pVal);
 
-#define ERR_PUSTM_9_2_DATA_EXPONENTIALRATE		50652  /**/
-#define ERR_PUSTM_9_2_DATA_TIME_TV_SEC		50667  /**/
-#define ERR_PUSTM_9_2_DATA_TIME_TV_NSEC		50678  /**/
+#define ERR_PUSTM_9_2_DATA_EXPONENTIALRATE		8562  /**/
+#define ERR_PUSTM_9_2_DATA_TIME_TV_SEC		8577  /**/
+#define ERR_PUSTM_9_2_DATA_TIME_TV_NSEC		8588  /**/
 flag asn1SccPusTM_9_2_Data_IsConstraintValid(const asn1SccPusTM_9_2_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTM_9_2_DATA		50699  /**/
-#define ERR_UPER_ENCODE_PUSTM_9_2_DATA_EXPONENTIALRATE_2_2		50663  /**/
-#define ERR_UPER_ENCODE_PUSTM_9_2_DATA_TIME_2		50695  /**/
+#define ERR_UPER_ENCODE_PUSTM_9_2_DATA		8609  /**/
+#define ERR_UPER_ENCODE_PUSTM_9_2_DATA_EXPONENTIALRATE_2_2		8573  /**/
+#define ERR_UPER_ENCODE_PUSTM_9_2_DATA_TIME_2		8605  /**/
 #define asn1SccPusTM_9_2_Data_REQUIRED_BYTES_FOR_ENCODING       20 
 #define asn1SccPusTM_9_2_Data_REQUIRED_BITS_FOR_ENCODING        160
 
 flag asn1SccPusTM_9_2_Data_Encode(const asn1SccPusTM_9_2_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTM_9_2_DATA		50700  /**/
-#define ERR_UPER_DECODE_PUSTM_9_2_DATA_EXPONENTIALRATE_2_2		50664  /**/
-#define ERR_UPER_DECODE_PUSTM_9_2_DATA_TIME_2		50696  /**/
+#define ERR_UPER_DECODE_PUSTM_9_2_DATA		8610  /**/
+#define ERR_UPER_DECODE_PUSTM_9_2_DATA_EXPONENTIALRATE_2_2		8574  /**/
+#define ERR_UPER_DECODE_PUSTM_9_2_DATA_TIME_2		8606  /**/
 flag asn1SccPusTM_9_2_Data_Decode(asn1SccPusTM_9_2_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef double asn1SccPusDouble;
 
@@ -1612,16 +1353,16 @@ flag asn1SccPusDouble_Equal(const asn1SccPusDouble* pVal1, const asn1SccPusDoubl
 
 void asn1SccPusDouble_Initialize(asn1SccPusDouble* pVal);
 
-#define ERR_PUSDOUBLE		50272  /**/
+#define ERR_PUSDOUBLE		8229  /**/
 flag asn1SccPusDouble_IsConstraintValid(const asn1SccPusDouble* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSDOUBLE		50273  /**/
+#define ERR_UPER_ENCODE_PUSDOUBLE		8230  /**/
 #define asn1SccPusDouble_REQUIRED_BYTES_FOR_ENCODING       13 
 #define asn1SccPusDouble_REQUIRED_BITS_FOR_ENCODING        104
 
 flag asn1SccPusDouble_Encode(const asn1SccPusDouble* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSDOUBLE		50274  /**/
+#define ERR_UPER_DECODE_PUSDOUBLE		8231  /**/
 flag asn1SccPusDouble_Decode(asn1SccPusDouble* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccPusDouble asn1SccPusSt201Point;
 
@@ -1630,16 +1371,16 @@ flag asn1SccPusSt201Point_Equal(const asn1SccPusSt201Point* pVal1, const asn1Scc
 
 void asn1SccPusSt201Point_Initialize(asn1SccPusSt201Point* pVal);
 
-#define ERR_PUSST201POINT		50850  /**/
+#define ERR_PUSST201POINT		52547  /**/
 flag asn1SccPusSt201Point_IsConstraintValid(const asn1SccPusSt201Point* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST201POINT_2		50857  /**/
+#define ERR_UPER_ENCODE_PUSST201POINT_2		52554  /**/
 #define asn1SccPusSt201Point_REQUIRED_BYTES_FOR_ENCODING       13 
 #define asn1SccPusSt201Point_REQUIRED_BITS_FOR_ENCODING        104
 
 flag asn1SccPusSt201Point_Encode(const asn1SccPusSt201Point* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST201POINT_2		50858  /**/
+#define ERR_UPER_DECODE_PUSST201POINT_2		52555  /**/
 flag asn1SccPusSt201Point_Decode(asn1SccPusSt201Point* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {    
@@ -1665,25 +1406,25 @@ void asn1SccPusTC_201_1_3_Data_position_Initialize(asn1SccPusTC_201_1_3_Data_pos
 void asn1SccPusTC_201_1_3_Data_orientation_Initialize(asn1SccPusTC_201_1_3_Data_orientation* pVal);
 void asn1SccPusTC_201_1_3_Data_Initialize(asn1SccPusTC_201_1_3_Data* pVal);
 
-#define ERR_PUSTC_201_1_3_DATA_POSITION_ELM		50872  /**/
-#define ERR_PUSTC_201_1_3_DATA_ORIENTATION_ELM		50893  /**/
+#define ERR_PUSTC_201_1_3_DATA_POSITION_ELM		52616  /**/
+#define ERR_PUSTC_201_1_3_DATA_ORIENTATION_ELM		52637  /**/
 flag asn1SccPusTC_201_1_3_Data_IsConstraintValid(const asn1SccPusTC_201_1_3_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA		50914  /**/
-#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA_POSITION		50887  /**/
-#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA_POSITION_ELM_2_2		50883  /**/
-#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA_ORIENTATION		50908  /**/
-#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA_ORIENTATION_ELM_2_2		50904  /**/
+#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA		52658  /**/
+#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA_POSITION		52631  /**/
+#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA_POSITION_ELM_2_2		52627  /**/
+#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA_ORIENTATION		52652  /**/
+#define ERR_UPER_ENCODE_PUSTC_201_1_3_DATA_ORIENTATION_ELM_2_2		52648  /**/
 #define asn1SccPusTC_201_1_3_Data_REQUIRED_BYTES_FOR_ENCODING       78 
 #define asn1SccPusTC_201_1_3_Data_REQUIRED_BITS_FOR_ENCODING        624
 
 flag asn1SccPusTC_201_1_3_Data_Encode(const asn1SccPusTC_201_1_3_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA		50915  /**/
-#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA_POSITION		50888  /**/
-#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA_POSITION_ELM_2_2		50884  /**/
-#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA_ORIENTATION		50909  /**/
-#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA_ORIENTATION_ELM_2_2		50905  /**/
+#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA		52659  /**/
+#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA_POSITION		52632  /**/
+#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA_POSITION_ELM_2_2		52628  /**/
+#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA_ORIENTATION		52653  /**/
+#define ERR_UPER_DECODE_PUSTC_201_1_3_DATA_ORIENTATION_ELM_2_2		52649  /**/
 flag asn1SccPusTC_201_1_3_Data_Decode(asn1SccPusTC_201_1_3_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1695,13 +1436,13 @@ flag asn1SccPusSt18ObcpId_Equal(const asn1SccPusSt18ObcpId* pVal1, const asn1Scc
 
 void asn1SccPusSt18ObcpId_Initialize(asn1SccPusSt18ObcpId* pVal);
 
-#define ERR_UPER_ENCODE_PUSST18OBCPID		50290  /**/
+#define ERR_UPER_ENCODE_PUSST18OBCPID		8349  /**/
 #define asn1SccPusSt18ObcpId_REQUIRED_BYTES_FOR_ENCODING       10 
 #define asn1SccPusSt18ObcpId_REQUIRED_BITS_FOR_ENCODING        80
 
 flag asn1SccPusSt18ObcpId_Encode(const asn1SccPusSt18ObcpId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST18OBCPID		50291  /**/
+#define ERR_UPER_DECODE_PUSST18OBCPID		8350  /**/
 flag asn1SccPusSt18ObcpId_Decode(asn1SccPusSt18ObcpId* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1712,15 +1453,15 @@ flag asn1SccPusTC_18_2_6_12_Data_Equal(const asn1SccPusTC_18_2_6_12_Data* pVal1,
 
 void asn1SccPusTC_18_2_6_12_Data_Initialize(asn1SccPusTC_18_2_6_12_Data* pVal);
 
-#define ERR_UPER_ENCODE_PUSTC_18_2_6_12_DATA		50373  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_2_6_12_DATA_OBCPID_2		50369  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_2_6_12_DATA		8432  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_2_6_12_DATA_OBCPID_2		8428  /**/
 #define asn1SccPusTC_18_2_6_12_Data_REQUIRED_BYTES_FOR_ENCODING       10 
 #define asn1SccPusTC_18_2_6_12_Data_REQUIRED_BITS_FOR_ENCODING        80
 
 flag asn1SccPusTC_18_2_6_12_Data_Encode(const asn1SccPusTC_18_2_6_12_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_18_2_6_12_DATA		50374  /**/
-#define ERR_UPER_DECODE_PUSTC_18_2_6_12_DATA_OBCPID_2		50370  /**/
+#define ERR_UPER_DECODE_PUSTC_18_2_6_12_DATA		8433  /**/
+#define ERR_UPER_DECODE_PUSTC_18_2_6_12_DATA_OBCPID_2		8429  /**/
 flag asn1SccPusTC_18_2_6_12_Data_Decode(asn1SccPusTC_18_2_6_12_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1732,20 +1473,20 @@ flag asn1SccPusTC_18_4_5_Data_Equal(const asn1SccPusTC_18_4_5_Data* pVal1, const
 
 void asn1SccPusTC_18_4_5_Data_Initialize(asn1SccPusTC_18_4_5_Data* pVal);
 
-#define ERR_PUSTC_18_4_5_DATA_STEPID		50416  /**/
+#define ERR_PUSTC_18_4_5_DATA_STEPID		8475  /**/
 flag asn1SccPusTC_18_4_5_Data_IsConstraintValid(const asn1SccPusTC_18_4_5_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_18_4_5_DATA		50427  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_4_5_DATA_OBCPID_2		50412  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_4_5_DATA_STEPID_2		50423  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_4_5_DATA		8486  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_4_5_DATA_OBCPID_2		8471  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_4_5_DATA_STEPID_2		8482  /**/
 #define asn1SccPusTC_18_4_5_Data_REQUIRED_BYTES_FOR_ENCODING       14 
 #define asn1SccPusTC_18_4_5_Data_REQUIRED_BITS_FOR_ENCODING        112
 
 flag asn1SccPusTC_18_4_5_Data_Encode(const asn1SccPusTC_18_4_5_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_18_4_5_DATA		50428  /**/
-#define ERR_UPER_DECODE_PUSTC_18_4_5_DATA_OBCPID_2		50413  /**/
-#define ERR_UPER_DECODE_PUSTC_18_4_5_DATA_STEPID_2		50424  /**/
+#define ERR_UPER_DECODE_PUSTC_18_4_5_DATA		8487  /**/
+#define ERR_UPER_DECODE_PUSTC_18_4_5_DATA_OBCPID_2		8472  /**/
+#define ERR_UPER_DECODE_PUSTC_18_4_5_DATA_STEPID_2		8483  /**/
 flag asn1SccPusTC_18_4_5_Data_Decode(asn1SccPusTC_18_4_5_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1758,16 +1499,16 @@ flag asn1SccPusSt18ObcpCode_Equal(const asn1SccPusSt18ObcpCode* pVal1, const asn
 
 void asn1SccPusSt18ObcpCode_Initialize(asn1SccPusSt18ObcpCode* pVal);
 
-#define ERR_PUSST18OBCPCODE		50296  /**/
+#define ERR_PUSST18OBCPCODE		8355  /**/
 flag asn1SccPusSt18ObcpCode_IsConstraintValid(const asn1SccPusSt18ObcpCode* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST18OBCPCODE		50297  /**/
+#define ERR_UPER_ENCODE_PUSST18OBCPCODE		8356  /**/
 #define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_ENCODING       15002 
 #define asn1SccPusSt18ObcpCode_REQUIRED_BITS_FOR_ENCODING        120014
 
 flag asn1SccPusSt18ObcpCode_Encode(const asn1SccPusSt18ObcpCode* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST18OBCPCODE		50298  /**/
+#define ERR_UPER_DECODE_PUSST18OBCPCODE		8357  /**/
 flag asn1SccPusSt18ObcpCode_Decode(asn1SccPusSt18ObcpCode* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1780,23 +1521,23 @@ flag asn1SccPusTC_18_1_Data_Equal(const asn1SccPusTC_18_1_Data* pVal1, const asn
 
 void asn1SccPusTC_18_1_Data_Initialize(asn1SccPusTC_18_1_Data* pVal);
 
-#define ERR_PUSTC_18_1_DATA_OBCPCODE		50331  /**/
-#define ERR_PUSTC_18_1_DATA_CHECKSUM		50342  /**/
+#define ERR_PUSTC_18_1_DATA_OBCPCODE		8390  /**/
+#define ERR_PUSTC_18_1_DATA_CHECKSUM		8401  /**/
 flag asn1SccPusTC_18_1_Data_IsConstraintValid(const asn1SccPusTC_18_1_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_18_1_DATA		50357  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_1_DATA_OBCPID_2		50327  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_1_DATA_OBCPCODE_2		50338  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_1_DATA_CHECKSUM_2_2		50353  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_1_DATA		8416  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_1_DATA_OBCPID_2		8386  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_1_DATA_OBCPCODE_2		8397  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_1_DATA_CHECKSUM_2_2		8412  /**/
 #define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_ENCODING       15014 
 #define asn1SccPusTC_18_1_Data_REQUIRED_BITS_FOR_ENCODING        120110
 
 flag asn1SccPusTC_18_1_Data_Encode(const asn1SccPusTC_18_1_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_18_1_DATA		50358  /**/
-#define ERR_UPER_DECODE_PUSTC_18_1_DATA_OBCPID_2		50328  /**/
-#define ERR_UPER_DECODE_PUSTC_18_1_DATA_OBCPCODE_2		50339  /**/
-#define ERR_UPER_DECODE_PUSTC_18_1_DATA_CHECKSUM_2_2		50354  /**/
+#define ERR_UPER_DECODE_PUSTC_18_1_DATA		8417  /**/
+#define ERR_UPER_DECODE_PUSTC_18_1_DATA_OBCPID_2		8387  /**/
+#define ERR_UPER_DECODE_PUSTC_18_1_DATA_OBCPCODE_2		8398  /**/
+#define ERR_UPER_DECODE_PUSTC_18_1_DATA_CHECKSUM_2_2		8413  /**/
 flag asn1SccPusTC_18_1_Data_Decode(asn1SccPusTC_18_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef enum {
@@ -1810,16 +1551,16 @@ flag asn1SccPusSt18ObservabilityLevel_Equal(const asn1SccPusSt18ObservabilityLev
 
 void asn1SccPusSt18ObservabilityLevel_Initialize(asn1SccPusSt18ObservabilityLevel* pVal);
 
-#define ERR_PUSST18OBSERVABILITYLEVEL		50314  /**/
+#define ERR_PUSST18OBSERVABILITYLEVEL		8373  /**/
 flag asn1SccPusSt18ObservabilityLevel_IsConstraintValid(const asn1SccPusSt18ObservabilityLevel* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST18OBSERVABILITYLEVEL		50315  /**/
+#define ERR_UPER_ENCODE_PUSST18OBSERVABILITYLEVEL		8374  /**/
 #define asn1SccPusSt18ObservabilityLevel_REQUIRED_BYTES_FOR_ENCODING       1 
 #define asn1SccPusSt18ObservabilityLevel_REQUIRED_BITS_FOR_ENCODING        2
 
 flag asn1SccPusSt18ObservabilityLevel_Encode(const asn1SccPusSt18ObservabilityLevel* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST18OBSERVABILITYLEVEL		50316  /**/
+#define ERR_UPER_DECODE_PUSST18OBSERVABILITYLEVEL		8375  /**/
 flag asn1SccPusSt18ObservabilityLevel_Decode(asn1SccPusSt18ObservabilityLevel* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -1831,171 +1572,21 @@ flag asn1SccPusTC_18_3_Data_Equal(const asn1SccPusTC_18_3_Data* pVal1, const asn
 
 void asn1SccPusTC_18_3_Data_Initialize(asn1SccPusTC_18_3_Data* pVal);
 
-#define ERR_PUSTC_18_3_DATA_OBSERVABILITYLEVEL		50389  /**/
+#define ERR_PUSTC_18_3_DATA_OBSERVABILITYLEVEL		8448  /**/
 flag asn1SccPusTC_18_3_Data_IsConstraintValid(const asn1SccPusTC_18_3_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_18_3_DATA		50400  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_3_DATA_OBCPID_2		50385  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_3_DATA_OBSERVABILITYLEVEL_2		50396  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_3_DATA		8459  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_3_DATA_OBCPID_2		8444  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_3_DATA_OBSERVABILITYLEVEL_2		8455  /**/
 #define asn1SccPusTC_18_3_Data_REQUIRED_BYTES_FOR_ENCODING       11 
 #define asn1SccPusTC_18_3_Data_REQUIRED_BITS_FOR_ENCODING        82
 
 flag asn1SccPusTC_18_3_Data_Encode(const asn1SccPusTC_18_3_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_18_3_DATA		50401  /**/
-#define ERR_UPER_DECODE_PUSTC_18_3_DATA_OBCPID_2		50386  /**/
-#define ERR_UPER_DECODE_PUSTC_18_3_DATA_OBSERVABILITYLEVEL_2		50397  /**/
+#define ERR_UPER_DECODE_PUSTC_18_3_DATA		8460  /**/
+#define ERR_UPER_DECODE_PUSTC_18_3_DATA_OBCPID_2		8445  /**/
+#define ERR_UPER_DECODE_PUSTC_18_3_DATA_OBSERVABILITYLEVEL_2		8456  /**/
 flag asn1SccPusTC_18_3_Data_Decode(asn1SccPusTC_18_3_Data* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef enum {
-    asn1SccPlanCmdStatus_idle = 0,
-    asn1SccplanningTrajectory = 1,
-    asn1SccinvalidTrajectory = 2,
-    asn1SccexecutingTrajectory = 3,
-    asn1SccstoppedTrajectory = 4,
-    asn1SccfinishedTrajectory = 5
-} asn1SccPlanCmdStatus;
-
-flag asn1SccPlanCmdStatus_Equal(const asn1SccPlanCmdStatus* pVal1, const asn1SccPlanCmdStatus* pVal2);
-
-void asn1SccPlanCmdStatus_Initialize(asn1SccPlanCmdStatus* pVal);
-
-#define ERR_PLANCMDSTATUS		50769  /**/
-flag asn1SccPlanCmdStatus_IsConstraintValid(const asn1SccPlanCmdStatus* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PLANCMDSTATUS		50770  /**/
-#define asn1SccPlanCmdStatus_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccPlanCmdStatus_REQUIRED_BITS_FOR_ENCODING        3
-
-flag asn1SccPlanCmdStatus_Encode(const asn1SccPlanCmdStatus* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PLANCMDSTATUS		50771  /**/
-flag asn1SccPlanCmdStatus_Decode(asn1SccPlanCmdStatus* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef enum {
-    asn1SccPathPlannerStatus_idle = 0,
-    asn1Scccomputing = 1
-} asn1SccPathPlannerStatus;
-
-flag asn1SccPathPlannerStatus_Equal(const asn1SccPathPlannerStatus* pVal1, const asn1SccPathPlannerStatus* pVal2);
-
-void asn1SccPathPlannerStatus_Initialize(asn1SccPathPlannerStatus* pVal);
-
-#define ERR_PATHPLANNERSTATUS		50776  /**/
-flag asn1SccPathPlannerStatus_IsConstraintValid(const asn1SccPathPlannerStatus* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PATHPLANNERSTATUS		50777  /**/
-#define asn1SccPathPlannerStatus_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccPathPlannerStatus_REQUIRED_BITS_FOR_ENCODING        1
-
-flag asn1SccPathPlannerStatus_Encode(const asn1SccPathPlannerStatus* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PATHPLANNERSTATUS		50778  /**/
-flag asn1SccPathPlannerStatus_Decode(asn1SccPathPlannerStatus* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef enum {
-    asn1Sccstopped = 0,
-    asn1Sccfinished = 1
-} asn1SccTrajectoryStatus;
-
-flag asn1SccTrajectoryStatus_Equal(const asn1SccTrajectoryStatus* pVal1, const asn1SccTrajectoryStatus* pVal2);
-
-void asn1SccTrajectoryStatus_Initialize(asn1SccTrajectoryStatus* pVal);
-
-#define ERR_TRAJECTORYSTATUS		50783  /**/
-flag asn1SccTrajectoryStatus_IsConstraintValid(const asn1SccTrajectoryStatus* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_TRAJECTORYSTATUS		50784  /**/
-#define asn1SccTrajectoryStatus_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccTrajectoryStatus_REQUIRED_BITS_FOR_ENCODING        1
-
-flag asn1SccTrajectoryStatus_Encode(const asn1SccTrajectoryStatus* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_TRAJECTORYSTATUS		50785  /**/
-flag asn1SccTrajectoryStatus_Decode(asn1SccTrajectoryStatus* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef enum {
-    asn1SccplanningHome = 0,
-    asn1SccplanningMove = 1
-} asn1SccCommandType;
-
-flag asn1SccCommandType_Equal(const asn1SccCommandType* pVal1, const asn1SccCommandType* pVal2);
-
-void asn1SccCommandType_Initialize(asn1SccCommandType* pVal);
-
-#define ERR_COMMANDTYPE		50790  /**/
-flag asn1SccCommandType_IsConstraintValid(const asn1SccCommandType* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_COMMANDTYPE		50791  /**/
-#define asn1SccCommandType_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccCommandType_REQUIRED_BITS_FOR_ENCODING        1
-
-flag asn1SccCommandType_Encode(const asn1SccCommandType* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_COMMANDTYPE		50792  /**/
-flag asn1SccCommandType_Decode(asn1SccCommandType* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef char asn1SccUrdriverFilePath[256];
-
-flag asn1SccUrdriverFilePath_Equal(const asn1SccUrdriverFilePath val1, const asn1SccUrdriverFilePath val2);
-
-void asn1SccUrdriverFilePath_Initialize(asn1SccUrdriverFilePath val);
-
-#define ERR_URDRIVERFILEPATH		50797  /**/
-flag asn1SccUrdriverFilePath_IsConstraintValid(const asn1SccUrdriverFilePath val, int* pErrCode);
-
-#define ERR_UPER_ENCODE_URDRIVERFILEPATH		50798  /**/
-#define asn1SccUrdriverFilePath_REQUIRED_BYTES_FOR_ENCODING       225 
-#define asn1SccUrdriverFilePath_REQUIRED_BITS_FOR_ENCODING        1793
-
-flag asn1SccUrdriverFilePath_Encode(const asn1SccUrdriverFilePath val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_URDRIVERFILEPATH		50799  /**/
-flag asn1SccUrdriverFilePath_Decode(asn1SccUrdriverFilePath val, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    int nCount; 
-    
-    byte arr[512];
-} asn1SccBuffer_512;
-
-flag asn1SccBuffer_512_Equal(const asn1SccBuffer_512* pVal1, const asn1SccBuffer_512* pVal2);
-
-void asn1SccBuffer_512_Initialize(asn1SccBuffer_512* pVal);
-
-#define ERR_BUFFER_512		50804  /**/
-flag asn1SccBuffer_512_IsConstraintValid(const asn1SccBuffer_512* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BUFFER_512		50805  /**/
-#define asn1SccBuffer_512_REQUIRED_BYTES_FOR_ENCODING       514 
-#define asn1SccBuffer_512_REQUIRED_BITS_FOR_ENCODING        4105
-
-flag asn1SccBuffer_512_Encode(const asn1SccBuffer_512* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BUFFER_512		50806  /**/
-flag asn1SccBuffer_512_Decode(asn1SccBuffer_512* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    int nCount; 
-    
-    byte arr[2048];
-} asn1SccBuffer_2048;
-
-flag asn1SccBuffer_2048_Equal(const asn1SccBuffer_2048* pVal1, const asn1SccBuffer_2048* pVal2);
-
-void asn1SccBuffer_2048_Initialize(asn1SccBuffer_2048* pVal);
-
-#define ERR_BUFFER_2048		50811  /**/
-flag asn1SccBuffer_2048_IsConstraintValid(const asn1SccBuffer_2048* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BUFFER_2048		50812  /**/
-#define asn1SccBuffer_2048_REQUIRED_BYTES_FOR_ENCODING       2050 
-#define asn1SccBuffer_2048_REQUIRED_BITS_FOR_ENCODING        16395
-
-flag asn1SccBuffer_2048_Encode(const asn1SccBuffer_2048* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BUFFER_2048		50813  /**/
-flag asn1SccBuffer_2048_Decode(asn1SccBuffer_2048* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
     int nCount; 
@@ -2007,16 +1598,16 @@ flag asn1SccPusSt23RepositoryPath_Equal(const asn1SccPusSt23RepositoryPath* pVal
 
 void asn1SccPusSt23RepositoryPath_Initialize(asn1SccPusSt23RepositoryPath* pVal);
 
-#define ERR_PUSST23REPOSITORYPATH		50941  /**/
+#define ERR_PUSST23REPOSITORYPATH		8647  /**/
 flag asn1SccPusSt23RepositoryPath_IsConstraintValid(const asn1SccPusSt23RepositoryPath* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST23REPOSITORYPATH		50942  /**/
+#define ERR_UPER_ENCODE_PUSST23REPOSITORYPATH		8648  /**/
 #define asn1SccPusSt23RepositoryPath_REQUIRED_BYTES_FOR_ENCODING       31 
 #define asn1SccPusSt23RepositoryPath_REQUIRED_BITS_FOR_ENCODING        245
 
 flag asn1SccPusSt23RepositoryPath_Encode(const asn1SccPusSt23RepositoryPath* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST23REPOSITORYPATH		50943  /**/
+#define ERR_UPER_DECODE_PUSST23REPOSITORYPATH		8649  /**/
 flag asn1SccPusSt23RepositoryPath_Decode(asn1SccPusSt23RepositoryPath* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -2029,16 +1620,16 @@ flag asn1SccPusSt23FileName_Equal(const asn1SccPusSt23FileName* pVal1, const asn
 
 void asn1SccPusSt23FileName_Initialize(asn1SccPusSt23FileName* pVal);
 
-#define ERR_PUSST23FILENAME		50948  /**/
+#define ERR_PUSST23FILENAME		8654  /**/
 flag asn1SccPusSt23FileName_IsConstraintValid(const asn1SccPusSt23FileName* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST23FILENAME		50949  /**/
+#define ERR_UPER_ENCODE_PUSST23FILENAME		8655  /**/
 #define asn1SccPusSt23FileName_REQUIRED_BYTES_FOR_ENCODING       31 
 #define asn1SccPusSt23FileName_REQUIRED_BITS_FOR_ENCODING        245
 
 flag asn1SccPusSt23FileName_Encode(const asn1SccPusSt23FileName* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST23FILENAME		50950  /**/
+#define ERR_UPER_DECODE_PUSST23FILENAME		8656  /**/
 flag asn1SccPusSt23FileName_Decode(asn1SccPusSt23FileName* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -2051,23 +1642,23 @@ flag asn1SccPusTC_18_13_Data_Equal(const asn1SccPusTC_18_13_Data* pVal1, const a
 
 void asn1SccPusTC_18_13_Data_Initialize(asn1SccPusTC_18_13_Data* pVal);
 
-#define ERR_PUSTC_18_13_DATA_REPOSITORY		50443  /**/
-#define ERR_PUSTC_18_13_DATA_FILENAME		50454  /**/
+#define ERR_PUSTC_18_13_DATA_REPOSITORY		8502  /**/
+#define ERR_PUSTC_18_13_DATA_FILENAME		8513  /**/
 flag asn1SccPusTC_18_13_Data_IsConstraintValid(const asn1SccPusTC_18_13_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_18_13_DATA		50465  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_13_DATA_OBCPID_2		50439  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_13_DATA_REPOSITORY_2		50450  /**/
-#define ERR_UPER_ENCODE_PUSTC_18_13_DATA_FILENAME_2		50461  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_13_DATA		8524  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_13_DATA_OBCPID_2		8498  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_13_DATA_REPOSITORY_2		8509  /**/
+#define ERR_UPER_ENCODE_PUSTC_18_13_DATA_FILENAME_2		8520  /**/
 #define asn1SccPusTC_18_13_Data_REQUIRED_BYTES_FOR_ENCODING       72 
 #define asn1SccPusTC_18_13_Data_REQUIRED_BITS_FOR_ENCODING        570
 
 flag asn1SccPusTC_18_13_Data_Encode(const asn1SccPusTC_18_13_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_18_13_DATA		50466  /**/
-#define ERR_UPER_DECODE_PUSTC_18_13_DATA_OBCPID_2		50440  /**/
-#define ERR_UPER_DECODE_PUSTC_18_13_DATA_REPOSITORY_2		50451  /**/
-#define ERR_UPER_DECODE_PUSTC_18_13_DATA_FILENAME_2		50462  /**/
+#define ERR_UPER_DECODE_PUSTC_18_13_DATA		8525  /**/
+#define ERR_UPER_DECODE_PUSTC_18_13_DATA_OBCPID_2		8499  /**/
+#define ERR_UPER_DECODE_PUSTC_18_13_DATA_REPOSITORY_2		8510  /**/
+#define ERR_UPER_DECODE_PUSTC_18_13_DATA_FILENAME_2		8521  /**/
 flag asn1SccPusTC_18_13_Data_Decode(asn1SccPusTC_18_13_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -2080,168 +1671,25 @@ flag asn1SccPusTC_TM_23_1_4_Data_Equal(const asn1SccPusTC_TM_23_1_4_Data* pVal1,
 
 void asn1SccPusTC_TM_23_1_4_Data_Initialize(asn1SccPusTC_TM_23_1_4_Data* pVal);
 
-#define ERR_PUSTC_TM_23_1_4_DATA_REPOSITORY		50962  /**/
-#define ERR_PUSTC_TM_23_1_4_DATA_FILENAME		50973  /**/
-#define ERR_PUSTC_TM_23_1_4_DATA_MAXSIZE		50984  /**/
+#define ERR_PUSTC_TM_23_1_4_DATA_REPOSITORY		8668  /**/
+#define ERR_PUSTC_TM_23_1_4_DATA_FILENAME		8679  /**/
+#define ERR_PUSTC_TM_23_1_4_DATA_MAXSIZE		8690  /**/
 flag asn1SccPusTC_TM_23_1_4_Data_IsConstraintValid(const asn1SccPusTC_TM_23_1_4_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_TM_23_1_4_DATA		50995  /**/
-#define ERR_UPER_ENCODE_PUSTC_TM_23_1_4_DATA_REPOSITORY_2		50969  /**/
-#define ERR_UPER_ENCODE_PUSTC_TM_23_1_4_DATA_FILENAME_2		50980  /**/
-#define ERR_UPER_ENCODE_PUSTC_TM_23_1_4_DATA_MAXSIZE_2		50991  /**/
+#define ERR_UPER_ENCODE_PUSTC_TM_23_1_4_DATA		8701  /**/
+#define ERR_UPER_ENCODE_PUSTC_TM_23_1_4_DATA_REPOSITORY_2		8675  /**/
+#define ERR_UPER_ENCODE_PUSTC_TM_23_1_4_DATA_FILENAME_2		8686  /**/
+#define ERR_UPER_ENCODE_PUSTC_TM_23_1_4_DATA_MAXSIZE_2		8697  /**/
 #define asn1SccPusTC_TM_23_1_4_Data_REQUIRED_BYTES_FOR_ENCODING       70 
 #define asn1SccPusTC_TM_23_1_4_Data_REQUIRED_BITS_FOR_ENCODING        553
 
 flag asn1SccPusTC_TM_23_1_4_Data_Encode(const asn1SccPusTC_TM_23_1_4_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_TM_23_1_4_DATA		50996  /**/
-#define ERR_UPER_DECODE_PUSTC_TM_23_1_4_DATA_REPOSITORY_2		50970  /**/
-#define ERR_UPER_DECODE_PUSTC_TM_23_1_4_DATA_FILENAME_2		50981  /**/
-#define ERR_UPER_DECODE_PUSTC_TM_23_1_4_DATA_MAXSIZE_2		50992  /**/
+#define ERR_UPER_DECODE_PUSTC_TM_23_1_4_DATA		8702  /**/
+#define ERR_UPER_DECODE_PUSTC_TM_23_1_4_DATA_REPOSITORY_2		8676  /**/
+#define ERR_UPER_DECODE_PUSTC_TM_23_1_4_DATA_FILENAME_2		8687  /**/
+#define ERR_UPER_DECODE_PUSTC_TM_23_1_4_DATA_MAXSIZE_2		8698  /**/
 flag asn1SccPusTC_TM_23_1_4_Data_Decode(asn1SccPusTC_TM_23_1_4_Data* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    enum {
-        PusTmSourceData_NONE,
-        st_1_X_PRESENT,
-        st_3_25_PRESENT,
-        st_5_X_PRESENT,
-        st_9_2_PRESENT,
-        st_20_2_PRESENT,
-        st_23_4_PRESENT,
-        st_200_2_PRESENT,
-        st_201_4_PRESENT 
-    } kind;
-    union {
-        asn1SccPusTM_1_X_Data st_1_X;
-        asn1SccPusTM_3_25_Data st_3_25;
-        asn1SccPusTM_5_X_Data st_5_X;
-        asn1SccPusTM_9_2_Data st_9_2;
-        asn1SccPusTC_TM_20_X_Data st_20_2;
-        asn1SccPusTC_TM_23_1_4_Data st_23_4;
-        asn1SccPusTM_200_2_Data st_200_2;
-        asn1SccPusTM_201_4_Data st_201_4;
-    } u; 
-} asn1SccPusTmSourceData;
-
-flag asn1SccPusTmSourceData_Equal(const asn1SccPusTmSourceData* pVal1, const asn1SccPusTmSourceData* pVal2);
-
-void asn1SccPusTmSourceData_Initialize(asn1SccPusTmSourceData* pVal);
-
-#define ERR_PUSTMSOURCEDATA		8763  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_PACKETVERSION		8280  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_PACKETTYPE		8291  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		8302  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_APID		8313  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_SEQUENCEFLAGS		8328  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_SEQUENCECOUNT		8339  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_STEP		8364  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_FAILURE_CODE		8379  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_FAILURE_INFO_SUBCODE		8394  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_FAILURE_INFO_DATA		8405  /**/
-#define ERR_PUSTMSOURCEDATA_ST_1_X_FAILURE_INFO_ADDRESS		8416  /**/
-#define ERR_PUSTMSOURCEDATA_ST_3_25_REPORTID		8461  /**/
-#define ERR_PUSTMSOURCEDATA_ST_3_25_PARAMETERS_ELM		8476  /**/
-#define ERR_PUSTMSOURCEDATA_ST_3_25_PARAMETERS		8491  /**/
-#define ERR_PUSTMSOURCEDATA_ST_5_X_EVENTID		8512  /**/
-#define ERR_PUSTMSOURCEDATA_ST_5_X_DATA_DATA1		8527  /**/
-#define ERR_PUSTMSOURCEDATA_ST_5_X_DATA_DATA2		8538  /**/
-#define ERR_PUSTMSOURCEDATA_ST_9_2_EXPONENTIALRATE		8573  /**/
-#define ERR_PUSTMSOURCEDATA_ST_9_2_TIME_TV_SEC		8588  /**/
-#define ERR_PUSTMSOURCEDATA_ST_9_2_TIME_TV_NSEC		8599  /**/
-#define ERR_PUSTMSOURCEDATA_ST_20_2_PARAMID		8630  /**/
-#define ERR_PUSTMSOURCEDATA_ST_20_2_VALUE		8645  /**/
-#define ERR_PUSTMSOURCEDATA_ST_23_4_REPOSITORY		8670  /**/
-#define ERR_PUSTMSOURCEDATA_ST_23_4_FILENAME		8681  /**/
-#define ERR_PUSTMSOURCEDATA_ST_23_4_MAXSIZE		8692  /**/
-#define ERR_PUSTMSOURCEDATA_ST_200_2_OBSERVATION		8713  /**/
-#define ERR_PUSTMSOURCEDATA_ST_201_4_PLANOBSERVATION		8738  /**/
-flag asn1SccPusTmSourceData_IsConstraintValid(const asn1SccPusTmSourceData* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA		8764  /**/
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_1_X_2		8457  /**/
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_3_25_2		8508  /**/
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_5_X_2_2		8569  /**/
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_9_2_2		8626  /**/
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_20_2_2		8666  /**/
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_23_4_2		8709  /**/
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_200_2_2		8734  /**/
-#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_201_4_2		8759  /**/
-#define asn1SccPusTmSourceData_REQUIRED_BYTES_FOR_ENCODING       163 
-#define asn1SccPusTmSourceData_REQUIRED_BITS_FOR_ENCODING        1300
-
-flag asn1SccPusTmSourceData_Encode(const asn1SccPusTmSourceData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA		8765  /**/
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_1_X_2		8458  /**/
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_3_25_2		8509  /**/
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_5_X_2_2		8570  /**/
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_9_2_2		8627  /**/
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_20_2_2		8667  /**/
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_23_4_2		8710  /**/
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_200_2_2		8735  /**/
-#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_201_4_2		8760  /**/
-flag asn1SccPusTmSourceData_Decode(asn1SccPusTmSourceData* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusTmHeader header;
-    asn1SccPusTmSourceData data;
-} asn1SccPusTmHeaderData;
-
-flag asn1SccPusTmHeaderData_Equal(const asn1SccPusTmHeaderData* pVal1, const asn1SccPusTmHeaderData* pVal2);
-
-void asn1SccPusTmHeaderData_Initialize(asn1SccPusTmHeaderData* pVal);
-
-#define ERR_PUSTMHEADERDATA_HEADER_PUSVERSION		21596  /**/
-#define ERR_PUSTMHEADERDATA_HEADER_TIMEREFSTATUS		21607  /**/
-#define ERR_PUSTMHEADERDATA_HEADER_SERVICEID		21622  /**/
-#define ERR_PUSTMHEADERDATA_HEADER_SUBTYPE		21637  /**/
-#define ERR_PUSTMHEADERDATA_HEADER_MSGTYPECOUNT		21652  /**/
-#define ERR_PUSTMHEADERDATA_HEADER_DESTINATION		21667  /**/
-#define ERR_PUSTMHEADERDATA_HEADER_TIME_TV_SEC		21682  /**/
-#define ERR_PUSTMHEADERDATA_HEADER_TIME_TV_NSEC		21693  /**/
-#define ERR_PUSTMHEADERDATA_DATA		22207  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		21724  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		21735  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		21746  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_APID		21757  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		21772  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		21783  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_STEP		21808  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_FAILURE_CODE		21823  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		21838  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_FAILURE_INFO_DATA		21849  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		21860  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_3_25_REPORTID		21905  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_3_25_PARAMETERS_ELM		21920  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_3_25_PARAMETERS		21935  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_5_X_EVENTID		21956  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_5_X_DATA_DATA1		21971  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_5_X_DATA_DATA2		21982  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_9_2_EXPONENTIALRATE		22017  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_9_2_TIME_TV_SEC		22032  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_9_2_TIME_TV_NSEC		22043  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_20_2_PARAMID		22074  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_20_2_VALUE		22089  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_23_4_REPOSITORY		22114  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_23_4_FILENAME		22125  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_23_4_MAXSIZE		22136  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_200_2_OBSERVATION		22157  /**/
-#define ERR_PUSTMHEADERDATA_DATA_ST_201_4_PLANOBSERVATION		22182  /**/
-flag asn1SccPusTmHeaderData_IsConstraintValid(const asn1SccPusTmHeaderData* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTMHEADERDATA		22218  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADERDATA_HEADER_2		21720  /**/
-#define ERR_UPER_ENCODE_PUSTMHEADERDATA_DATA_2		22214  /**/
-#define asn1SccPusTmHeaderData_REQUIRED_BYTES_FOR_ENCODING       185 
-#define asn1SccPusTmHeaderData_REQUIRED_BITS_FOR_ENCODING        1476
-
-flag asn1SccPusTmHeaderData_Encode(const asn1SccPusTmHeaderData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTMHEADERDATA		22219  /**/
-#define ERR_UPER_DECODE_PUSTMHEADERDATA_HEADER_2		21721  /**/
-#define ERR_UPER_DECODE_PUSTMHEADERDATA_DATA_2		22215  /**/
-flag asn1SccPusTmHeaderData_Decode(asn1SccPusTmHeaderData* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
     asn1SccPusSt23RepositoryPath repository;
@@ -2252,21 +1700,21 @@ flag asn1SccPusTC_23_2_3_Data_Equal(const asn1SccPusTC_23_2_3_Data* pVal1, const
 
 void asn1SccPusTC_23_2_3_Data_Initialize(asn1SccPusTC_23_2_3_Data* pVal);
 
-#define ERR_PUSTC_23_2_3_DATA_REPOSITORY		51001  /**/
-#define ERR_PUSTC_23_2_3_DATA_FILENAME		51012  /**/
+#define ERR_PUSTC_23_2_3_DATA_REPOSITORY		8707  /**/
+#define ERR_PUSTC_23_2_3_DATA_FILENAME		8718  /**/
 flag asn1SccPusTC_23_2_3_Data_IsConstraintValid(const asn1SccPusTC_23_2_3_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_23_2_3_DATA		51023  /**/
-#define ERR_UPER_ENCODE_PUSTC_23_2_3_DATA_REPOSITORY_2		51008  /**/
-#define ERR_UPER_ENCODE_PUSTC_23_2_3_DATA_FILENAME_2		51019  /**/
+#define ERR_UPER_ENCODE_PUSTC_23_2_3_DATA		8729  /**/
+#define ERR_UPER_ENCODE_PUSTC_23_2_3_DATA_REPOSITORY_2		8714  /**/
+#define ERR_UPER_ENCODE_PUSTC_23_2_3_DATA_FILENAME_2		8725  /**/
 #define asn1SccPusTC_23_2_3_Data_REQUIRED_BYTES_FOR_ENCODING       62 
 #define asn1SccPusTC_23_2_3_Data_REQUIRED_BITS_FOR_ENCODING        490
 
 flag asn1SccPusTC_23_2_3_Data_Encode(const asn1SccPusTC_23_2_3_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_23_2_3_DATA		51024  /**/
-#define ERR_UPER_DECODE_PUSTC_23_2_3_DATA_REPOSITORY_2		51009  /**/
-#define ERR_UPER_DECODE_PUSTC_23_2_3_DATA_FILENAME_2		51020  /**/
+#define ERR_UPER_DECODE_PUSTC_23_2_3_DATA		8730  /**/
+#define ERR_UPER_DECODE_PUSTC_23_2_3_DATA_REPOSITORY_2		8715  /**/
+#define ERR_UPER_DECODE_PUSTC_23_2_3_DATA_FILENAME_2		8726  /**/
 flag asn1SccPusTC_23_2_3_Data_Decode(asn1SccPusTC_23_2_3_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -2280,27 +1728,27 @@ flag asn1SccPusTC_23_14_Data_Equal(const asn1SccPusTC_23_14_Data* pVal1, const a
 
 void asn1SccPusTC_23_14_Data_Initialize(asn1SccPusTC_23_14_Data* pVal);
 
-#define ERR_PUSTC_23_14_DATA_SOURCEREPOSITORY		51029  /**/
-#define ERR_PUSTC_23_14_DATA_SOURCEFILENAME		51040  /**/
-#define ERR_PUSTC_23_14_DATA_TARGETREPOSITORY		51051  /**/
-#define ERR_PUSTC_23_14_DATA_TARGETFILENAME		51062  /**/
+#define ERR_PUSTC_23_14_DATA_SOURCEREPOSITORY		8735  /**/
+#define ERR_PUSTC_23_14_DATA_SOURCEFILENAME		8746  /**/
+#define ERR_PUSTC_23_14_DATA_TARGETREPOSITORY		8757  /**/
+#define ERR_PUSTC_23_14_DATA_TARGETFILENAME		8768  /**/
 flag asn1SccPusTC_23_14_Data_IsConstraintValid(const asn1SccPusTC_23_14_Data* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTC_23_14_DATA		51073  /**/
-#define ERR_UPER_ENCODE_PUSTC_23_14_DATA_SOURCEREPOSITORY_2		51036  /**/
-#define ERR_UPER_ENCODE_PUSTC_23_14_DATA_SOURCEFILENAME_2		51047  /**/
-#define ERR_UPER_ENCODE_PUSTC_23_14_DATA_TARGETREPOSITORY_2		51058  /**/
-#define ERR_UPER_ENCODE_PUSTC_23_14_DATA_TARGETFILENAME_2		51069  /**/
+#define ERR_UPER_ENCODE_PUSTC_23_14_DATA		8779  /**/
+#define ERR_UPER_ENCODE_PUSTC_23_14_DATA_SOURCEREPOSITORY_2		8742  /**/
+#define ERR_UPER_ENCODE_PUSTC_23_14_DATA_SOURCEFILENAME_2		8753  /**/
+#define ERR_UPER_ENCODE_PUSTC_23_14_DATA_TARGETREPOSITORY_2		8764  /**/
+#define ERR_UPER_ENCODE_PUSTC_23_14_DATA_TARGETFILENAME_2		8775  /**/
 #define asn1SccPusTC_23_14_Data_REQUIRED_BYTES_FOR_ENCODING       123 
 #define asn1SccPusTC_23_14_Data_REQUIRED_BITS_FOR_ENCODING        980
 
 flag asn1SccPusTC_23_14_Data_Encode(const asn1SccPusTC_23_14_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTC_23_14_DATA		51074  /**/
-#define ERR_UPER_DECODE_PUSTC_23_14_DATA_SOURCEREPOSITORY_2		51037  /**/
-#define ERR_UPER_DECODE_PUSTC_23_14_DATA_SOURCEFILENAME_2		51048  /**/
-#define ERR_UPER_DECODE_PUSTC_23_14_DATA_TARGETREPOSITORY_2		51059  /**/
-#define ERR_UPER_DECODE_PUSTC_23_14_DATA_TARGETFILENAME_2		51070  /**/
+#define ERR_UPER_DECODE_PUSTC_23_14_DATA		8780  /**/
+#define ERR_UPER_DECODE_PUSTC_23_14_DATA_SOURCEREPOSITORY_2		8743  /**/
+#define ERR_UPER_DECODE_PUSTC_23_14_DATA_SOURCEFILENAME_2		8754  /**/
+#define ERR_UPER_DECODE_PUSTC_23_14_DATA_TARGETREPOSITORY_2		8765  /**/
+#define ERR_UPER_DECODE_PUSTC_23_14_DATA_TARGETFILENAME_2		8776  /**/
 flag asn1SccPusTC_23_14_Data_Decode(asn1SccPusTC_23_14_Data* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -2343,2601 +1791,67 @@ flag asn1SccPusTcApplicationDataReduced_Equal(const asn1SccPusTcApplicationDataR
 
 void asn1SccPusTcApplicationDataReduced_Initialize(asn1SccPusTcApplicationDataReduced* pVal);
 
-#define ERR_PUSTCAPPLICATIONDATAREDUCED		21589  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_8_1_FUNCTIONID		21119  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_9_1_EXPONENTIALRATE		21144  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_12_1_2_PMONID		21169  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_3_OBSERVABILITYLEVEL		21224  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_4_5_STEPID		21255  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_REPOSITORY		21286  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_FILENAME		21297  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_19_X_EVENTID		21318  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_PARAMID		21343  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_VALUE		21358  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_REPOSITORY		21383  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_FILENAME		21394  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_MAXSIZE		21405  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_REPOSITORY		21426  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_FILENAME		21437  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_SOURCEREPOSITORY		21458  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_SOURCEFILENAME		21469  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_TARGETREPOSITORY		21480  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_TARGETFILENAME		21491  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_200_1_CONTROLID		21512  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_201_1_3_POSITION_ELM		21537  /**/
-#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_201_1_3_ORIENTATION_ELM		21558  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED		22655  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_8_1_FUNCTIONID		22185  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_9_1_EXPONENTIALRATE		22210  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_12_1_2_PMONID		22235  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_3_OBSERVABILITYLEVEL		22290  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_4_5_STEPID		22321  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_REPOSITORY		22352  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_FILENAME		22363  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_19_X_EVENTID		22384  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_PARAMID		22409  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_VALUE		22424  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_REPOSITORY		22449  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_FILENAME		22460  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_MAXSIZE		22471  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_REPOSITORY		22492  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_FILENAME		22503  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_SOURCEREPOSITORY		22524  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_SOURCEFILENAME		22535  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_TARGETREPOSITORY		22546  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_TARGETFILENAME		22557  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_200_1_CONTROLID		22578  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_201_1_3_POSITION_ELM		22603  /**/
+#define ERR_PUSTCAPPLICATIONDATAREDUCED_ST_201_1_3_ORIENTATION_ELM		22624  /**/
 flag asn1SccPusTcApplicationDataReduced_IsConstraintValid(const asn1SccPusTcApplicationDataReduced* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED		21590  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_8_1_2		21140  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_9_1_2		21165  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_12_1_2_2		21190  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_2_6_12_2		21210  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_3_2		21241  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_4_5_2		21272  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_2		21314  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_19_X_2		21339  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_2		21379  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_2		21422  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_2		21454  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_2		21508  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_200_1_2		21533  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_201_1_3_2		21585  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED		22656  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_8_1_2		22206  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_9_1_2		22231  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_12_1_2_2		22256  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_2_6_12_2		22276  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_3_2		22307  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_4_5_2		22338  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_2		22380  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_19_X_2		22405  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_2		22445  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_2		22488  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_2		22520  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_2		22574  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_200_1_2		22599  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATAREDUCED_ST_201_1_3_2		22651  /**/
 #define asn1SccPusTcApplicationDataReduced_REQUIRED_BYTES_FOR_ENCODING       123 
 #define asn1SccPusTcApplicationDataReduced_REQUIRED_BITS_FOR_ENCODING        984
 
 flag asn1SccPusTcApplicationDataReduced_Encode(const asn1SccPusTcApplicationDataReduced* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED		21591  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_8_1_2		21141  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_9_1_2		21166  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_12_1_2_2		21191  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_2_6_12_2		21211  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_3_2		21242  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_4_5_2		21273  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_2		21315  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_19_X_2		21340  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_2		21380  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_2		21423  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_2		21455  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_2		21509  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_200_1_2		21534  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_201_1_3_2		21586  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED		22657  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_8_1_2		22207  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_9_1_2		22232  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_12_1_2_2		22257  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_2_6_12_2		22277  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_3_2		22308  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_4_5_2		22339  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_2		22381  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_19_X_2		22406  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_2		22446  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_2		22489  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_2		22521  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_2		22575  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_200_1_2		22600  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATAREDUCED_ST_201_1_3_2		22652  /**/
 flag asn1SccPusTcApplicationDataReduced_Decode(asn1SccPusTcApplicationDataReduced* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusTcHeader header;
-    asn1SccPusTcApplicationDataReduced data;
-} asn1SccPusPacketDataReduced_tcData;
-
-typedef struct {
-    enum {
-        PusPacketDataReduced_NONE,
-        PusPacketDataReduced_tmData_PRESENT,
-        PusPacketDataReduced_tmDataNoHeader_PRESENT,
-        PusPacketDataReduced_tcData_PRESENT,
-        PusPacketDataReduced_tcDataNoHeader_PRESENT 
-    } kind;
-    union {
-        asn1SccPusTmHeaderData tmData;
-        asn1SccPusTmSourceData tmDataNoHeader;
-        asn1SccPusPacketDataReduced_tcData tcData;
-        asn1SccPusTcApplicationDataReduced tcDataNoHeader;
-    } u; 
-} asn1SccPusPacketDataReduced;
-
-flag asn1SccPusPacketDataReduced_tcData_Equal(const asn1SccPusPacketDataReduced_tcData* pVal1, const asn1SccPusPacketDataReduced_tcData* pVal2);
-
-flag asn1SccPusPacketDataReduced_Equal(const asn1SccPusPacketDataReduced* pVal1, const asn1SccPusPacketDataReduced* pVal2);
-
-void asn1SccPusPacketDataReduced_tcData_Initialize(asn1SccPusPacketDataReduced_tcData* pVal);
-void asn1SccPusPacketDataReduced_Initialize(asn1SccPusPacketDataReduced* pVal);
-
-#define ERR_PUSPACKETDATAREDUCED		36107  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_PUSVERSION		33909  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_TIMEREFSTATUS		33920  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_SERVICEID		33935  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_SUBTYPE		33950  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_MSGTYPECOUNT		33965  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_DESTINATION		33980  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_TIME_TV_SEC		33995  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_TIME_TV_NSEC		34006  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA		34520  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		34037  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		34048  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		34059  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_APID		34070  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		34085  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		34096  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_STEP		34121  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_FAILURE_CODE		34136  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		34151  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		34162  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		34173  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_3_25_REPORTID		34218  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		34233  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_3_25_PARAMETERS		34248  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_5_X_EVENTID		34269  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_5_X_DATA_DATA1		34284  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_5_X_DATA_DATA2		34295  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		34330  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_9_2_TIME_TV_SEC		34345  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		34356  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_20_2_PARAMID		34387  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_20_2_VALUE		34402  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_23_4_REPOSITORY		34427  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_23_4_FILENAME		34438  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_23_4_MAXSIZE		34449  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_200_2_OBSERVATION		34470  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_201_4_PLANOBSERVATION		34495  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER		35024  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		34541  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		34552  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		34563  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_APID		34574  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		34589  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		34600  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_STEP		34625  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_FAILURE_CODE		34640  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		34655  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		34666  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		34677  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_3_25_REPORTID		34722  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		34737  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_3_25_PARAMETERS		34752  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_5_X_EVENTID		34773  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_5_X_DATA_DATA1		34788  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_5_X_DATA_DATA2		34799  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		34834  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		34849  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		34860  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_20_2_PARAMID		34891  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_20_2_VALUE		34906  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_23_4_REPOSITORY		34931  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_23_4_FILENAME		34942  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_23_4_MAXSIZE		34953  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_200_2_OBSERVATION		34974  /**/
-#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		34999  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_PUSVERSION		35035  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		35046  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		35053  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		35060  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		35067  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SERVICEID		35084  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SUBTYPE		35099  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SOURCE		35114  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA		35609  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_8_1_FUNCTIONID		35139  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		35164  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_12_1_2_PMONID		35189  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		35244  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_18_4_5_STEPID		35275  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_18_13_REPOSITORY		35306  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_18_13_FILENAME		35317  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_19_X_EVENTID		35338  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_20_X_PARAMID		35363  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_20_X_VALUE		35378  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_1_REPOSITORY		35403  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_1_FILENAME		35414  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_1_MAXSIZE		35425  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_2_3_REPOSITORY		35446  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_2_3_FILENAME		35457  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		35478  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_14_SOURCEFILENAME		35489  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		35500  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_14_TARGETFILENAME		35511  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_200_1_CONTROLID		35532  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_201_1_3_POSITION_ELM		35557  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		35578  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER		36096  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_8_1_FUNCTIONID		35626  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		35651  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_12_1_2_PMONID		35676  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		35731  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_18_4_5_STEPID		35762  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_18_13_REPOSITORY		35793  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_18_13_FILENAME		35804  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_19_X_EVENTID		35825  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_20_X_PARAMID		35850  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_20_X_VALUE		35865  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_1_REPOSITORY		35890  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_1_FILENAME		35901  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_1_MAXSIZE		35912  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_2_3_REPOSITORY		35933  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_2_3_FILENAME		35944  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		35965  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		35976  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		35987  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_14_TARGETFILENAME		35998  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_200_1_CONTROLID		36019  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		36044  /**/
-#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		36065  /**/
-flag asn1SccPusPacketDataReduced_IsConstraintValid(const asn1SccPusPacketDataReduced* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED		36108  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TMDATA_2		34537  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TMDATANOHEADER_2		35031  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TCDATA		35620  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TCDATA_HEADER_2		35135  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TCDATA_DATA_2		35616  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TCDATANOHEADER_2		36103  /**/
-#define asn1SccPusPacketDataReduced_REQUIRED_BYTES_FOR_ENCODING       185 
-#define asn1SccPusPacketDataReduced_REQUIRED_BITS_FOR_ENCODING        1478
-
-flag asn1SccPusPacketDataReduced_Encode(const asn1SccPusPacketDataReduced* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED		36109  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TMDATA_2		34538  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TMDATANOHEADER_2		35032  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TCDATA		35621  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TCDATA_HEADER_2		35136  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TCDATA_DATA_2		35617  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TCDATANOHEADER_2		36104  /**/
-flag asn1SccPusPacketDataReduced_Decode(asn1SccPusPacketDataReduced* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusPacketVersion packetVersion;
-    asn1SccPusPacketType packetType;
-    asn1SccPusSecondaryHeaderFlag secondaryHeaderFlag;
-    asn1SccPusApid apid;
-    asn1SccPusSequenceFlags sequenceFlags;
-    asn1SccPusSequenceCount sequenceCount;
-    asn1SccPusPacketDataLength dataLength;
-    asn1SccPusPacketDataReduced data;
-} asn1SccPusPacketReduced;
-
-flag asn1SccPusPacketReduced_Equal(const asn1SccPusPacketReduced* pVal1, const asn1SccPusPacketReduced* pVal2);
-
-void asn1SccPusPacketReduced_Initialize(asn1SccPusPacketReduced* pVal);
-
-#define ERR_PUSPACKETREDUCED_PACKETVERSION		47898  /**/
-#define ERR_PUSPACKETREDUCED_PACKETTYPE		47909  /**/
-#define ERR_PUSPACKETREDUCED_SECONDARYHEADERFLAG		47920  /**/
-#define ERR_PUSPACKETREDUCED_APID		47931  /**/
-#define ERR_PUSPACKETREDUCED_SEQUENCEFLAGS		47946  /**/
-#define ERR_PUSPACKETREDUCED_SEQUENCECOUNT		47957  /**/
-#define ERR_PUSPACKETREDUCED_DATALENGTH		47972  /**/
-#define ERR_PUSPACKETREDUCED_DATA		50185  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		47987  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		47998  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		48013  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		48028  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		48043  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		48058  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		48073  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		48084  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA		48598  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		48115  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		48126  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		48137  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		48148  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		48163  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		48174  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		48199  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		48214  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		48229  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		48240  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		48251  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		48296  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		48311  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		48326  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		48347  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		48362  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		48373  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		48408  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		48423  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		48434  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		48465  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		48480  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		48505  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		48516  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		48527  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		48548  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		48573  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER		49102  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		48619  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		48630  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		48641  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		48652  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		48667  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		48678  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		48703  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		48718  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		48733  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		48744  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		48755  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		48800  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		48815  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		48830  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		48851  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		48866  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		48877  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		48912  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		48927  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		48938  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		48969  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		48984  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		49009  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		49020  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		49031  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		49052  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		49077  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		49113  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		49124  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		49131  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		49138  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		49145  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		49162  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		49177  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		49192  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA		49687  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		49217  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		49242  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		49267  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		49322  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		49353  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		49384  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		49395  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		49416  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		49441  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		49456  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		49481  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		49492  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		49503  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		49524  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		49535  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		49556  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		49567  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		49578  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		49589  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		49610  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		49635  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		49656  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER		50174  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		49704  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		49729  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		49754  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		49809  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		49840  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		49871  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		49882  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		49903  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		49928  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		49943  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		49968  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		49979  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		49990  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		50011  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		50022  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		50043  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		50054  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		50065  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		50076  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		50097  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		50122  /**/
-#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		50143  /**/
-flag asn1SccPusPacketReduced_IsConstraintValid(const asn1SccPusPacketReduced* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED		50196  /**/
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED_PACKETVERSION_2		47905  /**/
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED_PACKETTYPE_2		47916  /**/
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED_SECONDARYHEADERFLAG_2		47927  /**/
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED_APID_2_2		47942  /**/
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED_SEQUENCEFLAGS_2		47953  /**/
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED_SEQUENCECOUNT_2_2		47968  /**/
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED_DATALENGTH_2_2		47983  /**/
-#define ERR_UPER_ENCODE_PUSPACKETREDUCED_DATA_2		50192  /**/
-#define asn1SccPusPacketReduced_REQUIRED_BYTES_FOR_ENCODING       191 
-#define asn1SccPusPacketReduced_REQUIRED_BITS_FOR_ENCODING        1521
-
-flag asn1SccPusPacketReduced_Encode(const asn1SccPusPacketReduced* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSPACKETREDUCED		50197  /**/
-#define ERR_UPER_DECODE_PUSPACKETREDUCED_PACKETVERSION_2		47906  /**/
-#define ERR_UPER_DECODE_PUSPACKETREDUCED_PACKETTYPE_2		47917  /**/
-#define ERR_UPER_DECODE_PUSPACKETREDUCED_SECONDARYHEADERFLAG_2		47928  /**/
-#define ERR_UPER_DECODE_PUSPACKETREDUCED_APID_2_2		47943  /**/
-#define ERR_UPER_DECODE_PUSPACKETREDUCED_SEQUENCEFLAGS_2		47954  /**/
-#define ERR_UPER_DECODE_PUSPACKETREDUCED_SEQUENCECOUNT_2_2		47969  /**/
-#define ERR_UPER_DECODE_PUSPACKETREDUCED_DATALENGTH_2_2		47984  /**/
-#define ERR_UPER_DECODE_PUSPACKETREDUCED_DATA_2		50193  /**/
-flag asn1SccPusPacketReduced_Decode(asn1SccPusPacketReduced* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusSt05EventId eventId;
-    asn1SccPusPacketReduced packetReduced;
-} asn1SccPusTC_19_1_Data;
-
-flag asn1SccPusTC_19_1_Data_Equal(const asn1SccPusTC_19_1_Data* pVal1, const asn1SccPusTC_19_1_Data* pVal2);
-
-void asn1SccPusTC_19_1_Data_Initialize(asn1SccPusTC_19_1_Data* pVal);
-
-#define ERR_PUSTC_19_1_DATA_EVENTID		8870  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_PACKETVERSION		8885  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_PACKETTYPE		8896  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_SECONDARYHEADERFLAG		8907  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_APID		8918  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_SEQUENCEFLAGS		8933  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_SEQUENCECOUNT		8944  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATALENGTH		8959  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA		11172  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		8974  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		8985  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		9000  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		9015  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		9030  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		9045  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		9060  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		9071  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA		9585  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		9102  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		9113  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		9124  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		9135  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		9150  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		9161  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		9186  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		9201  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		9216  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		9227  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		9238  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		9283  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		9298  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		9313  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		9334  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		9349  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		9360  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		9395  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		9410  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		9421  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		9452  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		9467  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		9492  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		9503  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		9514  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		9535  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		9560  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER		10089  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		9606  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		9617  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		9628  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		9639  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		9654  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		9665  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		9690  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		9705  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		9720  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		9731  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		9742  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		9787  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		9802  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		9817  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		9838  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		9853  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		9864  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		9899  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		9914  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		9925  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		9956  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		9971  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		9996  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		10007  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		10018  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		10039  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		10064  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		10100  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		10111  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		10118  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		10125  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		10132  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		10149  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		10164  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		10179  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA		10674  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		10204  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		10229  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		10254  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		10309  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		10340  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		10371  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		10382  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		10403  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		10428  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		10443  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		10468  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		10479  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		10490  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		10511  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		10522  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		10543  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		10554  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		10565  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		10576  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		10597  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		10622  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		10643  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER		11161  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		10691  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		10716  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		10741  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		10796  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		10827  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		10858  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		10869  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		10890  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		10915  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		10930  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		10955  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		10966  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		10977  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		10998  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		11009  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		11030  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		11041  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		11052  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		11063  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		11084  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		11109  /**/
-#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		11130  /**/
-flag asn1SccPusTC_19_1_Data_IsConstraintValid(const asn1SccPusTC_19_1_Data* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTC_19_1_DATA		11193  /**/
-#define ERR_UPER_ENCODE_PUSTC_19_1_DATA_EVENTID_2_2		8881  /**/
-#define ERR_UPER_ENCODE_PUSTC_19_1_DATA_PACKETREDUCED_2		11189  /**/
-#define asn1SccPusTC_19_1_Data_REQUIRED_BYTES_FOR_ENCODING       195 
-#define asn1SccPusTC_19_1_Data_REQUIRED_BITS_FOR_ENCODING        1553
-
-flag asn1SccPusTC_19_1_Data_Encode(const asn1SccPusTC_19_1_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTC_19_1_DATA		11194  /**/
-#define ERR_UPER_DECODE_PUSTC_19_1_DATA_EVENTID_2_2		8882  /**/
-#define ERR_UPER_DECODE_PUSTC_19_1_DATA_PACKETREDUCED_2		11190  /**/
-flag asn1SccPusTC_19_1_Data_Decode(asn1SccPusTC_19_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusTime time;
-    asn1SccPusPacketReduced packetReduced;
-} asn1SccPusTcScheduledActivity;
-
-flag asn1SccPusTcScheduledActivity_Equal(const asn1SccPusTcScheduledActivity* pVal1, const asn1SccPusTcScheduledActivity* pVal2);
-
-void asn1SccPusTcScheduledActivity_Initialize(asn1SccPusTcScheduledActivity* pVal);
-
-#define ERR_PUSTCSCHEDULEDACTIVITY_TIME_TV_SEC		11199  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_TIME_TV_NSEC		11210  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_PACKETVERSION		11231  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_PACKETTYPE		11242  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_SECONDARYHEADERFLAG		11253  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_APID		11264  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_SEQUENCEFLAGS		11279  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_SEQUENCECOUNT		11290  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATALENGTH		11305  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA		13518  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		11320  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		11331  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		11346  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		11361  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		11376  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		11391  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		11406  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		11417  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA		11931  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		11448  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		11459  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		11470  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		11481  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		11496  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		11507  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		11532  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		11547  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		11562  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		11573  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		11584  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		11629  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		11644  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		11659  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		11680  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		11695  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		11706  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		11741  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		11756  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		11767  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		11798  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		11813  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		11838  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		11849  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		11860  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		11881  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		11906  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER		12435  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		11952  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		11963  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		11974  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		11985  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		12000  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		12011  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		12036  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		12051  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		12066  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		12077  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		12088  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		12133  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		12148  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		12163  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		12184  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		12199  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		12210  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		12245  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		12260  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		12271  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		12302  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		12317  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		12342  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		12353  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		12364  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		12385  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		12410  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		12446  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		12457  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		12464  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		12471  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		12478  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		12495  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		12510  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		12525  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA		13020  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		12550  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		12575  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		12600  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		12655  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		12686  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		12717  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		12728  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		12749  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		12774  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		12789  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		12814  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		12825  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		12836  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		12857  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		12868  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		12889  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		12900  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		12911  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		12922  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		12943  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		12968  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		12989  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER		13507  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		13037  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		13062  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		13087  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		13142  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		13173  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		13204  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		13215  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		13236  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		13261  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		13276  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		13301  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		13312  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		13323  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		13344  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		13355  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		13376  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		13387  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		13398  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		13409  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		13430  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		13455  /**/
-#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		13476  /**/
-flag asn1SccPusTcScheduledActivity_IsConstraintValid(const asn1SccPusTcScheduledActivity* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTCSCHEDULEDACTIVITY		13539  /**/
-#define ERR_UPER_ENCODE_PUSTCSCHEDULEDACTIVITY_TIME_2		11227  /**/
-#define ERR_UPER_ENCODE_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_2		13535  /**/
-#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_ENCODING       207 
-#define asn1SccPusTcScheduledActivity_REQUIRED_BITS_FOR_ENCODING        1649
-
-flag asn1SccPusTcScheduledActivity_Encode(const asn1SccPusTcScheduledActivity* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTCSCHEDULEDACTIVITY		13540  /**/
-#define ERR_UPER_DECODE_PUSTCSCHEDULEDACTIVITY_TIME_2		11228  /**/
-#define ERR_UPER_DECODE_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_2		13536  /**/
-flag asn1SccPusTcScheduledActivity_Decode(asn1SccPusTcScheduledActivity* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
-    asn1SccPusTcScheduledActivity arr[5];
-} asn1SccPusTC_11_4_Data;
-
-flag asn1SccPusTC_11_4_Data_Equal(const asn1SccPusTC_11_4_Data* pVal1, const asn1SccPusTC_11_4_Data* pVal2);
-
-void asn1SccPusTC_11_4_Data_Initialize(asn1SccPusTC_11_4_Data* pVal);
-
-#define ERR_PUSTC_11_4_DATA_ELM_TIME_TV_SEC		13545  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_TIME_TV_NSEC		13556  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_PACKETVERSION		13577  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_PACKETTYPE		13588  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		13599  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_APID		13610  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_SEQUENCEFLAGS		13625  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_SEQUENCECOUNT		13636  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATALENGTH		13651  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA		15864  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		13666  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		13677  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		13692  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		13707  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		13722  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		13737  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		13752  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		13763  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA		14277  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		13794  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		13805  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		13816  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		13827  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		13842  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		13853  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		13878  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		13893  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		13908  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		13919  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		13930  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		13975  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		13990  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		14005  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		14026  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		14041  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		14052  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		14087  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		14102  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		14113  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		14144  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		14159  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		14184  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		14195  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		14206  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		14227  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		14252  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		14781  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		14298  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		14309  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		14320  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		14331  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		14346  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		14357  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		14382  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		14397  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		14412  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		14423  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		14434  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		14479  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		14494  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		14509  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		14530  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		14545  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		14556  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		14591  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		14606  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		14617  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		14648  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		14663  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		14688  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		14699  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		14710  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		14731  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		14756  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		14792  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		14803  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		14810  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		14817  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		14824  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		14841  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		14856  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		14871  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA		15366  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		14896  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		14921  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		14946  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		15001  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		15032  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		15063  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		15074  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		15095  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		15120  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		15135  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		15160  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		15171  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		15182  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		15203  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		15214  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		15235  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		15246  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		15257  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		15268  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		15289  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		15314  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		15335  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		15853  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		15383  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		15408  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		15433  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		15488  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		15519  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		15550  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		15561  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		15582  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		15607  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		15622  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		15647  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		15658  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		15669  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		15690  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		15701  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		15722  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		15733  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		15744  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		15755  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		15776  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		15801  /**/
-#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		15822  /**/
-#define ERR_PUSTC_11_4_DATA		15895  /**/
-flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTC_11_4_DATA		15896  /**/
-#define ERR_UPER_ENCODE_PUSTC_11_4_DATA_ELM_2		15891  /**/
-#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ENCODING       1031 
-#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ENCODING        8248
-
-flag asn1SccPusTC_11_4_Data_Encode(const asn1SccPusTC_11_4_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTC_11_4_DATA		15897  /**/
-#define ERR_UPER_DECODE_PUSTC_11_4_DATA_ELM_2		15892  /**/
-flag asn1SccPusTC_11_4_Data_Decode(asn1SccPusTC_11_4_Data* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    enum {
-        PusTcApplicationData_NONE,
-        PusTcApplicationData_st_8_1_PRESENT,
-        PusTcApplicationData_st_9_1_PRESENT,
-        PusTcApplicationData_st_12_1_2_PRESENT,
-        PusTcApplicationData_st_18_2_6_12_PRESENT,
-        PusTcApplicationData_st_18_3_PRESENT,
-        PusTcApplicationData_st_18_4_5_PRESENT,
-        PusTcApplicationData_st_18_13_PRESENT,
-        PusTcApplicationData_st_19_X_PRESENT,
-        PusTcApplicationData_st_20_X_PRESENT,
-        PusTcApplicationData_st_23_1_PRESENT,
-        PusTcApplicationData_st_23_2_3_PRESENT,
-        PusTcApplicationData_st_23_14_PRESENT,
-        PusTcApplicationData_st_200_1_PRESENT,
-        PusTcApplicationData_st_201_1_3_PRESENT,
-        st_11_4_PRESENT,
-        st_18_1_PRESENT,
-        st_19_1_PRESENT 
-    } kind;
-    union {
-        asn1SccPusTC_8_1_Data st_8_1;
-        asn1SccPusTC_9_1_Data st_9_1;
-        asn1SccPusTC_12_1_2_Data st_12_1_2;
-        asn1SccPusTC_18_2_6_12_Data st_18_2_6_12;
-        asn1SccPusTC_18_3_Data st_18_3;
-        asn1SccPusTC_18_4_5_Data st_18_4_5;
-        asn1SccPusTC_18_13_Data st_18_13;
-        asn1SccPusTC_19_X_Data st_19_X;
-        asn1SccPusTC_TM_20_X_Data st_20_X;
-        asn1SccPusTC_TM_23_1_4_Data st_23_1;
-        asn1SccPusTC_23_2_3_Data st_23_2_3;
-        asn1SccPusTC_23_14_Data st_23_14;
-        asn1SccPusTC_200_1_Data st_200_1;
-        asn1SccPusTC_201_1_3_Data st_201_1_3;
-        asn1SccPusTC_11_4_Data st_11_4;
-        asn1SccPusTC_18_1_Data st_18_1;
-        asn1SccPusTC_19_1_Data st_19_1;
-    } u; 
-} asn1SccPusTcApplicationData;
-
-flag asn1SccPusTcApplicationData_Equal(const asn1SccPusTcApplicationData* pVal1, const asn1SccPusTcApplicationData* pVal2);
-
-void asn1SccPusTcApplicationData_Initialize(asn1SccPusTcApplicationData* pVal);
-
-#define ERR_PUSTCAPPLICATIONDATA		21112  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_8_1_FUNCTIONID		15902  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_9_1_EXPONENTIALRATE		15927  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_12_1_2_PMONID		15952  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_18_3_OBSERVABILITYLEVEL		16007  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_18_4_5_STEPID		16038  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_18_13_REPOSITORY		16069  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_18_13_FILENAME		16080  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_X_EVENTID		16101  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_20_X_PARAMID		16126  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_20_X_VALUE		16141  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_1_REPOSITORY		16166  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_1_FILENAME		16177  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_1_MAXSIZE		16188  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_2_3_REPOSITORY		16209  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_2_3_FILENAME		16220  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_14_SOURCEREPOSITORY		16241  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_14_SOURCEFILENAME		16252  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_14_TARGETREPOSITORY		16263  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_23_14_TARGETFILENAME		16274  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_200_1_CONTROLID		16295  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_201_1_3_POSITION_ELM		16320  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_201_1_3_ORIENTATION_ELM		16341  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_TIME_TV_SEC		16372  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_TIME_TV_NSEC		16383  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		16404  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		16415  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		16426  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_APID		16437  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		16452  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		16463  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		16478  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA		18691  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		16493  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		16504  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		16519  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		16534  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		16549  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		16564  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		16579  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		16590  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		17104  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		16621  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		16632  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		16643  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		16654  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		16669  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		16680  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		16705  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		16720  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		16735  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		16746  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		16757  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		16802  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		16817  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		16832  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		16853  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		16868  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		16879  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		16914  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		16929  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		16940  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		16971  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		16986  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		17011  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		17022  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		17033  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		17054  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		17079  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		17608  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		17125  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		17136  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		17147  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		17158  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		17173  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		17184  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		17209  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		17224  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		17239  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		17250  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		17261  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		17306  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		17321  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		17336  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		17357  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		17372  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		17383  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		17418  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		17433  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		17444  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		17475  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		17490  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		17515  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		17526  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		17537  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		17558  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		17583  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		17619  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		17630  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		17637  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		17644  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		17651  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		17668  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		17683  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		17698  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		18193  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		17723  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		17748  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		17773  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		17828  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		17859  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		17890  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		17901  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		17922  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		17947  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		17962  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		17987  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		17998  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		18009  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		18030  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		18041  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		18062  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		18073  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		18084  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		18095  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		18116  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		18141  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		18162  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		18680  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		18210  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		18235  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		18260  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		18315  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		18346  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		18377  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		18388  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		18409  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		18434  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		18449  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		18474  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		18485  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		18496  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		18517  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		18528  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		18549  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		18560  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		18571  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		18582  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		18603  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		18628  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		18649  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_11_4		18722  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_18_1_OBCPCODE		18743  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_18_1_CHECKSUM		18754  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_EVENTID		18779  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_PACKETVERSION		18794  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_PACKETTYPE		18805  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		18816  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_APID		18827  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		18842  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		18853  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATALENGTH		18868  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA		21081  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		18883  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		18894  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		18909  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		18924  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		18939  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		18954  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		18969  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		18980  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		19494  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		19011  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		19022  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		19033  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		19044  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		19059  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		19070  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		19095  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		19110  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		19125  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		19136  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		19147  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		19192  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		19207  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		19222  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		19243  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		19258  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		19269  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		19304  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		19319  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		19330  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		19361  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		19376  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		19401  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		19412  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		19423  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		19444  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		19469  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		19998  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		19515  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		19526  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		19537  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		19548  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		19563  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		19574  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		19599  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		19614  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		19629  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		19640  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		19651  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		19696  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		19711  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		19726  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		19747  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		19762  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		19773  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		19808  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		19823  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		19834  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		19865  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		19880  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		19905  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		19916  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		19927  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		19948  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		19973  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		20009  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		20020  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		20027  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		20034  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		20041  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		20058  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		20073  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		20088  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		20583  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		20113  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		20138  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		20163  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		20218  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		20249  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		20280  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		20291  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		20312  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		20337  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		20352  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		20377  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		20388  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		20399  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		20420  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		20431  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		20452  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		20463  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		20474  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		20485  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		20506  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		20531  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		20552  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		21070  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		20600  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		20625  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		20650  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		20705  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		20736  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		20767  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		20778  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		20799  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		20824  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		20839  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		20864  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		20875  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		20886  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		20907  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		20918  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		20939  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		20950  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		20961  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		20972  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		20993  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		21018  /**/
-#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		21039  /**/
-flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplicationData* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA		21113  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_8_1_2		15923  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_9_1_2		15948  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_12_1_2_2		15973  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_2_6_12_2		15993  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_3_2		16024  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_4_5_2		16055  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_13_2		16097  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_19_X_2		16122  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_20_X_2		16162  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_23_1_2		16205  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_23_2_3_2		16237  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_23_14_2		16291  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_200_1_2		16316  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_201_1_3_2		16368  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_11_4_2		18729  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_1_2		18775  /**/
-#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_19_1_2		21108  /**/
-#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ENCODING       15015 
-#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ENCODING        120115
-
-flag asn1SccPusTcApplicationData_Encode(const asn1SccPusTcApplicationData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA		21114  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_8_1_2		15924  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_9_1_2		15949  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_12_1_2_2		15974  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_2_6_12_2		15994  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_3_2		16025  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_4_5_2		16056  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_13_2		16098  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_19_X_2		16123  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_20_X_2		16163  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_23_1_2		16206  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_23_2_3_2		16238  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_23_14_2		16292  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_200_1_2		16317  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_201_1_3_2		16369  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_11_4_2		18730  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_1_2		18776  /**/
-#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_19_1_2		21109  /**/
-flag asn1SccPusTcApplicationData_Decode(asn1SccPusTcApplicationData* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusTcHeader header;
-    asn1SccPusTcApplicationData data;
-} asn1SccPusPacketData_tcData;
-
-typedef struct {
-    enum {
-        PusPacketData_NONE,
-        PusPacketData_tmData_PRESENT,
-        PusPacketData_tmDataNoHeader_PRESENT,
-        PusPacketData_tcData_PRESENT,
-        PusPacketData_tcDataNoHeader_PRESENT 
-    } kind;
-    union {
-        asn1SccPusTmHeaderData tmData;
-        asn1SccPusTmSourceData tmDataNoHeader;
-        asn1SccPusPacketData_tcData tcData;
-        asn1SccPusTcApplicationData tcDataNoHeader;
-    } u; 
-} asn1SccPusPacketData;
-
-flag asn1SccPusPacketData_tcData_Equal(const asn1SccPusPacketData_tcData* pVal1, const asn1SccPusPacketData_tcData* pVal2);
-
-flag asn1SccPusPacketData_Equal(const asn1SccPusPacketData* pVal1, const asn1SccPusPacketData* pVal2);
-
-void asn1SccPusPacketData_tcData_Initialize(asn1SccPusPacketData_tcData* pVal);
-void asn1SccPusPacketData_Initialize(asn1SccPusPacketData* pVal);
-
-#define ERR_PUSPACKETDATA		33902  /**/
-#define ERR_PUSPACKETDATA_TMDATA_HEADER_PUSVERSION		22224  /**/
-#define ERR_PUSPACKETDATA_TMDATA_HEADER_TIMEREFSTATUS		22235  /**/
-#define ERR_PUSPACKETDATA_TMDATA_HEADER_SERVICEID		22250  /**/
-#define ERR_PUSPACKETDATA_TMDATA_HEADER_SUBTYPE		22265  /**/
-#define ERR_PUSPACKETDATA_TMDATA_HEADER_MSGTYPECOUNT		22280  /**/
-#define ERR_PUSPACKETDATA_TMDATA_HEADER_DESTINATION		22295  /**/
-#define ERR_PUSPACKETDATA_TMDATA_HEADER_TIME_TV_SEC		22310  /**/
-#define ERR_PUSPACKETDATA_TMDATA_HEADER_TIME_TV_NSEC		22321  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA		22835  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		22352  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		22363  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		22374  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_APID		22385  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		22400  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		22411  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_STEP		22436  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		22451  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		22466  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		22477  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		22488  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_3_25_REPORTID		22533  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		22548  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_3_25_PARAMETERS		22563  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_5_X_EVENTID		22584  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_5_X_DATA_DATA1		22599  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_5_X_DATA_DATA2		22610  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		22645  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		22660  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		22671  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_20_2_PARAMID		22702  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_20_2_VALUE		22717  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_23_4_REPOSITORY		22742  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_23_4_FILENAME		22753  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_23_4_MAXSIZE		22764  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_200_2_OBSERVATION		22785  /**/
-#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		22810  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER		23339  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		22856  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		22867  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		22878  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		22889  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		22904  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		22915  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_STEP		22940  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		22955  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		22970  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		22981  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		22992  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_3_25_REPORTID		23037  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		23052  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_3_25_PARAMETERS		23067  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_5_X_EVENTID		23088  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		23103  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		23114  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		23149  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		23164  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		23175  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_20_2_PARAMID		23206  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_20_2_VALUE		23221  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_23_4_REPOSITORY		23246  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_23_4_FILENAME		23257  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_23_4_MAXSIZE		23268  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_200_2_OBSERVATION		23289  /**/
-#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		23314  /**/
-#define ERR_PUSPACKETDATA_TCDATA_HEADER_PUSVERSION		23350  /**/
-#define ERR_PUSPACKETDATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		23361  /**/
-#define ERR_PUSPACKETDATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		23368  /**/
-#define ERR_PUSPACKETDATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		23375  /**/
-#define ERR_PUSPACKETDATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		23382  /**/
-#define ERR_PUSPACKETDATA_TCDATA_HEADER_SERVICEID		23399  /**/
-#define ERR_PUSPACKETDATA_TCDATA_HEADER_SUBTYPE		23414  /**/
-#define ERR_PUSPACKETDATA_TCDATA_HEADER_SOURCE		23429  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA		28664  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_8_1_FUNCTIONID		23454  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		23479  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_12_1_2_PMONID		23504  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		23559  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_4_5_STEPID		23590  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_13_REPOSITORY		23621  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_13_FILENAME		23632  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_X_EVENTID		23653  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_20_X_PARAMID		23678  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_20_X_VALUE		23693  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_1_REPOSITORY		23718  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_1_FILENAME		23729  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_1_MAXSIZE		23740  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		23761  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_2_3_FILENAME		23772  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		23793  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		23804  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		23815  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		23826  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_200_1_CONTROLID		23847  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		23872  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		23893  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_TIME_TV_SEC		23924  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_TIME_TV_NSEC		23935  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		23956  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		23967  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		23978  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_APID		23989  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		24004  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		24015  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		24030  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA		26243  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		24045  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		24056  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		24071  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		24086  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		24101  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		24116  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		24131  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		24142  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		24656  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		24173  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		24184  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		24195  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		24206  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		24221  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		24232  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		24257  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		24272  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		24287  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		24298  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		24309  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		24354  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		24369  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		24384  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		24405  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		24420  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		24431  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		24466  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		24481  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		24492  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		24523  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		24538  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		24563  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		24574  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		24585  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		24606  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		24631  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		25160  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		24677  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		24688  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		24699  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		24710  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		24725  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		24736  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		24761  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		24776  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		24791  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		24802  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		24813  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		24858  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		24873  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		24888  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		24909  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		24924  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		24935  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		24970  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		24985  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		24996  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		25027  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		25042  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		25067  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		25078  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		25089  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		25110  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		25135  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		25171  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		25182  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		25189  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		25196  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		25203  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		25220  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		25235  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		25250  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		25745  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		25275  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		25300  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		25325  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		25380  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		25411  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		25442  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		25453  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		25474  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		25499  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		25514  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		25539  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		25550  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		25561  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		25582  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		25593  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		25614  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		25625  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		25636  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		25647  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		25668  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		25693  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		25714  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		26232  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		25762  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		25787  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		25812  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		25867  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		25898  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		25929  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		25940  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		25961  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		25986  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		26001  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		26026  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		26037  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		26048  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		26069  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		26080  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		26101  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		26112  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		26123  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		26134  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		26155  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		26180  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		26201  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4		26274  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_1_OBCPCODE		26295  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_1_CHECKSUM		26306  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_EVENTID		26331  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_PACKETVERSION		26346  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_PACKETTYPE		26357  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		26368  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_APID		26379  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		26394  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		26405  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATALENGTH		26420  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA		28633  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		26435  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		26446  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		26461  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		26476  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		26491  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		26506  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		26521  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		26532  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		27046  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		26563  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		26574  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		26585  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		26596  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		26611  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		26622  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		26647  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		26662  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		26677  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		26688  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		26699  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		26744  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		26759  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		26774  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		26795  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		26810  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		26821  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		26856  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		26871  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		26882  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		26913  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		26928  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		26953  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		26964  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		26975  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		26996  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		27021  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		27550  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		27067  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		27078  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		27089  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		27100  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		27115  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		27126  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		27151  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		27166  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		27181  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		27192  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		27203  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		27248  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		27263  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		27278  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		27299  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		27314  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		27325  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		27360  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		27375  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		27386  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		27417  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		27432  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		27457  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		27468  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		27479  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		27500  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		27525  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		27561  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		27572  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		27579  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		27586  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		27593  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		27610  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		27625  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		27640  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		28135  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		27665  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		27690  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		27715  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		27770  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		27801  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		27832  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		27843  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		27864  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		27889  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		27904  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		27929  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		27940  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		27951  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		27972  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		27983  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		28004  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		28015  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		28026  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		28037  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		28058  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		28083  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		28104  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		28622  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		28152  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		28177  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		28202  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		28257  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		28288  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		28319  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		28330  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		28351  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		28376  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		28391  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		28416  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		28427  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		28438  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		28459  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		28470  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		28491  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		28502  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		28513  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		28524  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		28545  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		28570  /**/
-#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		28591  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER		33891  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		28681  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		28706  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_12_1_2_PMONID		28731  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		28786  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_4_5_STEPID		28817  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_13_REPOSITORY		28848  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_13_FILENAME		28859  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_X_EVENTID		28880  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_20_X_PARAMID		28905  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_20_X_VALUE		28920  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_1_REPOSITORY		28945  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_1_FILENAME		28956  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_1_MAXSIZE		28967  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		28988  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_2_3_FILENAME		28999  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		29020  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		29031  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		29042  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		29053  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_200_1_CONTROLID		29074  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		29099  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		29120  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_TIME_TV_SEC		29151  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_TIME_TV_NSEC		29162  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		29183  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		29194  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		29205  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_APID		29216  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		29231  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		29242  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		29257  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA		31470  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		29272  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		29283  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		29298  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		29313  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		29328  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		29343  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		29358  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		29369  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		29883  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		29400  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		29411  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		29422  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		29433  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		29448  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		29459  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		29484  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		29499  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		29514  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		29525  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		29536  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		29581  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		29596  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		29611  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		29632  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		29647  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		29658  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		29693  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		29708  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		29719  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		29750  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		29765  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		29790  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		29801  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		29812  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		29833  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		29858  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		30387  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		29904  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		29915  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		29926  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		29937  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		29952  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		29963  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		29988  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		30003  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		30018  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		30029  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		30040  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		30085  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		30100  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		30115  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		30136  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		30151  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		30162  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		30197  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		30212  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		30223  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		30254  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		30269  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		30294  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		30305  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		30316  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		30337  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		30362  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		30398  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		30409  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		30416  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		30423  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		30430  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		30447  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		30462  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		30477  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		30972  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		30502  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		30527  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		30552  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		30607  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		30638  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		30669  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		30680  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		30701  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		30726  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		30741  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		30766  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		30777  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		30788  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		30809  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		30820  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		30841  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		30852  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		30863  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		30874  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		30895  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		30920  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		30941  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		31459  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		30989  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		31014  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		31039  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		31094  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		31125  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		31156  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		31167  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		31188  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		31213  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		31228  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		31253  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		31264  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		31275  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		31296  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		31307  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		31328  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		31339  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		31350  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		31361  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		31382  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		31407  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		31428  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4		31501  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_1_OBCPCODE		31522  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_1_CHECKSUM		31533  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_EVENTID		31558  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_PACKETVERSION		31573  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_PACKETTYPE		31584  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		31595  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_APID		31606  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		31621  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		31632  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATALENGTH		31647  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA		33860  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		31662  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		31673  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		31688  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		31703  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		31718  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		31733  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		31748  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		31759  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		32273  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		31790  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		31801  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		31812  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		31823  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		31838  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		31849  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		31874  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		31889  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		31904  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		31915  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		31926  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		31971  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		31986  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		32001  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		32022  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		32037  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		32048  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		32083  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		32098  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		32109  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		32140  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		32155  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		32180  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		32191  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		32202  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		32223  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		32248  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		32777  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		32294  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		32305  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		32316  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		32327  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		32342  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		32353  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		32378  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		32393  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		32408  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		32419  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		32430  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		32475  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		32490  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		32505  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		32526  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		32541  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		32552  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		32587  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		32602  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		32613  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		32644  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		32659  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		32684  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		32695  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		32706  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		32727  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		32752  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		32788  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		32799  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		32806  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		32813  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		32820  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		32837  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		32852  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		32867  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		33362  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		32892  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		32917  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		32942  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		32997  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		33028  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		33059  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		33070  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		33091  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		33116  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		33131  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		33156  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		33167  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		33178  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		33199  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		33210  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		33231  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		33242  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		33253  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		33264  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		33285  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		33310  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		33331  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		33849  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		33379  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		33404  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		33429  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		33484  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		33515  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		33546  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		33557  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		33578  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		33603  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		33618  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		33643  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		33654  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		33665  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		33686  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		33697  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		33718  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		33729  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		33740  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		33751  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		33772  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		33797  /**/
-#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		33818  /**/
-flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSPACKETDATA		33903  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATA_TMDATA_2		22852  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATA_TMDATANOHEADER_2		23346  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATA		28675  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATA_HEADER_2		23450  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATA_DATA_2		28671  /**/
-#define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATANOHEADER_2		33898  /**/
-#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ENCODING       15019 
-#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ENCODING        120150
-
-flag asn1SccPusPacketData_Encode(const asn1SccPusPacketData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSPACKETDATA		33904  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATA_TMDATA_2		22853  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATA_TMDATANOHEADER_2		23347  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATA_TCDATA		28676  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATA_TCDATA_HEADER_2		23451  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATA_TCDATA_DATA_2		28672  /**/
-#define ERR_UPER_DECODE_PUSPACKETDATA_TCDATANOHEADER_2		33899  /**/
-flag asn1SccPusPacketData_Decode(asn1SccPusPacketData* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccPusPacketVersion packetVersion;
-    asn1SccPusPacketType packetType;
-    asn1SccPusSecondaryHeaderFlag secondaryHeaderFlag;
-    asn1SccPusApid apid;
-    asn1SccPusSequenceFlags sequenceFlags;
-    asn1SccPusSequenceCount sequenceCount;
-    asn1SccPusPacketDataLength dataLength;
-    asn1SccPusPacketData data;
-} asn1SccPusPacket;
-
-flag asn1SccPusPacket_Equal(const asn1SccPusPacket* pVal1, const asn1SccPusPacket* pVal2);
-
-void asn1SccPusPacket_Initialize(asn1SccPusPacket* pVal);
-
-#define ERR_PUSPACKET_PACKETVERSION		36114  /**/
-#define ERR_PUSPACKET_PACKETTYPE		36125  /**/
-#define ERR_PUSPACKET_SECONDARYHEADERFLAG		36136  /**/
-#define ERR_PUSPACKET_APID		36147  /**/
-#define ERR_PUSPACKET_SEQUENCEFLAGS		36162  /**/
-#define ERR_PUSPACKET_SEQUENCECOUNT		36173  /**/
-#define ERR_PUSPACKET_DATALENGTH		36188  /**/
-#define ERR_PUSPACKET_DATA		47881  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_HEADER_PUSVERSION		36203  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_HEADER_TIMEREFSTATUS		36214  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_HEADER_SERVICEID		36229  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_HEADER_SUBTYPE		36244  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_HEADER_MSGTYPECOUNT		36259  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_HEADER_DESTINATION		36274  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_HEADER_TIME_TV_SEC		36289  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_HEADER_TIME_TV_NSEC		36300  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA		36814  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		36331  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		36342  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		36353  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		36364  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		36379  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		36390  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_STEP		36415  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		36430  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		36445  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		36456  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		36467  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_3_25_REPORTID		36512  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		36527  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		36542  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_5_X_EVENTID		36563  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		36578  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		36589  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		36624  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		36639  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		36650  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_20_2_PARAMID		36681  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_20_2_VALUE		36696  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		36721  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_23_4_FILENAME		36732  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		36743  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		36764  /**/
-#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		36789  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER		37318  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		36835  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		36846  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		36857  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		36868  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		36883  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		36894  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_STEP		36919  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		36934  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		36949  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		36960  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		36971  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_3_25_REPORTID		37016  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		37031  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		37046  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_5_X_EVENTID		37067  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		37082  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		37093  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		37128  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		37143  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		37154  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_20_2_PARAMID		37185  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_20_2_VALUE		37200  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		37225  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_23_4_FILENAME		37236  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		37247  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		37268  /**/
-#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		37293  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_HEADER_PUSVERSION		37329  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		37340  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		37347  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		37354  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		37361  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_HEADER_SERVICEID		37378  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_HEADER_SUBTYPE		37393  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_HEADER_SOURCE		37408  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA		42643  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		37433  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		37458  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_12_1_2_PMONID		37483  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		37538  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_4_5_STEPID		37569  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		37600  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_13_FILENAME		37611  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_X_EVENTID		37632  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_20_X_PARAMID		37657  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_20_X_VALUE		37672  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		37697  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_1_FILENAME		37708  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		37719  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		37740  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		37751  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		37772  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		37783  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		37794  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		37805  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_200_1_CONTROLID		37826  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		37851  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		37872  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_TIME_TV_SEC		37903  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_TIME_TV_NSEC		37914  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		37935  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		37946  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		37957  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_APID		37968  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		37983  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		37994  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		38009  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA		40222  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		38024  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		38035  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		38050  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		38065  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		38080  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		38095  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		38110  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		38121  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		38635  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		38152  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		38163  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		38174  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		38185  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		38200  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		38211  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		38236  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		38251  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		38266  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		38277  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		38288  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		38333  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		38348  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		38363  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		38384  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		38399  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		38410  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		38445  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		38460  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		38471  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		38502  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		38517  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		38542  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		38553  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		38564  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		38585  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		38610  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		39139  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		38656  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		38667  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		38678  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		38689  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		38704  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		38715  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		38740  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		38755  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		38770  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		38781  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		38792  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		38837  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		38852  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		38867  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		38888  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		38903  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		38914  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		38949  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		38964  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		38975  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		39006  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		39021  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		39046  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		39057  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		39068  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		39089  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		39114  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		39150  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		39161  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		39168  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		39175  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		39182  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		39199  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		39214  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		39229  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		39724  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		39254  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		39279  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		39304  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		39359  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		39390  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		39421  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		39432  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		39453  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		39478  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		39493  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		39518  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		39529  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		39540  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		39561  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		39572  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		39593  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		39604  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		39615  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		39626  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		39647  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		39672  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		39693  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		40211  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		39741  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		39766  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		39791  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		39846  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		39877  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		39908  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		39919  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		39940  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		39965  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		39980  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		40005  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		40016  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		40027  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		40048  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		40059  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		40080  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		40091  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		40102  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		40113  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		40134  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		40159  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		40180  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4		40253  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_1_OBCPCODE		40274  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_1_CHECKSUM		40285  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_EVENTID		40310  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_PACKETVERSION		40325  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_PACKETTYPE		40336  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		40347  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_APID		40358  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		40373  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		40384  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATALENGTH		40399  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA		42612  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		40414  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		40425  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		40440  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		40455  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		40470  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		40485  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		40500  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		40511  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		41025  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		40542  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		40553  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		40564  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		40575  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		40590  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		40601  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		40626  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		40641  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		40656  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		40667  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		40678  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		40723  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		40738  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		40753  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		40774  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		40789  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		40800  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		40835  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		40850  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		40861  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		40892  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		40907  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		40932  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		40943  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		40954  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		40975  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		41000  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		41529  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		41046  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		41057  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		41068  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		41079  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		41094  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		41105  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		41130  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		41145  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		41160  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		41171  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		41182  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		41227  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		41242  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		41257  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		41278  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		41293  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		41304  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		41339  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		41354  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		41365  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		41396  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		41411  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		41436  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		41447  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		41458  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		41479  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		41504  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		41540  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		41551  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		41558  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		41565  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		41572  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		41589  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		41604  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		41619  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		42114  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		41644  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		41669  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		41694  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		41749  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		41780  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		41811  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		41822  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		41843  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		41868  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		41883  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		41908  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		41919  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		41930  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		41951  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		41962  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		41983  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		41994  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		42005  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		42016  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		42037  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		42062  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		42083  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		42601  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		42131  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		42156  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		42181  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		42236  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		42267  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		42298  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		42309  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		42330  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		42355  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		42370  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		42395  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		42406  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		42417  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		42438  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		42449  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		42470  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		42481  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		42492  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		42503  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		42524  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		42549  /**/
-#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		42570  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER		47870  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		42660  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		42685  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		42710  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		42765  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		42796  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		42827  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_13_FILENAME		42838  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_X_EVENTID		42859  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_20_X_PARAMID		42884  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_20_X_VALUE		42899  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		42924  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_1_FILENAME		42935  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		42946  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		42967  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		42978  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		42999  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		43010  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		43021  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		43032  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		43053  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		43078  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		43099  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_TIME_TV_SEC		43130  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_TIME_TV_NSEC		43141  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		43162  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		43173  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		43184  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_APID		43195  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		43210  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		43221  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		43236  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA		45449  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		43251  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		43262  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		43277  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		43292  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		43307  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		43322  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		43337  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		43348  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		43862  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		43379  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		43390  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		43401  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		43412  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		43427  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		43438  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		43463  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		43478  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		43493  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		43504  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		43515  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		43560  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		43575  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		43590  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		43611  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		43626  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		43637  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		43672  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		43687  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		43698  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		43729  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		43744  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		43769  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		43780  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		43791  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		43812  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		43837  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		44366  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		43883  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		43894  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		43905  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		43916  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		43931  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		43942  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		43967  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		43982  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		43997  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		44008  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		44019  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		44064  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		44079  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		44094  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		44115  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		44130  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		44141  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		44176  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		44191  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		44202  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		44233  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		44248  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		44273  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		44284  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		44295  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		44316  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		44341  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		44377  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		44388  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		44395  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		44402  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		44409  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		44426  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		44441  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		44456  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		44951  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		44481  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		44506  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		44531  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		44586  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		44617  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		44648  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		44659  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		44680  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		44705  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		44720  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		44745  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		44756  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		44767  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		44788  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		44799  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		44820  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		44831  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		44842  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		44853  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		44874  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		44899  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		44920  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		45438  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		44968  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		44993  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		45018  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		45073  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		45104  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		45135  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		45146  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		45167  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		45192  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		45207  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		45232  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		45243  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		45254  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		45275  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		45286  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		45307  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		45318  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		45329  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		45340  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		45361  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		45386  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		45407  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4		45480  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_1_OBCPCODE		45501  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_1_CHECKSUM		45512  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_EVENTID		45537  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_PACKETVERSION		45552  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_PACKETTYPE		45563  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		45574  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_APID		45585  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		45600  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		45611  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATALENGTH		45626  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA		47839  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		45641  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		45652  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		45667  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		45682  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		45697  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		45712  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		45727  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		45738  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		46252  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		45769  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		45780  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		45791  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		45802  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		45817  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		45828  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		45853  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		45868  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		45883  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		45894  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		45905  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		45950  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		45965  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		45980  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		46001  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		46016  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		46027  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		46062  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		46077  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		46088  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		46119  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		46134  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		46159  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		46170  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		46181  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		46202  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_PLANOBSERVATION		46227  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		46756  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		46273  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		46284  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		46295  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		46306  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		46321  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		46332  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		46357  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		46372  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		46387  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		46398  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		46409  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		46454  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		46469  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		46484  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		46505  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		46520  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		46531  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		46566  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		46581  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		46592  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		46623  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		46638  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		46663  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		46674  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		46685  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		46706  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_PLANOBSERVATION		46731  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		46767  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		46778  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		46785  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		46792  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		46799  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		46816  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		46831  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		46846  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		47341  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		46871  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		46896  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		46921  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		46976  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		47007  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		47038  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		47049  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		47070  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		47095  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		47110  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		47135  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		47146  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		47157  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		47178  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		47189  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		47210  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		47221  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		47232  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		47243  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		47264  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		47289  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		47310  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		47828  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		47358  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		47383  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		47408  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		47463  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		47494  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		47525  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		47536  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		47557  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		47582  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		47597  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		47622  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		47633  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		47644  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		47665  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		47676  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		47697  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		47708  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		47719  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		47730  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		47751  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		47776  /**/
-#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		47797  /**/
-flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_PUSPACKET		47892  /**/
-#define ERR_UPER_ENCODE_PUSPACKET_PACKETVERSION_2		36121  /**/
-#define ERR_UPER_ENCODE_PUSPACKET_PACKETTYPE_2		36132  /**/
-#define ERR_UPER_ENCODE_PUSPACKET_SECONDARYHEADERFLAG_2		36143  /**/
-#define ERR_UPER_ENCODE_PUSPACKET_APID_2_2		36158  /**/
-#define ERR_UPER_ENCODE_PUSPACKET_SEQUENCEFLAGS_2		36169  /**/
-#define ERR_UPER_ENCODE_PUSPACKET_SEQUENCECOUNT_2_2		36184  /**/
-#define ERR_UPER_ENCODE_PUSPACKET_DATALENGTH_2_2		36199  /**/
-#define ERR_UPER_ENCODE_PUSPACKET_DATA_2		47888  /**/
-#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ENCODING       15025 
-#define asn1SccPusPacket_REQUIRED_BITS_FOR_ENCODING        120193
-
-flag asn1SccPusPacket_Encode(const asn1SccPusPacket* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_PUSPACKET		47893  /**/
-#define ERR_UPER_DECODE_PUSPACKET_PACKETVERSION_2		36122  /**/
-#define ERR_UPER_DECODE_PUSPACKET_PACKETTYPE_2		36133  /**/
-#define ERR_UPER_DECODE_PUSPACKET_SECONDARYHEADERFLAG_2		36144  /**/
-#define ERR_UPER_DECODE_PUSPACKET_APID_2_2		36159  /**/
-#define ERR_UPER_DECODE_PUSPACKET_SEQUENCEFLAGS_2		36170  /**/
-#define ERR_UPER_DECODE_PUSPACKET_SEQUENCECOUNT_2_2		36185  /**/
-#define ERR_UPER_DECODE_PUSPACKET_DATALENGTH_2_2		36200  /**/
-#define ERR_UPER_DECODE_PUSPACKET_DATA_2		47889  /**/
-flag asn1SccPusPacket_Decode(asn1SccPusPacket* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
     int nCount; 
@@ -4949,143 +1863,17 @@ flag asn1SccPusSt23RepositoryDomain_Equal(const asn1SccPusSt23RepositoryDomain* 
 
 void asn1SccPusSt23RepositoryDomain_Initialize(asn1SccPusSt23RepositoryDomain* pVal);
 
-#define ERR_PUSST23REPOSITORYDOMAIN		50955  /**/
+#define ERR_PUSST23REPOSITORYDOMAIN		8661  /**/
 flag asn1SccPusSt23RepositoryDomain_IsConstraintValid(const asn1SccPusSt23RepositoryDomain* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_PUSST23REPOSITORYDOMAIN		50956  /**/
+#define ERR_UPER_ENCODE_PUSST23REPOSITORYDOMAIN		8662  /**/
 #define asn1SccPusSt23RepositoryDomain_REQUIRED_BYTES_FOR_ENCODING       31 
 #define asn1SccPusSt23RepositoryDomain_REQUIRED_BITS_FOR_ENCODING        245
 
 flag asn1SccPusSt23RepositoryDomain_Encode(const asn1SccPusSt23RepositoryDomain* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_PUSST23REPOSITORYDOMAIN		50957  /**/
+#define ERR_UPER_DECODE_PUSST23REPOSITORYDOMAIN		8663  /**/
 flag asn1SccPusSt23RepositoryDomain_Decode(asn1SccPusSt23RepositoryDomain* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccSint asn1SccT_Int32;
-
-
-flag asn1SccT_Int32_Equal(const asn1SccT_Int32* pVal1, const asn1SccT_Int32* pVal2);
-
-void asn1SccT_Int32_Initialize(asn1SccT_Int32* pVal);
-
-#define ERR_T_INT32		51079  /**/
-flag asn1SccT_Int32_IsConstraintValid(const asn1SccT_Int32* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_T_INT32		51080  /**/
-#define asn1SccT_Int32_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccT_Int32_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccT_Int32_Encode(const asn1SccT_Int32* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_T_INT32		51081  /**/
-flag asn1SccT_Int32_Decode(asn1SccT_Int32* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccUint asn1SccT_UInt32;
-
-
-flag asn1SccT_UInt32_Equal(const asn1SccT_UInt32* pVal1, const asn1SccT_UInt32* pVal2);
-
-void asn1SccT_UInt32_Initialize(asn1SccT_UInt32* pVal);
-
-#define ERR_T_UINT32		51086  /**/
-flag asn1SccT_UInt32_IsConstraintValid(const asn1SccT_UInt32* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_T_UINT32		51087  /**/
-#define asn1SccT_UInt32_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccT_UInt32_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccT_UInt32_Encode(const asn1SccT_UInt32* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_T_UINT32		51088  /**/
-flag asn1SccT_UInt32_Decode(asn1SccT_UInt32* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccT_UInt32 asn1SccDummyBase_T;
-
-
-flag asn1SccDummyBase_T_Equal(const asn1SccDummyBase_T* pVal1, const asn1SccDummyBase_T* pVal2);
-
-void asn1SccDummyBase_T_Initialize(asn1SccDummyBase_T* pVal);
-
-#define ERR_DUMMYBASE_T		51795  /**/
-flag asn1SccDummyBase_T_IsConstraintValid(const asn1SccDummyBase_T* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_DUMMYBASE_T_2		51802  /**/
-#define asn1SccDummyBase_T_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccDummyBase_T_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccDummyBase_T_Encode(const asn1SccDummyBase_T* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_DUMMYBASE_T_2		51803  /**/
-flag asn1SccDummyBase_T_Decode(asn1SccDummyBase_T* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccT_UInt32 asn1SccDummy2Base_T;
-
-
-flag asn1SccDummy2Base_T_Equal(const asn1SccDummy2Base_T* pVal1, const asn1SccDummy2Base_T* pVal2);
-
-void asn1SccDummy2Base_T_Initialize(asn1SccDummy2Base_T* pVal);
-
-#define ERR_DUMMY2BASE_T		1  /**/
-flag asn1SccDummy2Base_T_IsConstraintValid(const asn1SccDummy2Base_T* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_DUMMY2BASE_T_2_2		12  /**/
-#define asn1SccDummy2Base_T_REQUIRED_BYTES_FOR_ENCODING       4 
-#define asn1SccDummy2Base_T_REQUIRED_BITS_FOR_ENCODING        32
-
-flag asn1SccDummy2Base_T_Encode(const asn1SccDummy2Base_T* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_DUMMY2BASE_T_2_2		13  /**/
-flag asn1SccDummy2Base_T_Decode(asn1SccDummy2Base_T* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccSint asn1SccT_Int8;
-
-
-flag asn1SccT_Int8_Equal(const asn1SccT_Int8* pVal1, const asn1SccT_Int8* pVal2);
-
-void asn1SccT_Int8_Initialize(asn1SccT_Int8* pVal);
-
-#define ERR_T_INT8		51093  /**/
-flag asn1SccT_Int8_IsConstraintValid(const asn1SccT_Int8* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_T_INT8		51094  /**/
-#define asn1SccT_Int8_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccT_Int8_REQUIRED_BITS_FOR_ENCODING        8
-
-flag asn1SccT_Int8_Encode(const asn1SccT_Int8* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_T_INT8		51095  /**/
-flag asn1SccT_Int8_Decode(asn1SccT_Int8* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef asn1SccUint asn1SccT_UInt8;
-
-
-flag asn1SccT_UInt8_Equal(const asn1SccT_UInt8* pVal1, const asn1SccT_UInt8* pVal2);
-
-void asn1SccT_UInt8_Initialize(asn1SccT_UInt8* pVal);
-
-#define ERR_T_UINT8		51100  /**/
-flag asn1SccT_UInt8_IsConstraintValid(const asn1SccT_UInt8* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_T_UINT8		51101  /**/
-#define asn1SccT_UInt8_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccT_UInt8_REQUIRED_BITS_FOR_ENCODING        8
-
-flag asn1SccT_UInt8_Encode(const asn1SccT_UInt8* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_T_UINT8		51102  /**/
-flag asn1SccT_UInt8_Decode(asn1SccT_UInt8* pVal, BitStream* pBitStrm, int* pErrCode);
-typedef flag asn1SccT_Boolean;
-
-
-flag asn1SccT_Boolean_Equal(const asn1SccT_Boolean* pVal1, const asn1SccT_Boolean* pVal2);
-
-void asn1SccT_Boolean_Initialize(asn1SccT_Boolean* pVal);
-
-#define ERR_T_BOOLEAN		51107  /**/
-flag asn1SccT_Boolean_IsConstraintValid(const asn1SccT_Boolean* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_T_BOOLEAN		51108  /**/
-#define asn1SccT_Boolean_REQUIRED_BYTES_FOR_ENCODING       1 
-#define asn1SccT_Boolean_REQUIRED_BITS_FOR_ENCODING        1
-
-flag asn1SccT_Boolean_Encode(const asn1SccT_Boolean* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_T_BOOLEAN		51109  /**/
-flag asn1SccT_Boolean_Decode(asn1SccT_Boolean* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef double asn1SccT_Double;
 
 
@@ -5093,16 +1881,16 @@ flag asn1SccT_Double_Equal(const asn1SccT_Double* pVal1, const asn1SccT_Double* 
 
 void asn1SccT_Double_Initialize(asn1SccT_Double* pVal);
 
-#define ERR_T_DOUBLE		51146  /**/
+#define ERR_T_DOUBLE		8785  /**/
 flag asn1SccT_Double_IsConstraintValid(const asn1SccT_Double* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_T_DOUBLE		51147  /**/
+#define ERR_UPER_ENCODE_T_DOUBLE		8786  /**/
 #define asn1SccT_Double_REQUIRED_BYTES_FOR_ENCODING       13 
 #define asn1SccT_Double_REQUIRED_BITS_FOR_ENCODING        104
 
 flag asn1SccT_Double_Encode(const asn1SccT_Double* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_T_DOUBLE		51148  /**/
+#define ERR_UPER_DECODE_T_DOUBLE		8787  /**/
 flag asn1SccT_Double_Decode(asn1SccT_Double* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -5876,47 +2664,6 @@ flag asn1SccBase_TwistWithCovariance_m_Decode(asn1SccBase_TwistWithCovariance_m*
 
 typedef struct {    int nCount; 
     
-    asn1SccT_Double arr[200];
-} asn1SccWrappers_MatrixXd_data;
-
-typedef struct {
-    asn1SccT_Int32 rows;
-    asn1SccT_Int32 cols;
-    asn1SccWrappers_MatrixXd_data data;
-} asn1SccWrappers_MatrixXd;
-
-flag asn1SccWrappers_MatrixXd_data_Equal(const asn1SccWrappers_MatrixXd_data* pVal1, const asn1SccWrappers_MatrixXd_data* pVal2);
-
-flag asn1SccWrappers_MatrixXd_Equal(const asn1SccWrappers_MatrixXd* pVal1, const asn1SccWrappers_MatrixXd* pVal2);
-
-void asn1SccWrappers_MatrixXd_data_Initialize(asn1SccWrappers_MatrixXd_data* pVal);
-void asn1SccWrappers_MatrixXd_Initialize(asn1SccWrappers_MatrixXd* pVal);
-
-#define ERR_WRAPPERS_MATRIXXD_ROWS		5782  /**/
-#define ERR_WRAPPERS_MATRIXXD_COLS		5793  /**/
-#define ERR_WRAPPERS_MATRIXXD_DATA_ELM		5804  /**/
-#define ERR_WRAPPERS_MATRIXXD_DATA		5815  /**/
-flag asn1SccWrappers_MatrixXd_IsConstraintValid(const asn1SccWrappers_MatrixXd* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD		5822  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD_ROWS_2		5789  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD_COLS_2		5800  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD_DATA		5816  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD_DATA_ELM_2		5811  /**/
-#define asn1SccWrappers_MatrixXd_REQUIRED_BYTES_FOR_ENCODING       2609 
-#define asn1SccWrappers_MatrixXd_REQUIRED_BITS_FOR_ENCODING        20872
-
-flag asn1SccWrappers_MatrixXd_Encode(const asn1SccWrappers_MatrixXd* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD		5823  /**/
-#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD_ROWS_2		5790  /**/
-#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD_COLS_2		5801  /**/
-#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD_DATA		5817  /**/
-#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD_DATA_ELM_2		5812  /**/
-flag asn1SccWrappers_MatrixXd_Decode(asn1SccWrappers_MatrixXd* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
     asn1SccT_Double arr[3];
 } asn1SccWrappers_Quaterniond_im;
 
@@ -6110,168 +2857,6 @@ flag asn1SccWrappers_VectorXd_Encode(const asn1SccWrappers_VectorXd* pVal, BitSt
 #define ERR_UPER_DECODE_WRAPPERS_VECTORXD_DATA		5876  /**/
 #define ERR_UPER_DECODE_WRAPPERS_VECTORXD_DATA_ELM_2		5871  /**/
 flag asn1SccWrappers_VectorXd_Decode(asn1SccWrappers_VectorXd* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_Double arr[200];
-} asn1SccWrappers_geometry_Spline_knots;
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_Double arr[200];
-} asn1SccWrappers_geometry_Spline_vertices;
-
-typedef struct {
-    asn1SccT_Double geometric_resolution;
-    asn1SccT_Int32 dimension;
-    asn1SccT_Int32 curve_order;
-    asn1SccWrappers_geometry_SplineType kind;
-    asn1SccWrappers_geometry_Spline_knots knots;
-    asn1SccWrappers_geometry_Spline_vertices vertices;
-} asn1SccWrappers_geometry_Spline;
-
-flag asn1SccWrappers_geometry_Spline_knots_Equal(const asn1SccWrappers_geometry_Spline_knots* pVal1, const asn1SccWrappers_geometry_Spline_knots* pVal2);
-
-flag asn1SccWrappers_geometry_Spline_vertices_Equal(const asn1SccWrappers_geometry_Spline_vertices* pVal1, const asn1SccWrappers_geometry_Spline_vertices* pVal2);
-
-flag asn1SccWrappers_geometry_Spline_Equal(const asn1SccWrappers_geometry_Spline* pVal1, const asn1SccWrappers_geometry_Spline* pVal2);
-
-void asn1SccWrappers_geometry_Spline_knots_Initialize(asn1SccWrappers_geometry_Spline_knots* pVal);
-void asn1SccWrappers_geometry_Spline_vertices_Initialize(asn1SccWrappers_geometry_Spline_vertices* pVal);
-void asn1SccWrappers_geometry_Spline_Initialize(asn1SccWrappers_geometry_Spline* pVal);
-
-#define ERR_WRAPPERS_GEOMETRY_SPLINE_GEOMETRIC_RESOLUTION		7817  /**/
-#define ERR_WRAPPERS_GEOMETRY_SPLINE_DIMENSION		7828  /**/
-#define ERR_WRAPPERS_GEOMETRY_SPLINE_CURVE_ORDER		7839  /**/
-#define ERR_WRAPPERS_GEOMETRY_SPLINE_KIND		7850  /**/
-#define ERR_WRAPPERS_GEOMETRY_SPLINE_KNOTS_ELM		7861  /**/
-#define ERR_WRAPPERS_GEOMETRY_SPLINE_KNOTS		7872  /**/
-#define ERR_WRAPPERS_GEOMETRY_SPLINE_VERTICES_ELM		7879  /**/
-#define ERR_WRAPPERS_GEOMETRY_SPLINE_VERTICES		7890  /**/
-flag asn1SccWrappers_geometry_Spline_IsConstraintValid(const asn1SccWrappers_geometry_Spline* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE		7897  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_GEOMETRIC_RESOLUTION_2		7824  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_DIMENSION_2		7835  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_CURVE_ORDER_2		7846  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_KIND_2		7857  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_KNOTS		7873  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_KNOTS_ELM_2		7868  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_VERTICES		7891  /**/
-#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_VERTICES_ELM_2		7886  /**/
-#define asn1SccWrappers_geometry_Spline_REQUIRED_BYTES_FOR_ENCODING       5224 
-#define asn1SccWrappers_geometry_Spline_REQUIRED_BITS_FOR_ENCODING        41787
-
-flag asn1SccWrappers_geometry_Spline_Encode(const asn1SccWrappers_geometry_Spline* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE		7898  /**/
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_GEOMETRIC_RESOLUTION_2		7825  /**/
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_DIMENSION_2		7836  /**/
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_CURVE_ORDER_2		7847  /**/
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_KIND_2		7858  /**/
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_KNOTS		7874  /**/
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_KNOTS_ELM_2		7869  /**/
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_VERTICES		7892  /**/
-#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_VERTICES_ELM_2		7887  /**/
-flag asn1SccWrappers_geometry_Spline_Decode(asn1SccWrappers_geometry_Spline* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccT_Double speed;
-    asn1SccWrappers_geometry_Spline spline;
-} asn1SccBase_Trajectory;
-
-flag asn1SccBase_Trajectory_Equal(const asn1SccBase_Trajectory* pVal1, const asn1SccBase_Trajectory* pVal2);
-
-void asn1SccBase_Trajectory_Initialize(asn1SccBase_Trajectory* pVal);
-
-#define ERR_BASE_TRAJECTORY_SPEED		1057  /**/
-#define ERR_BASE_TRAJECTORY_SPLINE_GEOMETRIC_RESOLUTION		1068  /**/
-#define ERR_BASE_TRAJECTORY_SPLINE_DIMENSION		1079  /**/
-#define ERR_BASE_TRAJECTORY_SPLINE_CURVE_ORDER		1090  /**/
-#define ERR_BASE_TRAJECTORY_SPLINE_KIND		1101  /**/
-#define ERR_BASE_TRAJECTORY_SPLINE_KNOTS_ELM		1112  /**/
-#define ERR_BASE_TRAJECTORY_SPLINE_KNOTS		1123  /**/
-#define ERR_BASE_TRAJECTORY_SPLINE_VERTICES_ELM		1130  /**/
-#define ERR_BASE_TRAJECTORY_SPLINE_VERTICES		1141  /**/
-flag asn1SccBase_Trajectory_IsConstraintValid(const asn1SccBase_Trajectory* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_TRAJECTORY		1158  /**/
-#define ERR_UPER_ENCODE_BASE_TRAJECTORY_SPEED_2		1064  /**/
-#define ERR_UPER_ENCODE_BASE_TRAJECTORY_SPLINE_2		1154  /**/
-#define asn1SccBase_Trajectory_REQUIRED_BYTES_FOR_ENCODING       5237 
-#define asn1SccBase_Trajectory_REQUIRED_BITS_FOR_ENCODING        41891
-
-flag asn1SccBase_Trajectory_Encode(const asn1SccBase_Trajectory* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_TRAJECTORY		1159  /**/
-#define ERR_UPER_DECODE_BASE_TRAJECTORY_SPEED_2		1065  /**/
-#define ERR_UPER_DECODE_BASE_TRAJECTORY_SPLINE_2		1155  /**/
-flag asn1SccBase_Trajectory_Decode(asn1SccBase_Trajectory* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccT_Double speed;
-    asn1SccWrappers_geometry_Spline spline;
-} asn1SccBase_Trajectory_m;
-
-flag asn1SccBase_Trajectory_m_Equal(const asn1SccBase_Trajectory_m* pVal1, const asn1SccBase_Trajectory_m* pVal2);
-
-void asn1SccBase_Trajectory_m_Initialize(asn1SccBase_Trajectory_m* pVal);
-
-#define ERR_BASE_TRAJECTORY_M_SPEED		7903  /**/
-#define ERR_BASE_TRAJECTORY_M_SPLINE_GEOMETRIC_RESOLUTION		7914  /**/
-#define ERR_BASE_TRAJECTORY_M_SPLINE_DIMENSION		7925  /**/
-#define ERR_BASE_TRAJECTORY_M_SPLINE_CURVE_ORDER		7936  /**/
-#define ERR_BASE_TRAJECTORY_M_SPLINE_KIND		7947  /**/
-#define ERR_BASE_TRAJECTORY_M_SPLINE_KNOTS_ELM		7958  /**/
-#define ERR_BASE_TRAJECTORY_M_SPLINE_KNOTS		7969  /**/
-#define ERR_BASE_TRAJECTORY_M_SPLINE_VERTICES_ELM		7976  /**/
-#define ERR_BASE_TRAJECTORY_M_SPLINE_VERTICES		7987  /**/
-flag asn1SccBase_Trajectory_m_IsConstraintValid(const asn1SccBase_Trajectory_m* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_TRAJECTORY_M		8004  /**/
-#define ERR_UPER_ENCODE_BASE_TRAJECTORY_M_SPEED_2		7910  /**/
-#define ERR_UPER_ENCODE_BASE_TRAJECTORY_M_SPLINE_2		8000  /**/
-#define asn1SccBase_Trajectory_m_REQUIRED_BYTES_FOR_ENCODING       5237 
-#define asn1SccBase_Trajectory_m_REQUIRED_BITS_FOR_ENCODING        41891
-
-flag asn1SccBase_Trajectory_m_Encode(const asn1SccBase_Trajectory_m* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_TRAJECTORY_M		8005  /**/
-#define ERR_UPER_DECODE_BASE_TRAJECTORY_M_SPEED_2		7911  /**/
-#define ERR_UPER_DECODE_BASE_TRAJECTORY_M_SPLINE_2		8001  /**/
-flag asn1SccBase_Trajectory_m_Decode(asn1SccBase_Trajectory_m* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
-    asn1SccBase_Trajectory_m arr[200];
-} asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory;
-
-flag asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_Equal(const asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal1, const asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal2);
-
-void asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_Initialize(asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal);
-
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPEED		411  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_GEOMETRIC_RESOLUTION		422  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_DIMENSION		433  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_CURVE_ORDER		444  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_KIND		455  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_KNOTS_ELM		466  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_KNOTS		477  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_VERTICES_ELM		484  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_VERTICES		495  /**/
-#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY		522  /**/
-flag asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_IsConstraintValid(const asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY		523  /**/
-#define ERR_UPER_ENCODE_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_2		518  /**/
-#define asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_REQUIRED_BYTES_FOR_ENCODING       1047276 
-#define asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_REQUIRED_BITS_FOR_ENCODING        8378208
-
-flag asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_Encode(const asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY		524  /**/
-#define ERR_UPER_DECODE_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_2		519  /**/
-flag asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_Decode(asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef double asn1SccT_Float;
 
 
@@ -6279,16 +2864,16 @@ flag asn1SccT_Float_Equal(const asn1SccT_Float* pVal1, const asn1SccT_Float* pVa
 
 void asn1SccT_Float_Initialize(asn1SccT_Float* pVal);
 
-#define ERR_T_FLOAT		51153  /**/
+#define ERR_T_FLOAT		8792  /**/
 flag asn1SccT_Float_IsConstraintValid(const asn1SccT_Float* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_T_FLOAT		51154  /**/
+#define ERR_UPER_ENCODE_T_FLOAT		8793  /**/
 #define asn1SccT_Float_REQUIRED_BYTES_FOR_ENCODING       13 
 #define asn1SccT_Float_REQUIRED_BITS_FOR_ENCODING        104
 
 flag asn1SccT_Float_Encode(const asn1SccT_Float* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_T_FLOAT		51155  /**/
+#define ERR_UPER_DECODE_T_FLOAT		8794  /**/
 flag asn1SccT_Float_Decode(asn1SccT_Float* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -6419,16 +3004,16 @@ flag asn1SccT_Int16_Equal(const asn1SccT_Int16* pVal1, const asn1SccT_Int16* pVa
 
 void asn1SccT_Int16_Initialize(asn1SccT_Int16* pVal);
 
-#define ERR_T_INT16		51160  /**/
+#define ERR_T_INT16		8799  /**/
 flag asn1SccT_Int16_IsConstraintValid(const asn1SccT_Int16* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_T_INT16		51161  /**/
+#define ERR_UPER_ENCODE_T_INT16		8800  /**/
 #define asn1SccT_Int16_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccT_Int16_REQUIRED_BITS_FOR_ENCODING        16
 
 flag asn1SccT_Int16_Encode(const asn1SccT_Int16* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_T_INT16		51162  /**/
+#define ERR_UPER_DECODE_T_INT16		8801  /**/
 flag asn1SccT_Int16_Decode(asn1SccT_Int16* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccUint asn1SccT_UInt16;
 
@@ -6437,16 +3022,16 @@ flag asn1SccT_UInt16_Equal(const asn1SccT_UInt16* pVal1, const asn1SccT_UInt16* 
 
 void asn1SccT_UInt16_Initialize(asn1SccT_UInt16* pVal);
 
-#define ERR_T_UINT16		51167  /**/
+#define ERR_T_UINT16		8806  /**/
 flag asn1SccT_UInt16_IsConstraintValid(const asn1SccT_UInt16* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_T_UINT16		51168  /**/
+#define ERR_UPER_ENCODE_T_UINT16		8807  /**/
 #define asn1SccT_UInt16_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccT_UInt16_REQUIRED_BITS_FOR_ENCODING        16
 
 flag asn1SccT_UInt16_Encode(const asn1SccT_UInt16* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_T_UINT16		51169  /**/
+#define ERR_UPER_DECODE_T_UINT16		8808  /**/
 flag asn1SccT_UInt16_Decode(asn1SccT_UInt16* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -6481,16 +3066,16 @@ flag asn1SccT_UInt64_Equal(const asn1SccT_UInt64* pVal1, const asn1SccT_UInt64* 
 
 void asn1SccT_UInt64_Initialize(asn1SccT_UInt64* pVal);
 
-#define ERR_T_UINT64		51174  /**/
+#define ERR_T_UINT64		8813  /**/
 flag asn1SccT_UInt64_IsConstraintValid(const asn1SccT_UInt64* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_T_UINT64		51175  /**/
+#define ERR_UPER_ENCODE_T_UINT64		8814  /**/
 #define asn1SccT_UInt64_REQUIRED_BYTES_FOR_ENCODING       8 
 #define asn1SccT_UInt64_REQUIRED_BITS_FOR_ENCODING        63
 
 flag asn1SccT_UInt64_Encode(const asn1SccT_UInt64* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_T_UINT64		51176  /**/
+#define ERR_UPER_DECODE_T_UINT64		8815  /**/
 flag asn1SccT_UInt64_Decode(asn1SccT_UInt64* pVal, BitStream* pBitStrm, int* pErrCode);
 typedef asn1SccSint asn1SccT_Int64;
 
@@ -6499,16 +3084,16 @@ flag asn1SccT_Int64_Equal(const asn1SccT_Int64* pVal1, const asn1SccT_Int64* pVa
 
 void asn1SccT_Int64_Initialize(asn1SccT_Int64* pVal);
 
-#define ERR_T_INT64		51181  /**/
+#define ERR_T_INT64		8820  /**/
 flag asn1SccT_Int64_IsConstraintValid(const asn1SccT_Int64* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_T_INT64		51182  /**/
+#define ERR_UPER_ENCODE_T_INT64		8821  /**/
 #define asn1SccT_Int64_REQUIRED_BYTES_FOR_ENCODING       8 
 #define asn1SccT_Int64_REQUIRED_BITS_FOR_ENCODING        64
 
 flag asn1SccT_Int64_Encode(const asn1SccT_Int64* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_T_INT64		51183  /**/
+#define ERR_UPER_DECODE_T_INT64		8822  /**/
 flag asn1SccT_Int64_Decode(asn1SccT_Int64* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
@@ -6813,119 +3398,6 @@ flag asn1SccBase_samples_Wrench_Decode(asn1SccBase_samples_Wrench* pVal, BitStre
 
 typedef struct {    int nCount; 
     
-    asn1SccBase_Time arr[200];
-} asn1SccBase_samples_DepthMap_timestamps;
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_Double arr[200];
-} asn1SccBase_samples_DepthMap_vertical_interval;
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_Double arr[200];
-} asn1SccBase_samples_DepthMap_horizontal_interval;
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_Float arr[200];
-} asn1SccBase_samples_DepthMap_distances;
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_Float arr[200];
-} asn1SccBase_samples_DepthMap_remissions;
-
-typedef struct {
-    asn1SccBase_Time time;
-    asn1SccBase_samples_DepthMap_timestamps timestamps;
-    asn1SccBase_samples_DepthMap_PROJECTION_TYPE vertical_projection;
-    asn1SccBase_samples_DepthMap_PROJECTION_TYPE horizontal_projection;
-    asn1SccBase_samples_DepthMap_vertical_interval vertical_interval;
-    asn1SccBase_samples_DepthMap_horizontal_interval horizontal_interval;
-    asn1SccT_UInt32 vertical_size;
-    asn1SccT_UInt32 horizontal_size;
-    asn1SccBase_samples_DepthMap_distances distances;
-    asn1SccBase_samples_DepthMap_remissions remissions;
-} asn1SccBase_samples_DepthMap;
-
-flag asn1SccBase_samples_DepthMap_timestamps_Equal(const asn1SccBase_samples_DepthMap_timestamps* pVal1, const asn1SccBase_samples_DepthMap_timestamps* pVal2);
-
-flag asn1SccBase_samples_DepthMap_vertical_interval_Equal(const asn1SccBase_samples_DepthMap_vertical_interval* pVal1, const asn1SccBase_samples_DepthMap_vertical_interval* pVal2);
-
-flag asn1SccBase_samples_DepthMap_horizontal_interval_Equal(const asn1SccBase_samples_DepthMap_horizontal_interval* pVal1, const asn1SccBase_samples_DepthMap_horizontal_interval* pVal2);
-
-flag asn1SccBase_samples_DepthMap_distances_Equal(const asn1SccBase_samples_DepthMap_distances* pVal1, const asn1SccBase_samples_DepthMap_distances* pVal2);
-
-flag asn1SccBase_samples_DepthMap_remissions_Equal(const asn1SccBase_samples_DepthMap_remissions* pVal1, const asn1SccBase_samples_DepthMap_remissions* pVal2);
-
-flag asn1SccBase_samples_DepthMap_Equal(const asn1SccBase_samples_DepthMap* pVal1, const asn1SccBase_samples_DepthMap* pVal2);
-
-void asn1SccBase_samples_DepthMap_timestamps_Initialize(asn1SccBase_samples_DepthMap_timestamps* pVal);
-void asn1SccBase_samples_DepthMap_vertical_interval_Initialize(asn1SccBase_samples_DepthMap_vertical_interval* pVal);
-void asn1SccBase_samples_DepthMap_horizontal_interval_Initialize(asn1SccBase_samples_DepthMap_horizontal_interval* pVal);
-void asn1SccBase_samples_DepthMap_distances_Initialize(asn1SccBase_samples_DepthMap_distances* pVal);
-void asn1SccBase_samples_DepthMap_remissions_Initialize(asn1SccBase_samples_DepthMap_remissions* pVal);
-void asn1SccBase_samples_DepthMap_Initialize(asn1SccBase_samples_DepthMap* pVal);
-
-#define ERR_BASE_SAMPLES_DEPTHMAP_TIME_MICROSECONDS		3173  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS_ELM_MICROSECONDS		3194  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS		3215  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_VERTICAL_PROJECTION		3222  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_PROJECTION		3233  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL_ELM		3244  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL		3255  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL_ELM		3262  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL		3273  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_VERTICAL_SIZE		3280  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_SIZE		3291  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_DISTANCES_ELM		3302  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_DISTANCES		3313  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_REMISSIONS_ELM		3320  /**/
-#define ERR_BASE_SAMPLES_DEPTHMAP_REMISSIONS		3331  /**/
-flag asn1SccBase_samples_DepthMap_IsConstraintValid(const asn1SccBase_samples_DepthMap* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP		3338  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_TIME_2		3190  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS		3216  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS_ELM_2		3211  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_PROJECTION_2		3229  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_PROJECTION_2		3240  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL		3256  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL_ELM_2		3251  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL		3274  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL_ELM_2		3269  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_SIZE_2		3287  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_SIZE_2		3298  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_DISTANCES		3314  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_DISTANCES_ELM_2		3309  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_REMISSIONS		3332  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_REMISSIONS_ELM_2		3327  /**/
-#define asn1SccBase_samples_DepthMap_REQUIRED_BYTES_FOR_ENCODING       12022 
-#define asn1SccBase_samples_DepthMap_REQUIRED_BITS_FOR_ENCODING        96170
-
-flag asn1SccBase_samples_DepthMap_Encode(const asn1SccBase_samples_DepthMap* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP		3339  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_TIME_2		3191  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS		3217  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS_ELM_2		3212  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_PROJECTION_2		3230  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_PROJECTION_2		3241  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL		3257  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL_ELM_2		3252  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL		3275  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL_ELM_2		3270  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_SIZE_2		3288  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_SIZE_2		3299  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_DISTANCES		3315  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_DISTANCES_ELM_2		3310  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_REMISSIONS		3333  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_REMISSIONS_ELM_2		3328  /**/
-flag asn1SccBase_samples_DepthMap_Decode(asn1SccBase_samples_DepthMap* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
     asn1SccT_Float arr[200];
 } asn1SccBase_samples_DistanceImage_data;
 
@@ -6987,78 +3459,6 @@ flag asn1SccBase_samples_DistanceImage_Decode(asn1SccBase_samples_DistanceImage*
 
 typedef struct {    int nCount; 
     
-    asn1SccT_UInt32 arr[200];
-} asn1SccBase_samples_LaserScan_ranges;
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_Float arr[200];
-} asn1SccBase_samples_LaserScan_remission;
-
-typedef struct {
-    asn1SccBase_Time time;
-    asn1SccT_Double start_angle;
-    asn1SccT_Double angular_resolution;
-    asn1SccT_Double speed;
-    asn1SccBase_samples_LaserScan_ranges ranges;
-    asn1SccT_UInt32 minrange;
-    asn1SccT_UInt32 maxrange;
-    asn1SccBase_samples_LaserScan_remission remission;
-} asn1SccBase_samples_LaserScan;
-
-flag asn1SccBase_samples_LaserScan_ranges_Equal(const asn1SccBase_samples_LaserScan_ranges* pVal1, const asn1SccBase_samples_LaserScan_ranges* pVal2);
-
-flag asn1SccBase_samples_LaserScan_remission_Equal(const asn1SccBase_samples_LaserScan_remission* pVal1, const asn1SccBase_samples_LaserScan_remission* pVal2);
-
-flag asn1SccBase_samples_LaserScan_Equal(const asn1SccBase_samples_LaserScan* pVal1, const asn1SccBase_samples_LaserScan* pVal2);
-
-void asn1SccBase_samples_LaserScan_ranges_Initialize(asn1SccBase_samples_LaserScan_ranges* pVal);
-void asn1SccBase_samples_LaserScan_remission_Initialize(asn1SccBase_samples_LaserScan_remission* pVal);
-void asn1SccBase_samples_LaserScan_Initialize(asn1SccBase_samples_LaserScan* pVal);
-
-#define ERR_BASE_SAMPLES_LASERSCAN_TIME_MICROSECONDS		3576  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_START_ANGLE		3597  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_ANGULAR_RESOLUTION		3608  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_SPEED		3619  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_RANGES_ELM		3630  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_RANGES		3641  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_MINRANGE		3648  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_MAXRANGE		3659  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_REMISSION_ELM		3670  /**/
-#define ERR_BASE_SAMPLES_LASERSCAN_REMISSION		3681  /**/
-flag asn1SccBase_samples_LaserScan_IsConstraintValid(const asn1SccBase_samples_LaserScan* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN		3688  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_TIME_2		3593  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_START_ANGLE_2		3604  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_ANGULAR_RESOLUTION_2		3615  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_SPEED_2		3626  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_RANGES		3642  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_RANGES_ELM_2		3637  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_MINRANGE_2		3655  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_MAXRANGE_2		3666  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_REMISSION		3682  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_REMISSION_ELM_2		3677  /**/
-#define asn1SccBase_samples_LaserScan_REQUIRED_BYTES_FOR_ENCODING       3457 
-#define asn1SccBase_samples_LaserScan_REQUIRED_BITS_FOR_ENCODING        27656
-
-flag asn1SccBase_samples_LaserScan_Encode(const asn1SccBase_samples_LaserScan* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN		3689  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_TIME_2		3594  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_START_ANGLE_2		3605  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_ANGULAR_RESOLUTION_2		3616  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_SPEED_2		3627  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_RANGES		3643  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_RANGES_ELM_2		3638  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_MINRANGE_2		3656  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_MAXRANGE_2		3667  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_REMISSION		3683  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_REMISSION_ELM_2		3678  /**/
-flag asn1SccBase_samples_LaserScan_Decode(asn1SccBase_samples_LaserScan* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
     asn1SccWrappers_Vector3d arr[200];
 } asn1SccBase_samples_Pointcloud_points;
 
@@ -7110,246 +3510,6 @@ flag asn1SccBase_samples_Pointcloud_Encode(const asn1SccBase_samples_Pointcloud*
 #define ERR_UPER_DECODE_BASE_SAMPLES_POINTCLOUD_COLORS		3780  /**/
 #define ERR_UPER_DECODE_BASE_SAMPLES_POINTCLOUD_COLORS_ELM_2		3775  /**/
 flag asn1SccBase_samples_Pointcloud_Decode(asn1SccBase_samples_Pointcloud* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
-    asn1SccBase_Time arr[200];
-} asn1SccBase_samples_Sonar_timestamps;
-
-typedef struct {    int nCount; 
-    
-    asn1SccBase_Angle arr[200];
-} asn1SccBase_samples_Sonar_bearings;
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_Float arr[200];
-} asn1SccBase_samples_Sonar_bins;
-
-typedef struct {
-    asn1SccBase_Time time;
-    asn1SccBase_samples_Sonar_timestamps timestamps;
-    asn1SccBase_Time bin_duration;
-    asn1SccBase_Angle beam_width;
-    asn1SccBase_Angle beam_height;
-    asn1SccBase_samples_Sonar_bearings bearings;
-    asn1SccT_Float speed_of_sound;
-    asn1SccT_UInt32 bin_count;
-    asn1SccT_UInt32 beam_count;
-    asn1SccBase_samples_Sonar_bins bins;
-} asn1SccBase_samples_Sonar;
-
-flag asn1SccBase_samples_Sonar_timestamps_Equal(const asn1SccBase_samples_Sonar_timestamps* pVal1, const asn1SccBase_samples_Sonar_timestamps* pVal2);
-
-flag asn1SccBase_samples_Sonar_bearings_Equal(const asn1SccBase_samples_Sonar_bearings* pVal1, const asn1SccBase_samples_Sonar_bearings* pVal2);
-
-flag asn1SccBase_samples_Sonar_bins_Equal(const asn1SccBase_samples_Sonar_bins* pVal1, const asn1SccBase_samples_Sonar_bins* pVal2);
-
-flag asn1SccBase_samples_Sonar_Equal(const asn1SccBase_samples_Sonar* pVal1, const asn1SccBase_samples_Sonar* pVal2);
-
-void asn1SccBase_samples_Sonar_timestamps_Initialize(asn1SccBase_samples_Sonar_timestamps* pVal);
-void asn1SccBase_samples_Sonar_bearings_Initialize(asn1SccBase_samples_Sonar_bearings* pVal);
-void asn1SccBase_samples_Sonar_bins_Initialize(asn1SccBase_samples_Sonar_bins* pVal);
-void asn1SccBase_samples_Sonar_Initialize(asn1SccBase_samples_Sonar* pVal);
-
-#define ERR_BASE_SAMPLES_SONAR_TIME_MICROSECONDS		4075  /**/
-#define ERR_BASE_SAMPLES_SONAR_TIMESTAMPS_ELM_MICROSECONDS		4096  /**/
-#define ERR_BASE_SAMPLES_SONAR_TIMESTAMPS		4117  /**/
-#define ERR_BASE_SAMPLES_SONAR_BIN_DURATION_MICROSECONDS		4124  /**/
-#define ERR_BASE_SAMPLES_SONAR_BEAM_WIDTH_RAD		4145  /**/
-#define ERR_BASE_SAMPLES_SONAR_BEAM_HEIGHT_RAD		4166  /**/
-#define ERR_BASE_SAMPLES_SONAR_BEARINGS_ELM_RAD		4187  /**/
-#define ERR_BASE_SAMPLES_SONAR_BEARINGS		4208  /**/
-#define ERR_BASE_SAMPLES_SONAR_SPEED_OF_SOUND		4215  /**/
-#define ERR_BASE_SAMPLES_SONAR_BIN_COUNT		4226  /**/
-#define ERR_BASE_SAMPLES_SONAR_BEAM_COUNT		4237  /**/
-#define ERR_BASE_SAMPLES_SONAR_BINS_ELM		4248  /**/
-#define ERR_BASE_SAMPLES_SONAR_BINS		4259  /**/
-flag asn1SccBase_samples_Sonar_IsConstraintValid(const asn1SccBase_samples_Sonar* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR		4266  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_TIME_2		4092  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_TIMESTAMPS		4118  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_TIMESTAMPS_ELM_2		4113  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BIN_DURATION_2		4141  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEAM_WIDTH_2		4162  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEAM_HEIGHT_2		4183  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEARINGS		4209  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEARINGS_ELM_2		4204  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_SPEED_OF_SOUND_2		4222  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BIN_COUNT_2		4233  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEAM_COUNT_2		4244  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BINS		4260  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BINS_ELM_2		4255  /**/
-#define asn1SccBase_samples_Sonar_REQUIRED_BYTES_FOR_ENCODING       6866 
-#define asn1SccBase_samples_Sonar_REQUIRED_BITS_FOR_ENCODING        54928
-
-flag asn1SccBase_samples_Sonar_Encode(const asn1SccBase_samples_Sonar* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR		4267  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_TIME_2		4093  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_TIMESTAMPS		4119  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_TIMESTAMPS_ELM_2		4114  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BIN_DURATION_2		4142  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEAM_WIDTH_2		4163  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEAM_HEIGHT_2		4184  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEARINGS		4210  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEARINGS_ELM_2		4205  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_SPEED_OF_SOUND_2		4223  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BIN_COUNT_2		4234  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEAM_COUNT_2		4245  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BINS		4261  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BINS_ELM_2		4256  /**/
-flag asn1SccBase_samples_Sonar_Decode(asn1SccBase_samples_Sonar* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_UInt8 arr[200];
-} asn1SccBase_samples_SonarBeam_beam;
-
-typedef struct {
-    asn1SccBase_Time time;
-    asn1SccBase_Angle bearing;
-    asn1SccT_Double sampling_interval;
-    asn1SccT_Float speed_of_sound;
-    asn1SccT_Float beamwidth_horizontal;
-    asn1SccT_Float beamwidth_vertical;
-    asn1SccBase_samples_SonarBeam_beam beam;
-} asn1SccBase_samples_SonarBeam;
-
-flag asn1SccBase_samples_SonarBeam_beam_Equal(const asn1SccBase_samples_SonarBeam_beam* pVal1, const asn1SccBase_samples_SonarBeam_beam* pVal2);
-
-flag asn1SccBase_samples_SonarBeam_Equal(const asn1SccBase_samples_SonarBeam* pVal1, const asn1SccBase_samples_SonarBeam* pVal2);
-
-void asn1SccBase_samples_SonarBeam_beam_Initialize(asn1SccBase_samples_SonarBeam_beam* pVal);
-void asn1SccBase_samples_SonarBeam_Initialize(asn1SccBase_samples_SonarBeam* pVal);
-
-#define ERR_BASE_SAMPLES_SONARBEAM_TIME_MICROSECONDS		4272  /**/
-#define ERR_BASE_SAMPLES_SONARBEAM_BEARING_RAD		4293  /**/
-#define ERR_BASE_SAMPLES_SONARBEAM_SAMPLING_INTERVAL		4314  /**/
-#define ERR_BASE_SAMPLES_SONARBEAM_SPEED_OF_SOUND		4325  /**/
-#define ERR_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_HORIZONTAL		4336  /**/
-#define ERR_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_VERTICAL		4347  /**/
-#define ERR_BASE_SAMPLES_SONARBEAM_BEAM_ELM		4358  /**/
-#define ERR_BASE_SAMPLES_SONARBEAM_BEAM		4369  /**/
-flag asn1SccBase_samples_SonarBeam_IsConstraintValid(const asn1SccBase_samples_SonarBeam* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM		4376  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_TIME_2		4289  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEARING_2		4310  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_SAMPLING_INTERVAL_2		4321  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_SPEED_OF_SOUND_2		4332  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_HORIZONTAL_2		4343  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_VERTICAL_2		4354  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEAM		4370  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEAM_ELM_2		4365  /**/
-#define asn1SccBase_samples_SonarBeam_REQUIRED_BYTES_FOR_ENCODING       274 
-#define asn1SccBase_samples_SonarBeam_REQUIRED_BITS_FOR_ENCODING        2192
-
-flag asn1SccBase_samples_SonarBeam_Encode(const asn1SccBase_samples_SonarBeam* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM		4377  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_TIME_2		4290  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEARING_2		4311  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_SAMPLING_INTERVAL_2		4322  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_SPEED_OF_SOUND_2		4333  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_HORIZONTAL_2		4344  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_VERTICAL_2		4355  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEAM		4371  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEAM_ELM_2		4366  /**/
-flag asn1SccBase_samples_SonarBeam_Decode(asn1SccBase_samples_SonarBeam* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {    int nCount; 
-    
-    asn1SccT_UInt8 arr[200];
-} asn1SccBase_samples_SonarScan_data;
-
-typedef struct {    int nCount; 
-    
-    asn1SccBase_Time arr[200];
-} asn1SccBase_samples_SonarScan_time_beams;
-
-typedef struct {
-    asn1SccBase_Time time;
-    asn1SccBase_samples_SonarScan_data data;
-    asn1SccBase_samples_SonarScan_time_beams time_beams;
-    asn1SccT_UInt16 number_of_beams;
-    asn1SccT_UInt16 number_of_bins;
-    asn1SccBase_Angle start_bearing;
-    asn1SccBase_Angle angular_resolution;
-    asn1SccT_Double sampling_interval;
-    asn1SccT_Float speed_of_sound;
-    asn1SccBase_Angle beamwidth_horizontal;
-    asn1SccBase_Angle beamwidth_vertical;
-    asn1SccT_Boolean memory_layout_column;
-    asn1SccT_Boolean polar_coordinates;
-} asn1SccBase_samples_SonarScan;
-
-flag asn1SccBase_samples_SonarScan_data_Equal(const asn1SccBase_samples_SonarScan_data* pVal1, const asn1SccBase_samples_SonarScan_data* pVal2);
-
-flag asn1SccBase_samples_SonarScan_time_beams_Equal(const asn1SccBase_samples_SonarScan_time_beams* pVal1, const asn1SccBase_samples_SonarScan_time_beams* pVal2);
-
-flag asn1SccBase_samples_SonarScan_Equal(const asn1SccBase_samples_SonarScan* pVal1, const asn1SccBase_samples_SonarScan* pVal2);
-
-void asn1SccBase_samples_SonarScan_data_Initialize(asn1SccBase_samples_SonarScan_data* pVal);
-void asn1SccBase_samples_SonarScan_time_beams_Initialize(asn1SccBase_samples_SonarScan_time_beams* pVal);
-void asn1SccBase_samples_SonarScan_Initialize(asn1SccBase_samples_SonarScan* pVal);
-
-#define ERR_BASE_SAMPLES_SONARSCAN_TIME_MICROSECONDS		4382  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_DATA_ELM		4403  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_DATA		4414  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_TIME_BEAMS_ELM_MICROSECONDS		4421  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_TIME_BEAMS		4442  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BEAMS		4449  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BINS		4460  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_START_BEARING_RAD		4471  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_ANGULAR_RESOLUTION_RAD		4492  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_SAMPLING_INTERVAL		4513  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_SPEED_OF_SOUND		4524  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_HORIZONTAL_RAD		4535  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_VERTICAL_RAD		4556  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_MEMORY_LAYOUT_COLUMN		4577  /**/
-#define ERR_BASE_SAMPLES_SONARSCAN_POLAR_COORDINATES		4588  /**/
-flag asn1SccBase_samples_SonarScan_IsConstraintValid(const asn1SccBase_samples_SonarScan* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN		4599  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_TIME_2		4399  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_DATA		4415  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_DATA_ELM_2		4410  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_TIME_BEAMS		4443  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_TIME_BEAMS_ELM_2		4438  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BEAMS_2		4456  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BINS_2		4467  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_START_BEARING_2		4488  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_ANGULAR_RESOLUTION_2		4509  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_SAMPLING_INTERVAL_2		4520  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_SPEED_OF_SOUND_2		4531  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_HORIZONTAL_2		4552  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_VERTICAL_2		4573  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_MEMORY_LAYOUT_COLUMN_2		4584  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_POLAR_COORDINATES_2		4595  /**/
-#define asn1SccBase_samples_SonarScan_REQUIRED_BYTES_FOR_ENCODING       1893 
-#define asn1SccBase_samples_SonarScan_REQUIRED_BITS_FOR_ENCODING        15138
-
-flag asn1SccBase_samples_SonarScan_Encode(const asn1SccBase_samples_SonarScan* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN		4600  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_TIME_2		4400  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_DATA		4416  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_DATA_ELM_2		4411  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_TIME_BEAMS		4444  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_TIME_BEAMS_ELM_2		4439  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BEAMS_2		4457  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BINS_2		4468  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_START_BEARING_2		4489  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_ANGULAR_RESOLUTION_2		4510  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_SAMPLING_INTERVAL_2		4521  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_SPEED_OF_SOUND_2		4532  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_HORIZONTAL_2		4553  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_VERTICAL_2		4574  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_MEMORY_LAYOUT_COLUMN_2		4585  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_POLAR_COORDINATES_2		4596  /**/
-flag asn1SccBase_samples_SonarScan_Decode(asn1SccBase_samples_SonarScan* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {
     asn1SccBase_Time time;
@@ -7599,16 +3759,16 @@ flag asn1SccT_String_Equal(const asn1SccT_String* pVal1, const asn1SccT_String* 
 
 void asn1SccT_String_Initialize(asn1SccT_String* pVal);
 
-#define ERR_T_STRING		51188  /**/
+#define ERR_T_STRING		8827  /**/
 flag asn1SccT_String_IsConstraintValid(const asn1SccT_String* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_T_STRING		51189  /**/
+#define ERR_UPER_ENCODE_T_STRING		8828  /**/
 #define asn1SccT_String_REQUIRED_BYTES_FOR_ENCODING       201 
 #define asn1SccT_String_REQUIRED_BITS_FOR_ENCODING        1608
 
 flag asn1SccT_String_Encode(const asn1SccT_String* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_T_STRING		51190  /**/
+#define ERR_UPER_DECODE_T_STRING		8829  /**/
 flag asn1SccT_String_Decode(asn1SccT_String* pVal, BitStream* pBitStrm, int* pErrCode);
 
 typedef struct {    int nCount; 
@@ -8270,148 +4430,6 @@ flag asn1SccBase_samples_frame_frame_attrib_t_Encode(const asn1SccBase_samples_f
 #define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_ATTRIB_T_NAME_VAL_2		4742  /**/
 flag asn1SccBase_samples_frame_frame_attrib_t_Decode(asn1SccBase_samples_frame_frame_attrib_t* pVal, BitStream* pBitStrm, int* pErrCode);
 
-typedef struct {    int nCount; 
-    
-    asn1SccT_UInt8 arr[200];
-} asn1SccBase_samples_frame_Frame_image;
-
-typedef struct {    int nCount; 
-    
-    asn1SccBase_samples_frame_frame_attrib_t arr[200];
-} asn1SccBase_samples_frame_Frame_attributes;
-
-typedef struct {
-    asn1SccBase_Time time;
-    asn1SccBase_Time received_time;
-    asn1SccBase_samples_frame_Frame_image image;
-    asn1SccBase_samples_frame_Frame_attributes attributes;
-    asn1SccBase_samples_frame_frame_size_t size_val;
-    asn1SccT_UInt32 data_depth;
-    asn1SccT_UInt32 pixel_size;
-    asn1SccT_UInt32 row_size;
-    asn1SccBase_samples_frame_frame_mode_t frame_mode;
-    asn1SccBase_samples_frame_frame_status_t frame_status;
-} asn1SccBase_samples_frame_Frame;
-
-flag asn1SccBase_samples_frame_Frame_image_Equal(const asn1SccBase_samples_frame_Frame_image* pVal1, const asn1SccBase_samples_frame_Frame_image* pVal2);
-
-flag asn1SccBase_samples_frame_Frame_attributes_Equal(const asn1SccBase_samples_frame_Frame_attributes* pVal1, const asn1SccBase_samples_frame_Frame_attributes* pVal2);
-
-flag asn1SccBase_samples_frame_Frame_Equal(const asn1SccBase_samples_frame_Frame* pVal1, const asn1SccBase_samples_frame_Frame* pVal2);
-
-void asn1SccBase_samples_frame_Frame_image_Initialize(asn1SccBase_samples_frame_Frame_image* pVal);
-void asn1SccBase_samples_frame_Frame_attributes_Initialize(asn1SccBase_samples_frame_Frame_attributes* pVal);
-void asn1SccBase_samples_frame_Frame_Initialize(asn1SccBase_samples_frame_Frame* pVal);
-
-#define ERR_BASE_SAMPLES_FRAME_FRAME_TIME_MICROSECONDS		4933  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_RECEIVED_TIME_MICROSECONDS		4954  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_IMAGE_ELM		4975  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_IMAGE		4986  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES_ELM_DATA		4993  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES_ELM_NAME_VAL		5004  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES		5025  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_SIZE_VAL_WIDTH		5032  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_SIZE_VAL_HEIGHT		5043  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_DATA_DEPTH		5064  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_PIXEL_SIZE		5075  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_ROW_SIZE		5086  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_FRAME_MODE		5097  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAME_FRAME_STATUS		5108  /**/
-flag asn1SccBase_samples_frame_Frame_IsConstraintValid(const asn1SccBase_samples_frame_Frame* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME		5119  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_TIME_2		4950  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_RECEIVED_TIME_2		4971  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_IMAGE		4987  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_IMAGE_ELM_2		4982  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES		5026  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES_ELM_2		5021  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_SIZE_VAL_2		5060  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_DATA_DEPTH_2		5071  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_PIXEL_SIZE_2		5082  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_ROW_SIZE_2		5093  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_FRAME_MODE_2		5104  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_FRAME_STATUS_2		5115  /**/
-#define asn1SccBase_samples_frame_Frame_REQUIRED_BYTES_FOR_ENCODING       80635 
-#define asn1SccBase_samples_frame_Frame_REQUIRED_BITS_FOR_ENCODING        645078
-
-flag asn1SccBase_samples_frame_Frame_Encode(const asn1SccBase_samples_frame_Frame* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME		5120  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_TIME_2		4951  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_RECEIVED_TIME_2		4972  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_IMAGE		4988  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_IMAGE_ELM_2		4983  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES		5027  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES_ELM_2		5022  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_SIZE_VAL_2		5061  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_DATA_DEPTH_2		5072  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_PIXEL_SIZE_2		5083  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_ROW_SIZE_2		5094  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_FRAME_MODE_2		5105  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_FRAME_STATUS_2		5116  /**/
-flag asn1SccBase_samples_frame_Frame_Decode(asn1SccBase_samples_frame_Frame* pVal, BitStream* pBitStrm, int* pErrCode);
-
-typedef struct {
-    asn1SccBase_Time time;
-    asn1SccBase_samples_frame_Frame first;
-    asn1SccBase_samples_frame_Frame second;
-    asn1SccT_UInt32 id;
-} asn1SccBase_samples_frame_FramePair;
-
-flag asn1SccBase_samples_frame_FramePair_Equal(const asn1SccBase_samples_frame_FramePair* pVal1, const asn1SccBase_samples_frame_FramePair* pVal2);
-
-void asn1SccBase_samples_frame_FramePair_Initialize(asn1SccBase_samples_frame_FramePair* pVal);
-
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_TIME_MICROSECONDS		5125  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_TIME_MICROSECONDS		5146  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_RECEIVED_TIME_MICROSECONDS		5167  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_IMAGE_ELM		5188  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_IMAGE		5199  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_ATTRIBUTES_ELM_DATA		5206  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_ATTRIBUTES_ELM_NAME_VAL		5217  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_ATTRIBUTES		5238  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_SIZE_VAL_WIDTH		5245  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_SIZE_VAL_HEIGHT		5256  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_DATA_DEPTH		5277  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_PIXEL_SIZE		5288  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_ROW_SIZE		5299  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_FRAME_MODE		5310  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_FRAME_STATUS		5321  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_TIME_MICROSECONDS		5342  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_RECEIVED_TIME_MICROSECONDS		5363  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_IMAGE_ELM		5384  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_IMAGE		5395  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_ATTRIBUTES_ELM_DATA		5402  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_ATTRIBUTES_ELM_NAME_VAL		5413  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_ATTRIBUTES		5434  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_SIZE_VAL_WIDTH		5441  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_SIZE_VAL_HEIGHT		5452  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_DATA_DEPTH		5473  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_PIXEL_SIZE		5484  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_ROW_SIZE		5495  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_FRAME_MODE		5506  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_FRAME_STATUS		5517  /**/
-#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_ID		5538  /**/
-flag asn1SccBase_samples_frame_FramePair_IsConstraintValid(const asn1SccBase_samples_frame_FramePair* pVal, int* pErrCode);
-
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR		5549  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR_TIME_2		5142  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_2		5338  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_2		5534  /**/
-#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR_ID_2		5545  /**/
-#define asn1SccBase_samples_frame_FramePair_REQUIRED_BYTES_FOR_ENCODING       161282 
-#define asn1SccBase_samples_frame_FramePair_REQUIRED_BITS_FOR_ENCODING        1290252
-
-flag asn1SccBase_samples_frame_FramePair_Encode(const asn1SccBase_samples_frame_FramePair* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
-
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR		5550  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR_TIME_2		5143  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_2		5339  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_2		5535  /**/
-#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR_ID_2		5546  /**/
-flag asn1SccBase_samples_frame_FramePair_Decode(asn1SccBase_samples_frame_FramePair* pVal, BitStream* pBitStrm, int* pErrCode);
-
 typedef struct {
     asn1SccT_String sourceframe;
     asn1SccT_String targetframe;
@@ -8709,6 +4727,4075 @@ flag asn1SccBase_samples_Wrenches_m_Encode(const asn1SccBase_samples_Wrenches_m*
 #define ERR_UPER_DECODE_BASE_SAMPLES_WRENCHES_M_TIME_2		7808  /**/
 flag asn1SccBase_samples_Wrenches_m_Decode(asn1SccBase_samples_Wrenches_m* pVal, BitStream* pBitStrm, int* pErrCode);
 
+typedef char asn1SccUrdriverFilePath[256];
+
+flag asn1SccUrdriverFilePath_Equal(const asn1SccUrdriverFilePath val1, const asn1SccUrdriverFilePath val2);
+
+void asn1SccUrdriverFilePath_Initialize(asn1SccUrdriverFilePath val);
+
+#define ERR_URDRIVERFILEPATH		8834  /**/
+flag asn1SccUrdriverFilePath_IsConstraintValid(const asn1SccUrdriverFilePath val, int* pErrCode);
+
+#define ERR_UPER_ENCODE_URDRIVERFILEPATH		8835  /**/
+#define asn1SccUrdriverFilePath_REQUIRED_BYTES_FOR_ENCODING       225 
+#define asn1SccUrdriverFilePath_REQUIRED_BITS_FOR_ENCODING        1793
+
+flag asn1SccUrdriverFilePath_Encode(const asn1SccUrdriverFilePath val, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_URDRIVERFILEPATH		8836  /**/
+flag asn1SccUrdriverFilePath_Decode(asn1SccUrdriverFilePath val, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    int nCount; 
+    
+    byte arr[512];
+} asn1SccBuffer_512;
+
+flag asn1SccBuffer_512_Equal(const asn1SccBuffer_512* pVal1, const asn1SccBuffer_512* pVal2);
+
+void asn1SccBuffer_512_Initialize(asn1SccBuffer_512* pVal);
+
+#define ERR_BUFFER_512		8841  /**/
+flag asn1SccBuffer_512_IsConstraintValid(const asn1SccBuffer_512* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BUFFER_512		8842  /**/
+#define asn1SccBuffer_512_REQUIRED_BYTES_FOR_ENCODING       514 
+#define asn1SccBuffer_512_REQUIRED_BITS_FOR_ENCODING        4105
+
+flag asn1SccBuffer_512_Encode(const asn1SccBuffer_512* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BUFFER_512		8843  /**/
+flag asn1SccBuffer_512_Decode(asn1SccBuffer_512* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    int nCount; 
+    
+    byte arr[2048];
+} asn1SccBuffer_2048;
+
+flag asn1SccBuffer_2048_Equal(const asn1SccBuffer_2048* pVal1, const asn1SccBuffer_2048* pVal2);
+
+void asn1SccBuffer_2048_Initialize(asn1SccBuffer_2048* pVal);
+
+#define ERR_BUFFER_2048		8848  /**/
+flag asn1SccBuffer_2048_IsConstraintValid(const asn1SccBuffer_2048* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BUFFER_2048		8849  /**/
+#define asn1SccBuffer_2048_REQUIRED_BYTES_FOR_ENCODING       2050 
+#define asn1SccBuffer_2048_REQUIRED_BITS_FOR_ENCODING        16395
+
+flag asn1SccBuffer_2048_Encode(const asn1SccBuffer_2048* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BUFFER_2048		8850  /**/
+flag asn1SccBuffer_2048_Decode(asn1SccBuffer_2048* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef enum {
+    asn1SccPlanCmdStatus_idle = 0,
+    asn1SccplanningTrajectory = 1,
+    asn1SccinvalidTrajectory = 2,
+    asn1SccexecutingTrajectory = 3,
+    asn1SccstoppedTrajectory = 4,
+    asn1SccfinishedTrajectory = 5
+} asn1SccPlanCmdStatus;
+
+flag asn1SccPlanCmdStatus_Equal(const asn1SccPlanCmdStatus* pVal1, const asn1SccPlanCmdStatus* pVal2);
+
+void asn1SccPlanCmdStatus_Initialize(asn1SccPlanCmdStatus* pVal);
+
+#define ERR_PLANCMDSTATUS		8855  /**/
+flag asn1SccPlanCmdStatus_IsConstraintValid(const asn1SccPlanCmdStatus* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PLANCMDSTATUS		8856  /**/
+#define asn1SccPlanCmdStatus_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccPlanCmdStatus_REQUIRED_BITS_FOR_ENCODING        3
+
+flag asn1SccPlanCmdStatus_Encode(const asn1SccPlanCmdStatus* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PLANCMDSTATUS		8857  /**/
+flag asn1SccPlanCmdStatus_Decode(asn1SccPlanCmdStatus* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef enum {
+    asn1SccPathPlannerStatus_idle = 0,
+    asn1Scccomputing = 1
+} asn1SccPathPlannerStatus;
+
+flag asn1SccPathPlannerStatus_Equal(const asn1SccPathPlannerStatus* pVal1, const asn1SccPathPlannerStatus* pVal2);
+
+void asn1SccPathPlannerStatus_Initialize(asn1SccPathPlannerStatus* pVal);
+
+#define ERR_PATHPLANNERSTATUS		8862  /**/
+flag asn1SccPathPlannerStatus_IsConstraintValid(const asn1SccPathPlannerStatus* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PATHPLANNERSTATUS		8863  /**/
+#define asn1SccPathPlannerStatus_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccPathPlannerStatus_REQUIRED_BITS_FOR_ENCODING        1
+
+flag asn1SccPathPlannerStatus_Encode(const asn1SccPathPlannerStatus* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PATHPLANNERSTATUS		8864  /**/
+flag asn1SccPathPlannerStatus_Decode(asn1SccPathPlannerStatus* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef enum {
+    asn1Sccstopped = 0,
+    asn1Sccfinished = 1
+} asn1SccTrajectoryStatus;
+
+flag asn1SccTrajectoryStatus_Equal(const asn1SccTrajectoryStatus* pVal1, const asn1SccTrajectoryStatus* pVal2);
+
+void asn1SccTrajectoryStatus_Initialize(asn1SccTrajectoryStatus* pVal);
+
+#define ERR_TRAJECTORYSTATUS		8869  /**/
+flag asn1SccTrajectoryStatus_IsConstraintValid(const asn1SccTrajectoryStatus* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_TRAJECTORYSTATUS		8870  /**/
+#define asn1SccTrajectoryStatus_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccTrajectoryStatus_REQUIRED_BITS_FOR_ENCODING        1
+
+flag asn1SccTrajectoryStatus_Encode(const asn1SccTrajectoryStatus* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_TRAJECTORYSTATUS		8871  /**/
+flag asn1SccTrajectoryStatus_Decode(asn1SccTrajectoryStatus* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef enum {
+    asn1SccplanningHome = 0,
+    asn1SccplanningMove = 1
+} asn1SccCommandType;
+
+flag asn1SccCommandType_Equal(const asn1SccCommandType* pVal1, const asn1SccCommandType* pVal2);
+
+void asn1SccCommandType_Initialize(asn1SccCommandType* pVal);
+
+#define ERR_COMMANDTYPE		8876  /**/
+flag asn1SccCommandType_IsConstraintValid(const asn1SccCommandType* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_COMMANDTYPE		8877  /**/
+#define asn1SccCommandType_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccCommandType_REQUIRED_BITS_FOR_ENCODING        1
+
+flag asn1SccCommandType_Encode(const asn1SccCommandType* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_COMMANDTYPE		8878  /**/
+flag asn1SccCommandType_Decode(asn1SccCommandType* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef enum {
+    asn1Sccpus_CCSDS_V1 = 0
+} asn1SccPusPacketVersion;
+
+flag asn1SccPusPacketVersion_Equal(const asn1SccPusPacketVersion* pVal1, const asn1SccPusPacketVersion* pVal2);
+
+void asn1SccPusPacketVersion_Initialize(asn1SccPusPacketVersion* pVal);
+
+#define ERR_PUSPACKETVERSION		51893  /**/
+flag asn1SccPusPacketVersion_IsConstraintValid(const asn1SccPusPacketVersion* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSPACKETVERSION		51894  /**/
+#define asn1SccPusPacketVersion_REQUIRED_BYTES_FOR_ENCODING       0 
+#define asn1SccPusPacketVersion_REQUIRED_BITS_FOR_ENCODING        0
+
+flag asn1SccPusPacketVersion_Encode(const asn1SccPusPacketVersion* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSPACKETVERSION		51895  /**/
+flag asn1SccPusPacketVersion_Decode(asn1SccPusPacketVersion* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef enum {
+    asn1Sccpus_TM = 0,
+    asn1Sccpus_TC = 1
+} asn1SccPusPacketType;
+
+flag asn1SccPusPacketType_Equal(const asn1SccPusPacketType* pVal1, const asn1SccPusPacketType* pVal2);
+
+void asn1SccPusPacketType_Initialize(asn1SccPusPacketType* pVal);
+
+#define ERR_PUSPACKETTYPE		51900  /**/
+flag asn1SccPusPacketType_IsConstraintValid(const asn1SccPusPacketType* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSPACKETTYPE		51901  /**/
+#define asn1SccPusPacketType_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccPusPacketType_REQUIRED_BITS_FOR_ENCODING        1
+
+flag asn1SccPusPacketType_Encode(const asn1SccPusPacketType* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSPACKETTYPE		51902  /**/
+flag asn1SccPusPacketType_Decode(asn1SccPusPacketType* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef flag asn1SccPusSecondaryHeaderFlag;
+
+
+flag asn1SccPusSecondaryHeaderFlag_Equal(const asn1SccPusSecondaryHeaderFlag* pVal1, const asn1SccPusSecondaryHeaderFlag* pVal2);
+
+void asn1SccPusSecondaryHeaderFlag_Initialize(asn1SccPusSecondaryHeaderFlag* pVal);
+
+#define ERR_PUSSECONDARYHEADERFLAG		51907  /**/
+flag asn1SccPusSecondaryHeaderFlag_IsConstraintValid(const asn1SccPusSecondaryHeaderFlag* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSSECONDARYHEADERFLAG		51908  /**/
+#define asn1SccPusSecondaryHeaderFlag_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccPusSecondaryHeaderFlag_REQUIRED_BITS_FOR_ENCODING        1
+
+flag asn1SccPusSecondaryHeaderFlag_Encode(const asn1SccPusSecondaryHeaderFlag* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSSECONDARYHEADERFLAG		51909  /**/
+flag asn1SccPusSecondaryHeaderFlag_Decode(asn1SccPusSecondaryHeaderFlag* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef enum {
+    asn1Sccpus_STANDALONE_PACKET = 3
+} asn1SccPusSequenceFlags;
+
+flag asn1SccPusSequenceFlags_Equal(const asn1SccPusSequenceFlags* pVal1, const asn1SccPusSequenceFlags* pVal2);
+
+void asn1SccPusSequenceFlags_Initialize(asn1SccPusSequenceFlags* pVal);
+
+#define ERR_PUSSEQUENCEFLAGS		51925  /**/
+flag asn1SccPusSequenceFlags_IsConstraintValid(const asn1SccPusSequenceFlags* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSSEQUENCEFLAGS		51926  /**/
+#define asn1SccPusSequenceFlags_REQUIRED_BYTES_FOR_ENCODING       0 
+#define asn1SccPusSequenceFlags_REQUIRED_BITS_FOR_ENCODING        0
+
+flag asn1SccPusSequenceFlags_Encode(const asn1SccPusSequenceFlags* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSSEQUENCEFLAGS		51927  /**/
+flag asn1SccPusSequenceFlags_Decode(asn1SccPusSequenceFlags* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusPacketVersion packetVersion;
+    asn1SccPusPacketType packetType;
+    asn1SccPusSecondaryHeaderFlag secondaryHeaderFlag;
+    asn1SccPusApid apid;
+    asn1SccPusSequenceFlags sequenceFlags;
+    asn1SccPusSequenceCount sequenceCount;
+} asn1SccPusSt01RequestId;
+
+flag asn1SccPusSt01RequestId_Equal(const asn1SccPusSt01RequestId* pVal1, const asn1SccPusSt01RequestId* pVal2);
+
+void asn1SccPusSt01RequestId_Initialize(asn1SccPusSt01RequestId* pVal);
+
+#define ERR_PUSST01REQUESTID_PACKETVERSION		52115  /**/
+#define ERR_PUSST01REQUESTID_PACKETTYPE		52126  /**/
+#define ERR_PUSST01REQUESTID_SECONDARYHEADERFLAG		52137  /**/
+#define ERR_PUSST01REQUESTID_APID		52148  /**/
+#define ERR_PUSST01REQUESTID_SEQUENCEFLAGS		52163  /**/
+#define ERR_PUSST01REQUESTID_SEQUENCECOUNT		52174  /**/
+flag asn1SccPusSt01RequestId_IsConstraintValid(const asn1SccPusSt01RequestId* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSST01REQUESTID		52189  /**/
+#define ERR_UPER_ENCODE_PUSST01REQUESTID_PACKETVERSION_2		52122  /**/
+#define ERR_UPER_ENCODE_PUSST01REQUESTID_PACKETTYPE_2		52133  /**/
+#define ERR_UPER_ENCODE_PUSST01REQUESTID_SECONDARYHEADERFLAG_2		52144  /**/
+#define ERR_UPER_ENCODE_PUSST01REQUESTID_APID_2_2		52159  /**/
+#define ERR_UPER_ENCODE_PUSST01REQUESTID_SEQUENCEFLAGS_2		52170  /**/
+#define ERR_UPER_ENCODE_PUSST01REQUESTID_SEQUENCECOUNT_2_2		52185  /**/
+#define asn1SccPusSt01RequestId_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccPusSt01RequestId_REQUIRED_BITS_FOR_ENCODING        27
+
+flag asn1SccPusSt01RequestId_Encode(const asn1SccPusSt01RequestId* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSST01REQUESTID		52190  /**/
+#define ERR_UPER_DECODE_PUSST01REQUESTID_PACKETVERSION_2		52123  /**/
+#define ERR_UPER_DECODE_PUSST01REQUESTID_PACKETTYPE_2		52134  /**/
+#define ERR_UPER_DECODE_PUSST01REQUESTID_SECONDARYHEADERFLAG_2		52145  /**/
+#define ERR_UPER_DECODE_PUSST01REQUESTID_APID_2_2		52160  /**/
+#define ERR_UPER_DECODE_PUSST01REQUESTID_SEQUENCEFLAGS_2		52171  /**/
+#define ERR_UPER_DECODE_PUSST01REQUESTID_SEQUENCECOUNT_2_2		52186  /**/
+flag asn1SccPusSt01RequestId_Decode(asn1SccPusSt01RequestId* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusSt01RequestId request;
+    asn1SccPusStepId step;
+    asn1SccPusSt01Failure failure;
+} asn1SccPusTM_1_X_Data;
+
+flag asn1SccPusTM_1_X_Data_Equal(const asn1SccPusTM_1_X_Data* pVal1, const asn1SccPusTM_1_X_Data* pVal2);
+
+void asn1SccPusTM_1_X_Data_Initialize(asn1SccPusTM_1_X_Data* pVal);
+
+#define ERR_PUSTM_1_X_DATA_REQUEST_PACKETVERSION		52263  /**/
+#define ERR_PUSTM_1_X_DATA_REQUEST_PACKETTYPE		52274  /**/
+#define ERR_PUSTM_1_X_DATA_REQUEST_SECONDARYHEADERFLAG		52285  /**/
+#define ERR_PUSTM_1_X_DATA_REQUEST_APID		52296  /**/
+#define ERR_PUSTM_1_X_DATA_REQUEST_SEQUENCEFLAGS		52311  /**/
+#define ERR_PUSTM_1_X_DATA_REQUEST_SEQUENCECOUNT		52322  /**/
+#define ERR_PUSTM_1_X_DATA_STEP		52347  /**/
+#define ERR_PUSTM_1_X_DATA_FAILURE_CODE		52362  /**/
+#define ERR_PUSTM_1_X_DATA_FAILURE_INFO_SUBCODE		52377  /**/
+#define ERR_PUSTM_1_X_DATA_FAILURE_INFO_DATA		52388  /**/
+#define ERR_PUSTM_1_X_DATA_FAILURE_INFO_ADDRESS		52399  /**/
+flag asn1SccPusTM_1_X_Data_IsConstraintValid(const asn1SccPusTM_1_X_Data* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTM_1_X_DATA		52434  /**/
+#define ERR_UPER_ENCODE_PUSTM_1_X_DATA_REQUEST_2		52343  /**/
+#define ERR_UPER_ENCODE_PUSTM_1_X_DATA_STEP_2_2		52358  /**/
+#define ERR_UPER_ENCODE_PUSTM_1_X_DATA_FAILURE_2		52430  /**/
+#define asn1SccPusTM_1_X_Data_REQUIRED_BYTES_FOR_ENCODING       28 
+#define asn1SccPusTM_1_X_Data_REQUIRED_BITS_FOR_ENCODING        218
+
+flag asn1SccPusTM_1_X_Data_Encode(const asn1SccPusTM_1_X_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTM_1_X_DATA		52435  /**/
+#define ERR_UPER_DECODE_PUSTM_1_X_DATA_REQUEST_2		52344  /**/
+#define ERR_UPER_DECODE_PUSTM_1_X_DATA_STEP_2_2		52359  /**/
+#define ERR_UPER_DECODE_PUSTM_1_X_DATA_FAILURE_2		52431  /**/
+flag asn1SccPusTM_1_X_Data_Decode(asn1SccPusTM_1_X_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    enum {
+        PusTmSourceData_NONE,
+        st_1_X_PRESENT,
+        st_3_25_PRESENT,
+        st_5_X_PRESENT,
+        st_9_2_PRESENT,
+        st_20_2_PRESENT,
+        st_23_4_PRESENT,
+        st_200_2_PRESENT,
+        st_201_4_PRESENT 
+    } kind;
+    union {
+        asn1SccPusTM_1_X_Data st_1_X;
+        asn1SccPusTM_3_25_Data st_3_25;
+        asn1SccPusTM_5_X_Data st_5_X;
+        asn1SccPusTM_9_2_Data st_9_2;
+        asn1SccPusTC_TM_20_X_Data st_20_2;
+        asn1SccPusTC_TM_23_1_4_Data st_23_4;
+        asn1SccPusTM_200_2_Data st_200_2;
+        asn1SccPusTM_201_4_Data st_201_4;
+    } u; 
+} asn1SccPusTmSourceData;
+
+flag asn1SccPusTmSourceData_Equal(const asn1SccPusTmSourceData* pVal1, const asn1SccPusTmSourceData* pVal2);
+
+void asn1SccPusTmSourceData_Initialize(asn1SccPusTmSourceData* pVal);
+
+#define ERR_PUSTMSOURCEDATA		9579  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_PACKETVERSION		9071  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_PACKETTYPE		9082  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		9093  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_APID		9104  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_SEQUENCEFLAGS		9119  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_REQUEST_SEQUENCECOUNT		9130  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_STEP		9155  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_FAILURE_CODE		9170  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_FAILURE_INFO_SUBCODE		9185  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_FAILURE_INFO_DATA		9196  /**/
+#define ERR_PUSTMSOURCEDATA_ST_1_X_FAILURE_INFO_ADDRESS		9207  /**/
+#define ERR_PUSTMSOURCEDATA_ST_3_25_REPORTID		9252  /**/
+#define ERR_PUSTMSOURCEDATA_ST_3_25_PARAMETERS_ELM		9267  /**/
+#define ERR_PUSTMSOURCEDATA_ST_3_25_PARAMETERS		9282  /**/
+#define ERR_PUSTMSOURCEDATA_ST_5_X_EVENTID		9303  /**/
+#define ERR_PUSTMSOURCEDATA_ST_5_X_DATA_DATA1		9318  /**/
+#define ERR_PUSTMSOURCEDATA_ST_5_X_DATA_DATA2		9329  /**/
+#define ERR_PUSTMSOURCEDATA_ST_9_2_EXPONENTIALRATE		9364  /**/
+#define ERR_PUSTMSOURCEDATA_ST_9_2_TIME_TV_SEC		9379  /**/
+#define ERR_PUSTMSOURCEDATA_ST_9_2_TIME_TV_NSEC		9390  /**/
+#define ERR_PUSTMSOURCEDATA_ST_20_2_PARAMID		9421  /**/
+#define ERR_PUSTMSOURCEDATA_ST_20_2_VALUE		9436  /**/
+#define ERR_PUSTMSOURCEDATA_ST_23_4_REPOSITORY		9461  /**/
+#define ERR_PUSTMSOURCEDATA_ST_23_4_FILENAME		9472  /**/
+#define ERR_PUSTMSOURCEDATA_ST_23_4_MAXSIZE		9483  /**/
+#define ERR_PUSTMSOURCEDATA_ST_200_2_OBSERVATION		9504  /**/
+#define ERR_PUSTMSOURCEDATA_ST_201_4_OBSERVATION_ID		9529  /**/
+#define ERR_PUSTMSOURCEDATA_ST_201_4_OBSERVATION_CODE		9544  /**/
+flag asn1SccPusTmSourceData_IsConstraintValid(const asn1SccPusTmSourceData* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA		9580  /**/
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_1_X_2		9248  /**/
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_3_25_2		9299  /**/
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_5_X_2_2		9360  /**/
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_9_2_2		9417  /**/
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_20_2_2		9457  /**/
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_23_4_2		9500  /**/
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_200_2_2		9525  /**/
+#define ERR_UPER_ENCODE_PUSTMSOURCEDATA_ST_201_4_2		9575  /**/
+#define asn1SccPusTmSourceData_REQUIRED_BYTES_FOR_ENCODING       163 
+#define asn1SccPusTmSourceData_REQUIRED_BITS_FOR_ENCODING        1300
+
+flag asn1SccPusTmSourceData_Encode(const asn1SccPusTmSourceData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA		9581  /**/
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_1_X_2		9249  /**/
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_3_25_2		9300  /**/
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_5_X_2_2		9361  /**/
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_9_2_2		9418  /**/
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_20_2_2		9458  /**/
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_23_4_2		9501  /**/
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_200_2_2		9526  /**/
+#define ERR_UPER_DECODE_PUSTMSOURCEDATA_ST_201_4_2		9576  /**/
+flag asn1SccPusTmSourceData_Decode(asn1SccPusTmSourceData* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef enum {
+    asn1Sccpus_V0 = 0,
+    asn1Sccpus_V1 = 1,
+    asn1Sccpus_V2 = 2,
+    asn1Sccpus_INVALID_VERSION = 15
+} asn1SccPusVersionNumber;
+
+flag asn1SccPusVersionNumber_Equal(const asn1SccPusVersionNumber* pVal1, const asn1SccPusVersionNumber* pVal2);
+
+void asn1SccPusVersionNumber_Initialize(asn1SccPusVersionNumber* pVal);
+
+#define ERR_PUSVERSIONNUMBER		51954  /**/
+flag asn1SccPusVersionNumber_IsConstraintValid(const asn1SccPusVersionNumber* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSVERSIONNUMBER		51955  /**/
+#define asn1SccPusVersionNumber_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccPusVersionNumber_REQUIRED_BITS_FOR_ENCODING        2
+
+flag asn1SccPusVersionNumber_Encode(const asn1SccPusVersionNumber* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSVERSIONNUMBER		51956  /**/
+flag asn1SccPusVersionNumber_Decode(asn1SccPusVersionNumber* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusVersionNumber pusVersion;
+    asn1SccPusTimeReferenceStatus timeRefStatus;
+    asn1SccPusServiceType serviceId;
+    asn1SccPusSubserviceType subtype;
+    asn1SccPusMessageTypeCounter msgTypeCount;
+    asn1SccPusApid destination;
+    asn1SccPusTime time;
+} asn1SccPusTmHeader;
+
+flag asn1SccPusTmHeader_Equal(const asn1SccPusTmHeader* pVal1, const asn1SccPusTmHeader* pVal2);
+
+void asn1SccPusTmHeader_Initialize(asn1SccPusTmHeader* pVal);
+
+#define ERR_PUSTMHEADER_PUSVERSION		8947  /**/
+#define ERR_PUSTMHEADER_TIMEREFSTATUS		8958  /**/
+#define ERR_PUSTMHEADER_SERVICEID		8973  /**/
+#define ERR_PUSTMHEADER_SUBTYPE		8988  /**/
+#define ERR_PUSTMHEADER_MSGTYPECOUNT		9003  /**/
+#define ERR_PUSTMHEADER_DESTINATION		9018  /**/
+#define ERR_PUSTMHEADER_TIME_TV_SEC		9033  /**/
+#define ERR_PUSTMHEADER_TIME_TV_NSEC		9044  /**/
+flag asn1SccPusTmHeader_IsConstraintValid(const asn1SccPusTmHeader* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTMHEADER		9065  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADER_PUSVERSION_2		8954  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADER_TIMEREFSTATUS_2_2		8969  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADER_SERVICEID_2_2		8984  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADER_SUBTYPE_2_2		8999  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADER_MSGTYPECOUNT_2_2		9014  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADER_DESTINATION_2_2		9029  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADER_TIME_2		9061  /**/
+#define asn1SccPusTmHeader_REQUIRED_BYTES_FOR_ENCODING       22 
+#define asn1SccPusTmHeader_REQUIRED_BITS_FOR_ENCODING        176
+
+flag asn1SccPusTmHeader_Encode(const asn1SccPusTmHeader* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTMHEADER		9066  /**/
+#define ERR_UPER_DECODE_PUSTMHEADER_PUSVERSION_2		8955  /**/
+#define ERR_UPER_DECODE_PUSTMHEADER_TIMEREFSTATUS_2_2		8970  /**/
+#define ERR_UPER_DECODE_PUSTMHEADER_SERVICEID_2_2		8985  /**/
+#define ERR_UPER_DECODE_PUSTMHEADER_SUBTYPE_2_2		9000  /**/
+#define ERR_UPER_DECODE_PUSTMHEADER_MSGTYPECOUNT_2_2		9015  /**/
+#define ERR_UPER_DECODE_PUSTMHEADER_DESTINATION_2_2		9030  /**/
+#define ERR_UPER_DECODE_PUSTMHEADER_TIME_2		9062  /**/
+flag asn1SccPusTmHeader_Decode(asn1SccPusTmHeader* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusTmHeader header;
+    asn1SccPusTmSourceData data;
+} asn1SccPusTmHeaderData;
+
+flag asn1SccPusTmHeaderData_Equal(const asn1SccPusTmHeaderData* pVal1, const asn1SccPusTmHeaderData* pVal2);
+
+void asn1SccPusTmHeaderData_Initialize(asn1SccPusTmHeaderData* pVal);
+
+#define ERR_PUSTMHEADERDATA_HEADER_PUSVERSION		22662  /**/
+#define ERR_PUSTMHEADERDATA_HEADER_TIMEREFSTATUS		22673  /**/
+#define ERR_PUSTMHEADERDATA_HEADER_SERVICEID		22688  /**/
+#define ERR_PUSTMHEADERDATA_HEADER_SUBTYPE		22703  /**/
+#define ERR_PUSTMHEADERDATA_HEADER_MSGTYPECOUNT		22718  /**/
+#define ERR_PUSTMHEADERDATA_HEADER_DESTINATION		22733  /**/
+#define ERR_PUSTMHEADERDATA_HEADER_TIME_TV_SEC		22748  /**/
+#define ERR_PUSTMHEADERDATA_HEADER_TIME_TV_NSEC		22759  /**/
+#define ERR_PUSTMHEADERDATA_DATA		23298  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		22790  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		22801  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		22812  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_APID		22823  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		22838  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		22849  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_STEP		22874  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_FAILURE_CODE		22889  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		22904  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_FAILURE_INFO_DATA		22915  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		22926  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_3_25_REPORTID		22971  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_3_25_PARAMETERS_ELM		22986  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_3_25_PARAMETERS		23001  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_5_X_EVENTID		23022  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_5_X_DATA_DATA1		23037  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_5_X_DATA_DATA2		23048  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_9_2_EXPONENTIALRATE		23083  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_9_2_TIME_TV_SEC		23098  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_9_2_TIME_TV_NSEC		23109  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_20_2_PARAMID		23140  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_20_2_VALUE		23155  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_23_4_REPOSITORY		23180  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_23_4_FILENAME		23191  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_23_4_MAXSIZE		23202  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_200_2_OBSERVATION		23223  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_201_4_OBSERVATION_ID		23248  /**/
+#define ERR_PUSTMHEADERDATA_DATA_ST_201_4_OBSERVATION_CODE		23263  /**/
+flag asn1SccPusTmHeaderData_IsConstraintValid(const asn1SccPusTmHeaderData* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTMHEADERDATA		23309  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADERDATA_HEADER_2		22786  /**/
+#define ERR_UPER_ENCODE_PUSTMHEADERDATA_DATA_2		23305  /**/
+#define asn1SccPusTmHeaderData_REQUIRED_BYTES_FOR_ENCODING       185 
+#define asn1SccPusTmHeaderData_REQUIRED_BITS_FOR_ENCODING        1476
+
+flag asn1SccPusTmHeaderData_Encode(const asn1SccPusTmHeaderData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTMHEADERDATA		23310  /**/
+#define ERR_UPER_DECODE_PUSTMHEADERDATA_HEADER_2		22787  /**/
+#define ERR_UPER_DECODE_PUSTMHEADERDATA_DATA_2		23306  /**/
+flag asn1SccPusTmHeaderData_Decode(asn1SccPusTmHeaderData* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    flag acceptanceReportRequested;
+    flag startReportRequested;
+    flag progressReportRequested;
+    flag completionReportRequested;
+} asn1SccPusAcknowledgementFlags;
+
+flag asn1SccPusAcknowledgementFlags_Equal(const asn1SccPusAcknowledgementFlags* pVal1, const asn1SccPusAcknowledgementFlags* pVal2);
+
+void asn1SccPusAcknowledgementFlags_Initialize(asn1SccPusAcknowledgementFlags* pVal);
+
+#define ERR_PUSACKNOWLEDGEMENTFLAGS_ACCEPTANCEREPORTREQUESTED		51983  /**/
+#define ERR_PUSACKNOWLEDGEMENTFLAGS_STARTREPORTREQUESTED		51990  /**/
+#define ERR_PUSACKNOWLEDGEMENTFLAGS_PROGRESSREPORTREQUESTED		51997  /**/
+#define ERR_PUSACKNOWLEDGEMENTFLAGS_COMPLETIONREPORTREQUESTED		52004  /**/
+flag asn1SccPusAcknowledgementFlags_IsConstraintValid(const asn1SccPusAcknowledgementFlags* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS		52011  /**/
+#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS_ACCEPTANCEREPORTREQUESTED		51984  /**/
+#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS_STARTREPORTREQUESTED		51991  /**/
+#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS_PROGRESSREPORTREQUESTED		51998  /**/
+#define ERR_UPER_ENCODE_PUSACKNOWLEDGEMENTFLAGS_COMPLETIONREPORTREQUESTED		52005  /**/
+#define asn1SccPusAcknowledgementFlags_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccPusAcknowledgementFlags_REQUIRED_BITS_FOR_ENCODING        4
+
+flag asn1SccPusAcknowledgementFlags_Encode(const asn1SccPusAcknowledgementFlags* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS		52012  /**/
+#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS_ACCEPTANCEREPORTREQUESTED		51985  /**/
+#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS_STARTREPORTREQUESTED		51992  /**/
+#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS_PROGRESSREPORTREQUESTED		51999  /**/
+#define ERR_UPER_DECODE_PUSACKNOWLEDGEMENTFLAGS_COMPLETIONREPORTREQUESTED		52006  /**/
+flag asn1SccPusAcknowledgementFlags_Decode(asn1SccPusAcknowledgementFlags* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusVersionNumber pusVersion;
+    asn1SccPusAcknowledgementFlags ackFlags;
+    asn1SccPusServiceType serviceId;
+    asn1SccPusSubserviceType subtype;
+    asn1SccPusApid source;
+} asn1SccPusTcHeader;
+
+flag asn1SccPusTcHeader_Equal(const asn1SccPusTcHeader* pVal1, const asn1SccPusTcHeader* pVal2);
+
+void asn1SccPusTcHeader_Initialize(asn1SccPusTcHeader* pVal);
+
+#define ERR_PUSTCHEADER_PUSVERSION		9586  /**/
+#define ERR_PUSTCHEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		9597  /**/
+#define ERR_PUSTCHEADER_ACKFLAGS_STARTREPORTREQUESTED		9604  /**/
+#define ERR_PUSTCHEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		9611  /**/
+#define ERR_PUSTCHEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		9618  /**/
+#define ERR_PUSTCHEADER_SERVICEID		9635  /**/
+#define ERR_PUSTCHEADER_SUBTYPE		9650  /**/
+#define ERR_PUSTCHEADER_SOURCE		9665  /**/
+flag asn1SccPusTcHeader_IsConstraintValid(const asn1SccPusTcHeader* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTCHEADER		9680  /**/
+#define ERR_UPER_ENCODE_PUSTCHEADER_PUSVERSION_2		9593  /**/
+#define ERR_UPER_ENCODE_PUSTCHEADER_ACKFLAGS_2		9631  /**/
+#define ERR_UPER_ENCODE_PUSTCHEADER_SERVICEID_2_2		9646  /**/
+#define ERR_UPER_ENCODE_PUSTCHEADER_SUBTYPE_2_2		9661  /**/
+#define ERR_UPER_ENCODE_PUSTCHEADER_SOURCE_2_2		9676  /**/
+#define asn1SccPusTcHeader_REQUIRED_BYTES_FOR_ENCODING       5 
+#define asn1SccPusTcHeader_REQUIRED_BITS_FOR_ENCODING        33
+
+flag asn1SccPusTcHeader_Encode(const asn1SccPusTcHeader* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTCHEADER		9681  /**/
+#define ERR_UPER_DECODE_PUSTCHEADER_PUSVERSION_2		9594  /**/
+#define ERR_UPER_DECODE_PUSTCHEADER_ACKFLAGS_2		9632  /**/
+#define ERR_UPER_DECODE_PUSTCHEADER_SERVICEID_2_2		9647  /**/
+#define ERR_UPER_DECODE_PUSTCHEADER_SUBTYPE_2_2		9662  /**/
+#define ERR_UPER_DECODE_PUSTCHEADER_SOURCE_2_2		9677  /**/
+flag asn1SccPusTcHeader_Decode(asn1SccPusTcHeader* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusTcHeader header;
+    asn1SccPusTcApplicationDataReduced data;
+} asn1SccPusPacketDataReduced_tcData;
+
+typedef struct {
+    enum {
+        PusPacketDataReduced_NONE,
+        PusPacketDataReduced_tmData_PRESENT,
+        PusPacketDataReduced_tmDataNoHeader_PRESENT,
+        PusPacketDataReduced_tcData_PRESENT,
+        PusPacketDataReduced_tcDataNoHeader_PRESENT 
+    } kind;
+    union {
+        asn1SccPusTmHeaderData tmData;
+        asn1SccPusTmSourceData tmDataNoHeader;
+        asn1SccPusPacketDataReduced_tcData tcData;
+        asn1SccPusTcApplicationDataReduced tcDataNoHeader;
+    } u; 
+} asn1SccPusPacketDataReduced;
+
+flag asn1SccPusPacketDataReduced_tcData_Equal(const asn1SccPusPacketDataReduced_tcData* pVal1, const asn1SccPusPacketDataReduced_tcData* pVal2);
+
+flag asn1SccPusPacketDataReduced_Equal(const asn1SccPusPacketDataReduced* pVal1, const asn1SccPusPacketDataReduced* pVal2);
+
+void asn1SccPusPacketDataReduced_tcData_Initialize(asn1SccPusPacketDataReduced_tcData* pVal);
+void asn1SccPusPacketDataReduced_Initialize(asn1SccPusPacketDataReduced* pVal);
+
+#define ERR_PUSPACKETDATAREDUCED		37498  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_PUSVERSION		35250  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_TIMEREFSTATUS		35261  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_SERVICEID		35276  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_SUBTYPE		35291  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_MSGTYPECOUNT		35306  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_DESTINATION		35321  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_TIME_TV_SEC		35336  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_TIME_TV_NSEC		35347  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA		35886  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		35378  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		35389  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		35400  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_APID		35411  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		35426  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		35437  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_STEP		35462  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_FAILURE_CODE		35477  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		35492  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		35503  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		35514  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_3_25_REPORTID		35559  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		35574  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_3_25_PARAMETERS		35589  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_5_X_EVENTID		35610  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_5_X_DATA_DATA1		35625  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_5_X_DATA_DATA2		35636  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		35671  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_9_2_TIME_TV_SEC		35686  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		35697  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_20_2_PARAMID		35728  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_20_2_VALUE		35743  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_23_4_REPOSITORY		35768  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_23_4_FILENAME		35779  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_23_4_MAXSIZE		35790  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_200_2_OBSERVATION		35811  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_201_4_OBSERVATION_ID		35836  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		35851  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER		36415  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		35907  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		35918  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		35929  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_APID		35940  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		35955  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		35966  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_STEP		35991  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_FAILURE_CODE		36006  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		36021  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		36032  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		36043  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_3_25_REPORTID		36088  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		36103  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_3_25_PARAMETERS		36118  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_5_X_EVENTID		36139  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_5_X_DATA_DATA1		36154  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_5_X_DATA_DATA2		36165  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		36200  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		36215  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		36226  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_20_2_PARAMID		36257  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_20_2_VALUE		36272  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_23_4_REPOSITORY		36297  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_23_4_FILENAME		36308  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_23_4_MAXSIZE		36319  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_200_2_OBSERVATION		36340  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		36365  /**/
+#define ERR_PUSPACKETDATAREDUCED_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		36380  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_PUSVERSION		36426  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		36437  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		36444  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		36451  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		36458  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SERVICEID		36475  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SUBTYPE		36490  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SOURCE		36505  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA		37000  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_8_1_FUNCTIONID		36530  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		36555  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_12_1_2_PMONID		36580  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		36635  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_18_4_5_STEPID		36666  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_18_13_REPOSITORY		36697  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_18_13_FILENAME		36708  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_19_X_EVENTID		36729  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_20_X_PARAMID		36754  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_20_X_VALUE		36769  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_1_REPOSITORY		36794  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_1_FILENAME		36805  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_1_MAXSIZE		36816  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_2_3_REPOSITORY		36837  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_2_3_FILENAME		36848  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		36869  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_14_SOURCEFILENAME		36880  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		36891  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_23_14_TARGETFILENAME		36902  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_200_1_CONTROLID		36923  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_201_1_3_POSITION_ELM		36948  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		36969  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER		37487  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_8_1_FUNCTIONID		37017  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		37042  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_12_1_2_PMONID		37067  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		37122  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_18_4_5_STEPID		37153  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_18_13_REPOSITORY		37184  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_18_13_FILENAME		37195  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_19_X_EVENTID		37216  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_20_X_PARAMID		37241  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_20_X_VALUE		37256  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_1_REPOSITORY		37281  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_1_FILENAME		37292  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_1_MAXSIZE		37303  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_2_3_REPOSITORY		37324  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_2_3_FILENAME		37335  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		37356  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		37367  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		37378  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_23_14_TARGETFILENAME		37389  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_200_1_CONTROLID		37410  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		37435  /**/
+#define ERR_PUSPACKETDATAREDUCED_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		37456  /**/
+flag asn1SccPusPacketDataReduced_IsConstraintValid(const asn1SccPusPacketDataReduced* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED		37499  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TMDATA_2		35903  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TMDATANOHEADER_2		36422  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TCDATA		37011  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TCDATA_HEADER_2		36526  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TCDATA_DATA_2		37007  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATAREDUCED_TCDATANOHEADER_2		37494  /**/
+#define asn1SccPusPacketDataReduced_REQUIRED_BYTES_FOR_ENCODING       185 
+#define asn1SccPusPacketDataReduced_REQUIRED_BITS_FOR_ENCODING        1478
+
+flag asn1SccPusPacketDataReduced_Encode(const asn1SccPusPacketDataReduced* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED		37500  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TMDATA_2		35904  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TMDATANOHEADER_2		36423  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TCDATA		37012  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TCDATA_HEADER_2		36527  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TCDATA_DATA_2		37008  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATAREDUCED_TCDATANOHEADER_2		37495  /**/
+flag asn1SccPusPacketDataReduced_Decode(asn1SccPusPacketDataReduced* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusPacketVersion packetVersion;
+    asn1SccPusPacketType packetType;
+    asn1SccPusSecondaryHeaderFlag secondaryHeaderFlag;
+    asn1SccPusApid apid;
+    asn1SccPusSequenceFlags sequenceFlags;
+    asn1SccPusSequenceCount sequenceCount;
+    asn1SccPusPacketDataLength dataLength;
+    asn1SccPusPacketDataReduced data;
+} asn1SccPusPacketReduced;
+
+flag asn1SccPusPacketReduced_Equal(const asn1SccPusPacketReduced* pVal1, const asn1SccPusPacketReduced* pVal2);
+
+void asn1SccPusPacketReduced_Initialize(asn1SccPusPacketReduced* pVal);
+
+#define ERR_PUSPACKETREDUCED_PACKETVERSION		49539  /**/
+#define ERR_PUSPACKETREDUCED_PACKETTYPE		49550  /**/
+#define ERR_PUSPACKETREDUCED_SECONDARYHEADERFLAG		49561  /**/
+#define ERR_PUSPACKETREDUCED_APID		49572  /**/
+#define ERR_PUSPACKETREDUCED_SEQUENCEFLAGS		49587  /**/
+#define ERR_PUSPACKETREDUCED_SEQUENCECOUNT		49598  /**/
+#define ERR_PUSPACKETREDUCED_DATALENGTH		49613  /**/
+#define ERR_PUSPACKETREDUCED_DATA		51876  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		49628  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		49639  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		49654  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		49669  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		49684  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		49699  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		49714  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		49725  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA		50264  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		49756  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		49767  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		49778  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		49789  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		49804  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		49815  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		49840  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		49855  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		49870  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		49881  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		49892  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		49937  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		49952  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		49967  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		49988  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		50003  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		50014  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		50049  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		50064  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		50075  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		50106  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		50121  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		50146  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		50157  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		50168  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		50189  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		50214  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		50229  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER		50793  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		50285  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		50296  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		50307  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		50318  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		50333  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		50344  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		50369  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		50384  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		50399  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		50410  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		50421  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		50466  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		50481  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		50496  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		50517  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		50532  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		50543  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		50578  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		50593  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		50604  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		50635  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		50650  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		50675  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		50686  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		50697  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		50718  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		50743  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		50758  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		50804  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		50815  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		50822  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		50829  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		50836  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		50853  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		50868  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		50883  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA		51378  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		50908  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		50933  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		50958  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		51013  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		51044  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		51075  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		51086  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		51107  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		51132  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		51147  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		51172  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		51183  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		51194  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		51215  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		51226  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		51247  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		51258  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		51269  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		51280  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		51301  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		51326  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		51347  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER		51865  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		51395  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		51420  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		51445  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		51500  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		51531  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		51562  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		51573  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		51594  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		51619  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		51634  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		51659  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		51670  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		51681  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		51702  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		51713  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		51734  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		51745  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		51756  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		51767  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		51788  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		51813  /**/
+#define ERR_PUSPACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		51834  /**/
+flag asn1SccPusPacketReduced_IsConstraintValid(const asn1SccPusPacketReduced* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED		51887  /**/
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED_PACKETVERSION_2		49546  /**/
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED_PACKETTYPE_2		49557  /**/
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED_SECONDARYHEADERFLAG_2		49568  /**/
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED_APID_2_2		49583  /**/
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED_SEQUENCEFLAGS_2		49594  /**/
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED_SEQUENCECOUNT_2_2		49609  /**/
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED_DATALENGTH_2_2		49624  /**/
+#define ERR_UPER_ENCODE_PUSPACKETREDUCED_DATA_2		51883  /**/
+#define asn1SccPusPacketReduced_REQUIRED_BYTES_FOR_ENCODING       191 
+#define asn1SccPusPacketReduced_REQUIRED_BITS_FOR_ENCODING        1521
+
+flag asn1SccPusPacketReduced_Encode(const asn1SccPusPacketReduced* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSPACKETREDUCED		51888  /**/
+#define ERR_UPER_DECODE_PUSPACKETREDUCED_PACKETVERSION_2		49547  /**/
+#define ERR_UPER_DECODE_PUSPACKETREDUCED_PACKETTYPE_2		49558  /**/
+#define ERR_UPER_DECODE_PUSPACKETREDUCED_SECONDARYHEADERFLAG_2		49569  /**/
+#define ERR_UPER_DECODE_PUSPACKETREDUCED_APID_2_2		49584  /**/
+#define ERR_UPER_DECODE_PUSPACKETREDUCED_SEQUENCEFLAGS_2		49595  /**/
+#define ERR_UPER_DECODE_PUSPACKETREDUCED_SEQUENCECOUNT_2_2		49610  /**/
+#define ERR_UPER_DECODE_PUSPACKETREDUCED_DATALENGTH_2_2		49625  /**/
+#define ERR_UPER_DECODE_PUSPACKETREDUCED_DATA_2		51884  /**/
+flag asn1SccPusPacketReduced_Decode(asn1SccPusPacketReduced* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusSt05EventId eventId;
+    asn1SccPusPacketReduced packetReduced;
+} asn1SccPusTC_19_1_Data;
+
+flag asn1SccPusTC_19_1_Data_Equal(const asn1SccPusTC_19_1_Data* pVal1, const asn1SccPusTC_19_1_Data* pVal2);
+
+void asn1SccPusTC_19_1_Data_Initialize(asn1SccPusTC_19_1_Data* pVal);
+
+#define ERR_PUSTC_19_1_DATA_EVENTID		9686  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_PACKETVERSION		9701  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_PACKETTYPE		9712  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_SECONDARYHEADERFLAG		9723  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_APID		9734  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_SEQUENCEFLAGS		9749  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_SEQUENCECOUNT		9760  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATALENGTH		9775  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA		12038  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		9790  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		9801  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		9816  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		9831  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		9846  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		9861  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		9876  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		9887  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA		10426  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		9918  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		9929  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		9940  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		9951  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		9966  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		9977  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		10002  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		10017  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		10032  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		10043  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		10054  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		10099  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		10114  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		10129  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		10150  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		10165  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		10176  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		10211  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		10226  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		10237  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		10268  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		10283  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		10308  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		10319  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		10330  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		10351  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		10376  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		10391  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER		10955  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		10447  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		10458  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		10469  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		10480  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		10495  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		10506  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		10531  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		10546  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		10561  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		10572  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		10583  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		10628  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		10643  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		10658  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		10679  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		10694  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		10705  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		10740  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		10755  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		10766  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		10797  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		10812  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		10837  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		10848  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		10859  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		10880  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		10905  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		10920  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		10966  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		10977  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		10984  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		10991  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		10998  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		11015  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		11030  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		11045  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA		11540  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		11070  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		11095  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		11120  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		11175  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		11206  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		11237  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		11248  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		11269  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		11294  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		11309  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		11334  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		11345  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		11356  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		11377  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		11388  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		11409  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		11420  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		11431  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		11442  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		11463  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		11488  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		11509  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER		12027  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		11557  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		11582  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		11607  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		11662  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		11693  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		11724  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		11735  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		11756  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		11781  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		11796  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		11821  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		11832  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		11843  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		11864  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		11875  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		11896  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		11907  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		11918  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		11929  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		11950  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		11975  /**/
+#define ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		11996  /**/
+flag asn1SccPusTC_19_1_Data_IsConstraintValid(const asn1SccPusTC_19_1_Data* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTC_19_1_DATA		12059  /**/
+#define ERR_UPER_ENCODE_PUSTC_19_1_DATA_EVENTID_2_2		9697  /**/
+#define ERR_UPER_ENCODE_PUSTC_19_1_DATA_PACKETREDUCED_2		12055  /**/
+#define asn1SccPusTC_19_1_Data_REQUIRED_BYTES_FOR_ENCODING       195 
+#define asn1SccPusTC_19_1_Data_REQUIRED_BITS_FOR_ENCODING        1553
+
+flag asn1SccPusTC_19_1_Data_Encode(const asn1SccPusTC_19_1_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTC_19_1_DATA		12060  /**/
+#define ERR_UPER_DECODE_PUSTC_19_1_DATA_EVENTID_2_2		9698  /**/
+#define ERR_UPER_DECODE_PUSTC_19_1_DATA_PACKETREDUCED_2		12056  /**/
+flag asn1SccPusTC_19_1_Data_Decode(asn1SccPusTC_19_1_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusTime time;
+    asn1SccPusPacketReduced packetReduced;
+} asn1SccPusTcScheduledActivity;
+
+flag asn1SccPusTcScheduledActivity_Equal(const asn1SccPusTcScheduledActivity* pVal1, const asn1SccPusTcScheduledActivity* pVal2);
+
+void asn1SccPusTcScheduledActivity_Initialize(asn1SccPusTcScheduledActivity* pVal);
+
+#define ERR_PUSTCSCHEDULEDACTIVITY_TIME_TV_SEC		12065  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_TIME_TV_NSEC		12076  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_PACKETVERSION		12097  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_PACKETTYPE		12108  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_SECONDARYHEADERFLAG		12119  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_APID		12130  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_SEQUENCEFLAGS		12145  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_SEQUENCECOUNT		12156  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATALENGTH		12171  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA		14434  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		12186  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		12197  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		12212  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		12227  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		12242  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		12257  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		12272  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		12283  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA		12822  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		12314  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		12325  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		12336  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		12347  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		12362  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		12373  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		12398  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		12413  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		12428  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		12439  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		12450  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		12495  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		12510  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		12525  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		12546  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		12561  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		12572  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		12607  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		12622  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		12633  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		12664  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		12679  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		12704  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		12715  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		12726  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		12747  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		12772  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		12787  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER		13351  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		12843  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		12854  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		12865  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		12876  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		12891  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		12902  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		12927  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		12942  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		12957  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		12968  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		12979  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		13024  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		13039  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		13054  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		13075  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		13090  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		13101  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		13136  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		13151  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		13162  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		13193  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		13208  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		13233  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		13244  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		13255  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		13276  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		13301  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		13316  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		13362  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		13373  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		13380  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		13387  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		13394  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		13411  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		13426  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		13441  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA		13936  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		13466  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		13491  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		13516  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		13571  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		13602  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		13633  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		13644  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		13665  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		13690  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		13705  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		13730  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		13741  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		13752  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		13773  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		13784  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		13805  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		13816  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		13827  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		13838  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		13859  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		13884  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		13905  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER		14423  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		13953  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		13978  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		14003  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		14058  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		14089  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		14120  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		14131  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		14152  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		14177  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		14192  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		14217  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		14228  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		14239  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		14260  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		14271  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		14292  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		14303  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		14314  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		14325  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		14346  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		14371  /**/
+#define ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		14392  /**/
+flag asn1SccPusTcScheduledActivity_IsConstraintValid(const asn1SccPusTcScheduledActivity* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTCSCHEDULEDACTIVITY		14455  /**/
+#define ERR_UPER_ENCODE_PUSTCSCHEDULEDACTIVITY_TIME_2		12093  /**/
+#define ERR_UPER_ENCODE_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_2		14451  /**/
+#define asn1SccPusTcScheduledActivity_REQUIRED_BYTES_FOR_ENCODING       207 
+#define asn1SccPusTcScheduledActivity_REQUIRED_BITS_FOR_ENCODING        1649
+
+flag asn1SccPusTcScheduledActivity_Encode(const asn1SccPusTcScheduledActivity* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTCSCHEDULEDACTIVITY		14456  /**/
+#define ERR_UPER_DECODE_PUSTCSCHEDULEDACTIVITY_TIME_2		12094  /**/
+#define ERR_UPER_DECODE_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_2		14452  /**/
+flag asn1SccPusTcScheduledActivity_Decode(asn1SccPusTcScheduledActivity* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccPusTcScheduledActivity arr[5];
+} asn1SccPusTC_11_4_Data;
+
+flag asn1SccPusTC_11_4_Data_Equal(const asn1SccPusTC_11_4_Data* pVal1, const asn1SccPusTC_11_4_Data* pVal2);
+
+void asn1SccPusTC_11_4_Data_Initialize(asn1SccPusTC_11_4_Data* pVal);
+
+#define ERR_PUSTC_11_4_DATA_ELM_TIME_TV_SEC		14461  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_TIME_TV_NSEC		14472  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_PACKETVERSION		14493  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_PACKETTYPE		14504  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		14515  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_APID		14526  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_SEQUENCEFLAGS		14541  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_SEQUENCECOUNT		14552  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATALENGTH		14567  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA		16830  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		14582  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		14593  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		14608  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		14623  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		14638  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		14653  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		14668  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		14679  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA		15218  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		14710  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		14721  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		14732  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		14743  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		14758  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		14769  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		14794  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		14809  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		14824  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		14835  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		14846  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		14891  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		14906  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		14921  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		14942  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		14957  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		14968  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		15003  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		15018  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		15029  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		15060  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		15075  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		15100  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		15111  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		15122  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		15143  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		15168  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		15183  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		15747  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		15239  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		15250  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		15261  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		15272  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		15287  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		15298  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		15323  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		15338  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		15353  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		15364  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		15375  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		15420  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		15435  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		15450  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		15471  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		15486  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		15497  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		15532  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		15547  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		15558  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		15589  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		15604  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		15629  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		15640  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		15651  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		15672  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		15697  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		15712  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		15758  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		15769  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		15776  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		15783  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		15790  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		15807  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		15822  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		15837  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA		16332  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		15862  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		15887  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		15912  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		15967  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		15998  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		16029  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		16040  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		16061  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		16086  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		16101  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		16126  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		16137  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		16148  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		16169  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		16180  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		16201  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		16212  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		16223  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		16234  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		16255  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		16280  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		16301  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		16819  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		16349  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		16374  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		16399  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		16454  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		16485  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		16516  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		16527  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		16548  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		16573  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		16588  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		16613  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		16624  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		16635  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		16656  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		16667  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		16688  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		16699  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		16710  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		16721  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		16742  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		16767  /**/
+#define ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		16788  /**/
+#define ERR_PUSTC_11_4_DATA		16861  /**/
+flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTC_11_4_DATA		16862  /**/
+#define ERR_UPER_ENCODE_PUSTC_11_4_DATA_ELM_2		16857  /**/
+#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ENCODING       1031 
+#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ENCODING        8248
+
+flag asn1SccPusTC_11_4_Data_Encode(const asn1SccPusTC_11_4_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTC_11_4_DATA		16863  /**/
+#define ERR_UPER_DECODE_PUSTC_11_4_DATA_ELM_2		16858  /**/
+flag asn1SccPusTC_11_4_Data_Decode(asn1SccPusTC_11_4_Data* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    enum {
+        PusTcApplicationData_NONE,
+        PusTcApplicationData_st_8_1_PRESENT,
+        PusTcApplicationData_st_9_1_PRESENT,
+        PusTcApplicationData_st_12_1_2_PRESENT,
+        PusTcApplicationData_st_18_2_6_12_PRESENT,
+        PusTcApplicationData_st_18_3_PRESENT,
+        PusTcApplicationData_st_18_4_5_PRESENT,
+        PusTcApplicationData_st_18_13_PRESENT,
+        PusTcApplicationData_st_19_X_PRESENT,
+        PusTcApplicationData_st_20_X_PRESENT,
+        PusTcApplicationData_st_23_1_PRESENT,
+        PusTcApplicationData_st_23_2_3_PRESENT,
+        PusTcApplicationData_st_23_14_PRESENT,
+        PusTcApplicationData_st_200_1_PRESENT,
+        PusTcApplicationData_st_201_1_3_PRESENT,
+        st_11_4_PRESENT,
+        st_18_1_PRESENT,
+        st_19_1_PRESENT 
+    } kind;
+    union {
+        asn1SccPusTC_8_1_Data st_8_1;
+        asn1SccPusTC_9_1_Data st_9_1;
+        asn1SccPusTC_12_1_2_Data st_12_1_2;
+        asn1SccPusTC_18_2_6_12_Data st_18_2_6_12;
+        asn1SccPusTC_18_3_Data st_18_3;
+        asn1SccPusTC_18_4_5_Data st_18_4_5;
+        asn1SccPusTC_18_13_Data st_18_13;
+        asn1SccPusTC_19_X_Data st_19_X;
+        asn1SccPusTC_TM_20_X_Data st_20_X;
+        asn1SccPusTC_TM_23_1_4_Data st_23_1;
+        asn1SccPusTC_23_2_3_Data st_23_2_3;
+        asn1SccPusTC_23_14_Data st_23_14;
+        asn1SccPusTC_200_1_Data st_200_1;
+        asn1SccPusTC_201_1_3_Data st_201_1_3;
+        asn1SccPusTC_11_4_Data st_11_4;
+        asn1SccPusTC_18_1_Data st_18_1;
+        asn1SccPusTC_19_1_Data st_19_1;
+    } u; 
+} asn1SccPusTcApplicationData;
+
+flag asn1SccPusTcApplicationData_Equal(const asn1SccPusTcApplicationData* pVal1, const asn1SccPusTcApplicationData* pVal2);
+
+void asn1SccPusTcApplicationData_Initialize(asn1SccPusTcApplicationData* pVal);
+
+#define ERR_PUSTCAPPLICATIONDATA		22178  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_8_1_FUNCTIONID		16868  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_9_1_EXPONENTIALRATE		16893  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_12_1_2_PMONID		16918  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_18_3_OBSERVABILITYLEVEL		16973  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_18_4_5_STEPID		17004  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_18_13_REPOSITORY		17035  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_18_13_FILENAME		17046  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_X_EVENTID		17067  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_20_X_PARAMID		17092  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_20_X_VALUE		17107  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_1_REPOSITORY		17132  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_1_FILENAME		17143  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_1_MAXSIZE		17154  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_2_3_REPOSITORY		17175  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_2_3_FILENAME		17186  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_14_SOURCEREPOSITORY		17207  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_14_SOURCEFILENAME		17218  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_14_TARGETREPOSITORY		17229  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_23_14_TARGETFILENAME		17240  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_200_1_CONTROLID		17261  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_201_1_3_POSITION_ELM		17286  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_201_1_3_ORIENTATION_ELM		17307  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_TIME_TV_SEC		17338  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_TIME_TV_NSEC		17349  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		17370  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		17381  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		17392  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_APID		17403  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		17418  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		17429  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		17444  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA		19707  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		17459  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		17470  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		17485  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		17500  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		17515  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		17530  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		17545  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		17556  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		18095  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		17587  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		17598  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		17609  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		17620  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		17635  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		17646  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		17671  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		17686  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		17701  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		17712  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		17723  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		17768  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		17783  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		17798  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		17819  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		17834  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		17845  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		17880  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		17895  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		17906  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		17937  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		17952  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		17977  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		17988  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		17999  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		18020  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		18045  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		18060  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		18624  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		18116  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		18127  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		18138  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		18149  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		18164  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		18175  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		18200  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		18215  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		18230  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		18241  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		18252  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		18297  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		18312  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		18327  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		18348  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		18363  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		18374  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		18409  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		18424  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		18435  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		18466  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		18481  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		18506  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		18517  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		18528  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		18549  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		18574  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		18589  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		18635  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		18646  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		18653  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		18660  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		18667  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		18684  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		18699  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		18714  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		19209  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		18739  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		18764  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		18789  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		18844  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		18875  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		18906  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		18917  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		18938  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		18963  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		18978  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		19003  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		19014  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		19025  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		19046  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		19057  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		19078  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		19089  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		19100  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		19111  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		19132  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		19157  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		19178  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		19696  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		19226  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		19251  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		19276  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		19331  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		19362  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		19393  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		19404  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		19425  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		19450  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		19465  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		19490  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		19501  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		19512  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		19533  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		19544  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		19565  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		19576  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		19587  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		19598  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		19619  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		19644  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		19665  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_11_4		19738  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_18_1_OBCPCODE		19759  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_18_1_CHECKSUM		19770  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_EVENTID		19795  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_PACKETVERSION		19810  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_PACKETTYPE		19821  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		19832  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_APID		19843  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		19858  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		19869  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATALENGTH		19884  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA		22147  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		19899  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		19910  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		19925  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		19940  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		19955  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		19970  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		19985  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		19996  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		20535  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		20027  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		20038  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		20049  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		20060  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		20075  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		20086  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		20111  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		20126  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		20141  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		20152  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		20163  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		20208  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		20223  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		20238  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		20259  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		20274  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		20285  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		20320  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		20335  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		20346  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		20377  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		20392  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		20417  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		20428  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		20439  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		20460  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		20485  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		20500  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		21064  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		20556  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		20567  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		20578  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		20589  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		20604  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		20615  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		20640  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		20655  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		20670  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		20681  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		20692  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		20737  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		20752  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		20767  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		20788  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		20803  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		20814  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		20849  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		20864  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		20875  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		20906  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		20921  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		20946  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		20957  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		20968  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		20989  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		21014  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		21029  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		21075  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		21086  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		21093  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		21100  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		21107  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		21124  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		21139  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		21154  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		21649  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		21179  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		21204  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		21229  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		21284  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		21315  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		21346  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		21357  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		21378  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		21403  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		21418  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		21443  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		21454  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		21465  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		21486  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		21497  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		21518  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		21529  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		21540  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		21551  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		21572  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		21597  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		21618  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		22136  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		21666  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		21691  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		21716  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		21771  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		21802  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		21833  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		21844  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		21865  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		21890  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		21905  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		21930  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		21941  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		21952  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		21973  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		21984  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		22005  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		22016  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		22027  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		22038  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		22059  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		22084  /**/
+#define ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		22105  /**/
+flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplicationData* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA		22179  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_8_1_2		16889  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_9_1_2		16914  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_12_1_2_2		16939  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_2_6_12_2		16959  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_3_2		16990  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_4_5_2		17021  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_13_2		17063  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_19_X_2		17088  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_20_X_2		17128  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_23_1_2		17171  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_23_2_3_2		17203  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_23_14_2		17257  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_200_1_2		17282  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_201_1_3_2		17334  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_11_4_2		19745  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_1_2		19791  /**/
+#define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_19_1_2		22174  /**/
+#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ENCODING       15015 
+#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ENCODING        120115
+
+flag asn1SccPusTcApplicationData_Encode(const asn1SccPusTcApplicationData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA		22180  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_8_1_2		16890  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_9_1_2		16915  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_12_1_2_2		16940  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_2_6_12_2		16960  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_3_2		16991  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_4_5_2		17022  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_13_2		17064  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_19_X_2		17089  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_20_X_2		17129  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_23_1_2		17172  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_23_2_3_2		17204  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_23_14_2		17258  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_200_1_2		17283  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_201_1_3_2		17335  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_11_4_2		19746  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_18_1_2		19792  /**/
+#define ERR_UPER_DECODE_PUSTCAPPLICATIONDATA_ST_19_1_2		22175  /**/
+flag asn1SccPusTcApplicationData_Decode(asn1SccPusTcApplicationData* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusTcHeader header;
+    asn1SccPusTcApplicationData data;
+} asn1SccPusPacketData_tcData;
+
+typedef struct {
+    enum {
+        PusPacketData_NONE,
+        PusPacketData_tmData_PRESENT,
+        PusPacketData_tmDataNoHeader_PRESENT,
+        PusPacketData_tcData_PRESENT,
+        PusPacketData_tcDataNoHeader_PRESENT 
+    } kind;
+    union {
+        asn1SccPusTmHeaderData tmData;
+        asn1SccPusTmSourceData tmDataNoHeader;
+        asn1SccPusPacketData_tcData tcData;
+        asn1SccPusTcApplicationData tcDataNoHeader;
+    } u; 
+} asn1SccPusPacketData;
+
+flag asn1SccPusPacketData_tcData_Equal(const asn1SccPusPacketData_tcData* pVal1, const asn1SccPusPacketData_tcData* pVal2);
+
+flag asn1SccPusPacketData_Equal(const asn1SccPusPacketData* pVal1, const asn1SccPusPacketData* pVal2);
+
+void asn1SccPusPacketData_tcData_Initialize(asn1SccPusPacketData_tcData* pVal);
+void asn1SccPusPacketData_Initialize(asn1SccPusPacketData* pVal);
+
+#define ERR_PUSPACKETDATA		35243  /**/
+#define ERR_PUSPACKETDATA_TMDATA_HEADER_PUSVERSION		23315  /**/
+#define ERR_PUSPACKETDATA_TMDATA_HEADER_TIMEREFSTATUS		23326  /**/
+#define ERR_PUSPACKETDATA_TMDATA_HEADER_SERVICEID		23341  /**/
+#define ERR_PUSPACKETDATA_TMDATA_HEADER_SUBTYPE		23356  /**/
+#define ERR_PUSPACKETDATA_TMDATA_HEADER_MSGTYPECOUNT		23371  /**/
+#define ERR_PUSPACKETDATA_TMDATA_HEADER_DESTINATION		23386  /**/
+#define ERR_PUSPACKETDATA_TMDATA_HEADER_TIME_TV_SEC		23401  /**/
+#define ERR_PUSPACKETDATA_TMDATA_HEADER_TIME_TV_NSEC		23412  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA		23951  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		23443  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		23454  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		23465  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_APID		23476  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		23491  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		23502  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_STEP		23527  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		23542  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		23557  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		23568  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		23579  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_3_25_REPORTID		23624  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		23639  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_3_25_PARAMETERS		23654  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_5_X_EVENTID		23675  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_5_X_DATA_DATA1		23690  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_5_X_DATA_DATA2		23701  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		23736  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		23751  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		23762  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_20_2_PARAMID		23793  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_20_2_VALUE		23808  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_23_4_REPOSITORY		23833  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_23_4_FILENAME		23844  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_23_4_MAXSIZE		23855  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_200_2_OBSERVATION		23876  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		23901  /**/
+#define ERR_PUSPACKETDATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		23916  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER		24480  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		23972  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		23983  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		23994  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		24005  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		24020  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		24031  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_STEP		24056  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		24071  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		24086  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		24097  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		24108  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_3_25_REPORTID		24153  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		24168  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_3_25_PARAMETERS		24183  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_5_X_EVENTID		24204  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		24219  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		24230  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		24265  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		24280  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		24291  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_20_2_PARAMID		24322  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_20_2_VALUE		24337  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_23_4_REPOSITORY		24362  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_23_4_FILENAME		24373  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_23_4_MAXSIZE		24384  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_200_2_OBSERVATION		24405  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		24430  /**/
+#define ERR_PUSPACKETDATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		24445  /**/
+#define ERR_PUSPACKETDATA_TCDATA_HEADER_PUSVERSION		24491  /**/
+#define ERR_PUSPACKETDATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		24502  /**/
+#define ERR_PUSPACKETDATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		24509  /**/
+#define ERR_PUSPACKETDATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		24516  /**/
+#define ERR_PUSPACKETDATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		24523  /**/
+#define ERR_PUSPACKETDATA_TCDATA_HEADER_SERVICEID		24540  /**/
+#define ERR_PUSPACKETDATA_TCDATA_HEADER_SUBTYPE		24555  /**/
+#define ERR_PUSPACKETDATA_TCDATA_HEADER_SOURCE		24570  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA		29905  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_8_1_FUNCTIONID		24595  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		24620  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_12_1_2_PMONID		24645  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		24700  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_4_5_STEPID		24731  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_13_REPOSITORY		24762  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_13_FILENAME		24773  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_X_EVENTID		24794  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_20_X_PARAMID		24819  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_20_X_VALUE		24834  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_1_REPOSITORY		24859  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_1_FILENAME		24870  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_1_MAXSIZE		24881  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		24902  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_2_3_FILENAME		24913  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		24934  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		24945  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		24956  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		24967  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_200_1_CONTROLID		24988  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		25013  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		25034  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_TIME_TV_SEC		25065  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_TIME_TV_NSEC		25076  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		25097  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		25108  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		25119  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_APID		25130  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		25145  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		25156  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		25171  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA		27434  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		25186  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		25197  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		25212  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		25227  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		25242  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		25257  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		25272  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		25283  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		25822  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		25314  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		25325  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		25336  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		25347  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		25362  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		25373  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		25398  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		25413  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		25428  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		25439  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		25450  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		25495  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		25510  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		25525  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		25546  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		25561  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		25572  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		25607  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		25622  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		25633  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		25664  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		25679  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		25704  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		25715  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		25726  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		25747  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		25772  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		25787  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		26351  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		25843  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		25854  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		25865  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		25876  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		25891  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		25902  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		25927  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		25942  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		25957  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		25968  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		25979  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		26024  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		26039  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		26054  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		26075  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		26090  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		26101  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		26136  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		26151  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		26162  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		26193  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		26208  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		26233  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		26244  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		26255  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		26276  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		26301  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		26316  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		26362  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		26373  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		26380  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		26387  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		26394  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		26411  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		26426  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		26441  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		26936  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		26466  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		26491  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		26516  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		26571  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		26602  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		26633  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		26644  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		26665  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		26690  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		26705  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		26730  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		26741  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		26752  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		26773  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		26784  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		26805  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		26816  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		26827  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		26838  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		26859  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		26884  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		26905  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		27423  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		26953  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		26978  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		27003  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		27058  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		27089  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		27120  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		27131  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		27152  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		27177  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		27192  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		27217  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		27228  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		27239  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		27260  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		27271  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		27292  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		27303  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		27314  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		27325  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		27346  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		27371  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		27392  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4		27465  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_1_OBCPCODE		27486  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_1_CHECKSUM		27497  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_EVENTID		27522  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_PACKETVERSION		27537  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_PACKETTYPE		27548  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		27559  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_APID		27570  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		27585  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		27596  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATALENGTH		27611  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA		29874  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		27626  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		27637  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		27652  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		27667  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		27682  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		27697  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		27712  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		27723  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		28262  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		27754  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		27765  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		27776  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		27787  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		27802  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		27813  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		27838  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		27853  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		27868  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		27879  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		27890  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		27935  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		27950  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		27965  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		27986  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		28001  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		28012  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		28047  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		28062  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		28073  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		28104  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		28119  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		28144  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		28155  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		28166  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		28187  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		28212  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		28227  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		28791  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		28283  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		28294  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		28305  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		28316  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		28331  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		28342  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		28367  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		28382  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		28397  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		28408  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		28419  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		28464  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		28479  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		28494  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		28515  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		28530  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		28541  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		28576  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		28591  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		28602  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		28633  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		28648  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		28673  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		28684  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		28695  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		28716  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		28741  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		28756  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		28802  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		28813  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		28820  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		28827  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		28834  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		28851  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		28866  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		28881  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		29376  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		28906  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		28931  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		28956  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		29011  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		29042  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		29073  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		29084  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		29105  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		29130  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		29145  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		29170  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		29181  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		29192  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		29213  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		29224  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		29245  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		29256  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		29267  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		29278  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		29299  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		29324  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		29345  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		29863  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		29393  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		29418  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		29443  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		29498  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		29529  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		29560  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		29571  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		29592  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		29617  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		29632  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		29657  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		29668  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		29679  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		29700  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		29711  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		29732  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		29743  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		29754  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		29765  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		29786  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		29811  /**/
+#define ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		29832  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER		35232  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		29922  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		29947  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_12_1_2_PMONID		29972  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		30027  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_4_5_STEPID		30058  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_13_REPOSITORY		30089  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_13_FILENAME		30100  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_X_EVENTID		30121  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_20_X_PARAMID		30146  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_20_X_VALUE		30161  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_1_REPOSITORY		30186  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_1_FILENAME		30197  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_1_MAXSIZE		30208  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		30229  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_2_3_FILENAME		30240  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		30261  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		30272  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		30283  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		30294  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_200_1_CONTROLID		30315  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		30340  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		30361  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_TIME_TV_SEC		30392  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_TIME_TV_NSEC		30403  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		30424  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		30435  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		30446  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_APID		30457  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		30472  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		30483  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		30498  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA		32761  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		30513  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		30524  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		30539  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		30554  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		30569  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		30584  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		30599  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		30610  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		31149  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		30641  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		30652  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		30663  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		30674  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		30689  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		30700  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		30725  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		30740  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		30755  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		30766  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		30777  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		30822  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		30837  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		30852  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		30873  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		30888  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		30899  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		30934  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		30949  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		30960  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		30991  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		31006  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		31031  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		31042  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		31053  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		31074  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		31099  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		31114  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		31678  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		31170  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		31181  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		31192  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		31203  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		31218  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		31229  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		31254  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		31269  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		31284  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		31295  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		31306  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		31351  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		31366  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		31381  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		31402  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		31417  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		31428  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		31463  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		31478  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		31489  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		31520  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		31535  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		31560  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		31571  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		31582  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		31603  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		31628  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		31643  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		31689  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		31700  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		31707  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		31714  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		31721  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		31738  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		31753  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		31768  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		32263  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		31793  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		31818  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		31843  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		31898  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		31929  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		31960  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		31971  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		31992  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		32017  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		32032  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		32057  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		32068  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		32079  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		32100  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		32111  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		32132  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		32143  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		32154  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		32165  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		32186  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		32211  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		32232  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		32750  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		32280  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		32305  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		32330  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		32385  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		32416  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		32447  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		32458  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		32479  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		32504  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		32519  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		32544  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		32555  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		32566  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		32587  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		32598  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		32619  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		32630  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		32641  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		32652  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		32673  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		32698  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		32719  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4		32792  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_1_OBCPCODE		32813  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_1_CHECKSUM		32824  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_EVENTID		32849  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_PACKETVERSION		32864  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_PACKETTYPE		32875  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		32886  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_APID		32897  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		32912  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		32923  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATALENGTH		32938  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA		35201  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		32953  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		32964  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		32979  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		32994  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		33009  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		33024  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		33039  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		33050  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		33589  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		33081  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		33092  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		33103  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		33114  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		33129  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		33140  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		33165  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		33180  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		33195  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		33206  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		33217  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		33262  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		33277  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		33292  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		33313  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		33328  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		33339  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		33374  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		33389  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		33400  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		33431  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		33446  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		33471  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		33482  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		33493  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		33514  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		33539  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		33554  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		34118  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		33610  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		33621  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		33632  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		33643  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		33658  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		33669  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		33694  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		33709  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		33724  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		33735  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		33746  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		33791  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		33806  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		33821  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		33842  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		33857  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		33868  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		33903  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		33918  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		33929  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		33960  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		33975  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		34000  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		34011  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		34022  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		34043  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		34068  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		34083  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		34129  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		34140  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		34147  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		34154  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		34161  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		34178  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		34193  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		34208  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		34703  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		34233  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		34258  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		34283  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		34338  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		34369  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		34400  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		34411  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		34432  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		34457  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		34472  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		34497  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		34508  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		34519  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		34540  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		34551  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		34572  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		34583  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		34594  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		34605  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		34626  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		34651  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		34672  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		35190  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		34720  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		34745  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		34770  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		34825  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		34856  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		34887  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		34898  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		34919  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		34944  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		34959  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		34984  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		34995  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		35006  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		35027  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		35038  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		35059  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		35070  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		35081  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		35092  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		35113  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		35138  /**/
+#define ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		35159  /**/
+flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSPACKETDATA		35244  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATA_TMDATA_2		23968  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATA_TMDATANOHEADER_2		24487  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATA		29916  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATA_HEADER_2		24591  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATA_DATA_2		29912  /**/
+#define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATANOHEADER_2		35239  /**/
+#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ENCODING       15019 
+#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ENCODING        120150
+
+flag asn1SccPusPacketData_Encode(const asn1SccPusPacketData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSPACKETDATA		35245  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATA_TMDATA_2		23969  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATA_TMDATANOHEADER_2		24488  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATA_TCDATA		29917  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATA_TCDATA_HEADER_2		24592  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATA_TCDATA_DATA_2		29913  /**/
+#define ERR_UPER_DECODE_PUSPACKETDATA_TCDATANOHEADER_2		35240  /**/
+flag asn1SccPusPacketData_Decode(asn1SccPusPacketData* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccPusPacketVersion packetVersion;
+    asn1SccPusPacketType packetType;
+    asn1SccPusSecondaryHeaderFlag secondaryHeaderFlag;
+    asn1SccPusApid apid;
+    asn1SccPusSequenceFlags sequenceFlags;
+    asn1SccPusSequenceCount sequenceCount;
+    asn1SccPusPacketDataLength dataLength;
+    asn1SccPusPacketData data;
+} asn1SccPusPacket;
+
+flag asn1SccPusPacket_Equal(const asn1SccPusPacket* pVal1, const asn1SccPusPacket* pVal2);
+
+void asn1SccPusPacket_Initialize(asn1SccPusPacket* pVal);
+
+#define ERR_PUSPACKET_PACKETVERSION		37505  /**/
+#define ERR_PUSPACKET_PACKETTYPE		37516  /**/
+#define ERR_PUSPACKET_SECONDARYHEADERFLAG		37527  /**/
+#define ERR_PUSPACKET_APID		37538  /**/
+#define ERR_PUSPACKET_SEQUENCEFLAGS		37553  /**/
+#define ERR_PUSPACKET_SEQUENCECOUNT		37564  /**/
+#define ERR_PUSPACKET_DATALENGTH		37579  /**/
+#define ERR_PUSPACKET_DATA		49522  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_HEADER_PUSVERSION		37594  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_HEADER_TIMEREFSTATUS		37605  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_HEADER_SERVICEID		37620  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_HEADER_SUBTYPE		37635  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_HEADER_MSGTYPECOUNT		37650  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_HEADER_DESTINATION		37665  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_HEADER_TIME_TV_SEC		37680  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_HEADER_TIME_TV_NSEC		37691  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA		38230  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		37722  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		37733  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		37744  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		37755  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		37770  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		37781  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_STEP		37806  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		37821  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		37836  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		37847  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		37858  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_3_25_REPORTID		37903  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		37918  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		37933  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_5_X_EVENTID		37954  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		37969  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		37980  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		38015  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		38030  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		38041  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_20_2_PARAMID		38072  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_20_2_VALUE		38087  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		38112  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_23_4_FILENAME		38123  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		38134  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		38155  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		38180  /**/
+#define ERR_PUSPACKET_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		38195  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER		38759  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		38251  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		38262  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		38273  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		38284  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		38299  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		38310  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_STEP		38335  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		38350  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		38365  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		38376  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		38387  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_3_25_REPORTID		38432  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		38447  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		38462  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_5_X_EVENTID		38483  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		38498  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		38509  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		38544  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		38559  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		38570  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_20_2_PARAMID		38601  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_20_2_VALUE		38616  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		38641  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_23_4_FILENAME		38652  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		38663  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		38684  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		38709  /**/
+#define ERR_PUSPACKET_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		38724  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_HEADER_PUSVERSION		38770  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		38781  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		38788  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		38795  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		38802  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_HEADER_SERVICEID		38819  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_HEADER_SUBTYPE		38834  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_HEADER_SOURCE		38849  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA		44184  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		38874  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		38899  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_12_1_2_PMONID		38924  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		38979  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_4_5_STEPID		39010  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		39041  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_13_FILENAME		39052  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_X_EVENTID		39073  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_20_X_PARAMID		39098  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_20_X_VALUE		39113  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		39138  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_1_FILENAME		39149  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		39160  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		39181  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		39192  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		39213  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		39224  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		39235  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		39246  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_200_1_CONTROLID		39267  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		39292  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		39313  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_TIME_TV_SEC		39344  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_TIME_TV_NSEC		39355  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		39376  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		39387  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		39398  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_APID		39409  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		39424  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		39435  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		39450  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA		41713  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		39465  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		39476  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		39491  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		39506  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		39521  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		39536  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		39551  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		39562  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		40101  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		39593  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		39604  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		39615  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		39626  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		39641  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		39652  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		39677  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		39692  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		39707  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		39718  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		39729  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		39774  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		39789  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		39804  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		39825  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		39840  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		39851  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		39886  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		39901  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		39912  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		39943  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		39958  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		39983  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		39994  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		40005  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		40026  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		40051  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		40066  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		40630  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		40122  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		40133  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		40144  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		40155  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		40170  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		40181  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		40206  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		40221  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		40236  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		40247  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		40258  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		40303  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		40318  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		40333  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		40354  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		40369  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		40380  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		40415  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		40430  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		40441  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		40472  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		40487  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		40512  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		40523  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		40534  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		40555  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		40580  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		40595  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		40641  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		40652  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		40659  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		40666  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		40673  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		40690  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		40705  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		40720  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		41215  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		40745  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		40770  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		40795  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		40850  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		40881  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		40912  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		40923  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		40944  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		40969  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		40984  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		41009  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		41020  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		41031  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		41052  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		41063  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		41084  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		41095  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		41106  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		41117  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		41138  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		41163  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		41184  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		41702  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		41232  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		41257  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		41282  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		41337  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		41368  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		41399  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		41410  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		41431  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		41456  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		41471  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		41496  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		41507  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		41518  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		41539  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		41550  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		41571  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		41582  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		41593  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		41604  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		41625  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		41650  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		41671  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4		41744  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_1_OBCPCODE		41765  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_1_CHECKSUM		41776  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_EVENTID		41801  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_PACKETVERSION		41816  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_PACKETTYPE		41827  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		41838  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_APID		41849  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		41864  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		41875  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATALENGTH		41890  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA		44153  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		41905  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		41916  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		41931  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		41946  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		41961  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		41976  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		41991  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		42002  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		42541  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		42033  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		42044  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		42055  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		42066  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		42081  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		42092  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		42117  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		42132  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		42147  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		42158  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		42169  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		42214  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		42229  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		42244  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		42265  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		42280  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		42291  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		42326  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		42341  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		42352  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		42383  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		42398  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		42423  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		42434  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		42445  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		42466  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		42491  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		42506  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		43070  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		42562  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		42573  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		42584  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		42595  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		42610  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		42621  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		42646  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		42661  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		42676  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		42687  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		42698  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		42743  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		42758  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		42773  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		42794  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		42809  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		42820  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		42855  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		42870  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		42881  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		42912  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		42927  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		42952  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		42963  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		42974  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		42995  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		43020  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		43035  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		43081  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		43092  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		43099  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		43106  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		43113  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		43130  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		43145  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		43160  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		43655  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		43185  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		43210  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		43235  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		43290  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		43321  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		43352  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		43363  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		43384  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		43409  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		43424  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		43449  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		43460  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		43471  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		43492  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		43503  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		43524  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		43535  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		43546  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		43557  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		43578  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		43603  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		43624  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		44142  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		43672  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		43697  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		43722  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		43777  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		43808  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		43839  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		43850  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		43871  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		43896  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		43911  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		43936  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		43947  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		43958  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		43979  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		43990  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		44011  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		44022  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		44033  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		44044  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		44065  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		44090  /**/
+#define ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		44111  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER		49511  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		44201  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		44226  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		44251  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		44306  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		44337  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		44368  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_13_FILENAME		44379  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_X_EVENTID		44400  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_20_X_PARAMID		44425  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_20_X_VALUE		44440  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		44465  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_1_FILENAME		44476  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		44487  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		44508  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		44519  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		44540  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		44551  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		44562  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		44573  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		44594  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		44619  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		44640  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_TIME_TV_SEC		44671  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_TIME_TV_NSEC		44682  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_PACKETVERSION		44703  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_PACKETTYPE		44714  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SECONDARYHEADERFLAG		44725  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_APID		44736  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SEQUENCEFLAGS		44751  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_SEQUENCECOUNT		44762  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATALENGTH		44777  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA		47040  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		44792  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		44803  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		44818  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		44833  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		44848  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		44863  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		44878  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		44889  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA		45428  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		44920  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		44931  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		44942  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		44953  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		44968  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		44979  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		45004  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		45019  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		45034  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		45045  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		45056  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		45101  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		45116  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		45131  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		45152  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		45167  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		45178  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		45213  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		45228  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		45239  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		45270  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		45285  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		45310  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		45321  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		45332  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		45353  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		45378  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		45393  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER		45957  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		45449  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		45460  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		45471  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		45482  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		45497  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		45508  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		45533  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		45548  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		45563  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		45574  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		45585  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		45630  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		45645  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		45660  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		45681  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		45696  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		45707  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		45742  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		45757  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		45768  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		45799  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		45814  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		45839  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		45850  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		45861  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		45882  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		45907  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		45922  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		45968  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		45979  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		45986  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		45993  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		46000  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		46017  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		46032  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		46047  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA		46542  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		46072  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		46097  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		46122  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		46177  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		46208  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		46239  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		46250  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		46271  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		46296  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		46311  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		46336  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		46347  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		46358  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		46379  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		46390  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		46411  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		46422  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		46433  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		46444  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		46465  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		46490  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		46511  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER		47029  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		46559  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		46584  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		46609  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		46664  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		46695  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		46726  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		46737  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		46758  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		46783  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		46798  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		46823  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		46834  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		46845  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		46866  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		46877  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		46898  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		46909  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		46920  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		46931  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		46952  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		46977  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		46998  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4		47071  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_1_OBCPCODE		47092  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_1_CHECKSUM		47103  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_EVENTID		47128  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_PACKETVERSION		47143  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_PACKETTYPE		47154  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SECONDARYHEADERFLAG		47165  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_APID		47176  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SEQUENCEFLAGS		47191  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_SEQUENCECOUNT		47202  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATALENGTH		47217  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA		49480  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_PUSVERSION		47232  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIMEREFSTATUS		47243  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID		47258  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE		47273  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT		47288  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_DESTINATION		47303  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_SEC		47318  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_TIME_TV_NSEC		47329  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA		47868  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETVERSION		47360  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_PACKETTYPE		47371  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SECONDARYHEADERFLAG		47382  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_APID		47393  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCEFLAGS		47408  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_REQUEST_SEQUENCECOUNT		47419  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_STEP		47444  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_CODE		47459  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_SUBCODE		47474  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_DATA		47485  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_1_X_FAILURE_INFO_ADDRESS		47496  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_REPORTID		47541  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS_ELM		47556  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_3_25_PARAMETERS		47571  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_EVENTID		47592  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA1		47607  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_5_X_DATA_DATA2		47618  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_EXPONENTIALRATE		47653  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_SEC		47668  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_9_2_TIME_TV_NSEC		47679  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_PARAMID		47710  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_20_2_VALUE		47725  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_REPOSITORY		47750  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_FILENAME		47761  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_23_4_MAXSIZE		47772  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_200_2_OBSERVATION		47793  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_ID		47818  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_DATA_ST_201_4_OBSERVATION_CODE		47833  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER		48397  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETVERSION		47889  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_PACKETTYPE		47900  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SECONDARYHEADERFLAG		47911  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_APID		47922  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCEFLAGS		47937  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_REQUEST_SEQUENCECOUNT		47948  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_STEP		47973  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_CODE		47988  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_SUBCODE		48003  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_DATA		48014  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_1_X_FAILURE_INFO_ADDRESS		48025  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_REPORTID		48070  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS_ELM		48085  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_3_25_PARAMETERS		48100  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_EVENTID		48121  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA1		48136  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_5_X_DATA_DATA2		48147  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_EXPONENTIALRATE		48182  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_SEC		48197  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_9_2_TIME_TV_NSEC		48208  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_PARAMID		48239  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_20_2_VALUE		48254  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_REPOSITORY		48279  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_FILENAME		48290  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_23_4_MAXSIZE		48301  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_200_2_OBSERVATION		48322  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_ID		48347  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATANOHEADER_ST_201_4_OBSERVATION_CODE		48362  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_PUSVERSION		48408  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED		48419  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_STARTREPORTREQUESTED		48426  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_PROGRESSREPORTREQUESTED		48433  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED		48440  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID		48457  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE		48472  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE		48487  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA		48982  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_8_1_FUNCTIONID		48512  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_9_1_EXPONENTIALRATE		48537  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_12_1_2_PMONID		48562  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_3_OBSERVABILITYLEVEL		48617  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_4_5_STEPID		48648  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_REPOSITORY		48679  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_18_13_FILENAME		48690  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_19_X_EVENTID		48711  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_PARAMID		48736  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_20_X_VALUE		48751  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_REPOSITORY		48776  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_FILENAME		48787  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_1_MAXSIZE		48798  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_REPOSITORY		48819  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_2_3_FILENAME		48830  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEREPOSITORY		48851  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_SOURCEFILENAME		48862  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETREPOSITORY		48873  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_23_14_TARGETFILENAME		48884  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_200_1_CONTROLID		48905  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_POSITION_ELM		48930  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_DATA_ST_201_1_3_ORIENTATION_ELM		48951  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER		49469  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_8_1_FUNCTIONID		48999  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_9_1_EXPONENTIALRATE		49024  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_12_1_2_PMONID		49049  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_3_OBSERVABILITYLEVEL		49104  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_4_5_STEPID		49135  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_REPOSITORY		49166  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_18_13_FILENAME		49177  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_19_X_EVENTID		49198  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_PARAMID		49223  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_20_X_VALUE		49238  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_REPOSITORY		49263  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_FILENAME		49274  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_1_MAXSIZE		49285  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_REPOSITORY		49306  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_2_3_FILENAME		49317  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEREPOSITORY		49338  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_SOURCEFILENAME		49349  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETREPOSITORY		49360  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_23_14_TARGETFILENAME		49371  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_200_1_CONTROLID		49392  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_POSITION_ELM		49417  /**/
+#define ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATANOHEADER_ST_201_1_3_ORIENTATION_ELM		49438  /**/
+flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_PUSPACKET		49533  /**/
+#define ERR_UPER_ENCODE_PUSPACKET_PACKETVERSION_2		37512  /**/
+#define ERR_UPER_ENCODE_PUSPACKET_PACKETTYPE_2		37523  /**/
+#define ERR_UPER_ENCODE_PUSPACKET_SECONDARYHEADERFLAG_2		37534  /**/
+#define ERR_UPER_ENCODE_PUSPACKET_APID_2_2		37549  /**/
+#define ERR_UPER_ENCODE_PUSPACKET_SEQUENCEFLAGS_2		37560  /**/
+#define ERR_UPER_ENCODE_PUSPACKET_SEQUENCECOUNT_2_2		37575  /**/
+#define ERR_UPER_ENCODE_PUSPACKET_DATALENGTH_2_2		37590  /**/
+#define ERR_UPER_ENCODE_PUSPACKET_DATA_2		49529  /**/
+#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ENCODING       15025 
+#define asn1SccPusPacket_REQUIRED_BITS_FOR_ENCODING        120193
+
+flag asn1SccPusPacket_Encode(const asn1SccPusPacket* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_PUSPACKET		49534  /**/
+#define ERR_UPER_DECODE_PUSPACKET_PACKETVERSION_2		37513  /**/
+#define ERR_UPER_DECODE_PUSPACKET_PACKETTYPE_2		37524  /**/
+#define ERR_UPER_DECODE_PUSPACKET_SECONDARYHEADERFLAG_2		37535  /**/
+#define ERR_UPER_DECODE_PUSPACKET_APID_2_2		37550  /**/
+#define ERR_UPER_DECODE_PUSPACKET_SEQUENCEFLAGS_2		37561  /**/
+#define ERR_UPER_DECODE_PUSPACKET_SEQUENCECOUNT_2_2		37576  /**/
+#define ERR_UPER_DECODE_PUSPACKET_DATALENGTH_2_2		37591  /**/
+#define ERR_UPER_DECODE_PUSPACKET_DATA_2		49530  /**/
+flag asn1SccPusPacket_Decode(asn1SccPusPacket* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccSint asn1SccT_Int32;
+
+
+flag asn1SccT_Int32_Equal(const asn1SccT_Int32* pVal1, const asn1SccT_Int32* pVal2);
+
+void asn1SccT_Int32_Initialize(asn1SccT_Int32* pVal);
+
+#define ERR_T_INT32		52753  /**/
+flag asn1SccT_Int32_IsConstraintValid(const asn1SccT_Int32* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_T_INT32		52754  /**/
+#define asn1SccT_Int32_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccT_Int32_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccT_Int32_Encode(const asn1SccT_Int32* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_T_INT32		52755  /**/
+flag asn1SccT_Int32_Decode(asn1SccT_Int32* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Double arr[200];
+} asn1SccWrappers_MatrixXd_data;
+
+typedef struct {
+    asn1SccT_Int32 rows;
+    asn1SccT_Int32 cols;
+    asn1SccWrappers_MatrixXd_data data;
+} asn1SccWrappers_MatrixXd;
+
+flag asn1SccWrappers_MatrixXd_data_Equal(const asn1SccWrappers_MatrixXd_data* pVal1, const asn1SccWrappers_MatrixXd_data* pVal2);
+
+flag asn1SccWrappers_MatrixXd_Equal(const asn1SccWrappers_MatrixXd* pVal1, const asn1SccWrappers_MatrixXd* pVal2);
+
+void asn1SccWrappers_MatrixXd_data_Initialize(asn1SccWrappers_MatrixXd_data* pVal);
+void asn1SccWrappers_MatrixXd_Initialize(asn1SccWrappers_MatrixXd* pVal);
+
+#define ERR_WRAPPERS_MATRIXXD_ROWS		5782  /**/
+#define ERR_WRAPPERS_MATRIXXD_COLS		5793  /**/
+#define ERR_WRAPPERS_MATRIXXD_DATA_ELM		5804  /**/
+#define ERR_WRAPPERS_MATRIXXD_DATA		5815  /**/
+flag asn1SccWrappers_MatrixXd_IsConstraintValid(const asn1SccWrappers_MatrixXd* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD		5822  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD_ROWS_2		5789  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD_COLS_2		5800  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD_DATA		5816  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_MATRIXXD_DATA_ELM_2		5811  /**/
+#define asn1SccWrappers_MatrixXd_REQUIRED_BYTES_FOR_ENCODING       2609 
+#define asn1SccWrappers_MatrixXd_REQUIRED_BITS_FOR_ENCODING        20872
+
+flag asn1SccWrappers_MatrixXd_Encode(const asn1SccWrappers_MatrixXd* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD		5823  /**/
+#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD_ROWS_2		5790  /**/
+#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD_COLS_2		5801  /**/
+#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD_DATA		5817  /**/
+#define ERR_UPER_DECODE_WRAPPERS_MATRIXXD_DATA_ELM_2		5812  /**/
+flag asn1SccWrappers_MatrixXd_Decode(asn1SccWrappers_MatrixXd* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Double arr[200];
+} asn1SccWrappers_geometry_Spline_knots;
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Double arr[200];
+} asn1SccWrappers_geometry_Spline_vertices;
+
+typedef struct {
+    asn1SccT_Double geometric_resolution;
+    asn1SccT_Int32 dimension;
+    asn1SccT_Int32 curve_order;
+    asn1SccWrappers_geometry_SplineType kind;
+    asn1SccWrappers_geometry_Spline_knots knots;
+    asn1SccWrappers_geometry_Spline_vertices vertices;
+} asn1SccWrappers_geometry_Spline;
+
+flag asn1SccWrappers_geometry_Spline_knots_Equal(const asn1SccWrappers_geometry_Spline_knots* pVal1, const asn1SccWrappers_geometry_Spline_knots* pVal2);
+
+flag asn1SccWrappers_geometry_Spline_vertices_Equal(const asn1SccWrappers_geometry_Spline_vertices* pVal1, const asn1SccWrappers_geometry_Spline_vertices* pVal2);
+
+flag asn1SccWrappers_geometry_Spline_Equal(const asn1SccWrappers_geometry_Spline* pVal1, const asn1SccWrappers_geometry_Spline* pVal2);
+
+void asn1SccWrappers_geometry_Spline_knots_Initialize(asn1SccWrappers_geometry_Spline_knots* pVal);
+void asn1SccWrappers_geometry_Spline_vertices_Initialize(asn1SccWrappers_geometry_Spline_vertices* pVal);
+void asn1SccWrappers_geometry_Spline_Initialize(asn1SccWrappers_geometry_Spline* pVal);
+
+#define ERR_WRAPPERS_GEOMETRY_SPLINE_GEOMETRIC_RESOLUTION		7817  /**/
+#define ERR_WRAPPERS_GEOMETRY_SPLINE_DIMENSION		7828  /**/
+#define ERR_WRAPPERS_GEOMETRY_SPLINE_CURVE_ORDER		7839  /**/
+#define ERR_WRAPPERS_GEOMETRY_SPLINE_KIND		7850  /**/
+#define ERR_WRAPPERS_GEOMETRY_SPLINE_KNOTS_ELM		7861  /**/
+#define ERR_WRAPPERS_GEOMETRY_SPLINE_KNOTS		7872  /**/
+#define ERR_WRAPPERS_GEOMETRY_SPLINE_VERTICES_ELM		7879  /**/
+#define ERR_WRAPPERS_GEOMETRY_SPLINE_VERTICES		7890  /**/
+flag asn1SccWrappers_geometry_Spline_IsConstraintValid(const asn1SccWrappers_geometry_Spline* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE		7897  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_GEOMETRIC_RESOLUTION_2		7824  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_DIMENSION_2		7835  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_CURVE_ORDER_2		7846  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_KIND_2		7857  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_KNOTS		7873  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_KNOTS_ELM_2		7868  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_VERTICES		7891  /**/
+#define ERR_UPER_ENCODE_WRAPPERS_GEOMETRY_SPLINE_VERTICES_ELM_2		7886  /**/
+#define asn1SccWrappers_geometry_Spline_REQUIRED_BYTES_FOR_ENCODING       5224 
+#define asn1SccWrappers_geometry_Spline_REQUIRED_BITS_FOR_ENCODING        41787
+
+flag asn1SccWrappers_geometry_Spline_Encode(const asn1SccWrappers_geometry_Spline* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE		7898  /**/
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_GEOMETRIC_RESOLUTION_2		7825  /**/
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_DIMENSION_2		7836  /**/
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_CURVE_ORDER_2		7847  /**/
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_KIND_2		7858  /**/
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_KNOTS		7874  /**/
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_KNOTS_ELM_2		7869  /**/
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_VERTICES		7892  /**/
+#define ERR_UPER_DECODE_WRAPPERS_GEOMETRY_SPLINE_VERTICES_ELM_2		7887  /**/
+flag asn1SccWrappers_geometry_Spline_Decode(asn1SccWrappers_geometry_Spline* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccT_Double speed;
+    asn1SccWrappers_geometry_Spline spline;
+} asn1SccBase_Trajectory;
+
+flag asn1SccBase_Trajectory_Equal(const asn1SccBase_Trajectory* pVal1, const asn1SccBase_Trajectory* pVal2);
+
+void asn1SccBase_Trajectory_Initialize(asn1SccBase_Trajectory* pVal);
+
+#define ERR_BASE_TRAJECTORY_SPEED		1057  /**/
+#define ERR_BASE_TRAJECTORY_SPLINE_GEOMETRIC_RESOLUTION		1068  /**/
+#define ERR_BASE_TRAJECTORY_SPLINE_DIMENSION		1079  /**/
+#define ERR_BASE_TRAJECTORY_SPLINE_CURVE_ORDER		1090  /**/
+#define ERR_BASE_TRAJECTORY_SPLINE_KIND		1101  /**/
+#define ERR_BASE_TRAJECTORY_SPLINE_KNOTS_ELM		1112  /**/
+#define ERR_BASE_TRAJECTORY_SPLINE_KNOTS		1123  /**/
+#define ERR_BASE_TRAJECTORY_SPLINE_VERTICES_ELM		1130  /**/
+#define ERR_BASE_TRAJECTORY_SPLINE_VERTICES		1141  /**/
+flag asn1SccBase_Trajectory_IsConstraintValid(const asn1SccBase_Trajectory* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_TRAJECTORY		1158  /**/
+#define ERR_UPER_ENCODE_BASE_TRAJECTORY_SPEED_2		1064  /**/
+#define ERR_UPER_ENCODE_BASE_TRAJECTORY_SPLINE_2		1154  /**/
+#define asn1SccBase_Trajectory_REQUIRED_BYTES_FOR_ENCODING       5237 
+#define asn1SccBase_Trajectory_REQUIRED_BITS_FOR_ENCODING        41891
+
+flag asn1SccBase_Trajectory_Encode(const asn1SccBase_Trajectory* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_TRAJECTORY		1159  /**/
+#define ERR_UPER_DECODE_BASE_TRAJECTORY_SPEED_2		1065  /**/
+#define ERR_UPER_DECODE_BASE_TRAJECTORY_SPLINE_2		1155  /**/
+flag asn1SccBase_Trajectory_Decode(asn1SccBase_Trajectory* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccT_Double speed;
+    asn1SccWrappers_geometry_Spline spline;
+} asn1SccBase_Trajectory_m;
+
+flag asn1SccBase_Trajectory_m_Equal(const asn1SccBase_Trajectory_m* pVal1, const asn1SccBase_Trajectory_m* pVal2);
+
+void asn1SccBase_Trajectory_m_Initialize(asn1SccBase_Trajectory_m* pVal);
+
+#define ERR_BASE_TRAJECTORY_M_SPEED		7903  /**/
+#define ERR_BASE_TRAJECTORY_M_SPLINE_GEOMETRIC_RESOLUTION		7914  /**/
+#define ERR_BASE_TRAJECTORY_M_SPLINE_DIMENSION		7925  /**/
+#define ERR_BASE_TRAJECTORY_M_SPLINE_CURVE_ORDER		7936  /**/
+#define ERR_BASE_TRAJECTORY_M_SPLINE_KIND		7947  /**/
+#define ERR_BASE_TRAJECTORY_M_SPLINE_KNOTS_ELM		7958  /**/
+#define ERR_BASE_TRAJECTORY_M_SPLINE_KNOTS		7969  /**/
+#define ERR_BASE_TRAJECTORY_M_SPLINE_VERTICES_ELM		7976  /**/
+#define ERR_BASE_TRAJECTORY_M_SPLINE_VERTICES		7987  /**/
+flag asn1SccBase_Trajectory_m_IsConstraintValid(const asn1SccBase_Trajectory_m* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_TRAJECTORY_M		8004  /**/
+#define ERR_UPER_ENCODE_BASE_TRAJECTORY_M_SPEED_2		7910  /**/
+#define ERR_UPER_ENCODE_BASE_TRAJECTORY_M_SPLINE_2		8000  /**/
+#define asn1SccBase_Trajectory_m_REQUIRED_BYTES_FOR_ENCODING       5237 
+#define asn1SccBase_Trajectory_m_REQUIRED_BITS_FOR_ENCODING        41891
+
+flag asn1SccBase_Trajectory_m_Encode(const asn1SccBase_Trajectory_m* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_TRAJECTORY_M		8005  /**/
+#define ERR_UPER_DECODE_BASE_TRAJECTORY_M_SPEED_2		7911  /**/
+#define ERR_UPER_DECODE_BASE_TRAJECTORY_M_SPLINE_2		8001  /**/
+flag asn1SccBase_Trajectory_m_Decode(asn1SccBase_Trajectory_m* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccBase_Trajectory_m arr[200];
+} asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory;
+
+flag asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_Equal(const asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal1, const asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal2);
+
+void asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_Initialize(asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal);
+
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPEED		411  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_GEOMETRIC_RESOLUTION		422  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_DIMENSION		433  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_CURVE_ORDER		444  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_KIND		455  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_KNOTS_ELM		466  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_KNOTS		477  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_VERTICES_ELM		484  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_SPLINE_VERTICES		495  /**/
+#define ERR_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY		522  /**/
+flag asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_IsConstraintValid(const asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY		523  /**/
+#define ERR_UPER_ENCODE_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_2		518  /**/
+#define asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_REQUIRED_BYTES_FOR_ENCODING       1047276 
+#define asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_REQUIRED_BITS_FOR_ENCODING        8378208
+
+flag asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_Encode(const asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY		524  /**/
+#define ERR_UPER_DECODE_STD_OROGEN_TYPEKITS_MTYPE_STD_VECTOR_BASE_TRAJECTORY_ELM_2		519  /**/
+flag asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory_Decode(asn1SccStd_orogen_typekits_mtype_std_vector_base_Trajectory* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccUint asn1SccT_UInt32;
+
+
+flag asn1SccT_UInt32_Equal(const asn1SccT_UInt32* pVal1, const asn1SccT_UInt32* pVal2);
+
+void asn1SccT_UInt32_Initialize(asn1SccT_UInt32* pVal);
+
+#define ERR_T_UINT32		52760  /**/
+flag asn1SccT_UInt32_IsConstraintValid(const asn1SccT_UInt32* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_T_UINT32		52761  /**/
+#define asn1SccT_UInt32_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccT_UInt32_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccT_UInt32_Encode(const asn1SccT_UInt32* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_T_UINT32		52762  /**/
+flag asn1SccT_UInt32_Decode(asn1SccT_UInt32* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccBase_Time arr[200];
+} asn1SccBase_samples_DepthMap_timestamps;
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Double arr[200];
+} asn1SccBase_samples_DepthMap_vertical_interval;
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Double arr[200];
+} asn1SccBase_samples_DepthMap_horizontal_interval;
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Float arr[200];
+} asn1SccBase_samples_DepthMap_distances;
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Float arr[200];
+} asn1SccBase_samples_DepthMap_remissions;
+
+typedef struct {
+    asn1SccBase_Time time;
+    asn1SccBase_samples_DepthMap_timestamps timestamps;
+    asn1SccBase_samples_DepthMap_PROJECTION_TYPE vertical_projection;
+    asn1SccBase_samples_DepthMap_PROJECTION_TYPE horizontal_projection;
+    asn1SccBase_samples_DepthMap_vertical_interval vertical_interval;
+    asn1SccBase_samples_DepthMap_horizontal_interval horizontal_interval;
+    asn1SccT_UInt32 vertical_size;
+    asn1SccT_UInt32 horizontal_size;
+    asn1SccBase_samples_DepthMap_distances distances;
+    asn1SccBase_samples_DepthMap_remissions remissions;
+} asn1SccBase_samples_DepthMap;
+
+flag asn1SccBase_samples_DepthMap_timestamps_Equal(const asn1SccBase_samples_DepthMap_timestamps* pVal1, const asn1SccBase_samples_DepthMap_timestamps* pVal2);
+
+flag asn1SccBase_samples_DepthMap_vertical_interval_Equal(const asn1SccBase_samples_DepthMap_vertical_interval* pVal1, const asn1SccBase_samples_DepthMap_vertical_interval* pVal2);
+
+flag asn1SccBase_samples_DepthMap_horizontal_interval_Equal(const asn1SccBase_samples_DepthMap_horizontal_interval* pVal1, const asn1SccBase_samples_DepthMap_horizontal_interval* pVal2);
+
+flag asn1SccBase_samples_DepthMap_distances_Equal(const asn1SccBase_samples_DepthMap_distances* pVal1, const asn1SccBase_samples_DepthMap_distances* pVal2);
+
+flag asn1SccBase_samples_DepthMap_remissions_Equal(const asn1SccBase_samples_DepthMap_remissions* pVal1, const asn1SccBase_samples_DepthMap_remissions* pVal2);
+
+flag asn1SccBase_samples_DepthMap_Equal(const asn1SccBase_samples_DepthMap* pVal1, const asn1SccBase_samples_DepthMap* pVal2);
+
+void asn1SccBase_samples_DepthMap_timestamps_Initialize(asn1SccBase_samples_DepthMap_timestamps* pVal);
+void asn1SccBase_samples_DepthMap_vertical_interval_Initialize(asn1SccBase_samples_DepthMap_vertical_interval* pVal);
+void asn1SccBase_samples_DepthMap_horizontal_interval_Initialize(asn1SccBase_samples_DepthMap_horizontal_interval* pVal);
+void asn1SccBase_samples_DepthMap_distances_Initialize(asn1SccBase_samples_DepthMap_distances* pVal);
+void asn1SccBase_samples_DepthMap_remissions_Initialize(asn1SccBase_samples_DepthMap_remissions* pVal);
+void asn1SccBase_samples_DepthMap_Initialize(asn1SccBase_samples_DepthMap* pVal);
+
+#define ERR_BASE_SAMPLES_DEPTHMAP_TIME_MICROSECONDS		3173  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS_ELM_MICROSECONDS		3194  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS		3215  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_VERTICAL_PROJECTION		3222  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_PROJECTION		3233  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL_ELM		3244  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL		3255  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL_ELM		3262  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL		3273  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_VERTICAL_SIZE		3280  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_SIZE		3291  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_DISTANCES_ELM		3302  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_DISTANCES		3313  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_REMISSIONS_ELM		3320  /**/
+#define ERR_BASE_SAMPLES_DEPTHMAP_REMISSIONS		3331  /**/
+flag asn1SccBase_samples_DepthMap_IsConstraintValid(const asn1SccBase_samples_DepthMap* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP		3338  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_TIME_2		3190  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS		3216  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS_ELM_2		3211  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_PROJECTION_2		3229  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_PROJECTION_2		3240  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL		3256  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL_ELM_2		3251  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL		3274  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL_ELM_2		3269  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_SIZE_2		3287  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_SIZE_2		3298  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_DISTANCES		3314  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_DISTANCES_ELM_2		3309  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_REMISSIONS		3332  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_DEPTHMAP_REMISSIONS_ELM_2		3327  /**/
+#define asn1SccBase_samples_DepthMap_REQUIRED_BYTES_FOR_ENCODING       12022 
+#define asn1SccBase_samples_DepthMap_REQUIRED_BITS_FOR_ENCODING        96170
+
+flag asn1SccBase_samples_DepthMap_Encode(const asn1SccBase_samples_DepthMap* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP		3339  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_TIME_2		3191  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS		3217  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_TIMESTAMPS_ELM_2		3212  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_PROJECTION_2		3230  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_PROJECTION_2		3241  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL		3257  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_INTERVAL_ELM_2		3252  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL		3275  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_INTERVAL_ELM_2		3270  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_VERTICAL_SIZE_2		3288  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_HORIZONTAL_SIZE_2		3299  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_DISTANCES		3315  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_DISTANCES_ELM_2		3310  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_REMISSIONS		3333  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_DEPTHMAP_REMISSIONS_ELM_2		3328  /**/
+flag asn1SccBase_samples_DepthMap_Decode(asn1SccBase_samples_DepthMap* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_UInt32 arr[200];
+} asn1SccBase_samples_LaserScan_ranges;
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Float arr[200];
+} asn1SccBase_samples_LaserScan_remission;
+
+typedef struct {
+    asn1SccBase_Time time;
+    asn1SccT_Double start_angle;
+    asn1SccT_Double angular_resolution;
+    asn1SccT_Double speed;
+    asn1SccBase_samples_LaserScan_ranges ranges;
+    asn1SccT_UInt32 minrange;
+    asn1SccT_UInt32 maxrange;
+    asn1SccBase_samples_LaserScan_remission remission;
+} asn1SccBase_samples_LaserScan;
+
+flag asn1SccBase_samples_LaserScan_ranges_Equal(const asn1SccBase_samples_LaserScan_ranges* pVal1, const asn1SccBase_samples_LaserScan_ranges* pVal2);
+
+flag asn1SccBase_samples_LaserScan_remission_Equal(const asn1SccBase_samples_LaserScan_remission* pVal1, const asn1SccBase_samples_LaserScan_remission* pVal2);
+
+flag asn1SccBase_samples_LaserScan_Equal(const asn1SccBase_samples_LaserScan* pVal1, const asn1SccBase_samples_LaserScan* pVal2);
+
+void asn1SccBase_samples_LaserScan_ranges_Initialize(asn1SccBase_samples_LaserScan_ranges* pVal);
+void asn1SccBase_samples_LaserScan_remission_Initialize(asn1SccBase_samples_LaserScan_remission* pVal);
+void asn1SccBase_samples_LaserScan_Initialize(asn1SccBase_samples_LaserScan* pVal);
+
+#define ERR_BASE_SAMPLES_LASERSCAN_TIME_MICROSECONDS		3576  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_START_ANGLE		3597  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_ANGULAR_RESOLUTION		3608  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_SPEED		3619  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_RANGES_ELM		3630  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_RANGES		3641  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_MINRANGE		3648  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_MAXRANGE		3659  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_REMISSION_ELM		3670  /**/
+#define ERR_BASE_SAMPLES_LASERSCAN_REMISSION		3681  /**/
+flag asn1SccBase_samples_LaserScan_IsConstraintValid(const asn1SccBase_samples_LaserScan* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN		3688  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_TIME_2		3593  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_START_ANGLE_2		3604  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_ANGULAR_RESOLUTION_2		3615  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_SPEED_2		3626  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_RANGES		3642  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_RANGES_ELM_2		3637  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_MINRANGE_2		3655  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_MAXRANGE_2		3666  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_REMISSION		3682  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_LASERSCAN_REMISSION_ELM_2		3677  /**/
+#define asn1SccBase_samples_LaserScan_REQUIRED_BYTES_FOR_ENCODING       3457 
+#define asn1SccBase_samples_LaserScan_REQUIRED_BITS_FOR_ENCODING        27656
+
+flag asn1SccBase_samples_LaserScan_Encode(const asn1SccBase_samples_LaserScan* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN		3689  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_TIME_2		3594  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_START_ANGLE_2		3605  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_ANGULAR_RESOLUTION_2		3616  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_SPEED_2		3627  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_RANGES		3643  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_RANGES_ELM_2		3638  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_MINRANGE_2		3656  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_MAXRANGE_2		3667  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_REMISSION		3683  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_LASERSCAN_REMISSION_ELM_2		3678  /**/
+flag asn1SccBase_samples_LaserScan_Decode(asn1SccBase_samples_LaserScan* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccBase_Time arr[200];
+} asn1SccBase_samples_Sonar_timestamps;
+
+typedef struct {    int nCount; 
+    
+    asn1SccBase_Angle arr[200];
+} asn1SccBase_samples_Sonar_bearings;
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_Float arr[200];
+} asn1SccBase_samples_Sonar_bins;
+
+typedef struct {
+    asn1SccBase_Time time;
+    asn1SccBase_samples_Sonar_timestamps timestamps;
+    asn1SccBase_Time bin_duration;
+    asn1SccBase_Angle beam_width;
+    asn1SccBase_Angle beam_height;
+    asn1SccBase_samples_Sonar_bearings bearings;
+    asn1SccT_Float speed_of_sound;
+    asn1SccT_UInt32 bin_count;
+    asn1SccT_UInt32 beam_count;
+    asn1SccBase_samples_Sonar_bins bins;
+} asn1SccBase_samples_Sonar;
+
+flag asn1SccBase_samples_Sonar_timestamps_Equal(const asn1SccBase_samples_Sonar_timestamps* pVal1, const asn1SccBase_samples_Sonar_timestamps* pVal2);
+
+flag asn1SccBase_samples_Sonar_bearings_Equal(const asn1SccBase_samples_Sonar_bearings* pVal1, const asn1SccBase_samples_Sonar_bearings* pVal2);
+
+flag asn1SccBase_samples_Sonar_bins_Equal(const asn1SccBase_samples_Sonar_bins* pVal1, const asn1SccBase_samples_Sonar_bins* pVal2);
+
+flag asn1SccBase_samples_Sonar_Equal(const asn1SccBase_samples_Sonar* pVal1, const asn1SccBase_samples_Sonar* pVal2);
+
+void asn1SccBase_samples_Sonar_timestamps_Initialize(asn1SccBase_samples_Sonar_timestamps* pVal);
+void asn1SccBase_samples_Sonar_bearings_Initialize(asn1SccBase_samples_Sonar_bearings* pVal);
+void asn1SccBase_samples_Sonar_bins_Initialize(asn1SccBase_samples_Sonar_bins* pVal);
+void asn1SccBase_samples_Sonar_Initialize(asn1SccBase_samples_Sonar* pVal);
+
+#define ERR_BASE_SAMPLES_SONAR_TIME_MICROSECONDS		4075  /**/
+#define ERR_BASE_SAMPLES_SONAR_TIMESTAMPS_ELM_MICROSECONDS		4096  /**/
+#define ERR_BASE_SAMPLES_SONAR_TIMESTAMPS		4117  /**/
+#define ERR_BASE_SAMPLES_SONAR_BIN_DURATION_MICROSECONDS		4124  /**/
+#define ERR_BASE_SAMPLES_SONAR_BEAM_WIDTH_RAD		4145  /**/
+#define ERR_BASE_SAMPLES_SONAR_BEAM_HEIGHT_RAD		4166  /**/
+#define ERR_BASE_SAMPLES_SONAR_BEARINGS_ELM_RAD		4187  /**/
+#define ERR_BASE_SAMPLES_SONAR_BEARINGS		4208  /**/
+#define ERR_BASE_SAMPLES_SONAR_SPEED_OF_SOUND		4215  /**/
+#define ERR_BASE_SAMPLES_SONAR_BIN_COUNT		4226  /**/
+#define ERR_BASE_SAMPLES_SONAR_BEAM_COUNT		4237  /**/
+#define ERR_BASE_SAMPLES_SONAR_BINS_ELM		4248  /**/
+#define ERR_BASE_SAMPLES_SONAR_BINS		4259  /**/
+flag asn1SccBase_samples_Sonar_IsConstraintValid(const asn1SccBase_samples_Sonar* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR		4266  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_TIME_2		4092  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_TIMESTAMPS		4118  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_TIMESTAMPS_ELM_2		4113  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BIN_DURATION_2		4141  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEAM_WIDTH_2		4162  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEAM_HEIGHT_2		4183  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEARINGS		4209  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEARINGS_ELM_2		4204  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_SPEED_OF_SOUND_2		4222  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BIN_COUNT_2		4233  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BEAM_COUNT_2		4244  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BINS		4260  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONAR_BINS_ELM_2		4255  /**/
+#define asn1SccBase_samples_Sonar_REQUIRED_BYTES_FOR_ENCODING       6866 
+#define asn1SccBase_samples_Sonar_REQUIRED_BITS_FOR_ENCODING        54928
+
+flag asn1SccBase_samples_Sonar_Encode(const asn1SccBase_samples_Sonar* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR		4267  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_TIME_2		4093  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_TIMESTAMPS		4119  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_TIMESTAMPS_ELM_2		4114  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BIN_DURATION_2		4142  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEAM_WIDTH_2		4163  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEAM_HEIGHT_2		4184  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEARINGS		4210  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEARINGS_ELM_2		4205  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_SPEED_OF_SOUND_2		4223  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BIN_COUNT_2		4234  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BEAM_COUNT_2		4245  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BINS		4261  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONAR_BINS_ELM_2		4256  /**/
+flag asn1SccBase_samples_Sonar_Decode(asn1SccBase_samples_Sonar* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccT_UInt32 asn1SccDummyBase_T;
+
+
+flag asn1SccDummyBase_T_Equal(const asn1SccDummyBase_T* pVal1, const asn1SccDummyBase_T* pVal2);
+
+void asn1SccDummyBase_T_Initialize(asn1SccDummyBase_T* pVal);
+
+#define ERR_DUMMYBASE_T		52788  /**/
+flag asn1SccDummyBase_T_IsConstraintValid(const asn1SccDummyBase_T* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_DUMMYBASE_T_2		52795  /**/
+#define asn1SccDummyBase_T_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccDummyBase_T_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccDummyBase_T_Encode(const asn1SccDummyBase_T* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_DUMMYBASE_T_2		52796  /**/
+flag asn1SccDummyBase_T_Decode(asn1SccDummyBase_T* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccT_UInt32 asn1SccDummy2Base_T;
+
+
+flag asn1SccDummy2Base_T_Equal(const asn1SccDummy2Base_T* pVal1, const asn1SccDummy2Base_T* pVal2);
+
+void asn1SccDummy2Base_T_Initialize(asn1SccDummy2Base_T* pVal);
+
+#define ERR_DUMMY2BASE_T		1  /**/
+flag asn1SccDummy2Base_T_IsConstraintValid(const asn1SccDummy2Base_T* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_DUMMY2BASE_T_2_2		12  /**/
+#define asn1SccDummy2Base_T_REQUIRED_BYTES_FOR_ENCODING       4 
+#define asn1SccDummy2Base_T_REQUIRED_BITS_FOR_ENCODING        32
+
+flag asn1SccDummy2Base_T_Encode(const asn1SccDummy2Base_T* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_DUMMY2BASE_T_2_2		13  /**/
+flag asn1SccDummy2Base_T_Decode(asn1SccDummy2Base_T* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccSint asn1SccT_Int8;
+
+
+flag asn1SccT_Int8_Equal(const asn1SccT_Int8* pVal1, const asn1SccT_Int8* pVal2);
+
+void asn1SccT_Int8_Initialize(asn1SccT_Int8* pVal);
+
+#define ERR_T_INT8		52767  /**/
+flag asn1SccT_Int8_IsConstraintValid(const asn1SccT_Int8* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_T_INT8		52768  /**/
+#define asn1SccT_Int8_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccT_Int8_REQUIRED_BITS_FOR_ENCODING        8
+
+flag asn1SccT_Int8_Encode(const asn1SccT_Int8* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_T_INT8		52769  /**/
+flag asn1SccT_Int8_Decode(asn1SccT_Int8* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef asn1SccUint asn1SccT_UInt8;
+
+
+flag asn1SccT_UInt8_Equal(const asn1SccT_UInt8* pVal1, const asn1SccT_UInt8* pVal2);
+
+void asn1SccT_UInt8_Initialize(asn1SccT_UInt8* pVal);
+
+#define ERR_T_UINT8		52774  /**/
+flag asn1SccT_UInt8_IsConstraintValid(const asn1SccT_UInt8* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_T_UINT8		52775  /**/
+#define asn1SccT_UInt8_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccT_UInt8_REQUIRED_BITS_FOR_ENCODING        8
+
+flag asn1SccT_UInt8_Encode(const asn1SccT_UInt8* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_T_UINT8		52776  /**/
+flag asn1SccT_UInt8_Decode(asn1SccT_UInt8* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_UInt8 arr[200];
+} asn1SccBase_samples_SonarBeam_beam;
+
+typedef struct {
+    asn1SccBase_Time time;
+    asn1SccBase_Angle bearing;
+    asn1SccT_Double sampling_interval;
+    asn1SccT_Float speed_of_sound;
+    asn1SccT_Float beamwidth_horizontal;
+    asn1SccT_Float beamwidth_vertical;
+    asn1SccBase_samples_SonarBeam_beam beam;
+} asn1SccBase_samples_SonarBeam;
+
+flag asn1SccBase_samples_SonarBeam_beam_Equal(const asn1SccBase_samples_SonarBeam_beam* pVal1, const asn1SccBase_samples_SonarBeam_beam* pVal2);
+
+flag asn1SccBase_samples_SonarBeam_Equal(const asn1SccBase_samples_SonarBeam* pVal1, const asn1SccBase_samples_SonarBeam* pVal2);
+
+void asn1SccBase_samples_SonarBeam_beam_Initialize(asn1SccBase_samples_SonarBeam_beam* pVal);
+void asn1SccBase_samples_SonarBeam_Initialize(asn1SccBase_samples_SonarBeam* pVal);
+
+#define ERR_BASE_SAMPLES_SONARBEAM_TIME_MICROSECONDS		4272  /**/
+#define ERR_BASE_SAMPLES_SONARBEAM_BEARING_RAD		4293  /**/
+#define ERR_BASE_SAMPLES_SONARBEAM_SAMPLING_INTERVAL		4314  /**/
+#define ERR_BASE_SAMPLES_SONARBEAM_SPEED_OF_SOUND		4325  /**/
+#define ERR_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_HORIZONTAL		4336  /**/
+#define ERR_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_VERTICAL		4347  /**/
+#define ERR_BASE_SAMPLES_SONARBEAM_BEAM_ELM		4358  /**/
+#define ERR_BASE_SAMPLES_SONARBEAM_BEAM		4369  /**/
+flag asn1SccBase_samples_SonarBeam_IsConstraintValid(const asn1SccBase_samples_SonarBeam* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM		4376  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_TIME_2		4289  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEARING_2		4310  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_SAMPLING_INTERVAL_2		4321  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_SPEED_OF_SOUND_2		4332  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_HORIZONTAL_2		4343  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_VERTICAL_2		4354  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEAM		4370  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARBEAM_BEAM_ELM_2		4365  /**/
+#define asn1SccBase_samples_SonarBeam_REQUIRED_BYTES_FOR_ENCODING       274 
+#define asn1SccBase_samples_SonarBeam_REQUIRED_BITS_FOR_ENCODING        2192
+
+flag asn1SccBase_samples_SonarBeam_Encode(const asn1SccBase_samples_SonarBeam* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM		4377  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_TIME_2		4290  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEARING_2		4311  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_SAMPLING_INTERVAL_2		4322  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_SPEED_OF_SOUND_2		4333  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_HORIZONTAL_2		4344  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEAMWIDTH_VERTICAL_2		4355  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEAM		4371  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARBEAM_BEAM_ELM_2		4366  /**/
+flag asn1SccBase_samples_SonarBeam_Decode(asn1SccBase_samples_SonarBeam* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_UInt8 arr[200];
+} asn1SccBase_samples_frame_Frame_image;
+
+typedef struct {    int nCount; 
+    
+    asn1SccBase_samples_frame_frame_attrib_t arr[200];
+} asn1SccBase_samples_frame_Frame_attributes;
+
+typedef struct {
+    asn1SccBase_Time time;
+    asn1SccBase_Time received_time;
+    asn1SccBase_samples_frame_Frame_image image;
+    asn1SccBase_samples_frame_Frame_attributes attributes;
+    asn1SccBase_samples_frame_frame_size_t size_val;
+    asn1SccT_UInt32 data_depth;
+    asn1SccT_UInt32 pixel_size;
+    asn1SccT_UInt32 row_size;
+    asn1SccBase_samples_frame_frame_mode_t frame_mode;
+    asn1SccBase_samples_frame_frame_status_t frame_status;
+} asn1SccBase_samples_frame_Frame;
+
+flag asn1SccBase_samples_frame_Frame_image_Equal(const asn1SccBase_samples_frame_Frame_image* pVal1, const asn1SccBase_samples_frame_Frame_image* pVal2);
+
+flag asn1SccBase_samples_frame_Frame_attributes_Equal(const asn1SccBase_samples_frame_Frame_attributes* pVal1, const asn1SccBase_samples_frame_Frame_attributes* pVal2);
+
+flag asn1SccBase_samples_frame_Frame_Equal(const asn1SccBase_samples_frame_Frame* pVal1, const asn1SccBase_samples_frame_Frame* pVal2);
+
+void asn1SccBase_samples_frame_Frame_image_Initialize(asn1SccBase_samples_frame_Frame_image* pVal);
+void asn1SccBase_samples_frame_Frame_attributes_Initialize(asn1SccBase_samples_frame_Frame_attributes* pVal);
+void asn1SccBase_samples_frame_Frame_Initialize(asn1SccBase_samples_frame_Frame* pVal);
+
+#define ERR_BASE_SAMPLES_FRAME_FRAME_TIME_MICROSECONDS		4933  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_RECEIVED_TIME_MICROSECONDS		4954  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_IMAGE_ELM		4975  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_IMAGE		4986  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES_ELM_DATA		4993  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES_ELM_NAME_VAL		5004  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES		5025  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_SIZE_VAL_WIDTH		5032  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_SIZE_VAL_HEIGHT		5043  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_DATA_DEPTH		5064  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_PIXEL_SIZE		5075  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_ROW_SIZE		5086  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_FRAME_MODE		5097  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAME_FRAME_STATUS		5108  /**/
+flag asn1SccBase_samples_frame_Frame_IsConstraintValid(const asn1SccBase_samples_frame_Frame* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME		5119  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_TIME_2		4950  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_RECEIVED_TIME_2		4971  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_IMAGE		4987  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_IMAGE_ELM_2		4982  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES		5026  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES_ELM_2		5021  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_SIZE_VAL_2		5060  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_DATA_DEPTH_2		5071  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_PIXEL_SIZE_2		5082  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_ROW_SIZE_2		5093  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_FRAME_MODE_2		5104  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAME_FRAME_STATUS_2		5115  /**/
+#define asn1SccBase_samples_frame_Frame_REQUIRED_BYTES_FOR_ENCODING       80635 
+#define asn1SccBase_samples_frame_Frame_REQUIRED_BITS_FOR_ENCODING        645078
+
+flag asn1SccBase_samples_frame_Frame_Encode(const asn1SccBase_samples_frame_Frame* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME		5120  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_TIME_2		4951  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_RECEIVED_TIME_2		4972  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_IMAGE		4988  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_IMAGE_ELM_2		4983  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES		5027  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_ATTRIBUTES_ELM_2		5022  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_SIZE_VAL_2		5061  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_DATA_DEPTH_2		5072  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_PIXEL_SIZE_2		5083  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_ROW_SIZE_2		5094  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_FRAME_MODE_2		5105  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAME_FRAME_STATUS_2		5116  /**/
+flag asn1SccBase_samples_frame_Frame_Decode(asn1SccBase_samples_frame_Frame* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {
+    asn1SccBase_Time time;
+    asn1SccBase_samples_frame_Frame first;
+    asn1SccBase_samples_frame_Frame second;
+    asn1SccT_UInt32 id;
+} asn1SccBase_samples_frame_FramePair;
+
+flag asn1SccBase_samples_frame_FramePair_Equal(const asn1SccBase_samples_frame_FramePair* pVal1, const asn1SccBase_samples_frame_FramePair* pVal2);
+
+void asn1SccBase_samples_frame_FramePair_Initialize(asn1SccBase_samples_frame_FramePair* pVal);
+
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_TIME_MICROSECONDS		5125  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_TIME_MICROSECONDS		5146  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_RECEIVED_TIME_MICROSECONDS		5167  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_IMAGE_ELM		5188  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_IMAGE		5199  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_ATTRIBUTES_ELM_DATA		5206  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_ATTRIBUTES_ELM_NAME_VAL		5217  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_ATTRIBUTES		5238  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_SIZE_VAL_WIDTH		5245  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_SIZE_VAL_HEIGHT		5256  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_DATA_DEPTH		5277  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_PIXEL_SIZE		5288  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_ROW_SIZE		5299  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_FRAME_MODE		5310  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_FRAME_STATUS		5321  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_TIME_MICROSECONDS		5342  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_RECEIVED_TIME_MICROSECONDS		5363  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_IMAGE_ELM		5384  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_IMAGE		5395  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_ATTRIBUTES_ELM_DATA		5402  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_ATTRIBUTES_ELM_NAME_VAL		5413  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_ATTRIBUTES		5434  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_SIZE_VAL_WIDTH		5441  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_SIZE_VAL_HEIGHT		5452  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_DATA_DEPTH		5473  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_PIXEL_SIZE		5484  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_ROW_SIZE		5495  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_FRAME_MODE		5506  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_FRAME_STATUS		5517  /**/
+#define ERR_BASE_SAMPLES_FRAME_FRAMEPAIR_ID		5538  /**/
+flag asn1SccBase_samples_frame_FramePair_IsConstraintValid(const asn1SccBase_samples_frame_FramePair* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR		5549  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR_TIME_2		5142  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_2		5338  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_2		5534  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_FRAME_FRAMEPAIR_ID_2		5545  /**/
+#define asn1SccBase_samples_frame_FramePair_REQUIRED_BYTES_FOR_ENCODING       161282 
+#define asn1SccBase_samples_frame_FramePair_REQUIRED_BITS_FOR_ENCODING        1290252
+
+flag asn1SccBase_samples_frame_FramePair_Encode(const asn1SccBase_samples_frame_FramePair* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR		5550  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR_TIME_2		5143  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR_FIRST_2		5339  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR_SECOND_2		5535  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_FRAME_FRAMEPAIR_ID_2		5546  /**/
+flag asn1SccBase_samples_frame_FramePair_Decode(asn1SccBase_samples_frame_FramePair* pVal, BitStream* pBitStrm, int* pErrCode);
+typedef flag asn1SccT_Boolean;
+
+
+flag asn1SccT_Boolean_Equal(const asn1SccT_Boolean* pVal1, const asn1SccT_Boolean* pVal2);
+
+void asn1SccT_Boolean_Initialize(asn1SccT_Boolean* pVal);
+
+#define ERR_T_BOOLEAN		52781  /**/
+flag asn1SccT_Boolean_IsConstraintValid(const asn1SccT_Boolean* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_T_BOOLEAN		52782  /**/
+#define asn1SccT_Boolean_REQUIRED_BYTES_FOR_ENCODING       1 
+#define asn1SccT_Boolean_REQUIRED_BITS_FOR_ENCODING        1
+
+flag asn1SccT_Boolean_Encode(const asn1SccT_Boolean* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_T_BOOLEAN		52783  /**/
+flag asn1SccT_Boolean_Decode(asn1SccT_Boolean* pVal, BitStream* pBitStrm, int* pErrCode);
+
+typedef struct {    int nCount; 
+    
+    asn1SccT_UInt8 arr[200];
+} asn1SccBase_samples_SonarScan_data;
+
+typedef struct {    int nCount; 
+    
+    asn1SccBase_Time arr[200];
+} asn1SccBase_samples_SonarScan_time_beams;
+
+typedef struct {
+    asn1SccBase_Time time;
+    asn1SccBase_samples_SonarScan_data data;
+    asn1SccBase_samples_SonarScan_time_beams time_beams;
+    asn1SccT_UInt16 number_of_beams;
+    asn1SccT_UInt16 number_of_bins;
+    asn1SccBase_Angle start_bearing;
+    asn1SccBase_Angle angular_resolution;
+    asn1SccT_Double sampling_interval;
+    asn1SccT_Float speed_of_sound;
+    asn1SccBase_Angle beamwidth_horizontal;
+    asn1SccBase_Angle beamwidth_vertical;
+    asn1SccT_Boolean memory_layout_column;
+    asn1SccT_Boolean polar_coordinates;
+} asn1SccBase_samples_SonarScan;
+
+flag asn1SccBase_samples_SonarScan_data_Equal(const asn1SccBase_samples_SonarScan_data* pVal1, const asn1SccBase_samples_SonarScan_data* pVal2);
+
+flag asn1SccBase_samples_SonarScan_time_beams_Equal(const asn1SccBase_samples_SonarScan_time_beams* pVal1, const asn1SccBase_samples_SonarScan_time_beams* pVal2);
+
+flag asn1SccBase_samples_SonarScan_Equal(const asn1SccBase_samples_SonarScan* pVal1, const asn1SccBase_samples_SonarScan* pVal2);
+
+void asn1SccBase_samples_SonarScan_data_Initialize(asn1SccBase_samples_SonarScan_data* pVal);
+void asn1SccBase_samples_SonarScan_time_beams_Initialize(asn1SccBase_samples_SonarScan_time_beams* pVal);
+void asn1SccBase_samples_SonarScan_Initialize(asn1SccBase_samples_SonarScan* pVal);
+
+#define ERR_BASE_SAMPLES_SONARSCAN_TIME_MICROSECONDS		4382  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_DATA_ELM		4403  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_DATA		4414  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_TIME_BEAMS_ELM_MICROSECONDS		4421  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_TIME_BEAMS		4442  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BEAMS		4449  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BINS		4460  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_START_BEARING_RAD		4471  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_ANGULAR_RESOLUTION_RAD		4492  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_SAMPLING_INTERVAL		4513  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_SPEED_OF_SOUND		4524  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_HORIZONTAL_RAD		4535  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_VERTICAL_RAD		4556  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_MEMORY_LAYOUT_COLUMN		4577  /**/
+#define ERR_BASE_SAMPLES_SONARSCAN_POLAR_COORDINATES		4588  /**/
+flag asn1SccBase_samples_SonarScan_IsConstraintValid(const asn1SccBase_samples_SonarScan* pVal, int* pErrCode);
+
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN		4599  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_TIME_2		4399  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_DATA		4415  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_DATA_ELM_2		4410  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_TIME_BEAMS		4443  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_TIME_BEAMS_ELM_2		4438  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BEAMS_2		4456  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BINS_2		4467  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_START_BEARING_2		4488  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_ANGULAR_RESOLUTION_2		4509  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_SAMPLING_INTERVAL_2		4520  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_SPEED_OF_SOUND_2		4531  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_HORIZONTAL_2		4552  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_VERTICAL_2		4573  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_MEMORY_LAYOUT_COLUMN_2		4584  /**/
+#define ERR_UPER_ENCODE_BASE_SAMPLES_SONARSCAN_POLAR_COORDINATES_2		4595  /**/
+#define asn1SccBase_samples_SonarScan_REQUIRED_BYTES_FOR_ENCODING       1893 
+#define asn1SccBase_samples_SonarScan_REQUIRED_BITS_FOR_ENCODING        15138
+
+flag asn1SccBase_samples_SonarScan_Encode(const asn1SccBase_samples_SonarScan* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
+
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN		4600  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_TIME_2		4400  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_DATA		4416  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_DATA_ELM_2		4411  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_TIME_BEAMS		4444  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_TIME_BEAMS_ELM_2		4439  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BEAMS_2		4457  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_NUMBER_OF_BINS_2		4468  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_START_BEARING_2		4489  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_ANGULAR_RESOLUTION_2		4510  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_SAMPLING_INTERVAL_2		4521  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_SPEED_OF_SOUND_2		4532  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_HORIZONTAL_2		4553  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_BEAMWIDTH_VERTICAL_2		4574  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_MEMORY_LAYOUT_COLUMN_2		4585  /**/
+#define ERR_UPER_DECODE_BASE_SAMPLES_SONARSCAN_POLAR_COORDINATES_2		4596  /**/
+flag asn1SccBase_samples_SonarScan_Decode(asn1SccBase_samples_SonarScan* pVal, BitStream* pBitStrm, int* pErrCode);
+
+extern const asn1SccPusSt05EventId pus_EVENT_ID_NONE;
+extern const asn1SccPusSt05EventAuxData pus_EVENT_AUXDATA_NONE;
+extern const asn1SccPusUInt64 pus_EVENT_DATASTORED_NONE;
+extern const asn1SccPusSt03HousekeepingReportId pus_ST03_DEFAULT_HK_REPORT;
+extern const asn1SccT_UInt32 numT_String;
+extern const asn1SccT_UInt32 urdriverPathMaxSize;
 extern const asn1SccPusPacketVersion pus_PACKET_VERSION_CURRENT;
 extern const asn1SccPusApid pus_APID_TIME;
 extern const asn1SccPusApid pus_APID_IDLE;
@@ -8716,30 +8803,6 @@ extern const asn1SccPusVersionNumber pus_VERSION_CURRENT;
 extern const asn1SccPusTimeReferenceStatus pus_TIME_REFERENCE_STATUS_NONE;
 extern const asn1SccPusMessageTypeCounter pus_MESSAGE_TYPE_COUNTER_NONE;
 extern const asn1SccPusStepId pus_STEP_NONE;
-extern const asn1SccPusSt05EventId pus_EVENT_ID_NONE;
-extern const asn1SccPusSt05EventAuxData pus_EVENT_AUXDATA_NONE;
-extern const asn1SccPusUInt64 pus_EVENT_DATASTORED_NONE;
-extern const asn1SccT_UInt32 urdriverPathMaxSize;
-extern const asn1SccT_UInt32 numT_String;
-extern const asn1SccPusUInt32 pus_ST03_MAX_REPORT_LENGTH;
-extern const asn1SccPusUInt32 pus_ST11_MAX_SCHEDULED_ACTIVITIES;
-extern const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_ID;
-extern const asn1SccPusUInt32 pus_ST18_MAX_SIZE_OBCP_CODE;
-extern const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_CHECKSUM;
-extern const asn1SccPusUInt32 pus_ST23_MAX_SIZE_FILE_PATH;
-extern const asn1SccPusUInt32 pus_ST23_MAX_SIZE_REPOSITORY_PATH;
-extern const asn1SccPusUInt32 pus_ST23_MAX_SIZE_REPOSITORY_DOMAIN;
-extern const asn1SccPusUInt32 pus_ST23_MAX_SIZE_FILE;
-extern const asn1SccPusSt03HousekeepingReportId pus_ST03_DEFAULT_HK_REPORT;
-extern const asn1SccPusSt01FailureCode pus_ST01_NO_ERROR;
-extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNAVAILABLE;
-extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_SERVICE_UNAVAILABLE;
-extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_SUBTYPE_UNAVAILABLE;
-extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNKNOWN;
-extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_SERVICE_UNKNOWN;
-extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_SUBTYPE_UNKNOWN;
-extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_WRONG_FORMAT;
-extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_CHECKSUM;
 extern const asn1SccPusServiceType pusService_NONE;
 extern const asn1SccPusServiceType pus_ST01_requestVerification;
 extern const asn1SccPusServiceType pus_ST02_deviceAccess;
@@ -8818,6 +8881,24 @@ extern const asn1SccPusSubserviceType pus_TC_201_1_setHomeRequest;
 extern const asn1SccPusSubserviceType pus_TC_201_2_planHomeRequest;
 extern const asn1SccPusSubserviceType pus_TC_201_3_planMoveRequest;
 extern const asn1SccPusSubserviceType pus_TM_201_4_planReport;
+extern const asn1SccPusSt01FailureCode pus_ST01_NO_ERROR;
+extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNAVAILABLE;
+extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_SERVICE_UNAVAILABLE;
+extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_SUBTYPE_UNAVAILABLE;
+extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNKNOWN;
+extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_SERVICE_UNKNOWN;
+extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_SUBTYPE_UNKNOWN;
+extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_WRONG_FORMAT;
+extern const asn1SccPusSt01FailureCode pus_ST01_ERROR_CHECKSUM;
+extern const asn1SccPusUInt32 pus_ST03_MAX_REPORT_LENGTH;
+extern const asn1SccPusUInt32 pus_ST11_MAX_SCHEDULED_ACTIVITIES;
+extern const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_ID;
+extern const asn1SccPusUInt32 pus_ST18_MAX_SIZE_OBCP_CODE;
+extern const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_CHECKSUM;
+extern const asn1SccPusUInt32 pus_ST23_MAX_SIZE_FILE_PATH;
+extern const asn1SccPusUInt32 pus_ST23_MAX_SIZE_REPOSITORY_PATH;
+extern const asn1SccPusUInt32 pus_ST23_MAX_SIZE_REPOSITORY_DOMAIN;
+extern const asn1SccPusUInt32 pus_ST23_MAX_SIZE_FILE;
 extern const asn1SccT_UInt32 numBase_JointTrajectory;
 extern const asn1SccT_UInt32 numStd_orogen_typekits_mtype_std_vector_base_JointTransform;
 extern const asn1SccT_UInt32 numStd_orogen_typekits_mtype_std_vector_base_Waypoint;

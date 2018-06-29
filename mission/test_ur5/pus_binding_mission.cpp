@@ -83,13 +83,15 @@ std::vector<pusSt201Point> pus_tc_201_1_3_getPositionPoints_(const pusPacket_t* 
 }
 
 pusSt201PlanObservation pus_tm_201_4_getPlanObservation_(const pusPacket_t* inTM) {
-	pusSt201PlanObservation observation;
+	pusSt201PlanObservation observation, obs2;
+	obs2.id = 0;
+	obs2.code = 0;
 	pusError_t error = pus_tm_201_4_getPlanObservation(&observation, inTM);
 	PUS_SET_ERROR(error);
 	if (error == PUS_NO_ERROR)
 		return observation;
 	else
-		return 0;
+		return obs2;
 }
 
 

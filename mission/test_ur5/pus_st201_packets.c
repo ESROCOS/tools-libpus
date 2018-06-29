@@ -108,7 +108,7 @@ pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination, pusSt201PlanObservation observation)
+pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination, const pusSt201PlanObservation* observation)
 {
 	if (NULL == outTm )
 	{
@@ -243,7 +243,7 @@ pusError_t pus_tc_201_1_3_getPositionPoints(pusSt201Point* point1, pusSt201Point
 	}
 }
 
-pusError_t pus_tm_201_4_setPlanObservation(pusPacket_t* outTm, pusSt201PlanObservation observation)
+pusError_t pus_tm_201_4_setPlanObservation(pusPacket_t* outTm, const pusSt201PlanObservation* observation)
 {
 	if( NULL == outTm  )
 	{
@@ -253,7 +253,8 @@ pusError_t pus_tm_201_4_setPlanObservation(pusPacket_t* outTm, pusSt201PlanObser
 	{
 		return PUS_GET_ERROR();
 	}
-	outTm->data.u.tmData.data.u.st_201_4.planObservation = observation;
+	outTm->data.u.tmData.data.u.st_201_4.observation.id = observation->id;
+	outTm->data.u.tmData.data.u.st_201_4.observation.code = observation->code;
 
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
@@ -268,7 +269,8 @@ pusError_t pus_tm_201_4_getPlanObservation(pusSt201PlanObservation* observation,
 	{
 		return PUS_GET_ERROR();
 	}
-	*observation = inTM->data.u.tmData.data.u.st_201_4.planObservation;
+	observation->id = inTM->data.u.tmData.data.u.st_201_4.observation.id;
+	observation->code = inTM->data.u.tmData.data.u.st_201_4.observation.code;
 
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }

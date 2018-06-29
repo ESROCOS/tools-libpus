@@ -90,16 +90,14 @@ void onboardsoftware_PI_pusTrigger()
 
 
 
-void onboardsoftware_PI_planHome
-      (const asn1SccBase_Pose *IN_pose)
+void onboardsoftware_PI_planHome (const asn1SccT_Boolean *IN_trig)
 {
    // Write your code here
 	printf("onboardsoftware_PI_planhome \n");
 }
 
 
-void onboardsoftware_PI_planMove
-      (const asn1SccBase_Pose *IN_pose)
+void onboardsoftware_PI_planMove (const asn1SccBase_Pose *IN_pose)
 {
    // Write your code here
 	printf("onboardsoftware_PI_planhome \n");
@@ -110,4 +108,9 @@ void onboardsoftware_PI_setFrameRequest()
 {
    // Write your code here
 	printf("onboardsoftware_PI_setframerequest \n");
+}
+
+void onboardsoftware_PI_configHome(const asn1SccBase_Pose *IN_pose)
+{
+	printf("onboardsoftware_PI_configHome \n");
 }

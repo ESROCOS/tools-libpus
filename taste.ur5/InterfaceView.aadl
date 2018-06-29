@@ -3991,6 +3991,8 @@ FEATURES
   observation : IN PARAMETER DataView::PusSt200Observation {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_report;
 
 SUBPROGRAM IMPLEMENTATION PI_report.others
@@ -4072,6 +4074,7 @@ FEATURES
   PI_report : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::CameraControl::ST200::PI_report.others {
     Taste::coordinates => "150253 151665";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "report";
   };
@@ -4128,6 +4131,8 @@ FEATURES
   operation : IN PARAMETER DataView::PusSt200ControlId {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_operationRequest;
 
 SUBPROGRAM IMPLEMENTATION PI_operationRequest.others
@@ -4170,6 +4175,7 @@ FEATURES
   PI_operationRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::CameraControl::camera_control::PI_operationRequest.others {
     Taste::coordinates => "153829 149517";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "operationRequest";
   };
@@ -4420,6 +4426,8 @@ FEATURES
   observation : IN PARAMETER DataView::PusSt201PlanObservation {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_report;
 
 SUBPROGRAM IMPLEMENTATION PI_report.others
@@ -4517,6 +4525,7 @@ FEATURES
   PI_report : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::ST201::PI_report.others {
     Taste::coordinates => "147873 168625";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "report";
   };
@@ -4585,6 +4594,8 @@ FEATURES
   pusPose : IN PARAMETER DataView::PusTC_201_1_3_Data {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_setHome;
 
 SUBPROGRAM IMPLEMENTATION PI_setHome.others
@@ -4593,6 +4604,8 @@ PROPERTIES
 END PI_setHome.others;
 
 SUBPROGRAM PI_planHomeRequest
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_planHomeRequest;
 
 SUBPROGRAM IMPLEMENTATION PI_planHomeRequest.others
@@ -4605,6 +4618,8 @@ FEATURES
   pusPose : IN PARAMETER DataView::PusTC_201_1_3_Data {
     Taste::encoding => NATIVE;
   };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
 END PI_planMoveRequest;
 
 SUBPROGRAM IMPLEMENTATION PI_planMoveRequest.others
@@ -4662,7 +4677,7 @@ END RI_planMove.others;
 
 SUBPROGRAM RI_planHome
 FEATURES
-  pose : IN PARAMETER DataView::Base_Pose {
+  trigger : IN PARAMETER DataView::T_Boolean {
     Taste::encoding => NATIVE;
   };
 END RI_planHome;
@@ -4670,23 +4685,48 @@ END RI_planHome;
 SUBPROGRAM IMPLEMENTATION RI_planHome.others
 END RI_planHome.others;
 
+SUBPROGRAM RI_configHome
+FEATURES
+  target_home : IN PARAMETER DataView::Base_Pose {
+    Taste::encoding => NATIVE;
+  };
+END RI_configHome;
+
+SUBPROGRAM IMPLEMENTATION RI_configHome.others
+END RI_configHome.others;
+
+SUBPROGRAM PI_configHomeReport
+FEATURES
+  status : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+END PI_configHomeReport;
+
+SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_configHomeReport.others;
+
 SYSTEM robot_control
 FEATURES
   PI_setHome : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_setHome.others {
     Taste::coordinates => "151797 170275";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setHome";
   };
   PI_planHomeRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planHomeRequest.others {
     Taste::coordinates => "151797 171355";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHomeRequest";
   };
   PI_planMoveRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planMoveRequest.others {
     Taste::coordinates => "151797 169651";
     Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMoveRequest";
   };
@@ -4721,6 +4761,17 @@ FEATURES
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "planHome";
     Taste::labelInheritance => "true";
+  };
+  RI_configHome : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_configHome.others {
+    Taste::coordinates => "159357 167151";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "configHome";
+    Taste::labelInheritance => "true";
+  };
+  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_configHomeReport.others {
+    Taste::coordinates => "160068 172421";
+    Taste::RCMoperationKind => sporadic;
+    Taste::InterfaceName => "configHomeReport";
   };
 PROPERTIES
   Source_Language => (C);
@@ -4840,7 +4891,7 @@ END RI_newTm.others;
 
 SUBPROGRAM RI_planHome
 FEATURES
-  pose : IN PARAMETER DataView::Base_Pose {
+  trigger : IN PARAMETER DataView::T_Boolean {
     Taste::encoding => NATIVE;
   };
 END RI_planHome;
@@ -4857,6 +4908,28 @@ END RI_planMove;
 
 SUBPROGRAM IMPLEMENTATION RI_planMove.others
 END RI_planMove.others;
+
+SUBPROGRAM RI_configHome
+FEATURES
+  target_home : IN PARAMETER DataView::Base_Pose {
+    Taste::encoding => NATIVE;
+  };
+END RI_configHome;
+
+SUBPROGRAM IMPLEMENTATION RI_configHome.others
+END RI_configHome.others;
+
+SUBPROGRAM PI_configHomeReport
+FEATURES
+  status : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+END PI_configHomeReport;
+
+SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_configHomeReport.others;
 
 SYSTEM RobotControl
 FEATURES
@@ -4917,6 +4990,17 @@ FEATURES
     Taste::InterfaceName => "planMove";
     Taste::labelInheritance => "true";
   };
+  RI_configHome : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_configHome.others {
+    Taste::coordinates => "163327 166838";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "configHome";
+    Taste::labelInheritance => "true";
+  };
+  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_configHomeReport.others {
+    Taste::coordinates => "163327 173813";
+    Taste::RCMoperationKind => sporadic;
+    Taste::InterfaceName => "configHomeReport";
+  };
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
@@ -4969,6 +5053,12 @@ CONNECTIONS
   };
   RobotControl_RI_planHome_robot_control_RI_planHome : SUBPROGRAM ACCESS RI_planHome -> robot_control.RI_planHome {
     Taste::coordinates => "160068 168086 161697 168086 161697 168070 163327 168070";
+  };
+  RobotControl_RI_configHome_robot_control_RI_configHome : SUBPROGRAM ACCESS RI_configHome -> robot_control.RI_configHome {
+    Taste::coordinates => "159357 167151 159357 166838 163327 166838";
+  };
+  robot_control_PI_configHomeReport_RobotControl_PI_configHomeReport : SUBPROGRAM ACCESS robot_control.PI_configHomeReport -> PI_configHomeReport {
+    Taste::coordinates => "163327 173813 161697 173813 161697 172421 160068 172421";
   };
 END RobotControl.others;
 
@@ -5251,7 +5341,7 @@ END RI_setFrameRequest.others;
 
 SUBPROGRAM RI_planHome
 FEATURES
-  pose : IN PARAMETER DataView::Base_Pose {
+  trigger : IN PARAMETER DataView::T_Boolean {
     Taste::encoding => NATIVE;
   };
 END RI_planHome;
@@ -5268,6 +5358,28 @@ END RI_planMove;
 
 SUBPROGRAM IMPLEMENTATION RI_planMove.others
 END RI_planMove.others;
+
+SUBPROGRAM RI_configHome
+FEATURES
+  target_home : IN PARAMETER DataView::Base_Pose {
+    Taste::encoding => NATIVE;
+  };
+END RI_configHome;
+
+SUBPROGRAM IMPLEMENTATION RI_configHome.others
+END RI_configHome.others;
+
+SUBPROGRAM PI_configHomeReport
+FEATURES
+  status : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+END PI_configHomeReport;
+
+SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_configHomeReport.others;
 
 SYSTEM PusServices
 FEATURES
@@ -5406,6 +5518,17 @@ FEATURES
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "planMove";
     Taste::labelInheritance => "true";
+  };
+  RI_configHome : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_configHome.others {
+    Taste::coordinates => "203150 170713";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "configHome";
+    Taste::labelInheritance => "true";
+  };
+  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_configHomeReport.others {
+    Taste::coordinates => "203150 170253";
+    Taste::RCMoperationKind => sporadic;
+    Taste::InterfaceName => "configHomeReport";
   };
 PROPERTIES
   Source_Language => (C);
@@ -5673,6 +5796,12 @@ CONNECTIONS
   PusServices_RI_planMove_RobotControl_RI_planMove : SUBPROGRAM ACCESS RI_planMove -> RobotControl.RI_planMove {
     Taste::coordinates => "163327 169212 183238 169212 183238 169761 203150 169761";
   };
+  PusServices_RI_configHome_RobotControl_RI_configHome : SUBPROGRAM ACCESS RI_configHome -> RobotControl.RI_configHome {
+    Taste::coordinates => "163327 166838 183238 166838 183238 170713 203150 170713";
+  };
+  RobotControl_PI_configHomeReport_PusServices_PI_configHomeReport : SUBPROGRAM ACCESS RobotControl.PI_configHomeReport -> PI_configHomeReport {
+    Taste::coordinates => "203150 170253 183238 170253 183238 173813 163327 173813";
+  };
 END PusServices.others;
 
 END interfaceview::IV::OnBoard::PusServices;
@@ -5726,7 +5855,7 @@ END PI_setFrameRequest.others;
 
 SUBPROGRAM PI_planHome
 FEATURES
-  pose : IN PARAMETER DataView::Base_Pose {
+  trigger : IN PARAMETER DataView::T_Boolean {
     Taste::encoding => NATIVE;
   };
 PROPERTIES
@@ -5751,6 +5880,20 @@ SUBPROGRAM IMPLEMENTATION PI_planMove.others
 PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_planMove.others;
+
+SUBPROGRAM PI_configHome
+FEATURES
+  target_home : IN PARAMETER DataView::Base_Pose {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_configHome;
+
+SUBPROGRAM IMPLEMENTATION PI_configHome.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_configHome.others;
 
 SUBPROGRAM RI_setParamValue
 FEATURES
@@ -5902,6 +6045,16 @@ END RI_planMoveReport;
 SUBPROGRAM IMPLEMENTATION RI_planMoveReport.others
 END RI_planMoveReport.others;
 
+SUBPROGRAM RI_configHomeReport
+FEATURES
+  status : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+END RI_configHomeReport;
+
+SUBPROGRAM IMPLEMENTATION RI_configHomeReport.others
+END RI_configHomeReport.others;
+
 SYSTEM OnboardSoftware
 FEATURES
   PI_debugTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_debugTrigger.others {
@@ -5938,6 +6091,13 @@ FEATURES
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMove";
+  };
+  PI_configHome : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_configHome.others {
+    Taste::coordinates => "219639 163658";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "configHome";
   };
   RI_setParamValue : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::PI_setParamValue.others {
     Taste::coordinates => "219639 67168";
@@ -6027,6 +6187,12 @@ FEATURES
     Taste::coordinates => "219639 170986";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "planMoveReport";
+    Taste::labelInheritance => "true";
+  };
+  RI_configHomeReport : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_configHomeReport.others {
+    Taste::coordinates => "219639 174552";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "configHomeReport";
     Taste::labelInheritance => "true";
   };
 PROPERTIES
@@ -6161,6 +6327,12 @@ CONNECTIONS
   };
   OnboardSoftware_PI_planMove_PusServices_RI_planMove : SUBPROGRAM ACCESS OnboardSoftware.PI_planMove -> PusServices.RI_planMove {
     Taste::coordinates => "203150 169761 211394 169761 211394 167088 219639 167088";
+  };
+  OnboardSoftware_PI_configHome_PusServices_RI_configHome : SUBPROGRAM ACCESS OnboardSoftware.PI_configHome -> PusServices.RI_configHome {
+    Taste::coordinates => "203150 170713 211394 170713 211394 163658 219639 163658";
+  };
+  PusServices_PI_configHomeReport_OnboardSoftware_RI_configHomeReport : SUBPROGRAM ACCESS PusServices.PI_configHomeReport -> OnboardSoftware.RI_configHomeReport {
+    Taste::coordinates => "219639 174552 211394 174552 211394 170253 203150 170253";
   };
 END OnBoard.others;
 
