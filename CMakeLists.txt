@@ -77,7 +77,7 @@ if(NOT CMAKE_CROSSCOMPILING)
     add_subdirectory(gui)
 endif()
 #add_subdirectory(taste)
-#add_subdirectory(taste.ur5)
+add_subdirectory(taste.ur5)
 
 # Coverage for tests
 if(NOT CMAKE_CROSSCOMPILING)

@@ -4403,7 +4403,7 @@ PUBLIC
 WITH interfaceview::IV::OnBoard::PusServices::OnBoardAPID;
 WITH interfaceview::IV::OnBoard::PusServices::ST01;
 WITH interfaceview::IV::OnBoard::PusServices::TM::TmQueue;
-WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control;
+WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager;
 WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
@@ -4553,19 +4553,19 @@ FEATURES
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
   };
-  RI_setHome : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_setHome.others {
+  RI_setHome : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_setHome.others {
     Taste::coordinates => "147873 170398";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "setHome";
     Taste::labelInheritance => "true";
   };
-  RI_planHomeRequest : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planHomeRequest.others {
+  RI_planHomeRequest : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeRequest.others {
     Taste::coordinates => "147873 171229";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "planHomeRequest";
     Taste::labelInheritance => "true";
   };
-  RI_planMoveRequest : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planMoveRequest.others {
+  RI_planMoveRequest : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveRequest.others {
     Taste::coordinates => "147873 169517";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "planMoveRequest";
@@ -4581,7 +4581,7 @@ END ST201.others;
 
 END interfaceview::IV::OnBoard::PusServices::RobotControl::ST201;
 
-PACKAGE interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control
+PACKAGE interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager
 PUBLIC
 
 WITH interfaceview::IV::OnBoard::PusServices::RobotControl::ST201;
@@ -4655,6 +4655,20 @@ PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_planMoveReport.others;
 
+SUBPROGRAM PI_configHomeReport
+FEATURES
+  status : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_configHomeReport;
+
+SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_configHomeReport.others;
+
 SUBPROGRAM RI_report
 FEATURES
   observation : IN PARAMETER DataView::PusSt201PlanObservation {
@@ -4695,54 +4709,49 @@ END RI_configHome;
 SUBPROGRAM IMPLEMENTATION RI_configHome.others
 END RI_configHome.others;
 
-SUBPROGRAM PI_configHomeReport
+SYSTEM robot_control_manager
 FEATURES
-  status : IN PARAMETER DataView::T_Boolean {
-    Taste::encoding => NATIVE;
-  };
-END PI_configHomeReport;
-
-SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
-PROPERTIES
-  Compute_Execution_Time => 0 ms .. 0 ms;
-END PI_configHomeReport.others;
-
-SYSTEM robot_control
-FEATURES
-  PI_setHome : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_setHome.others {
+  PI_setHome : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_setHome.others {
     Taste::coordinates => "151797 170275";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setHome";
   };
-  PI_planHomeRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planHomeRequest.others {
+  PI_planHomeRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeRequest.others {
     Taste::coordinates => "151797 171355";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHomeRequest";
   };
-  PI_planMoveRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planMoveRequest.others {
+  PI_planMoveRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveRequest.others {
     Taste::coordinates => "151797 169651";
     Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMoveRequest";
   };
-  PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planHomeReport.others {
+  PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeReport.others {
     Taste::coordinates => "160068 171543";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHomeReport";
   };
-  PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planMoveReport.others {
+  PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveReport.others {
     Taste::coordinates => "160068 170691";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMoveReport";
+  };
+  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_configHomeReport.others {
+    Taste::coordinates => "160068 172421";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "configHomeReport";
   };
   RI_report : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::ST201::PI_report.others {
     Taste::coordinates => "151797 168871";
@@ -4768,26 +4777,21 @@ FEATURES
     Taste::InterfaceName => "configHome";
     Taste::labelInheritance => "true";
   };
-  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_configHomeReport.others {
-    Taste::coordinates => "160068 172421";
-    Taste::RCMoperationKind => sporadic;
-    Taste::InterfaceName => "configHomeReport";
-  };
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
-END robot_control;
+END robot_control_manager;
 
-SYSTEM IMPLEMENTATION robot_control.others
-END robot_control.others;
+SYSTEM IMPLEMENTATION robot_control_manager.others
+END robot_control_manager.others;
 
-END interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control;
+END interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager;
 
 PACKAGE interfaceview::IV::OnBoard::PusServices::RobotControl
 PUBLIC
 
 WITH interfaceview::IV::OnBoard::PusServices::RobotControl::ST201;
-WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control;
+WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager;
 WITH interfaceview::IV::OnBoard::PusServices::ST01;
 WITH interfaceview::IV::OnBoard::PusServices::OnBoardAPID;
 WITH interfaceview::IV::OnBoard::PusServices::TM::TmQueue;
@@ -4836,6 +4840,20 @@ SUBPROGRAM IMPLEMENTATION PI_planHomeReport.others
 PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_planHomeReport.others;
+
+SUBPROGRAM PI_configHomeReport
+FEATURES
+  status : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_configHomeReport;
+
+SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_configHomeReport.others;
 
 SUBPROGRAM RI_ACK
 FEATURES
@@ -4919,18 +4937,6 @@ END RI_configHome;
 SUBPROGRAM IMPLEMENTATION RI_configHome.others
 END RI_configHome.others;
 
-SUBPROGRAM PI_configHomeReport
-FEATURES
-  status : IN PARAMETER DataView::T_Boolean {
-    Taste::encoding => NATIVE;
-  };
-END PI_configHomeReport;
-
-SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
-PROPERTIES
-  Compute_Execution_Time => 0 ms .. 0 ms;
-END PI_configHomeReport.others;
-
 SYSTEM RobotControl
 FEATURES
   PI_tc201 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::ST201::PI_tc201.others {
@@ -4940,19 +4946,26 @@ FEATURES
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tc201";
   };
-  PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planMoveReport.others {
+  PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveReport.others {
     Taste::coordinates => "163327 170567";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMoveReport";
   };
-  PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planHomeReport.others {
+  PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeReport.others {
     Taste::coordinates => "163327 172493";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHomeReport";
+  };
+  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_configHomeReport.others {
+    Taste::coordinates => "163327 173813";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "configHomeReport";
   };
   RI_ACK : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST01::PI_ACK.others {
     Taste::coordinates => "163327 163811";
@@ -4996,11 +5009,6 @@ FEATURES
     Taste::InterfaceName => "configHome";
     Taste::labelInheritance => "true";
   };
-  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_configHomeReport.others {
-    Taste::coordinates => "163327 173813";
-    Taste::RCMoperationKind => sporadic;
-    Taste::InterfaceName => "configHomeReport";
-  };
 PROPERTIES
   Source_Language => (C);
   Taste::Active_Interfaces => any;
@@ -5011,14 +5019,14 @@ SUBCOMPONENTS
   ST201 : SYSTEM interfaceview::IV::OnBoard::PusServices::RobotControl::ST201::ST201.others {
     Taste::coordinates => "138338 164203 147873 173795";
   };
-  robot_control : SYSTEM interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::robot_control.others {
+  robot_control_manager : SYSTEM interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::robot_control_manager.others {
     Taste::coordinates => "151797 167151 160068 173125";
   };
 CONNECTIONS
   ST201_PI_tc201_RobotControl_PI_tc201 : SUBPROGRAM ACCESS ST201.PI_tc201 -> PI_tc201 {
     Taste::coordinates => "135804 167054 137071 167054 137071 167307 138338 167307";
   };
-  ST201_PI_report_robot_control_RI_report : SUBPROGRAM ACCESS ST201.PI_report -> robot_control.RI_report {
+  ST201_PI_report_robot_control_manager_RI_report : SUBPROGRAM ACCESS ST201.PI_report -> robot_control_manager.RI_report {
     Taste::coordinates => "151797 168871 149835 168871 149835 168625 147873 168625";
   };
   RobotControl_RI_getSequenceCount_ST201_RI_getSequenceCount : SUBPROGRAM ACCESS RI_getSequenceCount -> ST201.RI_getSequenceCount {
@@ -5033,32 +5041,32 @@ CONNECTIONS
   RobotControl_RI_newTm_ST201_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> ST201.RI_newTm {
     Taste::coordinates => "138338 170876 137071 170876 137071 170599 135804 170599";
   };
-  robot_control_PI_setHome_ST201_RI_setHome : SUBPROGRAM ACCESS robot_control.PI_setHome -> ST201.RI_setHome {
+  robot_control_manager_PI_setHome_ST201_RI_setHome : SUBPROGRAM ACCESS robot_control_manager.PI_setHome -> ST201.RI_setHome {
     Taste::coordinates => "147873 170398 149835 170398 149835 170275 151797 170275";
   };
-  robot_control_PI_planHomeRequest_ST201_RI_planHomeRequest : SUBPROGRAM ACCESS robot_control.PI_planHomeRequest -> ST201.RI_planHomeRequest {
+  robot_control_manager_PI_planHomeRequest_ST201_RI_planHomeRequest : SUBPROGRAM ACCESS robot_control_manager.PI_planHomeRequest -> ST201.RI_planHomeRequest {
     Taste::coordinates => "147873 171229 149835 171229 149835 171355 151797 171355";
   };
-  robot_control_PI_planMoveRequest_ST201_RI_planMoveRequest : SUBPROGRAM ACCESS robot_control.PI_planMoveRequest -> ST201.RI_planMoveRequest {
+  robot_control_manager_PI_planMoveRequest_ST201_RI_planMoveRequest : SUBPROGRAM ACCESS robot_control_manager.PI_planMoveRequest -> ST201.RI_planMoveRequest {
     Taste::coordinates => "147873 169517 149835 169517 149835 169651 151797 169651";
   };
-  robot_control_PI_planHomeReport_RobotControl_PI_planHomeReport : SUBPROGRAM ACCESS robot_control.PI_planHomeReport -> PI_planHomeReport {
+  robot_control_manager_PI_planHomeReport_RobotControl_PI_planHomeReport : SUBPROGRAM ACCESS robot_control_manager.PI_planHomeReport -> PI_planHomeReport {
     Taste::coordinates => "163327 172493 161697 172493 161697 171543 160068 171543";
   };
-  robot_control_PI_planMoveReport_RobotControl_PI_planMoveReport : SUBPROGRAM ACCESS robot_control.PI_planMoveReport -> PI_planMoveReport {
+  robot_control_manager_PI_planMoveReport_RobotControl_PI_planMoveReport : SUBPROGRAM ACCESS robot_control_manager.PI_planMoveReport -> PI_planMoveReport {
     Taste::coordinates => "163327 170567 161697 170567 161697 170691 160068 170691";
   };
-  RobotControl_RI_planMove_robot_control_RI_planMove : SUBPROGRAM ACCESS RI_planMove -> robot_control.RI_planMove {
+  robot_control_manager_PI_configHomeReport_RobotControl_PI_configHomeReport : SUBPROGRAM ACCESS robot_control_manager.PI_configHomeReport -> PI_configHomeReport {
+    Taste::coordinates => "163327 173813 161697 173813 161697 172421 160068 172421";
+  };
+  RobotControl_RI_planMove_robot_control_manager_RI_planMove : SUBPROGRAM ACCESS RI_planMove -> robot_control_manager.RI_planMove {
     Taste::coordinates => "160068 168798 161697 168798 161697 169212 163327 169212";
   };
-  RobotControl_RI_planHome_robot_control_RI_planHome : SUBPROGRAM ACCESS RI_planHome -> robot_control.RI_planHome {
+  RobotControl_RI_planHome_robot_control_manager_RI_planHome : SUBPROGRAM ACCESS RI_planHome -> robot_control_manager.RI_planHome {
     Taste::coordinates => "160068 168086 161697 168086 161697 168070 163327 168070";
   };
-  RobotControl_RI_configHome_robot_control_RI_configHome : SUBPROGRAM ACCESS RI_configHome -> robot_control.RI_configHome {
+  RobotControl_RI_configHome_robot_control_manager_RI_configHome : SUBPROGRAM ACCESS RI_configHome -> robot_control_manager.RI_configHome {
     Taste::coordinates => "159357 167151 159357 166838 163327 166838";
-  };
-  robot_control_PI_configHomeReport_RobotControl_PI_configHomeReport : SUBPROGRAM ACCESS robot_control.PI_configHomeReport -> PI_configHomeReport {
-    Taste::coordinates => "163327 173813 161697 173813 161697 172421 160068 172421";
   };
 END RobotControl.others;
 
@@ -5093,7 +5101,7 @@ WITH interfaceview::IV::OnBoard::PusServices::EventServices::ST19;
 WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03;
 WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12;
 WITH interfaceview::IV::OnBoard::PusServices::CameraControl::camera_control;
-WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control;
+WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager;
 WITH interfaceview::IV::Ground;
 WITH interfaceview::IV::OnBoard::OnboardSoftware;
 WITH Taste;
@@ -5323,6 +5331,20 @@ PROPERTIES
   Compute_Execution_Time => 0 ms .. 0 ms;
 END PI_planHomeReport.others;
 
+SUBPROGRAM PI_configHomeReport
+FEATURES
+  status : IN PARAMETER DataView::T_Boolean {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_configHomeReport;
+
+SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_configHomeReport.others;
+
 SUBPROGRAM RI_newTm
 FEATURES
   tmPacket : IN PARAMETER DataView::PusPacket {
@@ -5368,18 +5390,6 @@ END RI_configHome;
 
 SUBPROGRAM IMPLEMENTATION RI_configHome.others
 END RI_configHome.others;
-
-SUBPROGRAM PI_configHomeReport
-FEATURES
-  status : IN PARAMETER DataView::T_Boolean {
-    Taste::encoding => NATIVE;
-  };
-END PI_configHomeReport;
-
-SUBPROGRAM IMPLEMENTATION PI_configHomeReport.others
-PROPERTIES
-  Compute_Execution_Time => 0 ms .. 0 ms;
-END PI_configHomeReport.others;
 
 SYSTEM PusServices
 FEATURES
@@ -5481,19 +5491,26 @@ FEATURES
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setCameraReport";
   };
-  PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planMoveReport.others {
+  PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveReport.others {
     Taste::coordinates => "203150 171364";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMoveReport";
   };
-  PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planHomeReport.others {
+  PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeReport.others {
     Taste::coordinates => "203150 174412";
     Taste::RCMoperationKind => sporadic;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHomeReport";
+  };
+  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_configHomeReport.others {
+    Taste::coordinates => "203150 170253";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "configHomeReport";
   };
   RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_newTm.others {
     Taste::coordinates => "76928 99327";
@@ -5524,11 +5541,6 @@ FEATURES
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "configHome";
     Taste::labelInheritance => "true";
-  };
-  PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_configHomeReport.others {
-    Taste::coordinates => "203150 170253";
-    Taste::RCMoperationKind => sporadic;
-    Taste::InterfaceName => "configHomeReport";
   };
 PROPERTIES
   Source_Language => (C);
@@ -5790,6 +5802,9 @@ CONNECTIONS
   RobotControl_PI_planHomeReport_PusServices_PI_planHomeReport : SUBPROGRAM ACCESS RobotControl.PI_planHomeReport -> PI_planHomeReport {
     Taste::coordinates => "203150 174412 183238 174412 183238 172493 163327 172493";
   };
+  RobotControl_PI_configHomeReport_PusServices_PI_configHomeReport : SUBPROGRAM ACCESS RobotControl.PI_configHomeReport -> PI_configHomeReport {
+    Taste::coordinates => "203150 170253 183238 170253 183238 173813 163327 173813";
+  };
   PusServices_RI_planHome_RobotControl_RI_planHome : SUBPROGRAM ACCESS RI_planHome -> RobotControl.RI_planHome {
     Taste::coordinates => "163327 168070 183238 168070 183238 168016 203150 168016";
   };
@@ -5798,9 +5813,6 @@ CONNECTIONS
   };
   PusServices_RI_configHome_RobotControl_RI_configHome : SUBPROGRAM ACCESS RI_configHome -> RobotControl.RI_configHome {
     Taste::coordinates => "163327 166838 183238 166838 183238 170713 203150 170713";
-  };
-  RobotControl_PI_configHomeReport_PusServices_PI_configHomeReport : SUBPROGRAM ACCESS RobotControl.PI_configHomeReport -> PI_configHomeReport {
-    Taste::coordinates => "203150 170253 183238 170253 183238 173813 163327 173813";
   };
 END PusServices.others;
 
@@ -5819,7 +5831,7 @@ WITH interfaceview::IV::OnBoard::PusServices::EventServices::ST19;
 WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03;
 WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12;
 WITH interfaceview::IV::OnBoard::PusServices::CameraControl::camera_control;
-WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control;
+WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager;
 WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
@@ -6177,19 +6189,19 @@ FEATURES
     Taste::InterfaceName => "setCameraReport";
     Taste::labelInheritance => "true";
   };
-  RI_planHomeReport : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planHomeReport.others {
+  RI_planHomeReport : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeReport.others {
     Taste::coordinates => "219639 173365";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "planHomeReport";
     Taste::labelInheritance => "true";
   };
-  RI_planMoveReport : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_planMoveReport.others {
+  RI_planMoveReport : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveReport.others {
     Taste::coordinates => "219639 170986";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "planMoveReport";
     Taste::labelInheritance => "true";
   };
-  RI_configHomeReport : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control::PI_configHomeReport.others {
+  RI_configHomeReport : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_configHomeReport.others {
     Taste::coordinates => "219639 174552";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "configHomeReport";
@@ -6316,6 +6328,9 @@ CONNECTIONS
   PusServices_PI_planHomeReport_OnboardSoftware_RI_planHomeReport : SUBPROGRAM ACCESS PusServices.PI_planHomeReport -> OnboardSoftware.RI_planHomeReport {
     Taste::coordinates => "219639 173365 211394 173365 211394 174412 203150 174412";
   };
+  PusServices_PI_configHomeReport_OnboardSoftware_RI_configHomeReport : SUBPROGRAM ACCESS PusServices.PI_configHomeReport -> OnboardSoftware.RI_configHomeReport {
+    Taste::coordinates => "219639 174552 211394 174552 211394 170253 203150 170253";
+  };
   OnBoard_RI_newTm_PusServices_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> PusServices.RI_newTm {
     Taste::coordinates => "76928 99327 71940 99327 71940 90896 66854 90896";
   };
@@ -6330,9 +6345,6 @@ CONNECTIONS
   };
   OnboardSoftware_PI_configHome_PusServices_RI_configHome : SUBPROGRAM ACCESS OnboardSoftware.PI_configHome -> PusServices.RI_configHome {
     Taste::coordinates => "203150 170713 211394 170713 211394 163658 219639 163658";
-  };
-  PusServices_PI_configHomeReport_OnboardSoftware_RI_configHomeReport : SUBPROGRAM ACCESS PusServices.PI_configHomeReport -> OnboardSoftware.RI_configHomeReport {
-    Taste::coordinates => "219639 174552 211394 174552 211394 170253 203150 170253";
   };
 END OnBoard.others;
 

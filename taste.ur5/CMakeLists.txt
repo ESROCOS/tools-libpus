@@ -48,7 +48,7 @@ esrocos_build_taste(${COMPONENT_NAME}
     st23
     st200
     st201
-    robot_control
+    robot_control_manager
     camera_control
     tcdispatch
     tcqueue
