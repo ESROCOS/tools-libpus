@@ -37,7 +37,7 @@ BEGIN
     PusTC-201-1-3-Data  ::= SEQUENCE
     {
     	position		SEQUENCE SIZE(3) OF PusSt201Point,
-    	orientation		SEQUENCE SIZE(3) OF PusSt201Point
+    	orientation		SEQUENCE SIZE(4) OF PusSt201Point
     }
     
     -- Data for TM[201,1]

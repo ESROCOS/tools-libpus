@@ -34,7 +34,7 @@ pusError_t pus_tc_201_1_createSetHomeRequest(pusPacket_t* outTc, pusApid_t apid,
 
 		// set data
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_201_1_3);
-		pus_tc_201_1_3_setOrientationPoints(outTc, orientation->arr[0], orientation->arr[1], orientation->arr[2]);
+		pus_tc_201_1_3_setOrientationPoints(outTc, orientation->arr[0], orientation->arr[1], orientation->arr[2], orientation->arr[3]);
 		pus_tc_201_1_3_setPositionPoints(outTc, position->arr[0], position->arr[1], position->arr[2]);
 
 		return PUS_GET_ERROR();
@@ -99,7 +99,7 @@ pusError_t pus_tc_201_3_createPlanMoveRequest(pusPacket_t* outTc, pusApid_t apid
 
 		// Set data
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_201_1_3);
-		pus_tc_201_1_3_setOrientationPoints(outTc, orientation->arr[0], orientation->arr[1], orientation->arr[2]);
+		pus_tc_201_1_3_setOrientationPoints(outTc, orientation->arr[0], orientation->arr[1], orientation->arr[2], orientation->arr[3]);
 		pus_tc_201_1_3_setPositionPoints(outTc, position->arr[0], position->arr[1], position->arr[2]);
 
 		return PUS_GET_ERROR();
@@ -147,7 +147,7 @@ pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pus
 }
 
 
-pusError_t pus_tc_201_1_3_setOrientationPoints(pusPacket_t* outTc, pusSt201Point point1, pusSt201Point point2, pusSt201Point point3)
+pusError_t pus_tc_201_1_3_setOrientationPoints(pusPacket_t* outTc, pusSt201Point point1, pusSt201Point point2, pusSt201Point point3, pusSt201Point point4)
 {
 	if( NULL == outTc  )
 	{
@@ -163,6 +163,7 @@ pusError_t pus_tc_201_1_3_setOrientationPoints(pusPacket_t* outTc, pusSt201Point
 		outTc->data.u.tcData.data.u.st_201_1_3.orientation.arr[0] = point1;
 		outTc->data.u.tcData.data.u.st_201_1_3.orientation.arr[1] = point2;
 		outTc->data.u.tcData.data.u.st_201_1_3.orientation.arr[2] = point3;
+		outTc->data.u.tcData.data.u.st_201_1_3.orientation.arr[3] = point4;
 		return PUS_NO_ERROR;
 	}
 	else
@@ -171,7 +172,7 @@ pusError_t pus_tc_201_1_3_setOrientationPoints(pusPacket_t* outTc, pusSt201Point
 	}
 }
 
-pusError_t pus_tc_201_1_3_getOrientationPoints(pusSt201Point* point1, pusSt201Point* point2, pusSt201Point* point3, const pusPacket_t* inTc)
+pusError_t pus_tc_201_1_3_getOrientationPoints(pusSt201Point* point1, pusSt201Point* point2, pusSt201Point* point3, pusSt201Point* point4, const pusPacket_t* inTc)
 {
 	if( NULL == inTc  )
 	{
@@ -187,6 +188,7 @@ pusError_t pus_tc_201_1_3_getOrientationPoints(pusSt201Point* point1, pusSt201Po
 		*point1 = inTc->data.u.tcData.data.u.st_201_1_3.orientation.arr[0];
 		*point2 = inTc->data.u.tcData.data.u.st_201_1_3.orientation.arr[1];
 		*point3 = inTc->data.u.tcData.data.u.st_201_1_3.orientation.arr[2];
+		*point4 = inTc->data.u.tcData.data.u.st_201_1_3.orientation.arr[3];
 		return PUS_NO_ERROR;
 	}
 	else

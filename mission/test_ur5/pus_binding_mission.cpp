@@ -45,16 +45,18 @@ pusError_t pus_tc_201_3_createPlanMoveRequest_(pusPacket_t* outTc, pusApid_t api
 }
 
 std::vector<pusSt201Point> pus_tc_201_1_3_getOrientationPoints_(const pusPacket_t* inTc) {
-	pusSt201Point x = 0, y = 0, z = 0;
-	pusError_t error = pus_tc_201_1_3_getOrientationPoints(&x, &y, &z, inTc);
+	pusSt201Point x = 0, y = 0, z = 0, a = 0;
+	pusError_t error = pus_tc_201_1_3_getOrientationPoints(&x, &y, &z, &a, inTc);
 	PUS_SET_ERROR(error);
 	std::vector<pusSt201Point> orientation;
 	if (error == PUS_NO_ERROR) {
 		orientation.push_back(x);
 		orientation.push_back(y);
 		orientation.push_back(z);
+		orientation.push_back(a);
 	}
 	else {
+		orientation.push_back(0);
 		orientation.push_back(0);
 		orientation.push_back(0);
 		orientation.push_back(0);

@@ -46,3 +46,5 @@ taste.ur5/binary.c
 gui/.tc_history
 taste.ur5/.tc_history
 *.tc_history
+.vs_code/*
+

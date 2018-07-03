@@ -37,9 +37,9 @@ pusError_t pus_robotControl_setHomePositionPoints(pusSt201Point point1, pusSt201
 pusError_t pus_robotControl_getHomePositionPoints(pusSt201Point* point1, pusSt201Point* point2, pusSt201Point* point3);
 
 
-pusError_t pus_robotControl_setHomeOrientationPoints(pusSt201Point point1, pusSt201Point point2, pusSt201Point point3);
+pusError_t pus_robotControl_setHomeOrientationPoints(pusSt201Point point1, pusSt201Point point2, pusSt201Point point3, pusSt201Point point4);
 
-pusError_t pus_robotControl_getHomeOrientationPoints(pusSt201Point* point1, pusSt201Point* point2, pusSt201Point* point3);
+pusError_t pus_robotControl_getHomeOrientationPoints(pusSt201Point* point1, pusSt201Point* point2, pusSt201Point* point3, pusSt201Point* point4);
 
 
 
