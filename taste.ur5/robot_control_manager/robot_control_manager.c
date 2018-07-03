@@ -19,22 +19,16 @@ void robot_control_manager_startup()
 void robot_control_manager_PI_setHome(const asn1SccPusTC_201_1_3_Data *IN_pusPose)
 {
     /* Write your code here! */
-	pus_robotControl_setHomeOrientationPoints(IN_pusPose->orientation.arr[0], IN_pusPose->orientation.arr[1], IN_pusPose->orientation.arr[2]);
+	pus_robotControl_setHomeOrientationPoints(IN_pusPose->orientation.arr[0], IN_pusPose->orientation.arr[1], IN_pusPose->orientation.arr[2], IN_pusPose->orientation.arr[3]);
 	pus_robotControl_setHomePositionPoints(IN_pusPose->position.arr[0], IN_pusPose->position.arr[1], IN_pusPose->position.arr[2]);
 }
 
 void robot_control_manager_PI_planHomeRequest()
 {
     /* Write your code here! */
-	asn1SccBase_Pose poseHome;
-	pus_robotControl_getHomeOrientationPoints(&poseHome.orientation.im.arr[0], &poseHome.orientation.im.arr[1], &poseHome.orientation.im.arr[2]);
-	pus_robotControl_getHomePositionPoints(&poseHome.position.data.arr[0], &poseHome.position.data.arr[1], &poseHome.position.data.arr[2]);
+	asn1SccT_Boolean aux = 1;
 
-	poseHome.orientation.re = 0; // idk what is this :)
-	poseHome.orientation.im.nCount = 3;
-	poseHome.position.data.nCount = 3;
-
-	 robot_control_manager_RI_planHome(&poseHome);
+	 robot_control_manager_RI_planHome(&aux);
 }
 
 void robot_control_manager_PI_planMoveRequest(const asn1SccPusTC_201_1_3_Data *IN_pusPose)
@@ -43,7 +37,7 @@ void robot_control_manager_PI_planMoveRequest(const asn1SccPusTC_201_1_3_Data *I
 	asn1SccBase_Pose poseMove;
 
 	poseMove.orientation.re = 0;// idk what is this :)
-	poseMove.orientation.im.nCount = 3;
+	poseMove.orientation.im.nCount = 4;
 	poseMove.position.data.nCount = 3;
 
 	for(int i = 0; i<3; i++)
@@ -51,6 +45,7 @@ void robot_control_manager_PI_planMoveRequest(const asn1SccPusTC_201_1_3_Data *I
 		poseMove.orientation.im.arr[i] = IN_pusPose->orientation.arr[i];
 		poseMove.position.data.arr[i] = IN_pusPose->position.arr[i];
 	}
+	poseMove.orientation.im.arr[3] = IN_pusPose->orientation.arr[3];
 
 	 robot_control_manager_RI_planMove(&poseMove);
 }

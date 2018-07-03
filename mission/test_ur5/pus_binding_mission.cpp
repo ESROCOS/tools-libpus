@@ -45,16 +45,18 @@ pusError_t pus_tc_201_3_createPlanMoveRequest_(pusPacket_t* outTc, pusApid_t api
 }
 
 std::vector<pusSt201Point> pus_tc_201_1_3_getOrientationPoints_(const pusPacket_t* inTc) {
-	pusSt201Point x = 0, y = 0, z = 0;
-	pusError_t error = pus_tc_201_1_3_getOrientationPoints(&x, &y, &z, inTc);
+	pusSt201Point x = 0, y = 0, z = 0, a = 0;
+	pusError_t error = pus_tc_201_1_3_getOrientationPoints(&x, &y, &z, &a, inTc);
 	PUS_SET_ERROR(error);
 	std::vector<pusSt201Point> orientation;
 	if (error == PUS_NO_ERROR) {
 		orientation.push_back(x);
 		orientation.push_back(y);
 		orientation.push_back(z);
+		orientation.push_back(a);
 	}
 	else {
+		orientation.push_back(0);
 		orientation.push_back(0);
 		orientation.push_back(0);
 		orientation.push_back(0);
@@ -98,6 +100,12 @@ pusSt201PlanObservation pus_tm_201_4_getPlanObservation_(const pusPacket_t* inTM
 
 void init_mission_module(py::module &m)
 {
+
+	py::class_<pusSt201PlanObservation>(m, "pusSt201PlanObservation")
+	    //.def(py::init<>())
+	    .def_readwrite("id", &pusSt201PlanObservation::id)
+		.def_readwrite("code", &pusSt201PlanObservation::code);
+
 	m.doc() = "pus_st200_camera_conrtol";
 	m.def("pus_tc_200_1_createControlCameraRequest", &pus_tc_200_1_createControlCameraRequest, "pus_tc_200_1_createControlCameraRequest");
 	m.def("pus_tm_200_2_createControlCameraReport", &pus_tm_200_2_createControlCameraReport, "pus_tm_200_2_createControlCameraReport");

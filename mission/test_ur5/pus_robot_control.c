@@ -123,7 +123,7 @@ pusError_t pus_robotControl_getHomePositionPoints(pusSt201Point* point1, pusSt20
 	return PUS_NO_ERROR;
 }
 
-pusError_t pus_robotControl_setHomeOrientationPoints(pusSt201Point point1, pusSt201Point point2, pusSt201Point point3)
+pusError_t pus_robotControl_setHomeOrientationPoints(pusSt201Point point1, pusSt201Point point2, pusSt201Point point3, pusSt201Point point4)
 {
 
 	if (!pus_robotControl_isInitialized())
@@ -138,6 +138,7 @@ pusError_t pus_robotControl_setHomeOrientationPoints(pusSt201Point point1, pusSt
 	pus_robotControl_homeOrientation.arr[0] = point1;
 	pus_robotControl_homeOrientation.arr[1] = point2;
 	pus_robotControl_homeOrientation.arr[2] = point3;
+	pus_robotControl_homeOrientation.arr[3] = point4;
 
 	if (NULL != pus_robotControl_mutex && !pus_mutexUnlockOk(pus_robotControl_mutex))
 	{
@@ -148,7 +149,7 @@ pusError_t pus_robotControl_setHomeOrientationPoints(pusSt201Point point1, pusSt
 }
 
 
-pusError_t pus_robotControl_getHomeOrientationPoints(pusSt201Point* point1, pusSt201Point* point2, pusSt201Point* point3)
+pusError_t pus_robotControl_getHomeOrientationPoints(pusSt201Point* point1, pusSt201Point* point2, pusSt201Point* point3, pusSt201Point* point4)
 {
 
 	if (!pus_robotControl_isInitialized())
@@ -163,6 +164,7 @@ pusError_t pus_robotControl_getHomeOrientationPoints(pusSt201Point* point1, pusS
 	*point1 = pus_robotControl_homeOrientation.arr[0];
 	*point2 = pus_robotControl_homeOrientation.arr[1];
 	*point3 = pus_robotControl_homeOrientation.arr[2];
+	*point4 = pus_robotControl_homeOrientation.arr[3];
 
 	if (NULL != pus_robotControl_mutex && !pus_mutexUnlockOk(pus_robotControl_mutex))
 	{

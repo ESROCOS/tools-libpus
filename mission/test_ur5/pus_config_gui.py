@@ -4,11 +4,11 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
     if (svc, msg) == (200, 1):
         pb.pus_tc_200_1_createControlCameraRequest(packet, apid, seq, 0)
     elif (svc, msg) == (201, 1):
-        pb.pus_tc_201_1_createSetHomeRequest(packet, apid, seq, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0])
+        pb.pus_tc_201_1_createSetHomeRequest(packet, apid, seq, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0])
     elif (svc, msg) == (201, 2):
         pb.pus_tc_201_2_createPlanHomeRequest(packet, apid, seq)
     elif (svc, msg) == (201, 3):
-        pb.pus_tc_201_3_createPlanMoveRequest(packet, apid, seq, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0])
+        pb.pus_tc_201_3_createPlanMoveRequest(packet, apid, seq, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0])
     elif (svc, msg) == (201, 4):
         pb.pus_tm_201_4_createPlanReport(packet, apid, seq, 0)
     else:
@@ -27,8 +27,7 @@ def mission_get_data(packet, svc, msg):
     elif (svc, msg) == (201, 4):
         data = tc_201_4_get_data(packet)        
     else:
-        data = dict()
-        
+        data = dict()  
     return data   
 
 # Generic set data funcition fot tcs
@@ -59,16 +58,14 @@ def tc_200_2_get_data(packet):
 def tc_201_1_3_set_data(packet, data):
     pos = list(map(float, data["position"]))
     ori = list(map(float, data["orientation"]))
-    pb.pus_tc_201_1_3_setOrientationPoints(packet, ori[0], ori[1], ori[2])
+    pb.pus_tc_201_1_3_setOrientationPoints(packet, ori[0], ori[1], ori[2], ori[4])
     pb.pus_tc_201_1_3_setPositionPoints(packet, pos[0], pos[1], pos[2])
-
     return packet
 
 def tc_201_1_3_get_data(packet):
     data = dict()
     data["position"] = pb.pus_tc_201_1_3_getPositionPoints(packet)
     data["orientation"] = pb.pus_tc_201_1_3_getOrientationPoints(packet)
-    
     return data
 
 def tc_201_2_set_data(packet, data):
@@ -80,6 +77,7 @@ def tc_201_2_get_data(packet):
 
 def tc_201_4_get_data(packet):
     data = dict()
-    data["planObservation"] = pb.pus_tm_201_4_getPlanObservation(packet)
-    
+    observation = pb.pus_tm_201_4_getPlanObservation(packet)
+    data["id"] = observation.id
+    data["code"] = observation.code 
     return data
