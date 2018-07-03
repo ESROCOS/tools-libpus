@@ -100,6 +100,12 @@ pusSt201PlanObservation pus_tm_201_4_getPlanObservation_(const pusPacket_t* inTM
 
 void init_mission_module(py::module &m)
 {
+
+	py::class_<pusSt201PlanObservation>(m, "pusSt201PlanObservation")
+	    //.def(py::init<>())
+	    .def_readwrite("id", &pusSt201PlanObservation::id)
+		.def_readwrite("code", &pusSt201PlanObservation::code);
+
 	m.doc() = "pus_st200_camera_conrtol";
 	m.def("pus_tc_200_1_createControlCameraRequest", &pus_tc_200_1_createControlCameraRequest, "pus_tc_200_1_createControlCameraRequest");
 	m.def("pus_tm_200_2_createControlCameraReport", &pus_tm_200_2_createControlCameraReport, "pus_tm_200_2_createControlCameraReport");
