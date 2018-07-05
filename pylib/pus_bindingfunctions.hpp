@@ -114,6 +114,7 @@ int pus_st05_getDataType1(pusSt05EventId_t eventIndex);
 int pus_st05_getDataType2(pusSt05EventId_t eventIndex);
 
 pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet);
+char *pus_st08_getFunctionName(pusSt08FunctiontId_t idIndex);
 
 pusSt12PmonId_t  pus_tc_12_1_2_getPmonId_(pusPacket_t* tcPacket);
 

@@ -4,7 +4,7 @@ from shutil import copyfile
 
 def convert_py_to_hex(filedata):
     # concat
-    file_super = "/home/esrocos/esrocos-ws-pus/tools-libpus/mpy/src/superClass.py"
+    file_super = os.environ["AUTOPROJ_CURRENT_ROOT"]+"/tools/libpus/mpy/superClass.py"
 
     copyfile(file_super, "./aux.py")
 

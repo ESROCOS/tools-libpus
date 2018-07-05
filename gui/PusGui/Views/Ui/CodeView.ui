@@ -57,9 +57,22 @@
     <rect>
      <x>80</x>
      <y>15</y>
-     <width>321</width>
+     <width>281</width>
      <height>27</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loadObcpFile">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>15</y>
+     <width>31</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>+</string>
    </property>
   </widget>
  </widget>

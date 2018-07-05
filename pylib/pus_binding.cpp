@@ -324,6 +324,7 @@ PYBIND11_MODULE(ESROCOS_PYMODULE_NAME, m) {
 	m.def("pus_tc_8_1_setFunctionId", &pus_tc_8_1_setFunctionId, "Binding for pus_tc_8_1_setFunctionId");
 	m.def("pus_tc_8_1_getFunctionId", &pus_tc_8_1_getFunctionId_, "Binding for pus_tc_8_1_getFunctionId");
 	m.def("pus_st08_isInFunctionTable", &pus_st08_isInFunctionTable, "Binding for pus_st08_isInFunctionTable");
+	m.def("pus_st08_getFunctionName", &pus_st08_getFunctionName, "Binding for char *pus_st08_getFunctionName");
 	m.def("pus_expectSt08", &pus_expectSt08, "Binding for pus_expectSt08");
 #endif
 

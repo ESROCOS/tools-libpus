@@ -64,7 +64,7 @@
       "data": {
         "user_data": {
           "src_data": {
-            "param_id": ${SET_THROW_ONE_EVENT_PARAM},
+            "param_id": ${SET_THROW_EVENTS_PARAM},
             "value": true
           }
         },

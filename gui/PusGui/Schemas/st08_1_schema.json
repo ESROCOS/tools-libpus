@@ -88,10 +88,10 @@
           "type": "object", 
           "properties": {
             "src_data": {
-              "type": "object", 
+              "type": "object",
               "properties": {
                 "function_id": {
-                  "type": "integer"
+                  "type": ["integer", "string"]
                 }
               }
             }, 

@@ -441,6 +441,13 @@ pusSt08FunctiontId_t pus_tc_8_1_getFunctionId_(pusPacket_t *packet)
 	pus_tc_8_1_getFunctionId(&functionId, packet);
 	return functionId;
 }
+
+char *pus_st08_getFunctionName(pusSt08FunctiontId_t idIndex) {
+	if (idIndex < pus_st08_limitFunctions) {
+		 return strdup(pus_st08_functionInfoList[idIndex].label);
+	}
+	return NULL;
+}
 #endif
 
 #ifdef PUS_CONFIGURE_ST09_ENABLED

@@ -3,6 +3,8 @@
 # Licence: GPLv2
 
 from PusGui.Views import CodeView
+from PySide import QtGui
+from ..Utilities import convert_py_to_hex
 
 
 class CodeController(object):
