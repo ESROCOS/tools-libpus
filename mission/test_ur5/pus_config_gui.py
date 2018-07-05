@@ -58,7 +58,7 @@ def tc_200_2_get_data(packet):
 def tc_201_1_3_set_data(packet, data):
     pos = list(map(float, data["position"]))
     ori = list(map(float, data["orientation"]))
-    pb.pus_tc_201_1_3_setOrientationPoints(packet, ori[0], ori[1], ori[2], ori[4])
+    pb.pus_tc_201_1_3_setOrientationPoints(packet, ori[0], ori[1], ori[2], ori[3])
     pb.pus_tc_201_1_3_setPositionPoints(packet, pos[0], pos[1], pos[2])
     return packet
 
