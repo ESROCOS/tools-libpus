@@ -31,17 +31,17 @@ void st201_PI_tc201(const asn1SccPusPacket *IN_tcPacket)
 		st201_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 		pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);
-		if( pus_TC_201_1_setHomeRequest )
+		if( pus_TC_201_1_setHomeRequest == subtype )
 		{
 			//TODOOOO
 			st201_RI_setHome(&IN_tcPacket->data.u.tcData.data.u.st_201_1_3);
 		}
-		else if( pus_TC_201_2_planHomeRequest )
+		else if( pus_TC_201_2_planHomeRequest == subtype )
 		{
 			//TODOOOO
 			st201_RI_planHomeRequest();
 		}
-		else if( pus_TC_201_3_planMoveRequest )
+		else if( pus_TC_201_3_planMoveRequest == subtype )
 		{
 			//TODOOOO
 			st201_RI_planMoveRequest(&IN_tcPacket->data.u.tcData.data.u.st_201_1_3);
@@ -79,7 +79,6 @@ void st201_PI_tc201(const asn1SccPusPacket *IN_tcPacket)
 void st201_PI_report(const asn1SccPusSt201PlanObservation *IN_observation)
 {
     /* Write your code here! */
-
 	pusPacket_t outTm;
 	pusApid_t apid;
 	pusSequenceCount_t seqCount;

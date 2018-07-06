@@ -36,8 +36,8 @@ void robot_control_manager_PI_planMoveRequest(const asn1SccPusTC_201_1_3_Data *I
     /* Write your code here! */
 	asn1SccBase_Pose poseMove;
 
-	poseMove.orientation.re = 0;// idk what is this :)
-	poseMove.orientation.im.nCount = 4;
+	
+	poseMove.orientation.im.nCount = 3;
 	poseMove.position.data.nCount = 3;
 
 	for(int i = 0; i<3; i++)
@@ -45,9 +45,9 @@ void robot_control_manager_PI_planMoveRequest(const asn1SccPusTC_201_1_3_Data *I
 		poseMove.orientation.im.arr[i] = IN_pusPose->orientation.arr[i];
 		poseMove.position.data.arr[i] = IN_pusPose->position.arr[i];
 	}
-	poseMove.orientation.im.arr[3] = IN_pusPose->orientation.arr[3];
+	poseMove.orientation.re = IN_pusPose->orientation.arr[3];
 
-	 robot_control_manager_RI_planMove(&poseMove);
+	robot_control_manager_RI_planMove(&poseMove);
 }
 
 void robot_control_manager_PI_planHomeReport(const asn1SccPlanCmdStatus *IN_status)
