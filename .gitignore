@@ -7,6 +7,8 @@
 .settings/*
 *.log
 
+RemoteSystemsTempFiles/*
+
 mission/test_02
 build/*
 build_*/*

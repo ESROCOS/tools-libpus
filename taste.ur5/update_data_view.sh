@@ -21,8 +21,8 @@ $AUTOPROJ_CURRENT_ROOT/install/types/base/base.asn \
 $AUTOPROJ_CURRENT_ROOT/install/types/base/taste-extended.asn \
 $AUTOPROJ_CURRENT_ROOT/install/types/base/taste-types.asn \
 $AUTOPROJ_CURRENT_ROOT/install/types/base/userdefs-base.asn \
-$AUTOPROJ_CURRENT_ROOT/install/types/u5_types/buffer.asn \
-$AUTOPROJ_CURRENT_ROOT/install/types/u5_types/commandStates.asn \
+$AUTOPROJ_CURRENT_ROOT/install/types/ur5_types/buffer.asn \
+$AUTOPROJ_CURRENT_ROOT/install/types/ur5_types/commandStates.asn \
 /home/esrocos/tool-inst/share/taste-types/taste-types.asn "
 echo "Updating DataView.aadl"
 
