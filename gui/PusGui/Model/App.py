@@ -188,10 +188,10 @@ class App(object):
             info = "Report id: {}".format(src_data["hk_param_report"]["report_id"])
             params = []
         elif svc == 5:
-            info = "Event id: {}. ({}, {})".format(src_data["event_id"], src_data["auxdata"]["data1"],
+            info = "Event id: {}. ({}, {})".format(pb.pus_st05_getEventName(src_data["event_id"]), src_data["auxdata"]["data1"],
                                                                src_data["auxdata"]["data2"])
         elif (svc, msg) == (8, 1):
-            info = "Function id = {}.".format(src_data["function_id"])
+            info = "Function id = {}.".format(pb.pus_st08_getFunctionName(src_data["function_id"]))
         elif (svc, msg) == (9, 1):
             info = "Rate = 2^{}".format(src_data["exp_rate"])
         elif (svc, msg) == (9, 2):
@@ -227,7 +227,7 @@ class App(object):
                 slash = "" if src_data["repository_path"][-1] == "/" else "/"
                 info += "File: {}{}{}".format(src_data["repository_path"], slash, src_data["file_name"])
         elif svc == 19:
-            info = "Event id = {}. ".format(src_data["event_id"])
+            info = "Event id = {}. ".format(pb.pus_st05_getEventName(src_data["event_id"]))
             if msg == 1:
                 request_data = data["user_data"]["src_data"]["request"]["data"]
                 sub_svc = request_data["pck_sec_head"]["msg_type_id"]["service_type_id"]
@@ -235,7 +235,7 @@ class App(object):
                 info += "Packet request: ({}, {}).".format(sub_svc, sub_msg)
         elif svc == 20:
             if msg == 2:
-                info = "{}".format(src_data["param_id"])
+                info = "{}".format(pb.pus_st20_getOnBoardReportInfoName(src_data["param_id"]))
                 info += " = {}".format(src_data["value"])
             elif msg == 3:
                 info = "Set " + pb.pus_st20_getOnBoardReportInfoName(src_data["param_id"])

@@ -94,7 +94,7 @@
                   "type": "integer"
                 }, 
                 "value": {
-                  "type": "integer"
+                  "type": ["integer", "number", "boolean"] 
                 }
               }
             }, 
