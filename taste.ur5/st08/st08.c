@@ -10,7 +10,7 @@
 #include "pus_stored_param.h"
 #include "pus_types.h"
 
-#include "functions.h"
+//#include "functions.h"
 
 #include "pus_st08_packets.h"
 #include "pus_st08_config.h"
@@ -19,7 +19,7 @@ void st08_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
-	pus_st08_initialize(NULL);
+	pus_st08_initialize(NULL); 
 }
 
 void st08_PI_tc08(const asn1SccPusPacket *IN_tcPacket)
@@ -29,7 +29,8 @@ void st08_PI_tc08(const asn1SccPusPacket *IN_tcPacket)
 	pusSubservice_t subtype;
 	pusSt01FailureCode_t errorCode = PUS_NO_ERROR;
 	pusSt01FailureInfo_t info;
-	pusStepId_t step = 0;
+
+	pusStepId_t step = 1;
 
 	pusSt01FailureCode_t errorExpect = PUS_EXPECT_ST08(IN_tcPacket, pus_TC_8_1_performFunction);
 	if( PUS_NO_ERROR == errorExpect )

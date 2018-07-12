@@ -37,7 +37,7 @@ def mission_set_data(packet, svc, msg, data):
     elif (svc, msg) == (201, 1) or (svc, msg) == (201, 3):
         packet = tc_201_1_3_set_data(packet, data)
     elif (svc, msg) == (201, 2):
-        packet = tc_202_2_set_data(packet, data) 
+        packet = tc_201_2_set_data(packet, data) 
 
 # Specific get and set functions
 def tc_200_1_set_data(packet, data):

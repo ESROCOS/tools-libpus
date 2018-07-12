@@ -74,8 +74,8 @@ pusError_t pus_parameteres_configure();
 
 //Param getters/setters
 % for param in config['parameters']:
-pusError_t pus_hk_set${param['label']}(${getCTypes(param['type'])} value);
-pusError_t pus_hk_get${param['label']}(${getCTypes(param['type'])}* value);
+pusError_t pus_parameters_set${param['label']}(${getCTypes(param['type'])} value);
+pusError_t pus_parameters_get${param['label']}(${getCTypes(param['type'])}* value);
 
 % endfor
 

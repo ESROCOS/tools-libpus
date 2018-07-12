@@ -1,6 +1,70 @@
 {
 	"parameters": [
 		{
+			"label": "SET_HK_OUT_OF_RANGE_PARAM",
+			"type": "BOOL"
+		},
+		{
+			"label": "SET_THROW_EVENTS_PARAM",
+			"type": "BOOL"
+		},
+		{
+			"label": "UR5_HOME_POS_1",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_HOME_POS_2",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_HOME_POS_3",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_HOME_ORI_1",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_HOME_ORI_2",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_HOME_ORI_3",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_HOME_ORI_RE",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_MOVE_POS_1",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_MOVE_POS_2",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_MOVE_POS_3",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_MOVE_ORI_1",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_MOVE_ORI_2",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_MOVE_ORI_3",
+			"type": "REAL64"
+		},
+		{
+			"label": "UR5_MOVE_ORI_RE",
+			"type": "REAL64"
+		},
+		{
 			"label": "ONBOARD_PARAM_INT01",
 			"type": "INT32"
 		},
@@ -18,14 +82,6 @@
 		},
 		{
 			"label": "ONBOARD_PARAM_BOOL01",
-			"type": "BOOL"
-		},
-		{
-			"label": "SET_HK_OUT_OF_RANGE_PARAM",
-			"type": "BOOL"
-		},
-		{
-			"label": "SET_THROW_EVENTS_PARAM",
 			"type": "BOOL"
 		}
 		

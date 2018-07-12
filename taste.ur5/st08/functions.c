@@ -1,8 +1,10 @@
+/*
 #include "functions.h"
 
 #include <stdio.h>
 #include "pus_types.h"
 #include "pus_error.h"
+
 
 pusError_t example_function()
 {
@@ -22,3 +24,4 @@ pusError_t example_function3()
 	printf("Hello from function3\n");
 	return PUS_NO_ERROR;
 }
+*/

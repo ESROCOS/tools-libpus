@@ -22,6 +22,7 @@ cmake_install.cmake
 
 __pycache__
 *.pyc
+*.db
 
 # Exclude source files generated from the .asn but not the CMakeLists.txt
 asn1/generated/asn1/*

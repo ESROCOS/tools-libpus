@@ -5,12 +5,20 @@
 			"name": "example_function"
 		},
 		{
-			"label": "EXAMPLE_FUNCTION_02",
-			"name": "example_function2"
+			"label": "UR5_PLANHOME",
+			"name": "ur5_planHome"
 		},
 		{
-			"label": "EXAMPLE_FUNCTION_03",
-			"name": "example_function3"
+			"label": "UR5_SETHOME",
+			"name": "ur5_setHome"
+		},
+		{
+			"label": "UR5_PLANMOVE",
+			"name": "ur5_planMove"
+		},
+		{
+			"label": "CAMERA_FRAMEREQUEST",
+			"name": "camera_frameRequest"
 		}
 	]
 }

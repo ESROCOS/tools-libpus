@@ -77,12 +77,12 @@ pusError_t pus_parameters_configure()
 
 
 % for param in config['parameters']:
-pusError_t pus_hk_set${param['label']}(${getCTypes(param['type'])} value)
+pusError_t pus_parameters_set${param['label']}(${getCTypes(param['type'])} value)
 {
 	return pus_parameters_set${getAliasName(param['type'])}Param(${param['label']}, value);
 }
 
-pusError_t pus_hk_get${param['label']}(${getCTypes(param['type'])}* value)
+pusError_t pus_parameters_get${param['label']}(${getCTypes(param['type'])}* value)
 {
 	return pus_parameters_get${getAliasName(param['type'])}Param(${param['label']}, value);
 }
