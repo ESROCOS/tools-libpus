@@ -16,16 +16,10 @@ features
 		  Queue_Size => 1;
 		  Compute_Entrypoint_Source_Text => "tcdispatch_wrappers.tcTrigger"; };
 	OUTPORT_newTc_vt : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+	OUTPORT_setFrameRequest_vt : OUT EVENT PORT;
 	OUTPORT_planMove_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
-	OUTPORT_planHome_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
-	OUTPORT_tcTrigger_vt : OUT EVENT PORT;
-	OUTPORT_tmTrigger_vt : OUT EVENT PORT;
-	OUTPORT_EventReportTrigger_vt : OUT EVENT PORT;
-	OUTPORT_EventActionTrigger_vt : OUT EVENT PORT;
-	OUTPORT_HkReportTrigger_vt : OUT EVENT PORT;
-	OUTPORT_PmonTrigger_vt : OUT EVENT PORT;
-	OUTPORT_planHomeReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
-	OUTPORT_planMoveReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
+	OUTPORT_planHome_vt : OUT EVENT DATA PORT DataView::T_Boolean_Buffer.impl;
+	OUTPORT_configHome_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
 END tcdispatch_tcdispatch;
 
 THREAD IMPLEMENTATION tcdispatch_tcdispatch.others

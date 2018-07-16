@@ -9,10 +9,16 @@
 
 #include "pus_st200_packets.h"
 
+extern void (*ptr_st200_RI_operationRequest)(const asn1SccPusSt200ControlId *);
+
 void st200_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
+	if(NULL == ptr_st200_RI_operationRequest)
+	{
+		ptr_st200_RI_operationRequest = st200_RI_operationRequest;
+	}
 }
 
 void st200_PI_tc200(const asn1SccPusPacket *IN_tcPacket)

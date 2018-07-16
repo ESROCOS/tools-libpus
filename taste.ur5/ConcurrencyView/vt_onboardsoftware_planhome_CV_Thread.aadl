@@ -11,7 +11,7 @@ public
 
 THREAD vt_onboardsoftware_planhome_vt_onboardsoftware_planhome
 features
-	INPORT_artificial_planHome : IN EVENT DATA PORT DataView::Base_Pose_Buffer.impl
+	INPORT_artificial_planHome : IN EVENT DATA PORT DataView::T_Boolean_Buffer.impl
 		{ Compute_Execution_Time => 0 ms .. 0 ms;
 		  Queue_Size => 1;
 		  Compute_Entrypoint_Source_Text => "vt_onboardsoftware_planhome_wrappers.artificial_planHome"; };
@@ -21,8 +21,10 @@ features
 	OUTPORT_EventActionTrigger_vt : OUT EVENT PORT;
 	OUTPORT_HkReportTrigger_vt : OUT EVENT PORT;
 	OUTPORT_PmonTrigger_vt : OUT EVENT PORT;
+	OUTPORT_setCameraReport_vt : OUT EVENT DATA PORT DataView::T_UInt64_Buffer.impl;
 	OUTPORT_planHomeReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
 	OUTPORT_planMoveReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
+	OUTPORT_configHomeReport_vt : OUT EVENT DATA PORT DataView::T_Boolean_Buffer.impl;
 END vt_onboardsoftware_planhome_vt_onboardsoftware_planhome;
 
 THREAD IMPLEMENTATION vt_onboardsoftware_planhome_vt_onboardsoftware_planhome.others

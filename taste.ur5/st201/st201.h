@@ -31,7 +31,7 @@ extern void st201_RI_newTm(const asn1SccPusPacket *);
 
 extern void st201_RI_setHome(const asn1SccPusTC_201_1_3_Data *);
 
-extern void st201_RI_planHomeRequest(); 
+extern void st201_RI_planHomeRequest();
 
 extern void st201_RI_planMoveRequest(const asn1SccPusTC_201_1_3_Data *);
 

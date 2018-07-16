@@ -17,6 +17,8 @@ void camera_control_PI_operationRequest(const asn1SccPusSt200ControlId *);
 
 void camera_control_PI_setCameraReport(const asn1SccT_UInt64 *);
 
+void camera_control_PI_trigger();
+
 extern void camera_control_RI_report(const asn1SccPusSt200Observation *);
 
 extern void camera_control_RI_setFrameRequest();

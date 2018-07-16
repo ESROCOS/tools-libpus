@@ -25,6 +25,8 @@ void robot_control_manager_PI_planMoveReport(const asn1SccPlanCmdStatus *);
 
 void robot_control_manager_PI_configHomeReport(const asn1SccT_Boolean *);
 
+void robot_control_manager_PI_trigger();
+
 extern void robot_control_manager_RI_report(const asn1SccPusSt201PlanObservation *);
 
 extern void robot_control_manager_RI_planMove(const asn1SccBase_Pose *);

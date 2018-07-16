@@ -1,0 +1,32 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package vt_camera_control_setcamerareport_CV_Thread
+public
+	with Deployment;
+	with process_package;
+	with Dataview;
+
+THREAD vt_camera_control_setcamerareport_vt_camera_control_setcamerareport
+features
+	INPORT_artificial_setCameraReport : IN EVENT DATA PORT DataView::T_UInt64_Buffer.impl
+		{ Compute_Execution_Time => 0 ms .. 0 ms;
+		  Queue_Size => 1;
+		  Compute_Entrypoint_Source_Text => "vt_camera_control_setcamerareport_wrappers.artificial_setCameraReport"; };
+	OUTPORT_setFrameRequest_vt : OUT EVENT PORT;
+END vt_camera_control_setcamerareport_vt_camera_control_setcamerareport;
+
+THREAD IMPLEMENTATION vt_camera_control_setcamerareport_vt_camera_control_setcamerareport.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "camera_control_wrappers.C_Init_camera_control";
+	Dispatch_Protocol      => Sporadic;
+	Period                 => 1 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 100 KByte;
+	Priority               => 10;
+END vt_camera_control_setcamerareport_vt_camera_control_setcamerareport.others;
+
+end vt_camera_control_setcamerareport_CV_Thread;

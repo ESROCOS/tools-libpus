@@ -325,13 +325,32 @@
     }
   },
   {
-    "interval": 10,
+    "interval": 5,
     "packet": {
       ${macros.primary_header_defaults()},
       "data": {
         "user_data": {
           "src_data": {
             "function_id": ${UR5_PLANHOME}
+          }
+        },
+        "pck_sec_head": {
+          ${macros.tc_type(8, 1)},
+          ${macros.acks()},
+          "src_id": 1,
+          "tc_packet_pus_version_number": 2
+        }
+      }
+    }
+  },
+  {
+    "interval": 5,
+    "packet": {
+      ${macros.primary_header_defaults()},
+      "data": {
+        "user_data": {
+          "src_data": {
+            "function_id": ${CAMERA_FRAMEREQUEST}
           }
         },
         "pck_sec_head": {

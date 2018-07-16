@@ -188,7 +188,8 @@ class App(object):
             info = "Report id: {}".format(src_data["hk_param_report"]["report_id"])
             params = []
         elif svc == 5:
-            info = "Event id: {}. ({}, {})".format(pb.pus_st05_getEventName(src_data["event_id"]), src_data["auxdata"]["data1"],
+            print("HOLAAALALALA type" + str(type(src_data["event_id"])))
+            info = "Event id: {}. ({}, {})".format(src_data["event_id"], src_data["auxdata"]["data1"],
                                                                src_data["auxdata"]["data2"])
         elif (svc, msg) == (8, 1):
             info = "Function id = {}.".format(pb.pus_st08_getFunctionName(src_data["function_id"]))

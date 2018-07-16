@@ -4,17 +4,29 @@
 
 #include "pus_types.h"
 
+bool flag_operationRequestReceived;
 
 void camera_control_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
+    flag_operationRequestReceived = false;
 }
+
+void camera_control_PI_trigger()
+{
+    if( true == flag_operationRequestReceived )
+    {
+        flag_operationRequestReceived = false;
+        camera_control_RI_setFrameRequest();
+    } 
+}
+
 
 void camera_control_PI_operationRequest(const asn1SccPusSt200ControlId *IN_operation)
 {
     /* Write your code here! */
-	camera_control_RI_setFrameRequest();
+    flag_operationRequestReceived = true;
 }
 
 void camera_control_PI_setCameraReport(const asn1SccT_UInt64 *IN_status)

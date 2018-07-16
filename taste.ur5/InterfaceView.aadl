@@ -4145,8 +4145,6 @@ FEATURES
   status : IN PARAMETER DataView::T_UInt64 {
     Taste::encoding => NATIVE;
   };
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_setCameraReport;
 
 SUBPROGRAM IMPLEMENTATION PI_setCameraReport.others
@@ -4170,6 +4168,14 @@ END RI_setFrameRequest;
 SUBPROGRAM IMPLEMENTATION RI_setFrameRequest.others
 END RI_setFrameRequest.others;
 
+SUBPROGRAM PI_trigger
+END PI_trigger;
+
+SUBPROGRAM IMPLEMENTATION PI_trigger.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_trigger.others;
+
 SYSTEM camera_control
 FEATURES
   PI_operationRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::CameraControl::camera_control::PI_operationRequest.others {
@@ -4181,8 +4187,7 @@ FEATURES
   };
   PI_setCameraReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::CameraControl::camera_control::PI_setCameraReport.others {
     Taste::coordinates => "161277 152064";
-    Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
+    Taste::RCMoperationKind => sporadic;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setCameraReport";
   };
@@ -4197,6 +4202,12 @@ FEATURES
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "setFrameRequest";
     Taste::labelInheritance => "true";
+  };
+  PI_trigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::CameraControl::camera_control::PI_trigger.others {
+    Taste::coordinates => "156469 148464";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 50 ms;
+    Taste::InterfaceName => "trigger";
   };
 PROPERTIES
   Source_Language => (C);
@@ -4239,8 +4250,6 @@ FEATURES
   status : IN PARAMETER DataView::T_UInt64 {
     Taste::encoding => NATIVE;
   };
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_setCameraReport;
 
 SUBPROGRAM IMPLEMENTATION PI_setCameraReport.others
@@ -4317,8 +4326,7 @@ FEATURES
   };
   PI_setCameraReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::CameraControl::camera_control::PI_setCameraReport.others {
     Taste::coordinates => "168463 157013";
-    Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
+    Taste::RCMoperationKind => sporadic;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setCameraReport";
   };
@@ -4709,6 +4717,14 @@ END RI_configHome;
 SUBPROGRAM IMPLEMENTATION RI_configHome.others
 END RI_configHome.others;
 
+SUBPROGRAM PI_trigger
+END PI_trigger;
+
+SUBPROGRAM IMPLEMENTATION PI_trigger.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_trigger.others;
+
 SYSTEM robot_control_manager
 FEATURES
   PI_setHome : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_setHome.others {
@@ -4776,6 +4792,12 @@ FEATURES
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "configHome";
     Taste::labelInheritance => "true";
+  };
+  PI_trigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_trigger.others {
+    Taste::coordinates => "156711 167151";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 50 ms;
+    Taste::InterfaceName => "trigger";
   };
 PROPERTIES
   Source_Language => (C);
@@ -5294,8 +5316,6 @@ FEATURES
   status : IN PARAMETER DataView::T_UInt64 {
     Taste::encoding => NATIVE;
   };
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_setCameraReport;
 
 SUBPROGRAM IMPLEMENTATION PI_setCameraReport.others
@@ -5486,8 +5506,7 @@ FEATURES
   };
   PI_setCameraReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::CameraControl::camera_control::PI_setCameraReport.others {
     Taste::coordinates => "203150 151981";
-    Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
+    Taste::RCMoperationKind => sporadic;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setCameraReport";
   };
@@ -5856,8 +5875,6 @@ PROPERTIES
 END PI_pusTrigger.others;
 
 SUBPROGRAM PI_setFrameRequest
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_setFrameRequest;
 
 SUBPROGRAM IMPLEMENTATION PI_setFrameRequest.others
@@ -6085,8 +6102,7 @@ FEATURES
   };
   PI_setFrameRequest : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_setFrameRequest.others {
     Taste::coordinates => "219639 144574";
-    Taste::RCMoperationKind => protected;
-    Taste::RCMperiod => 0 ms;
+    Taste::RCMoperationKind => sporadic;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "setFrameRequest";
   };

@@ -9,10 +9,26 @@
 
 #include "pus_st201_packets.h"
 
+extern void (*ptr_st201_RI_planHomeRequest)(void);
+extern void (*ptr_st201_RI_setHome)(const asn1SccPusTC_201_1_3_Data *);
+extern void (*ptr_st201_RI_planMoveRequest)(const asn1SccPusTC_201_1_3_Data *);
+
 void st201_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
+	if(NULL == ptr_st201_RI_setHome)
+	{
+		ptr_st201_RI_setHome = st201_RI_setHome;
+	}
+	if(NULL == ptr_st201_RI_planMoveRequest)
+	{
+		ptr_st201_RI_planMoveRequest = st201_RI_planMoveRequest;
+	}
+	if(NULL == ptr_st201_RI_planHomeRequest)
+	{
+		ptr_st201_RI_planHomeRequest = st201_RI_planHomeRequest;
+	}
 }
 
 void st201_PI_tc201(const asn1SccPusPacket *IN_tcPacket)

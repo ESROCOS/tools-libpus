@@ -1,0 +1,29 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package vt_camera_control_trigger_CV_Thread
+public
+	with Deployment;
+	with process_package;
+	with Dataview;
+
+THREAD vt_camera_control_trigger_vt_camera_control_trigger
+features
+	OUTPORT_setFrameRequest_vt : OUT EVENT PORT;
+END vt_camera_control_trigger_vt_camera_control_trigger;
+
+THREAD IMPLEMENTATION vt_camera_control_trigger_vt_camera_control_trigger.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "camera_control_wrappers.C_Init_camera_control";
+	Compute_Entrypoint_Source_Text => "vt_camera_control_trigger_wrappers.artificial_trigger";
+	Dispatch_Protocol      => Periodic;
+	Period                 => 50 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 100 KByte;
+	Priority               => 10;
+END vt_camera_control_trigger_vt_camera_control_trigger.others;
+
+end vt_camera_control_trigger_CV_Thread;

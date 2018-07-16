@@ -13,8 +13,19 @@ PROPERTIES
   AI::root_system => "SELECTED";
   Stack_Size => 1000kbyte APPLIES TO x86_partition.tcdispatch;
   Stack_Size => 1000kbyte APPLIES TO x86_partition.tmdispatch;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.st05;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.st03;
   Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_ground_newtm;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_ground_triggertmgui;
   Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_tcqueue_newtc;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_st19_eventactiontrigger;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_st12_pmontrigger;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_camera_control_setcamerareport;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_camera_control_trigger;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_robot_control_manager_planhomereport;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_robot_control_manager_planmovereport;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_robot_control_manager_confighomereport;
+  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_robot_control_manager_trigger;
 END deploymentview.final;
 
 END process_package_proxy;

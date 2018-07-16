@@ -17,8 +17,10 @@ features
 	OUTPORT_EventActionTrigger_vt : OUT EVENT PORT;
 	OUTPORT_HkReportTrigger_vt : OUT EVENT PORT;
 	OUTPORT_PmonTrigger_vt : OUT EVENT PORT;
+	OUTPORT_setCameraReport_vt : OUT EVENT DATA PORT DataView::T_UInt64_Buffer.impl;
 	OUTPORT_planHomeReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
 	OUTPORT_planMoveReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
+	OUTPORT_configHomeReport_vt : OUT EVENT DATA PORT DataView::T_Boolean_Buffer.impl;
 END vt_onboardsoftware_debugtrigger_vt_onboardsoftware_debugtrigger;
 
 THREAD IMPLEMENTATION vt_onboardsoftware_debugtrigger_vt_onboardsoftware_debugtrigger.others

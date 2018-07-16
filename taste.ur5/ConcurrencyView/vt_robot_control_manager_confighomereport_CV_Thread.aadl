@@ -1,0 +1,34 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package vt_robot_control_manager_confighomereport_CV_Thread
+public
+	with Deployment;
+	with process_package;
+	with Dataview;
+
+THREAD vt_robot_control_manager_confighomereport_vt_robot_control_manager_confighomereport
+features
+	INPORT_artificial_configHomeReport : IN EVENT DATA PORT DataView::T_Boolean_Buffer.impl
+		{ Compute_Execution_Time => 0 ms .. 0 ms;
+		  Queue_Size => 1;
+		  Compute_Entrypoint_Source_Text => "vt_robot_control_manager_confighomereport_wrappers.artificial_configHomeReport"; };
+	OUTPORT_planMove_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
+	OUTPORT_planHome_vt : OUT EVENT DATA PORT DataView::T_Boolean_Buffer.impl;
+	OUTPORT_configHome_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
+END vt_robot_control_manager_confighomereport_vt_robot_control_manager_confighomereport;
+
+THREAD IMPLEMENTATION vt_robot_control_manager_confighomereport_vt_robot_control_manager_confighomereport.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "robot_control_manager_wrappers.C_Init_robot_control_manager";
+	Dispatch_Protocol      => Sporadic;
+	Period                 => 1 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 100 KByte;
+	Priority               => 10;
+END vt_robot_control_manager_confighomereport_vt_robot_control_manager_confighomereport.others;
+
+end vt_robot_control_manager_confighomereport_CV_Thread;
