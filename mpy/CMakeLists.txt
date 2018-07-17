@@ -42,13 +42,12 @@ endforeach(file $(SRC_FILES))
 
 
 #Coping userFunctions.c (from mission or src(default))
-SET(MISSION_NAME "test_01")
-if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c")
+if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_obcp_userFunctions.c")
     message( STATUS "Using pus_obcp_userFunctions.c in mission, ${CMAKE_CURRENT_BINARY_DIR}")
-    configure_file(${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 else()
     message( STATUS "Not found pus_obcp_userFunctions.c in mission, ${CMAKE_CURRENT_BINARY_DIR}; using default")
-    configure_file(${CMAKE_SOURCE_DIR}/${MISSION_NAME}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/${MISSION}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 endif()
 
 #Copying configuration files from TASTE ESA port
@@ -112,7 +111,7 @@ file(GLOB QSTR_HDR ${CMAKE_CURRENT_BINARY_DIR}/genhdr/*.h)
 set(COMMAND_GENERATE_QSTRDEFS_PRE2 "cat ${CMAKE_CURRENT_BINARY_DIR}/py/qstrdefs.h ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.collected.h \\|sed 's/^Q\\(.*\\)/\"&\"/' \\|g++ -E -I${CMAKE_CURRENT_BINARY_DIR} -DSTATIC=\"\" - \\|sed 's/^\"\\\\(Q(.*)\\\\)\"/\\\\1/' >${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.preprocessed.h")
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h
-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR}pus_obcp_userFunctions.c
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_obcp_userFunctions.c ${CMAKE_CURRENT_BINARY_DIR}pus_obcp_userFunctions.c
     COMMAND bash -c "rm -rf ${CMAKE_CURRENT_BINARY_DIR}/genhdr/*"
     COMMAND bash -c "${COMMAND_GENERATE_MPVERSION}"
     COMMAND bash -c "${COMMAND_GENERATE_QSTRLAST}"
@@ -120,7 +119,7 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.
     COMMAND bash -c "${COMMAND_GENERATE_QSTRDEFS_COLLECTED2}"
     COMMAND bash -c "${COMMAND_GENERATE_QSTRDEFS_PRE2}"
     COMMAND bash -c "${COMMAND_GENERATE_QSTRDEFS_GEN}"
-    DEPENDS ${CMAKE_SOURCE_DIR}/mission/${MISSION_NAME}/pus_obcp_userFunctions.c
+    DEPENDS ${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_obcp_userFunctions.c
     COMMENT "Generating12 ${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h"
 )
 ADD_CUSTOM_TARGET(qstrdefs.generated_${MISSION} DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/genhdr/qstrdefs.generated.h")

@@ -10,6 +10,8 @@ class ObcpTest(Obcp):
         self.obcp_wait_interval_time(0.5)
         print("HELLO 3")
         self.obcp_wait_interval_time(0.5)    
+
+        user.exampleFunction(1)
         
 a = ObcpTest("OBCP_HI")
 a.run()
