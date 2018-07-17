@@ -233,7 +233,7 @@ class Obcp:
         This method get the next event from the events table
         :return: The next event (class{id, data1, data2}) in table or false if no events or error
         """
-        (event_dict, counter) = modulimporte.getNextEvent(self.eventCounter)
+        (event_dict, counter) = module.getNextEvent(self.eventCounter)
 
         if None == event_dict or None == counter:
             return None
