@@ -287,19 +287,20 @@ pusError_t pus_obcp_loadObcp( pusSt18ObcpId_t* id, pusSt18ObcpCode_t* code )
 	{
 		return PUS_ERROR_OBCP_ENGINE_NOT_RUNNING;
 	}
-	if( true == pus_obcp_IsObcpLoaded(id, NULL) )
+	size_t index;
+	if( true == pus_obcp_IsObcpLoaded(id, &index) )
     {
         return PUS_ERROR_OBCP_ALREADY_LOADED;
     }
     for(size_t i = 0; i < pus_obcp_ObcpLimit; i++)
     {
-    	if(0 !=  pthread_mutex_lock(&pus_obcp_infoList[i].mutex))
+    	printf(" ---- Loading %d, status %d\n", i, pus_obcp_infoList[i].status);
+		if(0 !=  pthread_mutex_lock(&pus_obcp_infoList[i].mutex))
     	{
     		return PUS_ERROR_THREADS;
     	}
         if( pus_obcp_infoList[i].status == PUS_OBCP_STATUS_UNLOAD )
         {
-        	//pus_obcp_initUPyInterpreter(& pus_obcp_infoList[i]);
         	pus_obcp_setLoadInfo(&pus_obcp_infoList[i], id, PUS_OBCP_STATUS_INACTIVE, code);
 
             if(0 != pthread_mutex_unlock(&pus_obcp_infoList[i].mutex))
