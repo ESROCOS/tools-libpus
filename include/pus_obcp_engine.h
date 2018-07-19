@@ -76,7 +76,7 @@ typedef struct
  *  \param[inout] mutex Mutex to be initialized; if NULL, access protection is disabled
  *  \return Error code (PUS_NO_ERROR if success)
  */
-pusError_t pus_obcp_initialize(); //TODO Mutex as param
+pusError_t pus_obcp_initialize(pusMutex_t* mutex); //TODO Mutex as param
 
 // Check if the OBCP service is initialized
 bool pus_obcp_isInitialized();
