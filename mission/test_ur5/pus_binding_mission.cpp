@@ -123,7 +123,7 @@ void init_mission_module(py::module &m)
 	m.def("pus_tc_201_1_3_getOrientationPoints", &pus_tc_201_1_3_getOrientationPoints_, "pus_tc_201_1_3_getOrientationPoints");
 	m.def("pus_tc_201_1_3_setPositionPoints", &pus_tc_201_1_3_setPositionPoints, "pus_tc_201_1_3_setPositionPoints");
 	m.def("pus_tc_201_1_3_getPositionPoints", &pus_tc_201_1_3_getPositionPoints_, "pus_tc_201_1_3_getPositionPoints");
-	m.def("pus_tm_201_4_getPlanObservation", &pus_tm_201_4_getPlanObservation, "pus_tm_201_4_getPlanObservation");
+	m.def("pus_tm_201_4_getPlanObservation", &pus_tm_201_4_getPlanObservation_, "pus_tm_201_4_getPlanObservation");
 }
 
 

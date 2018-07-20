@@ -188,7 +188,6 @@ class App(object):
             info = "Report id: {}".format(src_data["hk_param_report"]["report_id"])
             params = []
         elif svc == 5:
-            print("HOLAAALALALA type" + str(type(src_data["event_id"])))
             info = "Event id: {}. ({}, {})".format(src_data["event_id"], src_data["auxdata"]["data1"],
                                                                src_data["auxdata"]["data2"])
         elif (svc, msg) == (8, 1):
@@ -267,6 +266,7 @@ class App(object):
                 info = "File: {}{}{}. ".format(src_data["repo_path"], slash, src_data["file_name"])
                 if msg == 1:
                     info += " Max size: {}".format(src_data["max_size"])
-
+        else:
+            info = str(src_data)
         # add st12 infostring
         return info
