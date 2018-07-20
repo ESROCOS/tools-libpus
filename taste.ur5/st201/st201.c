@@ -95,6 +95,7 @@ void st201_PI_tc201(const asn1SccPusPacket *IN_tcPacket)
 void st201_PI_report(const asn1SccPusSt201PlanObservation *IN_observation)
 {
     /* Write your code here! */
+	printf("report\n");
 	pusPacket_t outTm;
 	pusApid_t apid;
 	pusSequenceCount_t seqCount;
@@ -103,5 +104,6 @@ void st201_PI_report(const asn1SccPusSt201PlanObservation *IN_observation)
 	st201_RI_getApid(&apid);
 	st201_RI_getSequenceCount(&seqCount);
 	pus_tm_201_4_createPlanReport(&outTm, apid, seqCount, destination, IN_observation);
+	st201_RI_newTm(&outTm);
 }
 
