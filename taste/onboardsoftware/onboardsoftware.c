@@ -74,7 +74,7 @@ void onboardsoftware_PI_pusTrigger()
 
 	onboardsoftware_RI_PmonTrigger();
 
-	if(varReports == 3)
+	if(varReports == 23)
 	{
 		onboardsoftware_RI_HkReportTrigger();
 		onboardsoftware_RI_EventReportTrigger();

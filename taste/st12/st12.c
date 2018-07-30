@@ -107,7 +107,7 @@ void st12_PI_PmonTrigger()
 
 	if( ! pus_pmon_isFunctionActivated() )
 	{
-		printf(" -ST12: function disabled\n");
+		//printf(" -ST12: function disabled\n");
 		return;
 	}
 

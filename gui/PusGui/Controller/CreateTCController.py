@@ -319,7 +319,11 @@ class CreateTCController(object):
             elif msg == 14:
                 pb.pus_tc_23_14_createCopyFileRequest(packet, apid, seq, "", "", "", "")
         else:
-            pfun.mission_create_packets(packet, svc, msg, apid, seq)
+            try:
+                pfun.mission_create_packets(packet, svc, msg)
+            except Exception as e:
+                pass
+
         return packet_translator.packet2json(packet), packet
 
     def show(self):

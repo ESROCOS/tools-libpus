@@ -650,7 +650,7 @@ FEATURES
   PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
     Taste::coordinates => "94546 102049";
     Taste::RCMoperationKind => sporadic;
-    Taste::RCMperiod => 1000 ms;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmTrigger";
   };
@@ -828,7 +828,7 @@ FEATURES
   PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
     Taste::coordinates => "91780 104524";
     Taste::RCMoperationKind => sporadic;
-    Taste::RCMperiod => 1000 ms;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmTrigger";
   };
@@ -4171,7 +4171,7 @@ FEATURES
   PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
     Taste::coordinates => "76928 105491";
     Taste::RCMoperationKind => sporadic;
-    Taste::RCMperiod => 1000 ms;
+    Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmTrigger";
   };
@@ -4592,7 +4592,7 @@ FEATURES
   PI_pusTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_pusTrigger.others {
     Taste::coordinates => "238379 90271";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 250 ms;
+    Taste::RCMperiod => 500 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "pusTrigger";
   };

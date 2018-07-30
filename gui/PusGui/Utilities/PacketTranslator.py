@@ -114,7 +114,10 @@ class PacketTranslator(object):
             elif msg_type_id == 14:
                 jsn["data"]["user_data"]["src_data"] = self.tc_23_14_get_data(pack)
         else:
-            jsn["data"]["user_data"]["src_data"] = pfun.mission_get_data(pack, srvc_type_id, msg_type_id)
+            try:
+                jsn["data"]["user_data"]["src_data"] = pfun.mission_get_data(pack, srvc_type_id, msg_type_id)
+            except Exception as e:
+                pass
 
         return jsn
 
@@ -226,7 +229,11 @@ class PacketTranslator(object):
             elif msg_type_id == 14:
                 self.tc_23_14_set_data(pack, data)
         else:
-            pfun.mission_set_data(pack, srvc_type_id, msg_type_id, data)
+            try:
+                pfun.mission_set_data(pack, srvc_type_id, msg_type_id, data)
+            except Exception as e:
+                pass 
+    
         return pack
 
     @staticmethod
@@ -304,7 +311,10 @@ class PacketTranslator(object):
         elif (svc, msg) == (23, 14):
             pb.pus_tc_23_14_createCopyFileRequest(packet, 0, 0, "", "", "", "")
         else:
-            pfun.mission_create_packets(packet, svc, msg)
+            try:
+                pfun.mission_create_packets(packet, svc, msg)
+            except Exception as e:
+                pass
       
         return packet
 
