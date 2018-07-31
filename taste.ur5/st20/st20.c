@@ -60,7 +60,7 @@ void st20_PI_tc20(const asn1SccPusPacket *IN_tcPacket)
 			paramValue = pus_tc_20_3_getParamValue(IN_tcPacket);
 			paramId = pus_tc_20_X_getParamId(IN_tcPacket);
 			errorCode = pus_parameters_setStoredParam(paramId, paramValue);
-			printf(" - ST20 setparam: id %llu, value %llu, error %ll\nu", paramId, paramValue, errorCode);
+			printf(" - ST20 setparam: id %llu, value %llu, error %llu", paramId, paramValue, errorCode);
 
 		}
 		else

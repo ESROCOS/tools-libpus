@@ -8,16 +8,24 @@ set(COMPONENT_NAME "pus_test_ur5")
 
 # Preinstall ASN.1 types, headers and libraries for first build
 file(GLOB ASN1 ${CMAKE_SOURCE_DIR}/asn1/*.asn)
-esrocos_preinstall_files(pus_asn1_${COMPONENT_NAME} types/pus/${MISSION} ${ASN1})
-
-#file(GLOB ASN1_UR5 ${CMAKE_SOURCE_DIR}/test_ur5/*.asn)
-#esrocos_preinstall_files(pus_asn1_mission_${COMPONENT_NAME} types/pus/${MISSION} ${ASN1_UR5})
+esrocos_preinstall_files(pus_asn1_${COMPONENT_NAME} types/pus/${MISSION} 
+            ${ASN1}
+            ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_st200.asn
+            ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_st201.asn
+            )
 
 file(GLOB HEADERS ${CMAKE_SOURCE_DIR}/include/*.h)
 esrocos_preinstall_files(pus_headers_${COMPONENT_NAME} include/pus ${HEADERS})
 
 file(GLOB JSON_HEADERS ${CMAKE_BINARY_DIR}/mission/test_ur5/generated/include/*.h)
-esrocos_preinstall_files(pus_mission_headers_${COMPONENT_NAME} include/pus/mission/test_ur5 ${JSON_HEADERS} ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_enable_services.h ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_mission_types.h)
+esrocos_preinstall_files(pus_mission_headers_${COMPONENT_NAME} include/pus/mission/test_ur5 
+            ${JSON_HEADERS} 
+            ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_enable_services.h 
+            ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_mission_types.h
+            ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_st200_packets.h
+            ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_st201_packets.h
+            ${CMAKE_SOURCE_DIR}/mission/test_ur5/pus_robot_control.h
+            )
 
 esrocos_preinstall_directories(mpy_headers_${COMPONENT_NAME} include/pus/mission/test_ur5/mpy ${CMAKE_BINARY_DIR}/mission/test_ur5/mpy/include)
 
