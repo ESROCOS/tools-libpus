@@ -209,7 +209,10 @@ pusError_t pus_files_createFile(const pusSt23RepositoryPath_t* repository, const
 				FILE* fp;
 				char path[100];
 				pusSt23RepositoryDomain_t domain;
-				pus_files_getDomainFromRepositoryPath(&domain, repository);
+				if(PUS_NO_ERROR != pus_files_getDomainFromRepositoryPath(&domain, repository))
+				{
+					return PUS_SET_ERROR( PUS_ERROR_FILE_REPOSITORY );
+				}
 				sprintf(path, "%s%s", (char*)domain.arr, (char*)fileName->arr);
 				printf("Path: %s\n", path);
 				fp = fopen(path, "w");
