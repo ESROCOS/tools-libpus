@@ -227,26 +227,56 @@ void test_st18_engine1()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_parameters_initialize( NULL ));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_st08_initialize( NULL ));
 
-	pus_obcp_initialize(NULL);
-	pus_obcp_startEngine();
+	CU_ASSERT_EQUAL(0, pus_obcp_getObcpLoadedActives());
+	CU_ASSERT_EQUAL(0, pus_obcp_getObcpLoadedInactives());
+	CU_ASSERT_EQUAL(0, pus_obcp_getObcpSlotNotLoaded());
+
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_obcp_stopEngine());
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_obcp_startEngine());
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_obcp_finalize());
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_initialize(NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_obcp_initialize(NULL));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_stopEngine());
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_stopEngine());
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_startEngine());
+
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_ALREADY_RUNNING, pus_obcp_startEngine());
+	
+	CU_ASSERT_EQUAL(0, pus_obcp_getObcpLoadedActives());
+	CU_ASSERT_EQUAL(0, pus_obcp_getObcpLoadedInactives());
+	CU_ASSERT_EQUAL(2, pus_obcp_getObcpSlotNotLoaded());
 
 
 	pusSt18ObcpId_t id1 ,id2;
 	memcpy(id1.arr, "OBCP_1\0", 10);
 	memcpy(id2.arr, "OBCP_2\0", 10);
 
-	pusSt18ObcpCode_t code1;
+	pusSt18ObcpCode_t code1, code2;
 	memcpy(code1.arr, mpy_script_data[0], mpy_script_len[0]);
 	code1.nCount = mpy_script_len[0];
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id1, &code1));
 
 	memcpy(code1.arr, mpy_script_data[1], mpy_script_len[1]);
-	code1.nCount = mpy_script_len[1];
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id2, &code1));
+	code2.nCount = mpy_script_len[1];
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_stopEngine());
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id1, &code1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id2, &code2));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_startEngine());
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id1, &code1));
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id2, &code2));
+
+	CU_ASSERT_EQUAL(2, pus_obcp_getObcpLoadedInactives());
 
 	printf("\n-------------\n");
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_activateObcp(&id1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_activateObcp(&id2));
+
+	CU_ASSERT_EQUAL(2, pus_obcp_getObcpLoadedActives());
 
 
 	sleep(3); //wait to the end of the test
@@ -301,6 +331,8 @@ void test_st18_testCode()
 	sleep(1); //wait to the end of the test
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_unloadObcp(&id1));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_unloadObcp(&id2));
+
+	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_finalize());
 }
 
 int main()
