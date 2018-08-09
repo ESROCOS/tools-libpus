@@ -132,7 +132,7 @@ void packets_st19()
 
 	CU_ASSERT_EQUAL(aux.apid, tcAction.data.u.tcData.data.u.st_19_1.packetReduced.apid);
 	CU_ASSERT_EQUAL(aux.data.u.tcData.header.serviceId, tcAction.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.serviceId);
-	CU_ASSERT_EQUAL(aux.data.u.tcData.header.subtype, tcAction.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.subtype);
+	CU_ASSERT_EQUAL(aux.data.u.tcData.header.subtypeId, tcAction.data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.subtypeId);
 	pus_clearError();
 }
 

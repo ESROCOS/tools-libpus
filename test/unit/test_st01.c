@@ -313,12 +313,12 @@ void test_st01()
 	tm.data.u.tmData.header.serviceId = pusService_NONE;
 	CU_ASSERT_EQUAL(PUS_ERROR_TM_SERVICE, PUS_EXPECT_ST01(&tm, pus_TM_1_1_successfulAcceptance));
 	tm.data.u.tmData.header.serviceId = pus_ST01_requestVerification;
-	tm.data.u.tmData.header.subtype = pus_TM_1_2_failedAcceptance;
+	tm.data.u.tmData.header.subtypeId = pus_TM_1_2_failedAcceptance;
 	CU_ASSERT_EQUAL(PUS_ERROR_TM_SUBTYPE, PUS_EXPECT_ST01(&tm, pus_TM_1_1_successfulAcceptance));
-	tm.data.u.tmData.header.subtype = pus_TM_1_1_successfulAcceptance;
-	tm.data.u.tmData.header.subtype = pusSubtype_NONE;
+	tm.data.u.tmData.header.subtypeId = pus_TM_1_1_successfulAcceptance;
+	tm.data.u.tmData.header.subtypeId = pusSubtype_NONE;
 	CU_ASSERT_EQUAL(PUS_ERROR_TM_SUBTYPE, PUS_EXPECT_ST01(&tm, pusSubtype_NONE));
-	tm.data.u.tmData.header.subtype = pus_TM_1_1_successfulAcceptance;
+	tm.data.u.tmData.header.subtypeId = pus_TM_1_1_successfulAcceptance;
 	tm.data.u.tmData.data.kind = pus_TM_DATA_NONE;
 	CU_ASSERT_EQUAL(PUS_ERROR_TM_KIND, PUS_EXPECT_ST01(&tm, pus_TM_1_1_successfulAcceptance));
 	tm.data.u.tmData.data.kind = pus_TM_DATA_ST_1_X;

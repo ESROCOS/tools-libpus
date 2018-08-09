@@ -403,7 +403,7 @@ pusError_t pus_files_getSystemFromRepositoryPath(pusSt23RepositorySystem_t* syst
 {
 	if( NULL == system || NULL == repositoryPath )
 	{
-		return PUS_SET_ERROR(PUS_NO_ERROR);
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
 	if( ! pus_files_isInitialized() )
 	{

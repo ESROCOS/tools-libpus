@@ -156,12 +156,33 @@ void packets_st23()
 void test_st23()
 {
 	pusSt23RepositoryPath_t repo;
+	pusSt23FileName_t fileT; 
+	pusSt23MaximumSize_t maxS;
+	pusSt23RepositorySystem_t sys;
 	//pus_files_getRepositoryPathFromId(&repo, PUS_REPOSITORY_TEST);
 	system("mkdir -p /tmp/pus");
+
+	CU_ASSERT_EQUAL(false, pus_files_isSameRepository(NULL, NULL));
+	CU_ASSERT_EQUAL(false, pus_files_isSameFileName(NULL, NULL));
+	CU_ASSERT_EQUAL(false, pus_files_isFileInTable(NULL, NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_files_getRepositoryPathFromId(NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_files_createFile(NULL, NULL, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_files_deleteFile(NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_files_copyFile(NULL, NULL, NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_files_getFileMaxSize(NULL, NULL, NULL));
+	CU_ASSERT_EQUAL(PUS_ERROR_NULLPTR, pus_files_getSystemFromRepositoryPath(NULL, NULL));
+	
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_getRepositoryPathFromId(&repo, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_createFile(&repo, &fileT, 0));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_deleteFile(&repo, &fileT));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_getFileMaxSize(&maxS, &repo, &fileT));
+	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_getSystemFromRepositoryPath(&sys, &repo));
+	
 
 	CU_ASSERT_EQUAL(PUS_ERROR_NOT_INITIALIZED, pus_files_finalize());
 	CU_ASSERT_FALSE(pus_files_isInitialized());
 
+	CU_ASSERT_EQUAL(PUS_ERROR_INITIALIZATION, pus_files_initialize(NULL, 5));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_initialize(NULL, PUS_REPOSITORY_TEST));
 	CU_ASSERT_EQUAL(PUS_ERROR_ALREADY_INITIALIZED, pus_files_initialize(NULL, PUS_REPOSITORY_TEST));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_files_finalize());

@@ -249,9 +249,10 @@ void test_st18_engine1()
 	CU_ASSERT_EQUAL(2, pus_obcp_getObcpSlotNotLoaded());
 
 
-	pusSt18ObcpId_t id1 ,id2;
+	pusSt18ObcpId_t id1 ,id2, id3;
 	memcpy(id1.arr, "OBCP_1\0", 10);
 	memcpy(id2.arr, "OBCP_2\0", 10);
+	memcpy(id3.arr, "OBCP_3\0", 10);
 
 	pusSt18ObcpCode_t code1, code2;
 	memcpy(code1.arr, mpy_script_data[0], mpy_script_len[0]);
@@ -262,18 +263,50 @@ void test_st18_engine1()
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_stopEngine());
 
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id1, &code1));
-	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id2, &code2));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_loadObcp(&id1, &code1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_unloadObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_activateObcp(&id1));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_executeObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_stopObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_suspendObcp(&id1));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_abortObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_resumeObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_waitForActivationById(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ENGINE_NOT_RUNNING, pus_obcp_waitForResumeById(&id1));
+	
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_startEngine());
 
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_executeObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_stopObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_suspendObcp(&id1));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_abortObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_resumeObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_waitForActivationById(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_waitForResumeById(&id1));
+
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id1, &code1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ALREADY_LOADED, pus_obcp_loadObcp(&id1, &code1));
+
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_HELD, pus_obcp_resumeObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_RUNNING, pus_obcp_suspendObcp(&id1));
+	
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_unloadObcp(&id2));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_NOT_LOADED, pus_obcp_activateObcp(&id2));
+
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_loadObcp(&id2, &code2));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_FULL_BUFFER, pus_obcp_loadObcp(&id3, &code1));
 
 	CU_ASSERT_EQUAL(2, pus_obcp_getObcpLoadedInactives());
 
 	printf("\n-------------\n");
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_activateObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_ALREADY_ACTIVATED, pus_obcp_activateObcp(&id1));
+	CU_ASSERT_EQUAL(PUS_ERROR_OBCP_IS_RUNNING, pus_obcp_unloadObcp(&id1));
+
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_obcp_activateObcp(&id2));
 
 	CU_ASSERT_EQUAL(2, pus_obcp_getObcpLoadedActives());

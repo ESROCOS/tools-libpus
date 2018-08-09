@@ -353,8 +353,6 @@ pusError_t pus_obcp_unloadObcp( pusSt18ObcpId_t* id )
 	{
 		return PUS_ERROR_THREADS;
 	}
-	//printf("UNLOCK ACTIVATE cond %p, status: %d\n", &pus_obcp_infoList[index].cond, pthread_cond_signal(&pus_obcp_infoList[index].cond));
-	//printf("UNLOCK ACTIVATE mutex %p, status: %d\n", &pus_obcp_infoList[index].mutex, pthread_mutex_unlock(&pus_obcp_infoList[index].mutex));
 
 	return PUS_NO_ERROR;
 }
@@ -377,7 +375,6 @@ pusError_t pus_obcp_activateObcp( pusSt18ObcpId_t* id )
 	{
 		return PUS_ERROR_THREADS;
 	}
-	//printf("LOCK ACTIVATE %p, status: %d\n", &pus_obcp_infoList[index].mutex, pthread_mutex_lock(&pus_obcp_infoList[index].mutex));
 
 	if (pus_obcp_infoList[index].status == PUS_OBCP_STATUS_ACTIVE_RUNNING)
 	{
@@ -393,9 +390,6 @@ pusError_t pus_obcp_activateObcp( pusSt18ObcpId_t* id )
 		pus_obcp_infoList[index].status = PUS_OBCP_STATUS_ACTIVE_RUNNING;
 	}
 
-	//printf("UNLOCK ACTIVATE cond %p, status: %d\n", &pus_obcp_infoList[index].cond, pthread_cond_signal(&pus_obcp_infoList[index].cond));
-	//printf("UNLOCK ACTIVATE mutex %p, status: %d\n", &pus_obcp_infoList[index].mutex, pthread_mutex_unlock(&pus_obcp_infoList[index].mutex));
-
 	if(0 != pthread_cond_signal(&pus_obcp_infoList[index].cond))
 	{
 		return PUS_ERROR_THREADS;
@@ -404,8 +398,6 @@ pusError_t pus_obcp_activateObcp( pusSt18ObcpId_t* id )
 	{
 		return PUS_ERROR_THREADS;
 	}
-
-	//printf("UNLOCK ACTIVATE %p\n", &pus_obcp_infoList[index].cond);
 
 	return PUS_NO_ERROR;
 }
@@ -453,10 +445,9 @@ pusError_t pus_obcp_stopObcp(pusSt18ObcpId_t* id)
 	if( pus_obcp_infoList[index].status !=  PUS_OBCP_STATUS_ACTIVE_RUNNING )
 	{
 		pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
-		return PUS_ERROR_OBCP_IS_RUNNING;
+		return PUS_ERROR_OBCP_NOT_RUNNING;
 	}
-
-	//TODO else error
+	
 	pus_obcp_infoList[index].status = PUS_OBCP_STATUS_ACTIVE_STOP_REQUEST;
 	pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
 
@@ -481,9 +472,12 @@ pusError_t pus_obcp_suspendObcp(pusSt18ObcpId_t* id)
 	{
 		pus_obcp_infoList[index].status = PUS_OBCP_STATUS_ACTIVE_HELD_REQUEST;
 	}
+	else
+	{
+		pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
+		return PUS_ERROR_OBCP_NOT_RUNNING;
+	}
 	pthread_mutex_unlock(&pus_obcp_infoList[index].mutex);
-
-	//TODO else error
 
 	return PUS_NO_ERROR;
 }
@@ -499,7 +493,7 @@ pusError_t pus_obcp_abortObcp(pusSt18ObcpId_t* id)
 	size_t index;
 	if( false == pus_obcp_IsObcpLoaded(id, &index) )
 	{
-	  return PUS_ERROR_OBCP_NOT_LOADED;
+		return PUS_ERROR_OBCP_NOT_LOADED;
 	}
 
 	pthread_mutex_lock(&pus_obcp_infoList[index].mutex);

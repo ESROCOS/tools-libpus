@@ -284,7 +284,7 @@ pusSubservice_t pus_getTmSubtype(const pusPacket_t* packet)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER(packet))
 	{
-        return packet->data.u.tmData.header.subtype;
+        return packet->data.u.tmData.header.subtypeId;
 	}
     else
     {
@@ -296,7 +296,7 @@ void pus_setTmSubtype(pusPacket_t* packet, pusService_t subtype)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TM_HEADER_INT(packet, subtype))
 	{
-        packet->data.u.tmData.header.subtype = subtype;
+        packet->data.u.tmData.header.subtypeId = subtype;
 	}
 }
 
@@ -324,7 +324,7 @@ pusSubservice_t pus_getTcSubtype(const pusPacket_t* packet)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER(packet))
 	{
-        return packet->data.u.tcData.header.subtype;
+        return packet->data.u.tcData.header.subtypeId;
 	}
     else
     {
@@ -336,7 +336,7 @@ void pus_setTcSubtype(pusPacket_t* packet, pusService_t subtype)
 {
     if (PUS_NO_ERROR == PUS_EXPECT_TC_HEADER_INT(packet, subtype))
 	{
-        packet->data.u.tcData.header.subtype = subtype;
+        packet->data.u.tcData.header.subtypeId = subtype;
 	}
 }
 

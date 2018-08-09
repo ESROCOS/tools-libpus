@@ -169,7 +169,7 @@ bool pus_eventAction_isEventActionDefinitionRegistered(pusSt05EventId_t eventID,
 		{
 			if( pus_st19_EventActionDefinitionList[eventID].tcAction.data.u.tcData.header.serviceId == tcAction->data.u.tcData.header.serviceId)
 			{
-				if ( pus_st19_EventActionDefinitionList[eventID].tcAction.data.u.tcData.header.subtype == tcAction->data.u.tcData.header.subtype)
+				if ( pus_st19_EventActionDefinitionList[eventID].tcAction.data.u.tcData.header.subtypeId == tcAction->data.u.tcData.header.subtypeId)
 				{
 					return true;
 				}

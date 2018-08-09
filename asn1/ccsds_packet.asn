@@ -44,7 +44,7 @@ BEGIN
         pusVersion      PusVersionNumber,
         timeRefStatus   PusTimeReferenceStatus,
         serviceId       PusServiceType,
-        subtype         PusSubserviceType,
+        subtypeId       PusSubserviceType,
         msgTypeCount    PusMessageTypeCounter,
         destination     PusApid,
         time            PusTime
@@ -68,7 +68,7 @@ BEGIN
         pusVersion      PusVersionNumber,
         ackFlags        PusAcknowledgementFlags,
         serviceId       PusServiceType,
-        subtype         PusSubserviceType,
+        subtypeId       PusSubserviceType,
         source          PusApid
         -- no spare bits
     }
