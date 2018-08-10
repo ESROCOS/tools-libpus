@@ -51,3 +51,5 @@ taste.ur5/.tc_history
 *.tc_history
 .vscode/*
 
+test_results
+
