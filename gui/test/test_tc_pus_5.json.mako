@@ -47,6 +47,6 @@
   {
     "interval": 10,
     "action": "savedb",
-    "params": "dump_test_st05.db"
+    "params": "dump_test_05.db"
   }
 ]}

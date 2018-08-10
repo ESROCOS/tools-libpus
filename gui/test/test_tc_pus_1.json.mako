@@ -102,6 +102,6 @@
   {
     "interval": 1,
     "action": "savedb",
-    "params": "dump_test_st01.db"
+    "params": "dump_test_01.db"
   }
 ]}

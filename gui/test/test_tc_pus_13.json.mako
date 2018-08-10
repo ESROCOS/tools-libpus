@@ -11,7 +11,7 @@
       "data": {
         "user_data": {
           "src_data": {
-            "param_id": 0
+            "param_id": ${ONBOARD_PARAM_INT01}
           }
         },
         "pck_sec_head": {
@@ -30,7 +30,7 @@
       "data": {
         "user_data": {
           "src_data": {
-            "param_id": 0,
+            "param_id": ${ONBOARD_PARAM_INT01},
             "value": 3
           }
         },
@@ -50,7 +50,7 @@
       "data": {
         "user_data": {
           "src_data": {
-            "param_id": 0
+            "param_id": ${ONBOARD_PARAM_INT01}
           }
         },
         "pck_sec_head": {
@@ -65,6 +65,6 @@
   {
     "interval": 1,
     "action": "savedb",
-    "params": "dump_test_st13.db"
+    "params": "dump_test_13.db"
   }
 ]}

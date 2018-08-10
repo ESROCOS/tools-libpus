@@ -25,7 +25,7 @@
     }
   },
   {
-    "interval": 1,
+    "interval": 2,
     "comment": "Runs function 1",
     "packet": {
       ${macros.primary_header_defaults()},
@@ -45,7 +45,7 @@
     }
   },
   {
-    "interval": 0,
+    "interval": 2,
     "comment": "Runs function 2",
     "packet": {
       ${macros.primary_header_defaults()},
@@ -65,7 +65,7 @@
     }
   },
   {
-    "interval": 1,
+    "interval": 2,
     "comment": "Runs invalid function",
     "packet": {
       ${macros.primary_header_defaults()},
@@ -87,6 +87,6 @@
   {
     "interval": 1,
     "action": "savedb",
-    "params": "dump_test_st04.db"
+    "params": "dump_test_04.db"
   }
 ]}

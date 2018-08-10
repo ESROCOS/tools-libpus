@@ -235,7 +235,7 @@ class App(object):
                 info += "Packet request: ({}, {}).".format(sub_svc, sub_msg)
         elif svc == 20:
             if msg == 2:
-                info = "{}".format(pb.pus_st20_getOnBoardReportInfoName(src_data["param_id"]))
+                info = src_data["param_id"]
                 info += " = {}".format(src_data["value"])
             elif msg == 3:
                 info = "Set " + pb.pus_st20_getOnBoardReportInfoName(src_data["param_id"])

@@ -137,6 +137,6 @@
   {
     "interval": 1,
     "action": "savedb",
-    "params": "dump_test_st12.db"
+    "params": "dump_test_12.db"
   }
 ]}
