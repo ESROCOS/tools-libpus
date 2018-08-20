@@ -15,6 +15,8 @@ void st11_startup();
 
 void st11_PI_tc11(const asn1SccPusPacket *);
 
+void st11_PI_schedulingTrigger();
+
 extern void st11_RI_ACK(const asn1SccPusPacket *,
                         const asn1SccPusSubserviceType *,
                         const asn1SccPusSt01FailureCode *,

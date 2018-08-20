@@ -2762,6 +2762,14 @@ END RI_newTc;
 SUBPROGRAM IMPLEMENTATION RI_newTc.others
 END RI_newTc.others;
 
+SUBPROGRAM PI_schedulingTrigger
+END PI_schedulingTrigger;
+
+SUBPROGRAM IMPLEMENTATION PI_schedulingTrigger.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_schedulingTrigger.others;
+
 SYSTEM ST11
 FEATURES
   PI_tc11 : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_tc11.others {
@@ -2782,6 +2790,11 @@ FEATURES
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTc";
     Taste::labelInheritance => "true";
+  };
+  PI_schedulingTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_schedulingTrigger.others {
+    Taste::coordinates => "160319 86462";
+    Taste::RCMoperationKind => sporadic;
+    Taste::InterfaceName => "schedulingTrigger";
   };
 PROPERTIES
   Source_Language => (C);
@@ -4110,6 +4123,14 @@ END RI_newTm;
 SUBPROGRAM IMPLEMENTATION RI_newTm.others
 END RI_newTm.others;
 
+SUBPROGRAM PI_schedulingTrigger
+END PI_schedulingTrigger;
+
+SUBPROGRAM IMPLEMENTATION PI_schedulingTrigger.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_schedulingTrigger.others;
+
 SYSTEM PusServices
 FEATURES
   PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcQueue::PI_newTc.others {
@@ -4208,6 +4229,11 @@ FEATURES
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "newTm";
     Taste::labelInheritance => "true";
+  };
+  PI_schedulingTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_schedulingTrigger.others {
+    Taste::coordinates => "163261 33193";
+    Taste::RCMoperationKind => sporadic;
+    Taste::InterfaceName => "schedulingTrigger";
   };
 PROPERTIES
   Source_Language => (C);
@@ -4415,6 +4441,9 @@ CONNECTIONS
   HousekeepingServices_PI_getParamValue_PusServices_PI_getParamValue : SUBPROGRAM ACCESS HousekeepingServices.PI_getParamValue -> PI_getParamValue {
     Taste::coordinates => "203150 72647 185413 72647 185413 72638 167676 72638";
   };
+  ST11_PI_schedulingTrigger_PusServices_PI_schedulingTrigger : SUBPROGRAM ACCESS ST11.PI_schedulingTrigger -> PI_schedulingTrigger {
+    Taste::coordinates => "163261 33193 163261 86462 160319 86462";
+  };
   ParameterManagement_PI_setOnBoardParam_PusServices_PI_setOnBoardParam : SUBPROGRAM ACCESS ParameterManagement.PI_setOnBoardParam -> PI_setOnBoardParam {
     Taste::coordinates => "203150 106637 183729 106637 183729 116959 166243 116959";
   };
@@ -4437,6 +4466,7 @@ WITH interfaceview::IV::OnBoard::PusServices::EventServices::ST05;
 WITH interfaceview::IV::OnBoard::PusServices::EventServices::ST19;
 WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03;
 WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12;
+WITH interfaceview::IV::OnBoard::PusServices::ST11;
 WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
@@ -4580,6 +4610,12 @@ END RI_PmonTrigger;
 SUBPROGRAM IMPLEMENTATION RI_PmonTrigger.others
 END RI_PmonTrigger.others;
 
+SUBPROGRAM RI_schedulingTrigger
+END RI_schedulingTrigger;
+
+SUBPROGRAM IMPLEMENTATION RI_schedulingTrigger.others
+END RI_schedulingTrigger.others;
+
 SYSTEM OnboardSoftware
 FEATURES
   PI_debugTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_debugTrigger.others {
@@ -4666,6 +4702,12 @@ FEATURES
     Taste::coordinates => "219639 90147";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "PmonTrigger";
+    Taste::labelInheritance => "true";
+  };
+  RI_schedulingTrigger : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_schedulingTrigger.others {
+    Taste::coordinates => "219639 93293";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "schedulingTrigger";
     Taste::labelInheritance => "true";
   };
 PROPERTIES
@@ -4782,6 +4824,9 @@ CONNECTIONS
   };
   OnBoard_RI_newTm_PusServices_RI_newTm : SUBPROGRAM ACCESS RI_newTm -> PusServices.RI_newTm {
     Taste::coordinates => "76928 99327 71940 99327 71940 90896 66854 90896";
+  };
+  PusServices_PI_schedulingTrigger_OnboardSoftware_RI_schedulingTrigger : SUBPROGRAM ACCESS PusServices.PI_schedulingTrigger -> OnboardSoftware.RI_schedulingTrigger {
+    Taste::coordinates => "219639 93293 203494 93293 203494 31049 163261 31049 163261 33193";
   };
 END OnBoard.others;
 

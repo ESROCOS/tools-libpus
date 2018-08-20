@@ -14,21 +14,13 @@ const asn1SccPusVersionNumber pus_VERSION_CURRENT = asn1Sccpus_V2;
 const asn1SccPusTimeReferenceStatus pus_TIME_REFERENCE_STATUS_NONE = 0;
 const asn1SccPusMessageTypeCounter pus_MESSAGE_TYPE_COUNTER_NONE = 0;
 const asn1SccPusStepId pus_STEP_NONE = 0;
-const asn1SccPusSt01FailureCode pus_ST01_NO_ERROR = 0;
-const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNAVAILABLE = 1;
-const asn1SccPusSt01FailureCode pus_ST01_ERROR_SERVICE_UNAVAILABLE = 2;
-const asn1SccPusSt01FailureCode pus_ST01_ERROR_SUBTYPE_UNAVAILABLE = 3;
-const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNKNOWN = 4;
-const asn1SccPusSt01FailureCode pus_ST01_ERROR_SERVICE_UNKNOWN = 5;
-const asn1SccPusSt01FailureCode pus_ST01_ERROR_SUBTYPE_UNKNOWN = 6;
-const asn1SccPusSt01FailureCode pus_ST01_ERROR_WRONG_FORMAT = 7;
-const asn1SccPusSt01FailureCode pus_ST01_ERROR_CHECKSUM = 8;
 const asn1SccPusSt05EventId pus_EVENT_ID_NONE = 0;
 const asn1SccPusSt05EventAuxData pus_EVENT_AUXDATA_NONE = {
     .data1 = 0,
     .data2 = 0
 };
 const asn1SccPusUInt64 pus_EVENT_DATASTORED_NONE = 0;
+const asn1SccPusSt03HousekeepingReportId pus_ST03_DEFAULT_HK_REPORT = 0;
 const asn1SccPusServiceType pusService_NONE = 0;
 const asn1SccPusServiceType pus_ST01_requestVerification = 1;
 const asn1SccPusServiceType pus_ST02_deviceAccess = 2;
@@ -99,6 +91,15 @@ const asn1SccPusSubserviceType pus_TC_23_2_deleteFile = 2;
 const asn1SccPusSubserviceType pus_TC_23_3_reportFileAttributes = 3;
 const asn1SccPusSubserviceType pus_TM_23_4_reportFileAttributes = 4;
 const asn1SccPusSubserviceType pus_TC_23_14_copyFile = 14;
+const asn1SccPusSt01FailureCode pus_ST01_NO_ERROR = 0;
+const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNAVAILABLE = 1;
+const asn1SccPusSt01FailureCode pus_ST01_ERROR_SERVICE_UNAVAILABLE = 2;
+const asn1SccPusSt01FailureCode pus_ST01_ERROR_SUBTYPE_UNAVAILABLE = 3;
+const asn1SccPusSt01FailureCode pus_ST01_ERROR_APID_UNKNOWN = 4;
+const asn1SccPusSt01FailureCode pus_ST01_ERROR_SERVICE_UNKNOWN = 5;
+const asn1SccPusSt01FailureCode pus_ST01_ERROR_SUBTYPE_UNKNOWN = 6;
+const asn1SccPusSt01FailureCode pus_ST01_ERROR_WRONG_FORMAT = 7;
+const asn1SccPusSt01FailureCode pus_ST01_ERROR_CHECKSUM = 8;
 const asn1SccPusUInt32 pus_ST03_MAX_REPORT_LENGTH = 20;
 const asn1SccPusUInt32 pus_ST11_MAX_SCHEDULED_ACTIVITIES = 5;
 const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_ID = 10;
@@ -108,528 +109,6 @@ const asn1SccPusUInt32 pus_ST23_MAX_SIZE_FILE_PATH = 30;
 const asn1SccPusUInt32 pus_ST23_MAX_SIZE_REPOSITORY_PATH = 30;
 const asn1SccPusUInt32 pus_ST23_MAX_SIZE_REPOSITORY_DOMAIN = 30;
 const asn1SccPusUInt32 pus_ST23_MAX_SIZE_FILE = 1000;
-const asn1SccPusSt03HousekeepingReportId pus_ST03_DEFAULT_HK_REPORT = 0;
-
-
-flag asn1SccPusPacketVersion_Equal(const asn1SccPusPacketVersion* pVal1, const asn1SccPusPacketVersion* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusPacketVersion_Initialize(asn1SccPusPacketVersion* pVal)
-{
-
-	(*(pVal)) = asn1Sccpus_CCSDS_V1;
-}
-
-flag asn1SccPusPacketVersion_IsConstraintValid(const asn1SccPusPacketVersion* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) == asn1Sccpus_CCSDS_V1);
-    *pErrCode = ret ? 0 :  ERR_PUSPACKETVERSION;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusPacketType_Equal(const asn1SccPusPacketType* pVal1, const asn1SccPusPacketType* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusPacketType_Initialize(asn1SccPusPacketType* pVal)
-{
-
-	(*(pVal)) = asn1Sccpus_TM;
-}
-
-flag asn1SccPusPacketType_IsConstraintValid(const asn1SccPusPacketType* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((((*(pVal)) == asn1Sccpus_TM)) || (((*(pVal)) == asn1Sccpus_TC)));
-    *pErrCode = ret ? 0 :  ERR_PUSPACKETTYPE;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSecondaryHeaderFlag_Equal(const asn1SccPusSecondaryHeaderFlag* pVal1, const asn1SccPusSecondaryHeaderFlag* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusSecondaryHeaderFlag_Initialize(asn1SccPusSecondaryHeaderFlag* pVal)
-{
-
-	(*(pVal)) = FALSE;
-}
-
-flag asn1SccPusSecondaryHeaderFlag_IsConstraintValid(const asn1SccPusSecondaryHeaderFlag* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = TRUE;
-    *pErrCode = ret ? 0 :  ERR_PUSSECONDARYHEADERFLAG;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSequenceFlags_Equal(const asn1SccPusSequenceFlags* pVal1, const asn1SccPusSequenceFlags* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusSequenceFlags_Initialize(asn1SccPusSequenceFlags* pVal)
-{
-
-	(*(pVal)) = asn1Sccpus_STANDALONE_PACKET;
-}
-
-flag asn1SccPusSequenceFlags_IsConstraintValid(const asn1SccPusSequenceFlags* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) == asn1Sccpus_STANDALONE_PACKET);
-    *pErrCode = ret ? 0 :  ERR_PUSSEQUENCEFLAGS;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusVersionNumber_Equal(const asn1SccPusVersionNumber* pVal1, const asn1SccPusVersionNumber* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusVersionNumber_Initialize(asn1SccPusVersionNumber* pVal)
-{
-
-	(*(pVal)) = asn1Sccpus_V0;
-}
-
-flag asn1SccPusVersionNumber_IsConstraintValid(const asn1SccPusVersionNumber* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((((((((*(pVal)) == asn1Sccpus_V0)) || (((*(pVal)) == asn1Sccpus_V1)))) || (((*(pVal)) == asn1Sccpus_V2)))) || (((*(pVal)) == asn1Sccpus_INVALID_VERSION)));
-    *pErrCode = ret ? 0 :  ERR_PUSVERSIONNUMBER;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusAcknowledgementFlags_Equal(const asn1SccPusAcknowledgementFlags* pVal1, const asn1SccPusAcknowledgementFlags* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = (pVal1->acceptanceReportRequested == pVal2->acceptanceReportRequested);
-
-    if (ret) {
-        ret = (pVal1->startReportRequested == pVal2->startReportRequested);
-
-        if (ret) {
-            ret = (pVal1->progressReportRequested == pVal2->progressReportRequested);
-
-            if (ret) {
-                ret = (pVal1->completionReportRequested == pVal2->completionReportRequested);
-
-            }
-        }
-    }
-	return ret;
-
-}
-
-void asn1SccPusAcknowledgementFlags_Initialize(asn1SccPusAcknowledgementFlags* pVal)
-{
-
-
-	/*set acceptanceReportRequested */
-	pVal->acceptanceReportRequested = FALSE;
-	/*set startReportRequested */
-	pVal->startReportRequested = FALSE;
-	/*set progressReportRequested */
-	pVal->progressReportRequested = FALSE;
-	/*set completionReportRequested */
-	pVal->completionReportRequested = FALSE;
-}
-
-flag asn1SccPusAcknowledgementFlags_IsConstraintValid(const asn1SccPusAcknowledgementFlags *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = TRUE;
-    *pErrCode = ret ? 0 :  ERR_PUSACKNOWLEDGEMENTFLAGS_ACCEPTANCEREPORTREQUESTED;
-    if (ret) {
-        ret = TRUE;
-        *pErrCode = ret ? 0 :  ERR_PUSACKNOWLEDGEMENTFLAGS_STARTREPORTREQUESTED;
-        if (ret) {
-            ret = TRUE;
-            *pErrCode = ret ? 0 :  ERR_PUSACKNOWLEDGEMENTFLAGS_PROGRESSREPORTREQUESTED;
-            if (ret) {
-                ret = TRUE;
-                *pErrCode = ret ? 0 :  ERR_PUSACKNOWLEDGEMENTFLAGS_COMPLETIONREPORTREQUESTED;
-            }
-        }
-    }
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt23RepositoryPath_Equal(const asn1SccPusSt23RepositoryPath* pVal1, const asn1SccPusSt23RepositoryPath* pVal2)
-{
-	return (pVal1->nCount == pVal2->nCount) && (memcmp(pVal1->arr, pVal2->arr, pVal1->nCount) ==0)	;
-
-}
-
-void asn1SccPusSt23RepositoryPath_Initialize(asn1SccPusSt23RepositoryPath* pVal)
-{
-
-	memset(pVal->arr, 0x0, 30);
-
-}
-
-flag asn1SccPusSt23RepositoryPath_IsConstraintValid(const asn1SccPusSt23RepositoryPath* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 30));
-    *pErrCode = ret ? 0 :  ERR_PUSST23REPOSITORYPATH;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt23FileName_Equal(const asn1SccPusSt23FileName* pVal1, const asn1SccPusSt23FileName* pVal2)
-{
-	return (pVal1->nCount == pVal2->nCount) && (memcmp(pVal1->arr, pVal2->arr, pVal1->nCount) ==0)	;
-
-}
-
-void asn1SccPusSt23FileName_Initialize(asn1SccPusSt23FileName* pVal)
-{
-
-	memset(pVal->arr, 0x0, 30);
-
-}
-
-flag asn1SccPusSt23FileName_IsConstraintValid(const asn1SccPusSt23FileName* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 30));
-    *pErrCode = ret ? 0 :  ERR_PUSST23FILENAME;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusTC_23_2_3_Data_Equal(const asn1SccPusTC_23_2_3_Data* pVal1, const asn1SccPusTC_23_2_3_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->repository)), (&(pVal2->repository)));
-
-    if (ret) {
-        ret = asn1SccPusSt23FileName_Equal((&(pVal1->fileName)), (&(pVal2->fileName)));
-
-    }
-	return ret;
-
-}
-
-void asn1SccPusTC_23_2_3_Data_Initialize(asn1SccPusTC_23_2_3_Data* pVal)
-{
-
-
-	/*set repository */
-	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->repository)));
-	/*set fileName */
-	asn1SccPusSt23FileName_Initialize((&(pVal->fileName)));
-}
-
-flag asn1SccPusTC_23_2_3_Data_IsConstraintValid(const asn1SccPusTC_23_2_3_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->repository.nCount) && (pVal->repository.nCount <= 30));
-    *pErrCode = ret ? 0 :  ERR_PUSTC_23_2_3_DATA_REPOSITORY;
-    if (ret) {
-        ret = ((1 <= pVal->fileName.nCount) && (pVal->fileName.nCount <= 30));
-        *pErrCode = ret ? 0 :  ERR_PUSTC_23_2_3_DATA_FILENAME;
-    }
-
-	return ret;
-}
-
-
-
-flag asn1SccPusTC_23_14_Data_Equal(const asn1SccPusTC_23_14_Data* pVal1, const asn1SccPusTC_23_14_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->sourceRepository)), (&(pVal2->sourceRepository)));
-
-    if (ret) {
-        ret = asn1SccPusSt23FileName_Equal((&(pVal1->sourceFileName)), (&(pVal2->sourceFileName)));
-
-        if (ret) {
-            ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->targetRepository)), (&(pVal2->targetRepository)));
-
-            if (ret) {
-                ret = asn1SccPusSt23FileName_Equal((&(pVal1->targetFileName)), (&(pVal2->targetFileName)));
-
-            }
-        }
-    }
-	return ret;
-
-}
-
-void asn1SccPusTC_23_14_Data_Initialize(asn1SccPusTC_23_14_Data* pVal)
-{
-
-
-	/*set sourceRepository */
-	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->sourceRepository)));
-	/*set sourceFileName */
-	asn1SccPusSt23FileName_Initialize((&(pVal->sourceFileName)));
-	/*set targetRepository */
-	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->targetRepository)));
-	/*set targetFileName */
-	asn1SccPusSt23FileName_Initialize((&(pVal->targetFileName)));
-}
-
-flag asn1SccPusTC_23_14_Data_IsConstraintValid(const asn1SccPusTC_23_14_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->sourceRepository.nCount) && (pVal->sourceRepository.nCount <= 30));
-    *pErrCode = ret ? 0 :  ERR_PUSTC_23_14_DATA_SOURCEREPOSITORY;
-    if (ret) {
-        ret = ((1 <= pVal->sourceFileName.nCount) && (pVal->sourceFileName.nCount <= 30));
-        *pErrCode = ret ? 0 :  ERR_PUSTC_23_14_DATA_SOURCEFILENAME;
-        if (ret) {
-            ret = ((1 <= pVal->targetRepository.nCount) && (pVal->targetRepository.nCount <= 30));
-            *pErrCode = ret ? 0 :  ERR_PUSTC_23_14_DATA_TARGETREPOSITORY;
-            if (ret) {
-                ret = ((1 <= pVal->targetFileName.nCount) && (pVal->targetFileName.nCount <= 30));
-                *pErrCode = ret ? 0 :  ERR_PUSTC_23_14_DATA_TARGETFILENAME;
-            }
-        }
-    }
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt23RepositoryDomain_Equal(const asn1SccPusSt23RepositoryDomain* pVal1, const asn1SccPusSt23RepositoryDomain* pVal2)
-{
-	return (pVal1->nCount == pVal2->nCount) && (memcmp(pVal1->arr, pVal2->arr, pVal1->nCount) ==0)	;
-
-}
-
-void asn1SccPusSt23RepositoryDomain_Initialize(asn1SccPusSt23RepositoryDomain* pVal)
-{
-
-	memset(pVal->arr, 0x0, 30);
-
-}
-
-flag asn1SccPusSt23RepositoryDomain_IsConstraintValid(const asn1SccPusSt23RepositoryDomain* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 30));
-    *pErrCode = ret ? 0 :  ERR_PUSST23REPOSITORYDOMAIN;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt18ObcpId_Equal(const asn1SccPusSt18ObcpId* pVal1, const asn1SccPusSt18ObcpId* pVal2)
-{
-	return memcmp(pVal1->arr, pVal2->arr, 10) ==0	;
-
-}
-
-void asn1SccPusSt18ObcpId_Initialize(asn1SccPusSt18ObcpId* pVal)
-{
-
-	memset(pVal->arr, 0x0, 10);
-
-}
-
-
-
-flag asn1SccPusTC_18_2_6_12_Data_Equal(const asn1SccPusTC_18_2_6_12_Data* pVal1, const asn1SccPusTC_18_2_6_12_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
-
-	return ret;
-
-}
-
-void asn1SccPusTC_18_2_6_12_Data_Initialize(asn1SccPusTC_18_2_6_12_Data* pVal)
-{
-
-
-	/*set obcpId */
-	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
-}
-
-
-
-flag asn1SccPusTC_18_13_Data_Equal(const asn1SccPusTC_18_13_Data* pVal1, const asn1SccPusTC_18_13_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
-
-    if (ret) {
-        ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->repository)), (&(pVal2->repository)));
-
-        if (ret) {
-            ret = asn1SccPusSt23FileName_Equal((&(pVal1->fileName)), (&(pVal2->fileName)));
-
-        }
-    }
-	return ret;
-
-}
-
-void asn1SccPusTC_18_13_Data_Initialize(asn1SccPusTC_18_13_Data* pVal)
-{
-
-
-	/*set obcpId */
-	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
-	/*set repository */
-	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->repository)));
-	/*set fileName */
-	asn1SccPusSt23FileName_Initialize((&(pVal->fileName)));
-}
-
-flag asn1SccPusTC_18_13_Data_IsConstraintValid(const asn1SccPusTC_18_13_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->repository.nCount) && (pVal->repository.nCount <= 30));
-    *pErrCode = ret ? 0 :  ERR_PUSTC_18_13_DATA_REPOSITORY;
-    if (ret) {
-        ret = ((1 <= pVal->fileName.nCount) && (pVal->fileName.nCount <= 30));
-        *pErrCode = ret ? 0 :  ERR_PUSTC_18_13_DATA_FILENAME;
-    }
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt18ObcpCode_Equal(const asn1SccPusSt18ObcpCode* pVal1, const asn1SccPusSt18ObcpCode* pVal2)
-{
-	return (pVal1->nCount == pVal2->nCount) && (memcmp(pVal1->arr, pVal2->arr, pVal1->nCount) ==0)	;
-
-}
-
-void asn1SccPusSt18ObcpCode_Initialize(asn1SccPusSt18ObcpCode* pVal)
-{
-
-	memset(pVal->arr, 0x0, 15000);
-
-}
-
-flag asn1SccPusSt18ObcpCode_IsConstraintValid(const asn1SccPusSt18ObcpCode* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 15000));
-    *pErrCode = ret ? 0 :  ERR_PUSST18OBCPCODE;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt18ObservabilityLevel_Equal(const asn1SccPusSt18ObservabilityLevel* pVal1, const asn1SccPusSt18ObservabilityLevel* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusSt18ObservabilityLevel_Initialize(asn1SccPusSt18ObservabilityLevel* pVal)
-{
-
-	(*(pVal)) = asn1Sccnone;
-}
-
-flag asn1SccPusSt18ObservabilityLevel_IsConstraintValid(const asn1SccPusSt18ObservabilityLevel* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((((((((*(pVal)) == asn1Sccnone)) || (((*(pVal)) == asn1Sccprocedure)))) || (((*(pVal)) == asn1Sccstep)))) || (((*(pVal)) == asn1Sccdetailed)));
-    *pErrCode = ret ? 0 :  ERR_PUSST18OBSERVABILITYLEVEL;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusTC_18_3_Data_Equal(const asn1SccPusTC_18_3_Data* pVal1, const asn1SccPusTC_18_3_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
-
-    if (ret) {
-        ret = (pVal1->observabilityLevel == pVal2->observabilityLevel);
-
-    }
-	return ret;
-
-}
-
-void asn1SccPusTC_18_3_Data_Initialize(asn1SccPusTC_18_3_Data* pVal)
-{
-
-
-	/*set obcpId */
-	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
-	/*set observabilityLevel */
-	asn1SccPusSt18ObservabilityLevel_Initialize((&(pVal->observabilityLevel)));
-}
-
-flag asn1SccPusTC_18_3_Data_IsConstraintValid(const asn1SccPusTC_18_3_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = (((((((pVal->observabilityLevel == asn1Sccnone)) || ((pVal->observabilityLevel == asn1Sccprocedure)))) || ((pVal->observabilityLevel == asn1Sccstep)))) || ((pVal->observabilityLevel == asn1Sccdetailed)));
-    *pErrCode = ret ? 0 :  ERR_PUSTC_18_3_DATA_OBSERVABILITYLEVEL;
-
-	return ret;
-}
-
 
 
 flag asn1SccPusUInt3_Equal(const asn1SccPusUInt3* pVal1, const asn1SccPusUInt3* pVal2)
@@ -824,88 +303,6 @@ flag asn1SccPusApid_IsConstraintValid(const asn1SccPusApid* pVal, int* pErrCode)
 
 
 
-flag asn1SccPusTcHeader_Equal(const asn1SccPusTcHeader* pVal1, const asn1SccPusTcHeader* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = (pVal1->pusVersion == pVal2->pusVersion);
-
-    if (ret) {
-        ret = asn1SccPusAcknowledgementFlags_Equal((&(pVal1->ackFlags)), (&(pVal2->ackFlags)));
-
-        if (ret) {
-            ret = (pVal1->serviceId == pVal2->serviceId);
-
-            if (ret) {
-                ret = (pVal1->subtype == pVal2->subtype);
-
-                if (ret) {
-                    ret = (pVal1->source == pVal2->source);
-
-                }
-            }
-        }
-    }
-	return ret;
-
-}
-
-void asn1SccPusTcHeader_Initialize(asn1SccPusTcHeader* pVal)
-{
-
-
-	/*set pusVersion */
-	asn1SccPusVersionNumber_Initialize((&(pVal->pusVersion)));
-	/*set ackFlags */
-	asn1SccPusAcknowledgementFlags_Initialize((&(pVal->ackFlags)));
-	/*set serviceId */
-	asn1SccPusServiceType_Initialize((&(pVal->serviceId)));
-	/*set subtype */
-	asn1SccPusSubserviceType_Initialize((&(pVal->subtype)));
-	/*set source */
-	asn1SccPusApid_Initialize((&(pVal->source)));
-}
-
-flag asn1SccPusTcHeader_IsConstraintValid(const asn1SccPusTcHeader *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = (((((((pVal->pusVersion == asn1Sccpus_V0)) || ((pVal->pusVersion == asn1Sccpus_V1)))) || ((pVal->pusVersion == asn1Sccpus_V2)))) || ((pVal->pusVersion == asn1Sccpus_INVALID_VERSION)));
-    *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_PUSVERSION;
-    if (ret) {
-        ret = TRUE;
-        *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED;
-        if (ret) {
-            ret = TRUE;
-            *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_ACKFLAGS_STARTREPORTREQUESTED;
-            if (ret) {
-                ret = TRUE;
-                *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_ACKFLAGS_PROGRESSREPORTREQUESTED;
-                if (ret) {
-                    ret = TRUE;
-                    *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED;
-                }
-            }
-        }
-        if (ret) {
-            ret = (pVal->serviceId <= 255UL);
-            *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_SERVICEID;
-            if (ret) {
-                ret = (pVal->subtype <= 255UL);
-                *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_SUBTYPE;
-                if (ret) {
-                    ret = (pVal->source <= 2047UL);
-                    *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_SOURCE;
-                }
-            }
-        }
-    }
-
-	return ret;
-}
-
-
-
 flag asn1SccPusUInt14_Equal(const asn1SccPusUInt14* pVal1, const asn1SccPusUInt14* pVal2)
 {
 	return (*(pVal1)) == (*(pVal2));
@@ -954,86 +351,6 @@ flag asn1SccPusSequenceCount_IsConstraintValid(const asn1SccPusSequenceCount* pV
 
 
 
-flag asn1SccPusSt01RequestId_Equal(const asn1SccPusSt01RequestId* pVal1, const asn1SccPusSt01RequestId* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = (pVal1->packetVersion == pVal2->packetVersion);
-
-    if (ret) {
-        ret = (pVal1->packetType == pVal2->packetType);
-
-        if (ret) {
-            ret = (pVal1->secondaryHeaderFlag == pVal2->secondaryHeaderFlag);
-
-            if (ret) {
-                ret = (pVal1->apid == pVal2->apid);
-
-                if (ret) {
-                    ret = (pVal1->sequenceFlags == pVal2->sequenceFlags);
-
-                    if (ret) {
-                        ret = (pVal1->sequenceCount == pVal2->sequenceCount);
-
-                    }
-                }
-            }
-        }
-    }
-	return ret;
-
-}
-
-void asn1SccPusSt01RequestId_Initialize(asn1SccPusSt01RequestId* pVal)
-{
-
-
-	/*set packetVersion */
-	asn1SccPusPacketVersion_Initialize((&(pVal->packetVersion)));
-	/*set packetType */
-	asn1SccPusPacketType_Initialize((&(pVal->packetType)));
-	/*set secondaryHeaderFlag */
-	asn1SccPusSecondaryHeaderFlag_Initialize((&(pVal->secondaryHeaderFlag)));
-	/*set apid */
-	asn1SccPusApid_Initialize((&(pVal->apid)));
-	/*set sequenceFlags */
-	asn1SccPusSequenceFlags_Initialize((&(pVal->sequenceFlags)));
-	/*set sequenceCount */
-	asn1SccPusSequenceCount_Initialize((&(pVal->sequenceCount)));
-}
-
-flag asn1SccPusSt01RequestId_IsConstraintValid(const asn1SccPusSt01RequestId *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = (pVal->packetVersion == asn1Sccpus_CCSDS_V1);
-    *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_PACKETVERSION;
-    if (ret) {
-        ret = (((pVal->packetType == asn1Sccpus_TM)) || ((pVal->packetType == asn1Sccpus_TC)));
-        *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_PACKETTYPE;
-        if (ret) {
-            ret = TRUE;
-            *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_SECONDARYHEADERFLAG;
-            if (ret) {
-                ret = (pVal->apid <= 2047UL);
-                *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_APID;
-                if (ret) {
-                    ret = (pVal->sequenceFlags == asn1Sccpus_STANDALONE_PACKET);
-                    *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_SEQUENCEFLAGS;
-                    if (ret) {
-                        ret = (pVal->sequenceCount <= 16383UL);
-                        *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_SEQUENCECOUNT;
-                    }
-                }
-            }
-        }
-    }
-
-	return ret;
-}
-
-
-
 flag asn1SccPusUInt16_Equal(const asn1SccPusUInt16* pVal1, const asn1SccPusUInt16* pVal2)
 {
 	return (*(pVal1)) == (*(pVal2));
@@ -1052,6 +369,30 @@ flag asn1SccPusUInt16_IsConstraintValid(const asn1SccPusUInt16* pVal, int* pErrC
 	
     ret = ((*(pVal)) <= 65535UL);
     *pErrCode = ret ? 0 :  ERR_PUSUINT16;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt18ObcpChecksum_Equal(const asn1SccPusSt18ObcpChecksum* pVal1, const asn1SccPusSt18ObcpChecksum* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusSt18ObcpChecksum_Initialize(asn1SccPusSt18ObcpChecksum* pVal)
+{
+
+	asn1SccPusUInt16_Initialize(pVal);
+}
+
+flag asn1SccPusSt18ObcpChecksum_IsConstraintValid(const asn1SccPusSt18ObcpChecksum* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) <= 65535UL);
+    *pErrCode = ret ? 0 :  ERR_PUSST18OBCPCHECKSUM;
 
 	return ret;
 }
@@ -1130,76 +471,6 @@ flag asn1SccPusChecksum_IsConstraintValid(const asn1SccPusChecksum* pVal, int* p
 
 
 
-flag asn1SccPusSt18ObcpChecksum_Equal(const asn1SccPusSt18ObcpChecksum* pVal1, const asn1SccPusSt18ObcpChecksum* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusSt18ObcpChecksum_Initialize(asn1SccPusSt18ObcpChecksum* pVal)
-{
-
-	asn1SccPusUInt16_Initialize(pVal);
-}
-
-flag asn1SccPusSt18ObcpChecksum_IsConstraintValid(const asn1SccPusSt18ObcpChecksum* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) <= 65535UL);
-    *pErrCode = ret ? 0 :  ERR_PUSST18OBCPCHECKSUM;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusTC_18_1_Data_Equal(const asn1SccPusTC_18_1_Data* pVal1, const asn1SccPusTC_18_1_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
-
-    if (ret) {
-        ret = asn1SccPusSt18ObcpCode_Equal((&(pVal1->obcpCode)), (&(pVal2->obcpCode)));
-
-        if (ret) {
-            ret = (pVal1->checksum == pVal2->checksum);
-
-        }
-    }
-	return ret;
-
-}
-
-void asn1SccPusTC_18_1_Data_Initialize(asn1SccPusTC_18_1_Data* pVal)
-{
-
-
-	/*set obcpId */
-	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
-	/*set obcpCode */
-	asn1SccPusSt18ObcpCode_Initialize((&(pVal->obcpCode)));
-	/*set checksum */
-	asn1SccPusSt18ObcpChecksum_Initialize((&(pVal->checksum)));
-}
-
-flag asn1SccPusTC_18_1_Data_IsConstraintValid(const asn1SccPusTC_18_1_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->obcpCode.nCount) && (pVal->obcpCode.nCount <= 15000));
-    *pErrCode = ret ? 0 :  ERR_PUSTC_18_1_DATA_OBCPCODE;
-    if (ret) {
-        ret = (pVal->checksum <= 65535UL);
-        *pErrCode = ret ? 0 :  ERR_PUSTC_18_1_DATA_CHECKSUM;
-    }
-
-	return ret;
-}
-
-
-
 flag asn1SccPusUInt32_Equal(const asn1SccPusUInt32* pVal1, const asn1SccPusUInt32* pVal2)
 {
 	return (*(pVal1)) == (*(pVal2));
@@ -1248,114 +519,24 @@ flag asn1SccPusStepId_IsConstraintValid(const asn1SccPusStepId* pVal, int* pErrC
 
 
 
-flag asn1SccPusTC_18_4_5_Data_Equal(const asn1SccPusTC_18_4_5_Data* pVal1, const asn1SccPusTC_18_4_5_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
-
-    if (ret) {
-        ret = (pVal1->stepId == pVal2->stepId);
-
-    }
-	return ret;
-
-}
-
-void asn1SccPusTC_18_4_5_Data_Initialize(asn1SccPusTC_18_4_5_Data* pVal)
-{
-
-
-	/*set obcpId */
-	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
-	/*set stepId */
-	asn1SccPusUInt32_Initialize((&(pVal->stepId)));
-}
-
-flag asn1SccPusTC_18_4_5_Data_IsConstraintValid(const asn1SccPusTC_18_4_5_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = (pVal->stepId <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_PUSTC_18_4_5_DATA_STEPID;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt08FunctionId_Equal(const asn1SccPusSt08FunctionId* pVal1, const asn1SccPusSt08FunctionId* pVal2)
+flag asn1SccPusSt20OnBoardParameterId_Equal(const asn1SccPusSt20OnBoardParameterId* pVal1, const asn1SccPusSt20OnBoardParameterId* pVal2)
 {
 	return (*(pVal1)) == (*(pVal2));
 
 }
 
-void asn1SccPusSt08FunctionId_Initialize(asn1SccPusSt08FunctionId* pVal)
+void asn1SccPusSt20OnBoardParameterId_Initialize(asn1SccPusSt20OnBoardParameterId* pVal)
 {
 
 	asn1SccPusUInt32_Initialize(pVal);
 }
 
-flag asn1SccPusSt08FunctionId_IsConstraintValid(const asn1SccPusSt08FunctionId* pVal, int* pErrCode)
+flag asn1SccPusSt20OnBoardParameterId_IsConstraintValid(const asn1SccPusSt20OnBoardParameterId* pVal, int* pErrCode)
 {
     flag ret = TRUE;
 	
     ret = ((*(pVal)) <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_PUSST08FUNCTIONID;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusTC_8_1_Data_Equal(const asn1SccPusTC_8_1_Data* pVal1, const asn1SccPusTC_8_1_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = (pVal1->functionId == pVal2->functionId);
-
-	return ret;
-
-}
-
-void asn1SccPusTC_8_1_Data_Initialize(asn1SccPusTC_8_1_Data* pVal)
-{
-
-
-	/*set functionId */
-	asn1SccPusSt08FunctionId_Initialize((&(pVal->functionId)));
-}
-
-flag asn1SccPusTC_8_1_Data_IsConstraintValid(const asn1SccPusTC_8_1_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = (pVal->functionId <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_PUSTC_8_1_DATA_FUNCTIONID;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt01FailureCode_Equal(const asn1SccPusSt01FailureCode* pVal1, const asn1SccPusSt01FailureCode* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusSt01FailureCode_Initialize(asn1SccPusSt01FailureCode* pVal)
-{
-
-	asn1SccPusUInt32_Initialize(pVal);
-}
-
-flag asn1SccPusSt01FailureCode_IsConstraintValid(const asn1SccPusSt01FailureCode* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_PUSST01FAILURECODE;
+    *pErrCode = ret ? 0 :  ERR_PUSST20ONBOARDPARAMETERID;
 
 	return ret;
 }
@@ -1410,54 +591,6 @@ flag asn1SccPusTC_19_X_Data_IsConstraintValid(const asn1SccPusTC_19_X_Data *pVal
 	
     ret = (pVal->eventId <= 4294967295UL);
     *pErrCode = ret ? 0 :  ERR_PUSTC_19_X_DATA_EVENTID;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt20OnBoardParameterId_Equal(const asn1SccPusSt20OnBoardParameterId* pVal1, const asn1SccPusSt20OnBoardParameterId* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusSt20OnBoardParameterId_Initialize(asn1SccPusSt20OnBoardParameterId* pVal)
-{
-
-	asn1SccPusUInt32_Initialize(pVal);
-}
-
-flag asn1SccPusSt20OnBoardParameterId_IsConstraintValid(const asn1SccPusSt20OnBoardParameterId* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_PUSST20ONBOARDPARAMETERID;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusConfigDummyType_Equal(const asn1SccPusConfigDummyType* pVal1, const asn1SccPusConfigDummyType* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusConfigDummyType_Initialize(asn1SccPusConfigDummyType* pVal)
-{
-
-	asn1SccPusUInt32_Initialize(pVal);
-}
-
-flag asn1SccPusConfigDummyType_IsConstraintValid(const asn1SccPusConfigDummyType* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_PUSCONFIGDUMMYTYPE;
 
 	return ret;
 }
@@ -1620,6 +753,108 @@ flag asn1SccPusSt03ParameterId_IsConstraintValid(const asn1SccPusSt03ParameterId
 
 
 
+flag asn1SccPusSt08FunctionId_Equal(const asn1SccPusSt08FunctionId* pVal1, const asn1SccPusSt08FunctionId* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusSt08FunctionId_Initialize(asn1SccPusSt08FunctionId* pVal)
+{
+
+	asn1SccPusUInt32_Initialize(pVal);
+}
+
+flag asn1SccPusSt08FunctionId_IsConstraintValid(const asn1SccPusSt08FunctionId* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) <= 4294967295UL);
+    *pErrCode = ret ? 0 :  ERR_PUSST08FUNCTIONID;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTC_8_1_Data_Equal(const asn1SccPusTC_8_1_Data* pVal1, const asn1SccPusTC_8_1_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = (pVal1->functionId == pVal2->functionId);
+
+	return ret;
+
+}
+
+void asn1SccPusTC_8_1_Data_Initialize(asn1SccPusTC_8_1_Data* pVal)
+{
+
+
+	/*set functionId */
+	asn1SccPusSt08FunctionId_Initialize((&(pVal->functionId)));
+}
+
+flag asn1SccPusTC_8_1_Data_IsConstraintValid(const asn1SccPusTC_8_1_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = (pVal->functionId <= 4294967295UL);
+    *pErrCode = ret ? 0 :  ERR_PUSTC_8_1_DATA_FUNCTIONID;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt01FailureCode_Equal(const asn1SccPusSt01FailureCode* pVal1, const asn1SccPusSt01FailureCode* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusSt01FailureCode_Initialize(asn1SccPusSt01FailureCode* pVal)
+{
+
+	asn1SccPusUInt32_Initialize(pVal);
+}
+
+flag asn1SccPusSt01FailureCode_IsConstraintValid(const asn1SccPusSt01FailureCode* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) <= 4294967295UL);
+    *pErrCode = ret ? 0 :  ERR_PUSST01FAILURECODE;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusConfigDummyType_Equal(const asn1SccPusConfigDummyType* pVal1, const asn1SccPusConfigDummyType* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusConfigDummyType_Initialize(asn1SccPusConfigDummyType* pVal)
+{
+
+	asn1SccPusUInt32_Initialize(pVal);
+}
+
+flag asn1SccPusConfigDummyType_IsConstraintValid(const asn1SccPusConfigDummyType* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) <= 4294967295UL);
+    *pErrCode = ret ? 0 :  ERR_PUSCONFIGDUMMYTYPE;
+
+	return ret;
+}
+
+
+
 flag asn1SccPusUInt64_Equal(const asn1SccPusUInt64* pVal1, const asn1SccPusUInt64* pVal2)
 {
 	return (*(pVal1)) == (*(pVal2));
@@ -1644,56 +879,6 @@ flag asn1SccPusUInt64_IsConstraintValid(const asn1SccPusUInt64* pVal, int* pErrC
 
 
 
-flag asn1SccPusTC_TM_23_1_4_Data_Equal(const asn1SccPusTC_TM_23_1_4_Data* pVal1, const asn1SccPusTC_TM_23_1_4_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->repository)), (&(pVal2->repository)));
-
-    if (ret) {
-        ret = asn1SccPusSt23FileName_Equal((&(pVal1->fileName)), (&(pVal2->fileName)));
-
-        if (ret) {
-            ret = (pVal1->maxSize == pVal2->maxSize);
-
-        }
-    }
-	return ret;
-
-}
-
-void asn1SccPusTC_TM_23_1_4_Data_Initialize(asn1SccPusTC_TM_23_1_4_Data* pVal)
-{
-
-
-	/*set repository */
-	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->repository)));
-	/*set fileName */
-	asn1SccPusSt23FileName_Initialize((&(pVal->fileName)));
-	/*set maxSize */
-	asn1SccPusUInt64_Initialize((&(pVal->maxSize)));
-}
-
-flag asn1SccPusTC_TM_23_1_4_Data_IsConstraintValid(const asn1SccPusTC_TM_23_1_4_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((1 <= pVal->repository.nCount) && (pVal->repository.nCount <= 30));
-    *pErrCode = ret ? 0 :  ERR_PUSTC_TM_23_1_4_DATA_REPOSITORY;
-    if (ret) {
-        ret = ((1 <= pVal->fileName.nCount) && (pVal->fileName.nCount <= 30));
-        *pErrCode = ret ? 0 :  ERR_PUSTC_TM_23_1_4_DATA_FILENAME;
-        if (ret) {
-            ret = (pVal->maxSize <= 9223372036854775807UL);
-            *pErrCode = ret ? 0 :  ERR_PUSTC_TM_23_1_4_DATA_MAXSIZE;
-        }
-    }
-
-	return ret;
-}
-
-
-
 flag asn1SccPusMemAddr_Equal(const asn1SccPusMemAddr* pVal1, const asn1SccPusMemAddr* pVal2)
 {
 	return (*(pVal1)) == (*(pVal2));
@@ -1712,6 +897,70 @@ flag asn1SccPusMemAddr_IsConstraintValid(const asn1SccPusMemAddr* pVal, int* pEr
 	
     ret = ((*(pVal)) <= 9223372036854775807UL);
     *pErrCode = ret ? 0 :  ERR_PUSMEMADDR;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt20StoredParam_Equal(const asn1SccPusSt20StoredParam* pVal1, const asn1SccPusSt20StoredParam* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusSt20StoredParam_Initialize(asn1SccPusSt20StoredParam* pVal)
+{
+
+	asn1SccPusUInt64_Initialize(pVal);
+}
+
+flag asn1SccPusSt20StoredParam_IsConstraintValid(const asn1SccPusSt20StoredParam* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) <= 9223372036854775807UL);
+    *pErrCode = ret ? 0 :  ERR_PUSST20STOREDPARAM;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTC_TM_20_X_Data_Equal(const asn1SccPusTC_TM_20_X_Data* pVal1, const asn1SccPusTC_TM_20_X_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = (pVal1->paramId == pVal2->paramId);
+
+    if (ret) {
+        ret = (pVal1->value == pVal2->value);
+
+    }
+	return ret;
+
+}
+
+void asn1SccPusTC_TM_20_X_Data_Initialize(asn1SccPusTC_TM_20_X_Data* pVal)
+{
+
+
+	/*set paramId */
+	asn1SccPusSt20OnBoardParameterId_Initialize((&(pVal->paramId)));
+	/*set value */
+	asn1SccPusSt20StoredParam_Initialize((&(pVal->value)));
+}
+
+flag asn1SccPusTC_TM_20_X_Data_IsConstraintValid(const asn1SccPusTC_TM_20_X_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = (pVal->paramId <= 4294967295UL);
+    *pErrCode = ret ? 0 :  ERR_PUSTC_TM_20_X_DATA_PARAMID;
+    if (ret) {
+        ret = (pVal->value <= 9223372036854775807UL);
+        *pErrCode = ret ? 0 :  ERR_PUSTC_TM_20_X_DATA_VALUE;
+    }
 
 	return ret;
 }
@@ -1829,224 +1078,6 @@ flag asn1SccPusTM_5_X_Data_IsConstraintValid(const asn1SccPusTM_5_X_Data *pVal, 
             ret = (pVal->data.data2 <= 9223372036854775807UL);
             *pErrCode = ret ? 0 :  ERR_PUSTM_5_X_DATA_DATA_DATA2;
         }
-    }
-
-	return ret;
-}
-
-
-
-flag asn1SccPusSt20StoredParam_Equal(const asn1SccPusSt20StoredParam* pVal1, const asn1SccPusSt20StoredParam* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccPusSt20StoredParam_Initialize(asn1SccPusSt20StoredParam* pVal)
-{
-
-	asn1SccPusUInt64_Initialize(pVal);
-}
-
-flag asn1SccPusSt20StoredParam_IsConstraintValid(const asn1SccPusSt20StoredParam* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) <= 9223372036854775807UL);
-    *pErrCode = ret ? 0 :  ERR_PUSST20STOREDPARAM;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusTC_TM_20_X_Data_Equal(const asn1SccPusTC_TM_20_X_Data* pVal1, const asn1SccPusTC_TM_20_X_Data* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = (pVal1->paramId == pVal2->paramId);
-
-    if (ret) {
-        ret = (pVal1->value == pVal2->value);
-
-    }
-	return ret;
-
-}
-
-void asn1SccPusTC_TM_20_X_Data_Initialize(asn1SccPusTC_TM_20_X_Data* pVal)
-{
-
-
-	/*set paramId */
-	asn1SccPusSt20OnBoardParameterId_Initialize((&(pVal->paramId)));
-	/*set value */
-	asn1SccPusSt20StoredParam_Initialize((&(pVal->value)));
-}
-
-flag asn1SccPusTC_TM_20_X_Data_IsConstraintValid(const asn1SccPusTC_TM_20_X_Data *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = (pVal->paramId <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_PUSTC_TM_20_X_DATA_PARAMID;
-    if (ret) {
-        ret = (pVal->value <= 9223372036854775807UL);
-        *pErrCode = ret ? 0 :  ERR_PUSTC_TM_20_X_DATA_VALUE;
-    }
-
-	return ret;
-}
-
-
-
-flag asn1SccPusTcApplicationDataReduced_Equal(const asn1SccPusTcApplicationDataReduced* pVal1, const asn1SccPusTcApplicationDataReduced* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = (pVal1->kind == pVal2->kind);
-    if (ret) {
-    	switch(pVal1->kind) 
-    	{
-    	case PusTcApplicationDataReduced_st_8_1_PRESENT:
-    		ret = asn1SccPusTC_8_1_Data_Equal((&(pVal1->u.st_8_1)), (&(pVal2->u.st_8_1)));
-    		break;
-    	case PusTcApplicationDataReduced_st_9_1_PRESENT:
-    		ret = asn1SccPusTC_9_1_Data_Equal((&(pVal1->u.st_9_1)), (&(pVal2->u.st_9_1)));
-    		break;
-    	case PusTcApplicationDataReduced_st_12_1_2_PRESENT:
-    		ret = asn1SccPusTC_12_1_2_Data_Equal((&(pVal1->u.st_12_1_2)), (&(pVal2->u.st_12_1_2)));
-    		break;
-    	case PusTcApplicationDataReduced_st_18_2_6_12_PRESENT:
-    		ret = asn1SccPusTC_18_2_6_12_Data_Equal((&(pVal1->u.st_18_2_6_12)), (&(pVal2->u.st_18_2_6_12)));
-    		break;
-    	case PusTcApplicationDataReduced_st_18_3_PRESENT:
-    		ret = asn1SccPusTC_18_3_Data_Equal((&(pVal1->u.st_18_3)), (&(pVal2->u.st_18_3)));
-    		break;
-    	case PusTcApplicationDataReduced_st_18_4_5_PRESENT:
-    		ret = asn1SccPusTC_18_4_5_Data_Equal((&(pVal1->u.st_18_4_5)), (&(pVal2->u.st_18_4_5)));
-    		break;
-    	case PusTcApplicationDataReduced_st_18_13_PRESENT:
-    		ret = asn1SccPusTC_18_13_Data_Equal((&(pVal1->u.st_18_13)), (&(pVal2->u.st_18_13)));
-    		break;
-    	case PusTcApplicationDataReduced_st_19_X_PRESENT:
-    		ret = asn1SccPusTC_19_X_Data_Equal((&(pVal1->u.st_19_X)), (&(pVal2->u.st_19_X)));
-    		break;
-    	case PusTcApplicationDataReduced_st_20_X_PRESENT:
-    		ret = asn1SccPusTC_TM_20_X_Data_Equal((&(pVal1->u.st_20_X)), (&(pVal2->u.st_20_X)));
-    		break;
-    	case PusTcApplicationDataReduced_st_23_1_PRESENT:
-    		ret = asn1SccPusTC_TM_23_1_4_Data_Equal((&(pVal1->u.st_23_1)), (&(pVal2->u.st_23_1)));
-    		break;
-    	case PusTcApplicationDataReduced_st_23_2_3_PRESENT:
-    		ret = asn1SccPusTC_23_2_3_Data_Equal((&(pVal1->u.st_23_2_3)), (&(pVal2->u.st_23_2_3)));
-    		break;
-    	case PusTcApplicationDataReduced_st_23_14_PRESENT:
-    		ret = asn1SccPusTC_23_14_Data_Equal((&(pVal1->u.st_23_14)), (&(pVal2->u.st_23_14)));
-    		break;
-    	default:
-    		ret = FALSE;    /*COVERAGE_IGNORE*/
-    	}
-    }
-	return ret;
-
-}
-
-void asn1SccPusTcApplicationDataReduced_Initialize(asn1SccPusTcApplicationDataReduced* pVal)
-{
-
-	/*set st_8_1*/
-	pVal->kind = PusTcApplicationDataReduced_st_8_1_PRESENT;
-	asn1SccPusTC_8_1_Data_Initialize((&(pVal->u.st_8_1)));
-}
-
-flag asn1SccPusTcApplicationDataReduced_IsConstraintValid(const asn1SccPusTcApplicationDataReduced *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    switch (pVal->kind) {
-        case PusTcApplicationDataReduced_st_8_1_PRESENT :
-            ret = (pVal->u.st_8_1.functionId <= 4294967295UL);
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_8_1_FUNCTIONID;
-            break;
-        case PusTcApplicationDataReduced_st_9_1_PRESENT :
-            ret = (pVal->u.st_9_1.exponentialRate <= 4294967295UL);
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_9_1_EXPONENTIALRATE;
-            break;
-        case PusTcApplicationDataReduced_st_12_1_2_PRESENT :
-            ret = (pVal->u.st_12_1_2.pmonId <= 4294967295UL);
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_12_1_2_PMONID;
-            break;
-        case PusTcApplicationDataReduced_st_18_2_6_12_PRESENT :
-            ret = TRUE;
-            break;
-        case PusTcApplicationDataReduced_st_18_3_PRESENT :
-            ret = (((((((pVal->u.st_18_3.observabilityLevel == asn1Sccnone)) || ((pVal->u.st_18_3.observabilityLevel == asn1Sccprocedure)))) || ((pVal->u.st_18_3.observabilityLevel == asn1Sccstep)))) || ((pVal->u.st_18_3.observabilityLevel == asn1Sccdetailed)));
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_3_OBSERVABILITYLEVEL;
-            break;
-        case PusTcApplicationDataReduced_st_18_4_5_PRESENT :
-            ret = (pVal->u.st_18_4_5.stepId <= 4294967295UL);
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_4_5_STEPID;
-            break;
-        case PusTcApplicationDataReduced_st_18_13_PRESENT :
-            ret = ((1 <= pVal->u.st_18_13.repository.nCount) && (pVal->u.st_18_13.repository.nCount <= 30));
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_REPOSITORY;
-            if (ret) {
-                ret = ((1 <= pVal->u.st_18_13.fileName.nCount) && (pVal->u.st_18_13.fileName.nCount <= 30));
-                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_FILENAME;
-            }
-            break;
-        case PusTcApplicationDataReduced_st_19_X_PRESENT :
-            ret = (pVal->u.st_19_X.eventId <= 4294967295UL);
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_19_X_EVENTID;
-            break;
-        case PusTcApplicationDataReduced_st_20_X_PRESENT :
-            ret = (pVal->u.st_20_X.paramId <= 4294967295UL);
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_PARAMID;
-            if (ret) {
-                ret = (pVal->u.st_20_X.value <= 9223372036854775807UL);
-                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_VALUE;
-            }
-            break;
-        case PusTcApplicationDataReduced_st_23_1_PRESENT :
-            ret = ((1 <= pVal->u.st_23_1.repository.nCount) && (pVal->u.st_23_1.repository.nCount <= 30));
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_REPOSITORY;
-            if (ret) {
-                ret = ((1 <= pVal->u.st_23_1.fileName.nCount) && (pVal->u.st_23_1.fileName.nCount <= 30));
-                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_FILENAME;
-                if (ret) {
-                    ret = (pVal->u.st_23_1.maxSize <= 9223372036854775807UL);
-                    *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_MAXSIZE;
-                }
-            }
-            break;
-        case PusTcApplicationDataReduced_st_23_2_3_PRESENT :
-            ret = ((1 <= pVal->u.st_23_2_3.repository.nCount) && (pVal->u.st_23_2_3.repository.nCount <= 30));
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_REPOSITORY;
-            if (ret) {
-                ret = ((1 <= pVal->u.st_23_2_3.fileName.nCount) && (pVal->u.st_23_2_3.fileName.nCount <= 30));
-                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_FILENAME;
-            }
-            break;
-        case PusTcApplicationDataReduced_st_23_14_PRESENT :
-            ret = ((1 <= pVal->u.st_23_14.sourceRepository.nCount) && (pVal->u.st_23_14.sourceRepository.nCount <= 30));
-            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_SOURCEREPOSITORY;
-            if (ret) {
-                ret = ((1 <= pVal->u.st_23_14.sourceFileName.nCount) && (pVal->u.st_23_14.sourceFileName.nCount <= 30));
-                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_SOURCEFILENAME;
-                if (ret) {
-                    ret = ((1 <= pVal->u.st_23_14.targetRepository.nCount) && (pVal->u.st_23_14.targetRepository.nCount <= 30));
-                    *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_TARGETREPOSITORY;
-                    if (ret) {
-                        ret = ((1 <= pVal->u.st_23_14.targetFileName.nCount) && (pVal->u.st_23_14.targetFileName.nCount <= 30));
-                        *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_TARGETFILENAME;
-                    }
-                }
-            }
-            break;
-        default:
-    	    *pErrCode = ERR_PUSTCAPPLICATIONDATAREDUCED;      /*COVERAGE_IGNORE*/
-    	    ret = FALSE;                               /*COVERAGE_IGNORE*/
     }
 
 	return ret;
@@ -2293,6 +1324,516 @@ flag asn1SccPusSt01Failure_IsConstraintValid(const asn1SccPusSt01Failure *pVal, 
 
 
 
+flag asn1SccPusInt64_Equal(const asn1SccPusInt64* pVal1, const asn1SccPusInt64* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusInt64_Initialize(asn1SccPusInt64* pVal)
+{
+
+	(*(pVal)) = 0;
+}
+
+flag asn1SccPusInt64_IsConstraintValid(const asn1SccPusInt64* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = TRUE;
+    *pErrCode = ret ? 0 :  ERR_PUSINT64;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTime_Equal(const asn1SccPusTime* pVal1, const asn1SccPusTime* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = (pVal1->tv_sec == pVal2->tv_sec);
+
+    if (ret) {
+        ret = (pVal1->tv_nsec == pVal2->tv_nsec);
+
+    }
+	return ret;
+
+}
+
+void asn1SccPusTime_Initialize(asn1SccPusTime* pVal)
+{
+
+
+	/*set tv_sec */
+	asn1SccPusInt64_Initialize((&(pVal->tv_sec)));
+	/*set tv_nsec */
+	asn1SccPusInt64_Initialize((&(pVal->tv_nsec)));
+}
+
+flag asn1SccPusTime_IsConstraintValid(const asn1SccPusTime *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = TRUE;
+    *pErrCode = ret ? 0 :  ERR_PUSTIME_TV_SEC;
+    if (ret) {
+        ret = TRUE;
+        *pErrCode = ret ? 0 :  ERR_PUSTIME_TV_NSEC;
+    }
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTM_9_2_Data_Equal(const asn1SccPusTM_9_2_Data* pVal1, const asn1SccPusTM_9_2_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = (pVal1->exponentialRate == pVal2->exponentialRate);
+
+    if (ret) {
+        ret = asn1SccPusTime_Equal((&(pVal1->time)), (&(pVal2->time)));
+
+    }
+	return ret;
+
+}
+
+void asn1SccPusTM_9_2_Data_Initialize(asn1SccPusTM_9_2_Data* pVal)
+{
+
+
+	/*set exponentialRate */
+	asn1SccPusSt09ExponentialRate_Initialize((&(pVal->exponentialRate)));
+	/*set time */
+	asn1SccPusTime_Initialize((&(pVal->time)));
+}
+
+flag asn1SccPusTM_9_2_Data_IsConstraintValid(const asn1SccPusTM_9_2_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = (pVal->exponentialRate <= 4294967295UL);
+    *pErrCode = ret ? 0 :  ERR_PUSTM_9_2_DATA_EXPONENTIALRATE;
+    if (ret) {
+        ret = TRUE;
+        *pErrCode = ret ? 0 :  ERR_PUSTM_9_2_DATA_TIME_TV_SEC;
+        if (ret) {
+            ret = TRUE;
+            *pErrCode = ret ? 0 :  ERR_PUSTM_9_2_DATA_TIME_TV_NSEC;
+        }
+    }
+
+	return ret;
+}
+
+
+
+flag asn1SccPusDouble_Equal(const asn1SccPusDouble* pVal1, const asn1SccPusDouble* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusDouble_Initialize(asn1SccPusDouble* pVal)
+{
+
+	(*(pVal)) = 0.00000000000000000000E+000;
+}
+
+flag asn1SccPusDouble_IsConstraintValid(const asn1SccPusDouble* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((-1.79769313486231570000E+308 <= (*(pVal))) && ((*(pVal)) <= 1.79769313486231570000E+308));
+    *pErrCode = ret ? 0 :  ERR_PUSDOUBLE;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt18ObcpId_Equal(const asn1SccPusSt18ObcpId* pVal1, const asn1SccPusSt18ObcpId* pVal2)
+{
+	return memcmp(pVal1->arr, pVal2->arr, 10) ==0	;
+
+}
+
+void asn1SccPusSt18ObcpId_Initialize(asn1SccPusSt18ObcpId* pVal)
+{
+
+	memset(pVal->arr, 0x0, 10);
+
+}
+
+
+
+flag asn1SccPusTC_18_2_6_12_Data_Equal(const asn1SccPusTC_18_2_6_12_Data* pVal1, const asn1SccPusTC_18_2_6_12_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
+
+	return ret;
+
+}
+
+void asn1SccPusTC_18_2_6_12_Data_Initialize(asn1SccPusTC_18_2_6_12_Data* pVal)
+{
+
+
+	/*set obcpId */
+	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
+}
+
+
+
+flag asn1SccPusTC_18_4_5_Data_Equal(const asn1SccPusTC_18_4_5_Data* pVal1, const asn1SccPusTC_18_4_5_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
+
+    if (ret) {
+        ret = (pVal1->stepId == pVal2->stepId);
+
+    }
+	return ret;
+
+}
+
+void asn1SccPusTC_18_4_5_Data_Initialize(asn1SccPusTC_18_4_5_Data* pVal)
+{
+
+
+	/*set obcpId */
+	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
+	/*set stepId */
+	asn1SccPusUInt32_Initialize((&(pVal->stepId)));
+}
+
+flag asn1SccPusTC_18_4_5_Data_IsConstraintValid(const asn1SccPusTC_18_4_5_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = (pVal->stepId <= 4294967295UL);
+    *pErrCode = ret ? 0 :  ERR_PUSTC_18_4_5_DATA_STEPID;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt18ObcpCode_Equal(const asn1SccPusSt18ObcpCode* pVal1, const asn1SccPusSt18ObcpCode* pVal2)
+{
+	return (pVal1->nCount == pVal2->nCount) && (memcmp(pVal1->arr, pVal2->arr, pVal1->nCount) ==0)	;
+
+}
+
+void asn1SccPusSt18ObcpCode_Initialize(asn1SccPusSt18ObcpCode* pVal)
+{
+
+	memset(pVal->arr, 0x0, 15000);
+
+}
+
+flag asn1SccPusSt18ObcpCode_IsConstraintValid(const asn1SccPusSt18ObcpCode* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 15000));
+    *pErrCode = ret ? 0 :  ERR_PUSST18OBCPCODE;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTC_18_1_Data_Equal(const asn1SccPusTC_18_1_Data* pVal1, const asn1SccPusTC_18_1_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
+
+    if (ret) {
+        ret = asn1SccPusSt18ObcpCode_Equal((&(pVal1->obcpCode)), (&(pVal2->obcpCode)));
+
+        if (ret) {
+            ret = (pVal1->checksum == pVal2->checksum);
+
+        }
+    }
+	return ret;
+
+}
+
+void asn1SccPusTC_18_1_Data_Initialize(asn1SccPusTC_18_1_Data* pVal)
+{
+
+
+	/*set obcpId */
+	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
+	/*set obcpCode */
+	asn1SccPusSt18ObcpCode_Initialize((&(pVal->obcpCode)));
+	/*set checksum */
+	asn1SccPusSt18ObcpChecksum_Initialize((&(pVal->checksum)));
+}
+
+flag asn1SccPusTC_18_1_Data_IsConstraintValid(const asn1SccPusTC_18_1_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((1 <= pVal->obcpCode.nCount) && (pVal->obcpCode.nCount <= 15000));
+    *pErrCode = ret ? 0 :  ERR_PUSTC_18_1_DATA_OBCPCODE;
+    if (ret) {
+        ret = (pVal->checksum <= 65535UL);
+        *pErrCode = ret ? 0 :  ERR_PUSTC_18_1_DATA_CHECKSUM;
+    }
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt18ObservabilityLevel_Equal(const asn1SccPusSt18ObservabilityLevel* pVal1, const asn1SccPusSt18ObservabilityLevel* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusSt18ObservabilityLevel_Initialize(asn1SccPusSt18ObservabilityLevel* pVal)
+{
+
+	(*(pVal)) = asn1Sccnone;
+}
+
+flag asn1SccPusSt18ObservabilityLevel_IsConstraintValid(const asn1SccPusSt18ObservabilityLevel* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((((((((*(pVal)) == asn1Sccnone)) || (((*(pVal)) == asn1Sccprocedure)))) || (((*(pVal)) == asn1Sccstep)))) || (((*(pVal)) == asn1Sccdetailed)));
+    *pErrCode = ret ? 0 :  ERR_PUSST18OBSERVABILITYLEVEL;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTC_18_3_Data_Equal(const asn1SccPusTC_18_3_Data* pVal1, const asn1SccPusTC_18_3_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
+
+    if (ret) {
+        ret = (pVal1->observabilityLevel == pVal2->observabilityLevel);
+
+    }
+	return ret;
+
+}
+
+void asn1SccPusTC_18_3_Data_Initialize(asn1SccPusTC_18_3_Data* pVal)
+{
+
+
+	/*set obcpId */
+	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
+	/*set observabilityLevel */
+	asn1SccPusSt18ObservabilityLevel_Initialize((&(pVal->observabilityLevel)));
+}
+
+flag asn1SccPusTC_18_3_Data_IsConstraintValid(const asn1SccPusTC_18_3_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = (((((((pVal->observabilityLevel == asn1Sccnone)) || ((pVal->observabilityLevel == asn1Sccprocedure)))) || ((pVal->observabilityLevel == asn1Sccstep)))) || ((pVal->observabilityLevel == asn1Sccdetailed)));
+    *pErrCode = ret ? 0 :  ERR_PUSTC_18_3_DATA_OBSERVABILITYLEVEL;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusPacketVersion_Equal(const asn1SccPusPacketVersion* pVal1, const asn1SccPusPacketVersion* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusPacketVersion_Initialize(asn1SccPusPacketVersion* pVal)
+{
+
+	(*(pVal)) = asn1Sccpus_CCSDS_V1;
+}
+
+flag asn1SccPusPacketVersion_IsConstraintValid(const asn1SccPusPacketVersion* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) == asn1Sccpus_CCSDS_V1);
+    *pErrCode = ret ? 0 :  ERR_PUSPACKETVERSION;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusPacketType_Equal(const asn1SccPusPacketType* pVal1, const asn1SccPusPacketType* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusPacketType_Initialize(asn1SccPusPacketType* pVal)
+{
+
+	(*(pVal)) = asn1Sccpus_TM;
+}
+
+flag asn1SccPusPacketType_IsConstraintValid(const asn1SccPusPacketType* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((((*(pVal)) == asn1Sccpus_TM)) || (((*(pVal)) == asn1Sccpus_TC)));
+    *pErrCode = ret ? 0 :  ERR_PUSPACKETTYPE;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSecondaryHeaderFlag_Equal(const asn1SccPusSecondaryHeaderFlag* pVal1, const asn1SccPusSecondaryHeaderFlag* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusSecondaryHeaderFlag_Initialize(asn1SccPusSecondaryHeaderFlag* pVal)
+{
+
+	(*(pVal)) = FALSE;
+}
+
+flag asn1SccPusSecondaryHeaderFlag_IsConstraintValid(const asn1SccPusSecondaryHeaderFlag* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = TRUE;
+    *pErrCode = ret ? 0 :  ERR_PUSSECONDARYHEADERFLAG;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSequenceFlags_Equal(const asn1SccPusSequenceFlags* pVal1, const asn1SccPusSequenceFlags* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccPusSequenceFlags_Initialize(asn1SccPusSequenceFlags* pVal)
+{
+
+	(*(pVal)) = asn1Sccpus_STANDALONE_PACKET;
+}
+
+flag asn1SccPusSequenceFlags_IsConstraintValid(const asn1SccPusSequenceFlags* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) == asn1Sccpus_STANDALONE_PACKET);
+    *pErrCode = ret ? 0 :  ERR_PUSSEQUENCEFLAGS;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt01RequestId_Equal(const asn1SccPusSt01RequestId* pVal1, const asn1SccPusSt01RequestId* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = (pVal1->packetVersion == pVal2->packetVersion);
+
+    if (ret) {
+        ret = (pVal1->packetType == pVal2->packetType);
+
+        if (ret) {
+            ret = (pVal1->secondaryHeaderFlag == pVal2->secondaryHeaderFlag);
+
+            if (ret) {
+                ret = (pVal1->apid == pVal2->apid);
+
+                if (ret) {
+                    ret = (pVal1->sequenceFlags == pVal2->sequenceFlags);
+
+                    if (ret) {
+                        ret = (pVal1->sequenceCount == pVal2->sequenceCount);
+
+                    }
+                }
+            }
+        }
+    }
+	return ret;
+
+}
+
+void asn1SccPusSt01RequestId_Initialize(asn1SccPusSt01RequestId* pVal)
+{
+
+
+	/*set packetVersion */
+	asn1SccPusPacketVersion_Initialize((&(pVal->packetVersion)));
+	/*set packetType */
+	asn1SccPusPacketType_Initialize((&(pVal->packetType)));
+	/*set secondaryHeaderFlag */
+	asn1SccPusSecondaryHeaderFlag_Initialize((&(pVal->secondaryHeaderFlag)));
+	/*set apid */
+	asn1SccPusApid_Initialize((&(pVal->apid)));
+	/*set sequenceFlags */
+	asn1SccPusSequenceFlags_Initialize((&(pVal->sequenceFlags)));
+	/*set sequenceCount */
+	asn1SccPusSequenceCount_Initialize((&(pVal->sequenceCount)));
+}
+
+flag asn1SccPusSt01RequestId_IsConstraintValid(const asn1SccPusSt01RequestId *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = (pVal->packetVersion == asn1Sccpus_CCSDS_V1);
+    *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_PACKETVERSION;
+    if (ret) {
+        ret = (((pVal->packetType == asn1Sccpus_TM)) || ((pVal->packetType == asn1Sccpus_TC)));
+        *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_PACKETTYPE;
+        if (ret) {
+            ret = TRUE;
+            *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_SECONDARYHEADERFLAG;
+            if (ret) {
+                ret = (pVal->apid <= 2047UL);
+                *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_APID;
+                if (ret) {
+                    ret = (pVal->sequenceFlags == asn1Sccpus_STANDALONE_PACKET);
+                    *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_SEQUENCEFLAGS;
+                    if (ret) {
+                        ret = (pVal->sequenceCount <= 16383UL);
+                        *pErrCode = ret ? 0 :  ERR_PUSST01REQUESTID_SEQUENCECOUNT;
+                    }
+                }
+            }
+        }
+    }
+
+	return ret;
+}
+
+
+
 flag asn1SccPusTM_1_X_Data_Equal(const asn1SccPusTM_1_X_Data* pVal1, const asn1SccPusTM_1_X_Data* pVal2)
 {
 	flag ret=TRUE;
@@ -2375,64 +1916,24 @@ flag asn1SccPusTM_1_X_Data_IsConstraintValid(const asn1SccPusTM_1_X_Data *pVal, 
 
 
 
-flag asn1SccPusInt64_Equal(const asn1SccPusInt64* pVal1, const asn1SccPusInt64* pVal2)
+flag asn1SccPusVersionNumber_Equal(const asn1SccPusVersionNumber* pVal1, const asn1SccPusVersionNumber* pVal2)
 {
 	return (*(pVal1)) == (*(pVal2));
 
 }
 
-void asn1SccPusInt64_Initialize(asn1SccPusInt64* pVal)
+void asn1SccPusVersionNumber_Initialize(asn1SccPusVersionNumber* pVal)
 {
 
-	(*(pVal)) = 0;
+	(*(pVal)) = asn1Sccpus_V0;
 }
 
-flag asn1SccPusInt64_IsConstraintValid(const asn1SccPusInt64* pVal, int* pErrCode)
+flag asn1SccPusVersionNumber_IsConstraintValid(const asn1SccPusVersionNumber* pVal, int* pErrCode)
 {
     flag ret = TRUE;
 	
-    ret = TRUE;
-    *pErrCode = ret ? 0 :  ERR_PUSINT64;
-
-	return ret;
-}
-
-
-
-flag asn1SccPusTime_Equal(const asn1SccPusTime* pVal1, const asn1SccPusTime* pVal2)
-{
-	flag ret=TRUE;
-
-    ret = (pVal1->tv_sec == pVal2->tv_sec);
-
-    if (ret) {
-        ret = (pVal1->tv_nsec == pVal2->tv_nsec);
-
-    }
-	return ret;
-
-}
-
-void asn1SccPusTime_Initialize(asn1SccPusTime* pVal)
-{
-
-
-	/*set tv_sec */
-	asn1SccPusInt64_Initialize((&(pVal->tv_sec)));
-	/*set tv_nsec */
-	asn1SccPusInt64_Initialize((&(pVal->tv_nsec)));
-}
-
-flag asn1SccPusTime_IsConstraintValid(const asn1SccPusTime *pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = TRUE;
-    *pErrCode = ret ? 0 :  ERR_PUSTIME_TV_SEC;
-    if (ret) {
-        ret = TRUE;
-        *pErrCode = ret ? 0 :  ERR_PUSTIME_TV_NSEC;
-    }
+    ret = ((((((((*(pVal)) == asn1Sccpus_V0)) || (((*(pVal)) == asn1Sccpus_V1)))) || (((*(pVal)) == asn1Sccpus_V2)))) || (((*(pVal)) == asn1Sccpus_INVALID_VERSION)));
+    *pErrCode = ret ? 0 :  ERR_PUSVERSIONNUMBER;
 
 	return ret;
 }
@@ -2452,7 +1953,7 @@ flag asn1SccPusTmHeader_Equal(const asn1SccPusTmHeader* pVal1, const asn1SccPusT
             ret = (pVal1->serviceId == pVal2->serviceId);
 
             if (ret) {
-                ret = (pVal1->subtype == pVal2->subtype);
+                ret = (pVal1->subtypeId == pVal2->subtypeId);
 
                 if (ret) {
                     ret = (pVal1->msgTypeCount == pVal2->msgTypeCount);
@@ -2483,8 +1984,8 @@ void asn1SccPusTmHeader_Initialize(asn1SccPusTmHeader* pVal)
 	asn1SccPusTimeReferenceStatus_Initialize((&(pVal->timeRefStatus)));
 	/*set serviceId */
 	asn1SccPusServiceType_Initialize((&(pVal->serviceId)));
-	/*set subtype */
-	asn1SccPusSubserviceType_Initialize((&(pVal->subtype)));
+	/*set subtypeId */
+	asn1SccPusSubserviceType_Initialize((&(pVal->subtypeId)));
 	/*set msgTypeCount */
 	asn1SccPusMessageTypeCounter_Initialize((&(pVal->msgTypeCount)));
 	/*set destination */
@@ -2506,8 +2007,8 @@ flag asn1SccPusTmHeader_IsConstraintValid(const asn1SccPusTmHeader *pVal, int* p
             ret = (pVal->serviceId <= 255UL);
             *pErrCode = ret ? 0 :  ERR_PUSTMHEADER_SERVICEID;
             if (ret) {
-                ret = (pVal->subtype <= 255UL);
-                *pErrCode = ret ? 0 :  ERR_PUSTMHEADER_SUBTYPE;
+                ret = (pVal->subtypeId <= 255UL);
+                *pErrCode = ret ? 0 :  ERR_PUSTMHEADER_SUBTYPEID;
                 if (ret) {
                     ret = (pVal->msgTypeCount <= 65535UL);
                     *pErrCode = ret ? 0 :  ERR_PUSTMHEADER_MSGTYPECOUNT;
@@ -2533,42 +2034,406 @@ flag asn1SccPusTmHeader_IsConstraintValid(const asn1SccPusTmHeader *pVal, int* p
 
 
 
-flag asn1SccPusTM_9_2_Data_Equal(const asn1SccPusTM_9_2_Data* pVal1, const asn1SccPusTM_9_2_Data* pVal2)
+flag asn1SccPusAcknowledgementFlags_Equal(const asn1SccPusAcknowledgementFlags* pVal1, const asn1SccPusAcknowledgementFlags* pVal2)
 {
 	flag ret=TRUE;
 
-    ret = (pVal1->exponentialRate == pVal2->exponentialRate);
+    ret = (pVal1->acceptanceReportRequested == pVal2->acceptanceReportRequested);
 
     if (ret) {
-        ret = asn1SccPusTime_Equal((&(pVal1->time)), (&(pVal2->time)));
+        ret = (pVal1->startReportRequested == pVal2->startReportRequested);
 
+        if (ret) {
+            ret = (pVal1->progressReportRequested == pVal2->progressReportRequested);
+
+            if (ret) {
+                ret = (pVal1->completionReportRequested == pVal2->completionReportRequested);
+
+            }
+        }
     }
 	return ret;
 
 }
 
-void asn1SccPusTM_9_2_Data_Initialize(asn1SccPusTM_9_2_Data* pVal)
+void asn1SccPusAcknowledgementFlags_Initialize(asn1SccPusAcknowledgementFlags* pVal)
 {
 
 
-	/*set exponentialRate */
-	asn1SccPusSt09ExponentialRate_Initialize((&(pVal->exponentialRate)));
-	/*set time */
-	asn1SccPusTime_Initialize((&(pVal->time)));
+	/*set acceptanceReportRequested */
+	pVal->acceptanceReportRequested = FALSE;
+	/*set startReportRequested */
+	pVal->startReportRequested = FALSE;
+	/*set progressReportRequested */
+	pVal->progressReportRequested = FALSE;
+	/*set completionReportRequested */
+	pVal->completionReportRequested = FALSE;
 }
 
-flag asn1SccPusTM_9_2_Data_IsConstraintValid(const asn1SccPusTM_9_2_Data *pVal, int* pErrCode)
+flag asn1SccPusAcknowledgementFlags_IsConstraintValid(const asn1SccPusAcknowledgementFlags *pVal, int* pErrCode)
 {
     flag ret = TRUE;
 	
-    ret = (pVal->exponentialRate <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_PUSTM_9_2_DATA_EXPONENTIALRATE;
+    ret = TRUE;
+    *pErrCode = ret ? 0 :  ERR_PUSACKNOWLEDGEMENTFLAGS_ACCEPTANCEREPORTREQUESTED;
     if (ret) {
         ret = TRUE;
-        *pErrCode = ret ? 0 :  ERR_PUSTM_9_2_DATA_TIME_TV_SEC;
+        *pErrCode = ret ? 0 :  ERR_PUSACKNOWLEDGEMENTFLAGS_STARTREPORTREQUESTED;
         if (ret) {
             ret = TRUE;
-            *pErrCode = ret ? 0 :  ERR_PUSTM_9_2_DATA_TIME_TV_NSEC;
+            *pErrCode = ret ? 0 :  ERR_PUSACKNOWLEDGEMENTFLAGS_PROGRESSREPORTREQUESTED;
+            if (ret) {
+                ret = TRUE;
+                *pErrCode = ret ? 0 :  ERR_PUSACKNOWLEDGEMENTFLAGS_COMPLETIONREPORTREQUESTED;
+            }
+        }
+    }
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTcHeader_Equal(const asn1SccPusTcHeader* pVal1, const asn1SccPusTcHeader* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = (pVal1->pusVersion == pVal2->pusVersion);
+
+    if (ret) {
+        ret = asn1SccPusAcknowledgementFlags_Equal((&(pVal1->ackFlags)), (&(pVal2->ackFlags)));
+
+        if (ret) {
+            ret = (pVal1->serviceId == pVal2->serviceId);
+
+            if (ret) {
+                ret = (pVal1->subtypeId == pVal2->subtypeId);
+
+                if (ret) {
+                    ret = (pVal1->source == pVal2->source);
+
+                }
+            }
+        }
+    }
+	return ret;
+
+}
+
+void asn1SccPusTcHeader_Initialize(asn1SccPusTcHeader* pVal)
+{
+
+
+	/*set pusVersion */
+	asn1SccPusVersionNumber_Initialize((&(pVal->pusVersion)));
+	/*set ackFlags */
+	asn1SccPusAcknowledgementFlags_Initialize((&(pVal->ackFlags)));
+	/*set serviceId */
+	asn1SccPusServiceType_Initialize((&(pVal->serviceId)));
+	/*set subtypeId */
+	asn1SccPusSubserviceType_Initialize((&(pVal->subtypeId)));
+	/*set source */
+	asn1SccPusApid_Initialize((&(pVal->source)));
+}
+
+flag asn1SccPusTcHeader_IsConstraintValid(const asn1SccPusTcHeader *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = (((((((pVal->pusVersion == asn1Sccpus_V0)) || ((pVal->pusVersion == asn1Sccpus_V1)))) || ((pVal->pusVersion == asn1Sccpus_V2)))) || ((pVal->pusVersion == asn1Sccpus_INVALID_VERSION)));
+    *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_PUSVERSION;
+    if (ret) {
+        ret = TRUE;
+        *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_ACKFLAGS_ACCEPTANCEREPORTREQUESTED;
+        if (ret) {
+            ret = TRUE;
+            *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_ACKFLAGS_STARTREPORTREQUESTED;
+            if (ret) {
+                ret = TRUE;
+                *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_ACKFLAGS_PROGRESSREPORTREQUESTED;
+                if (ret) {
+                    ret = TRUE;
+                    *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_ACKFLAGS_COMPLETIONREPORTREQUESTED;
+                }
+            }
+        }
+        if (ret) {
+            ret = (pVal->serviceId <= 255UL);
+            *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_SERVICEID;
+            if (ret) {
+                ret = (pVal->subtypeId <= 255UL);
+                *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_SUBTYPEID;
+                if (ret) {
+                    ret = (pVal->source <= 2047UL);
+                    *pErrCode = ret ? 0 :  ERR_PUSTCHEADER_SOURCE;
+                }
+            }
+        }
+    }
+
+	return ret;
+}
+
+
+
+flag asn1SccT_Int32_Equal(const asn1SccT_Int32* pVal1, const asn1SccT_Int32* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccT_Int32_Initialize(asn1SccT_Int32* pVal)
+{
+
+	(*(pVal)) = 0;
+}
+
+flag asn1SccT_Int32_IsConstraintValid(const asn1SccT_Int32* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((-2147483648LL <= (*(pVal))) && ((*(pVal)) <= 2147483647LL));
+    *pErrCode = ret ? 0 :  ERR_T_INT32;
+
+	return ret;
+}
+
+
+
+flag asn1SccT_UInt32_Equal(const asn1SccT_UInt32* pVal1, const asn1SccT_UInt32* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccT_UInt32_Initialize(asn1SccT_UInt32* pVal)
+{
+
+	(*(pVal)) = 0;
+}
+
+flag asn1SccT_UInt32_IsConstraintValid(const asn1SccT_UInt32* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) <= 4294967295UL);
+    *pErrCode = ret ? 0 :  ERR_T_UINT32;
+
+	return ret;
+}
+
+
+
+flag asn1SccT_Int8_Equal(const asn1SccT_Int8* pVal1, const asn1SccT_Int8* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccT_Int8_Initialize(asn1SccT_Int8* pVal)
+{
+
+	(*(pVal)) = 0;
+}
+
+flag asn1SccT_Int8_IsConstraintValid(const asn1SccT_Int8* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((-128LL <= (*(pVal))) && ((*(pVal)) <= 127LL));
+    *pErrCode = ret ? 0 :  ERR_T_INT8;
+
+	return ret;
+}
+
+
+
+flag asn1SccT_UInt8_Equal(const asn1SccT_UInt8* pVal1, const asn1SccT_UInt8* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccT_UInt8_Initialize(asn1SccT_UInt8* pVal)
+{
+
+	(*(pVal)) = 0;
+}
+
+flag asn1SccT_UInt8_IsConstraintValid(const asn1SccT_UInt8* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((*(pVal)) <= 255UL);
+    *pErrCode = ret ? 0 :  ERR_T_UINT8;
+
+	return ret;
+}
+
+
+
+flag asn1SccT_Boolean_Equal(const asn1SccT_Boolean* pVal1, const asn1SccT_Boolean* pVal2)
+{
+	return (*(pVal1)) == (*(pVal2));
+
+}
+
+void asn1SccT_Boolean_Initialize(asn1SccT_Boolean* pVal)
+{
+
+	(*(pVal)) = FALSE;
+}
+
+flag asn1SccT_Boolean_IsConstraintValid(const asn1SccT_Boolean* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = TRUE;
+    *pErrCode = ret ? 0 :  ERR_T_BOOLEAN;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt23RepositoryPath_Equal(const asn1SccPusSt23RepositoryPath* pVal1, const asn1SccPusSt23RepositoryPath* pVal2)
+{
+	return (pVal1->nCount == pVal2->nCount) && (memcmp(pVal1->arr, pVal2->arr, pVal1->nCount) ==0)	;
+
+}
+
+void asn1SccPusSt23RepositoryPath_Initialize(asn1SccPusSt23RepositoryPath* pVal)
+{
+
+	memset(pVal->arr, 0x0, 30);
+
+}
+
+flag asn1SccPusSt23RepositoryPath_IsConstraintValid(const asn1SccPusSt23RepositoryPath* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 30));
+    *pErrCode = ret ? 0 :  ERR_PUSST23REPOSITORYPATH;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusSt23FileName_Equal(const asn1SccPusSt23FileName* pVal1, const asn1SccPusSt23FileName* pVal2)
+{
+	return (pVal1->nCount == pVal2->nCount) && (memcmp(pVal1->arr, pVal2->arr, pVal1->nCount) ==0)	;
+
+}
+
+void asn1SccPusSt23FileName_Initialize(asn1SccPusSt23FileName* pVal)
+{
+
+	memset(pVal->arr, 0x0, 30);
+
+}
+
+flag asn1SccPusSt23FileName_IsConstraintValid(const asn1SccPusSt23FileName* pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 30));
+    *pErrCode = ret ? 0 :  ERR_PUSST23FILENAME;
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTC_18_13_Data_Equal(const asn1SccPusTC_18_13_Data* pVal1, const asn1SccPusTC_18_13_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = asn1SccPusSt18ObcpId_Equal((&(pVal1->obcpId)), (&(pVal2->obcpId)));
+
+    if (ret) {
+        ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->repository)), (&(pVal2->repository)));
+
+        if (ret) {
+            ret = asn1SccPusSt23FileName_Equal((&(pVal1->fileName)), (&(pVal2->fileName)));
+
+        }
+    }
+	return ret;
+
+}
+
+void asn1SccPusTC_18_13_Data_Initialize(asn1SccPusTC_18_13_Data* pVal)
+{
+
+
+	/*set obcpId */
+	asn1SccPusSt18ObcpId_Initialize((&(pVal->obcpId)));
+	/*set repository */
+	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->repository)));
+	/*set fileName */
+	asn1SccPusSt23FileName_Initialize((&(pVal->fileName)));
+}
+
+flag asn1SccPusTC_18_13_Data_IsConstraintValid(const asn1SccPusTC_18_13_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((1 <= pVal->repository.nCount) && (pVal->repository.nCount <= 30));
+    *pErrCode = ret ? 0 :  ERR_PUSTC_18_13_DATA_REPOSITORY;
+    if (ret) {
+        ret = ((1 <= pVal->fileName.nCount) && (pVal->fileName.nCount <= 30));
+        *pErrCode = ret ? 0 :  ERR_PUSTC_18_13_DATA_FILENAME;
+    }
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTC_TM_23_1_4_Data_Equal(const asn1SccPusTC_TM_23_1_4_Data* pVal1, const asn1SccPusTC_TM_23_1_4_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->repository)), (&(pVal2->repository)));
+
+    if (ret) {
+        ret = asn1SccPusSt23FileName_Equal((&(pVal1->fileName)), (&(pVal2->fileName)));
+
+        if (ret) {
+            ret = (pVal1->maxSize == pVal2->maxSize);
+
+        }
+    }
+	return ret;
+
+}
+
+void asn1SccPusTC_TM_23_1_4_Data_Initialize(asn1SccPusTC_TM_23_1_4_Data* pVal)
+{
+
+
+	/*set repository */
+	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->repository)));
+	/*set fileName */
+	asn1SccPusSt23FileName_Initialize((&(pVal->fileName)));
+	/*set maxSize */
+	asn1SccPusUInt64_Initialize((&(pVal->maxSize)));
+}
+
+flag asn1SccPusTC_TM_23_1_4_Data_IsConstraintValid(const asn1SccPusTC_TM_23_1_4_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((1 <= pVal->repository.nCount) && (pVal->repository.nCount <= 30));
+    *pErrCode = ret ? 0 :  ERR_PUSTC_TM_23_1_4_DATA_REPOSITORY;
+    if (ret) {
+        ret = ((1 <= pVal->fileName.nCount) && (pVal->fileName.nCount <= 30));
+        *pErrCode = ret ? 0 :  ERR_PUSTC_TM_23_1_4_DATA_FILENAME;
+        if (ret) {
+            ret = (pVal->maxSize <= 9223372036854775807UL);
+            *pErrCode = ret ? 0 :  ERR_PUSTC_TM_23_1_4_DATA_MAXSIZE;
         }
     }
 
@@ -2775,8 +2640,8 @@ flag asn1SccPusTmHeaderData_IsConstraintValid(const asn1SccPusTmHeaderData *pVal
             ret = (pVal->header.serviceId <= 255UL);
             *pErrCode = ret ? 0 :  ERR_PUSTMHEADERDATA_HEADER_SERVICEID;
             if (ret) {
-                ret = (pVal->header.subtype <= 255UL);
-                *pErrCode = ret ? 0 :  ERR_PUSTMHEADERDATA_HEADER_SUBTYPE;
+                ret = (pVal->header.subtypeId <= 255UL);
+                *pErrCode = ret ? 0 :  ERR_PUSTMHEADERDATA_HEADER_SUBTYPEID;
                 if (ret) {
                     ret = (pVal->header.msgTypeCount <= 65535UL);
                     *pErrCode = ret ? 0 :  ERR_PUSTMHEADERDATA_HEADER_MSGTYPECOUNT;
@@ -2911,6 +2776,260 @@ flag asn1SccPusTmHeaderData_IsConstraintValid(const asn1SccPusTmHeaderData *pVal
 
 
 
+flag asn1SccPusTC_23_2_3_Data_Equal(const asn1SccPusTC_23_2_3_Data* pVal1, const asn1SccPusTC_23_2_3_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->repository)), (&(pVal2->repository)));
+
+    if (ret) {
+        ret = asn1SccPusSt23FileName_Equal((&(pVal1->fileName)), (&(pVal2->fileName)));
+
+    }
+	return ret;
+
+}
+
+void asn1SccPusTC_23_2_3_Data_Initialize(asn1SccPusTC_23_2_3_Data* pVal)
+{
+
+
+	/*set repository */
+	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->repository)));
+	/*set fileName */
+	asn1SccPusSt23FileName_Initialize((&(pVal->fileName)));
+}
+
+flag asn1SccPusTC_23_2_3_Data_IsConstraintValid(const asn1SccPusTC_23_2_3_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((1 <= pVal->repository.nCount) && (pVal->repository.nCount <= 30));
+    *pErrCode = ret ? 0 :  ERR_PUSTC_23_2_3_DATA_REPOSITORY;
+    if (ret) {
+        ret = ((1 <= pVal->fileName.nCount) && (pVal->fileName.nCount <= 30));
+        *pErrCode = ret ? 0 :  ERR_PUSTC_23_2_3_DATA_FILENAME;
+    }
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTC_23_14_Data_Equal(const asn1SccPusTC_23_14_Data* pVal1, const asn1SccPusTC_23_14_Data* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->sourceRepository)), (&(pVal2->sourceRepository)));
+
+    if (ret) {
+        ret = asn1SccPusSt23FileName_Equal((&(pVal1->sourceFileName)), (&(pVal2->sourceFileName)));
+
+        if (ret) {
+            ret = asn1SccPusSt23RepositoryPath_Equal((&(pVal1->targetRepository)), (&(pVal2->targetRepository)));
+
+            if (ret) {
+                ret = asn1SccPusSt23FileName_Equal((&(pVal1->targetFileName)), (&(pVal2->targetFileName)));
+
+            }
+        }
+    }
+	return ret;
+
+}
+
+void asn1SccPusTC_23_14_Data_Initialize(asn1SccPusTC_23_14_Data* pVal)
+{
+
+
+	/*set sourceRepository */
+	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->sourceRepository)));
+	/*set sourceFileName */
+	asn1SccPusSt23FileName_Initialize((&(pVal->sourceFileName)));
+	/*set targetRepository */
+	asn1SccPusSt23RepositoryPath_Initialize((&(pVal->targetRepository)));
+	/*set targetFileName */
+	asn1SccPusSt23FileName_Initialize((&(pVal->targetFileName)));
+}
+
+flag asn1SccPusTC_23_14_Data_IsConstraintValid(const asn1SccPusTC_23_14_Data *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    ret = ((1 <= pVal->sourceRepository.nCount) && (pVal->sourceRepository.nCount <= 30));
+    *pErrCode = ret ? 0 :  ERR_PUSTC_23_14_DATA_SOURCEREPOSITORY;
+    if (ret) {
+        ret = ((1 <= pVal->sourceFileName.nCount) && (pVal->sourceFileName.nCount <= 30));
+        *pErrCode = ret ? 0 :  ERR_PUSTC_23_14_DATA_SOURCEFILENAME;
+        if (ret) {
+            ret = ((1 <= pVal->targetRepository.nCount) && (pVal->targetRepository.nCount <= 30));
+            *pErrCode = ret ? 0 :  ERR_PUSTC_23_14_DATA_TARGETREPOSITORY;
+            if (ret) {
+                ret = ((1 <= pVal->targetFileName.nCount) && (pVal->targetFileName.nCount <= 30));
+                *pErrCode = ret ? 0 :  ERR_PUSTC_23_14_DATA_TARGETFILENAME;
+            }
+        }
+    }
+
+	return ret;
+}
+
+
+
+flag asn1SccPusTcApplicationDataReduced_Equal(const asn1SccPusTcApplicationDataReduced* pVal1, const asn1SccPusTcApplicationDataReduced* pVal2)
+{
+	flag ret=TRUE;
+
+    ret = (pVal1->kind == pVal2->kind);
+    if (ret) {
+    	switch(pVal1->kind) 
+    	{
+    	case PusTcApplicationDataReduced_st_8_1_PRESENT:
+    		ret = asn1SccPusTC_8_1_Data_Equal((&(pVal1->u.st_8_1)), (&(pVal2->u.st_8_1)));
+    		break;
+    	case PusTcApplicationDataReduced_st_9_1_PRESENT:
+    		ret = asn1SccPusTC_9_1_Data_Equal((&(pVal1->u.st_9_1)), (&(pVal2->u.st_9_1)));
+    		break;
+    	case PusTcApplicationDataReduced_st_12_1_2_PRESENT:
+    		ret = asn1SccPusTC_12_1_2_Data_Equal((&(pVal1->u.st_12_1_2)), (&(pVal2->u.st_12_1_2)));
+    		break;
+    	case PusTcApplicationDataReduced_st_18_2_6_12_PRESENT:
+    		ret = asn1SccPusTC_18_2_6_12_Data_Equal((&(pVal1->u.st_18_2_6_12)), (&(pVal2->u.st_18_2_6_12)));
+    		break;
+    	case PusTcApplicationDataReduced_st_18_3_PRESENT:
+    		ret = asn1SccPusTC_18_3_Data_Equal((&(pVal1->u.st_18_3)), (&(pVal2->u.st_18_3)));
+    		break;
+    	case PusTcApplicationDataReduced_st_18_4_5_PRESENT:
+    		ret = asn1SccPusTC_18_4_5_Data_Equal((&(pVal1->u.st_18_4_5)), (&(pVal2->u.st_18_4_5)));
+    		break;
+    	case PusTcApplicationDataReduced_st_18_13_PRESENT:
+    		ret = asn1SccPusTC_18_13_Data_Equal((&(pVal1->u.st_18_13)), (&(pVal2->u.st_18_13)));
+    		break;
+    	case PusTcApplicationDataReduced_st_19_X_PRESENT:
+    		ret = asn1SccPusTC_19_X_Data_Equal((&(pVal1->u.st_19_X)), (&(pVal2->u.st_19_X)));
+    		break;
+    	case PusTcApplicationDataReduced_st_20_X_PRESENT:
+    		ret = asn1SccPusTC_TM_20_X_Data_Equal((&(pVal1->u.st_20_X)), (&(pVal2->u.st_20_X)));
+    		break;
+    	case PusTcApplicationDataReduced_st_23_1_PRESENT:
+    		ret = asn1SccPusTC_TM_23_1_4_Data_Equal((&(pVal1->u.st_23_1)), (&(pVal2->u.st_23_1)));
+    		break;
+    	case PusTcApplicationDataReduced_st_23_2_3_PRESENT:
+    		ret = asn1SccPusTC_23_2_3_Data_Equal((&(pVal1->u.st_23_2_3)), (&(pVal2->u.st_23_2_3)));
+    		break;
+    	case PusTcApplicationDataReduced_st_23_14_PRESENT:
+    		ret = asn1SccPusTC_23_14_Data_Equal((&(pVal1->u.st_23_14)), (&(pVal2->u.st_23_14)));
+    		break;
+    	default:
+    		ret = FALSE;    /*COVERAGE_IGNORE*/
+    	}
+    }
+	return ret;
+
+}
+
+void asn1SccPusTcApplicationDataReduced_Initialize(asn1SccPusTcApplicationDataReduced* pVal)
+{
+
+	/*set st_8_1*/
+	pVal->kind = PusTcApplicationDataReduced_st_8_1_PRESENT;
+	asn1SccPusTC_8_1_Data_Initialize((&(pVal->u.st_8_1)));
+}
+
+flag asn1SccPusTcApplicationDataReduced_IsConstraintValid(const asn1SccPusTcApplicationDataReduced *pVal, int* pErrCode)
+{
+    flag ret = TRUE;
+	
+    switch (pVal->kind) {
+        case PusTcApplicationDataReduced_st_8_1_PRESENT :
+            ret = (pVal->u.st_8_1.functionId <= 4294967295UL);
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_8_1_FUNCTIONID;
+            break;
+        case PusTcApplicationDataReduced_st_9_1_PRESENT :
+            ret = (pVal->u.st_9_1.exponentialRate <= 4294967295UL);
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_9_1_EXPONENTIALRATE;
+            break;
+        case PusTcApplicationDataReduced_st_12_1_2_PRESENT :
+            ret = (pVal->u.st_12_1_2.pmonId <= 4294967295UL);
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_12_1_2_PMONID;
+            break;
+        case PusTcApplicationDataReduced_st_18_2_6_12_PRESENT :
+            ret = TRUE;
+            break;
+        case PusTcApplicationDataReduced_st_18_3_PRESENT :
+            ret = (((((((pVal->u.st_18_3.observabilityLevel == asn1Sccnone)) || ((pVal->u.st_18_3.observabilityLevel == asn1Sccprocedure)))) || ((pVal->u.st_18_3.observabilityLevel == asn1Sccstep)))) || ((pVal->u.st_18_3.observabilityLevel == asn1Sccdetailed)));
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_3_OBSERVABILITYLEVEL;
+            break;
+        case PusTcApplicationDataReduced_st_18_4_5_PRESENT :
+            ret = (pVal->u.st_18_4_5.stepId <= 4294967295UL);
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_4_5_STEPID;
+            break;
+        case PusTcApplicationDataReduced_st_18_13_PRESENT :
+            ret = ((1 <= pVal->u.st_18_13.repository.nCount) && (pVal->u.st_18_13.repository.nCount <= 30));
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_REPOSITORY;
+            if (ret) {
+                ret = ((1 <= pVal->u.st_18_13.fileName.nCount) && (pVal->u.st_18_13.fileName.nCount <= 30));
+                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_18_13_FILENAME;
+            }
+            break;
+        case PusTcApplicationDataReduced_st_19_X_PRESENT :
+            ret = (pVal->u.st_19_X.eventId <= 4294967295UL);
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_19_X_EVENTID;
+            break;
+        case PusTcApplicationDataReduced_st_20_X_PRESENT :
+            ret = (pVal->u.st_20_X.paramId <= 4294967295UL);
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_PARAMID;
+            if (ret) {
+                ret = (pVal->u.st_20_X.value <= 9223372036854775807UL);
+                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_20_X_VALUE;
+            }
+            break;
+        case PusTcApplicationDataReduced_st_23_1_PRESENT :
+            ret = ((1 <= pVal->u.st_23_1.repository.nCount) && (pVal->u.st_23_1.repository.nCount <= 30));
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_REPOSITORY;
+            if (ret) {
+                ret = ((1 <= pVal->u.st_23_1.fileName.nCount) && (pVal->u.st_23_1.fileName.nCount <= 30));
+                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_FILENAME;
+                if (ret) {
+                    ret = (pVal->u.st_23_1.maxSize <= 9223372036854775807UL);
+                    *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_1_MAXSIZE;
+                }
+            }
+            break;
+        case PusTcApplicationDataReduced_st_23_2_3_PRESENT :
+            ret = ((1 <= pVal->u.st_23_2_3.repository.nCount) && (pVal->u.st_23_2_3.repository.nCount <= 30));
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_REPOSITORY;
+            if (ret) {
+                ret = ((1 <= pVal->u.st_23_2_3.fileName.nCount) && (pVal->u.st_23_2_3.fileName.nCount <= 30));
+                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_2_3_FILENAME;
+            }
+            break;
+        case PusTcApplicationDataReduced_st_23_14_PRESENT :
+            ret = ((1 <= pVal->u.st_23_14.sourceRepository.nCount) && (pVal->u.st_23_14.sourceRepository.nCount <= 30));
+            *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_SOURCEREPOSITORY;
+            if (ret) {
+                ret = ((1 <= pVal->u.st_23_14.sourceFileName.nCount) && (pVal->u.st_23_14.sourceFileName.nCount <= 30));
+                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_SOURCEFILENAME;
+                if (ret) {
+                    ret = ((1 <= pVal->u.st_23_14.targetRepository.nCount) && (pVal->u.st_23_14.targetRepository.nCount <= 30));
+                    *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_TARGETREPOSITORY;
+                    if (ret) {
+                        ret = ((1 <= pVal->u.st_23_14.targetFileName.nCount) && (pVal->u.st_23_14.targetFileName.nCount <= 30));
+                        *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATAREDUCED_ST_23_14_TARGETFILENAME;
+                    }
+                }
+            }
+            break;
+        default:
+    	    *pErrCode = ERR_PUSTCAPPLICATIONDATAREDUCED;      /*COVERAGE_IGNORE*/
+    	    ret = FALSE;                               /*COVERAGE_IGNORE*/
+    }
+
+	return ret;
+}
+
+
+
 flag asn1SccPusPacketDataReduced_tcData_Equal(const asn1SccPusPacketDataReduced_tcData* pVal1, const asn1SccPusPacketDataReduced_tcData* pVal2)
 {
 	flag ret=TRUE;
@@ -2991,8 +3110,8 @@ flag asn1SccPusPacketDataReduced_IsConstraintValid(const asn1SccPusPacketDataRed
                     ret = (pVal->u.tmData.header.serviceId <= 255UL);
                     *pErrCode = ret ? 0 :  ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_SERVICEID;
                     if (ret) {
-                        ret = (pVal->u.tmData.header.subtype <= 255UL);
-                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_SUBTYPE;
+                        ret = (pVal->u.tmData.header.subtypeId <= 255UL);
+                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_SUBTYPEID;
                         if (ret) {
                             ret = (pVal->u.tmData.header.msgTypeCount <= 65535UL);
                             *pErrCode = ret ? 0 :  ERR_PUSPACKETDATAREDUCED_TMDATA_HEADER_MSGTYPECOUNT;
@@ -3253,8 +3372,8 @@ flag asn1SccPusPacketDataReduced_IsConstraintValid(const asn1SccPusPacketDataRed
                     ret = (pVal->u.tcData.header.serviceId <= 255UL);
                     *pErrCode = ret ? 0 :  ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SERVICEID;
                     if (ret) {
-                        ret = (pVal->u.tcData.header.subtype <= 255UL);
-                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SUBTYPE;
+                        ret = (pVal->u.tcData.header.subtypeId <= 255UL);
+                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SUBTYPEID;
                         if (ret) {
                             ret = (pVal->u.tcData.header.source <= 2047UL);
                             *pErrCode = ret ? 0 :  ERR_PUSPACKETDATAREDUCED_TCDATA_HEADER_SOURCE;
@@ -3542,8 +3661,8 @@ flag asn1SccPusPacketReduced_IsConstraintValid(const asn1SccPusPacketReduced *pV
                                                 ret = (pVal->data.u.tmData.header.serviceId <= 255UL);
                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                 if (ret) {
-                                                    ret = (pVal->data.u.tmData.header.subtype <= 255UL);
-                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                    ret = (pVal->data.u.tmData.header.subtypeId <= 255UL);
+                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                     if (ret) {
                                                         ret = (pVal->data.u.tmData.header.msgTypeCount <= 65535UL);
                                                         *pErrCode = ret ? 0 :  ERR_PUSPACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -3804,8 +3923,8 @@ flag asn1SccPusPacketReduced_IsConstraintValid(const asn1SccPusPacketReduced *pV
                                                 ret = (pVal->data.u.tcData.header.serviceId <= 255UL);
                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                 if (ret) {
-                                                    ret = (pVal->data.u.tcData.header.subtype <= 255UL);
-                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                    ret = (pVal->data.u.tcData.header.subtypeId <= 255UL);
+                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                     if (ret) {
                                                         ret = (pVal->data.u.tcData.header.source <= 2047UL);
                                                         *pErrCode = ret ? 0 :  ERR_PUSPACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -4067,8 +4186,8 @@ flag asn1SccPusTC_19_1_Data_IsConstraintValid(const asn1SccPusTC_19_1_Data *pVal
                                                     ret = (pVal->packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                     *pErrCode = ret ? 0 :  ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                     if (ret) {
-                                                        ret = (pVal->packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                        *pErrCode = ret ? 0 :  ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                        ret = (pVal->packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                        *pErrCode = ret ? 0 :  ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                         if (ret) {
                                                             ret = (pVal->packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                             *pErrCode = ret ? 0 :  ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -4329,8 +4448,8 @@ flag asn1SccPusTC_19_1_Data_IsConstraintValid(const asn1SccPusTC_19_1_Data *pVal
                                                     ret = (pVal->packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                     *pErrCode = ret ? 0 :  ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                     if (ret) {
-                                                        ret = (pVal->packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                        *pErrCode = ret ? 0 :  ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                        ret = (pVal->packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                        *pErrCode = ret ? 0 :  ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                         if (ret) {
                                                             ret = (pVal->packetReduced.data.u.tcData.header.source <= 2047UL);
                                                             *pErrCode = ret ? 0 :  ERR_PUSTC_19_1_DATA_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -4597,8 +4716,8 @@ flag asn1SccPusTcScheduledActivity_IsConstraintValid(const asn1SccPusTcScheduled
                                                     ret = (pVal->packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                     *pErrCode = ret ? 0 :  ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                     if (ret) {
-                                                        ret = (pVal->packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                        *pErrCode = ret ? 0 :  ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                        ret = (pVal->packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                        *pErrCode = ret ? 0 :  ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                         if (ret) {
                                                             ret = (pVal->packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                             *pErrCode = ret ? 0 :  ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -4859,8 +4978,8 @@ flag asn1SccPusTcScheduledActivity_IsConstraintValid(const asn1SccPusTcScheduled
                                                     ret = (pVal->packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                     *pErrCode = ret ? 0 :  ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                     if (ret) {
-                                                        ret = (pVal->packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                        *pErrCode = ret ? 0 :  ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                        ret = (pVal->packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                        *pErrCode = ret ? 0 :  ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                         if (ret) {
                                                             ret = (pVal->packetReduced.data.u.tcData.header.source <= 2047UL);
                                                             *pErrCode = ret ? 0 :  ERR_PUSTCSCHEDULEDACTIVITY_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -5135,8 +5254,8 @@ flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data *pVal
     	                                                ret = (pVal->arr[i1].packetReduced.data.u.tmData.header.serviceId <= 255UL);
     	                                                *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
     	                                                if (ret) {
-    	                                                    ret = (pVal->arr[i1].packetReduced.data.u.tmData.header.subtype <= 255UL);
-    	                                                    *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+    	                                                    ret = (pVal->arr[i1].packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+    	                                                    *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
     	                                                    if (ret) {
     	                                                        ret = (pVal->arr[i1].packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
     	                                                        *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -5397,8 +5516,8 @@ flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data *pVal
     	                                                ret = (pVal->arr[i1].packetReduced.data.u.tcData.header.serviceId <= 255UL);
     	                                                *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
     	                                                if (ret) {
-    	                                                    ret = (pVal->arr[i1].packetReduced.data.u.tcData.header.subtype <= 255UL);
-    	                                                    *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+    	                                                    ret = (pVal->arr[i1].packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+    	                                                    *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
     	                                                    if (ret) {
     	                                                        ret = (pVal->arr[i1].packetReduced.data.u.tcData.header.source <= 2047UL);
     	                                                        *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -5798,8 +5917,8 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
             	                                                ret = (pVal->u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.serviceId <= 255UL);
             	                                                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
             	                                                if (ret) {
-            	                                                    ret = (pVal->u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtype <= 255UL);
-            	                                                    *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+            	                                                    ret = (pVal->u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+            	                                                    *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
             	                                                    if (ret) {
             	                                                        ret = (pVal->u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
             	                                                        *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -6060,8 +6179,8 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
             	                                                ret = (pVal->u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.serviceId <= 255UL);
             	                                                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
             	                                                if (ret) {
-            	                                                    ret = (pVal->u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtype <= 255UL);
-            	                                                    *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+            	                                                    ret = (pVal->u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+            	                                                    *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
             	                                                    if (ret) {
             	                                                        ret = (pVal->u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.source <= 2047UL);
             	                                                        *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -6301,8 +6420,8 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
                                                             ret = (pVal->u.st_19_1.packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                             *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                             if (ret) {
-                                                                ret = (pVal->u.st_19_1.packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                                ret = (pVal->u.st_19_1.packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                                 if (ret) {
                                                                     ret = (pVal->u.st_19_1.packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                                     *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -6563,8 +6682,8 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
                                                             ret = (pVal->u.st_19_1.packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                             *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                             if (ret) {
-                                                                ret = (pVal->u.st_19_1.packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                                ret = (pVal->u.st_19_1.packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                                *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                                 if (ret) {
                                                                     ret = (pVal->u.st_19_1.packetReduced.data.u.tcData.header.source <= 2047UL);
                                                                     *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -6849,8 +6968,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                     ret = (pVal->u.tmData.header.serviceId <= 255UL);
                     *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TMDATA_HEADER_SERVICEID;
                     if (ret) {
-                        ret = (pVal->u.tmData.header.subtype <= 255UL);
-                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TMDATA_HEADER_SUBTYPE;
+                        ret = (pVal->u.tmData.header.subtypeId <= 255UL);
+                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TMDATA_HEADER_SUBTYPEID;
                         if (ret) {
                             ret = (pVal->u.tmData.header.msgTypeCount <= 65535UL);
                             *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -7111,8 +7230,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                     ret = (pVal->u.tcData.header.serviceId <= 255UL);
                     *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_HEADER_SERVICEID;
                     if (ret) {
-                        ret = (pVal->u.tcData.header.subtype <= 255UL);
-                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_HEADER_SUBTYPE;
+                        ret = (pVal->u.tcData.header.subtypeId <= 255UL);
+                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_HEADER_SUBTYPEID;
                         if (ret) {
                             ret = (pVal->u.tcData.header.source <= 2047UL);
                             *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_HEADER_SOURCE;
@@ -7245,8 +7364,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                         	                                                ret = (pVal->u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.serviceId <= 255UL);
                         	                                                *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                         	                                                if (ret) {
-                        	                                                    ret = (pVal->u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtype <= 255UL);
-                        	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                        	                                                    ret = (pVal->u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                        	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                         	                                                    if (ret) {
                         	                                                        ret = (pVal->u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                         	                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -7507,8 +7626,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                         	                                                ret = (pVal->u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.serviceId <= 255UL);
                         	                                                *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                         	                                                if (ret) {
-                        	                                                    ret = (pVal->u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtype <= 255UL);
-                        	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                        	                                                    ret = (pVal->u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                        	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                         	                                                    if (ret) {
                         	                                                        ret = (pVal->u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.source <= 2047UL);
                         	                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -7748,8 +7867,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                                                                         ret = (pVal->u.tcData.data.u.st_19_1.packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                                         *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                                         if (ret) {
-                                                                            ret = (pVal->u.tcData.data.u.st_19_1.packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                                            *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                                            ret = (pVal->u.tcData.data.u.st_19_1.packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                                            *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                                             if (ret) {
                                                                                 ret = (pVal->u.tcData.data.u.st_19_1.packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -8010,8 +8129,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                                                                         ret = (pVal->u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                                         *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                                         if (ret) {
-                                                                            ret = (pVal->u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                                            *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                                            ret = (pVal->u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                                            *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                                             if (ret) {
                                                                                 ret = (pVal->u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.source <= 2047UL);
                                                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -8336,8 +8455,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                     	                                                ret = (pVal->u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.serviceId <= 255UL);
                     	                                                *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                     	                                                if (ret) {
-                    	                                                    ret = (pVal->u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtype <= 255UL);
-                    	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                    	                                                    ret = (pVal->u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                    	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                     	                                                    if (ret) {
                     	                                                        ret = (pVal->u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                     	                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -8598,8 +8717,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                     	                                                ret = (pVal->u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.serviceId <= 255UL);
                     	                                                *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                     	                                                if (ret) {
-                    	                                                    ret = (pVal->u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtype <= 255UL);
-                    	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                    	                                                    ret = (pVal->u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                    	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                     	                                                    if (ret) {
                     	                                                        ret = (pVal->u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.source <= 2047UL);
                     	                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -8839,8 +8958,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                                                                     ret = (pVal->u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                                     *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                                     if (ret) {
-                                                                        ret = (pVal->u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                                        ret = (pVal->u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                                         if (ret) {
                                                                             ret = (pVal->u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                                             *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -9101,8 +9220,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                                                                     ret = (pVal->u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                                     *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                                     if (ret) {
-                                                                        ret = (pVal->u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                                        ret = (pVal->u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                                         if (ret) {
                                                                             ret = (pVal->u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tcData.header.source <= 2047UL);
                                                                             *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -9409,8 +9528,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                 ret = (pVal->data.u.tmData.header.serviceId <= 255UL);
                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TMDATA_HEADER_SERVICEID;
                                                 if (ret) {
-                                                    ret = (pVal->data.u.tmData.header.subtype <= 255UL);
-                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TMDATA_HEADER_SUBTYPE;
+                                                    ret = (pVal->data.u.tmData.header.subtypeId <= 255UL);
+                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TMDATA_HEADER_SUBTYPEID;
                                                     if (ret) {
                                                         ret = (pVal->data.u.tmData.header.msgTypeCount <= 65535UL);
                                                         *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -9671,8 +9790,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                 ret = (pVal->data.u.tcData.header.serviceId <= 255UL);
                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_HEADER_SERVICEID;
                                                 if (ret) {
-                                                    ret = (pVal->data.u.tcData.header.subtype <= 255UL);
-                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_HEADER_SUBTYPE;
+                                                    ret = (pVal->data.u.tcData.header.subtypeId <= 255UL);
+                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_HEADER_SUBTYPEID;
                                                     if (ret) {
                                                         ret = (pVal->data.u.tcData.header.source <= 2047UL);
                                                         *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_HEADER_SOURCE;
@@ -9805,8 +9924,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                     	                                                ret = (pVal->data.u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                     	                                                *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                     	                                                if (ret) {
-                                                    	                                                    ret = (pVal->data.u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                    	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                    	                                                    ret = (pVal->data.u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                    	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                     	                                                    if (ret) {
                                                     	                                                        ret = (pVal->data.u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                     	                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -10067,8 +10186,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                     	                                                ret = (pVal->data.u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                     	                                                *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                     	                                                if (ret) {
-                                                    	                                                    ret = (pVal->data.u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                    	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                    	                                                    ret = (pVal->data.u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                    	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                     	                                                    if (ret) {
                                                     	                                                        ret = (pVal->data.u.tcData.data.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.source <= 2047UL);
                                                     	                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -10308,8 +10427,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                                                                     ret = (pVal->data.u.tcData.data.u.st_19_1.packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                                                                     *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                                                                     if (ret) {
-                                                                                                        ret = (pVal->data.u.tcData.data.u.st_19_1.packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                                                                        ret = (pVal->data.u.tcData.data.u.st_19_1.packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                                                                         if (ret) {
                                                                                                             ret = (pVal->data.u.tcData.data.u.st_19_1.packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                                                                             *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -10570,8 +10689,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                                                                     ret = (pVal->data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                                                                     *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                                                                     if (ret) {
-                                                                                                        ret = (pVal->data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                                                                        ret = (pVal->data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                                                                         if (ret) {
                                                                                                             ret = (pVal->data.u.tcData.data.u.st_19_1.packetReduced.data.u.tcData.header.source <= 2047UL);
                                                                                                             *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -10896,8 +11015,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                 	                                                ret = (pVal->data.u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                 	                                                *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                 	                                                if (ret) {
-                                                	                                                    ret = (pVal->data.u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                	                                                    ret = (pVal->data.u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                 	                                                    if (ret) {
                                                 	                                                        ret = (pVal->data.u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                 	                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -11158,8 +11277,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                 	                                                ret = (pVal->data.u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                 	                                                *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                 	                                                if (ret) {
-                                                	                                                    ret = (pVal->data.u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                	                                                    ret = (pVal->data.u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                	                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                 	                                                    if (ret) {
                                                 	                                                        ret = (pVal->data.u.tcDataNoHeader.u.st_11_4.arr[i1].packetReduced.data.u.tcData.header.source <= 2047UL);
                                                 	                                                        *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4_ELM_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -11399,8 +11518,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                                                                 ret = (pVal->data.u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tmData.header.serviceId <= 255UL);
                                                                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SERVICEID;
                                                                                                 if (ret) {
-                                                                                                    ret = (pVal->data.u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tmData.header.subtype <= 255UL);
-                                                                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPE;
+                                                                                                    ret = (pVal->data.u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tmData.header.subtypeId <= 255UL);
+                                                                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_SUBTYPEID;
                                                                                                     if (ret) {
                                                                                                         ret = (pVal->data.u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tmData.header.msgTypeCount <= 65535UL);
                                                                                                         *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TMDATA_HEADER_MSGTYPECOUNT;
@@ -11661,8 +11780,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                                                                 ret = (pVal->data.u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tcData.header.serviceId <= 255UL);
                                                                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SERVICEID;
                                                                                                 if (ret) {
-                                                                                                    ret = (pVal->data.u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tcData.header.subtype <= 255UL);
-                                                                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPE;
+                                                                                                    ret = (pVal->data.u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tcData.header.subtypeId <= 255UL);
+                                                                                                    *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SUBTYPEID;
                                                                                                     if (ret) {
                                                                                                         ret = (pVal->data.u.tcDataNoHeader.u.st_19_1.packetReduced.data.u.tcData.header.source <= 2047UL);
                                                                                                         *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_19_1_PACKETREDUCED_DATA_TCDATA_HEADER_SOURCE;
@@ -11878,144 +11997,25 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
 
 
 
-flag asn1SccPusDouble_Equal(const asn1SccPusDouble* pVal1, const asn1SccPusDouble* pVal2)
+flag asn1SccPusSt23RepositoryDomain_Equal(const asn1SccPusSt23RepositoryDomain* pVal1, const asn1SccPusSt23RepositoryDomain* pVal2)
 {
-	return (*(pVal1)) == (*(pVal2));
+	return (pVal1->nCount == pVal2->nCount) && (memcmp(pVal1->arr, pVal2->arr, pVal1->nCount) ==0)	;
 
 }
 
-void asn1SccPusDouble_Initialize(asn1SccPusDouble* pVal)
+void asn1SccPusSt23RepositoryDomain_Initialize(asn1SccPusSt23RepositoryDomain* pVal)
 {
 
-	(*(pVal)) = 0.00000000000000000000E+000;
+	memset(pVal->arr, 0x0, 30);
+
 }
 
-flag asn1SccPusDouble_IsConstraintValid(const asn1SccPusDouble* pVal, int* pErrCode)
+flag asn1SccPusSt23RepositoryDomain_IsConstraintValid(const asn1SccPusSt23RepositoryDomain* pVal, int* pErrCode)
 {
     flag ret = TRUE;
 	
-    ret = ((-1.79769313486231570000E+308 <= (*(pVal))) && ((*(pVal)) <= 1.79769313486231570000E+308));
-    *pErrCode = ret ? 0 :  ERR_PUSDOUBLE;
-
-	return ret;
-}
-
-
-
-flag asn1SccT_Int32_Equal(const asn1SccT_Int32* pVal1, const asn1SccT_Int32* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccT_Int32_Initialize(asn1SccT_Int32* pVal)
-{
-
-	(*(pVal)) = 0;
-}
-
-flag asn1SccT_Int32_IsConstraintValid(const asn1SccT_Int32* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((-2147483648LL <= (*(pVal))) && ((*(pVal)) <= 2147483647LL));
-    *pErrCode = ret ? 0 :  ERR_T_INT32;
-
-	return ret;
-}
-
-
-
-flag asn1SccT_UInt32_Equal(const asn1SccT_UInt32* pVal1, const asn1SccT_UInt32* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccT_UInt32_Initialize(asn1SccT_UInt32* pVal)
-{
-
-	(*(pVal)) = 0;
-}
-
-flag asn1SccT_UInt32_IsConstraintValid(const asn1SccT_UInt32* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) <= 4294967295UL);
-    *pErrCode = ret ? 0 :  ERR_T_UINT32;
-
-	return ret;
-}
-
-
-
-flag asn1SccT_Int8_Equal(const asn1SccT_Int8* pVal1, const asn1SccT_Int8* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccT_Int8_Initialize(asn1SccT_Int8* pVal)
-{
-
-	(*(pVal)) = 0;
-}
-
-flag asn1SccT_Int8_IsConstraintValid(const asn1SccT_Int8* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((-128LL <= (*(pVal))) && ((*(pVal)) <= 127LL));
-    *pErrCode = ret ? 0 :  ERR_T_INT8;
-
-	return ret;
-}
-
-
-
-flag asn1SccT_UInt8_Equal(const asn1SccT_UInt8* pVal1, const asn1SccT_UInt8* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccT_UInt8_Initialize(asn1SccT_UInt8* pVal)
-{
-
-	(*(pVal)) = 0;
-}
-
-flag asn1SccT_UInt8_IsConstraintValid(const asn1SccT_UInt8* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = ((*(pVal)) <= 255UL);
-    *pErrCode = ret ? 0 :  ERR_T_UINT8;
-
-	return ret;
-}
-
-
-
-flag asn1SccT_Boolean_Equal(const asn1SccT_Boolean* pVal1, const asn1SccT_Boolean* pVal2)
-{
-	return (*(pVal1)) == (*(pVal2));
-
-}
-
-void asn1SccT_Boolean_Initialize(asn1SccT_Boolean* pVal)
-{
-
-	(*(pVal)) = FALSE;
-}
-
-flag asn1SccT_Boolean_IsConstraintValid(const asn1SccT_Boolean* pVal, int* pErrCode)
-{
-    flag ret = TRUE;
-	
-    ret = TRUE;
-    *pErrCode = ret ? 0 :  ERR_T_BOOLEAN;
+    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 30));
+    *pErrCode = ret ? 0 :  ERR_PUSST23REPOSITORYDOMAIN;
 
 	return ret;
 }

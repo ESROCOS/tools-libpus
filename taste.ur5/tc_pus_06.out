@@ -1,0 +1,96 @@
+Pthread 0 created
+Pthread 1 created
+Notify init 
+Notify init: 0
+Startup completed!
+TcQUEUE: TC11_1 inserted in TcQueue.
+TC11_1 in TcDispatch.
+ - ST01: Packet TC11_1 received, subtype: 1, error 0, step 0
+ - ST01: No report TM1_1 needed for TC11_1 .
+ - ST01: Packet TC11_1 received, subtype: 7, error 0, step 0
+ - ST01: No report TM1_7 needed for TC11_1 .
+TcQUEUE: TC11_4 inserted in TcQueue.
+TC11_4 in TcDispatch.
+ - ST01: Packet TC11_4 received, subtype: 1, error 0, step 0
+ - ST01: No report TM1_1 needed for TC11_4 .
+ - ST01: Packet TC11_4 received, subtype: 7, error 0, step 0
+ - ST01: No report TM1_7 needed for TC11_4 .
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+TcQUEUE: TC17_1 inserted in TcQueue.
+TC17_1 in TcDispatch.
+ - ST17: TC17_1 received.
+ - ST17: sending packet to ST01 Acceptance success
+ - ST01: Packet TC17_1 received, subtype: 1, error 0, step 0
+ - ST01: No report TM1_1 needed for TC17_1 .
+ - ST17: processing packet
+ - ST17: error: 0
+ - ST17: Sending TM17.2
+TmQUEUE: TM17_2 inserted in TmQueue.
+TM17_2 in TmDispatch.
+Recibido
+TcQUEUE: TC17_1 inserted in TcQueue.
+TC17_1 in TcDispatch.
+ - ST17: TC17_1 received.
+ - ST17: sending packet to ST01 Acceptance success
+ - ST01: Packet TC17_1 received, subtype: 1, error 0, step 0
+ - ST01: No report TM1_1 needed for TC17_1 .
+ - ST17: processing packet
+ - ST17: error: 0
+ - ST17: Sending TM17.2
+TmQUEUE: TM17_2 inserted in TmQueue.
+ INC COUNT: Time2: 1534751166
+ INC COUNT: TM0_0 inserted in TmQueue.
+ INC COUNT: in, error 0
+TM17_2 in TmDispatch.
+Recibido
+TM0_0 in TmDispatch.
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+Recibido
+TM3_25 in TmDispatch.
+Recibido
+TcQUEUE: TC17_1 inserted in TcQueue.
+TC17_1 in TcDispatch.
+ - ST17: TC17_1 received.
+ - ST17: sending packet to ST01 Acceptance success
+ - ST01: Packet TC17_1 received, subtype: 1, error 0, step 0
+ - ST01: No report TM1_1 needed for TC17_1 .
+ - ST17: processing packet
+ - ST17: error: 0
+ - ST17: Sending TM17.2
+TmQUEUE: TM17_2 inserted in TmQueue.
+TM17_2 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+{'type': '', 'svc': [11, 17], 'msg': [1, 4, 2]}
+{'type': '', 'svc': [11, 17], 'msg': [1, 4, 2]}

@@ -1,79 +1,484 @@
+UserDefs-Base-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+--Definition DummyBase-T starts
+    DummyBase-T ::= T-UInt32
+-- Definition DummyBase-T ends
+
+--Definition numBase-JointTrajectory starts
+    numBase-JointTrajectory	T-UInt32 ::= 200 
+-- Definition numBase-JointTrajectory ends
+
+--Definition numStd-orogen-typekits-mtype-std-vector-base-JointTransform starts
+    numStd-orogen-typekits-mtype-std-vector-base-JointTransform	T-UInt32 ::= 200 
+-- Definition numStd-orogen-typekits-mtype-std-vector-base-JointTransform ends
+
+--Definition numStd-orogen-typekits-mtype-std-vector-base-Waypoint starts
+    numStd-orogen-typekits-mtype-std-vector-base-Waypoint	T-UInt32 ::= 200 
+-- Definition numStd-orogen-typekits-mtype-std-vector-base-Waypoint ends
+
+--Definition numStd-orogen-typekits-mtype-std-vector-base-Wrench starts
+    numStd-orogen-typekits-mtype-std-vector-base-Wrench	T-UInt32 ::= 200 
+-- Definition numStd-orogen-typekits-mtype-std-vector-base-Wrench ends
+
+--Definition numStd-vector-Wrappers-Vector4d starts
+    numStd-vector-Wrappers-Vector4d	T-UInt32 ::= 200 
+-- Definition numStd-vector-Wrappers-Vector4d ends
+
+--Definition numStd-orogen-typekits-mtype-std-vector-base-Trajectory starts
+    numStd-orogen-typekits-mtype-std-vector-base-Trajectory	T-UInt32 ::= 200 
+-- Definition numStd-orogen-typekits-mtype-std-vector-base-Trajectory ends
+
+--Definition numBase-JointLimits-names starts
+    numBase-JointLimits-names	T-UInt32 ::= 200 
+-- Definition numBase-JointLimits-names ends
+
+--Definition numBase-JointLimits-elements starts
+    numBase-JointLimits-elements	T-UInt32 ::= 200 
+-- Definition numBase-JointLimits-elements ends
+
+--Definition numBase-JointsTrajectory-names starts
+    numBase-JointsTrajectory-names	T-UInt32 ::= 200 
+-- Definition numBase-JointsTrajectory-names ends
+
+--Definition numBase-JointsTrajectory-elements starts
+    numBase-JointsTrajectory-elements	T-UInt32 ::= 200 
+-- Definition numBase-JointsTrajectory-elements ends
+
+--Definition numBase-JointsTrajectory-times-val starts
+    numBase-JointsTrajectory-times-val	T-UInt32 ::= 200 
+-- Definition numBase-JointsTrajectory-times-val ends
+
+--Definition numBase-NamedVector-Base-JointLimitRange-names starts
+    numBase-NamedVector-Base-JointLimitRange-names	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-JointLimitRange-names ends
+
+--Definition numBase-NamedVector-Base-JointLimitRange-elements starts
+    numBase-NamedVector-Base-JointLimitRange-elements	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-JointLimitRange-elements ends
+
+--Definition numBase-NamedVector-Base-JointState-names starts
+    numBase-NamedVector-Base-JointState-names	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-JointState-names ends
+
+--Definition numBase-NamedVector-Base-Wrench-names starts
+    numBase-NamedVector-Base-Wrench-names	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-Wrench-names ends
+
+--Definition numBase-NamedVector-Base-Wrench-elements starts
+    numBase-NamedVector-Base-Wrench-elements	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-Wrench-elements ends
+
+--Definition numBase-NamedVector-Base-JointTrajectory-names starts
+    numBase-NamedVector-Base-JointTrajectory-names	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-JointTrajectory-names ends
+
+--Definition numBase-NamedVector-Base-JointTrajectory-elements starts
+    numBase-NamedVector-Base-JointTrajectory-elements	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-JointTrajectory-elements ends
+
+--Definition numBase-samples-DepthMap-timestamps starts
+    numBase-samples-DepthMap-timestamps	T-UInt32 ::= 200 
+-- Definition numBase-samples-DepthMap-timestamps ends
+
+--Definition numBase-samples-DepthMap-vertical-interval starts
+    numBase-samples-DepthMap-vertical-interval	T-UInt32 ::= 200 
+-- Definition numBase-samples-DepthMap-vertical-interval ends
+
+--Definition numBase-samples-DepthMap-horizontal-interval starts
+    numBase-samples-DepthMap-horizontal-interval	T-UInt32 ::= 200 
+-- Definition numBase-samples-DepthMap-horizontal-interval ends
+
+--Definition numBase-samples-DepthMap-distances starts
+    numBase-samples-DepthMap-distances	T-UInt32 ::= 200 
+-- Definition numBase-samples-DepthMap-distances ends
+
+--Definition numBase-samples-DepthMap-remissions starts
+    numBase-samples-DepthMap-remissions	T-UInt32 ::= 200 
+-- Definition numBase-samples-DepthMap-remissions ends
+
+--Definition numBase-samples-DistanceImage-data starts
+    numBase-samples-DistanceImage-data	T-UInt32 ::= 200 
+-- Definition numBase-samples-DistanceImage-data ends
+
+--Definition numBase-commands-Joints-names starts
+    numBase-commands-Joints-names	T-UInt32 ::= 200 
+-- Definition numBase-commands-Joints-names ends
+
+--Definition numBase-samples-LaserScan-ranges starts
+    numBase-samples-LaserScan-ranges	T-UInt32 ::= 200 
+-- Definition numBase-samples-LaserScan-ranges ends
+
+--Definition numBase-samples-LaserScan-remission starts
+    numBase-samples-LaserScan-remission	T-UInt32 ::= 200 
+-- Definition numBase-samples-LaserScan-remission ends
+
+--Definition numBase-samples-Pointcloud-points starts
+    numBase-samples-Pointcloud-points	T-UInt32 ::= 200 
+-- Definition numBase-samples-Pointcloud-points ends
+
+--Definition numBase-samples-Pointcloud-colors starts
+    numBase-samples-Pointcloud-colors	T-UInt32 ::= 200 
+-- Definition numBase-samples-Pointcloud-colors ends
+
+--Definition numBase-samples-Sonar-timestamps starts
+    numBase-samples-Sonar-timestamps	T-UInt32 ::= 200 
+-- Definition numBase-samples-Sonar-timestamps ends
+
+--Definition numBase-samples-Sonar-bearings starts
+    numBase-samples-Sonar-bearings	T-UInt32 ::= 200 
+-- Definition numBase-samples-Sonar-bearings ends
+
+--Definition numBase-samples-Sonar-bins starts
+    numBase-samples-Sonar-bins	T-UInt32 ::= 200 
+-- Definition numBase-samples-Sonar-bins ends
+
+--Definition numBase-samples-SonarBeam-beam starts
+    numBase-samples-SonarBeam-beam	T-UInt32 ::= 200 
+-- Definition numBase-samples-SonarBeam-beam ends
+
+--Definition numBase-samples-SonarScan-data starts
+    numBase-samples-SonarScan-data	T-UInt32 ::= 200 
+-- Definition numBase-samples-SonarScan-data ends
+
+--Definition numBase-samples-SonarScan-time-beams starts
+    numBase-samples-SonarScan-time-beams	T-UInt32 ::= 200 
+-- Definition numBase-samples-SonarScan-time-beams ends
+
+--Definition numBase-samples-Wrenches-names starts
+    numBase-samples-Wrenches-names	T-UInt32 ::= 200 
+-- Definition numBase-samples-Wrenches-names ends
+
+--Definition numBase-samples-Wrenches-elements starts
+    numBase-samples-Wrenches-elements	T-UInt32 ::= 200 
+-- Definition numBase-samples-Wrenches-elements ends
+
+--Definition numBase-JointTransformVector-names starts
+    numBase-JointTransformVector-names	T-UInt32 ::= 200 
+-- Definition numBase-JointTransformVector-names ends
+
+--Definition numBase-JointTransformVector-elements starts
+    numBase-JointTransformVector-elements	T-UInt32 ::= 200 
+-- Definition numBase-JointTransformVector-elements ends
+
+--Definition numBase-NamedVector-Base-JointTransform-names starts
+    numBase-NamedVector-Base-JointTransform-names	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-JointTransform-names ends
+
+--Definition numBase-NamedVector-Base-JointTransform-elements starts
+    numBase-NamedVector-Base-JointTransform-elements	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-Base-JointTransform-elements ends
+
+--Definition numBase-samples-frame-Frame-image starts
+    numBase-samples-frame-Frame-image	T-UInt32 ::= 200 
+-- Definition numBase-samples-frame-Frame-image ends
+
+--Definition numBase-samples-frame-Frame-attributes starts
+    numBase-samples-frame-Frame-attributes	T-UInt32 ::= 200 
+-- Definition numBase-samples-frame-Frame-attributes ends
+
+--Definition numWrappers-MatrixXd-data starts
+    numWrappers-MatrixXd-data	T-UInt32 ::= 200 
+-- Definition numWrappers-MatrixXd-data ends
+
+--Definition numWrappers-VectorXd-data starts
+    numWrappers-VectorXd-data	T-UInt32 ::= 200 
+-- Definition numWrappers-VectorXd-data ends
+
+--Definition numBase-JointTransformVector-m-names starts
+    numBase-JointTransformVector-m-names	T-UInt32 ::= 200 
+-- Definition numBase-JointTransformVector-m-names ends
+
+--Definition numBase-NamedVector-base-JointTransform-m-names starts
+    numBase-NamedVector-base-JointTransform-m-names	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-base-JointTransform-m-names ends
+
+--Definition numBase-NamedVector-base-Wrench-m-names starts
+    numBase-NamedVector-base-Wrench-m-names	T-UInt32 ::= 200 
+-- Definition numBase-NamedVector-base-Wrench-m-names ends
+
+--Definition numBase-samples-Pointcloud-m-points starts
+    numBase-samples-Pointcloud-m-points	T-UInt32 ::= 200 
+-- Definition numBase-samples-Pointcloud-m-points ends
+
+--Definition numBase-samples-Pointcloud-m-colors starts
+    numBase-samples-Pointcloud-m-colors	T-UInt32 ::= 200 
+-- Definition numBase-samples-Pointcloud-m-colors ends
+
+--Definition numBase-samples-Wrenches-m-names starts
+    numBase-samples-Wrenches-m-names	T-UInt32 ::= 200 
+-- Definition numBase-samples-Wrenches-m-names ends
+
+--Definition numWrappers-geometry-Spline-knots starts
+    numWrappers-geometry-Spline-knots	T-UInt32 ::= 200 
+-- Definition numWrappers-geometry-Spline-knots ends
+
+--Definition numWrappers-geometry-Spline-vertices starts
+    numWrappers-geometry-Spline-vertices	T-UInt32 ::= 200 
+-- Definition numWrappers-geometry-Spline-vertices ends
+
+
+END
 -- H2020 ESROCOS Project
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 definitions for service ST[01] telecommand verification
--- (cf. ECSS-E-ST-70-41C sections 6.1.4.3, 8.1)
---
--- This file defines some error codes for TC verification. Additional error codes 
--- can be added 
+-- ASN.1 definitions for service ST[23] File management
+-- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
 
+-- * Only the minimal services are implemented:
+-- * File handling
+--	 - TC-23-1 createFile
+--   - TC-23-2 deleteFile
+--   - TC-23-3 reportFileAttributes
+--   - TM-23-4 reportFileAttributes
+-- * File copy
+--   - TC-23-14 copyFile
 
-PUS-ST01 DEFINITIONS ::=
+PUS-ST23 DEFINITIONS ::= 
 BEGIN
 
-    IMPORTS 
-    PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount, PusStepId FROM PUS-CcsdsPacketFields
-    PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-TypesDefinitions;
+	
+	IMPORTS 
+	PusUInt64 FROM PUS-TypesDefinitions
+	
+	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH,
+	pus-ST23-MAX-SIZE-REPOSITORY-PATH, pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN FROM PUS-Config
+	;
     
-    -- Type to represent failure codes used by service ST[01]
-    PusSt01FailureCode ::= PusUInt32
+	PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-PATH)) 
+	
+	PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH))
+	
+	PusSt23RepositoryDomain ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN))
     
-    -- Default failure codes (others may be added)
-    pus-ST01-NO-ERROR					PusSt01FailureCode ::= 0	-- Default value
-    pus-ST01-ERROR-APID-UNAVAILABLE		PusSt01FailureCode ::= 1	-- Destination process not available
-    pus-ST01-ERROR-SERVICE-UNAVAILABLE	PusSt01FailureCode ::= 2	-- PUS service not available
-    pus-ST01-ERROR-SUBTYPE-UNAVAILABLE	PusSt01FailureCode ::= 3	-- PUS service subtype not available	
-    pus-ST01-ERROR-APID-UNKNOWN			PusSt01FailureCode ::= 4	-- Destination process is unknown
-    pus-ST01-ERROR-SERVICE-UNKNOWN		PusSt01FailureCode ::= 5	-- PUS service is unknown
-    pus-ST01-ERROR-SUBTYPE-UNKNOWN		PusSt01FailureCode ::= 6	-- PUS service subtype is unknown	
-    pus-ST01-ERROR-WRONG-FORMAT			PusSt01FailureCode ::= 7	-- Packet format is inconsistent
-    pus-ST01-ERROR-CHECKSUM				PusSt01FailureCode ::= 8	-- Checksums are currently not used, code reserved for future use
-    
-	-- Type to report failure data in ST[01] TM messages
-	-- The type matches the error information stored by the PUS library (pus_error.h). Fields will be
-	-- used optionally, depending on the code.
-	PusSt01FailureInfo ::= SEQUENCE
+	-- Data TC[23,1] TM[23,4]
+	PusTC-TM-23-1-4-Data ::= SEQUENCE
 	{
-		subcode	PusInt32,	-- Internal error code, matching a C enum
-		data	PusInt32,	-- Error data
-		address PusMemAddr	-- A memory address
+		repository			PusSt23RepositoryPath,
+		fileName			PusSt23FileName,
+		maxSize	 			PusUInt64
+		-- file locked status BOOLEAN (optional)
+		-- additional file atributes DEDUCED (optinal N-Times)
+	}
+	 
+	-- Data TC[23,2] TC[23,3]
+	PusTC-23-2-3-Data ::= SEQUENCE
+	{
+		repository			PusSt23RepositoryPath,
+		fileName			PusSt23FileName
 	}
 
-    -- Request ID, used by ST[01] packets
-    PusSt01RequestId ::= SEQUENCE
+
+	-- Data TC[23,14]
+	PusTC-23-14-Data ::= SEQUENCE
+	{
+		sourceRepository  		PusSt23RepositoryPath,
+		sourceFileName			PusSt23FileName,
+		targetRepository		PusSt23RepositoryPath,
+		targetFileName			PusSt23FileName
+	}
+	
+	
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for CCSDS packets
+-- (cf. ECSS-E-ST-70-41C section 7.4)
+
+PUS-CcsdsPacket DEFINITIONS ::=
+BEGIN
+
+	IMPORTS 
+	PusTime FROM PUS-Time
+	
+	PusServiceType, PusSubserviceType FROM PUS-Services
+	
+	PusVersionNumber, PusTimeReferenceStatus, PusMessageTypeCounter, PusPacketType, PusApid, 
+	PusChecksum, PusAcknowledgementFlags, PusPacketVersion, PusSecondaryHeaderFlag, PusSequenceFlags, 
+	PusSequenceCount, PusPacketDataLength FROM PUS-CcsdsPacketFields
+
+	PusTM-1-X-Data FROM PUS-ST01
+	PusTM-3-25-Data FROM PUS-ST03
+	PusTM-5-X-Data FROM PUS-ST05
+	PusTC-8-1-Data FROM PUS-ST08
+	PusTC-9-1-Data, PusTM-9-2-Data FROM PUS-ST09
+	PusTC-12-1-2-Data  FROM PUS-ST12
+	PusTC-19-X-Data FROM PUS-ST19
+	PusTC-TM-20-X-Data FROM PUS-ST20
+  	
+	PusTC-18-1-Data, PusTC-18-2-6-12-Data, PusTC-18-3-Data, 
+	PusTC-18-4-5-Data, PusTC-18-13-Data FROM PUS-ST18
+	
+	PusTC-TM-23-1-4-Data, PusTC-23-2-3-Data, PusTC-23-14-Data FROM PUS-ST23
+  	
+  	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
+  	
+  	PusUInt32 FROM PUS-TypesDefinitions
+  	
+  	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
+  	
+  	PusTC-200-1-Data, PusTM-200-2-Data FROM PUS-ST200
+  	PusTC-201-1-3-Data, PusTM-201-4-Data FROM PUS-ST201
+  	;
+
+    -- TM secondary header
+    PusTmHeader ::= SEQUENCE
+    {
+        pusVersion      PusVersionNumber,
+        timeRefStatus   PusTimeReferenceStatus,
+        serviceId       PusServiceType,
+        subtypeId       PusSubserviceType,
+        msgTypeCount    PusMessageTypeCounter,
+        destination     PusApid,
+        time            PusTime
+        -- no spare bits
+    }
+    
+    -- TM actual data
+    PusTmSourceData ::= CHOICE
+    {
+        st-1-X 	PusTM-1-X-Data,
+        st-3-25 PusTM-3-25-Data,
+        st-5-X 	PusTM-5-X-Data,
+        st-9-2 	PusTM-9-2-Data,
+        st-20-2 PusTC-TM-20-X-Data,
+        st-23-4 PusTC-TM-23-1-4-Data,
+        st-200-2 PusTM-200-2-Data,
+      	st-201-4 PusTM-201-4-Data
+    }
+    
+    -- TC secondary header
+    PusTcHeader ::= SEQUENCE
+    {
+        pusVersion      PusVersionNumber,
+        ackFlags        PusAcknowledgementFlags,
+        serviceId       PusServiceType,
+        subtypeId       PusSubserviceType,
+        source          PusApid
+        -- no spare bits
+    }
+    
+    
+    -- Data for TM[19,1], event action
+    PusTC-19-1-Data  ::= SEQUENCE
+    {
+    	-- Just 1 action-event per TC
+    	-- No Aplication Process ID in TC packet
+    	eventId 		PusSt05EventId,
+    	packetReduced 	PusPacketReduced
+    }
+    
+    -- Schedulable action TC11.4
+    PusTcScheduledActivity ::= SEQUENCE
+    {	
+    	time			PusTime,
+    	packetReduced 	PusPacketReduced
+    }
+    
+    -- Data field for TC11.4
+    PusTC-11-4-Data ::= SEQUENCE SIZE(1..pus-ST11-MAX-SCHEDULED-ACTIVITIES) OF PusTcScheduledActivity
+           
+    
+    -- TC actual data
+    PusTcApplicationData ::= CHOICE
+    { -- The same order as the reduced
+    	st-8-1 		PusTC-8-1-Data,
+    	st-9-1 		PusTC-9-1-Data,
+    	st-12-1-2 	PusTC-12-1-2-Data,
+    	st-18-2-6-12 PusTC-18-2-6-12-Data,
+    	st-18-3		PusTC-18-3-Data,
+    	st-18-4-5	PusTC-18-4-5-Data,
+    	st-18-13 	PusTC-18-13-Data,
+    	st-19-X 	PusTC-19-X-Data,
+    	st-20-X 	PusTC-TM-20-X-Data,
+    	st-23-1		PusTC-TM-23-1-4-Data,
+    	st-23-2-3	PusTC-23-2-3-Data,
+    	st-23-14	PusTC-23-14-Data,
+    	st-200-1 	PusTC-200-1-Data,
+    	st-201-1-3 	PusTC-201-1-3-Data,
+    	-- No packet reduced
+    	st-11-4 	PusTC-11-4-Data,
+    	st-18-1 	PusTC-18-1-Data,
+    	st-19-1 	PusTC-19-1-Data
+    }
+    
+    PusTcApplicationDataReduced ::= CHOICE
+    { 
+    	st-8-1 		PusTC-8-1-Data,
+    	st-9-1 		PusTC-9-1-Data,
+    	st-12-1-2 	PusTC-12-1-2-Data,
+    	st-18-2-6-12 PusTC-18-2-6-12-Data,
+    	st-18-3		PusTC-18-3-Data,
+    	st-18-4-5	PusTC-18-4-5-Data,
+    	st-18-13 	PusTC-18-13-Data,
+    	st-19-X 	PusTC-19-X-Data,
+    	st-20-X 	PusTC-TM-20-X-Data,
+    	st-23-1		PusTC-TM-23-1-4-Data,
+    	st-23-2-3	PusTC-23-2-3-Data,
+    	st-23-14	PusTC-23-14-Data,
+    	st-200-1 	PusTC-200-1-Data,
+    	st-201-1-3 	PusTC-201-1-3-Data
+    }
+    
+    -- TM/TC header + data
+    PusTmHeaderData ::= SEQUENCE
+    {
+       header  PusTmHeader,
+        data    PusTmSourceData
+    }
+    PusTcHeaderDataTemplate{T} ::= SEQUENCE
+    {
+        header  PusTcHeader,
+        data    T
+    }
+    
+   -- PusTcHeaderData ::= PusTcHeaderDataTemplate{PusTcApplicationData}
+   -- PusTcHeaderDataReduced ::= PusTcHeaderDataTemplate{PusTcApplicationDataReduced}
+
+
+    -- Packet data
+    PusPacketDataTemplate{T} ::= CHOICE
+    {
+        tmData          PusTmHeaderData,
+        tmDataNoHeader  PusTmSourceData,
+        tcData          PusTcHeaderDataTemplate{T},
+        tcDataNoHeader  T
+    }
+    PusPacketData ::= PusPacketDataTemplate{PusTcApplicationData}
+    PusPacketDataReduced ::= PusPacketDataTemplate{PusTcApplicationDataReduced}
+    
+
+    -- CCSDS packet
+    -- TM/TC user data contains only the source/application data. No spare bits or checksum is used.
+    -- Spare bits are not needed because TASTE handles the packing of the fields.
+    -- Checksum is not used because TASTE handles encoding/decoding, and there might be 
+    -- mismatched checksums if a message is transmitted between hosts with different endianness. 
+    PusPacketTemplate{T} ::= SEQUENCE
     {
         packetVersion       PusPacketVersion,
         packetType          PusPacketType,
         secondaryHeaderFlag PusSecondaryHeaderFlag,
         apid                PusApid,
         sequenceFlags       PusSequenceFlags,
-        sequenceCount       PusSequenceCount
+        sequenceCount       PusSequenceCount,
+        dataLength          PusPacketDataLength,
+        data                T
     }
     
-    -- Failure notice, used by ST[01] packets
-    PusSt01Failure ::= SEQUENCE
-    {
-    	code	PusSt01FailureCode,
-    	info	PusSt01FailureInfo
-    }
-    
-    -- Data of ST[01] TM packets
-    -- Each packet type uses a subset of the fields, but it has been preferred to keep 
-    -- the same structure for all to reduce the amount of code  
-    PusTM-1-X-Data ::= SEQUENCE
-    {
-    	request	PusSt01RequestId,
-    	step	PusStepId,
-    	failure	PusSt01Failure
-    }
-    
-    
+    PusPacket ::= PusPacketTemplate {PusPacketData}
+	PusPacketReduced ::= PusPacketTemplate {PusPacketDataReduced}
+
+
 END
 Base-Types DEFINITIONS ::=
 BEGIN
 
-IMPORTS DummyBase-T, numBase-JointTrajectory, numStd-orogen-typekits-mtype-std-vector-base-JointTransform, numStd-orogen-typekits-mtype-std-vector-base-Waypoint, numStd-orogen-typekits-mtype-std-vector-base-Wrench, numStd-vector-Wrappers-Vector4d, numStd-orogen-typekits-mtype-std-vector-base-Trajectory, numBase-JointLimits-names, numBase-JointLimits-elements, numBase-JointsTrajectory-names, numBase-JointsTrajectory-elements, numBase-JointsTrajectory-times-val, numBase-NamedVector-Base-JointLimitRange-names, numBase-NamedVector-Base-JointLimitRange-elements, numBase-NamedVector-Base-JointState-names, numBase-NamedVector-Base-Wrench-names, numBase-NamedVector-Base-Wrench-elements, numBase-NamedVector-Base-JointTrajectory-names, numBase-NamedVector-Base-JointTrajectory-elements, numBase-samples-DepthMap-timestamps, numBase-samples-DepthMap-vertical-interval, numBase-samples-DepthMap-horizontal-interval, numBase-samples-DepthMap-distances, numBase-samples-DepthMap-remissions, numBase-samples-DistanceImage-data, numBase-commands-Joints-names, numBase-samples-LaserScan-ranges, numBase-samples-LaserScan-remission, numBase-samples-Pointcloud-points, numBase-samples-Pointcloud-colors, numBase-samples-Sonar-timestamps, numBase-samples-Sonar-bearings, numBase-samples-Sonar-bins, numBase-samples-SonarBeam-beam, numBase-samples-SonarScan-data, numBase-samples-SonarScan-time-beams, numBase-samples-Wrenches-names, numBase-samples-Wrenches-elements, numBase-JointTransformVector-names, numBase-JointTransformVector-elements, numBase-NamedVector-Base-JointTransform-names, numBase-NamedVector-Base-JointTransform-elements, numBase-samples-frame-Frame-image, numBase-samples-frame-Frame-attributes, numWrappers-MatrixXd-data, numWrappers-VectorXd-data, numBase-JointTransformVector-m-names, numBase-NamedVector-base-JointTransform-m-names, numBase-NamedVector-base-Wrench-m-names, numBase-samples-Pointcloud-m-points, numBase-samples-Pointcloud-m-colors, numBase-samples-Wrenches-m-names, numWrappers-geometry-Spline-knots, numWrappers-geometry-Spline-vertices FROM UserDefs-Base-Types T-Double, T-Float, T-Int64, T-UInt16, T-String FROM TASTE-ExtendedTypes T-UInt32, T-Boolean, T-Int32 FROM TASTE-BasicTypes;
+IMPORTS T-UInt32, T-Boolean, T-Int32 FROM TASTE-BasicTypes T-Double, T-Float, T-Int64, T-UInt16, T-String FROM TASTE-ExtendedTypes DummyBase-T, numBase-JointTrajectory, numStd-orogen-typekits-mtype-std-vector-base-JointTransform, numStd-orogen-typekits-mtype-std-vector-base-Waypoint, numStd-orogen-typekits-mtype-std-vector-base-Wrench, numStd-vector-Wrappers-Vector4d, numStd-orogen-typekits-mtype-std-vector-base-Trajectory, numBase-JointLimits-names, numBase-JointLimits-elements, numBase-JointsTrajectory-names, numBase-JointsTrajectory-elements, numBase-JointsTrajectory-times-val, numBase-NamedVector-Base-JointLimitRange-names, numBase-NamedVector-Base-JointLimitRange-elements, numBase-NamedVector-Base-JointState-names, numBase-NamedVector-Base-Wrench-names, numBase-NamedVector-Base-Wrench-elements, numBase-NamedVector-Base-JointTrajectory-names, numBase-NamedVector-Base-JointTrajectory-elements, numBase-samples-DepthMap-timestamps, numBase-samples-DepthMap-vertical-interval, numBase-samples-DepthMap-horizontal-interval, numBase-samples-DepthMap-distances, numBase-samples-DepthMap-remissions, numBase-samples-DistanceImage-data, numBase-commands-Joints-names, numBase-samples-LaserScan-ranges, numBase-samples-LaserScan-remission, numBase-samples-Pointcloud-points, numBase-samples-Pointcloud-colors, numBase-samples-Sonar-timestamps, numBase-samples-Sonar-bearings, numBase-samples-Sonar-bins, numBase-samples-SonarBeam-beam, numBase-samples-SonarScan-data, numBase-samples-SonarScan-time-beams, numBase-samples-Wrenches-names, numBase-samples-Wrenches-elements, numBase-JointTransformVector-names, numBase-JointTransformVector-elements, numBase-NamedVector-Base-JointTransform-names, numBase-NamedVector-Base-JointTransform-elements, numBase-samples-frame-Frame-image, numBase-samples-frame-Frame-attributes, numWrappers-MatrixXd-data, numWrappers-VectorXd-data, numBase-JointTransformVector-m-names, numBase-NamedVector-base-JointTransform-m-names, numBase-NamedVector-base-Wrench-m-names, numBase-samples-Pointcloud-m-points, numBase-samples-Pointcloud-m-colors, numBase-samples-Wrenches-m-names, numWrappers-geometry-Spline-knots, numWrappers-geometry-Spline-vertices FROM UserDefs-Base-Types;
 
 --Definition Dummy2Base-T starts
     Dummy2Base-T ::= DummyBase-T
@@ -82,121 +487,121 @@ IMPORTS DummyBase-T, numBase-JointTrajectory, numStd-orogen-typekits-mtype-std-v
 --Definition Base-JointState-MODE starts
 Base-JointState-MODE ::= ENUMERATED
 {
-    acceleration,
-    effort,
-    position,
-    raw,
-    speed,
-    unset
+    base-jointstate-mode-acceleration,
+    base-jointstate-mode-effort,
+    base-jointstate-mode-position,
+    base-jointstate-mode-raw,
+    base-jointstate-mode-speed,
+    base-jointstate-mode-unset
 }
 -- Definition Base-JointState-MODE ends
 
 --Definition Base-Time-Resolution starts
 Base-Time-Resolution ::= ENUMERATED
 {
-    microseconds,
-    milliseconds,
-    seconds
+    base-time-resolution-microseconds,
+    base-time-resolution-milliseconds,
+    base-time-resolution-seconds
 }
 -- Definition Base-Time-Resolution ends
 
 --Definition Base-geometry-SplineBase-CoordinateType starts
 Base-geometry-SplineBase-CoordinateType ::= ENUMERATED
 {
-    derivative-to-next,
-    derivative-to-prior,
-    knuckle-point,
-    ordinary-point,
-    second-derivative-to-next,
-    second-derivative-to-prior,
-    tangent-point-for-next,
-    tangent-point-for-prior
+    base-geometry-splinebase-coordinatetype-derivative-to-next,
+    base-geometry-splinebase-coordinatetype-derivative-to-prior,
+    base-geometry-splinebase-coordinatetype-knuckle-point,
+    base-geometry-splinebase-coordinatetype-ordinary-point,
+    base-geometry-splinebase-coordinatetype-second-derivative-to-next,
+    base-geometry-splinebase-coordinatetype-second-derivative-to-prior,
+    base-geometry-splinebase-coordinatetype-tangent-point-for-next,
+    base-geometry-splinebase-coordinatetype-tangent-point-for-prior
 }
 -- Definition Base-geometry-SplineBase-CoordinateType ends
 
 --Definition Base-samples-DepthMap-DEPTH-MEASUREMENT-STATE starts
 Base-samples-DepthMap-DEPTH-MEASUREMENT-STATE ::= ENUMERATED
 {
-    measurement-error,
-    too-far,
-    too-near,
-    valid-measurement
+    base-samples-depthmap-depth-measurement-state-measurement-error,
+    base-samples-depthmap-depth-measurement-state-too-far,
+    base-samples-depthmap-depth-measurement-state-too-near,
+    base-samples-depthmap-depth-measurement-state-valid-measurement
 }
 -- Definition Base-samples-DepthMap-DEPTH-MEASUREMENT-STATE ends
 
 --Definition Base-samples-DepthMap-PROJECTION-TYPE starts
 Base-samples-DepthMap-PROJECTION-TYPE ::= ENUMERATED
 {
-    planar,
-    polar
+    base-samples-depthmap-projection-type-planar,
+    base-samples-depthmap-projection-type-polar
 }
 -- Definition Base-samples-DepthMap-PROJECTION-TYPE ends
 
 --Definition Base-samples-DepthMap-UNIT-AXIS starts
 Base-samples-DepthMap-UNIT-AXIS ::= ENUMERATED
 {
-    unit-x,
-    unit-y,
-    unit-z
+    base-samples-depthmap-unit-axis-unit-x,
+    base-samples-depthmap-unit-axis-unit-y,
+    base-samples-depthmap-unit-axis-unit-z
 }
 -- Definition Base-samples-DepthMap-UNIT-AXIS ends
 
 --Definition Base-samples-LASER-RANGE-ERRORS starts
 Base-samples-LASER-RANGE-ERRORS ::= ENUMERATED
 {
-    end-laser-range-errors,
-    max-range-error,
-    measurement-error,
-    other-range-errors,
-    too-far,
-    too-near
+    base-samples-laser-range-errors-end-laser-range-errors,
+    base-samples-laser-range-errors-max-range-error,
+    base-samples-laser-range-errors-measurement-error,
+    base-samples-laser-range-errors-other-range-errors,
+    base-samples-laser-range-errors-too-far,
+    base-samples-laser-range-errors-too-near
 }
 -- Definition Base-samples-LASER-RANGE-ERRORS ends
 
 --Definition Base-samples-frame-frame-mode-t starts
 Base-samples-frame-frame-mode-t ::= ENUMERATED
 {
-    compressed-modes,
-    mode-bayer,
-    mode-bayer-bggr,
-    mode-bayer-gbrg,
-    mode-bayer-grbg,
-    mode-bayer-rggb,
-    mode-bgr,
-    mode-grayscale,
-    mode-jpeg,
-    mode-pjpg,
-    mode-png,
-    mode-rgb,
-    mode-rgb32,
-    mode-undefined,
-    mode-uyvy,
-    raw-modes
+    base-samples-frame-frame-mode-t-compressed-modes,
+    base-samples-frame-frame-mode-t-mode-bayer,
+    base-samples-frame-frame-mode-t-mode-bayer-bggr,
+    base-samples-frame-frame-mode-t-mode-bayer-gbrg,
+    base-samples-frame-frame-mode-t-mode-bayer-grbg,
+    base-samples-frame-frame-mode-t-mode-bayer-rggb,
+    base-samples-frame-frame-mode-t-mode-bgr,
+    base-samples-frame-frame-mode-t-mode-grayscale,
+    base-samples-frame-frame-mode-t-mode-jpeg,
+    base-samples-frame-frame-mode-t-mode-pjpg,
+    base-samples-frame-frame-mode-t-mode-png,
+    base-samples-frame-frame-mode-t-mode-rgb,
+    base-samples-frame-frame-mode-t-mode-rgb32,
+    base-samples-frame-frame-mode-t-mode-undefined,
+    base-samples-frame-frame-mode-t-mode-uyvy,
+    base-samples-frame-frame-mode-t-raw-modes
 }
 -- Definition Base-samples-frame-frame-mode-t ends
 
 --Definition Base-samples-frame-frame-status-t starts
 Base-samples-frame-frame-status-t ::= ENUMERATED
 {
-    status-empty,
-    status-invalid,
-    status-valid
+    base-samples-frame-frame-status-t-status-empty,
+    base-samples-frame-frame-status-t-status-invalid,
+    base-samples-frame-frame-status-t-status-valid
 }
 -- Definition Base-samples-frame-frame-status-t ends
 
 --Definition Wrappers-geometry-SplineType starts
 Wrappers-geometry-SplineType ::= ENUMERATED
 {
-    degenerate,
-    polynomial-bezier,
-    polynomial-bspline,
-    rational-bezier,
-    rational-bspline
+    wrappers-geometry-splinetype-degenerate,
+    wrappers-geometry-splinetype-polynomial-bezier,
+    wrappers-geometry-splinetype-polynomial-bspline,
+    wrappers-geometry-splinetype-rational-bezier,
+    wrappers-geometry-splinetype-rational-bspline
 }
 -- Definition Wrappers-geometry-SplineType ends
 
 --Definition Base-JointTrajectoryP starts
-Base-JointTrajectoryP {T-UInt16: maxBase-JointTrajectory} ::= SEQUENCE(SIZE(1..maxBase-JointTrajectory)) OF Base-JointState
+Base-JointTrajectoryP {T-UInt32: maxBase-JointTrajectory} ::= SEQUENCE(SIZE(1..maxBase-JointTrajectory)) OF Base-JointState
 -- Definition Base-JointTrajectoryP ends
 
 --Definition Base-JointTrajectory starts
@@ -204,7 +609,7 @@ Base-JointTrajectory ::= Base-JointTrajectoryP{numBase-JointTrajectory}
 -- Definition Base-JointTrajectory ends
 
 --Definition Std-orogen-typekits-mtype-std-vector-base-JointTransformP starts
-Std-orogen-typekits-mtype-std-vector-base-JointTransformP {T-UInt16: maxStd-orogen-typekits-mtype-std-vector-base-JointTransform} ::= SEQUENCE(SIZE(1..maxStd-orogen-typekits-mtype-std-vector-base-JointTransform)) OF Base-JointTransform-m
+Std-orogen-typekits-mtype-std-vector-base-JointTransformP {T-UInt32: maxStd-orogen-typekits-mtype-std-vector-base-JointTransform} ::= SEQUENCE(SIZE(1..maxStd-orogen-typekits-mtype-std-vector-base-JointTransform)) OF Base-JointTransform-m
 -- Definition Std-orogen-typekits-mtype-std-vector-base-JointTransformP ends
 
 --Definition Std-orogen-typekits-mtype-std-vector-base-JointTransform starts
@@ -212,7 +617,7 @@ Std-orogen-typekits-mtype-std-vector-base-JointTransform ::= Std-orogen-typekits
 -- Definition Std-orogen-typekits-mtype-std-vector-base-JointTransform ends
 
 --Definition Std-orogen-typekits-mtype-std-vector-base-WaypointP starts
-Std-orogen-typekits-mtype-std-vector-base-WaypointP {T-UInt16: maxStd-orogen-typekits-mtype-std-vector-base-Waypoint} ::= SEQUENCE(SIZE(1..maxStd-orogen-typekits-mtype-std-vector-base-Waypoint)) OF Base-Waypoint-m
+Std-orogen-typekits-mtype-std-vector-base-WaypointP {T-UInt32: maxStd-orogen-typekits-mtype-std-vector-base-Waypoint} ::= SEQUENCE(SIZE(1..maxStd-orogen-typekits-mtype-std-vector-base-Waypoint)) OF Base-Waypoint-m
 -- Definition Std-orogen-typekits-mtype-std-vector-base-WaypointP ends
 
 --Definition Std-orogen-typekits-mtype-std-vector-base-Waypoint starts
@@ -220,7 +625,7 @@ Std-orogen-typekits-mtype-std-vector-base-Waypoint ::= Std-orogen-typekits-mtype
 -- Definition Std-orogen-typekits-mtype-std-vector-base-Waypoint ends
 
 --Definition Std-orogen-typekits-mtype-std-vector-base-WrenchP starts
-Std-orogen-typekits-mtype-std-vector-base-WrenchP {T-UInt16: maxStd-orogen-typekits-mtype-std-vector-base-Wrench} ::= SEQUENCE(SIZE(1..maxStd-orogen-typekits-mtype-std-vector-base-Wrench)) OF Base-Wrench-m
+Std-orogen-typekits-mtype-std-vector-base-WrenchP {T-UInt32: maxStd-orogen-typekits-mtype-std-vector-base-Wrench} ::= SEQUENCE(SIZE(1..maxStd-orogen-typekits-mtype-std-vector-base-Wrench)) OF Base-Wrench-m
 -- Definition Std-orogen-typekits-mtype-std-vector-base-WrenchP ends
 
 --Definition Std-orogen-typekits-mtype-std-vector-base-Wrench starts
@@ -228,7 +633,7 @@ Std-orogen-typekits-mtype-std-vector-base-Wrench ::= Std-orogen-typekits-mtype-s
 -- Definition Std-orogen-typekits-mtype-std-vector-base-Wrench ends
 
 --Definition Std-vector-Wrappers-Vector4dP starts
-Std-vector-Wrappers-Vector4dP {T-UInt16: maxStd-vector-Wrappers-Vector4d} ::= SEQUENCE(SIZE(1..maxStd-vector-Wrappers-Vector4d)) OF Wrappers-Vector4d
+Std-vector-Wrappers-Vector4dP {T-UInt32: maxStd-vector-Wrappers-Vector4d} ::= SEQUENCE(SIZE(1..maxStd-vector-Wrappers-Vector4d)) OF Wrappers-Vector4d
 -- Definition Std-vector-Wrappers-Vector4dP ends
 
 --Definition Std-vector-Wrappers-Vector4d starts
@@ -236,7 +641,7 @@ Std-vector-Wrappers-Vector4d ::= Std-vector-Wrappers-Vector4dP{numStd-vector-Wra
 -- Definition Std-vector-Wrappers-Vector4d ends
 
 --Definition Std-orogen-typekits-mtype-std-vector-base-TrajectoryP starts
-Std-orogen-typekits-mtype-std-vector-base-TrajectoryP {T-UInt16: maxStd-orogen-typekits-mtype-std-vector-base-Trajectory} ::= SEQUENCE(SIZE(1..maxStd-orogen-typekits-mtype-std-vector-base-Trajectory)) OF Base-Trajectory-m
+Std-orogen-typekits-mtype-std-vector-base-TrajectoryP {T-UInt32: maxStd-orogen-typekits-mtype-std-vector-base-Trajectory} ::= SEQUENCE(SIZE(1..maxStd-orogen-typekits-mtype-std-vector-base-Trajectory)) OF Base-Trajectory-m
 -- Definition Std-orogen-typekits-mtype-std-vector-base-TrajectoryP ends
 
 --Definition Std-orogen-typekits-mtype-std-vector-base-Trajectory starts
@@ -1089,40 +1494,6 @@ Base-Trajectory-m ::= SEQUENCE
 
 
 END
-TASTE-ExtendedTypes DEFINITIONS ::=
-BEGIN
-
-IMPORTS 
-T-Int32, T-UInt32, T-Int8, T-UInt8, T-Boolean  FROM TASTE-BasicTypes;
-
--- Set of TASTE predefined basic types
-
-T-Double ::= REAL (-1.7976931348623157e+308..1.7976931348623157E308)
-
-T-Float ::= REAL (-3.402823466E+38..3.402823466e+38)
-
-T-Int16 ::= INTEGER (-32768..32767 )
-
-T-UInt16 ::= INTEGER (0 .. 65535 )
-
-T-UInt64 ::= INTEGER (0..9223372036854775807)
-
-T-Int64 ::= INTEGER (-9223372036854775807.. 9223372036854775807)
-
-T-String ::= T-StringP{numT-String}
-
-T-StringP{T-UInt32: maxT-String} ::= OCTET STRING (SIZE(0..maxT-String))
-
-numT-String T-UInt32::= 200
-
-T-Time ::= SEQUENCE
-{
-    sec  T-UInt32,
-    nsec T-UInt32
-}
-  
-END
-
 -- H2020 ESROCOS Project
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
@@ -1166,91 +1537,49 @@ END
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 definitions for service ST[19] Event-Action
--- (cf. ECSS-E-ST-70-41C sections 6.19, 8.19)
+-- ASN.1 definitions for private service ST[20] Robot control
 --
--- Limitations:
--- * Only the minimal services are implemented
---    TC-19-1 Add Event Action Definitions
---    TC-19-2 Delete Event Action Definitions
---    TC-19-4 Enable Event Action Definitions
---    TC-19-5 Disable Event Action Definitions
+-- Two subservices are implemented:
+--  - TC[201,1] Set home request
+--  - TC[201,2] Plan home request
+--  - TC[201,2] Plan move request
+--  - TM[201,2] Plan report
 
 
-
-PUS-ST19 DEFINITIONS ::=
+PUS-ST201 DEFINITIONS ::= 
 BEGIN
 
-  IMPORTS 
-  PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
-  PusSt05EventId FROM PUS-ST05
-  ;
+
+    IMPORTS 
+    PusUInt32, PusDouble FROM PUS-TypesDefinitions
+    ;
+    
+    -- Point
+    PusSt201Point ::= PusDouble --TODO
+    
+    -- Observation TODO enum
+    PusSt201PlanObservationId ::= PusUInt32
+    PusSt201PlanObservationCode ::= PusUInt32
+    
+    PusSt201PlanObservation  ::= SEQUENCE
+    {
+    	id		PusSt201PlanObservationId,
+    	code	PusSt201PlanObservationCode
+    }
     
     
-    -- Data for TC[19,X] (except for TC[19,1]), event action
-  PusTC-19-X-Data ::= SEQUENCE
-  {
- -- 	-- Just 1 action-event per TC
- -- 	-- No Aplication Process ID in TC packet
-    	eventId PusSt05EventId
-  }
+    -- Data for TC[201,1] and TC[201,3]
+    PusTC-201-1-3-Data  ::= SEQUENCE
+    {
+    	position		SEQUENCE SIZE(3) OF PusSt201Point,
+    	orientation		SEQUENCE SIZE(4) OF PusSt201Point
+    }
     
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for small N-bit integers and types used in PUS packets
-
-PUS-TypesDefinitions DEFINITIONS ::=
-BEGIN
-
-	PusUInt3  ::= INTEGER (0 .. 7)
-	PusUInt4  ::= INTEGER (0 .. 5)
-	PusUInt8  ::= INTEGER (0 .. 255)
-	PusUInt11 ::= INTEGER (0 .. 2047)
-	PusUInt14 ::= INTEGER (0 .. 16383)
-	PusUInt16 ::= INTEGER (0 .. 65535)
-	PusUInt32 ::= INTEGER (0 .. 4294967295)
-	PusUInt64 ::= INTEGER (0..9223372036854775807)
-	
-	PusInt32 ::= INTEGER (-2147483648 .. 2147483647)
-	PusInt64 ::= INTEGER (-9223372036854775808 .. 9223372036854775807)
-	
-	PusDouble ::= REAL (-1.7976931348623157e+308..1.7976931348623157E308)
-	
-	PusMemAddr ::= PusUInt64
-
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[12] On-board monitoring
--- (cf. ECSS-E-ST-70-41C sections 6.12, 8.12)
---
-
-
---TODO
-
-PUS-ST12 DEFINITIONS ::= 
-BEGIN
-
-	
-	IMPORTS 
-	PusUInt32 FROM PUS-TypesDefinitions
-	;
-	
-	 -- PMON identifier
-	PusSt12pmonId ::= PusUInt32
-	    
-	
-	
-	-- Data for TC[19,1] and TC[19,2], 
-	PusTC-12-1-2-Data  ::= SEQUENCE
-	{
-		pmonId PusSt12pmonId
-	}
+    -- Data for TM[201,1]
+    PusTM-201-4-Data  ::= SEQUENCE
+    {
+    	observation PusSt201PlanObservation
+    }
     
 END
 -- H2020 ESROCOS Project
@@ -1349,116 +1678,176 @@ END
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 definitions for service ST[05] Event reporting
--- (cf. ECSS-E-ST-70-41C sections 6.5, 8.5)
+-- ASN.1 definitions for service ST[20] on-board parameter management
+-- (cf. ECSS-E-ST-70-41C sections 6.20, 8.20)
 --
 -- Limitations:
--- * Only the minimal services (event reports are implemented); enabling/disabling events is not included
--- * All events use the same structure for their auxiliary data
+-- * Only the minimal services are implemented, 20.1, 20.2, 20.3
 
 
-PUS-ST05 DEFINITIONS ::=
+PUS-ST20 DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
     PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
     ;
     
-    -- Event definition identifier
-    PusSt05EventId ::= PusUInt32
+    -- Identifier of on-board parameters
+    PusSt20OnBoardParameterId ::= PusUInt32
     
-    -- EventId none
-    pus-EVENT-ID-NONE PusSt05EventId ::= 0
+    -- StoredParam of reports
+    PusSt20StoredParam ::= PusUInt64
+    
+    -- Data for TC[20,1], TM[20,2] and TC[20,3], on-board parameter management
+    PusTC-TM-20-X-Data ::= SEQUENCE
+    {
+    	paramId PusSt20OnBoardParameterId,
+    	value PusSt20StoredParam
+    }
+    
+END
+TASTE-ExtendedTypes DEFINITIONS ::=
+BEGIN
 
-	-- Event auxiliary data
-	PusSt05EventAuxData ::= SEQUENCE
-	{
-		data1 PusUInt64,
-		data2 PusUInt64
-	}
+IMPORTS 
+T-Int32, T-UInt32, T-Int8, T-UInt8, T-Boolean  FROM TASTE-BasicTypes;
+
+-- Set of TASTE predefined basic types
+
+T-Double ::= REAL (-1.7976931348623157e+308..1.7976931348623157E308)
+
+T-Float ::= REAL (-3.402823466E+38..3.402823466e+38)
+
+T-Int16 ::= INTEGER (-32768..32767 )
+
+T-UInt16 ::= INTEGER (0 .. 65535 )
+
+T-UInt64 ::= INTEGER (0..9223372036854775807)
+
+T-Int64 ::= INTEGER (-9223372036854775807.. 9223372036854775807)
+
+T-String ::= T-StringP{numT-String}
+
+T-StringP{T-UInt32: maxT-String} ::= OCTET STRING (SIZE(0..maxT-String))
+
+numT-String T-UInt32::= 60
+
+T-Time ::= SEQUENCE
+{
+    secs  T-UInt32,
+    nsecs T-UInt32
+}
+  
+END
+
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for small N-bit integers and types used in PUS packets
+
+PUS-TypesDefinitions DEFINITIONS ::=
+BEGIN
+
+	PusUInt3  ::= INTEGER (0 .. 7)
+	PusUInt4  ::= INTEGER (0 .. 5)
+	PusUInt8  ::= INTEGER (0 .. 255)
+	PusUInt11 ::= INTEGER (0 .. 2047)
+	PusUInt14 ::= INTEGER (0 .. 16383)
+	PusUInt16 ::= INTEGER (0 .. 65535)
+	PusUInt32 ::= INTEGER (0 .. 4294967295)
+	PusUInt64 ::= INTEGER (0..9223372036854775807)
 	
-	-- AuxData none
-	pus-EVENT-AUXDATA-NONE PusSt05EventAuxData ::= 
-	{
-		data1 0, 
-		data2 0
-	}
+	PusInt32 ::= INTEGER (-2147483648 .. 2147483647)
+	PusInt64 ::= INTEGER (-9223372036854775808 .. 9223372036854775807)
 	
-	-- Event dataStored none
-	pus-EVENT-DATASTORED-NONE PusUInt64 ::= 0
+	PusDouble ::= REAL (-1.7976931348623157e+308..1.7976931348623157E308)
 	
-	-- Event and data
-	PusSt05Event ::= SEQUENCE
-   {
-    	eventId PusSt05EventId,
-    	data PusSt05EventAuxData
-   }
+	PusMemAddr ::= PusUInt64
+
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[03] Housekeeping
+-- (cf. ECSS-E-ST-70-41C sections 6.3.3, 8.3)
+--
+-- In order to allow for the implementation of the service using TASTE or a plain C application, 
+-- the periodic generation of housekeeping or diagnostic reports is not managed; the library 
+-- provides a call to generate a housekeeping TM, which should be invoked periodically by 
+-- a periodic task external to the library
+--
+-- Limitations:
+-- * Among the minimal services, diagnostic reports are not implemented (low priority)
+-- * All housekeeping parameters are reported in an array of 64 bit elements, regardless of their 
+--   actual length
+-- * The size of the housekeeping report is defined by a constant not derived from the mission
+--   database
+
+
+PUS-ST03 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    PusConfigDummyType, pus-ST03-MAX-REPORT-LENGTH FROM PUS-Config
+    ;
     
-    -- Data for TM[5,1] to TM[5,4] event/anomaly reports
-    PusTM-5-X-Data ::= PusSt05Event    
+    -- StoredParam of reports
+    PusSt03StoredParam ::= PusUInt64
+    
+    -- Identifier of housekeeping reports
+    PusSt03HousekeepingReportId ::= PusUInt32
+    
+    -- Default report, if only TM[3,25] implemented
+    pus-ST03-DEFAULT-HK-REPORT PusSt03HousekeepingReportId ::= 0 
+    
+    -- Identifier of housekeeping/diagnostic parameters
+    PusSt03ParameterId ::= PusUInt32
+    
+    -- Array of parameters in the report (all stored as PusUInt64)
+    PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusSt03StoredParam
+    
+    -- Data for TM[3,25], housekeeping parameter report
+    PusTM-3-25-Data ::= SEQUENCE
+    {
+    	reportId PusSt03HousekeepingReportId,
+    	parameters PusSt03ParameterArray
+    }
+    
     
 END
 -- H2020 ESROCOS Project
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 definitions for service ST[23] File management
--- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
+-- ASN.1 definitions for service ST[12] On-board monitoring
+-- (cf. ECSS-E-ST-70-41C sections 6.12, 8.12)
+--
 
--- * Only the minimal services are implemented:
--- * File handling
---	 - TC-23-1 createFile
---   - TC-23-2 deleteFile
---   - TC-23-3 reportFileAttributes
---   - TM-23-4 reportFileAttributes
--- * File copy
---   - TC-23-14 copyFile
 
-PUS-ST23 DEFINITIONS ::= 
+--TODO
+
+PUS-ST12 DEFINITIONS ::= 
 BEGIN
 
 	
 	IMPORTS 
-	PusUInt64 FROM PUS-TypesDefinitions
-	
-	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH,
-	pus-ST23-MAX-SIZE-REPOSITORY-PATH, pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN FROM PUS-Config
+	PusUInt32 FROM PUS-TypesDefinitions
 	;
+	
+	 -- PMON identifier
+	PusSt12pmonId ::= PusUInt32
+	    
+	
+	
+	-- Data for TC[19,1] and TC[19,2], 
+	PusTC-12-1-2-Data  ::= SEQUENCE
+	{
+		pmonId PusSt12pmonId
+	}
     
-	PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-PATH)) 
-	
-	PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH))
-	
-	PusSt23RepositoryDomain ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN))
-    
-	-- Data TC[23,1] TM[23,4]
-	PusTC-TM-23-1-4-Data ::= SEQUENCE
-	{
-		repository			PusSt23RepositoryPath,
-		fileName			PusSt23FileName,
-		maxSize	 			PusUInt64
-		-- file locked status BOOLEAN (optional)
-		-- additional file atributes DEDUCED (optinal N-Times)
-	}
-	 
-	-- Data TC[23,2] TC[23,3]
-	PusTC-23-2-3-Data ::= SEQUENCE
-	{
-		repository			PusSt23RepositoryPath,
-		fileName			PusSt23FileName
-	}
-
-
-	-- Data TC[23,14]
-	PusTC-23-14-Data ::= SEQUENCE
-	{
-		sourceRepository  		PusSt23RepositoryPath,
-		sourceFileName			PusSt23FileName,
-		targetRepository		PusSt23RepositoryPath,
-		targetFileName			PusSt23FileName
-	}
-	
-	
 END
 -- H2020 ESROCOS Project
 -- Company: GMV Aerospace & Defence S.A.U.
@@ -1558,242 +1947,70 @@ END
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 definitions for CCSDS packets
--- (cf. ECSS-E-ST-70-41C section 7.4)
+-- ASN.1 definitions for service ST[01] telecommand verification
+-- (cf. ECSS-E-ST-70-41C sections 6.1.4.3, 8.1)
+--
+-- This file defines some error codes for TC verification. Additional error codes 
+-- can be added 
 
-PUS-CcsdsPacket DEFINITIONS ::=
+
+PUS-ST01 DEFINITIONS ::=
 BEGIN
 
-	IMPORTS 
-	PusTime FROM PUS-Time
-	
-	PusServiceType, PusSubserviceType FROM PUS-Services
-	
-	PusVersionNumber, PusTimeReferenceStatus, PusMessageTypeCounter, PusPacketType, PusApid, 
-	PusChecksum, PusAcknowledgementFlags, PusPacketVersion, PusSecondaryHeaderFlag, PusSequenceFlags, 
-	PusSequenceCount, PusPacketDataLength FROM PUS-CcsdsPacketFields
+    IMPORTS 
+    PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount, PusStepId FROM PUS-CcsdsPacketFields
+    PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-TypesDefinitions;
+    
+    -- Type to represent failure codes used by service ST[01]
+    PusSt01FailureCode ::= PusUInt32
+    
+    -- Default failure codes (others may be added)
+    pus-ST01-NO-ERROR					PusSt01FailureCode ::= 0	-- Default value
+    pus-ST01-ERROR-APID-UNAVAILABLE		PusSt01FailureCode ::= 1	-- Destination process not available
+    pus-ST01-ERROR-SERVICE-UNAVAILABLE	PusSt01FailureCode ::= 2	-- PUS service not available
+    pus-ST01-ERROR-SUBTYPE-UNAVAILABLE	PusSt01FailureCode ::= 3	-- PUS service subtype not available	
+    pus-ST01-ERROR-APID-UNKNOWN			PusSt01FailureCode ::= 4	-- Destination process is unknown
+    pus-ST01-ERROR-SERVICE-UNKNOWN		PusSt01FailureCode ::= 5	-- PUS service is unknown
+    pus-ST01-ERROR-SUBTYPE-UNKNOWN		PusSt01FailureCode ::= 6	-- PUS service subtype is unknown	
+    pus-ST01-ERROR-WRONG-FORMAT			PusSt01FailureCode ::= 7	-- Packet format is inconsistent
+    pus-ST01-ERROR-CHECKSUM				PusSt01FailureCode ::= 8	-- Checksums are currently not used, code reserved for future use
+    
+	-- Type to report failure data in ST[01] TM messages
+	-- The type matches the error information stored by the PUS library (pus_error.h). Fields will be
+	-- used optionally, depending on the code.
+	PusSt01FailureInfo ::= SEQUENCE
+	{
+		subcode	PusInt32,	-- Internal error code, matching a C enum
+		data	PusInt32,	-- Error data
+		address PusMemAddr	-- A memory address
+	}
 
-	PusTM-1-X-Data FROM PUS-ST01
-	PusTM-3-25-Data FROM PUS-ST03
-	PusTM-5-X-Data FROM PUS-ST05
-	PusTC-8-1-Data FROM PUS-ST08
-	PusTC-9-1-Data, PusTM-9-2-Data FROM PUS-ST09
-	PusTC-12-1-2-Data  FROM PUS-ST12
-	PusTC-19-X-Data FROM PUS-ST19
-	PusTC-TM-20-X-Data FROM PUS-ST20
-  	
-	PusTC-18-1-Data, PusTC-18-2-6-12-Data, PusTC-18-3-Data, 
-	PusTC-18-4-5-Data, PusTC-18-13-Data FROM PUS-ST18
-	
-	PusTC-TM-23-1-4-Data, PusTC-23-2-3-Data, PusTC-23-14-Data FROM PUS-ST23
-  	
-  	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
-  	
-  	PusUInt32 FROM PUS-TypesDefinitions
-  	
-  	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
-  	
-  	PusTC-200-1-Data, PusTM-200-2-Data FROM PUS-ST200
-  	PusTC-201-1-3-Data, PusTM-201-4-Data FROM PUS-ST201
-  	;
-
-    -- TM secondary header
-    PusTmHeader ::= SEQUENCE
-    {
-        pusVersion      PusVersionNumber,
-        timeRefStatus   PusTimeReferenceStatus,
-        serviceId       PusServiceType,
-        subtype         PusSubserviceType,
-        msgTypeCount    PusMessageTypeCounter,
-        destination     PusApid,
-        time            PusTime
-        -- no spare bits
-    }
-    
-    -- TM actual data
-    PusTmSourceData ::= CHOICE
-    {
-        st-1-X 	PusTM-1-X-Data,
-        st-3-25 PusTM-3-25-Data,
-        st-5-X 	PusTM-5-X-Data,
-        st-9-2 	PusTM-9-2-Data,
-        st-20-2 PusTC-TM-20-X-Data,
-        st-23-4 PusTC-TM-23-1-4-Data,
-        st-200-2 PusTM-200-2-Data,
-      	st-201-4 PusTM-201-4-Data
-    }
-    
-    -- TC secondary header
-    PusTcHeader ::= SEQUENCE
-    {
-        pusVersion      PusVersionNumber,
-        ackFlags        PusAcknowledgementFlags,
-        serviceId       PusServiceType,
-        subtype         PusSubserviceType,
-        source          PusApid
-        -- no spare bits
-    }
-    
-    
-    -- Data for TM[19,1], event action
-    PusTC-19-1-Data  ::= SEQUENCE
-    {
-    	-- Just 1 action-event per TC
-    	-- No Aplication Process ID in TC packet
-    	eventId 		PusSt05EventId,
-    	packetReduced 	PusPacketReduced
-    }
-    
-    -- Schedulable action TC11.4
-    PusTcScheduledActivity ::= SEQUENCE
-    {	
-    	time			PusTime,
-    	packetReduced 	PusPacketReduced
-    }
-    
-    -- Data field for TC11.4
-    PusTC-11-4-Data ::= SEQUENCE SIZE(1..pus-ST11-MAX-SCHEDULED-ACTIVITIES) OF PusTcScheduledActivity
-           
-    
-    -- TC actual data
-    PusTcApplicationData ::= CHOICE
-    { -- The same order as the reduced
-    	st-8-1 		PusTC-8-1-Data,
-    	st-9-1 		PusTC-9-1-Data,
-    	st-12-1-2 	PusTC-12-1-2-Data,
-    	st-18-2-6-12 PusTC-18-2-6-12-Data,
-    	st-18-3		PusTC-18-3-Data,
-    	st-18-4-5	PusTC-18-4-5-Data,
-    	st-18-13 	PusTC-18-13-Data,
-    	st-19-X 	PusTC-19-X-Data,
-    	st-20-X 	PusTC-TM-20-X-Data,
-    	st-23-1		PusTC-TM-23-1-4-Data,
-    	st-23-2-3	PusTC-23-2-3-Data,
-    	st-23-14	PusTC-23-14-Data,
-    	st-200-1 	PusTC-200-1-Data,
-    	st-201-1-3 	PusTC-201-1-3-Data,
-    	-- No packet reduced
-    	st-11-4 	PusTC-11-4-Data,
-    	st-18-1 	PusTC-18-1-Data,
-    	st-19-1 	PusTC-19-1-Data
-    }
-    
-    PusTcApplicationDataReduced ::= CHOICE
-    { 
-    	st-8-1 		PusTC-8-1-Data,
-    	st-9-1 		PusTC-9-1-Data,
-    	st-12-1-2 	PusTC-12-1-2-Data,
-    	st-18-2-6-12 PusTC-18-2-6-12-Data,
-    	st-18-3		PusTC-18-3-Data,
-    	st-18-4-5	PusTC-18-4-5-Data,
-    	st-18-13 	PusTC-18-13-Data,
-    	st-19-X 	PusTC-19-X-Data,
-    	st-20-X 	PusTC-TM-20-X-Data,
-    	st-23-1		PusTC-TM-23-1-4-Data,
-    	st-23-2-3	PusTC-23-2-3-Data,
-    	st-23-14	PusTC-23-14-Data,
-    	st-200-1 	PusTC-200-1-Data,
-    	st-201-1-3 	PusTC-201-1-3-Data
-    }
-    
-    -- TM/TC header + data
-    PusTmHeaderData ::= SEQUENCE
-    {
-       header  PusTmHeader,
-        data    PusTmSourceData
-    }
-    PusTcHeaderDataTemplate{T} ::= SEQUENCE
-    {
-        header  PusTcHeader,
-        data    T
-    }
-    
-   -- PusTcHeaderData ::= PusTcHeaderDataTemplate{PusTcApplicationData}
-   -- PusTcHeaderDataReduced ::= PusTcHeaderDataTemplate{PusTcApplicationDataReduced}
-
-
-    -- Packet data
-    PusPacketDataTemplate{T} ::= CHOICE
-    {
-        tmData          PusTmHeaderData,
-        tmDataNoHeader  PusTmSourceData,
-        tcData          PusTcHeaderDataTemplate{T},
-        tcDataNoHeader  T
-    }
-    PusPacketData ::= PusPacketDataTemplate{PusTcApplicationData}
-    PusPacketDataReduced ::= PusPacketDataTemplate{PusTcApplicationDataReduced}
-    
-
-    -- CCSDS packet
-    -- TM/TC user data contains only the source/application data. No spare bits or checksum is used.
-    -- Spare bits are not needed because TASTE handles the packing of the fields.
-    -- Checksum is not used because TASTE handles encoding/decoding, and there might be 
-    -- mismatched checksums if a message is transmitted between hosts with different endianness. 
-    PusPacketTemplate{T} ::= SEQUENCE
+    -- Request ID, used by ST[01] packets
+    PusSt01RequestId ::= SEQUENCE
     {
         packetVersion       PusPacketVersion,
         packetType          PusPacketType,
         secondaryHeaderFlag PusSecondaryHeaderFlag,
         apid                PusApid,
         sequenceFlags       PusSequenceFlags,
-        sequenceCount       PusSequenceCount,
-        dataLength          PusPacketDataLength,
-        data                T
+        sequenceCount       PusSequenceCount
     }
     
-    PusPacket ::= PusPacketTemplate {PusPacketData}
-	PusPacketReduced ::= PusPacketTemplate {PusPacketDataReduced}
-
-
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[03] Housekeeping
--- (cf. ECSS-E-ST-70-41C sections 6.3.3, 8.3)
---
--- In order to allow for the implementation of the service using TASTE or a plain C application, 
--- the periodic generation of housekeeping or diagnostic reports is not managed; the library 
--- provides a call to generate a housekeeping TM, which should be invoked periodically by 
--- a periodic task external to the library
---
--- Limitations:
--- * Among the minimal services, diagnostic reports are not implemented (low priority)
--- * All housekeeping parameters are reported in an array of 64 bit elements, regardless of their 
---   actual length
--- * The size of the housekeeping report is defined by a constant not derived from the mission
---   database
-
-
-PUS-ST03 DEFINITIONS ::=
-BEGIN
-
-    IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
-    PusConfigDummyType, pus-ST03-MAX-REPORT-LENGTH FROM PUS-Config
-    ;
-    
-    -- StoredParam of reports
-    PusSt03StoredParam ::= PusUInt64
-    
-    -- Identifier of housekeeping reports
-    PusSt03HousekeepingReportId ::= PusUInt32
-    
-    -- Default report, if only TM[3,25] implemented
-    pus-ST03-DEFAULT-HK-REPORT PusSt03HousekeepingReportId ::= 0 
-    
-    -- Identifier of housekeeping/diagnostic parameters
-    PusSt03ParameterId ::= PusUInt32
-    
-    -- Array of parameters in the report (all stored as PusUInt64)
-    PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusSt03StoredParam
-    
-    -- Data for TM[3,25], housekeeping parameter report
-    PusTM-3-25-Data ::= SEQUENCE
+    -- Failure notice, used by ST[01] packets
+    PusSt01Failure ::= SEQUENCE
     {
-    	reportId PusSt03HousekeepingReportId,
-    	parameters PusSt03ParameterArray
+    	code	PusSt01FailureCode,
+    	info	PusSt01FailureInfo
+    }
+    
+    -- Data of ST[01] TM packets
+    -- Each packet type uses a subset of the fields, but it has been preferred to keep 
+    -- the same structure for all to reduce the amount of code  
+    PusTM-1-X-Data ::= SEQUENCE
+    {
+    	request	PusSt01RequestId,
+    	step	PusStepId,
+    	failure	PusSt01Failure
     }
     
     
@@ -1802,32 +2019,89 @@ END
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 definitions for service ST[20] on-board parameter management
--- (cf. ECSS-E-ST-70-41C sections 6.20, 8.20)
+-- ASN.1 definitions for service ST[05] Event reporting
+-- (cf. ECSS-E-ST-70-41C sections 6.5, 8.5)
 --
 -- Limitations:
--- * Only the minimal services are implemented, 20.1, 20.2, 20.3
+-- * Only the minimal services (event reports are implemented); enabling/disabling events is not included
+-- * All events use the same structure for their auxiliary data
 
 
-PUS-ST20 DEFINITIONS ::=
+PUS-ST05 DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
     PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
     ;
     
-    -- Identifier of on-board parameters
-    PusSt20OnBoardParameterId ::= PusUInt32
+    -- Event definition identifier
+    PusSt05EventId ::= PusUInt32
     
-    -- StoredParam of reports
-    PusSt20StoredParam ::= PusUInt64
+    -- EventId none
+    pus-EVENT-ID-NONE PusSt05EventId ::= 0
+
+	-- Event auxiliary data
+	PusSt05EventAuxData ::= SEQUENCE
+	{
+		data1 PusUInt64,
+		data2 PusUInt64
+	}
+	
+	-- AuxData none
+	pus-EVENT-AUXDATA-NONE PusSt05EventAuxData ::= 
+	{
+		data1 0, 
+		data2 0
+	}
+	
+	-- Event dataStored none
+	pus-EVENT-DATASTORED-NONE PusUInt64 ::= 0
+	
+	-- Event and data
+	PusSt05Event ::= SEQUENCE
+   {
+    	eventId PusSt05EventId,
+    	data PusSt05EventAuxData
+   }
     
-    -- Data for TC[20,1], TM[20,2] and TC[20,3], on-board parameter management
-    PusTC-TM-20-X-Data ::= SEQUENCE
-    {
-    	paramId PusSt20OnBoardParameterId,
-    	value PusSt20StoredParam
-    }
+    -- Data for TM[5,1] to TM[5,4] event/anomaly reports
+    PusTM-5-X-Data ::= PusSt05Event    
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[09] Time management
+-- (cf. ECSS-E-ST-70-41C sections 6.9, 8.9)
+--
+-- Limitations:
+-- * Only the minimal services are implemented
+
+
+PUS-ST09 DEFINITIONS ::=
+BEGIN
+
+  IMPORTS 
+  PusUInt32 FROM PUS-TypesDefinitions
+  PusTime FROM PUS-Time
+  ;
+    
+  PusSt09ExponentialRate ::= PusUInt32
+    
+  -- Data for TC[9,1] set time report generation rate
+  PusTC-9-1-Data ::= SEQUENCE
+  {
+    exponentialRate PusSt09ExponentialRate
+  }
+  
+  -- Data for TM[9,2] CUC time report
+  PusTM-9-2-Data ::= SEQUENCE
+  {
+    exponentialRate PusSt09ExponentialRate,
+    time PusTime
+    -- spacecraft time referenced status
+  }
     
 END
 CommandStates-types DEFINITIONS AUTOMATIC TAGS ::= BEGIN
@@ -1855,6 +2129,155 @@ CommandType ::= ENUMERATED{
 	planningHome,
 	planningMove
 }
+
+END
+TASTE-BasicTypes DEFINITIONS ::=
+BEGIN
+
+-- Set of TASTE predefined basic types
+
+T-Int32 ::=  INTEGER (-2147483648 .. 2147483647)
+
+T-UInt32 ::= INTEGER (0 .. 4294967295)
+
+T-Int8 ::= INTEGER (-128 .. 127)
+
+T-UInt8 ::= INTEGER (0 .. 255)
+
+T-Boolean ::= BOOLEAN
+
+END
+
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for the time types used in PUS packets
+-- (cf. ECSS-E-ST-70-41C)
+
+-- The PUS implementation is normally tailored using the CUC and CDS 
+-- time formats defined in CCSDS 301.0-B-4.
+--
+-- However, this implementation is not concerned with the encoding 
+-- details. Instead, a time type similar to the Linux implementation of
+-- timespec in <time.h>. This structure contains the fields:
+--
+--      time_t  tv_sec    Seconds
+--      long    tv_nsec   Nanoseconds
+--
+-- It is the structure returned by clock_gettime.
+
+
+PUS-Time DEFINITIONS ::=
+BEGIN
+
+    IMPORTS PusInt64 FROM PUS-TypesDefinitions;
+
+    -- Time type, based on C timespec <time.h>
+    -- For absolute times, it indicates the time from the epoch 1970-01-01 00:00:00 +0000 (UTC)
+    PusTime ::= SEQUENCE
+    {
+        tv-sec  PusInt64,
+        tv-nsec PusInt64
+    }
+
+END
+Buffer-types DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+IMPORTS 
+T-UInt32 FROM TASTE-BasicTypes;
+
+--String sizes
+urdriverPathMaxSize T-UInt32 ::= 255
+
+--File path, used for configuration files
+UrdriverFilePath ::= IA5String (SIZE (1 .. urdriverPathMaxSize))
+
+Buffer-512 ::= OCTET STRING (SIZE (1 .. 512))
+Buffer-2048 ::= OCTET STRING (SIZE (1 .. 2048))
+
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[08] Function management
+-- (cf. ECSS-E-ST-70-41C sections 6.8, 8.8)
+--
+-- The only one subservice is implemented:
+--  - TC[8,1] Perform a function (no arguments for functions)
+
+
+
+PUS-ST08 DEFINITIONS ::= 
+BEGIN
+
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    ;
+    
+    -- Event definition identifier
+    PusSt08FunctionId ::= PusUInt32
+        
+
+    
+    -- Data for TC[8,1], Perform a function request
+    PusTC-8-1-Data  ::= SEQUENCE
+    {
+    	functionId PusSt08FunctionId
+    }
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 constant definitions related to the configuration of PUS services
+--
+-- This file centralizes some definitions regarding sizes, etc. of the PUS services.
+-- 
+-- Limitations:
+-- These sizes could be derived from the mission configuration. However, in order to 
+-- simplify code generation, they are currently defined here.
+
+
+PUS-Config DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32 FROM PUS-TypesDefinitions
+    ;
+    
+    -- Dummy type, workaround for missing include bug in asn1.exe (TO-DO: remove when fixed)
+    PusConfigDummyType ::= PusUInt32
+
+    -- Maximum number of parameters in a housekeeping report
+    pus-ST03-MAX-REPORT-LENGTH PusUInt32 ::= 20
+    
+    -- Maximun number of Scheduled Actions in a TC11.4 packet
+    pus-ST11-MAX-SCHEDULED-ACTIVITIES PusUInt32 ::= 5
+    
+    -- Maximun number of character in OBCP ID (ST18)
+    pus-ST18-SIZE-OBCP-ID PusUInt32 ::= 10
+    
+    -- Maximun number of character in OBCP Code TC[18,1] 
+    pus-ST18-MAX-SIZE-OBCP-CODE PusUInt32 ::= 15000
+    
+    -- Maximun number of bits in OBCP CHECKSUM (ST18)
+    pus-ST18-SIZE-OBCP-CHECKSUM PusUInt32 ::= 16
+    
+    -- Maximum number of character in file path (ST23)
+    pus-ST23-MAX-SIZE-FILE-PATH PusUInt32 ::= 30
+    
+    -- Maximum number of character in repository path (ST23)
+    pus-ST23-MAX-SIZE-REPOSITORY-PATH PusUInt32 ::= 30
+    
+    -- Maximum number of character in repository domain (ST23)
+    pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN PusUInt32 ::= 30
+    
+    -- Maximum size of a file in ST23
+    pus-ST23-MAX-SIZE-FILE PusUInt32 ::= 1000
 
 END
 -- H2020 ESROCOS Project
@@ -2155,460 +2578,37 @@ BEGIN
 	pus-TM-201-4-planReport				PusSubserviceType ::= 4
 
 END
-TASTE-BasicTypes DEFINITIONS ::=
-BEGIN
-
--- Set of TASTE predefined basic types
-
-T-Int32 ::=  INTEGER (-2147483648 .. 2147483647)
-
-T-UInt32 ::= INTEGER (0 .. 4294967295)
-
-T-Int8 ::= INTEGER (-128 .. 127)
-
-T-UInt8 ::= INTEGER (0 .. 255)
-
-T-Boolean ::= BOOLEAN
-
-END
-
 -- H2020 ESROCOS Project
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 definitions for private service ST[20] Robot control
---
--- Two subservices are implemented:
---  - TC[201,1] Set home request
---  - TC[201,2] Plan home request
---  - TC[201,2] Plan move request
---  - TM[201,2] Plan report
-
-
-PUS-ST201 DEFINITIONS ::= 
-BEGIN
-
-
-    IMPORTS 
-    PusUInt32, PusDouble FROM PUS-TypesDefinitions
-    ;
-    
-    -- Point
-    PusSt201Point ::= PusDouble --TODO
-    
-    -- Observation TODO enum
-    PusSt201PlanObservationId ::= PusUInt32
-    PusSt201PlanObservationCode ::= PusUInt32
-    
-    PusSt201PlanObservation  ::= SEQUENCE
-    {
-    	id		PusSt201PlanObservationId,
-    	code	PusSt201PlanObservationCode
-    }
-    
-    
-    -- Data for TC[201,1] and TC[201,3]
-    PusTC-201-1-3-Data  ::= SEQUENCE
-    {
-    	position		SEQUENCE SIZE(3) OF PusSt201Point,
-    	orientation		SEQUENCE SIZE(4) OF PusSt201Point
-    }
-    
-    -- Data for TM[201,1]
-    PusTM-201-4-Data  ::= SEQUENCE
-    {
-    	observation PusSt201PlanObservation
-    }
-    
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 constant definitions related to the configuration of PUS services
---
--- This file centralizes some definitions regarding sizes, etc. of the PUS services.
--- 
--- Limitations:
--- These sizes could be derived from the mission configuration. However, in order to 
--- simplify code generation, they are currently defined here.
-
-
-PUS-Config DEFINITIONS ::=
-BEGIN
-
-    IMPORTS 
-    PusUInt32 FROM PUS-TypesDefinitions
-    ;
-    
-    -- Dummy type, workaround for missing include bug in asn1.exe (TO-DO: remove when fixed)
-    PusConfigDummyType ::= PusUInt32
-
-    -- Maximum number of parameters in a housekeeping report
-    pus-ST03-MAX-REPORT-LENGTH PusUInt32 ::= 20
-    
-    -- Maximun number of Scheduled Actions in a TC11.4 packet
-    pus-ST11-MAX-SCHEDULED-ACTIVITIES PusUInt32 ::= 5
-    
-    -- Maximun number of character in OBCP ID (ST18)
-    pus-ST18-SIZE-OBCP-ID PusUInt32 ::= 10
-    
-    -- Maximun number of character in OBCP Code TC[18,1] 
-    pus-ST18-MAX-SIZE-OBCP-CODE PusUInt32 ::= 15000
-    
-    -- Maximun number of bits in OBCP CHECKSUM (ST18)
-    pus-ST18-SIZE-OBCP-CHECKSUM PusUInt32 ::= 16
-    
-    -- Maximum number of character in file path (ST23)
-    pus-ST23-MAX-SIZE-FILE-PATH PusUInt32 ::= 30
-    
-    -- Maximum number of character in repository path (ST23)
-    pus-ST23-MAX-SIZE-REPOSITORY-PATH PusUInt32 ::= 30
-    
-    -- Maximum number of character in repository domain (ST23)
-    pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN PusUInt32 ::= 30
-    
-    -- Maximum size of a file in ST23
-    pus-ST23-MAX-SIZE-FILE PusUInt32 ::= 1000
-
-END
-UserDefs-Base-Types DEFINITIONS ::=
-BEGIN
-
-IMPORTS T-UInt32 FROM TASTE-BasicTypes;
-
---Definition DummyBase-T starts
-    DummyBase-T ::= T-UInt32
--- Definition DummyBase-T ends
-
---Definition numBase-JointTrajectory starts
-    numBase-JointTrajectory	T-UInt32 ::= 200 
--- Definition numBase-JointTrajectory ends
-
---Definition numStd-orogen-typekits-mtype-std-vector-base-JointTransform starts
-    numStd-orogen-typekits-mtype-std-vector-base-JointTransform	T-UInt32 ::= 200 
--- Definition numStd-orogen-typekits-mtype-std-vector-base-JointTransform ends
-
---Definition numStd-orogen-typekits-mtype-std-vector-base-Waypoint starts
-    numStd-orogen-typekits-mtype-std-vector-base-Waypoint	T-UInt32 ::= 200 
--- Definition numStd-orogen-typekits-mtype-std-vector-base-Waypoint ends
-
---Definition numStd-orogen-typekits-mtype-std-vector-base-Wrench starts
-    numStd-orogen-typekits-mtype-std-vector-base-Wrench	T-UInt32 ::= 200 
--- Definition numStd-orogen-typekits-mtype-std-vector-base-Wrench ends
-
---Definition numStd-vector-Wrappers-Vector4d starts
-    numStd-vector-Wrappers-Vector4d	T-UInt32 ::= 200 
--- Definition numStd-vector-Wrappers-Vector4d ends
-
---Definition numStd-orogen-typekits-mtype-std-vector-base-Trajectory starts
-    numStd-orogen-typekits-mtype-std-vector-base-Trajectory	T-UInt32 ::= 200 
--- Definition numStd-orogen-typekits-mtype-std-vector-base-Trajectory ends
-
---Definition numBase-JointLimits-names starts
-    numBase-JointLimits-names	T-UInt32 ::= 200 
--- Definition numBase-JointLimits-names ends
-
---Definition numBase-JointLimits-elements starts
-    numBase-JointLimits-elements	T-UInt32 ::= 200 
--- Definition numBase-JointLimits-elements ends
-
---Definition numBase-JointsTrajectory-names starts
-    numBase-JointsTrajectory-names	T-UInt32 ::= 200 
--- Definition numBase-JointsTrajectory-names ends
-
---Definition numBase-JointsTrajectory-elements starts
-    numBase-JointsTrajectory-elements	T-UInt32 ::= 200 
--- Definition numBase-JointsTrajectory-elements ends
-
---Definition numBase-JointsTrajectory-times-val starts
-    numBase-JointsTrajectory-times-val	T-UInt32 ::= 200 
--- Definition numBase-JointsTrajectory-times-val ends
-
---Definition numBase-NamedVector-Base-JointLimitRange-names starts
-    numBase-NamedVector-Base-JointLimitRange-names	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-JointLimitRange-names ends
-
---Definition numBase-NamedVector-Base-JointLimitRange-elements starts
-    numBase-NamedVector-Base-JointLimitRange-elements	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-JointLimitRange-elements ends
-
---Definition numBase-NamedVector-Base-JointState-names starts
-    numBase-NamedVector-Base-JointState-names	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-JointState-names ends
-
---Definition numBase-NamedVector-Base-Wrench-names starts
-    numBase-NamedVector-Base-Wrench-names	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-Wrench-names ends
-
---Definition numBase-NamedVector-Base-Wrench-elements starts
-    numBase-NamedVector-Base-Wrench-elements	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-Wrench-elements ends
-
---Definition numBase-NamedVector-Base-JointTrajectory-names starts
-    numBase-NamedVector-Base-JointTrajectory-names	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-JointTrajectory-names ends
-
---Definition numBase-NamedVector-Base-JointTrajectory-elements starts
-    numBase-NamedVector-Base-JointTrajectory-elements	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-JointTrajectory-elements ends
-
---Definition numBase-samples-DepthMap-timestamps starts
-    numBase-samples-DepthMap-timestamps	T-UInt32 ::= 200 
--- Definition numBase-samples-DepthMap-timestamps ends
-
---Definition numBase-samples-DepthMap-vertical-interval starts
-    numBase-samples-DepthMap-vertical-interval	T-UInt32 ::= 200 
--- Definition numBase-samples-DepthMap-vertical-interval ends
-
---Definition numBase-samples-DepthMap-horizontal-interval starts
-    numBase-samples-DepthMap-horizontal-interval	T-UInt32 ::= 200 
--- Definition numBase-samples-DepthMap-horizontal-interval ends
-
---Definition numBase-samples-DepthMap-distances starts
-    numBase-samples-DepthMap-distances	T-UInt32 ::= 200 
--- Definition numBase-samples-DepthMap-distances ends
-
---Definition numBase-samples-DepthMap-remissions starts
-    numBase-samples-DepthMap-remissions	T-UInt32 ::= 200 
--- Definition numBase-samples-DepthMap-remissions ends
-
---Definition numBase-samples-DistanceImage-data starts
-    numBase-samples-DistanceImage-data	T-UInt32 ::= 200 
--- Definition numBase-samples-DistanceImage-data ends
-
---Definition numBase-commands-Joints-names starts
-    numBase-commands-Joints-names	T-UInt32 ::= 200 
--- Definition numBase-commands-Joints-names ends
-
---Definition numBase-samples-LaserScan-ranges starts
-    numBase-samples-LaserScan-ranges	T-UInt32 ::= 200 
--- Definition numBase-samples-LaserScan-ranges ends
-
---Definition numBase-samples-LaserScan-remission starts
-    numBase-samples-LaserScan-remission	T-UInt32 ::= 200 
--- Definition numBase-samples-LaserScan-remission ends
-
---Definition numBase-samples-Pointcloud-points starts
-    numBase-samples-Pointcloud-points	T-UInt32 ::= 200 
--- Definition numBase-samples-Pointcloud-points ends
-
---Definition numBase-samples-Pointcloud-colors starts
-    numBase-samples-Pointcloud-colors	T-UInt32 ::= 200 
--- Definition numBase-samples-Pointcloud-colors ends
-
---Definition numBase-samples-Sonar-timestamps starts
-    numBase-samples-Sonar-timestamps	T-UInt32 ::= 200 
--- Definition numBase-samples-Sonar-timestamps ends
-
---Definition numBase-samples-Sonar-bearings starts
-    numBase-samples-Sonar-bearings	T-UInt32 ::= 200 
--- Definition numBase-samples-Sonar-bearings ends
-
---Definition numBase-samples-Sonar-bins starts
-    numBase-samples-Sonar-bins	T-UInt32 ::= 200 
--- Definition numBase-samples-Sonar-bins ends
-
---Definition numBase-samples-SonarBeam-beam starts
-    numBase-samples-SonarBeam-beam	T-UInt32 ::= 200 
--- Definition numBase-samples-SonarBeam-beam ends
-
---Definition numBase-samples-SonarScan-data starts
-    numBase-samples-SonarScan-data	T-UInt32 ::= 200 
--- Definition numBase-samples-SonarScan-data ends
-
---Definition numBase-samples-SonarScan-time-beams starts
-    numBase-samples-SonarScan-time-beams	T-UInt32 ::= 200 
--- Definition numBase-samples-SonarScan-time-beams ends
-
---Definition numBase-samples-Wrenches-names starts
-    numBase-samples-Wrenches-names	T-UInt32 ::= 200 
--- Definition numBase-samples-Wrenches-names ends
-
---Definition numBase-samples-Wrenches-elements starts
-    numBase-samples-Wrenches-elements	T-UInt32 ::= 200 
--- Definition numBase-samples-Wrenches-elements ends
-
---Definition numBase-JointTransformVector-names starts
-    numBase-JointTransformVector-names	T-UInt32 ::= 200 
--- Definition numBase-JointTransformVector-names ends
-
---Definition numBase-JointTransformVector-elements starts
-    numBase-JointTransformVector-elements	T-UInt32 ::= 200 
--- Definition numBase-JointTransformVector-elements ends
-
---Definition numBase-NamedVector-Base-JointTransform-names starts
-    numBase-NamedVector-Base-JointTransform-names	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-JointTransform-names ends
-
---Definition numBase-NamedVector-Base-JointTransform-elements starts
-    numBase-NamedVector-Base-JointTransform-elements	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-Base-JointTransform-elements ends
-
---Definition numBase-samples-frame-Frame-image starts
-    numBase-samples-frame-Frame-image	T-UInt32 ::= 200 
--- Definition numBase-samples-frame-Frame-image ends
-
---Definition numBase-samples-frame-Frame-attributes starts
-    numBase-samples-frame-Frame-attributes	T-UInt32 ::= 200 
--- Definition numBase-samples-frame-Frame-attributes ends
-
---Definition numWrappers-MatrixXd-data starts
-    numWrappers-MatrixXd-data	T-UInt32 ::= 200 
--- Definition numWrappers-MatrixXd-data ends
-
---Definition numWrappers-VectorXd-data starts
-    numWrappers-VectorXd-data	T-UInt32 ::= 200 
--- Definition numWrappers-VectorXd-data ends
-
---Definition numBase-JointTransformVector-m-names starts
-    numBase-JointTransformVector-m-names	T-UInt32 ::= 200 
--- Definition numBase-JointTransformVector-m-names ends
-
---Definition numBase-NamedVector-base-JointTransform-m-names starts
-    numBase-NamedVector-base-JointTransform-m-names	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-base-JointTransform-m-names ends
-
---Definition numBase-NamedVector-base-Wrench-m-names starts
-    numBase-NamedVector-base-Wrench-m-names	T-UInt32 ::= 200 
--- Definition numBase-NamedVector-base-Wrench-m-names ends
-
---Definition numBase-samples-Pointcloud-m-points starts
-    numBase-samples-Pointcloud-m-points	T-UInt32 ::= 200 
--- Definition numBase-samples-Pointcloud-m-points ends
-
---Definition numBase-samples-Pointcloud-m-colors starts
-    numBase-samples-Pointcloud-m-colors	T-UInt32 ::= 200 
--- Definition numBase-samples-Pointcloud-m-colors ends
-
---Definition numBase-samples-Wrenches-m-names starts
-    numBase-samples-Wrenches-m-names	T-UInt32 ::= 200 
--- Definition numBase-samples-Wrenches-m-names ends
-
---Definition numWrappers-geometry-Spline-knots starts
-    numWrappers-geometry-Spline-knots	T-UInt32 ::= 200 
--- Definition numWrappers-geometry-Spline-knots ends
-
---Definition numWrappers-geometry-Spline-vertices starts
-    numWrappers-geometry-Spline-vertices	T-UInt32 ::= 200 
--- Definition numWrappers-geometry-Spline-vertices ends
-
-
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[09] Time management
--- (cf. ECSS-E-ST-70-41C sections 6.9, 8.9)
+-- ASN.1 definitions for service ST[19] Event-Action
+-- (cf. ECSS-E-ST-70-41C sections 6.19, 8.19)
 --
 -- Limitations:
 -- * Only the minimal services are implemented
+--    TC-19-1 Add Event Action Definitions
+--    TC-19-2 Delete Event Action Definitions
+--    TC-19-4 Enable Event Action Definitions
+--    TC-19-5 Disable Event Action Definitions
 
 
-PUS-ST09 DEFINITIONS ::=
+
+PUS-ST19 DEFINITIONS ::=
 BEGIN
 
   IMPORTS 
-  PusUInt32 FROM PUS-TypesDefinitions
-  PusTime FROM PUS-Time
+  PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+  PusSt05EventId FROM PUS-ST05
   ;
     
-  PusSt09ExponentialRate ::= PusUInt32
     
-  -- Data for TC[9,1] set time report generation rate
-  PusTC-9-1-Data ::= SEQUENCE
+    -- Data for TC[19,X] (except for TC[19,1]), event action
+  PusTC-19-X-Data ::= SEQUENCE
   {
-    exponentialRate PusSt09ExponentialRate
+ -- 	-- Just 1 action-event per TC
+ -- 	-- No Aplication Process ID in TC packet
+    	eventId PusSt05EventId
   }
-  
-  -- Data for TM[9,2] CUC time report
-  PusTM-9-2-Data ::= SEQUENCE
-  {
-    exponentialRate PusSt09ExponentialRate,
-    time PusTime
-    -- spacecraft time referenced status
-  }
-    
-END
-Buffer-types DEFINITIONS AUTOMATIC TAGS ::= BEGIN
-
-IMPORTS 
-T-UInt32 FROM TASTE-BasicTypes;
-
---String sizes
-urdriverPathMaxSize T-UInt32 ::= 255
-
---File path, used for configuration files
-UrdriverFilePath ::= IA5String (SIZE (1 .. urdriverPathMaxSize))
-
-Buffer-512 ::= OCTET STRING (SIZE (1 .. 512))
-Buffer-2048 ::= OCTET STRING (SIZE (1 .. 2048))
-
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for the time types used in PUS packets
--- (cf. ECSS-E-ST-70-41C)
-
--- The PUS implementation is normally tailored using the CUC and CDS 
--- time formats defined in CCSDS 301.0-B-4.
---
--- However, this implementation is not concerned with the encoding 
--- details. Instead, a time type similar to the Linux implementation of
--- timespec in <time.h>. This structure contains the fields:
---
---      time_t  tv_sec    Seconds
---      long    tv_nsec   Nanoseconds
---
--- It is the structure returned by clock_gettime.
-
-
-PUS-Time DEFINITIONS ::=
-BEGIN
-
-    IMPORTS PusInt64 FROM PUS-TypesDefinitions;
-
-    -- Time type, based on C timespec <time.h>
-    -- For absolute times, it indicates the time from the epoch 1970-01-01 00:00:00 +0000 (UTC)
-    PusTime ::= SEQUENCE
-    {
-        tv-sec  PusInt64,
-        tv-nsec PusInt64
-    }
-
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[08] Function management
--- (cf. ECSS-E-ST-70-41C sections 6.8, 8.8)
---
--- The only one subservice is implemented:
---  - TC[8,1] Perform a function (no arguments for functions)
-
-
-
-PUS-ST08 DEFINITIONS ::= 
-BEGIN
-
-
-    IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
-    ;
-    
-    -- Event definition identifier
-    PusSt08FunctionId ::= PusUInt32
-        
-
-    
-    -- Data for TC[8,1], Perform a function request
-    PusTC-8-1-Data  ::= SEQUENCE
-    {
-    	functionId PusSt08FunctionId
-    }
     
 END

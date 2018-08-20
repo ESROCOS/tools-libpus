@@ -83,3 +83,14 @@ void st11_PI_tc11(const asn1SccPusPacket *IN_tcPacket)
 	}
 }
 
+void st11_PI_schedulingTrigger()
+{
+	pusPacket_t tc;
+	pusTime_t time;
+	pus_now(&time);
+
+	if(PUS_NO_ERROR == pus_scheduling_getScheduledActivity(&tc, &time))
+	{
+		st11_RI_newTc(&tc);
+	}
+}

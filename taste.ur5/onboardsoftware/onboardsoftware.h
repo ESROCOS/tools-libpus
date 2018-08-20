@@ -65,6 +65,8 @@ extern void onboardsoftware_RI_planMoveReport(const asn1SccPlanCmdStatus *);
 
 extern void onboardsoftware_RI_configHomeReport(const asn1SccT_Boolean *);
 
+extern void onboardsoftware_RI_schedulingTrigger();
+
 #ifdef __cplusplus
 }
 #endif

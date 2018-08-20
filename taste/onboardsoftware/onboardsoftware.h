@@ -49,6 +49,8 @@ extern void onboardsoftware_RI_HkReportTrigger();
 
 extern void onboardsoftware_RI_PmonTrigger();
 
+extern void onboardsoftware_RI_schedulingTrigger();
+
 #ifdef __cplusplus
 }
 #endif
