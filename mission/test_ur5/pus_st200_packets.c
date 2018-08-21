@@ -34,6 +34,7 @@ pusError_t pus_tc_200_1_createControlCameraRequest(pusPacket_t* outTc, pusApid_t
 		pus_setTcSubtype(outTc, pus_TC_200_1_controlRequest);
 
 		//TODO set data
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_200_1);
 		pus_tc_200_1_setControlId(outTc, operation);
 
 		return PUS_GET_ERROR();

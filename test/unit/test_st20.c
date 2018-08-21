@@ -21,24 +21,6 @@
 #include "pus_parameter_management.h"
 #include "pus_st20_config.h"
 
-pusError_t example_function()
-{
-	// DUmmy function
-	return PUS_NO_ERROR;
-}
-
-pusError_t example_function2()
-{
-	// DUmmy function
-	return PUS_NO_ERROR;
-}
-
-pusError_t example_function3()
-{
-	// DUmmy function
-	return PUS_NO_ERROR;
-}
-
 void packets_st20()
 {
 	pusPacket_t tc, tm;

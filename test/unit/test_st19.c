@@ -27,24 +27,6 @@
 #include "../../include/pus_st08_packets.h"
 #include "pus_st08_config.h"
 
-pusError_t example_function()
-{
-	printf("  - Hello world! -  ");
-	return PUS_NO_ERROR;
-}
-
-pusError_t example_function2()
-{
-	printf("Hello from function2\n");
-	return PUS_NO_ERROR;
-}
-
-pusError_t example_function3()
-{
-	printf("Hello from function3\n");
-	return PUS_NO_ERROR;
-}
-
 void packets_st19()
 {
 	pusPacket_t tc, tcAction;

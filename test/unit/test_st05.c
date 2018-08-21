@@ -19,23 +19,6 @@
 #include "../../include/pus_st03_packets.h"
 #include "../../include/pus_st05_packets.h"
 
-pusError_t example_function()
-{
-	// DUmmy function
-	return PUS_NO_ERROR;
-}
-
-pusError_t example_function2()
-{
-	// DUmmy function
-	return PUS_NO_ERROR;
-}
-
-pusError_t example_function3()
-{
-	// DUmmy function
-	return PUS_NO_ERROR;
-}
 
 //Test Event struct (pusSt05Event_t)
 void test_event()
