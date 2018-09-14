@@ -7,7 +7,11 @@
 #include "pus_file_management.h"
 #ifdef PUS_CONFIGURE_ST23_ENABLED
 
-#include "pus_file_management_linux.c"
+#ifndef __sparc__
+	#include "pus_file_management_linux.c"
+#else
+	#include "pus_file_management_rtems.c"
+#endif
 
 /*
 #ifdef __gnu_linux__

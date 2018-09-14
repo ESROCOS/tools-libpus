@@ -83,6 +83,10 @@
 		{
 			"label": "ONBOARD_PARAM_BOOL01",
 			"type": "BOOL"
+		},
+		{
+			"label": "ONBOARD_PARAM_ROBOT_STATE",
+			"type": "BOOL"
 		}
 		
 	]
