@@ -32,6 +32,13 @@ else()
     set(SERVICES_PATH_${MISSION} "")
 endif()
 
+# Config missionization
+if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_config.asn")
+    set(CONFIG_PATH_${MISSION} "../mission/${MISSION}/")
+else()
+    set(CONFIG_PATH_${MISSION} "")
+endif()
+
 # Mission configuration new ASN1 files
 file(GLOB ${MISSION}_ASN1_FILES "${CMAKE_CURRENT_SOURCE_DIR}/pus_st*.asn")
 

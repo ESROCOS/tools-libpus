@@ -11,7 +11,7 @@
 esrocos_asn1_types_package(esrocos_pustypes_${MISSION}
     ${CCDS_PACKET_PATH_${MISSION}}ccsds_packet.asn
     ccsds_packet_fields.asn
-    pus_config.asn
+    ${CONFIG_PATH_${MISSION}}pus_config.asn
     pus_types_definitions.asn
     ${SERVICES_PATH_${MISSION}}pus_services.asn
     pus_st01.asn

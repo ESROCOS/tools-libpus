@@ -1,0 +1,188 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for CCSDS packets
+-- (cf. ECSS-E-ST-70-41C section 7.4)
+
+PUS-CcsdsPacket DEFINITIONS ::=
+BEGIN
+
+	IMPORTS 
+	PusTime FROM PUS-Time
+	
+	PusServiceType, PusSubserviceType FROM PUS-Services
+	
+	PusVersionNumber, PusTimeReferenceStatus, PusMessageTypeCounter, PusPacketType, PusApid, 
+	PusChecksum, PusAcknowledgementFlags, PusPacketVersion, PusSecondaryHeaderFlag, PusSequenceFlags, 
+	PusSequenceCount, PusPacketDataLength FROM PUS-CcsdsPacketFields
+
+	PusTM-1-X-Data FROM PUS-ST01
+	PusTM-3-25-Data FROM PUS-ST03
+	PusTM-5-X-Data FROM PUS-ST05
+	PusTC-8-1-Data FROM PUS-ST08
+	PusTC-9-1-Data, PusTM-9-2-Data FROM PUS-ST09
+	PusTC-12-1-2-Data  FROM PUS-ST12
+	PusTC-19-X-Data FROM PUS-ST19
+	PusTC-TM-20-X-Data FROM PUS-ST20
+  	
+	PusTC-18-1-Data, PusTC-18-2-6-12-Data, PusTC-18-3-Data, 
+	PusTC-18-4-5-Data, PusTC-18-13-Data FROM PUS-ST18
+	
+	PusTC-TM-23-1-4-Data, PusTC-23-2-3-Data, PusTC-23-14-Data FROM PUS-ST23
+  	
+  	PusSt05EventId FROM PUS-ST05 -- for PusTC-19-X-Data
+  	
+  	PusUInt32 FROM PUS-TypesDefinitions
+  	
+  	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
+  	
+  	PusTC-201-1-3-Data, PusTM-201-4-Data FROM PUS-ST201
+  	;
+
+    -- TM secondary header
+    PusTmHeader ::= SEQUENCE
+    {
+        pusVersion      PusVersionNumber,
+        timeRefStatus   PusTimeReferenceStatus,
+        serviceId       PusServiceType,
+        subtypeId       PusSubserviceType,
+        msgTypeCount    PusMessageTypeCounter,
+        destination     PusApid,
+        time            PusTime
+        -- no spare bits
+    }
+    
+    -- TM actual data
+    PusTmSourceData ::= CHOICE
+    {
+        st-1-X 	PusTM-1-X-Data,
+        st-3-25 PusTM-3-25-Data,
+        st-5-X 	PusTM-5-X-Data,
+        st-9-2 	PusTM-9-2-Data,
+        st-20-2 PusTC-TM-20-X-Data,
+        st-23-4 PusTC-TM-23-1-4-Data,
+      	st-201-4 PusTM-201-4-Data
+    }
+    
+    -- TC secondary header
+    PusTcHeader ::= SEQUENCE
+    {
+        pusVersion      PusVersionNumber,
+        ackFlags        PusAcknowledgementFlags,
+        serviceId       PusServiceType,
+        subtypeId       PusSubserviceType,
+        source          PusApid
+        -- no spare bits
+    }
+    
+    
+    -- Data for TM[19,1], event action
+    PusTC-19-1-Data  ::= SEQUENCE
+    {
+    	-- Just 1 action-event per TC
+    	-- No Aplication Process ID in TC packet
+    	eventId 		PusSt05EventId,
+    	packetReduced 	PusPacketReduced
+    }
+    
+    -- Schedulable action TC11.4
+    PusTcScheduledActivity ::= SEQUENCE
+    {	
+    	time			PusTime,
+    	packetReduced 	PusPacketReduced
+    }
+    
+    -- Data field for TC11.4
+    PusTC-11-4-Data ::= SEQUENCE SIZE(1..pus-ST11-MAX-SCHEDULED-ACTIVITIES) OF PusTcScheduledActivity
+           
+    
+    -- TC actual data
+    PusTcApplicationData ::= CHOICE
+    { -- The same order as the reduced
+    	st-8-1 		PusTC-8-1-Data,
+    	st-9-1 		PusTC-9-1-Data,
+    	st-12-1-2 	PusTC-12-1-2-Data,
+    	st-18-2-6-12 PusTC-18-2-6-12-Data,
+    	st-18-3		PusTC-18-3-Data,
+    	st-18-4-5	PusTC-18-4-5-Data,
+    	st-18-13 	PusTC-18-13-Data,
+    	st-19-X 	PusTC-19-X-Data,
+    	st-20-X 	PusTC-TM-20-X-Data,
+    	st-23-1		PusTC-TM-23-1-4-Data,
+    	st-23-2-3	PusTC-23-2-3-Data,
+    	st-23-14	PusTC-23-14-Data,
+    	st-201-1-3 	PusTC-201-1-3-Data,
+    	-- No packet reduced
+    	st-11-4 	PusTC-11-4-Data,
+    	st-18-1 	PusTC-18-1-Data,
+    	st-19-1 	PusTC-19-1-Data
+    }
+    
+    PusTcApplicationDataReduced ::= CHOICE
+    { 
+    	st-8-1 		PusTC-8-1-Data,
+    	st-9-1 		PusTC-9-1-Data,
+    	st-12-1-2 	PusTC-12-1-2-Data,
+    	st-18-2-6-12 PusTC-18-2-6-12-Data,
+    	st-18-3		PusTC-18-3-Data,
+    	st-18-4-5	PusTC-18-4-5-Data,
+    	st-18-13 	PusTC-18-13-Data,
+    	st-19-X 	PusTC-19-X-Data,
+    	st-20-X 	PusTC-TM-20-X-Data,
+    	st-23-1		PusTC-TM-23-1-4-Data,
+    	st-23-2-3	PusTC-23-2-3-Data,
+    	st-23-14	PusTC-23-14-Data,
+    	st-201-1-3 	PusTC-201-1-3-Data
+    }
+    
+    -- TM/TC header + data
+    PusTmHeaderData ::= SEQUENCE
+    {
+       header  PusTmHeader,
+        data    PusTmSourceData
+    }
+    PusTcHeaderDataTemplate{T} ::= SEQUENCE
+    {
+        header  PusTcHeader,
+        data    T
+    }
+    
+   -- PusTcHeaderData ::= PusTcHeaderDataTemplate{PusTcApplicationData}
+   -- PusTcHeaderDataReduced ::= PusTcHeaderDataTemplate{PusTcApplicationDataReduced}
+
+
+    -- Packet data
+    PusPacketDataTemplate{T} ::= CHOICE
+    {
+        tmData          PusTmHeaderData,
+        tmDataNoHeader  PusTmSourceData,
+        tcData          PusTcHeaderDataTemplate{T},
+        tcDataNoHeader  T
+    }
+    PusPacketData ::= PusPacketDataTemplate{PusTcApplicationData}
+    PusPacketDataReduced ::= PusPacketDataTemplate{PusTcApplicationDataReduced}
+    
+
+    -- CCSDS packet
+    -- TM/TC user data contains only the source/application data. No spare bits or checksum is used.
+    -- Spare bits are not needed because TASTE handles the packing of the fields.
+    -- Checksum is not used because TASTE handles encoding/decoding, and there might be 
+    -- mismatched checksums if a message is transmitted between hosts with different endianness. 
+    PusPacketTemplate{T} ::= SEQUENCE
+    {
+        packetVersion       PusPacketVersion,
+        packetType          PusPacketType,
+        secondaryHeaderFlag PusSecondaryHeaderFlag,
+        apid                PusApid,
+        sequenceFlags       PusSequenceFlags,
+        sequenceCount       PusSequenceCount,
+        dataLength          PusPacketDataLength,
+        data                T
+    }
+    
+    PusPacket ::= PusPacketTemplate {PusPacketData}
+	PusPacketReduced ::= PusPacketTemplate {PusPacketDataReduced}
+
+
+END

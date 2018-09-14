@@ -21,7 +21,9 @@ void camera_control_PI_trigger();
 
 extern void camera_control_RI_report(const asn1SccPusSt200Observation *);
 
-extern void camera_control_RI_setFrameRequest();
+extern void camera_control_RI_setFrameRequest(const asn1SccT_UInt64 *);
+
+extern void camera_control_RI_setCameraReportOBSW(const asn1SccT_UInt64 *);
 
 #ifdef __cplusplus
 }

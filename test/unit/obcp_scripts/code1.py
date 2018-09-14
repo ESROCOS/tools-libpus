@@ -13,9 +13,9 @@ class ObcpTest(Obcp):
         
         self.obcp_wait_interval_time(0.3)
         print("OBCP_1: waitting for event with id=3 (timeout 3 sec)")
-        ev2 = self.obcp_wait_event(obcp_Event["EVENT_MEDIUM_03"], 3.0)
+        ev2 = self.obcp_wait_event_dict(obcp_Event["EVENT_MEDIUM_03"], 3.0)
         if None != ev2:
-            print("OBCP_1: event read: id:", ev2.id, ", data1:", ev2.data1, ", data2:", ev2.data2)
+            print("OBCP_1: event read: id:", ev2["id"], ", data1:", ev2["data1"], ", data2:", ev2["data2"])
             
     def confirmation(self):
         print("- Preconditions body", self.id)

@@ -7,7 +7,7 @@ class ObcpTest(Obcp):
         
         self.obcp_wait_interval_time(0.5)
         
-        while self.obcp_get_next_event() != None:
+        while self.obcp_get_next_event_dict() != None:
             pass
         
         print("Activate :",  self.obcp_activate_obcp("OBCP_HI"))

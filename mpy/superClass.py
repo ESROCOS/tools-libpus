@@ -225,7 +225,20 @@ class Obcp:
         else:
 				return None
             
-            
+    def obcp_wait_event_dict( self, eventId, timeout = 0 ):
+        """
+        This method wait until any event from a specified list of events occurs
+        :param eventId: Event Id
+        :return: Event if success or None if error
+        """
+        (event_dict, counter) = module.getNextEventBlocking(eventId, self.eventCounter, timeout)
+        
+        if None != event_dict: #Res == event class(id, data1, data2)
+            self.eventCounter = counter
+            return event_dict
+        else:
+            return None
+
     #### events
         
     def obcp_get_next_event( self ):
@@ -234,13 +247,24 @@ class Obcp:
         :return: The next event (class{id, data1, data2}) in table or false if no events or error
         """
         (event_dict, counter) = module.getNextEvent(self.eventCounter)
-
         if None == event_dict or None == counter:
             return None
         else:
             self.eventCounter = counter
-            event = pus_Event(event_dict["id"], event_dict["data1"], event_dict["data2"])
-            return event
+            event_n = pus_Event(event_dict["id"], event_dict["data1"], event_dict["data1"])
+            return event_n
+    
+    def obcp_get_next_event_dict( self ):
+        """
+        This method get the next event from the events table
+        :return: The next event (class{id, data1, data2}) in table or false if no events or error
+        """
+        (event_dict, counter) = module.getNextEvent(self.eventCounter)
+        if None == event_dict or None == counter:
+            return None
+        else:
+            self.eventCounter = counter
+            return event_dict
 
     def obcp_raise_event( self, event ) -> bool:
         """
@@ -307,11 +331,11 @@ class Obcp:
         if threadId == None:
             return False
         for i in range(attempt):
-            event_rcv1 = self.obcp_wait_event(obcp_Event["EVENT_OBCP_FINISHED"])
+            event_rcv1 = self.obcp_wait_event_dict(obcp_Event["EVENT_OBCP_FINISHED"])
             
-            print("Read Event: id:", event_rcv1.id, ", data1:", event_rcv1.data1, ", data2:", event_rcv1.data2)
-            if event_rcv1.data1 == threadId:
-                return event_rcv1.data2 #return state
+            print("Read Event: id:", event_rcv1["id"], ", data1:", event_rcv1["data1"], ", data2:", event_rcv1["data2"])
+            if event_rcv1["data1"] == threadId:
+                return event_rcv1["data2"] #return state
 
 
 ################### END fun.py #######################

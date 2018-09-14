@@ -5033,7 +5033,7 @@ flag asn1SccPusTC_18_13_Data_Decode(asn1SccPusTC_18_13_Data* pVal, BitStream* pB
 typedef struct {
     int nCount; 
     
-    byte arr[15000];
+    byte arr[20000];
 } asn1SccPusSt18ObcpCode;
 
 flag asn1SccPusSt18ObcpCode_Equal(const asn1SccPusSt18ObcpCode* pVal1, const asn1SccPusSt18ObcpCode* pVal2);
@@ -5044,8 +5044,8 @@ void asn1SccPusSt18ObcpCode_Initialize(asn1SccPusSt18ObcpCode* pVal);
 flag asn1SccPusSt18ObcpCode_IsConstraintValid(const asn1SccPusSt18ObcpCode* pVal, int* pErrCode);
 
 #define ERR_UPER_ENCODE_PUSST18OBCPCODE		51787  /**/
-#define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_ENCODING       15002 
-#define asn1SccPusSt18ObcpCode_REQUIRED_BITS_FOR_ENCODING        120014
+#define asn1SccPusSt18ObcpCode_REQUIRED_BYTES_FOR_ENCODING       20002 
+#define asn1SccPusSt18ObcpCode_REQUIRED_BITS_FOR_ENCODING        160015
 
 flag asn1SccPusSt18ObcpCode_Encode(const asn1SccPusSt18ObcpCode* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
@@ -5070,8 +5070,8 @@ flag asn1SccPusTC_18_1_Data_IsConstraintValid(const asn1SccPusTC_18_1_Data* pVal
 #define ERR_UPER_ENCODE_PUSTC_18_1_DATA_OBCPID_2		51817  /**/
 #define ERR_UPER_ENCODE_PUSTC_18_1_DATA_OBCPCODE_2		51828  /**/
 #define ERR_UPER_ENCODE_PUSTC_18_1_DATA_CHECKSUM_2_2		51843  /**/
-#define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_ENCODING       15014 
-#define asn1SccPusTC_18_1_Data_REQUIRED_BITS_FOR_ENCODING        120110
+#define asn1SccPusTC_18_1_Data_REQUIRED_BYTES_FOR_ENCODING       20014 
+#define asn1SccPusTC_18_1_Data_REQUIRED_BITS_FOR_ENCODING        160111
 
 flag asn1SccPusTC_18_1_Data_Encode(const asn1SccPusTC_18_1_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
@@ -5882,7 +5882,7 @@ flag asn1SccPusTcScheduledActivity_Decode(asn1SccPusTcScheduledActivity* pVal, B
 
 typedef struct {    int nCount; 
     
-    asn1SccPusTcScheduledActivity arr[5];
+    asn1SccPusTcScheduledActivity arr[3];
 } asn1SccPusTC_11_4_Data;
 
 flag asn1SccPusTC_11_4_Data_Equal(const asn1SccPusTC_11_4_Data* pVal1, const asn1SccPusTC_11_4_Data* pVal2);
@@ -6024,8 +6024,8 @@ flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data* pVal
 
 #define ERR_UPER_ENCODE_PUSTC_11_4_DATA		8065  /**/
 #define ERR_UPER_ENCODE_PUSTC_11_4_DATA_ELM_2		8060  /**/
-#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ENCODING       1031 
-#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ENCODING        8248
+#define asn1SccPusTC_11_4_Data_REQUIRED_BYTES_FOR_ENCODING       619 
+#define asn1SccPusTC_11_4_Data_REQUIRED_BITS_FOR_ENCODING        4949
 
 flag asn1SccPusTC_11_4_Data_Encode(const asn1SccPusTC_11_4_Data* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
@@ -6384,8 +6384,8 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
 #define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_11_4_2		10948  /**/
 #define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_18_1_2		10994  /**/
 #define ERR_UPER_ENCODE_PUSTCAPPLICATIONDATA_ST_19_1_2		13377  /**/
-#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ENCODING       15015 
-#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ENCODING        120115
+#define asn1SccPusTcApplicationData_REQUIRED_BYTES_FOR_ENCODING       20015 
+#define asn1SccPusTcApplicationData_REQUIRED_BITS_FOR_ENCODING        160116
 
 flag asn1SccPusTcApplicationData_Encode(const asn1SccPusTcApplicationData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
@@ -7091,8 +7091,8 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData* pVal, in
 #define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATA_HEADER_2		15794  /**/
 #define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATA_DATA_2		21115  /**/
 #define ERR_UPER_ENCODE_PUSPACKETDATA_TCDATANOHEADER_2		26442  /**/
-#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ENCODING       15019 
-#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ENCODING        120150
+#define asn1SccPusPacketData_REQUIRED_BYTES_FOR_ENCODING       20019 
+#define asn1SccPusPacketData_REQUIRED_BITS_FOR_ENCODING        160151
 
 flag asn1SccPusPacketData_Encode(const asn1SccPusPacketData* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
@@ -7783,8 +7783,8 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket* pVal, int* pErrC
 #define ERR_UPER_ENCODE_PUSPACKET_SEQUENCECOUNT_2_2		28778  /**/
 #define ERR_UPER_ENCODE_PUSPACKET_DATALENGTH_2_2		28793  /**/
 #define ERR_UPER_ENCODE_PUSPACKET_DATA_2		40732  /**/
-#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ENCODING       15025 
-#define asn1SccPusPacket_REQUIRED_BITS_FOR_ENCODING        120193
+#define asn1SccPusPacket_REQUIRED_BYTES_FOR_ENCODING       20025 
+#define asn1SccPusPacket_REQUIRED_BITS_FOR_ENCODING        160194
 
 flag asn1SccPusPacket_Encode(const asn1SccPusPacket* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 

@@ -35,6 +35,8 @@ extern void robot_control_manager_RI_planHome(const asn1SccT_Boolean *);
 
 extern void robot_control_manager_RI_configHome(const asn1SccBase_Pose *);
 
+extern void robot_control_manager_RI_setRobotReportOBSW(const asn1SccPusSt201PlanObservation *);
+
 #ifdef __cplusplus
 }
 #endif

@@ -606,8 +606,7 @@ STATIC mp_obj_t obcpModule_getNextEvent( mp_obj_t py_counter) {
         return mp_obj_new_list(2, list);
         
     if( counter != counter2 ) //has changed
-    {
-        
+    {        
         mp_obj_t dict = mp_obj_new_dict(3);
        
         mp_obj_dict_store(dict, mp_obj_new_str("id", 2) ,  mp_obj_new_int(event.eventId));
@@ -617,11 +616,10 @@ STATIC mp_obj_t obcpModule_getNextEvent( mp_obj_t py_counter) {
         pusParamType_t type1 = pus_st05_eventInfoList[event.eventId].data.dataType1;
         mp_obj_t data1 = auxFunction_getObjFromParam(event.data.data1, type1);
         mp_obj_dict_store(dict, mp_obj_new_str("data1", 5) ,  data1);
-        
+
         pusParamType_t type2 = pus_st05_eventInfoList[event.eventId].data.dataType2;
         mp_obj_t data2 = auxFunction_getObjFromParam(event.data.data2, type2);
         mp_obj_dict_store(dict, mp_obj_new_str("data2", 5) ,  data2);
-        
         
         list[0] = dict;
         list[1] = mp_obj_new_int(counter);
@@ -674,12 +672,16 @@ STATIC mp_obj_t obcpModule_getNextEventBlocking( mp_obj_t py_eventId, mp_obj_t p
             obcpModule_sleepInterval(mp_obj_new_float(0.01));
         }
         
+        //printf("obcpModule_getNextEventBlocking event read %d (expected %d)\n", event.eventId, eventId);
+
         if( event.eventId == eventId )
         {
             break;
         }
     }
     
+    //printf("obcpModule_getNextEventBlocking 1\n");
+
     mp_obj_t dict = mp_obj_new_dict(3);
    
     mp_obj_dict_store(dict, mp_obj_new_str("id", 2) ,  mp_obj_new_int(event.eventId));
@@ -694,11 +696,11 @@ STATIC mp_obj_t obcpModule_getNextEventBlocking( mp_obj_t py_eventId, mp_obj_t p
     mp_obj_t data2 = auxFunction_getObjFromParam(event.data.data2, type2);
     mp_obj_dict_store(dict, mp_obj_new_str("data2", 5) ,  data2);
     
+    //printf("obcpModule_getNextEventBlocking 2\n");
     
     list[0] = dict;
     list[1] = mp_obj_new_int(counter);
     return mp_obj_new_list(2, list);
-
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_3(obcpModule_getNextEventBlocking_obj, obcpModule_getNextEventBlocking);
 

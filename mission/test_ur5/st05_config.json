@@ -47,6 +47,38 @@
 				"UINT32",
 				"INT32"
 			]
+		},
+		{
+			"label": "EVENT_PLAN_FINISHED",
+			"defaultSeverity": "LOW",
+			"data": [
+				"UINT32",
+				"UINT32"
+			]
+		},
+		{
+			"label": "EVENT_PLAN_ABORTED",
+			"defaultSeverity": "MEDIUM",
+			"data": [
+				"UINT32",
+				"UINT32"
+			]
+		},
+		{
+			"label": "EVENT_CAMERA_FRAME",
+			"defaultSeverity": "LOW",
+			"data": [
+				"UINT32",
+				"UINT32"
+			]
+		},
+		{
+			"label": "EVENT_CAMERA_FRAME_FAILED",
+			"defaultSeverity": "MEDIUM",
+			"data": [
+				"UINT32",
+				"UINT32"
+			]
 		}
 	],
 	"eventBufferLength": 5,

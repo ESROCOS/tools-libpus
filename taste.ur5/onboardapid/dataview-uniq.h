@@ -2857,7 +2857,7 @@ flag asn1SccPusTC_18_13_Data_IsConstraintValid(const asn1SccPusTC_18_13_Data* pV
 typedef struct {
     int nCount; 
     
-    byte arr[15000];
+    byte arr[20000];
 } asn1SccPusSt18ObcpCode;
 
 flag asn1SccPusSt18ObcpCode_Equal(const asn1SccPusSt18ObcpCode* pVal1, const asn1SccPusSt18ObcpCode* pVal2);
@@ -3551,7 +3551,7 @@ flag asn1SccPusTcScheduledActivity_IsConstraintValid(const asn1SccPusTcScheduled
 
 typedef struct {    int nCount; 
     
-    asn1SccPusTcScheduledActivity arr[5];
+    asn1SccPusTcScheduledActivity arr[3];
 } asn1SccPusTC_11_4_Data;
 
 flag asn1SccPusTC_11_4_Data_Equal(const asn1SccPusTC_11_4_Data* pVal1, const asn1SccPusTC_11_4_Data* pVal2);

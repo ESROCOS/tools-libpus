@@ -46,11 +46,11 @@ void st09_PI_incCount(asn1SccPusPacket *OUT_tmPacket,
 		pusTime_t timeAux;
 		pusSt09ExponentialRate_t rate;
 		pus_tm_9_2_getDataField(OUT_tmPacket, &timeAux, &rate);
-		printf(" INC COUNT: Time2: %llu\n", timeAux.tv_sec);
+		//printf(" INC COUNT: Time2: %llu\n", timeAux.tv_sec);
 
 
-		printf(" INC COUNT: TM%llu_%llu inserted in TmQueue.\n", pus_getTmService(OUT_tmPacket), pus_getTmSubtype(OUT_tmPacket));
-		printf(" INC COUNT: in, error %u\n", error);
+		//printf(" INC COUNT: TM%llu_%llu inserted in TmQueue.\n", pus_getTmService(OUT_tmPacket), pus_getTmSubtype(OUT_tmPacket));
+		//printf(" INC COUNT: in, error %u\n", error);
 		tmCounter = 0;
 	}
 	else

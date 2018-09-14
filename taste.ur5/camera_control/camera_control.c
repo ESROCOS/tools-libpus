@@ -18,7 +18,8 @@ void camera_control_PI_trigger()
     if( true == flag_operationRequestReceived )
     {
         flag_operationRequestReceived = false;
-        camera_control_RI_setFrameRequest();
+        asn1SccT_UInt64 aux = 1;
+        camera_control_RI_setFrameRequest(&aux);
     } 
 }
 

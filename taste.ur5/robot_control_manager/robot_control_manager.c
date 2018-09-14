@@ -93,25 +93,28 @@ void robot_control_manager_PI_planHomeReport(const asn1SccPlanCmdStatus *IN_stat
 {
     /* Write your code here! */
 	pusSt201PlanObservation obs;
-	obs.id = 0;
+	obs.id = 2;
 	obs.code = *IN_status;
 	robot_control_manager_RI_report(&obs);
+	robot_control_manager_RI_setRobotReportOBSW(&obs);
 }
 
 void robot_control_manager_PI_planMoveReport(const asn1SccPlanCmdStatus *IN_status)
 {
     /* Write your code here! */
 	pusSt201PlanObservation obs;
-	obs.id = 2;
+	obs.id = 3;
 	obs.code = *IN_status;
 	robot_control_manager_RI_report(&obs);
+	robot_control_manager_RI_setRobotReportOBSW(&obs);
 }
 
 void robot_control_manager_PI_configHomeReport(const asn1SccT_Boolean * IN_status)
 {
 	pusSt201PlanObservation obs;
-	obs.id = 3;
+	obs.id = 1;
 	obs.code = *IN_status;
 	robot_control_manager_RI_report(&obs);
+	robot_control_manager_RI_setRobotReportOBSW(&obs);
 }
 

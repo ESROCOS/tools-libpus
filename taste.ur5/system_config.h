@@ -194,6 +194,8 @@
 #define __NEED_PusSt200ControlId_NATIVE
 #define __NEED_T_UInt64_NATIVE
 #define __NEED_PusSt200Observation_NATIVE
+#define __NEED_T_UInt64_NATIVE
+#define __NEED_T_UInt64_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusSt201PlanObservation_NATIVE
 #define __NEED_PusSequenceCount_NATIVE
@@ -215,9 +217,13 @@
 #define __NEED_Base_Pose_NATIVE
 #define __NEED_T_Boolean_NATIVE
 #define __NEED_Base_Pose_NATIVE
+#define __NEED_PusSt201PlanObservation_NATIVE
+#define __NEED_T_UInt64_NATIVE
 #define __NEED_T_Boolean_NATIVE
 #define __NEED_Base_Pose_NATIVE
 #define __NEED_Base_Pose_NATIVE
+#define __NEED_PusSt201PlanObservation_NATIVE
+#define __NEED_T_UInt64_NATIVE
 #define __NEED_PusSt03ParameterId_NATIVE
 #define __NEED_PusSt03StoredParam_NATIVE
 #define __NEED_PusSt03ParameterId_NATIVE

@@ -36,10 +36,13 @@ extern "C" {
 #include "mpcontext.h"
 
 
-
+/* ORIGINALS
 #define PUS_OBCP_HEAP_SIZE 16384
-
 #define PUS_OBCP_STACK_LIMIT 32768
+*/
+
+#define PUS_OBCP_HEAP_SIZE 8192
+#define PUS_OBCP_STACK_LIMIT 8192
 
 typedef struct
 {
@@ -55,7 +58,7 @@ typedef struct
     //heap / stack / ctx
     mp_state_ctx_t mp_ctx;
     uint64_t mp_heap[PUS_OBCP_HEAP_SIZE];
-    mp_obj_t mp_pystack[PUS_OBCP_HEAP_SIZE];
+    mp_obj_t mp_pystack[PUS_OBCP_STACK_LIMIT];
 
 	#ifndef PUS_DISABLE_THREADS
     	pthread_mutex_t mutex;

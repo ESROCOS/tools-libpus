@@ -102,13 +102,23 @@ void onboardsoftware_PI_planMove (const asn1SccBase_Pose *IN_pose)
 }
 
 
-void onboardsoftware_PI_setFrameRequest()
+void onboardsoftware_PI_setFrameRequest(const asn1SccT_UInt64 * dummy)
 {
    // Write your code here
-	printf(" -OBSW: onboardsoftware_PI_setframerequest \n");
+	printf(" -OBSW: onboardsoftware_PI_setframerequest\n");
 }
 
 void onboardsoftware_PI_configHome(const asn1SccBase_Pose *IN_pose)
 {
 	printf("onboardsoftware_PI_configHome \n");
+}
+
+void onboardsoftware_PI_setRoboReportOBSW(const asn1SccPusSt201PlanObservation * status)
+{
+	printf("onboardsoftware_PI_setRoboReportOBSW \n");
+}
+
+void onboardsoftware_PI_setCameraReportOBSW(const asn1SccT_UInt64 * status)
+{
+	printf("onboardsoftware_PI_setCameraReportOBSW \n");
 }

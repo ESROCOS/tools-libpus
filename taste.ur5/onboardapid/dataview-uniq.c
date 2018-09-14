@@ -86,9 +86,9 @@ const asn1SccPusSt05EventAuxData pus_EVENT_AUXDATA_NONE = {
 const asn1SccPusUInt64 pus_EVENT_DATASTORED_NONE = 0;
 const asn1SccT_UInt32 urdriverPathMaxSize = 255;
 const asn1SccPusUInt32 pus_ST03_MAX_REPORT_LENGTH = 20;
-const asn1SccPusUInt32 pus_ST11_MAX_SCHEDULED_ACTIVITIES = 5;
+const asn1SccPusUInt32 pus_ST11_MAX_SCHEDULED_ACTIVITIES = 3;
 const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_ID = 10;
-const asn1SccPusUInt32 pus_ST18_MAX_SIZE_OBCP_CODE = 15000;
+const asn1SccPusUInt32 pus_ST18_MAX_SIZE_OBCP_CODE = 20000;
 const asn1SccPusUInt32 pus_ST18_SIZE_OBCP_CHECKSUM = 16;
 const asn1SccPusUInt32 pus_ST23_MAX_SIZE_FILE_PATH = 30;
 const asn1SccPusUInt32 pus_ST23_MAX_SIZE_REPOSITORY_PATH = 30;
@@ -9384,7 +9384,7 @@ flag asn1SccPusSt18ObcpCode_Equal(const asn1SccPusSt18ObcpCode* pVal1, const asn
 void asn1SccPusSt18ObcpCode_Initialize(asn1SccPusSt18ObcpCode* pVal)
 {
 
-	memset(pVal->arr, 0x0, 15000);
+	memset(pVal->arr, 0x0, 20000);
 
 }
 
@@ -9392,7 +9392,7 @@ flag asn1SccPusSt18ObcpCode_IsConstraintValid(const asn1SccPusSt18ObcpCode* pVal
 {
     flag ret = TRUE;
 	
-    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 15000));
+    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 20000));
     *pErrCode = ret ? 0 :  ERR_PUSST18OBCPCODE;
 
 	return ret;
@@ -9434,7 +9434,7 @@ flag asn1SccPusTC_18_1_Data_IsConstraintValid(const asn1SccPusTC_18_1_Data *pVal
 {
     flag ret = TRUE;
 	
-    ret = ((1 <= pVal->obcpCode.nCount) && (pVal->obcpCode.nCount <= 15000));
+    ret = ((1 <= pVal->obcpCode.nCount) && (pVal->obcpCode.nCount <= 20000));
     *pErrCode = ret ? 0 :  ERR_PUSTC_18_1_DATA_OBCPCODE;
     if (ret) {
         ret = (pVal->checksum <= 65535UL);
@@ -12111,7 +12111,7 @@ void asn1SccPusTC_11_4_Data_Initialize(asn1SccPusTC_11_4_Data* pVal)
     int i1;
 
 	i1 = 0;
-	while (i1< 5) {
+	while (i1< 3) {
 	    asn1SccPusTcScheduledActivity_Initialize((&(pVal->arr[i1])));
 	    i1 = i1 + 1;
 	}
@@ -12124,7 +12124,7 @@ flag asn1SccPusTC_11_4_Data_IsConstraintValid(const asn1SccPusTC_11_4_Data *pVal
     int i1;
     int i2;
 	
-    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 5));
+    ret = ((1 <= pVal->nCount) && (pVal->nCount <= 3));
     *pErrCode = ret ? 0 :  ERR_PUSTC_11_4_DATA;
     for(i1 = 0; ret && i1 < pVal->nCount; i1++) 
     {
@@ -12877,7 +12877,7 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
             }
             break;
         case st_11_4_PRESENT :
-            ret = ((1 <= pVal->u.st_11_4.nCount) && (pVal->u.st_11_4.nCount <= 5));
+            ret = ((1 <= pVal->u.st_11_4.nCount) && (pVal->u.st_11_4.nCount <= 3));
             *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_11_4;
             for(i1 = 0; ret && i1 < pVal->u.st_11_4.nCount; i1++) 
             {
@@ -13444,7 +13444,7 @@ flag asn1SccPusTcApplicationData_IsConstraintValid(const asn1SccPusTcApplication
 
             break;
         case st_18_1_PRESENT :
-            ret = ((1 <= pVal->u.st_18_1.obcpCode.nCount) && (pVal->u.st_18_1.obcpCode.nCount <= 15000));
+            ret = ((1 <= pVal->u.st_18_1.obcpCode.nCount) && (pVal->u.st_18_1.obcpCode.nCount <= 20000));
             *pErrCode = ret ? 0 :  ERR_PUSTCAPPLICATIONDATA_ST_18_1_OBCPCODE;
             if (ret) {
                 ret = (pVal->u.st_18_1.checksum <= 65535UL);
@@ -14496,7 +14496,7 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                         }
                         break;
                     case st_11_4_PRESENT :
-                        ret = ((1 <= pVal->u.tcData.data.u.st_11_4.nCount) && (pVal->u.tcData.data.u.st_11_4.nCount <= 5));
+                        ret = ((1 <= pVal->u.tcData.data.u.st_11_4.nCount) && (pVal->u.tcData.data.u.st_11_4.nCount <= 3));
                         *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_11_4;
                         for(i1 = 0; ret && i1 < pVal->u.tcData.data.u.st_11_4.nCount; i1++) 
                         {
@@ -15063,7 +15063,7 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
 
                         break;
                     case st_18_1_PRESENT :
-                        ret = ((1 <= pVal->u.tcData.data.u.st_18_1.obcpCode.nCount) && (pVal->u.tcData.data.u.st_18_1.obcpCode.nCount <= 15000));
+                        ret = ((1 <= pVal->u.tcData.data.u.st_18_1.obcpCode.nCount) && (pVal->u.tcData.data.u.st_18_1.obcpCode.nCount <= 20000));
                         *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATA_DATA_ST_18_1_OBCPCODE;
                         if (ret) {
                             ret = (pVal->u.tcData.data.u.st_18_1.checksum <= 65535UL);
@@ -15735,7 +15735,7 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
                     }
                     break;
                 case st_11_4_PRESENT :
-                    ret = ((1 <= pVal->u.tcDataNoHeader.u.st_11_4.nCount) && (pVal->u.tcDataNoHeader.u.st_11_4.nCount <= 5));
+                    ret = ((1 <= pVal->u.tcDataNoHeader.u.st_11_4.nCount) && (pVal->u.tcDataNoHeader.u.st_11_4.nCount <= 3));
                     *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_11_4;
                     for(i1 = 0; ret && i1 < pVal->u.tcDataNoHeader.u.st_11_4.nCount; i1++) 
                     {
@@ -16302,7 +16302,7 @@ flag asn1SccPusPacketData_IsConstraintValid(const asn1SccPusPacketData *pVal, in
 
                     break;
                 case st_18_1_PRESENT :
-                    ret = ((1 <= pVal->u.tcDataNoHeader.u.st_18_1.obcpCode.nCount) && (pVal->u.tcDataNoHeader.u.st_18_1.obcpCode.nCount <= 15000));
+                    ret = ((1 <= pVal->u.tcDataNoHeader.u.st_18_1.obcpCode.nCount) && (pVal->u.tcDataNoHeader.u.st_18_1.obcpCode.nCount <= 20000));
                     *pErrCode = ret ? 0 :  ERR_PUSPACKETDATA_TCDATANOHEADER_ST_18_1_OBCPCODE;
                     if (ret) {
                         ret = (pVal->u.tcDataNoHeader.u.st_18_1.checksum <= 65535UL);
@@ -17376,7 +17376,7 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                     }
                                                     break;
                                                 case st_11_4_PRESENT :
-                                                    ret = ((1 <= pVal->data.u.tcData.data.u.st_11_4.nCount) && (pVal->data.u.tcData.data.u.st_11_4.nCount <= 5));
+                                                    ret = ((1 <= pVal->data.u.tcData.data.u.st_11_4.nCount) && (pVal->data.u.tcData.data.u.st_11_4.nCount <= 3));
                                                     *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_11_4;
                                                     for(i1 = 0; ret && i1 < pVal->data.u.tcData.data.u.st_11_4.nCount; i1++) 
                                                     {
@@ -17943,7 +17943,7 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
 
                                                     break;
                                                 case st_18_1_PRESENT :
-                                                    ret = ((1 <= pVal->data.u.tcData.data.u.st_18_1.obcpCode.nCount) && (pVal->data.u.tcData.data.u.st_18_1.obcpCode.nCount <= 15000));
+                                                    ret = ((1 <= pVal->data.u.tcData.data.u.st_18_1.obcpCode.nCount) && (pVal->data.u.tcData.data.u.st_18_1.obcpCode.nCount <= 20000));
                                                     *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATA_DATA_ST_18_1_OBCPCODE;
                                                     if (ret) {
                                                         ret = (pVal->data.u.tcData.data.u.st_18_1.checksum <= 65535UL);
@@ -18615,7 +18615,7 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
                                                 }
                                                 break;
                                             case st_11_4_PRESENT :
-                                                ret = ((1 <= pVal->data.u.tcDataNoHeader.u.st_11_4.nCount) && (pVal->data.u.tcDataNoHeader.u.st_11_4.nCount <= 5));
+                                                ret = ((1 <= pVal->data.u.tcDataNoHeader.u.st_11_4.nCount) && (pVal->data.u.tcDataNoHeader.u.st_11_4.nCount <= 3));
                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_11_4;
                                                 for(i1 = 0; ret && i1 < pVal->data.u.tcDataNoHeader.u.st_11_4.nCount; i1++) 
                                                 {
@@ -19182,7 +19182,7 @@ flag asn1SccPusPacket_IsConstraintValid(const asn1SccPusPacket *pVal, int* pErrC
 
                                                 break;
                                             case st_18_1_PRESENT :
-                                                ret = ((1 <= pVal->data.u.tcDataNoHeader.u.st_18_1.obcpCode.nCount) && (pVal->data.u.tcDataNoHeader.u.st_18_1.obcpCode.nCount <= 15000));
+                                                ret = ((1 <= pVal->data.u.tcDataNoHeader.u.st_18_1.obcpCode.nCount) && (pVal->data.u.tcDataNoHeader.u.st_18_1.obcpCode.nCount <= 20000));
                                                 *pErrCode = ret ? 0 :  ERR_PUSPACKET_DATA_TCDATANOHEADER_ST_18_1_OBCPCODE;
                                                 if (ret) {
                                                     ret = (pVal->data.u.tcDataNoHeader.u.st_18_1.checksum <= 65535UL);

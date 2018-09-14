@@ -34,19 +34,19 @@ void st17_PI_tc17(const asn1SccPusPacket *IN_tcPacket)
 	{
 		printf(" - ST17: TC%llu_%llu received.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
 
-		printf(" - ST17: sending packet to ST01 Acceptance success\n");
+		//printf(" - ST17: sending packet to ST01 Acceptance success\n");
 		subtype = pus_TM_1_1_successfulAcceptance;
 		st17_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 
-		printf(" - ST17: processing packet\n");
+		//printf(" - ST17: processing packet\n");
 		pusPacket_t outTm;
 		pusApid_t apid;
 		pusSequenceCount_t seqCount;
 		st17_RI_getApid(&apid);
 		st17_RI_getSequenceCount(&seqCount);
 		pusError_t error = pus_tm_17_2_createConnectionTestReport(&outTm, apid, seqCount, IN_tcPacket->apid);
-		printf(" - ST17: error: %d\n", error);
+		//printf(" - ST17: error: %d\n", error);
 		if( PUS_NO_ERROR == error)
 		{
 			printf(" - ST17: Sending TM17.2\n");
