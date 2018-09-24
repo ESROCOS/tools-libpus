@@ -1,0 +1,50 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains the description of the system distribution.
+--  It is an input file for the TASTE ORCHESTRATOR
+
+* partition1 PLATFORM_NATIVE
+ground
+partition1_taste_api
+vt_ground_newtm
+vt_ground_triggertmgui
+* gr740_partition PLATFORM_LEON_RTEMS_POSIX
+tcqueue
+tcdispatch
+tmdispatch
+tmqueue
+st17
+st01
+st08
+onboardapid
+st09
+timereportapid
+events
+st05
+st19
+housekeeping
+st03
+st12
+st11
+st18
+st23
+filemanagement
+st20
+onboardparams
+st201
+robot_control_manager
+onboardsoftware
+gr740_partition_taste_api
+vt_tcqueue_newtc
+vt_st19_eventactiontrigger
+vt_st12_pmontrigger
+vt_st11_schedulingtrigger
+vt_robot_control_manager_planhomereport
+vt_robot_control_manager_planmovereport
+vt_robot_control_manager_confighomereport
+vt_robot_control_manager_trigger
+vt_onboardsoftware_debugtrigger
+vt_onboardsoftware_pustrigger
+vt_onboardsoftware_planhome
+vt_onboardsoftware_planmove
+vt_onboardsoftware_confighome

@@ -1,0 +1,297 @@
+---------------------------------------------------
+-- AADL2.1
+-- TASTE type deploymentview
+-- 
+-- generated code: do not edit
+---------------------------------------------------
+
+PACKAGE deploymentview::DV::Node2
+PUBLIC
+
+WITH ocarina_buses;
+WITH ocarina_drivers;
+WITH Taste;
+WITH Deployment;
+WITH TASTE_DV_Properties;
+PROCESS Partition1
+END Partition1;
+
+PROCESS IMPLEMENTATION Partition1.others
+END Partition1.others;
+
+DEVICE generic_sockets_ip_pohic
+EXTENDS ocarina_drivers::generic_sockets_ip
+FEATURES
+  link : REFINED TO REQUIRES BUS ACCESS ocarina_buses::ip.i {
+    Taste::coordinates => "38596 153147";
+  };
+PROPERTIES
+  Taste::Interface_Coordinates => "85409 187587" APPLIES TO link;
+  Deployment::Help => "Write your ASN.1 configuration here";
+  Deployment::Config => "/home/taste/tool-inst/include/ocarina/runtime/polyorb-hi-c/src/drivers/configuration/ip.asn";
+  Deployment::Version => "0.1beta";
+END generic_sockets_ip_pohic;
+
+DEVICE IMPLEMENTATION generic_sockets_ip_pohic.others
+EXTENDS ocarina_drivers::generic_sockets_ip.pohic
+END generic_sockets_ip_pohic.others;
+
+END deploymentview::DV::Node2;
+
+PACKAGE deploymentview::DV::Node1
+PUBLIC
+
+WITH ocarina_buses;
+WITH ocarina_drivers;
+WITH Taste;
+WITH Deployment;
+WITH TASTE_DV_Properties;
+PROCESS gr740_partition
+END gr740_partition;
+
+PROCESS IMPLEMENTATION gr740_partition.others
+END gr740_partition.others;
+
+DEVICE leon_ethernet_greth
+EXTENDS ocarina_drivers::leon_ethernet
+FEATURES
+  link : REFINED TO REQUIRES BUS ACCESS ocarina_buses::ip.i {
+    Taste::coordinates => "156074 152828";
+  };
+PROPERTIES
+  Taste::Interface_Coordinates => "138982 183760" APPLIES TO link;
+  Deployment::Help => "Write your ASN.1 configuration here";
+  Deployment::Config => "/home/taste/tool-inst/include/ocarina/runtime/polyorb-hi-c/src/drivers/configuration/ip.asn";
+  Deployment::Version => "0.1beta";
+END leon_ethernet_greth;
+
+DEVICE IMPLEMENTATION leon_ethernet_greth.others
+EXTENDS ocarina_drivers::leon_ethernet.greth
+END leon_ethernet_greth.others;
+
+END deploymentview::DV::Node1;
+
+PACKAGE deploymentview::DV
+PUBLIC
+
+WITH interfaceview::IV::Ground;
+WITH ocarina_processors_x86;
+WITH deploymentview::DV::Node2;
+WITH interfaceview::IV::OnBoard::PusServices::TC::TcQueue;
+WITH interfaceview::IV::OnBoard::PusServices::TC::TcDispatch;
+WITH interfaceview::IV::OnBoard::PusServices::TM::TmDispatch;
+WITH interfaceview::IV::OnBoard::PusServices::TM::TmQueue;
+WITH interfaceview::IV::OnBoard::PusServices::ST17;
+WITH interfaceview::IV::OnBoard::PusServices::ST01;
+WITH interfaceview::IV::OnBoard::PusServices::ST08;
+WITH interfaceview::IV::OnBoard::PusServices::OnBoardAPID;
+WITH interfaceview::IV::OnBoard::PusServices::TimeReports::ST09;
+WITH interfaceview::IV::OnBoard::PusServices::TimeReports::TimeReportAPID;
+WITH interfaceview::IV::OnBoard::PusServices::EventServices::Events;
+WITH interfaceview::IV::OnBoard::PusServices::EventServices::ST05;
+WITH interfaceview::IV::OnBoard::PusServices::EventServices::ST19;
+WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping;
+WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03;
+WITH interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12;
+WITH interfaceview::IV::OnBoard::PusServices::ST11;
+WITH interfaceview::IV::OnBoard::PusServices::OBCP::ST18;
+WITH interfaceview::IV::OnBoard::PusServices::FilesService::ST23;
+WITH interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement;
+WITH interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20;
+WITH interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams;
+WITH interfaceview::IV::OnBoard::PusServices::RobotControl::ST201;
+WITH interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager;
+WITH interfaceview::IV::OnBoard::OnboardSoftware;
+WITH ocarina_processors_leon;
+WITH deploymentview::DV::Node1;
+WITH ocarina_buses;
+WITH Taste;
+WITH Deployment;
+WITH interfaceview::IV;
+WITH TASTE_DV_Properties;
+SYSTEM Node2
+FEATURES
+  generic_sockets_ip_pohic_ip_i : REQUIRES BUS ACCESS ocarina_buses::ip.i;
+END Node2;
+
+SYSTEM IMPLEMENTATION Node2.others
+SUBCOMPONENTS
+  IV_Ground : SYSTEM interfaceview::IV::Ground::Ground.others {
+    Taste::FunctionName => "Ground";
+  };
+  Partition1 : PROCESS deploymentview::DV::Node2::Partition1.others {
+    Taste::coordinates => "39936 75206 82180 125895";
+    Deployment::Port_Number => 0;
+  };
+  x86_linux : PROCESSOR ocarina_processors_x86::x86.linux {
+    Taste::coordinates => "34656 60723 87460 133136";
+  };
+  generic_sockets_ip_pohic : DEVICE deploymentview::DV::Node2::generic_sockets_ip_pohic.others {
+    Taste::coordinates => "38596 145749 79541 160545";
+  };
+CONNECTIONS
+  generic_sockets_ip_pohic_ip_i_link : BUS ACCESS generic_sockets_ip_pohic_ip_i -> generic_sockets_ip_pohic.link;
+PROPERTIES
+  Taste::APLC_Binding => (reference (Partition1)) APPLIES TO IV_Ground;
+  Actual_Processor_Binding => (reference (x86_linux)) APPLIES TO Partition1;
+  Actual_Processor_Binding => (reference (x86_linux)) APPLIES TO generic_sockets_ip_pohic;
+END Node2.others;
+
+SYSTEM Node1
+FEATURES
+  leon_ethernet_greth_ip_i : REQUIRES BUS ACCESS ocarina_buses::ip.i;
+END Node1;
+
+SYSTEM IMPLEMENTATION Node1.others
+SUBCOMPONENTS
+  IV_TcQueue : SYSTEM interfaceview::IV::OnBoard::PusServices::TC::TcQueue::TcQueue.others {
+    Taste::FunctionName => "TcQueue";
+  };
+  IV_TcDispatch : SYSTEM interfaceview::IV::OnBoard::PusServices::TC::TcDispatch::TcDispatch.others {
+    Taste::FunctionName => "TcDispatch";
+  };
+  IV_TmDispatch : SYSTEM interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::TmDispatch.others {
+    Taste::FunctionName => "TmDispatch";
+  };
+  IV_TmQueue : SYSTEM interfaceview::IV::OnBoard::PusServices::TM::TmQueue::TmQueue.others {
+    Taste::FunctionName => "TmQueue";
+  };
+  IV_ST17 : SYSTEM interfaceview::IV::OnBoard::PusServices::ST17::ST17.others {
+    Taste::FunctionName => "ST17";
+  };
+  IV_ST01 : SYSTEM interfaceview::IV::OnBoard::PusServices::ST01::ST01.others {
+    Taste::FunctionName => "ST01";
+  };
+  IV_ST08 : SYSTEM interfaceview::IV::OnBoard::PusServices::ST08::ST08.others {
+    Taste::FunctionName => "ST08";
+  };
+  IV_OnBoardAPID : SYSTEM interfaceview::IV::OnBoard::PusServices::OnBoardAPID::OnBoardAPID.others {
+    Taste::FunctionName => "OnBoardAPID";
+  };
+  IV_ST09 : SYSTEM interfaceview::IV::OnBoard::PusServices::TimeReports::ST09::ST09.others {
+    Taste::FunctionName => "ST09";
+  };
+  IV_TimeReportAPID : SYSTEM interfaceview::IV::OnBoard::PusServices::TimeReports::TimeReportAPID::TimeReportAPID.others {
+    Taste::FunctionName => "TimeReportAPID";
+  };
+  IV_Events : SYSTEM interfaceview::IV::OnBoard::PusServices::EventServices::Events::Events.others {
+    Taste::FunctionName => "Events";
+  };
+  IV_ST05 : SYSTEM interfaceview::IV::OnBoard::PusServices::EventServices::ST05::ST05.others {
+    Taste::FunctionName => "ST05";
+  };
+  IV_ST19 : SYSTEM interfaceview::IV::OnBoard::PusServices::EventServices::ST19::ST19.others {
+    Taste::FunctionName => "ST19";
+  };
+  IV_Housekeeping : SYSTEM interfaceview::IV::OnBoard::PusServices::HousekeepingServices::Housekeeping::Housekeeping.others {
+    Taste::FunctionName => "Housekeeping";
+  };
+  IV_ST03 : SYSTEM interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03::ST03.others {
+    Taste::FunctionName => "ST03";
+  };
+  IV_ST12 : SYSTEM interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::ST12.others {
+    Taste::FunctionName => "ST12";
+  };
+  IV_ST11 : SYSTEM interfaceview::IV::OnBoard::PusServices::ST11::ST11.others {
+    Taste::FunctionName => "ST11";
+  };
+  IV_ST18 : SYSTEM interfaceview::IV::OnBoard::PusServices::OBCP::ST18::ST18.others {
+    Taste::FunctionName => "ST18";
+  };
+  IV_ST23 : SYSTEM interfaceview::IV::OnBoard::PusServices::FilesService::ST23::ST23.others {
+    Taste::FunctionName => "ST23";
+  };
+  IV_FileManagement : SYSTEM interfaceview::IV::OnBoard::PusServices::FilesService::FileManagement::FileManagement.others {
+    Taste::FunctionName => "FileManagement";
+  };
+  IV_ST20 : SYSTEM interfaceview::IV::OnBoard::PusServices::ParameterManagement::ST20::ST20.others {
+    Taste::FunctionName => "ST20";
+  };
+  IV_OnBoardParams : SYSTEM interfaceview::IV::OnBoard::PusServices::ParameterManagement::OnBoardParams::OnBoardParams.others {
+    Taste::FunctionName => "OnBoardParams";
+  };
+  IV_ST201 : SYSTEM interfaceview::IV::OnBoard::PusServices::RobotControl::ST201::ST201.others {
+    Taste::FunctionName => "ST201";
+  };
+  IV_robot_control_manager : SYSTEM interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::robot_control_manager.others {
+    Taste::FunctionName => "robot_control_manager";
+  };
+  IV_OnboardSoftware : SYSTEM interfaceview::IV::OnBoard::OnboardSoftware::OnboardSoftware.others {
+    Taste::FunctionName => "OnboardSoftware";
+  };
+  gr740_partition : PROCESS deploymentview::DV::Node1::gr740_partition.others {
+    Taste::coordinates => "156661 71823 215340 130392";
+    Deployment::Port_Number => 0;
+  };
+  gr740_rtems51_posix : PROCESSOR ocarina_processors_leon::gr740.rtems51_posix {
+    Taste::coordinates => "149326 55089 222675 138759";
+  };
+  leon_ethernet_greth : DEVICE deploymentview::DV::Node1::leon_ethernet_greth.others {
+    Taste::coordinates => "156074 145876 199316 159780";
+  };
+CONNECTIONS
+  leon_ethernet_greth_ip_i_link : BUS ACCESS leon_ethernet_greth_ip_i -> leon_ethernet_greth.link;
+PROPERTIES
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_TcQueue;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_TcDispatch;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_TmDispatch;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_TmQueue;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST17;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST01;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST08;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_OnBoardAPID;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST09;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_TimeReportAPID;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_Events;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST05;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST19;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_Housekeeping;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST03;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST12;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST11;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST18;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST23;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_FileManagement;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST20;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_OnBoardParams;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_ST201;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_robot_control_manager;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_OnboardSoftware;
+  Actual_Processor_Binding => (reference (gr740_rtems51_posix)) APPLIES TO gr740_partition;
+  Actual_Processor_Binding => (reference (gr740_rtems51_posix)) APPLIES TO leon_ethernet_greth;
+END Node1.others;
+
+SYSTEM deploymentview
+END deploymentview;
+
+SYSTEM IMPLEMENTATION deploymentview.others
+SUBCOMPONENTS
+  Node2 : SYSTEM Node2.others {
+    Taste::coordinates => "27575 53714 93580 166283";
+  };
+  Node1 : SYSTEM Node1.others {
+    Taste::coordinates => "139917 47504 231604 167033";
+  };
+  ip_i : BUS ocarina_buses::ip.i {
+    Taste::coordinates => "85409 179296 138982 195878";
+  };
+  interfaceview : SYSTEM interfaceview::IV::interfaceview.others;
+CONNECTIONS
+  Connection2 : BUS ACCESS ip_i -> Node2.generic_sockets_ip_pohic_ip_i {
+    Taste::coordinates => "38596 153147 28557 153147 28557 187587 85409 187587";
+  };
+  Connection1 : BUS ACCESS ip_i -> Node1.leon_ethernet_greth_ip_i {
+    Taste::coordinates => "156074 152828 145806 152828 145806 183760 138982 183760";
+  };
+PROPERTIES
+  Actual_Connection_Binding => (reference (ip_i)) APPLIES TO interfaceview.Ground_PI_newTm_OnBoard_RI_newTm;
+  Actual_Connection_Binding => (reference (ip_i)) APPLIES TO interfaceview.OnBoard_PI_newTc_Ground_RI_newTc;
+END deploymentview.others;
+
+PROPERTIES
+  Taste::coordinates => "0 0 297000 210000";
+  Taste::version => "2.0";
+  Taste::interfaceView => "InterfaceView.aadl";
+  Taste::HWLibraries => ("../../../../tool-inst/share/ocarina/AADLv2/ocarina_components.aadl");
+END deploymentview::DV;
+

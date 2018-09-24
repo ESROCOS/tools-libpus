@@ -1,0 +1,31 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package st05_CV_Thread
+public
+	with Deployment;
+	with process_package;
+	with Dataview;
+
+THREAD st05_st05
+features
+	INPORT_EventReportTrigger : IN EVENT PORT
+		{ Compute_Execution_Time => 0 ms .. 0 ms;
+		  Queue_Size => 1;
+		  Compute_Entrypoint_Source_Text => "st05_wrappers.EventReportTrigger"; };
+END st05_st05;
+
+THREAD IMPLEMENTATION st05_st05.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "st05_wrappers.C_Init_st05";
+	Dispatch_Protocol      => Sporadic;
+	Period                 => 1 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 5 KByte;
+	Priority               => 10;
+END st05_st05.others;
+
+end st05_CV_Thread;

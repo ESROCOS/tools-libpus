@@ -1,0 +1,181 @@
+Pthread 0 created
+Pthread 1 created
+Notify init 
+Notify init: 0
+Startup completed!
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+TcQUEUE: TC8_1 inserted in TcQueue.
+TC8_1 in TcDispatch.
+ - ST08: TC8_1 received.
+ - ST08: send pus_TM_1_1_successfulAcceptance 
+ - ST01: Packet TC8_1 received, subtype: 1, error 0, step 1
+ - ST01: No report TM1_1 needed for TC8_1 .
+ - ST08: Processing packet
+ - ST08: send pus_TM_1_3_successfulStart
+ - ST01: Packet TC8_1 received, subtype: 3, error 0, step 1
+ - ST01: Creating successfulStart from TC8_1 send.
+TmQUEUE: TM1_3 inserted in TmQueue.
+ INC COUNT: Time2: 1533826612
+ INC COUNT: TM0_0 inserted in TmQueue.
+ INC COUNT: in, error 0
+  - Hello world! -  (Function0)
+ - ST08: send pus_TM_1_7_successfulCompletion 
+ - ST01: Packet TC8_1 received, subtype: 7, error 0, step 1
+ - ST01: No report TM1_7 needed for TC8_1 .
+TM1_3 in TmDispatch.
+Recibido
+TM0_0 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+TcQUEUE: TC8_1 inserted in TcQueue.
+TC8_1 in TcDispatch.
+ - ST08: TC8_1 received.
+ - ST08: send pus_TM_1_1_successfulAcceptance 
+ - ST01: Packet TC8_1 received, subtype: 1, error 0, step 1
+ - ST01: No report TM1_1 needed for TC8_1 .
+ - ST08: Processing packet
+ - ST08: send pus_TM_1_3_successfulStart
+ - ST01: Packet TC8_1 received, subtype: 3, error 0, step 1
+ - ST01: No report TM1_3 needed for TC8_1 .
+  - Hello world! -  (Function0)
+ - ST08: send pus_TM_1_7_successfulCompletion 
+ - ST01: Packet TC8_1 received, subtype: 7, error 0, step 1
+ - ST01: Creating successfulCompletion from TC8_1 send.
+TmQUEUE: TM1_7 inserted in TmQueue.
+TM1_7 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+TcQUEUE: TC8_1 inserted in TcQueue.
+TC8_1 in TcDispatch.
+ - ST08: TC8_1 received.
+ - ST08: send pus_TM_1_1_successfulAcceptance 
+ - ST01: Packet TC8_1 received, subtype: 1, error 0, step 1
+ - ST01: No report TM1_1 needed for TC8_1 .
+ - ST08: Processing packet
+ - ST08: send pus_TM_1_3_successfulStart
+ - ST01: Packet TC8_1 received, subtype: 3, error 0, step 1
+ - ST01: No report TM1_3 needed for TC8_1 .
+  - Hello world! -  (Function0)
+ - ST08: send pus_TM_1_7_successfulCompletion 
+ - ST01: Packet TC8_1 received, subtype: 7, error 0, step 1
+ - ST01: No report TM1_7 needed for TC8_1 .
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+ INC COUNT: Time2: 1533826620
+ INC COUNT: TM0_0 inserted in TmQueue.
+ INC COUNT: in, error 0
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+TM0_0 in TmDispatch.
+TcQUEUE: TC8_1 inserted in TcQueue.
+Recibido
+TC8_1 in TcDispatch.
+ - ST08: TC8_1 received.
+ - ST08: send pus_TM_1_1_successfulAcceptance 
+ - ST01: Packet TC8_1 received, subtype: 1, error 0, step 1
+ - ST01: Creating successfulAcceptance from TC8_1 send.
+TmQUEUE: TM1_1 inserted in TmQueue.
+ - ST08: Processing packet
+ - ST08: send pus_TM_1_3_successfulStart
+ - ST01: Packet TC8_1 received, subtype: 3, error 0, step 1
+ - ST01: No report TM1_3 needed for TC8_1 .
+  - Hello world! -  (Function0)
+ - ST08: send pus_TM_1_7_successfulCompletion 
+ - ST01: Packet TC8_1 received, subtype: 7, error 0, step 1
+ - ST01: No report TM1_7 needed for TC8_1 .
+TM1_1 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TcQUEUE: TC8_1 inserted in TcQueue.
+TM3_25 in TmDispatch.
+Recibido
+TC8_1 in TcDispatch.
+ - ST08: TC8_1 received.
+ - ST08: send pus_TM_1_1_successfulAcceptance 
+ - ST01: Packet TC8_1 received, subtype: 1, error 0, step 1
+ - ST01: No report TM1_1 needed for TC8_1 .
+ - ST08: Processing packet
+ - ST08: send pus_TM_1_8_failedCompletion 
+ - ST01: Packet TC8_1 received, subtype: 4, error 37, step 1
+ - ST01: Creating failedStart from TC8_1 send.
+TmQUEUE: TM1_4 inserted in TmQueue.
+TM1_4 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+ INC COUNT: Time2: 1533826627
+ INC COUNT: TM0_0 inserted in TmQueue.
+ INC COUNT: in, error 0
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+TM0_0 in TmDispatch.
+Recibido
+i: 0, id: 2, param:4636737291354636288
+i: 1, id: 0, param:5
+i: 2, id: 4, param:10
+i: 3, id: 5, param:3
+i: 4, id: 6, param:0
+TmQUEUE: TM3_25 inserted in TmQueue.
+lastCounter 0, counter 0
+TM3_25 in TmDispatch.
+Recibido
+{'type': '', 'msg': [1, 3, 4, 5, 7], 'svc': [1, 8]}
+{'type': '', 'msg': [1, 3, 4, 5, 7], 'svc': [1, 8]}

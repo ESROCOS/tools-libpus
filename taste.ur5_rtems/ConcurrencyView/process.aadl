@@ -1,0 +1,240 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package process_package
+public
+	with Deployment;
+	with DataView;
+	with interfaceview::IV;
+	with deploymentview::DV;
+	with ocarina_processors_x86;
+	with deploymentview::dv::node2;
+	with ocarina_processors_leon;
+	with deploymentview::dv::node1;
+	with ocarina_buses;
+	with vt_ground_newtm_CV_Thread;
+	with vt_ground_triggertmgui_CV_Thread;
+	with tcdispatch_CV_Thread;
+	with tmdispatch_CV_Thread;
+	with st05_CV_Thread;
+	with st03_CV_Thread;
+	with vt_tcqueue_newtc_CV_Thread;
+	with vt_st19_eventactiontrigger_CV_Thread;
+	with vt_st12_pmontrigger_CV_Thread;
+	with vt_st11_schedulingtrigger_CV_Thread;
+	with vt_robot_control_manager_planhomereport_CV_Thread;
+	with vt_robot_control_manager_planmovereport_CV_Thread;
+	with vt_robot_control_manager_confighomereport_CV_Thread;
+	with vt_robot_control_manager_trigger_CV_Thread;
+	with vt_onboardsoftware_debugtrigger_CV_Thread;
+	with vt_onboardsoftware_pustrigger_CV_Thread;
+	with vt_onboardsoftware_planhome_CV_Thread;
+	with vt_onboardsoftware_planmove_CV_Thread;
+	with vt_onboardsoftware_confighome_CV_Thread;
+
+process partition1 extends deploymentview::DV::node2::partition1
+features
+	INPORT_vt_ground_newtm_newTm : IN EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+	OUTPORT_vt_ground_newtm_newTc : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+	OUTPORT_vt_ground_triggertmgui_newTc : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+end partition1;
+
+process implementation partition1.final
+subcomponents
+	vt_ground_newtm : thread vt_ground_newtm_CV_Thread::vt_ground_newtm_vt_ground_newtm.others;
+	vt_ground_triggertmgui : thread vt_ground_triggertmgui_CV_Thread::vt_ground_triggertmgui_vt_ground_triggertmgui.others;
+connections
+	PORT INPORT_vt_ground_newtm_newTm -> vt_ground_newtm.INPORT_artificial_newTm;
+	PORT vt_ground_newtm.OUTPORT_newTc_vt -> OUTPORT_vt_ground_newtm_newTc;
+	PORT vt_ground_triggertmgui.OUTPORT_newTc_vt -> OUTPORT_vt_ground_triggertmgui_newTc;
+end partition1.final;
+
+
+process gr740_partition extends deploymentview::DV::node1::gr740_partition
+features
+	OUTPORT_tmdispatch_newTm : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+	INPORT_vt_tcqueue_newtc_newTc : IN EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+end gr740_partition;
+
+process implementation gr740_partition.final
+subcomponents
+	tcdispatch : thread tcdispatch_CV_Thread::tcdispatch_tcdispatch.others;
+	tmdispatch : thread tmdispatch_CV_Thread::tmdispatch_tmdispatch.others;
+	st05 : thread st05_CV_Thread::st05_st05.others;
+	st03 : thread st03_CV_Thread::st03_st03.others;
+	vt_tcqueue_newtc : thread vt_tcqueue_newtc_CV_Thread::vt_tcqueue_newtc_vt_tcqueue_newtc.others;
+	vt_st19_eventactiontrigger : thread vt_st19_eventactiontrigger_CV_Thread::vt_st19_eventactiontrigger_vt_st19_eventactiontrigger.others;
+	vt_st12_pmontrigger : thread vt_st12_pmontrigger_CV_Thread::vt_st12_pmontrigger_vt_st12_pmontrigger.others;
+	vt_st11_schedulingtrigger : thread vt_st11_schedulingtrigger_CV_Thread::vt_st11_schedulingtrigger_vt_st11_schedulingtrigger.others;
+	vt_robot_control_manager_planhomereport : thread vt_robot_control_manager_planhomereport_CV_Thread::vt_robot_control_manager_planhomereport_vt_robot_control_manager_planhomereport.others;
+	vt_robot_control_manager_planmovereport : thread vt_robot_control_manager_planmovereport_CV_Thread::vt_robot_control_manager_planmovereport_vt_robot_control_manager_planmovereport.others;
+	vt_robot_control_manager_confighomereport : thread vt_robot_control_manager_confighomereport_CV_Thread::vt_robot_control_manager_confighomereport_vt_robot_control_manager_confighomereport.others;
+	vt_robot_control_manager_trigger : thread vt_robot_control_manager_trigger_CV_Thread::vt_robot_control_manager_trigger_vt_robot_control_manager_trigger.others;
+	vt_onboardsoftware_debugtrigger : thread vt_onboardsoftware_debugtrigger_CV_Thread::vt_onboardsoftware_debugtrigger_vt_onboardsoftware_debugtrigger.others;
+	vt_onboardsoftware_pustrigger : thread vt_onboardsoftware_pustrigger_CV_Thread::vt_onboardsoftware_pustrigger_vt_onboardsoftware_pustrigger.others;
+	vt_onboardsoftware_planhome : thread vt_onboardsoftware_planhome_CV_Thread::vt_onboardsoftware_planhome_vt_onboardsoftware_planhome.others;
+	vt_onboardsoftware_planmove : thread vt_onboardsoftware_planmove_CV_Thread::vt_onboardsoftware_planmove_vt_onboardsoftware_planmove.others;
+	vt_onboardsoftware_confighome : thread vt_onboardsoftware_confighome_CV_Thread::vt_onboardsoftware_confighome_vt_onboardsoftware_confighome.others;
+connections
+	PORT tcdispatch.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT tcdispatch.OUTPORT_planMove_vt -> vt_onboardsoftware_planmove.INPORT_artificial_planMove;
+	PORT tcdispatch.OUTPORT_planHome_vt -> vt_onboardsoftware_planhome.INPORT_artificial_planHome;
+	PORT tcdispatch.OUTPORT_configHome_vt -> vt_onboardsoftware_confighome.INPORT_artificial_configHome;
+	PORT tcdispatch.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT tcdispatch.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT tcdispatch.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT tcdispatch.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT tcdispatch.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT tcdispatch.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT tcdispatch.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT tcdispatch.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT tcdispatch.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT tcdispatch.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT tmdispatch.OUTPORT_newTm -> OUTPORT_tmdispatch_newTm;
+	PORT INPORT_vt_tcqueue_newtc_newTc -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT vt_st19_eventactiontrigger.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT vt_st11_schedulingtrigger.OUTPORT_newTc_vt -> vt_tcqueue_newtc.INPORT_artificial_newTc;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_planMove_vt -> vt_onboardsoftware_planmove.INPORT_artificial_planMove;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_planHome_vt -> vt_onboardsoftware_planhome.INPORT_artificial_planHome;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_configHome_vt -> vt_onboardsoftware_confighome.INPORT_artificial_configHome;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_robot_control_manager_planhomereport.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_planMove_vt -> vt_onboardsoftware_planmove.INPORT_artificial_planMove;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_planHome_vt -> vt_onboardsoftware_planhome.INPORT_artificial_planHome;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_configHome_vt -> vt_onboardsoftware_confighome.INPORT_artificial_configHome;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_robot_control_manager_planmovereport.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_planMove_vt -> vt_onboardsoftware_planmove.INPORT_artificial_planMove;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_planHome_vt -> vt_onboardsoftware_planhome.INPORT_artificial_planHome;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_configHome_vt -> vt_onboardsoftware_confighome.INPORT_artificial_configHome;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_robot_control_manager_confighomereport.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT vt_robot_control_manager_trigger.OUTPORT_planMove_vt -> vt_onboardsoftware_planmove.INPORT_artificial_planMove;
+	PORT vt_robot_control_manager_trigger.OUTPORT_planHome_vt -> vt_onboardsoftware_planhome.INPORT_artificial_planHome;
+	PORT vt_robot_control_manager_trigger.OUTPORT_configHome_vt -> vt_onboardsoftware_confighome.INPORT_artificial_configHome;
+	PORT vt_robot_control_manager_trigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_robot_control_manager_trigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_robot_control_manager_trigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_robot_control_manager_trigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_robot_control_manager_trigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_robot_control_manager_trigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_robot_control_manager_trigger.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_robot_control_manager_trigger.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_robot_control_manager_trigger.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_robot_control_manager_trigger.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_onboardsoftware_debugtrigger.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_onboardsoftware_pustrigger.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT vt_onboardsoftware_planhome.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_onboardsoftware_planhome.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_onboardsoftware_planhome.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_onboardsoftware_planhome.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_onboardsoftware_planhome.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_onboardsoftware_planhome.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_onboardsoftware_planhome.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_onboardsoftware_planhome.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_onboardsoftware_planhome.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_onboardsoftware_planhome.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT vt_onboardsoftware_planmove.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_onboardsoftware_planmove.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_onboardsoftware_planmove.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_onboardsoftware_planmove.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_onboardsoftware_planmove.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_onboardsoftware_planmove.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_onboardsoftware_planmove.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_onboardsoftware_planmove.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_onboardsoftware_planmove.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_onboardsoftware_planmove.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+	PORT vt_onboardsoftware_confighome.OUTPORT_tcTrigger_vt -> tcdispatch.INPORT_tcTrigger;
+	PORT vt_onboardsoftware_confighome.OUTPORT_tmTrigger_vt -> tmdispatch.INPORT_tmTrigger;
+	PORT vt_onboardsoftware_confighome.OUTPORT_EventReportTrigger_vt -> st05.INPORT_EventReportTrigger;
+	PORT vt_onboardsoftware_confighome.OUTPORT_EventActionTrigger_vt -> vt_st19_eventactiontrigger.INPORT_artificial_EventActionTrigger;
+	PORT vt_onboardsoftware_confighome.OUTPORT_HkReportTrigger_vt -> st03.INPORT_HkReportTrigger;
+	PORT vt_onboardsoftware_confighome.OUTPORT_PmonTrigger_vt -> vt_st12_pmontrigger.INPORT_artificial_PmonTrigger;
+	PORT vt_onboardsoftware_confighome.OUTPORT_planHomeReport_vt -> vt_robot_control_manager_planhomereport.INPORT_artificial_planHomeReport;
+	PORT vt_onboardsoftware_confighome.OUTPORT_planMoveReport_vt -> vt_robot_control_manager_planmovereport.INPORT_artificial_planMoveReport;
+	PORT vt_onboardsoftware_confighome.OUTPORT_configHomeReport_vt -> vt_robot_control_manager_confighomereport.INPORT_artificial_configHomeReport;
+	PORT vt_onboardsoftware_confighome.OUTPORT_schedulingTrigger_vt -> vt_st11_schedulingtrigger.INPORT_artificial_schedulingTrigger;
+end gr740_partition.final;
+
+system deploymentview
+end deploymentview;
+
+system implementation deploymentview.final
+subcomponents
+  ip_i_cv : bus ocarina_buses::ip.i;
+  partition1: process partition1.final;
+  node2_generic_sockets_ip_pohic_cv : device deploymentview::dv::node2::generic_sockets_ip_pohic.others
+	{
+		Source_Text => ("../DriversConfig/partition1/DeviceConfig-node2-generic-sockets-ip-pohic.ads");
+		Type_Source_Name => "DeviceConfig_node2_generic_sockets_ip_pohic.pohidrv_node2_generic_sockets_ip_pohic_cv";
+	};
+  gr740_partition: process gr740_partition.final;
+  node1_leon_ethernet_greth_cv : device deploymentview::dv::node1::leon_ethernet_greth.others
+	{
+		Source_Text => ("../DriversConfig/gr740_partition/DeviceConfig-node1-leon-ethernet-greth.ads");
+		Type_Source_Name => "DeviceConfig_node1_leon_ethernet_greth.pohidrv_node1_leon_ethernet_greth_cv";
+	};
+  node2_x86_linux_cv : processor ocarina_processors_x86::x86.linux;
+  node1_gr740_rtems51_posix_cv : processor ocarina_processors_leon::gr740.rtems51_posix;
+connections
+  partition1_newTm_tmdispatch_conn_cv : port gr740_partition.OUTPORT_tmdispatch_newTm -> partition1.INPORT_vt_ground_newtm_newTm;
+  gr740_partition_newTc_vt_ground_newtm_conn_cv : port partition1.OUTPORT_vt_ground_newtm_newTc -> gr740_partition.INPORT_vt_tcqueue_newtc_newTc;
+  gr740_partition_newTc_vt_ground_triggertmgui_conn_cv : port partition1.OUTPORT_vt_ground_triggertmgui_newTc -> gr740_partition.INPORT_vt_tcqueue_newtc_newTc;
+  bus access ip_i_cv -> node2_generic_sockets_ip_pohic_cv.link;
+  bus access ip_i_cv -> node1_leon_ethernet_greth_cv.link;
+properties
+  Actual_Processor_Binding => (reference (node2_x86_linux_cv)) applies to partition1;
+  Actual_Processor_Binding => (reference (node1_gr740_rtems51_posix_cv)) applies to gr740_partition;
+  Actual_Processor_Binding => (reference (node2_x86_linux_cv)) applies to node2_generic_sockets_ip_pohic_cv;
+  Actual_Processor_Binding => (reference (node1_gr740_rtems51_posix_cv)) applies to node1_leon_ethernet_greth_cv;
+  Actual_Connection_Binding => (reference (ip_i_cv)) applies to partition1_newTm_tmdispatch_conn_cv;
+  Actual_Connection_Binding => (reference (ip_i_cv)) applies to gr740_partition_newTc_vt_ground_newtm_conn_cv;
+  Actual_Connection_Binding => (reference (ip_i_cv)) applies to gr740_partition_newTc_vt_ground_triggertmgui_conn_cv;
+end deploymentview.final;
+end process_package;
+
+-- deploymentview.final

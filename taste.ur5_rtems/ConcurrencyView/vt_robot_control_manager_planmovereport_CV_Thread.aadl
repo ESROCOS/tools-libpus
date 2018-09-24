@@ -1,0 +1,44 @@
+--  This file was generated automatically: DO NOT MODIFY IT !
+
+--  This file contains a part of the system CONCURRENCY VIEW.
+--  It is an input file for OCARINA.
+
+package vt_robot_control_manager_planmovereport_CV_Thread
+public
+	with Deployment;
+	with process_package;
+	with Dataview;
+
+THREAD vt_robot_control_manager_planmovereport_vt_robot_control_manager_planmovereport
+features
+	INPORT_artificial_planMoveReport : IN EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl
+		{ Compute_Execution_Time => 0 ms .. 0 ms;
+		  Queue_Size => 1;
+		  Compute_Entrypoint_Source_Text => "vt_robot_control_manager_planmovereport_wrappers.artificial_planMoveReport"; };
+	OUTPORT_planMove_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
+	OUTPORT_planHome_vt : OUT EVENT DATA PORT DataView::T_Boolean_Buffer.impl;
+	OUTPORT_configHome_vt : OUT EVENT DATA PORT DataView::Base_Pose_Buffer.impl;
+	OUTPORT_tcTrigger_vt : OUT EVENT PORT;
+	OUTPORT_tmTrigger_vt : OUT EVENT PORT;
+	OUTPORT_EventReportTrigger_vt : OUT EVENT PORT;
+	OUTPORT_EventActionTrigger_vt : OUT EVENT PORT;
+	OUTPORT_HkReportTrigger_vt : OUT EVENT PORT;
+	OUTPORT_PmonTrigger_vt : OUT EVENT PORT;
+	OUTPORT_planHomeReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
+	OUTPORT_planMoveReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
+	OUTPORT_configHomeReport_vt : OUT EVENT DATA PORT DataView::T_Boolean_Buffer.impl;
+	OUTPORT_schedulingTrigger_vt : OUT EVENT PORT;
+END vt_robot_control_manager_planmovereport_vt_robot_control_manager_planmovereport;
+
+THREAD IMPLEMENTATION vt_robot_control_manager_planmovereport_vt_robot_control_manager_planmovereport.others
+PROPERTIES
+	Initialize_Entrypoint_Source_Text => "robot_control_manager_wrappers.C_Init_robot_control_manager";
+	Dispatch_Protocol      => Sporadic;
+	Period                 => 1 ms;
+	Dispatch_Offset        => 0 ms;
+	Compute_Execution_Time => 0 ms .. 10 ms;
+	Stack_Size             => 5 KByte;
+	Priority               => 10;
+END vt_robot_control_manager_planmovereport_vt_robot_control_manager_planmovereport.others;
+
+end vt_robot_control_manager_planmovereport_CV_Thread;
