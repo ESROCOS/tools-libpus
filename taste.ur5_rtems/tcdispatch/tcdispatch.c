@@ -78,11 +78,6 @@ void tcdispatch_PI_tcTrigger()
 				//pus_st19_processTcPacket(&tcRead, &apid);
 				tcdispatch_RI_tc23(&tc);
 				break;
-			case 200:
-				//pus_st19_processTcPacket(&tcRead, &apid);
-				printf("tcdispatch_RI_tc200\n");
-				tcdispatch_RI_tc200(&tc);
-				break;
 			case 201:
 				//pus_st19_processTcPacket(&tcRead, &apid);
 				tcdispatch_RI_tc201(&tc);
