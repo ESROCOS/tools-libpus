@@ -222,6 +222,7 @@ pusError_t pus_tc_18_21_createStartObcpEngineRequest(pusPacket_t* outTc, pusApid
 	}
 
 	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+	outTc->data.u.tcData.data.u.st_0_0 = 0;
 
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
@@ -240,6 +241,7 @@ pusError_t pus_tc_18_22_createStopObcpEngineRequest(pusPacket_t* outTc, pusApid_
 	}
 
 	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+	outTc->data.u.tcData.data.u.st_0_0 = 0;
 
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }

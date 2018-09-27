@@ -156,6 +156,12 @@ bool pus_pmon_getDefinitionStatus(pusSt12PmonId_t id)
 		return false;
 	}
 
+	if( ! pus_pmon_isFunctionActivated())
+	{
+		PUS_SET_ERROR(PUS_ERROR_NOT_INITIALIZED);
+		return false;
+	}
+
 	if( ! pus_pmon_isInDefinitionList(id))
 	{
 		PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
@@ -192,6 +198,11 @@ bool pus_pmon_isInDefinitionList(pusSt12PmonId_t id)
 pusError_t pus_pmon_checkParameter(pusSt12PmonId_t id)
 {
 	if( ! pus_pmon_isInitialized())
+	{
+		return PUS_ERROR_NOT_INITIALIZED;
+	}
+
+	if( ! pus_pmon_isFunctionActivated())
 	{
 		return PUS_ERROR_NOT_INITIALIZED;
 	}

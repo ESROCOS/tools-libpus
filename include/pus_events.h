@@ -70,7 +70,13 @@ typedef struct {
 //! Pointer(index) for event buffer in
 extern size_t pus_st05_eventBufferIn;
 
-#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT UINT32_MAX
+#ifdef __sparc__
+	#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT 65535
+#else
+	#define PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT 65535
+#endif
+
+
 //! Counter of the events that has been inserted
 extern size_t pus_st05_eventBufferCounter;
 

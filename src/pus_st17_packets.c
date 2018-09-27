@@ -32,6 +32,9 @@ pusError_t pus_tc_17_1_createConnectionTestRequest(pusPacket_t* outTc, pusApid_t
 		pus_setTcSubtype(outTc, pus_TC_17_1_connectionTest);
 		pus_setTcSource(outTc, apid);
 
+		pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+		outTc->data.u.tcData.data.u.st_0_0 = 0;
+
 		return PUS_GET_ERROR();
 	}
 
@@ -61,6 +64,8 @@ pusError_t pus_tm_17_2_createConnectionTestReport(pusPacket_t* outTm, pusApid_t 
 		pus_setTmSubtype(outTm, pus_TM_17_2_connectionTest);
 
 		pus_setTmDestination(outTm, destination);
+		pus_setTmDataKind(outTm, pus_TM_DATA_NONE);
+		outTm->data.u.tmData.data.u.st_0_0 = 0;
 
 		// Timestamp
 		pus_setTmPacketTimeNow(outTm);

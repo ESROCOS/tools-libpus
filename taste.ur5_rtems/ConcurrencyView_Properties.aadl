@@ -11,38 +11,10 @@ SYSTEM IMPLEMENTATION deploymentview.final
 EXTENDS process_package::deploymentview.final
 PROPERTIES
   AI::root_system => "SELECTED";
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.tcdispatch;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.tmdispatch;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.st05;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.st03;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_ground_newtm;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_ground_triggertmgui;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_tcqueue_newtc;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_st19_eventactiontrigger;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_st12_pmontrigger;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_camera_control_setcamerareport;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_camera_control_trigger;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_robot_control_manager_planhomereport;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_robot_control_manager_planmovereport;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_robot_control_manager_confighomereport;
-  Stack_Size => 1000kbyte APPLIES TO x86_partition.vt_robot_control_manager_trigger;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.tcdispatch;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.tmdispatch;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.st05;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.st03;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_tcqueue_newtc;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_st19_eventactiontrigger;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_st12_pmontrigger;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_st11_schedulingtrigger;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_robot_control_manager_planhomereport;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_robot_control_manager_planmovereport;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_robot_control_manager_confighomereport;
   Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_robot_control_manager_trigger;
   Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_onboardsoftware_debugtrigger;
   Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_onboardsoftware_pustrigger;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_onboardsoftware_planhome;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_onboardsoftware_planmove;
-  Stack_Size => 50kbyte APPLIES TO gr740_partition.vt_onboardsoftware_confighome;
+  Stack_Size => 150kbyte APPLIES TO gr740_partition.vt_tcqueue_newtc;
 END deploymentview.final;
 
 END process_package_proxy;

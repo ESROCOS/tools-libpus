@@ -48,6 +48,7 @@ pusError_t pus_tc_11_1_createEnableTimeBasedSchedule(pusPacket_t* outTc, pusApid
 		return PUS_GET_ERROR();
 	}
 	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+	outTc->data.u.tcData.data.u.st_0_0 = 0;
 
 	return PUS_NO_ERROR;
 }
@@ -62,8 +63,8 @@ pusError_t pus_tc_11_2_createDisableTimeBasedSchedule(pusPacket_t* outTc, pusApi
 	{
 		return PUS_GET_ERROR();
 	}
-
 	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+	outTc->data.u.tcData.data.u.st_0_0 = 0;
 
 	return PUS_NO_ERROR;
 }
@@ -80,6 +81,7 @@ pusError_t pus_tc_11_3_createResetTimeBasedSchedule(pusPacket_t* outTc, pusApid_
 		return PUS_GET_ERROR();
 	}
 	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+	outTc->data.u.tcData.data.u.st_0_0 = 0;
 
 	return PUS_NO_ERROR;
 }

@@ -39,9 +39,9 @@ void *myThreadFun(void* arg)
     PyRun_SimpleString("Main.main()\n");*/
 
     PyRun_SimpleString("import builtins\n");
-    PyRun_SimpleString("builtins.ESROCOS_PUSGUI_MODULE = \"esrocos_pus_test_ur5\"\n");
-    PyRun_SimpleString("builtins.ESROCOS_PUSGUI_CONFIG = \"/home/esrocos/esrocos_workspace/tools/libpus/mission/test_ur5/gui_config.json\"\n");
-    PyRun_SimpleString("builtins.ESROCOS_PUSGUI_MISSION = \"/home/esrocos/esrocos_workspace/tools/libpus/mission/test_ur5\"\n");
+    PyRun_SimpleString("builtins.ESROCOS_PUSGUI_MODULE = \"esrocos_pus_test_ur5_rtems\"\n");
+    PyRun_SimpleString("builtins.ESROCOS_PUSGUI_CONFIG = \"/home/esrocos/esrocos_workspace/tools/libpus/mission/test_ur5_rtems/gui_config.json\"\n");
+    PyRun_SimpleString("builtins.ESROCOS_PUSGUI_MISSION = \"/home/esrocos/esrocos_workspace/tools/libpus/mission/test_ur5_rtems\"\n");
     PyRun_SimpleString("import PusGui\n");
     PyRun_SimpleString("PusGui.create()\n");
 
@@ -54,7 +54,13 @@ void ground_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
-    printf("Notify init: %d\n", pus_notify_initialize());
+    //printf("Notify init: %d\n", pus_notify_initialize());
+    pus_notify_initialize();
+    pus_events_initialize(NULL);
+    pus_hk_initialize(NULL);
+    pus_parameters_initialize(NULL);
+    pus_st08_initialize(NULL);
+
 
     //init thread
     pthread_t tid;
@@ -77,5 +83,4 @@ void ground_PI_triggerTmGUI()
     {
         ground_RI_newTc(&packet);
     }
-    
 }

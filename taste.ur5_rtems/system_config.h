@@ -2,14 +2,13 @@
 
 /* Configuration file used by C_ASN1_Types.h */
 
-#define __NEED_PusPacket_NATIVE
-#define __NEED_PusPacket_NATIVE
-#define __NEED_PusPacket_NATIVE
-#define __NEED_PusPacket_NATIVE
-#define __NEED_PusSt01FailureCode_NATIVE
+#define __NEED_PusPacket_UPER
+#define __NEED_PusPacket_UPER
+#define __NEED_PusPacket_UPER
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusSt01FailureCode_NATIVE
 #define __NEED_PusPacket_NATIVE
+#define __NEED_PusSt01FailureCode_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
@@ -20,6 +19,7 @@
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
+#define __NEED_PusPacket_UPER
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusSt01FailureCode_NATIVE
 #define __NEED_PusPacket_NATIVE
@@ -84,7 +84,7 @@
 #define __NEED_PusSt01FailureInfo_NATIVE
 #define __NEED_PusStepId_NATIVE
 #define __NEED_PusPacket_NATIVE
-#define __NEED_PusPacket_NATIVE
+#define __NEED_PusPacket_UPER
 #define __NEED_PusSt03ParameterId_NATIVE
 #define __NEED_PusSt03StoredParam_NATIVE
 #define __NEED_PusSt03ParameterId_NATIVE
@@ -112,7 +112,7 @@
 #define __NEED_PusSt01FailureCode_NATIVE
 #define __NEED_PusSt01FailureInfo_NATIVE
 #define __NEED_PusStepId_NATIVE
-#define __NEED_PusPacket_NATIVE
+#define __NEED_PusPacket_UPER
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusPacket_NATIVE
 #define __NEED_PusSubserviceType_NATIVE

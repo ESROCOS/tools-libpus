@@ -38,6 +38,9 @@ BEGIN
   	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
   	;
 
+    -- dummy data field for packets with no data
+    PusTM-TC-Dummy-Data ::= PusUInt32
+
     -- TM secondary header
     PusTmHeader ::= SEQUENCE
     {
@@ -54,6 +57,7 @@ BEGIN
     -- TM actual data
     PusTmSourceData ::= CHOICE
     {
+        st-0-0 PusTM-TC-Dummy-Data,
         st-1-X 	PusTM-1-X-Data,
         st-3-25 PusTM-3-25-Data,
         st-5-X 	PusTM-5-X-Data,
@@ -97,6 +101,7 @@ BEGIN
     -- TC actual data
     PusTcApplicationData ::= CHOICE
     { -- The same order as the reduced
+        st-0-0      PusTM-TC-Dummy-Data,
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,
@@ -116,7 +121,8 @@ BEGIN
     }
     
     PusTcApplicationDataReduced ::= CHOICE
-    { 
+    {
+        st-0-0      PusTM-TC-Dummy-Data,
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,

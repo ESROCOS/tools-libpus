@@ -10,7 +10,7 @@ isProperty('NIL','=>','interfaceview::IV','Ground','NIL','PI_newTm','Taste::RCMp
 isProperty('NIL','=>','interfaceview::IV','Ground','NIL','PI_newTm','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV','Ground','NIL','PI_newTm','Taste::InterfaceName','"newTm"','').
 isFeature('PARAMETER','interfaceview::FV::Ground','PI_newTm','tmPacket','IN','NIL','DataView::PusPacket','NIL','NIL','').
-isProperty('NIL','=>','interfaceview::FV::Ground','PI_newTm','NIL','tmPacket','Taste::encoding','NATIVE','').
+isProperty('NIL','=>','interfaceview::FV::Ground','PI_newTm','NIL','tmPacket','Taste::encoding','UPER','').
 isProperty('NIL','=>','interfaceview::FV::Ground','PI_newTm','others','NIL','Compute_Execution_Time','0 ms .. 0 ms','').
 isSubcomponent('interfaceview::IV','Ground','others','newTm_impl','SUBPROGRAM','interfaceview::FV::Ground::PI_newTm.others','NIL','NIL','').
 isConnection('SUBPROGRAM ACCESS','interfaceview::IV','Ground','others','OpToPICnx_newTm_impl','newTm_impl','->','PI_newTm','NIL','').
@@ -37,7 +37,7 @@ isProperty('NIL','=>','interfaceview::IV','Ground','NIL','RI_newTc','Taste::RCMo
 isProperty('NIL','=>','interfaceview::IV','Ground','NIL','RI_newTc','Taste::InterfaceName','"newTc"','').
 isProperty('NIL','=>','interfaceview::IV','Ground','NIL','RI_newTc','Taste::labelInheritance','"true"','').
 isFeature('PARAMETER','interfaceview::FV::Ground','RI_newTc','tcPacket','IN','NIL','DataView::PusPacket','NIL','NIL','').
-isProperty('NIL','=>','interfaceview::FV::Ground','RI_newTc','NIL','tcPacket','Taste::encoding','NATIVE','').
+isProperty('NIL','=>','interfaceview::FV::Ground','RI_newTc','NIL','tcPacket','Taste::encoding','UPER','').
 isPackage('interfaceview::FV::Ground','PUBLIC','').
 isComponentType('interfaceview::IV','PUBLIC','Ground','SYSTEM','NIL','').
 isComponentImplementation('interfaceview::IV','PUBLIC','Ground','others','SYSTEM','NIL','others','').
@@ -62,7 +62,7 @@ isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcQueue','N
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcQueue','NIL','PI_newTc','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcQueue','NIL','PI_newTc','Taste::InterfaceName','"newTc"','').
 isFeature('PARAMETER','interfaceview::FV::TcQueue','PI_newTc','tcPacket','IN','NIL','DataView::PusPacket','NIL','NIL','').
-isProperty('NIL','=>','interfaceview::FV::TcQueue','PI_newTc','NIL','tcPacket','Taste::encoding','NATIVE','').
+isProperty('NIL','=>','interfaceview::FV::TcQueue','PI_newTc','NIL','tcPacket','Taste::encoding','UPER','').
 isProperty('NIL','=>','interfaceview::FV::TcQueue','PI_newTc','others','NIL','Compute_Execution_Time','0 ms .. 0 ms','').
 isSubcomponent('interfaceview::IV','TcQueue','others','newTc_impl','SUBPROGRAM','interfaceview::FV::TcQueue::PI_newTc.others','NIL','NIL','').
 isConnection('SUBPROGRAM ACCESS','interfaceview::IV','TcQueue','others','OpToPICnx_newTc_impl','newTc_impl','->','PI_newTc','NIL','').
@@ -104,7 +104,7 @@ isComponentImplementation('interfaceview::FV::TcDispatch','PUBLIC','PI_tcTrigger
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::TC','TcDispatch','PI_tcTrigger','PROVIDES','SUBPROGRAM','interfaceview::FV::TcDispatch::PI_tcTrigger.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::TcDispatch','PI_tcTrigger','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcDispatch','NIL','PI_tcTrigger','Taste::coordinates','"101595 49220"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcDispatch','NIL','PI_tcTrigger','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcDispatch','NIL','PI_tcTrigger','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcDispatch','NIL','PI_tcTrigger','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcDispatch','NIL','PI_tcTrigger','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TC','TcDispatch','NIL','PI_tcTrigger','Taste::InterfaceName','"tcTrigger"','').
@@ -269,7 +269,7 @@ isComponentImplementation('interfaceview::FV::TmDispatch','PUBLIC','PI_tmTrigger
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','PI_tmTrigger','PROVIDES','SUBPROGRAM','interfaceview::FV::TmDispatch::PI_tmTrigger.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::TmDispatch','PI_tmTrigger','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','NIL','PI_tmTrigger','Taste::coordinates','"94546 102049"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','NIL','PI_tmTrigger','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','NIL','PI_tmTrigger','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','NIL','PI_tmTrigger','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','NIL','PI_tmTrigger','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','NIL','PI_tmTrigger','Taste::InterfaceName','"tmTrigger"','').
@@ -285,7 +285,7 @@ isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch'
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','NIL','RI_newTm','Taste::InterfaceName','"newTm"','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::TM','TmDispatch','NIL','RI_newTm','Taste::labelInheritance','"true"','').
 isFeature('PARAMETER','interfaceview::FV::TmDispatch','RI_newTm','tmPacket','IN','NIL','DataView::PusPacket','NIL','NIL','').
-isProperty('NIL','=>','interfaceview::FV::TmDispatch','RI_newTm','NIL','tmPacket','Taste::encoding','NATIVE','').
+isProperty('NIL','=>','interfaceview::FV::TmDispatch','RI_newTm','NIL','tmPacket','Taste::encoding','UPER','').
 isConnection('SUBPROGRAM ACCESS','interfaceview::IV','interfaceview','others','TmQueue_PI_tmRequest_TmDispatch_RI_tmRequest','TmQueue.PI_tmRequest','->','TmDispatch.RI_tmRequest','NIL','').
 isProperty('NIL','=>','interfaceview::IV','interfaceview','others','TmQueue_PI_tmRequest_TmDispatch_RI_tmRequest','Taste::coordinates','"99247 99282 101690 99282 101690 98988 104134 98988"','').
 isComponentType('interfaceview::FV::TmDispatch','PUBLIC','RI_tmRequest','SUBPROGRAM','NIL','').
@@ -840,7 +840,7 @@ isComponentImplementation('interfaceview::FV::ST05','PUBLIC','PI_EventReportTrig
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::EventServices','ST05','PI_EventReportTrigger','PROVIDES','SUBPROGRAM','interfaceview::FV::ST05::PI_EventReportTrigger.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::ST05','PI_EventReportTrigger','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST05','NIL','PI_EventReportTrigger','Taste::coordinates','"150489 42262"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST05','NIL','PI_EventReportTrigger','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST05','NIL','PI_EventReportTrigger','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST05','NIL','PI_EventReportTrigger','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST05','NIL','PI_EventReportTrigger','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST05','NIL','PI_EventReportTrigger','Taste::InterfaceName','"EventReportTrigger"','').
@@ -919,7 +919,7 @@ isComponentImplementation('interfaceview::FV::ST19','PUBLIC','PI_EventActionTrig
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','PI_EventActionTrigger','PROVIDES','SUBPROGRAM','interfaceview::FV::ST19::PI_EventActionTrigger.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::ST19','PI_EventActionTrigger','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','NIL','PI_EventActionTrigger','Taste::coordinates','"149103 51335"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','NIL','PI_EventActionTrigger','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','NIL','PI_EventActionTrigger','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','NIL','PI_EventActionTrigger','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','NIL','PI_EventActionTrigger','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','NIL','PI_EventActionTrigger','Taste::InterfaceName','"EventActionTrigger"','').
@@ -975,7 +975,7 @@ isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','NIL','RI_newTc','Taste::InterfaceName','"newTc"','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::EventServices','ST19','NIL','RI_newTc','Taste::labelInheritance','"true"','').
 isFeature('PARAMETER','interfaceview::FV::ST19','RI_newTc','tcPacket','IN','NIL','DataView::PusPacket','NIL','NIL','').
-isProperty('NIL','=>','interfaceview::FV::ST19','RI_newTc','NIL','tcPacket','Taste::encoding','NATIVE','').
+isProperty('NIL','=>','interfaceview::FV::ST19','RI_newTc','NIL','tcPacket','Taste::encoding','UPER','').
 isPackage('interfaceview::FV::ST19','PUBLIC','').
 isComponentType('interfaceview::IV::OnBoard::PusServices::EventServices','PUBLIC','ST19','SYSTEM','NIL','').
 isComponentImplementation('interfaceview::IV::OnBoard::PusServices::EventServices','PUBLIC','ST19','others','SYSTEM','NIL','others','').
@@ -1052,7 +1052,7 @@ isComponentImplementation('interfaceview::FV::ST03','PUBLIC','PI_HkReportTrigger
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST03','PI_HkReportTrigger','PROVIDES','SUBPROGRAM','interfaceview::FV::ST03::PI_HkReportTrigger.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::ST03','PI_HkReportTrigger','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST03','NIL','PI_HkReportTrigger','Taste::coordinates','"149729 64322"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST03','NIL','PI_HkReportTrigger','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST03','NIL','PI_HkReportTrigger','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST03','NIL','PI_HkReportTrigger','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST03','NIL','PI_HkReportTrigger','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST03','NIL','PI_HkReportTrigger','Taste::InterfaceName','"HkReportTrigger"','').
@@ -1117,7 +1117,7 @@ isComponentImplementation('interfaceview::FV::ST12','PUBLIC','PI_PmonTrigger','o
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST12','PI_PmonTrigger','PROVIDES','SUBPROGRAM','interfaceview::FV::ST12::PI_PmonTrigger.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::ST12','PI_PmonTrigger','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST12','NIL','PI_PmonTrigger','Taste::coordinates','"149881 71096"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST12','NIL','PI_PmonTrigger','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST12','NIL','PI_PmonTrigger','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST12','NIL','PI_PmonTrigger','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST12','NIL','PI_PmonTrigger','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::HousekeepingServices','ST12','NIL','PI_PmonTrigger','Taste::InterfaceName','"PmonTrigger"','').
@@ -1214,7 +1214,7 @@ isComponentImplementation('interfaceview::FV::ST11','PUBLIC','PI_schedulingTrigg
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices','ST11','PI_schedulingTrigger','PROVIDES','SUBPROGRAM','interfaceview::FV::ST11::PI_schedulingTrigger.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::ST11','PI_schedulingTrigger','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','PI_schedulingTrigger','Taste::coordinates','"160319 86757"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','PI_schedulingTrigger','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','PI_schedulingTrigger','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','PI_schedulingTrigger','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','PI_schedulingTrigger','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','PI_schedulingTrigger','Taste::InterfaceName','"schedulingTrigger"','').
@@ -1247,7 +1247,7 @@ isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','RI
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','RI_newTc','Taste::InterfaceName','"newTc"','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices','ST11','NIL','RI_newTc','Taste::labelInheritance','"true"','').
 isFeature('PARAMETER','interfaceview::FV::ST11','RI_newTc','tcPacket','IN','NIL','DataView::PusPacket','NIL','NIL','').
-isProperty('NIL','=>','interfaceview::FV::ST11','RI_newTc','NIL','tcPacket','Taste::encoding','NATIVE','').
+isProperty('NIL','=>','interfaceview::FV::ST11','RI_newTc','NIL','tcPacket','Taste::encoding','UPER','').
 isPackage('interfaceview::FV::ST11','PUBLIC','').
 isComponentType('interfaceview::IV::OnBoard::PusServices','PUBLIC','ST11','SYSTEM','NIL','').
 isComponentImplementation('interfaceview::IV::OnBoard::PusServices','PUBLIC','ST11','others','SYSTEM','NIL','others','').
@@ -1874,7 +1874,7 @@ isComponentImplementation('interfaceview::FV::robot_control_manager','PUBLIC','P
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','PI_planHomeReport','PROVIDES','SUBPROGRAM','interfaceview::FV::robot_control_manager::PI_planHomeReport.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::robot_control_manager','PI_planHomeReport','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planHomeReport','Taste::coordinates','"160068 171543"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planHomeReport','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planHomeReport','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planHomeReport','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planHomeReport','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planHomeReport','Taste::InterfaceName','"planHomeReport"','').
@@ -1888,7 +1888,7 @@ isComponentImplementation('interfaceview::FV::robot_control_manager','PUBLIC','P
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','PI_planMoveReport','PROVIDES','SUBPROGRAM','interfaceview::FV::robot_control_manager::PI_planMoveReport.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::robot_control_manager','PI_planMoveReport','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planMoveReport','Taste::coordinates','"160068 170691"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planMoveReport','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planMoveReport','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planMoveReport','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planMoveReport','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_planMoveReport','Taste::InterfaceName','"planMoveReport"','').
@@ -1902,7 +1902,7 @@ isComponentImplementation('interfaceview::FV::robot_control_manager','PUBLIC','P
 isFeature('ACCESS','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','PI_configHomeReport','PROVIDES','SUBPROGRAM','interfaceview::FV::robot_control_manager::PI_configHomeReport.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::robot_control_manager','PI_configHomeReport','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_configHomeReport','Taste::coordinates','"160068 172421"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_configHomeReport','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_configHomeReport','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_configHomeReport','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_configHomeReport','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard::PusServices::RobotControl','robot_control_manager','NIL','PI_configHomeReport','Taste::InterfaceName','"configHomeReport"','').
@@ -2060,7 +2060,7 @@ isComponentImplementation('interfaceview::FV::OnboardSoftware','PUBLIC','PI_plan
 isFeature('ACCESS','interfaceview::IV::OnBoard','OnboardSoftware','PI_planHome','PROVIDES','SUBPROGRAM','interfaceview::FV::OnboardSoftware::PI_planHome.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::OnboardSoftware','PI_planHome','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planHome','Taste::coordinates','"219639 165111"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planHome','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planHome','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planHome','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planHome','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planHome','Taste::InterfaceName','"planHome"','').
@@ -2074,7 +2074,7 @@ isComponentImplementation('interfaceview::FV::OnboardSoftware','PUBLIC','PI_plan
 isFeature('ACCESS','interfaceview::IV::OnBoard','OnboardSoftware','PI_planMove','PROVIDES','SUBPROGRAM','interfaceview::FV::OnboardSoftware::PI_planMove.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::OnboardSoftware','PI_planMove','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planMove','Taste::coordinates','"219639 167088"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planMove','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planMove','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planMove','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planMove','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_planMove','Taste::InterfaceName','"planMove"','').
@@ -2088,7 +2088,7 @@ isComponentImplementation('interfaceview::FV::OnboardSoftware','PUBLIC','PI_conf
 isFeature('ACCESS','interfaceview::IV::OnBoard','OnboardSoftware','PI_configHome','PROVIDES','SUBPROGRAM','interfaceview::FV::OnboardSoftware::PI_configHome.others','NIL','NIL','').
 isProperty('NIL','=>','interfaceview::FV::OnboardSoftware','PI_configHome','NIL','NIL','Taste::Associated_Queue_Size','1','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_configHome','Taste::coordinates','"219639 163658"','').
-isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_configHome','Taste::RCMoperationKind','sporadic','').
+isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_configHome','Taste::RCMoperationKind','protected','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_configHome','Taste::RCMperiod','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_configHome','Taste::Deadline','0 ms','').
 isProperty('NIL','=>','interfaceview::IV::OnBoard','OnboardSoftware','NIL','PI_configHome','Taste::InterfaceName','"configHome"','').

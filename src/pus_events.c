@@ -73,7 +73,7 @@ pusError_t pus_events_initialize(pusMutex_t* mutex)
 
 	// Initialize buffer with default values
 	pusSt05Event_t aux;
-	aux.eventId = UINT32_MAX+1;
+	aux.eventId = PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT+1;
 	aux.data.data1 = 0;
 	aux.data.data2 = 0;
 	for(size_t i = 0; i < pus_st05_eventBufferLength; i++)
@@ -146,7 +146,9 @@ size_t pus_events_getLastEventCounter()
 	}
 
 	size_t aux  = (pus_st05_eventBufferCounter - 1 + PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT) % PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT;
-
+	//#ifdef __sparc__
+	//printf("[pus_events lastEventCounter] aux %lu, pus_st05_eventBufferCounter %lu\n", aux, pus_st05_eventBufferCounter);
+	//#endif
 	if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))
 	{
 		return PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT;
@@ -206,6 +208,9 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t* next, uint64_t* actualCou
 	{
 		if( pus_st05_eventBuffer[i].eventBufferCounter == ((*actualCounter+1) % PUS_ST05_EVENT_BUFFER_COUNTER_LIMIT) )
 		{
+			/*#ifdef __sparc__
+			printf("[pus_evets] *actualCounter %lu, counterEv %lu, i %lu\n", *actualCounter, pus_st05_eventBuffer[i].eventBufferCounter, i);
+			#endif*/
 			*next = pus_st05_eventBuffer[i].event;
 			*actualCounter = pus_st05_eventBuffer[i].eventBufferCounter;
 
@@ -219,6 +224,10 @@ pusError_t pus_st05_getNextBufferEvent(pusSt05Event_t* next, uint64_t* actualCou
 	}
 
 	size_t last = pus_events_getLastEventCounter();
+	/*#ifdef __sparc__
+	printf("[pus_evets] last %lu\n",last);
+	return PUS_SET_ERROR(PUS_ERROR_NEXT_EVENT_NOT_FOUND); 
+	#endif*/
 	if(last == *actualCounter)
 	{
 		if (NULL != pus_events_mutex && !pus_mutexUnlockOk(pus_events_mutex))

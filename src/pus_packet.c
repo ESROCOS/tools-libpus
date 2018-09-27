@@ -682,6 +682,9 @@ pusError_t pus_initTmPacket(pusPacket_t* packet)
     pus_setTmDestination(packet, pus_APID_IDLE);
     pus_setTmPacketTimeNow(packet);
 
+    pus_setTmDataKind(packet, pus_TM_DATA_NONE);
+    packet->data.u.tmData.data.u.st_0_0 = 0;
+
     assert(PUS_NO_ERROR == pus_verifyTmHeaderDefaults(packet));
 
     return PUS_NO_ERROR;
@@ -726,6 +729,9 @@ pusError_t pus_initTcPacket(pusPacket_t* packet)
     pus_setTcService(packet, pusService_NONE);
     pus_setTcSubtype(packet, pusSubtype_NONE);
     pus_setTcSource(packet, pus_APID_IDLE);
+
+    pus_setTcDataKind(packet, pus_TC_DATA_NONE);
+    packet->data.u.tcData.data.u.st_0_0 = 0;
 
     assert(PUS_NO_ERROR == pus_verifyTcHeaderDefaults(packet));
 

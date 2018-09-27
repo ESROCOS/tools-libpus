@@ -45,6 +45,13 @@ taste.ur5/*.pro
 taste.ur5/*.old
 taste.ur5/binary.c
 
+taste.ur5_rtems/*.zip
+taste.ur5_rtems/__*.aadl
+taste.ur5_rtems/*.md5
+taste.ur5_rtems/*.pro
+taste.ur5_rtems/*.old
+taste.ur5_rtems/binary.c
+
 .tc_history
 gui/.tc_history
 taste.ur5/.tc_history

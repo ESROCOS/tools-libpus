@@ -67,6 +67,7 @@ pusError_t pus_packetReduced_setDataFromPacketToPacketReduced(pusPacketReduced_t
 	switch( inTc->data.u.tcData.data.kind )
 	{
 		case pus_TC_DATA_NONE:
+			outTcR->data.u.tcData.data.u.st_0_0 = inTc->data.u.tcData.data.u.st_0_0;
 			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		case pus_TC_DATA_ST_8_1:
@@ -134,6 +135,7 @@ pusError_t pus_packetReduced_setDataFromPacketReducedToPacket(pusPacket_t* outTc
 	switch( inTcR->data.u.tcData.data.kind )
 	{
 		case pus_TC_DATA_NONE:
+			outTc->data.u.tcData.data.u.st_0_0 = inTcR->data.u.tcData.data.u.st_0_0;
 			return PUS_SET_ERROR(PUS_NO_ERROR);
 			break;
 		case pus_TC_DATA_ST_8_1:

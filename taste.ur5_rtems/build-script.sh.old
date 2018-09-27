@@ -111,10 +111,6 @@ cd "$SKELS" && rm -f st20.zip && zip st20 st20/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f onboardparams.zip && zip onboardparams onboardparams/* && cd $OLDPWD
 
-cd "$SKELS" && rm -f st200.zip && zip st200 st200/* && cd $OLDPWD
-
-cd "$SKELS" && rm -f camera_control.zip && zip camera_control camera_control/* && cd $OLDPWD
-
 cd "$SKELS" && rm -f st201.zip && zip st201 st201/* && cd $OLDPWD
 
 cd "$SKELS" && rm -f robot_control_manager.zip && zip robot_control_manager robot_control_manager/* && cd $OLDPWD
@@ -184,8 +180,6 @@ cd "$CWD" && assert-builder-ocarina.py \
 	--subC filemanagement:"$SKELS"/filemanagement.zip \
 	--subC st20:"$SKELS"/st20.zip \
 	--subC onboardparams:"$SKELS"/onboardparams.zip \
-	--subC st200:"$SKELS"/st200.zip \
-	--subC camera_control:"$SKELS"/camera_control.zip \
 	--subC st201:"$SKELS"/st201.zip \
 	--subC robot_control_manager:"$SKELS"/robot_control_manager.zip \
 	--subC onboardsoftware:"$SKELS"/onboardsoftware.zip \

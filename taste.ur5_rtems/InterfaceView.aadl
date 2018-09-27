@@ -15,7 +15,7 @@ WITH TASTE_IV_Properties;
 SUBPROGRAM PI_newTm
 FEATURES
   tmPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 PROPERTIES
   Taste::Associated_Queue_Size => 1;
@@ -39,7 +39,7 @@ END PI_triggerTmGUI.others;
 SUBPROGRAM RI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 END RI_newTc;
 
@@ -87,7 +87,7 @@ WITH TASTE_IV_Properties;
 SUBPROGRAM PI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 PROPERTIES
   Taste::Associated_Queue_Size => 1;
@@ -285,7 +285,7 @@ SYSTEM TcDispatch
 FEATURES
   PI_tcTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcDispatch::PI_tcTrigger.others {
     Taste::coordinates => "101595 49220";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tcTrigger";
@@ -387,7 +387,7 @@ WITH TASTE_IV_Properties;
 SUBPROGRAM PI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 PROPERTIES
   Taste::Associated_Queue_Size => 1;
@@ -519,7 +519,7 @@ FEATURES
   };
   PI_tcTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcDispatch::PI_tcTrigger.others {
     Taste::coordinates => "90787 51954";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tcTrigger";
@@ -662,7 +662,7 @@ END PI_tmTrigger.others;
 SUBPROGRAM RI_newTm
 FEATURES
   tmPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 END RI_newTm;
 
@@ -686,7 +686,7 @@ SYSTEM TmDispatch
 FEATURES
   PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
     Taste::coordinates => "94546 102049";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmTrigger";
@@ -833,7 +833,7 @@ END PI_tmTrigger.others;
 SUBPROGRAM RI_newTm
 FEATURES
   tmPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 END RI_newTm;
 
@@ -864,7 +864,7 @@ FEATURES
   };
   PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
     Taste::coordinates => "91780 104524";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmTrigger";
@@ -1706,7 +1706,7 @@ SYSTEM ST05
 FEATURES
   PI_EventReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST05::PI_EventReportTrigger.others {
     Taste::coordinates => "150489 42262";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventReportTrigger";
@@ -1830,7 +1830,7 @@ END RI_newTm.others;
 SUBPROGRAM RI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 END RI_newTc;
 
@@ -1848,7 +1848,7 @@ FEATURES
   };
   PI_EventActionTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_EventActionTrigger.others {
     Taste::coordinates => "149103 51335";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventActionTrigger";
@@ -2033,7 +2033,7 @@ END RI_newTm.others;
 SUBPROGRAM RI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 END RI_newTc;
 
@@ -2058,14 +2058,14 @@ FEATURES
   };
   PI_EventReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST05::PI_EventReportTrigger.others {
     Taste::coordinates => "143563 49847";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventReportTrigger";
   };
   PI_EventActionTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_EventActionTrigger.others {
     Taste::coordinates => "143563 51341";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventActionTrigger";
@@ -2311,7 +2311,7 @@ SYSTEM ST03
 FEATURES
   PI_HkReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03::PI_HkReportTrigger.others {
     Taste::coordinates => "149729 64322";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "HkReportTrigger";
@@ -2435,7 +2435,7 @@ SYSTEM ST12
 FEATURES
   PI_PmonTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_PmonTrigger.others {
     Taste::coordinates => "149881 71096";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "PmonTrigger";
@@ -2632,14 +2632,14 @@ FEATURES
   };
   PI_HkReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03::PI_HkReportTrigger.others {
     Taste::coordinates => "145277 66104";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "HkReportTrigger";
   };
   PI_PmonTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_PmonTrigger.others {
     Taste::coordinates => "145277 71113";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "PmonTrigger";
@@ -2802,7 +2802,7 @@ END RI_ACK.others;
 SUBPROGRAM RI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 END RI_newTc;
 
@@ -2820,7 +2820,7 @@ FEATURES
   };
   PI_schedulingTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_schedulingTrigger.others {
     Taste::coordinates => "160319 86757";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "schedulingTrigger";
@@ -4299,21 +4299,21 @@ FEATURES
   };
   PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeReport.others {
     Taste::coordinates => "160068 171543";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHomeReport";
   };
   PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveReport.others {
     Taste::coordinates => "160068 170691";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMoveReport";
   };
   PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_configHomeReport.others {
     Taste::coordinates => "160068 172421";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "configHomeReport";
@@ -4536,21 +4536,21 @@ FEATURES
   };
   PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveReport.others {
     Taste::coordinates => "163327 170567";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMoveReport";
   };
   PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeReport.others {
     Taste::coordinates => "163327 172104";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHomeReport";
   };
   PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_configHomeReport.others {
     Taste::coordinates => "163327 173313";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "configHomeReport";
@@ -4705,7 +4705,7 @@ WITH TASTE_IV_Properties;
 SUBPROGRAM PI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 PROPERTIES
   Taste::Associated_Queue_Size => 1;
@@ -4939,7 +4939,7 @@ END PI_schedulingTrigger.others;
 SUBPROGRAM RI_newTm
 FEATURES
   tmPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 END RI_newTm;
 
@@ -5039,70 +5039,70 @@ FEATURES
   };
   PI_tcTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TC::TcDispatch::PI_tcTrigger.others {
     Taste::coordinates => "76928 63329";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tcTrigger";
   };
   PI_tmTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::TM::TmDispatch::PI_tmTrigger.others {
     Taste::coordinates => "76928 105491";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "tmTrigger";
   };
   PI_EventReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST05::PI_EventReportTrigger.others {
     Taste::coordinates => "117094 33193";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventReportTrigger";
   };
   PI_EventActionTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::EventServices::ST19::PI_EventActionTrigger.others {
     Taste::coordinates => "128551 33193";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "EventActionTrigger";
   };
   PI_HkReportTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST03::PI_HkReportTrigger.others {
     Taste::coordinates => "139707 33193";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "HkReportTrigger";
   };
   PI_PmonTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::HousekeepingServices::ST12::PI_PmonTrigger.others {
     Taste::coordinates => "151917 33193";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "PmonTrigger";
   };
   PI_planMoveReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planMoveReport.others {
     Taste::coordinates => "203150 171142";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMoveReport";
   };
   PI_planHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_planHomeReport.others {
     Taste::coordinates => "203150 172413";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHomeReport";
   };
   PI_configHomeReport : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::RobotControl::robot_control_manager::PI_configHomeReport.others {
     Taste::coordinates => "203150 174363";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "configHomeReport";
   };
   PI_schedulingTrigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::PusServices::ST11::PI_schedulingTrigger.others {
     Taste::coordinates => "160180 33193";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "schedulingTrigger";
@@ -5662,21 +5662,21 @@ FEATURES
   };
   PI_planHome : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_planHome.others {
     Taste::coordinates => "219639 165111";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planHome";
   };
   PI_planMove : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_planMove.others {
     Taste::coordinates => "219639 167088";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "planMove";
   };
   PI_configHome : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::OnBoard::OnboardSoftware::PI_configHome.others {
     Taste::coordinates => "219639 163658";
-    Taste::RCMoperationKind => sporadic;
+    Taste::RCMoperationKind => protected;
     Taste::RCMperiod => 0 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "configHome";
@@ -5807,7 +5807,7 @@ WITH TASTE_IV_Properties;
 SUBPROGRAM PI_newTc
 FEATURES
   tcPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 PROPERTIES
   Taste::Associated_Queue_Size => 1;
@@ -5821,7 +5821,7 @@ END PI_newTc.others;
 SUBPROGRAM RI_newTm
 FEATURES
   tmPacket : IN PARAMETER DataView::PusPacket {
-    Taste::encoding => NATIVE;
+    Taste::encoding => UPER;
   };
 END RI_newTm;
 

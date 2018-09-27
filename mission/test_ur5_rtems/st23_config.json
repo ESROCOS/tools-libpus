@@ -5,16 +5,6 @@
 			"label": "PUS_REPOSITORY_TEST",
 			"domain": "/tmp/pus/",
 			"system": "LINUX"
-		},
-		{
-			"label": "PUS_REPOSITORY_GROUND",
-			"domain": "/TFTP/",
-			"system": "LINUX"
-		},
-		{
-			"label": "PUS_REPOSITORY_ONBOARD",
-			"domain": "/",
-			"system": "RTEMS"
 		}
 	]
 }

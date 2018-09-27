@@ -11,16 +11,8 @@ public
 
 THREAD vt_onboardsoftware_pustrigger_vt_onboardsoftware_pustrigger
 features
-	OUTPORT_tcTrigger_vt : OUT EVENT PORT;
-	OUTPORT_tmTrigger_vt : OUT EVENT PORT;
-	OUTPORT_EventReportTrigger_vt : OUT EVENT PORT;
-	OUTPORT_EventActionTrigger_vt : OUT EVENT PORT;
-	OUTPORT_HkReportTrigger_vt : OUT EVENT PORT;
-	OUTPORT_PmonTrigger_vt : OUT EVENT PORT;
-	OUTPORT_planHomeReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
-	OUTPORT_planMoveReport_vt : OUT EVENT DATA PORT DataView::PlanCmdStatus_Buffer.impl;
-	OUTPORT_configHomeReport_vt : OUT EVENT DATA PORT DataView::T_Boolean_Buffer.impl;
-	OUTPORT_schedulingTrigger_vt : OUT EVENT PORT;
+	OUTPORT_newTm_vt : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
+	OUTPORT_newTc_vt : OUT EVENT DATA PORT DataView::PusPacket_Buffer.impl;
 END vt_onboardsoftware_pustrigger_vt_onboardsoftware_pustrigger;
 
 THREAD IMPLEMENTATION vt_onboardsoftware_pustrigger_vt_onboardsoftware_pustrigger.others

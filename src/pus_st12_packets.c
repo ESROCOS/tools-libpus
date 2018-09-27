@@ -84,6 +84,7 @@ pusError_t pus_tc_12_15_createEnableParameterMonitoring(pusPacket_t* outTc, pusA
 		return PUS_GET_ERROR();
 	}
 	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+	outTc->data.u.tcData.data.u.st_0_0 = 0;
 
 	return PUS_NO_ERROR;
 }
@@ -99,6 +100,7 @@ pusError_t pus_tc_12_16_createDisableParameterMonitoring(pusPacket_t* outTc, pus
 		return PUS_GET_ERROR();
 	}
 	pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+	outTc->data.u.tcData.data.u.st_0_0 = 0;
 
 	return PUS_NO_ERROR;
 }

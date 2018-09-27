@@ -169,7 +169,7 @@ void st12_PI_PmonTrigger()
 
 				if( PUS_NO_ERROR !=  error)
 				{
-					printf("Error en PMON %llu, %d\n", i, error);
+					printf("[PMON] Error en PMON %llu, %d\n", i, error);
 					pusSt05Event_t event;
 					pus_events_createEVENT_ST12(&event, i, error);
 					st12_RI_pushNewEvent(&event);

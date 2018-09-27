@@ -1,13 +1,13 @@
 isImportDeclaration('deploymentview::DV','PUBLIC','interfaceview::IV','').
 isSubcomponent('deploymentview::DV','Node2','others','IV_Ground','SYSTEM','interfaceview::IV::Ground.others','NIL','NIL','').
 isProperty('NIL','=>','deploymentview::DV','Node2','others','IV_Ground','Taste::FunctionName','"Ground"','').
-isProperty('NIL','APPLIES TO','deploymentview::DV','Node2','others','IV_Ground','Taste::APLC_Binding','(reference (Partition1))','').
-isComponentType('deploymentview::DV::Node2','PUBLIC','Partition1','PROCESS','NIL','').
-isComponentImplementation('deploymentview::DV::Node2','PUBLIC','Partition1','others','PROCESS','NIL','others','').
-isProperty('NIL','APPLIES TO','deploymentview::DV','Node2','others','Partition1','Actual_Processor_Binding','(reference (x86_linux))','').
-isSubcomponent('deploymentview::DV','Node2','others','Partition1','PROCESS','deploymentview::DV::Node2::Partition1.others','NIL','NIL','').
-isProperty('NIL','=>','deploymentview::DV','Node2','others','Partition1','Taste::coordinates','"39936 75206 82180 125895"','').
-isProperty('NIL','=>','deploymentview::DV','Node2','others','Partition1','Deployment::Port_Number','0','').
+isProperty('NIL','APPLIES TO','deploymentview::DV','Node2','others','IV_Ground','Taste::APLC_Binding','(reference (x86_partition))','').
+isComponentType('deploymentview::DV::Node2','PUBLIC','x86_partition','PROCESS','NIL','').
+isComponentImplementation('deploymentview::DV::Node2','PUBLIC','x86_partition','others','PROCESS','NIL','others','').
+isProperty('NIL','APPLIES TO','deploymentview::DV','Node2','others','x86_partition','Actual_Processor_Binding','(reference (x86_linux))','').
+isSubcomponent('deploymentview::DV','Node2','others','x86_partition','PROCESS','deploymentview::DV::Node2::x86_partition.others','NIL','NIL','').
+isProperty('NIL','=>','deploymentview::DV','Node2','others','x86_partition','Taste::coordinates','"39936 75206 82180 125895"','').
+isProperty('NIL','=>','deploymentview::DV','Node2','others','x86_partition','Deployment::Port_Number','0','').
 isImportDeclaration('deploymentview::DV','PUBLIC','ocarina_processors_x86','').
 isProperty('NIL','=>','deploymentview::DV','x86','NIL','NIL','Scheduling_Protocol','Posix_1003_Highest_Priority_First_Protocol','').
 isSubcomponent('deploymentview::DV','Node2','others','x86_linux','PROCESSOR','ocarina_processors_x86::x86.linux','NIL','NIL','').
@@ -27,7 +27,8 @@ isProperty('NIL','APPLIES TO','deploymentview::DV','Node2','others','generic_soc
 isSubcomponent('deploymentview::DV','Node2','others','generic_sockets_ip_pohic','DEVICE','deploymentview::DV::Node2::generic_sockets_ip_pohic.others','NIL','NIL','').
 isProperty('NIL','=>','deploymentview::DV','Node2','others','generic_sockets_ip_pohic','Taste::coordinates','"38596 145749 79541 160545"','').
 isProperty('NIL','=>','deploymentview::DV::Node2','generic_sockets_ip_pohic','NIL','NIL','Deployment::Help','"Write your ASN.1 configuration here"','').
-isProperty('NIL','=>','deploymentview::DV::Node2','generic_sockets_ip_pohic','NIL','NIL','Deployment::Config','"/home/taste/tool-inst/include/ocarina/runtime/polyorb-hi-c/src/drivers/configuration/ip.asn"','').
+isProperty('NIL','=>','deploymentview::DV::Node2','generic_sockets_ip_pohic','NIL','NIL','Deployment::Configuration','"{devname ""enp3s2"", address ""192.168.0.10"", port 5545 }"','').
+isProperty('NIL','=>','deploymentview::DV::Node2','generic_sockets_ip_pohic','NIL','NIL','Deployment::Config','"/home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/src/drivers/configuration/ip.asn"','').
 isProperty('NIL','=>','deploymentview::DV::Node2','generic_sockets_ip_pohic','NIL','NIL','Deployment::Version','"0.1beta"','').
 isComponentType('deploymentview::DV','PUBLIC','Node2','SYSTEM','NIL','').
 isComponentImplementation('deploymentview::DV','PUBLIC','Node2','others','SYSTEM','NIL','others','').
@@ -149,7 +150,8 @@ isProperty('NIL','APPLIES TO','deploymentview::DV','Node1','others','leon_ethern
 isSubcomponent('deploymentview::DV','Node1','others','leon_ethernet_greth','DEVICE','deploymentview::DV::Node1::leon_ethernet_greth.others','NIL','NIL','').
 isProperty('NIL','=>','deploymentview::DV','Node1','others','leon_ethernet_greth','Taste::coordinates','"156074 145876 199316 159780"','').
 isProperty('NIL','=>','deploymentview::DV::Node1','leon_ethernet_greth','NIL','NIL','Deployment::Help','"Write your ASN.1 configuration here"','').
-isProperty('NIL','=>','deploymentview::DV::Node1','leon_ethernet_greth','NIL','NIL','Deployment::Config','"/home/taste/tool-inst/include/ocarina/runtime/polyorb-hi-c/src/drivers/configuration/ip.asn"','').
+isProperty('NIL','=>','deploymentview::DV::Node1','leon_ethernet_greth','NIL','NIL','Deployment::Configuration','"{devname ""greth0"", address ""192.168.0.42"", gateway ""192.168.0.1"", netmask ""255.255.255.0"", version ipv4, port 5118 }"','').
+isProperty('NIL','=>','deploymentview::DV::Node1','leon_ethernet_greth','NIL','NIL','Deployment::Config','"/home/esrocos/tool-inst/include/ocarina/runtime/polyorb-hi-c/src/drivers/configuration/ip.asn"','').
 isProperty('NIL','=>','deploymentview::DV::Node1','leon_ethernet_greth','NIL','NIL','Deployment::Version','"0.1beta"','').
 isComponentType('deploymentview::DV','PUBLIC','Node1','SYSTEM','NIL','').
 isComponentImplementation('deploymentview::DV','PUBLIC','Node1','others','SYSTEM','NIL','others','').

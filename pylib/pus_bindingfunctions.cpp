@@ -727,7 +727,7 @@ pusError_t pus_tc_23_1_createCreateFileRequest_(pusPacket_t* outTc, pusApid_t ap
 		std::string repository, std::string  fileName, pusSt23MaximumSize_t maxSize) {
 	pusSt23FileName_t file;
 	pusSt23RepositoryPath_t repo;
-	size_t len;
+	//size_t len;
 
 	/*len = (strlen(fileName) < pus_ST23_MAX_SIZE_FILE_PATH) ? strlen(fileName)+1 : pus_ST23_MAX_SIZE_FILE_PATH;
 	memcpy(file.arr, fileName, len);

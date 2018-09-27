@@ -67,6 +67,9 @@ pusError_t pus_tc_201_2_createPlanHomeRequest(pusPacket_t* outTc, pusApid_t apid
 		pus_setTcService(outTc, pus_ST201_robotMoveControl);
 		pus_setTcSubtype(outTc, pus_TC_201_2_planHomeRequest);
 
+		pus_setTcDataKind(outTc, pus_TC_DATA_NONE);
+		outTc->data.u.tcData.data.u.st_0_0 = 0;
+
 		return PUS_GET_ERROR();
 	}
 
@@ -138,6 +141,7 @@ pusError_t pus_tm_201_4_createPlanReport(pusPacket_t* outTm, pusApid_t apid, pus
 
 
 		//TODO set data
+		pus_setTmDataKind(outTm, pus_TM_DATA_ST_201_4);
 		pus_tm_201_4_setPlanObservation(outTm, observation);
 
 		return PUS_GET_ERROR();

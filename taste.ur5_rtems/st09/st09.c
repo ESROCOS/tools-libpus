@@ -27,7 +27,10 @@ void st09_startup()
 void st09_PI_incCount(asn1SccPusPacket *OUT_tmPacket,
                       asn1SccPusSt01FailureCode *OUT_isAvailable)
 {
-    /* Write your code here! */
+    *OUT_isAvailable = PUS_ERROR_NOT_AVAILABLE;
+	return;
+	
+	/* Write your code here! */
 	tmCounter++;
 	uint64_t counterTrigger = 0;
 	pus_time_getReportGenerationRate(&counterTrigger);
