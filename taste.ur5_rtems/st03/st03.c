@@ -58,6 +58,7 @@ void st03_PI_HkReportTrigger()
 		else
 		{
 			//printf("param not available\n");
+			pus_tm_3_25_setParameterValue(&tm, i, 0);
 		}
 	}
 
