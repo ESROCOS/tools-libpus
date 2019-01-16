@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 UPY_TASTE_DIR="/home/esrocos/tool-src/upython-taste"
 
 ACTUAL_DIR="$(dirname $(readlink -f $0))"

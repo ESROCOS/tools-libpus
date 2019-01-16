@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 from PySide import QtGui, QtCore
 
 from .Ui.Ui_MainView import Ui_MainView

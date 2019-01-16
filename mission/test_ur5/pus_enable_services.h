@@ -1,3 +1,9 @@
+/*
+ * H2020 ESROCOS Project
+ * Company: GMV Aerospace & Defence S.A.U.
+ * Licence: GPLv2
+ */
+ 
 #ifndef PUS_ENABLED_SERVICES
 #define PUS_ENABLED_SERVICES
 

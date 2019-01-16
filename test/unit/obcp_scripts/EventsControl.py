@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 #check the param value#import fun.py 
 
 import micropython, gc

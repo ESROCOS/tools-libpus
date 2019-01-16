@@ -1,3 +1,9 @@
+/*
+ * H2020 ESROCOS Project
+ * Company: GMV Aerospace & Defence S.A.U.
+ * Licence: GPLv2
+ */
+ 
 /* User code: This file will not be overwritten by TASTE. */
 
 #include "onboardparams.h"

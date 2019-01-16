@@ -1,3 +1,9 @@
+/*
+* H2020 ESROCOS Project
+* Company: GMV Aerospace & Defence S.A.U.
+* Licence: GPLv2
+*/
+
 #define CODE1 0
 #define CODE2 1
 #define CODE3 2

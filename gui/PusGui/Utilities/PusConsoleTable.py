@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 class PusConsoleTable(list):
     """
     This class override the list class to be able

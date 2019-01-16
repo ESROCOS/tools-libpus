@@ -1,3 +1,9 @@
+/*
+ * H2020 ESROCOS Project
+ * Company: GMV Aerospace & Defence S.A.U.
+ * Licence: GPLv2
+ */ 
+
 // options to control how MicroPython is built
 
 #include <stdint.h>

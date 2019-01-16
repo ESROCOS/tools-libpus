@@ -1,3 +1,7 @@
+# H2020 ESROCOS Project
+# Company: GMV Aerospace & Defence S.A.U.
+# Licence: GPLv2
+
 from PusGui import pb
 # Only telecommands needed
 def mission_create_packets(packet, svc, msg, apid=0, seq=0):
