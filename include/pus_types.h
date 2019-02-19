@@ -127,9 +127,9 @@ typedef asn1SccPusUInt64 pusPacketQueueId_t;
 
 // Types for union discriminants; using GCC extension typeof to alias an anonymous enum type
 #ifdef __cplusplus
-typedef decltype(asn1SccPusPacketData::PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
-typedef decltype(asn1SccPusTmSourceData::PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
-typedef decltype(asn1SccPusTcApplicationData::PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
+typedef decltype(asn1SccPusPacketData_selection::PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
+typedef decltype(asn1SccPusTmSourceData_selection::PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
+typedef decltype(asn1SccPusTcApplicationData_selection::PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the union discriminant for asn1SccPusTcApplicationData
 #else
 typedef __typeof__(PusPacketData_NONE) pusPacketDataKind_t; //!< Type of the union discriminant for asn1SccPusPacketData
 typedef __typeof__(PusTmSourceData_NONE) pusTmDataKind_t; //!< Type of the union discriminant for asn1SccPusTmSourceData
