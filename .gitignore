@@ -31,12 +31,14 @@ asn1/generated/asn1/*
 /install.sh
 /.metadata/
 
-taste/*.zip
-taste/__*.aadl
-taste/*.md5
-taste/*.pro
-taste/*.old
-taste/binary.c
+taste/*/*.zip
+taste/*/__*.aadl
+taste/*/*.md5
+taste/*/*.pro
+taste/*/*.old
+taste/*/binary.c
+taste/*/debug
+taste/*/.cache
 
 taste.ur5/*.zip
 taste.ur5/__*.aadl

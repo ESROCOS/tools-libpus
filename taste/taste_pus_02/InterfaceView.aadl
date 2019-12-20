@@ -1,0 +1,335 @@
+---------------------------------------------------
+-- AADL2.2
+-- TASTE type interfaceview
+-- 
+-- generated code: do not edit
+---------------------------------------------------
+
+PACKAGE interfaceview::IV::Ground
+PUBLIC
+
+WITH interfaceview::IV::PusServices;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_triggerTmGUI
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_triggerTmGUI;
+
+SUBPROGRAM IMPLEMENTATION PI_triggerTmGUI.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_triggerTmGUI.others;
+
+SUBPROGRAM PI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 10;
+END PI_newTm;
+
+SUBPROGRAM IMPLEMENTATION PI_newTm.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTm.others;
+
+SUBPROGRAM RI_newTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTc;
+
+SUBPROGRAM IMPLEMENTATION RI_newTc.others
+END RI_newTc.others;
+
+SYSTEM Ground
+FEATURES
+  PI_triggerTmGUI : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_triggerTmGUI.others {
+    Taste::coordinates => "84093 65667";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 200 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "triggerTmGUI";
+  };
+  PI_newTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_newTm.others {
+    Taste::coordinates => "105509 79842";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 100 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "newTm";
+  };
+  RI_newTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_newTc.others {
+    Taste::coordinates => "105509 70392";
+    Taste::RCMoperationKind => sporadic;
+    Taste::InterfaceName => "newTc";
+    Taste::labelInheritance => "false";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END Ground;
+
+SYSTEM IMPLEMENTATION Ground.others
+END Ground.others;
+
+END interfaceview::IV::Ground;
+
+PACKAGE interfaceview::IV::PusServices
+PUBLIC
+
+WITH interfaceview::IV::Ground;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_newTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 10;
+END PI_newTc;
+
+SUBPROGRAM IMPLEMENTATION PI_newTc.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_newTc.others;
+
+SUBPROGRAM PI_trigger
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_trigger;
+
+SUBPROGRAM IMPLEMENTATION PI_trigger.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_trigger.others;
+
+SUBPROGRAM PI_ack
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+  reportType : IN PARAMETER DataView::PusSubserviceType {
+    Taste::encoding => NATIVE;
+  };
+  error : IN PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
+  errorInfo : IN PARAMETER DataView::PusSt01FailureInfo {
+    Taste::encoding => NATIVE;
+  };
+  step : IN PARAMETER DataView::PusStepId {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_ack;
+
+SUBPROGRAM IMPLEMENTATION PI_ack.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_ack.others;
+
+SUBPROGRAM PI_addTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_addTm;
+
+SUBPROGRAM IMPLEMENTATION PI_addTm.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_addTm.others;
+
+SUBPROGRAM RI_newTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_newTm;
+
+SUBPROGRAM IMPLEMENTATION RI_newTm.others
+END RI_newTm.others;
+
+SUBPROGRAM RI_ack
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+  reportType : IN PARAMETER DataView::PusSubserviceType {
+    Taste::encoding => NATIVE;
+  };
+  error : IN PARAMETER DataView::PusSt01FailureCode {
+    Taste::encoding => NATIVE;
+  };
+  errorInfo : IN PARAMETER DataView::PusSt01FailureInfo {
+    Taste::encoding => NATIVE;
+  };
+  step : IN PARAMETER DataView::PusStepId {
+    Taste::encoding => NATIVE;
+  };
+END RI_ack;
+
+SUBPROGRAM IMPLEMENTATION RI_ack.others
+END RI_ack.others;
+
+SUBPROGRAM RI_addTm
+FEATURES
+  tmPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_addTm;
+
+SUBPROGRAM IMPLEMENTATION RI_addTm.others
+END RI_addTm.others;
+
+SUBPROGRAM PI_addTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END PI_addTc;
+
+SUBPROGRAM IMPLEMENTATION PI_addTc.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_addTc.others;
+
+SUBPROGRAM RI_addTc
+FEATURES
+  tcPacket : IN PARAMETER DataView::PusPacket {
+    Taste::encoding => NATIVE;
+  };
+END RI_addTc;
+
+SUBPROGRAM IMPLEMENTATION RI_addTc.others
+END RI_addTc.others;
+
+SYSTEM PusServices
+FEATURES
+  PI_newTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_newTc.others {
+    Taste::coordinates => "134012 70236";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 100 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "newTc";
+  };
+  PI_trigger : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_trigger.others {
+    Taste::coordinates => "143618 91336";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 200 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "trigger";
+  };
+  PI_ack : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_ack.others {
+    Taste::coordinates => "143779 62361";
+    Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "ack";
+  };
+  PI_addTm : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_addTm.others {
+    Taste::coordinates => "158426 62361";
+    Taste::RCMoperationKind => protected;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "addTm";
+  };
+  RI_newTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::Ground::PI_newTm.others {
+    Taste::coordinates => "134012 81261";
+    Taste::RCMoperationKind => sporadic;
+    Taste::InterfaceName => "newTm";
+    Taste::labelInheritance => "false";
+  };
+  RI_ack : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_ack.others {
+    Taste::coordinates => "140154 62361";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "ack";
+    Taste::labelInheritance => "true";
+  };
+  RI_addTm : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_addTm.others {
+    Taste::coordinates => "150866 62361";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "addTm";
+    Taste::labelInheritance => "true";
+  };
+  PI_addTc : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_addTc.others {
+    Taste::coordinates => "173387 62361";
+    Taste::RCMoperationKind => protected;
+    Taste::InterfaceName => "addTc";
+  };
+  RI_addTc : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::PusServices::PI_addTc.others {
+    Taste::coordinates => "165512 62361";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "addTc";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (C);
+  Taste::Active_Interfaces => any;
+END PusServices;
+
+SYSTEM IMPLEMENTATION PusServices.others
+SUBCOMPONENTS
+  APID : DATA DataView::PusApid {
+    Taste::FS_Default_Value => "1";
+  };
+END PusServices.others;
+
+END interfaceview::IV::PusServices;
+
+PACKAGE interfaceview::IV
+PUBLIC
+
+WITH interfaceview::IV::Ground;
+WITH interfaceview::IV::PusServices;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SYSTEM interfaceview
+PROPERTIES
+  Taste::dataView => ("DataView");
+  Taste::dataViewPath => ("DataView.aadl");
+END interfaceview;
+
+SYSTEM IMPLEMENTATION interfaceview.others
+SUBCOMPONENTS
+  Ground : SYSTEM interfaceview::IV::Ground::Ground.others {
+    Taste::coordinates => "79368 65667 105509 89131";
+  };
+  PusServices : SYSTEM interfaceview::IV::PusServices::PusServices.others {
+    Taste::coordinates => "134012 62361 179523 91336";
+  };
+CONNECTIONS
+  Ground_PI_newTm_PusServices_RI_newTm : SUBPROGRAM ACCESS Ground.PI_newTm -> PusServices.RI_newTm {
+    Taste::coordinates => "134012 81261 122437 81261 122437 79842 105509 79842";
+  };
+  PusServices_PI_newTc_Ground_RI_newTc : SUBPROGRAM ACCESS PusServices.PI_newTc -> Ground.RI_newTc {
+    Taste::coordinates => "105509 70392 122437 70392 122437 70236 134012 70236";
+  };
+  PusServices_PI_ack_PusServices_RI_ack : SUBPROGRAM ACCESS PusServices.PI_ack -> PusServices.RI_ack {
+    Taste::coordinates => "140154 62361 140154 59463 143779 59463 143779 62361";
+  };
+  PusServices_PI_addTm_PusServices_RI_addTm : SUBPROGRAM ACCESS PusServices.PI_addTm -> PusServices.RI_addTm {
+    Taste::coordinates => "150866 62361 150866 59463 158426 59463 158426 62361";
+  };
+  PusServices_PI_addTc_PusServices_RI_addTc : SUBPROGRAM ACCESS PusServices.PI_addTc -> PusServices.RI_addTc {
+    Taste::coordinates => "165512 62361 165512 59463 173387 59463 173387 62361";
+  };
+END interfaceview.others;
+
+PROPERTIES
+  Taste::dataView => ("DataView");
+  Taste::dataViewPath => ("DataView.aadl");
+  Taste::coordinates => "0 0 297000 210000";
+  Taste::version => "2.2";
+END interfaceview::IV;
+
