@@ -14,6 +14,7 @@
 #include "pusservices_config.h"
 #include "pusservices_apid.h"
 #include "pusservices_st01.h"
+#include "pusservices_st03.h"
 #include "pusservices_st08.h"
 #include "pusservices_st09.h"
 #include "pusservices_st11.h"
@@ -42,7 +43,7 @@ void pusservices_startup()
 
     /* Initialize services */
     pusservices_initService01();
-//    pusservices_initService03();
+    pusservices_initService03();
 //    pusservices_initService05();
     pusservices_initService08();
     pusservices_initService09();
