@@ -13,7 +13,7 @@
 #include "pus_obcp_engine.h"
 
 /*! Initialize the service */
-void pusservices_initService018()
+void pusservices_initService18()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
@@ -21,7 +21,7 @@ void pusservices_initService018()
 	pus_obcp_initialize(NULL);
 }
 
-void st18_tc18(const asn1SccPusPacket *IN_tcPacket)
+void pusservices_processTc18(const asn1SccPusPacket *IN_tcPacket)
 {
 	pusSubservice_t subtype;
 	pusSt01FailureCode_t errorCode = PUS_NO_ERROR;

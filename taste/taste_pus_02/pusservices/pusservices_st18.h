@@ -17,15 +17,10 @@
 extern "C" {
 #endif
 
-void pusservices_initService018(void);
+void pusservices_initService18(void);
 
-void st18_tc18(const asn1SccPusPacket *);
+void pusservices_processTc18(const asn1SccPusPacket *);
 
-/*extern void st18_RI_ACK(const asn1SccPusPacket *,
-                        const asn1SccPusSubserviceType *,
-                        const asn1SccPusSt01FailureCode *,
-                        const asn1SccPusSt01FailureInfo *,
-                        const asn1SccPusStepId *);*/
 
 #ifdef __cplusplus
 }
