@@ -21,6 +21,8 @@
 #include "pusservices_st11.h"
 #include "pusservices_st17.h"
 #include "pusservices_st18.h"
+#include "pusservices_st20.h"
+#include "pusservices_st23.h"
 #include "pusservices_tcdispatch.h"
 #include "pusservices_tm.h"
 #include "pus_packet_queues.h"
@@ -55,7 +57,7 @@ void pusservices_startup()
     pusservices_initService18();
 //    pusservices_initService19();
     pusservices_initService20();
-//    pusservices_initService23();
+    pusservices_initService23();
 
     #ifdef PUSSERVICES_DISPATCH_OTHER_TC_ENABLED
     pusservices_initOtherServices();
