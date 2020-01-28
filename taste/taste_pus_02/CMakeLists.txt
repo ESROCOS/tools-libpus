@@ -27,30 +27,8 @@ esrocos_preinstall_files(pus_libs_${COMPONENT_NAME} lib
 
 esrocos_build_taste(${COMPONENT_NAME}
     SOURCES
-    events
-    filemanagement
     ground
-    housekeeping
-    onboardapid
-    onboardparams
-    onboardsoftware
-    st01
-    st03
-    st05
-    st08
-    st09
-    st11
-    st12
-    st17
-    st18
-    st19
-    st20
-    st23
-    tcdispatch
-    tcqueue
-    timereportapid
-    tmdispatch
-    tmqueue
+    pusservices
     BINARIES
     binary.c/binaries/x86_partition
     DEPENDS
