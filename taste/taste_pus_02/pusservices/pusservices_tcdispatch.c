@@ -106,7 +106,7 @@ void pusservices_dispatchTc(void)
 
             #ifdef PUSSERVICES_19_ENABLED
 			case 19:
-//				pusservices_processTc19(&tc);
+				pusservices_processTc19(&tc);
 				break;
             #endif
 

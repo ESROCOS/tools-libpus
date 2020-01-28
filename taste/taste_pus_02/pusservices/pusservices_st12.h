@@ -1,6 +1,8 @@
-/* This file was generated automatically: DO NOT MODIFY IT ! */
-
-/* Declaration of the functions that have to be provided by the user */
+/*
+ * H2020 ESROCOS Project
+ * Company: GMV Aerospace & Defence S.A.U.
+ * Licence: GPLv2
+ */
 
 #ifndef PUSSERVICES_ST12
 #define PUSSERVICES_ST12
