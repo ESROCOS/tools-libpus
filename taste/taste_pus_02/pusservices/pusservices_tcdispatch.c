@@ -88,7 +88,7 @@ void pusservices_dispatchTc(void)
 
             #ifdef PUSSERVICES_12_ENABLED
 			case 12:
-//				pusservices_processTc12(&tc);
+				pusservices_processTc12(&tc);
 				break;
             #endif
 
@@ -100,7 +100,7 @@ void pusservices_dispatchTc(void)
 
             #ifdef PUSSERVICES_18_ENABLED
 			case 18:
-//				pusservices_processTc18(&tc);
+				pusservices_processTc18(&tc);
 				break;
             #endif
 
@@ -112,13 +112,13 @@ void pusservices_dispatchTc(void)
 
             #ifdef PUSSERVICES_20_ENABLED
 			case 20:
-//				pusservices_processTc20(&tc);
+				pusservices_processTc20(&tc);
 				break;
             #endif
 
             #ifdef PUSSERVICES_23_ENABLED
 			case 23:
-//				pusservices_processTc23(&tc);
+				pusservices_processTc23(&tc);
 				break;
             #endif
 

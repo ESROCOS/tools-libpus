@@ -52,7 +52,7 @@ void pusservices_startup()
     pusservices_initService08();
     pusservices_initService09();
     pusservices_initService11();
-//    pusservices_initService12();
+    pusservices_initService12();
     pusservices_initService17();
     pusservices_initService18();
 //    pusservices_initService19();
