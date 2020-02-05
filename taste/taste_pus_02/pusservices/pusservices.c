@@ -189,3 +189,34 @@ void pusservices_PI_trigger()
     g_trigger_count++;
 }
 
+void pusservices_PI_pushNewEvent(const asn1SccPusSt05Event *IN_eventInfo)
+{
+    pusservices_events_pushNewEvent(*IN_eventInfo);
+}
+
+void pusservices_PI_setParamValue(const asn1SccPusSt03ParameterId * IN_paramId,
+                                  const asn1SccPusSt03StoredParam * IN_paramValue)
+{
+    pus_hk_setStoredParam(*IN_paramId, *IN_paramValue);
+}
+
+void pusservices_PI_getParamValue(const asn1SccPusSt03ParameterId * IN_paramId,
+                                  asn1SccPusSt03StoredParam * OUT_paramValue,
+                                  asn1SccPusSt01FailureCode * OUT_isAvailable)
+{
+    *OUT_isAvailable = pus_hk_getStoredParam(*IN_paramId, *OUT_paramValue); //TODO: check availability
+}
+
+void pusservices_PI_setOnBoardParam(const asn1SccPusSt20OnBoardParameterId * IN_paramId,
+                                    const asn1SccPusSt20StoredParam * IN_paramValue)
+{
+    pus_parameters_setStoredParam(*IN_paramId, *IN_paramValue);
+}
+
+void pusservices_PI_getOnBoardParam(const asn1SccPusSt20OnBoardParameterId * IN_paramId,
+                                    asn1SccPusSt20StoredParam * OUT_paramValue,
+                                    asn1SccPusSt01FailureCode * OUT_isAvailable)
+{
+    *OUT_isAvailable = pus_parameters_getStoredParam(*IN_paramId, OUT_paramValue);
+}
+

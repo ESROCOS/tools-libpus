@@ -27,6 +27,22 @@ void pusservices_PI_addTm(const asn1SccPusPacket *);
 
 void pusservices_PI_addTc(const asn1SccPusPacket *);
 
+void pusservices_PI_pushNewEvent(const asn1SccPusSt05Event *);
+
+void pusservices_PI_setParamValue(const asn1SccPusSt03ParameterId *,
+                                  const asn1SccPusSt03StoredParam *);
+
+void pusservices_PI_getParamValue(const asn1SccPusSt03ParameterId *,
+                                  asn1SccPusSt03StoredParam *,
+                                  asn1SccPusSt01FailureCode *);
+
+void pusservices_PI_setOnBoardParam(const asn1SccPusSt20OnBoardParameterId *,
+                                    const asn1SccPusSt20StoredParam *);
+
+void pusservices_PI_getOnBoardParam(const asn1SccPusSt20OnBoardParameterId *,
+                                    asn1SccPusSt20StoredParam *,
+                                    asn1SccPusSt01FailureCode *);
+
 extern void pusservices_RI_newTm(const asn1SccPusPacket *);
 
 extern void pusservices_RI_ack(const asn1SccPusPacket *,

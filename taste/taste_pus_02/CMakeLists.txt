@@ -29,6 +29,7 @@ esrocos_build_taste(${COMPONENT_NAME}
     SOURCES
     ground
     pusservices
+    onboardsw
     BINARIES
     binary.c/binaries/x86_partition
     DEPENDS

@@ -69,6 +69,8 @@ cd "$SKELS" && rm -f ground.zip && zip -r ground ground/* && cd $OLDPWD || exit 
 
 cd "$SKELS" && rm -f pusservices.zip && zip -r pusservices pusservices/* && cd $OLDPWD || exit -1
 
+cd "$SKELS" && rm -f onboardsw.zip && zip -r onboardsw onboardsw/* && cd $OLDPWD || exit -1
+
 [ ! -z "$CLEANUP" ] && rm -rf binary*
 
 if [ -f ConcurrencyView.pro ]
@@ -111,6 +113,7 @@ cd "$CWD" && assert-builder-ocarina.py \
 	-o "$OUTPUTDIR" \
 	--subC ground:"$SKELS"/ground.zip \
 	--subC pusservices:"$SKELS"/pusservices.zip \
+	--subC onboardsw:"$SKELS"/onboardsw.zip \
 	$ORCHESTRATOR_OPTIONS
 
 if [ -f user_init_last.sh ]
