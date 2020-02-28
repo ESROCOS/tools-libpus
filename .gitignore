@@ -54,6 +54,8 @@ taste.ur5_rtems/*.pro
 taste.ur5_rtems/*.old
 taste.ur5_rtems/binary.c
 
+.cache
+
 .tc_history
 gui/.tc_history
 taste.ur5/.tc_history
