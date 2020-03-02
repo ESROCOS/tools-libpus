@@ -1,0 +1,72 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[01] telecommand verification
+-- (cf. ECSS-E-ST-70-41C sections 6.1.4.3, 8.1)
+--
+-- This file defines some error codes for TC verification. Additional error codes 
+-- can be added 
+
+
+PUS-ST01 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusPacketVersion, PusPacketType, PusSecondaryHeaderFlag, PusApid, PusSequenceFlags, PusSequenceCount, PusStepId FROM PUS-CcsdsPacketFields
+    PusInt32, PusUInt32, PusUInt64, PusMemAddr FROM PUS-TypesDefinitions;
+    
+    -- Type to represent failure codes used by service ST[01]
+    PusSt01FailureCode ::= PusUInt32
+    
+    -- Default failure codes (others may be added)
+    pus-ST01-NO-ERROR					PusSt01FailureCode ::= 0	-- Default value
+    pus-ST01-ERROR-APID-UNAVAILABLE		PusSt01FailureCode ::= 1	-- Destination process not available
+    pus-ST01-ERROR-SERVICE-UNAVAILABLE	PusSt01FailureCode ::= 2	-- PUS service not available
+    pus-ST01-ERROR-SUBTYPE-UNAVAILABLE	PusSt01FailureCode ::= 3	-- PUS service subtype not available	
+    pus-ST01-ERROR-APID-UNKNOWN			PusSt01FailureCode ::= 4	-- Destination process is unknown
+    pus-ST01-ERROR-SERVICE-UNKNOWN		PusSt01FailureCode ::= 5	-- PUS service is unknown
+    pus-ST01-ERROR-SUBTYPE-UNKNOWN		PusSt01FailureCode ::= 6	-- PUS service subtype is unknown	
+    pus-ST01-ERROR-WRONG-FORMAT			PusSt01FailureCode ::= 7	-- Packet format is inconsistent
+    pus-ST01-ERROR-CHECKSUM				PusSt01FailureCode ::= 8	-- Checksums are currently not used, code reserved for future use
+    
+	-- Type to report failure data in ST[01] TM messages
+	-- The type matches the error information stored by the PUS library (pus_error.h). Fields will be
+	-- used optionally, depending on the code.
+	PusSt01FailureInfo ::= SEQUENCE
+	{
+		subcode	PusInt32,	-- Internal error code, matching a C enum
+		data	PusInt32,	-- Error data
+		address PusMemAddr	-- A memory address
+	}
+
+    -- Request ID, used by ST[01] packets
+    PusSt01RequestId ::= SEQUENCE
+    {
+        packetVersion       PusPacketVersion,
+        packetType          PusPacketType,
+        secondaryHeaderFlag PusSecondaryHeaderFlag,
+        apid                PusApid,
+        sequenceFlags       PusSequenceFlags,
+        sequenceCount       PusSequenceCount
+    }
+    
+    -- Failure notice, used by ST[01] packets
+    PusSt01Failure ::= SEQUENCE
+    {
+    	code	PusSt01FailureCode,
+    	info	PusSt01FailureInfo
+    }
+    
+    -- Data of ST[01] TM packets
+    -- Each packet type uses a subset of the fields, but it has been preferred to keep 
+    -- the same structure for all to reduce the amount of code  
+    PusTM-1-X-Data ::= SEQUENCE
+    {
+    	request	PusSt01RequestId,
+    	step	PusStepId,
+    	failure	PusSt01Failure
+    }
+    
+    
+END

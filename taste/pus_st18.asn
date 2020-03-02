@@ -1,0 +1,94 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[18] On-board control procedure
+-- (cf. ECSS-E-ST-70-41C sections 6.18, 8.18)
+--
+-- * Only the minimal services are implemented:
+-- * OBCP management
+-- 	- TC[18,1] Load OBCP Direct                  
+--		- TC[18,2] Unload OBCP                      
+--		- TC[18,3] Activate OBCP     
+--		- TC[18,4] Stop OBCP    
+--		- TC[18,5] Suspend OBCP     
+--		- TC[18,6] Resume OBCP  
+--		- TC[18,12] Abort OBCP    
+--		- TC[18,13] Load OBCP by reference  
+-- * OBCP engine management
+--		- TC[18,21] Start OBCP engine  
+--		- TC[18,22] Stop OBCP engine 
+
+--TODO
+
+PUS-ST18 DEFINITIONS ::= 
+BEGIN
+
+
+	IMPORTS 
+	PusUInt16, PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+	
+	PusSt23RepositoryPath, PusSt23FileName FROM PUS-ST23
+	
+	PusConfigDummyType, pus-ST18-SIZE-OBCP-ID, pus-ST18-MAX-SIZE-OBCP-CODE, pus-ST18-SIZE-OBCP-CHECKSUM FROM PUS-Config
+	;
+    
+	PusSt18ObcpId ::= OCTET STRING (SIZE(pus-ST18-SIZE-OBCP-ID))
+	
+	PusSt18ObcpCode ::= OCTET STRING (SIZE(1 .. pus-ST18-MAX-SIZE-OBCP-CODE))
+	
+	PusSt18ObcpChecksum ::= PusUInt16
+	
+	PusSt18ObservabilityLevel ::= ENUMERATED
+	{
+		none(0),
+		procedure(1),
+		step(2),
+		detailed(3)
+	}
+    
+	-- Data TC[18,1]
+	PusTC-18-1-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId,
+		obcpCode		PusSt18ObcpCode,
+		checksum		PusSt18ObcpChecksum -- OPTIONAL
+	}
+	
+	-- Data TC[18,2], TC[18,6], TC[18,12]
+	PusTC-18-2-6-12-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId
+	}
+       
+   -- Data TC[18,3]
+	PusTC-18-3-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId,
+		observabilityLevel PusSt18ObservabilityLevel -- OPTIONAL
+		-- argument values deduced --OPTIONAL
+	}
+	
+	-- Data TC[18,4], TC[18,5]
+	PusTC-18-4-5-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId,
+		stepId		PusUInt32 -- 0 for current step, ENUM?
+	}
+	
+
+	-- Data TC[18,13]
+	PusTC-18-13-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId,
+		repository 	PusSt23RepositoryPath, 	-- OPTIONAL
+		fileName		PusSt23FileName			-- OPTIONAL
+	} 
+	
+	-- Data TC[18,21]
+	-- NONE
+	
+	-- Data TC[18,22]
+	-- NONE
+    
+END

@@ -1,0 +1,62 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[23] File management
+-- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
+
+-- * Only the minimal services are implemented:
+-- * File handling
+--	 - TC-23-1 createFile
+--   - TC-23-2 deleteFile
+--   - TC-23-3 reportFileAttributes
+--   - TM-23-4 reportFileAttributes
+-- * File copy
+--   - TC-23-14 copyFile
+
+PUS-ST23 DEFINITIONS ::= 
+BEGIN
+
+	
+	IMPORTS 
+	PusUInt64 FROM PUS-TypesDefinitions
+	
+	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH,
+	pus-ST23-MAX-SIZE-REPOSITORY-PATH, pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN FROM PUS-Config
+	;
+    
+	PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-PATH)) 
+	
+	PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH))
+	
+	PusSt23RepositoryDomain ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN))
+    
+	-- Data TC[23,1] TM[23,4]
+	PusTC-TM-23-1-4-Data ::= SEQUENCE
+	{
+		repository			PusSt23RepositoryPath,
+		fileName			PusSt23FileName,
+		maxSize	 			PusUInt64
+		-- file locked status BOOLEAN (optional)
+		-- additional file atributes DEDUCED (optinal N-Times)
+	}
+	 
+	-- Data TC[23,2] TC[23,3]
+	PusTC-23-2-3-Data ::= SEQUENCE
+	{
+		repository			PusSt23RepositoryPath,
+		fileName			PusSt23FileName
+	}
+
+
+	-- Data TC[23,14]
+	PusTC-23-14-Data ::= SEQUENCE
+	{
+		sourceRepository  		PusSt23RepositoryPath,
+		sourceFileName			PusSt23FileName,
+		targetRepository		PusSt23RepositoryPath,
+		targetFileName			PusSt23FileName
+	}
+	
+	
+END

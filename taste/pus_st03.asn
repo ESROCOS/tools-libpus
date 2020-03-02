@@ -1,0 +1,52 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[03] Housekeeping
+-- (cf. ECSS-E-ST-70-41C sections 6.3.3, 8.3)
+--
+-- In order to allow for the implementation of the service using TASTE or a plain C application, 
+-- the periodic generation of housekeeping or diagnostic reports is not managed; the library 
+-- provides a call to generate a housekeeping TM, which should be invoked periodically by 
+-- a periodic task external to the library
+--
+-- Limitations:
+-- * Among the minimal services, diagnostic reports are not implemented (low priority)
+-- * All housekeeping parameters are reported in an array of 64 bit elements, regardless of their 
+--   actual length
+-- * The size of the housekeeping report is defined by a constant not derived from the mission
+--   database
+
+
+PUS-ST03 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    PusConfigDummyType, pus-ST03-MAX-REPORT-LENGTH FROM PUS-Config
+    ;
+    
+    -- StoredParam of reports
+    PusSt03StoredParam ::= PusUInt64
+    
+    -- Identifier of housekeeping reports
+    PusSt03HousekeepingReportId ::= PusUInt32
+    
+    -- Default report, if only TM[3,25] implemented
+    pus-ST03-DEFAULT-HK-REPORT PusSt03HousekeepingReportId ::= 0 
+    
+    -- Identifier of housekeeping/diagnostic parameters
+    PusSt03ParameterId ::= PusUInt32
+    
+    -- Array of parameters in the report (all stored as PusUInt64)
+    PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusSt03StoredParam
+    
+    -- Data for TM[3,25], housekeeping parameter report
+    PusTM-3-25-Data ::= SEQUENCE
+    {
+    	reportId PusSt03HousekeepingReportId,
+    	parameters PusSt03ParameterArray
+    }
+    
+    
+END

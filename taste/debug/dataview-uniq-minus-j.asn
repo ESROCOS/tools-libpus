@@ -2,126 +2,6 @@
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 definitions for small N-bit integers and types used in PUS packets
-
-PUS-TypesDefinitions DEFINITIONS ::=
-BEGIN
-
-	PusUInt3  ::= INTEGER (0 .. 7)
-	PusUInt4  ::= INTEGER (0 .. 5)
-	PusUInt8  ::= INTEGER (0 .. 255)
-	PusUInt11 ::= INTEGER (0 .. 2047)
-	PusUInt14 ::= INTEGER (0 .. 16383)
-	PusUInt16 ::= INTEGER (0 .. 65535)
-	PusUInt32 ::= INTEGER (0 .. 4294967295)
-	PusUInt64 ::= INTEGER (0..9223372036854775807)
-	
-	PusInt32 ::= INTEGER (-2147483648 .. 2147483647)
-	PusInt64 ::= INTEGER (-9223372036854775808 .. 9223372036854775807)
-	
-	PusDouble ::= REAL (-1.7976931348623157e+308..1.7976931348623157E308)
-	
-	PusMemAddr ::= PusUInt64
-
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[18] On-board control procedure
--- (cf. ECSS-E-ST-70-41C sections 6.18, 8.18)
---
--- * Only the minimal services are implemented:
--- * OBCP management
--- 	- TC[18,1] Load OBCP Direct                  
---		- TC[18,2] Unload OBCP                      
---		- TC[18,3] Activate OBCP     
---		- TC[18,4] Stop OBCP    
---		- TC[18,5] Suspend OBCP     
---		- TC[18,6] Resume OBCP  
---		- TC[18,12] Abort OBCP    
---		- TC[18,13] Load OBCP by reference  
--- * OBCP engine management
---		- TC[18,21] Start OBCP engine  
---		- TC[18,22] Stop OBCP engine 
-
---TODO
-
-PUS-ST18 DEFINITIONS ::= 
-BEGIN
-
-
-	IMPORTS 
-	PusUInt16, PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
-	
-	PusSt23RepositoryPath, PusSt23FileName FROM PUS-ST23
-	
-	PusConfigDummyType, pus-ST18-SIZE-OBCP-ID, pus-ST18-MAX-SIZE-OBCP-CODE, pus-ST18-SIZE-OBCP-CHECKSUM FROM PUS-Config
-	;
-    
-	PusSt18ObcpId ::= OCTET STRING (SIZE(pus-ST18-SIZE-OBCP-ID))
-	
-	PusSt18ObcpCode ::= OCTET STRING (SIZE(1 .. pus-ST18-MAX-SIZE-OBCP-CODE))
-	
-	PusSt18ObcpChecksum ::= PusUInt16
-	
-	PusSt18ObservabilityLevel ::= ENUMERATED
-	{
-		none(0),
-		procedure(1),
-		step(2),
-		detailed(3)
-	}
-    
-	-- Data TC[18,1]
-	PusTC-18-1-Data ::= SEQUENCE
-	{
-		obcpId		PusSt18ObcpId,
-		obcpCode		PusSt18ObcpCode,
-		checksum		PusSt18ObcpChecksum -- OPTIONAL
-	}
-	
-	-- Data TC[18,2], TC[18,6], TC[18,12]
-	PusTC-18-2-6-12-Data ::= SEQUENCE
-	{
-		obcpId		PusSt18ObcpId
-	}
-       
-   -- Data TC[18,3]
-	PusTC-18-3-Data ::= SEQUENCE
-	{
-		obcpId		PusSt18ObcpId,
-		observabilityLevel PusSt18ObservabilityLevel -- OPTIONAL
-		-- argument values deduced --OPTIONAL
-	}
-	
-	-- Data TC[18,4], TC[18,5]
-	PusTC-18-4-5-Data ::= SEQUENCE
-	{
-		obcpId		PusSt18ObcpId,
-		stepId		PusUInt32 -- 0 for current step, ENUM?
-	}
-	
-
-	-- Data TC[18,13]
-	PusTC-18-13-Data ::= SEQUENCE
-	{
-		obcpId		PusSt18ObcpId,
-		repository 	PusSt23RepositoryPath, 	-- OPTIONAL
-		fileName		PusSt23FileName			-- OPTIONAL
-	} 
-	
-	-- Data TC[18,21]
-	-- NONE
-	
-	-- Data TC[18,22]
-	-- NONE
-    
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
 -- ASN.1 definitions for CCSDS packets
 -- (cf. ECSS-E-ST-70-41C section 7.4)
 
@@ -214,6 +94,83 @@ END
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
+-- ASN.1 constant definitions related to the configuration of PUS services
+--
+-- This file centralizes some definitions regarding sizes, etc. of the PUS services.
+-- 
+-- Limitations:
+-- These sizes could be derived from the mission configuration. However, in order to 
+-- simplify code generation, they are currently defined here.
+
+
+PUS-Config DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32 FROM PUS-TypesDefinitions
+    ;
+    
+    -- Dummy type, workaround for missing include bug in asn1.exe (TO-DO: remove when fixed)
+    PusConfigDummyType ::= PusUInt32
+
+    -- Maximum number of parameters in a housekeeping report
+    pus-ST03-MAX-REPORT-LENGTH PusUInt32 ::= 20
+    
+    -- Maximun number of Scheduled Actions in a TC11.4 packet
+    pus-ST11-MAX-SCHEDULED-ACTIVITIES PusUInt32 ::= 3
+    
+    -- Maximun number of character in OBCP ID (ST18)
+    pus-ST18-SIZE-OBCP-ID PusUInt32 ::= 10
+    
+    -- Maximun number of character in OBCP Code TC[18,1] 
+    pus-ST18-MAX-SIZE-OBCP-CODE PusUInt32 ::= 20000
+    
+    -- Maximun number of bits in OBCP CHECKSUM (ST18)
+    pus-ST18-SIZE-OBCP-CHECKSUM PusUInt32 ::= 16
+    
+    -- Maximum number of character in file path (ST23)
+    pus-ST23-MAX-SIZE-FILE-PATH PusUInt32 ::= 30
+    
+    -- Maximum number of character in repository path (ST23)
+    pus-ST23-MAX-SIZE-REPOSITORY-PATH PusUInt32 ::= 30
+    
+    -- Maximum number of character in repository domain (ST23)
+    pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN PusUInt32 ::= 30
+    
+    -- Maximum size of a file in ST23
+    pus-ST23-MAX-SIZE-FILE PusUInt32 ::= 1000
+
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for small N-bit integers and types used in PUS packets
+
+PUS-TypesDefinitions DEFINITIONS ::=
+BEGIN
+
+	PusUInt3  ::= INTEGER (0 .. 7)
+	PusUInt4  ::= INTEGER (0 .. 15)
+	PusUInt8  ::= INTEGER (0 .. 255)
+	PusUInt11 ::= INTEGER (0 .. 2047)
+	PusUInt14 ::= INTEGER (0 .. 16383)
+	PusUInt16 ::= INTEGER (0 .. 65535)
+	PusUInt32 ::= INTEGER (0 .. 4294967295)
+	PusUInt64 ::= INTEGER (0 .. 18446744073709551615)
+	
+	PusInt32 ::= INTEGER (-2147483648 .. 2147483647)
+	PusInt64 ::= INTEGER (-9223372036854775808 .. 9223372036854775807)
+	
+	PusDouble ::= REAL (-1.7976931348623157e+308..1.7976931348623157E308)
+	
+	PusMemAddr ::= PusUInt64
+
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
 -- ASN.1 definitions for CCSDS packets
 -- (cf. ECSS-E-ST-70-41C section 7.4)
 
@@ -250,6 +207,9 @@ BEGIN
   	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
   	;
 
+    -- dummy data field for packets with no data
+    PusTM-TC-Dummy-Data ::= PusUInt32
+
     -- TM secondary header
     PusTmHeader ::= SEQUENCE
     {
@@ -266,6 +226,7 @@ BEGIN
     -- TM actual data
     PusTmSourceData ::= CHOICE
     {
+        st-0-0 PusTM-TC-Dummy-Data,
         st-1-X 	PusTM-1-X-Data,
         st-3-25 PusTM-3-25-Data,
         st-5-X 	PusTM-5-X-Data,
@@ -309,6 +270,7 @@ BEGIN
     -- TC actual data
     PusTcApplicationData ::= CHOICE
     { -- The same order as the reduced
+        st-0-0      PusTM-TC-Dummy-Data,
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,
@@ -328,7 +290,8 @@ BEGIN
     }
     
     PusTcApplicationDataReduced ::= CHOICE
-    { 
+    {
+        st-0-0      PusTM-TC-Dummy-Data,
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,
@@ -392,321 +355,6 @@ BEGIN
 	PusPacketReduced ::= PusPacketTemplate {PusPacketDataReduced}
 
 
-END
-TASTE-BasicTypes DEFINITIONS ::=
-BEGIN
-
--- Set of TASTE predefined basic types
-
-T-Int32 ::=  INTEGER (-2147483648 .. 2147483647)
-
-T-UInt32 ::= INTEGER (0 .. 4294967295)
-
-T-Int8 ::= INTEGER (-128 .. 127)
-
-T-UInt8 ::= INTEGER (0 .. 255)
-
-T-Boolean ::= BOOLEAN
-
-END
-
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[20] on-board parameter management
--- (cf. ECSS-E-ST-70-41C sections 6.20, 8.20)
---
--- Limitations:
--- * Only the minimal services are implemented, 20.1, 20.2, 20.3
-
-
-PUS-ST20 DEFINITIONS ::=
-BEGIN
-
-    IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
-    ;
-    
-    -- Identifier of on-board parameters
-    PusSt20OnBoardParameterId ::= PusUInt32
-    
-    -- StoredParam of reports
-    PusSt20StoredParam ::= PusUInt64
-    
-    -- Data for TC[20,1], TM[20,2] and TC[20,3], on-board parameter management
-    PusTC-TM-20-X-Data ::= SEQUENCE
-    {
-    	paramId PusSt20OnBoardParameterId,
-    	value PusSt20StoredParam
-    }
-    
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[05] Event reporting
--- (cf. ECSS-E-ST-70-41C sections 6.5, 8.5)
---
--- Limitations:
--- * Only the minimal services (event reports are implemented); enabling/disabling events is not included
--- * All events use the same structure for their auxiliary data
-
-
-PUS-ST05 DEFINITIONS ::=
-BEGIN
-
-    IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
-    ;
-    
-    -- Event definition identifier
-    PusSt05EventId ::= PusUInt32
-    
-    -- EventId none
-    pus-EVENT-ID-NONE PusSt05EventId ::= 0
-
-	-- Event auxiliary data
-	PusSt05EventAuxData ::= SEQUENCE
-	{
-		data1 PusUInt64,
-		data2 PusUInt64
-	}
-	
-	-- AuxData none
-	pus-EVENT-AUXDATA-NONE PusSt05EventAuxData ::= 
-	{
-		data1 0, 
-		data2 0
-	}
-	
-	-- Event dataStored none
-	pus-EVENT-DATASTORED-NONE PusUInt64 ::= 0
-	
-	-- Event and data
-	PusSt05Event ::= SEQUENCE
-   {
-    	eventId PusSt05EventId,
-    	data PusSt05EventAuxData
-   }
-    
-    -- Data for TM[5,1] to TM[5,4] event/anomaly reports
-    PusTM-5-X-Data ::= PusSt05Event    
-    
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[23] File management
--- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
-
--- * Only the minimal services are implemented:
--- * File handling
---	 - TC-23-1 createFile
---   - TC-23-2 deleteFile
---   - TC-23-3 reportFileAttributes
---   - TM-23-4 reportFileAttributes
--- * File copy
---   - TC-23-14 copyFile
-
-PUS-ST23 DEFINITIONS ::= 
-BEGIN
-
-	
-	IMPORTS 
-	PusUInt64 FROM PUS-TypesDefinitions
-	
-	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH,
-	pus-ST23-MAX-SIZE-REPOSITORY-PATH, pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN FROM PUS-Config
-	;
-    
-	PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-PATH)) 
-	
-	PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH))
-	
-	PusSt23RepositoryDomain ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN))
-    
-	-- Data TC[23,1] TM[23,4]
-	PusTC-TM-23-1-4-Data ::= SEQUENCE
-	{
-		repository			PusSt23RepositoryPath,
-		fileName			PusSt23FileName,
-		maxSize	 			PusUInt64
-		-- file locked status BOOLEAN (optional)
-		-- additional file atributes DEDUCED (optinal N-Times)
-	}
-	 
-	-- Data TC[23,2] TC[23,3]
-	PusTC-23-2-3-Data ::= SEQUENCE
-	{
-		repository			PusSt23RepositoryPath,
-		fileName			PusSt23FileName
-	}
-
-
-	-- Data TC[23,14]
-	PusTC-23-14-Data ::= SEQUENCE
-	{
-		sourceRepository  		PusSt23RepositoryPath,
-		sourceFileName			PusSt23FileName,
-		targetRepository		PusSt23RepositoryPath,
-		targetFileName			PusSt23FileName
-	}
-	
-	
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[09] Time management
--- (cf. ECSS-E-ST-70-41C sections 6.9, 8.9)
---
--- Limitations:
--- * Only the minimal services are implemented
-
-
-PUS-ST09 DEFINITIONS ::=
-BEGIN
-
-  IMPORTS 
-  PusUInt32 FROM PUS-TypesDefinitions
-  PusTime FROM PUS-Time
-  ;
-    
-  PusSt09ExponentialRate ::= PusUInt32
-    
-  -- Data for TC[9,1] set time report generation rate
-  PusTC-9-1-Data ::= SEQUENCE
-  {
-    exponentialRate PusSt09ExponentialRate
-  }
-  
-  -- Data for TM[9,2] CUC time report
-  PusTM-9-2-Data ::= SEQUENCE
-  {
-    exponentialRate PusSt09ExponentialRate,
-    time PusTime
-    -- spacecraft time referenced status
-  }
-    
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[12] On-board monitoring
--- (cf. ECSS-E-ST-70-41C sections 6.12, 8.12)
---
-
-
---TODO
-
-PUS-ST12 DEFINITIONS ::= 
-BEGIN
-
-	
-	IMPORTS 
-	PusUInt32 FROM PUS-TypesDefinitions
-	;
-	
-	 -- PMON identifier
-	PusSt12pmonId ::= PusUInt32
-	    
-	
-	
-	-- Data for TC[19,1] and TC[19,2], 
-	PusTC-12-1-2-Data  ::= SEQUENCE
-	{
-		pmonId PusSt12pmonId
-	}
-    
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[03] Housekeeping
--- (cf. ECSS-E-ST-70-41C sections 6.3.3, 8.3)
---
--- In order to allow for the implementation of the service using TASTE or a plain C application, 
--- the periodic generation of housekeeping or diagnostic reports is not managed; the library 
--- provides a call to generate a housekeeping TM, which should be invoked periodically by 
--- a periodic task external to the library
---
--- Limitations:
--- * Among the minimal services, diagnostic reports are not implemented (low priority)
--- * All housekeeping parameters are reported in an array of 64 bit elements, regardless of their 
---   actual length
--- * The size of the housekeeping report is defined by a constant not derived from the mission
---   database
-
-
-PUS-ST03 DEFINITIONS ::=
-BEGIN
-
-    IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
-    PusConfigDummyType, pus-ST03-MAX-REPORT-LENGTH FROM PUS-Config
-    ;
-    
-    -- StoredParam of reports
-    PusSt03StoredParam ::= PusUInt64
-    
-    -- Identifier of housekeeping reports
-    PusSt03HousekeepingReportId ::= PusUInt32
-    
-    -- Default report, if only TM[3,25] implemented
-    pus-ST03-DEFAULT-HK-REPORT PusSt03HousekeepingReportId ::= 0 
-    
-    -- Identifier of housekeeping/diagnostic parameters
-    PusSt03ParameterId ::= PusUInt32
-    
-    -- Array of parameters in the report (all stored as PusUInt64)
-    PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusSt03StoredParam
-    
-    -- Data for TM[3,25], housekeeping parameter report
-    PusTM-3-25-Data ::= SEQUENCE
-    {
-    	reportId PusSt03HousekeepingReportId,
-    	parameters PusSt03ParameterArray
-    }
-    
-    
-END
--- H2020 ESROCOS Project
--- Company: GMV Aerospace & Defence S.A.U.
--- Licence: GPLv2
-
--- ASN.1 definitions for service ST[08] Function management
--- (cf. ECSS-E-ST-70-41C sections 6.8, 8.8)
---
--- The only one subservice is implemented:
---  - TC[8,1] Perform a function (no arguments for functions)
-
-
-
-PUS-ST08 DEFINITIONS ::= 
-BEGIN
-
-
-    IMPORTS 
-    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
-    ;
-    
-    -- Event definition identifier
-    PusSt08FunctionId ::= PusUInt32
-        
-
-    
-    -- Data for TC[8,1], Perform a function request
-    PusTC-8-1-Data  ::= SEQUENCE
-    {
-    	functionId PusSt08FunctionId
-    }
-    
 END
 -- H2020 ESROCOS Project
 -- Company: GMV Aerospace & Defence S.A.U.
@@ -1070,52 +718,393 @@ END
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
--- ASN.1 constant definitions related to the configuration of PUS services
+-- ASN.1 definitions for service ST[03] Housekeeping
+-- (cf. ECSS-E-ST-70-41C sections 6.3.3, 8.3)
 --
--- This file centralizes some definitions regarding sizes, etc. of the PUS services.
--- 
+-- In order to allow for the implementation of the service using TASTE or a plain C application, 
+-- the periodic generation of housekeeping or diagnostic reports is not managed; the library 
+-- provides a call to generate a housekeeping TM, which should be invoked periodically by 
+-- a periodic task external to the library
+--
 -- Limitations:
--- These sizes could be derived from the mission configuration. However, in order to 
--- simplify code generation, they are currently defined here.
+-- * Among the minimal services, diagnostic reports are not implemented (low priority)
+-- * All housekeeping parameters are reported in an array of 64 bit elements, regardless of their 
+--   actual length
+-- * The size of the housekeeping report is defined by a constant not derived from the mission
+--   database
 
 
-PUS-Config DEFINITIONS ::=
+PUS-ST03 DEFINITIONS ::=
 BEGIN
 
     IMPORTS 
-    PusUInt32 FROM PUS-TypesDefinitions
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    PusConfigDummyType, pus-ST03-MAX-REPORT-LENGTH FROM PUS-Config
     ;
     
-    -- Dummy type, workaround for missing include bug in asn1.exe (TO-DO: remove when fixed)
-    PusConfigDummyType ::= PusUInt32
+    -- StoredParam of reports
+    PusSt03StoredParam ::= PusUInt64
+    
+    -- Identifier of housekeeping reports
+    PusSt03HousekeepingReportId ::= PusUInt32
+    
+    -- Default report, if only TM[3,25] implemented
+    pus-ST03-DEFAULT-HK-REPORT PusSt03HousekeepingReportId ::= 0 
+    
+    -- Identifier of housekeeping/diagnostic parameters
+    PusSt03ParameterId ::= PusUInt32
+    
+    -- Array of parameters in the report (all stored as PusUInt64)
+    PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusSt03StoredParam
+    
+    -- Data for TM[3,25], housekeeping parameter report
+    PusTM-3-25-Data ::= SEQUENCE
+    {
+    	reportId PusSt03HousekeepingReportId,
+    	parameters PusSt03ParameterArray
+    }
+    
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
 
-    -- Maximum number of parameters in a housekeeping report
-    pus-ST03-MAX-REPORT-LENGTH PusUInt32 ::= 20
-    
-    -- Maximun number of Scheduled Actions in a TC11.4 packet
-    pus-ST11-MAX-SCHEDULED-ACTIVITIES PusUInt32 ::= 5
-    
-    -- Maximun number of character in OBCP ID (ST18)
-    pus-ST18-SIZE-OBCP-ID PusUInt32 ::= 10
-    
-    -- Maximun number of character in OBCP Code TC[18,1] 
-    pus-ST18-MAX-SIZE-OBCP-CODE PusUInt32 ::= 15000
-    
-    -- Maximun number of bits in OBCP CHECKSUM (ST18)
-    pus-ST18-SIZE-OBCP-CHECKSUM PusUInt32 ::= 16
-    
-    -- Maximum number of character in file path (ST23)
-    pus-ST23-MAX-SIZE-FILE-PATH PusUInt32 ::= 30
-    
-    -- Maximum number of character in repository path (ST23)
-    pus-ST23-MAX-SIZE-REPOSITORY-PATH PusUInt32 ::= 30
-    
-    -- Maximum number of character in repository domain (ST23)
-    pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN PusUInt32 ::= 30
-    
-    -- Maximum size of a file in ST23
-    pus-ST23-MAX-SIZE-FILE PusUInt32 ::= 1000
+-- ASN.1 definitions for service ST[05] Event reporting
+-- (cf. ECSS-E-ST-70-41C sections 6.5, 8.5)
+--
+-- Limitations:
+-- * Only the minimal services (event reports are implemented); enabling/disabling events is not included
+-- * All events use the same structure for their auxiliary data
 
+
+PUS-ST05 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    ;
+    
+    -- Event definition identifier
+    PusSt05EventId ::= PusUInt32
+    
+    -- EventId none
+    pus-EVENT-ID-NONE PusSt05EventId ::= 0
+
+	-- Event auxiliary data
+	PusSt05EventAuxData ::= SEQUENCE
+	{
+		data1 PusUInt64,
+		data2 PusUInt64
+	}
+	
+	-- AuxData none
+	pus-EVENT-AUXDATA-NONE PusSt05EventAuxData ::= 
+	{
+		data1 0, 
+		data2 0
+	}
+	
+	-- Event dataStored none
+	pus-EVENT-DATASTORED-NONE PusUInt64 ::= 0
+	
+	-- Event and data
+	PusSt05Event ::= SEQUENCE
+   {
+    	eventId PusSt05EventId,
+    	data PusSt05EventAuxData
+   }
+    
+    -- Data for TM[5,1] to TM[5,4] event/anomaly reports
+    PusTM-5-X-Data ::= PusSt05Event    
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[08] Function management
+-- (cf. ECSS-E-ST-70-41C sections 6.8, 8.8)
+--
+-- The only one subservice is implemented:
+--  - TC[8,1] Perform a function (no arguments for functions)
+
+
+
+PUS-ST08 DEFINITIONS ::= 
+BEGIN
+
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    ;
+    
+    -- Event definition identifier
+    PusSt08FunctionId ::= PusUInt32
+        
+
+    
+    -- Data for TC[8,1], Perform a function request
+    PusTC-8-1-Data  ::= SEQUENCE
+    {
+    	functionId PusSt08FunctionId
+    }
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[09] Time management
+-- (cf. ECSS-E-ST-70-41C sections 6.9, 8.9)
+--
+-- Limitations:
+-- * Only the minimal services are implemented
+
+
+PUS-ST09 DEFINITIONS ::=
+BEGIN
+
+  IMPORTS 
+  PusUInt32 FROM PUS-TypesDefinitions
+  PusTime FROM PUS-Time
+  ;
+    
+  PusSt09ExponentialRate ::= PusUInt32
+    
+  -- Data for TC[9,1] set time report generation rate
+  PusTC-9-1-Data ::= SEQUENCE
+  {
+    exponentialRate PusSt09ExponentialRate
+  }
+  
+  -- Data for TM[9,2] CUC time report
+  PusTM-9-2-Data ::= SEQUENCE
+  {
+    exponentialRate PusSt09ExponentialRate,
+    time PusTime
+    -- spacecraft time referenced status
+  }
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[12] On-board monitoring
+-- (cf. ECSS-E-ST-70-41C sections 6.12, 8.12)
+--
+
+
+--TODO
+
+PUS-ST12 DEFINITIONS ::= 
+BEGIN
+
+	
+	IMPORTS 
+	PusUInt32 FROM PUS-TypesDefinitions
+	;
+	
+	 -- PMON identifier
+	PusSt12pmonId ::= PusUInt32
+	    
+	
+	
+	-- Data for TC[19,1] and TC[19,2], 
+	PusTC-12-1-2-Data  ::= SEQUENCE
+	{
+		pmonId PusSt12pmonId
+	}
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[18] On-board control procedure
+-- (cf. ECSS-E-ST-70-41C sections 6.18, 8.18)
+--
+-- * Only the minimal services are implemented:
+-- * OBCP management
+-- 	- TC[18,1] Load OBCP Direct                  
+--		- TC[18,2] Unload OBCP                      
+--		- TC[18,3] Activate OBCP     
+--		- TC[18,4] Stop OBCP    
+--		- TC[18,5] Suspend OBCP     
+--		- TC[18,6] Resume OBCP  
+--		- TC[18,12] Abort OBCP    
+--		- TC[18,13] Load OBCP by reference  
+-- * OBCP engine management
+--		- TC[18,21] Start OBCP engine  
+--		- TC[18,22] Stop OBCP engine 
+
+--TODO
+
+PUS-ST18 DEFINITIONS ::= 
+BEGIN
+
+
+	IMPORTS 
+	PusUInt16, PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+	
+	PusSt23RepositoryPath, PusSt23FileName FROM PUS-ST23
+	
+	PusConfigDummyType, pus-ST18-SIZE-OBCP-ID, pus-ST18-MAX-SIZE-OBCP-CODE, pus-ST18-SIZE-OBCP-CHECKSUM FROM PUS-Config
+	;
+    
+	PusSt18ObcpId ::= OCTET STRING (SIZE(pus-ST18-SIZE-OBCP-ID))
+	
+	PusSt18ObcpCode ::= OCTET STRING (SIZE(1 .. pus-ST18-MAX-SIZE-OBCP-CODE))
+	
+	PusSt18ObcpChecksum ::= PusUInt16
+	
+	PusSt18ObservabilityLevel ::= ENUMERATED
+	{
+		none(0),
+		procedure(1),
+		step(2),
+		detailed(3)
+	}
+    
+	-- Data TC[18,1]
+	PusTC-18-1-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId,
+		obcpCode		PusSt18ObcpCode,
+		checksum		PusSt18ObcpChecksum -- OPTIONAL
+	}
+	
+	-- Data TC[18,2], TC[18,6], TC[18,12]
+	PusTC-18-2-6-12-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId
+	}
+       
+   -- Data TC[18,3]
+	PusTC-18-3-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId,
+		observabilityLevel PusSt18ObservabilityLevel -- OPTIONAL
+		-- argument values deduced --OPTIONAL
+	}
+	
+	-- Data TC[18,4], TC[18,5]
+	PusTC-18-4-5-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId,
+		stepId		PusUInt32 -- 0 for current step, ENUM?
+	}
+	
+
+	-- Data TC[18,13]
+	PusTC-18-13-Data ::= SEQUENCE
+	{
+		obcpId		PusSt18ObcpId,
+		repository 	PusSt23RepositoryPath, 	-- OPTIONAL
+		fileName		PusSt23FileName			-- OPTIONAL
+	} 
+	
+	-- Data TC[18,21]
+	-- NONE
+	
+	-- Data TC[18,22]
+	-- NONE
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[20] on-board parameter management
+-- (cf. ECSS-E-ST-70-41C sections 6.20, 8.20)
+--
+-- Limitations:
+-- * Only the minimal services are implemented, 20.1, 20.2, 20.3
+
+
+PUS-ST20 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    ;
+    
+    -- Identifier of on-board parameters
+    PusSt20OnBoardParameterId ::= PusUInt32
+    
+    -- StoredParam of reports
+    PusSt20StoredParam ::= PusUInt64
+    
+    -- Data for TC[20,1], TM[20,2] and TC[20,3], on-board parameter management
+    PusTC-TM-20-X-Data ::= SEQUENCE
+    {
+    	paramId PusSt20OnBoardParameterId,
+    	value PusSt20StoredParam
+    }
+    
+END
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[23] File management
+-- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
+
+-- * Only the minimal services are implemented:
+-- * File handling
+--	 - TC-23-1 createFile
+--   - TC-23-2 deleteFile
+--   - TC-23-3 reportFileAttributes
+--   - TM-23-4 reportFileAttributes
+-- * File copy
+--   - TC-23-14 copyFile
+
+PUS-ST23 DEFINITIONS ::= 
+BEGIN
+
+	
+	IMPORTS 
+	PusUInt64 FROM PUS-TypesDefinitions
+	
+	PusConfigDummyType, pus-ST23-MAX-SIZE-FILE-PATH,
+	pus-ST23-MAX-SIZE-REPOSITORY-PATH, pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN FROM PUS-Config
+	;
+    
+	PusSt23RepositoryPath ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-PATH)) 
+	
+	PusSt23FileName ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-FILE-PATH))
+	
+	PusSt23RepositoryDomain ::= OCTET STRING (SIZE(1..pus-ST23-MAX-SIZE-REPOSITORY-DOMAIN))
+    
+	-- Data TC[23,1] TM[23,4]
+	PusTC-TM-23-1-4-Data ::= SEQUENCE
+	{
+		repository			PusSt23RepositoryPath,
+		fileName			PusSt23FileName,
+		maxSize	 			PusUInt64
+		-- file locked status BOOLEAN (optional)
+		-- additional file atributes DEDUCED (optinal N-Times)
+	}
+	 
+	-- Data TC[23,2] TC[23,3]
+	PusTC-23-2-3-Data ::= SEQUENCE
+	{
+		repository			PusSt23RepositoryPath,
+		fileName			PusSt23FileName
+	}
+
+
+	-- Data TC[23,14]
+	PusTC-23-14-Data ::= SEQUENCE
+	{
+		sourceRepository  		PusSt23RepositoryPath,
+		sourceFileName			PusSt23FileName,
+		targetRepository		PusSt23RepositoryPath,
+		targetFileName			PusSt23FileName
+	}
+	
+	
 END
 -- H2020 ESROCOS Project
 -- Company: GMV Aerospace & Defence S.A.U.
@@ -1185,3 +1174,20 @@ BEGIN
     }
 
 END
+TASTE-BasicTypes DEFINITIONS ::=
+BEGIN
+
+-- Set of TASTE predefined basic types
+
+T-Int32 ::=  INTEGER (-2147483648 .. 2147483647)
+
+T-UInt32 ::= INTEGER (0 .. 4294967295)
+
+T-Int8 ::= INTEGER (-128 .. 127)
+
+T-UInt8 ::= INTEGER (0 .. 255)
+
+T-Boolean ::= BOOLEAN
+
+END
+

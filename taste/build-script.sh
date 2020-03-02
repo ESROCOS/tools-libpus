@@ -65,53 +65,53 @@ SKELS="./"
 # Check if Dataview references existing files 
 mono $(which taste-extract-asn-from-design.exe) -i "$INTERFACEVIEW" -j /tmp/dv.asn
 
-cd "$SKELS" && rm -f ground.zip && zip ground ground/* && cd $OLDPWD
+cd "$SKELS" && rm -f ground.zip && zip -r ground ground/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f tcqueue.zip && zip tcqueue tcqueue/* && cd $OLDPWD
+cd "$SKELS" && rm -f tcqueue.zip && zip -r tcqueue tcqueue/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f tcdispatch.zip && zip tcdispatch tcdispatch/* && cd $OLDPWD
+cd "$SKELS" && rm -f tcdispatch.zip && zip -r tcdispatch tcdispatch/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f tmdispatch.zip && zip tmdispatch tmdispatch/* && cd $OLDPWD
+cd "$SKELS" && rm -f tmdispatch.zip && zip -r tmdispatch tmdispatch/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f tmqueue.zip && zip tmqueue tmqueue/* && cd $OLDPWD
+cd "$SKELS" && rm -f tmqueue.zip && zip -r tmqueue tmqueue/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st17.zip && zip st17 st17/* && cd $OLDPWD
+cd "$SKELS" && rm -f st17.zip && zip -r st17 st17/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st01.zip && zip st01 st01/* && cd $OLDPWD
+cd "$SKELS" && rm -f st01.zip && zip -r st01 st01/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st08.zip && zip st08 st08/* && cd $OLDPWD
+cd "$SKELS" && rm -f st08.zip && zip -r st08 st08/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f onboardapid.zip && zip onboardapid onboardapid/* && cd $OLDPWD
+cd "$SKELS" && rm -f onboardapid.zip && zip -r onboardapid onboardapid/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st09.zip && zip st09 st09/* && cd $OLDPWD
+cd "$SKELS" && rm -f st09.zip && zip -r st09 st09/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f timereportapid.zip && zip timereportapid timereportapid/* && cd $OLDPWD
+cd "$SKELS" && rm -f timereportapid.zip && zip -r timereportapid timereportapid/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f events.zip && zip events events/* && cd $OLDPWD
+cd "$SKELS" && rm -f events.zip && zip -r events events/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st05.zip && zip st05 st05/* && cd $OLDPWD
+cd "$SKELS" && rm -f st05.zip && zip -r st05 st05/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st19.zip && zip st19 st19/* && cd $OLDPWD
+cd "$SKELS" && rm -f st19.zip && zip -r st19 st19/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f housekeeping.zip && zip housekeeping housekeeping/* && cd $OLDPWD
+cd "$SKELS" && rm -f housekeeping.zip && zip -r housekeeping housekeeping/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st03.zip && zip st03 st03/* && cd $OLDPWD
+cd "$SKELS" && rm -f st03.zip && zip -r st03 st03/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st12.zip && zip st12 st12/* && cd $OLDPWD
+cd "$SKELS" && rm -f st12.zip && zip -r st12 st12/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st11.zip && zip st11 st11/* && cd $OLDPWD
+cd "$SKELS" && rm -f st11.zip && zip -r st11 st11/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st18.zip && zip st18 st18/* && cd $OLDPWD
+cd "$SKELS" && rm -f st18.zip && zip -r st18 st18/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st23.zip && zip st23 st23/* && cd $OLDPWD
+cd "$SKELS" && rm -f st23.zip && zip -r st23 st23/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f filemanagement.zip && zip filemanagement filemanagement/* && cd $OLDPWD
+cd "$SKELS" && rm -f filemanagement.zip && zip -r filemanagement filemanagement/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f st20.zip && zip st20 st20/* && cd $OLDPWD
+cd "$SKELS" && rm -f st20.zip && zip -r st20 st20/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f onboardparams.zip && zip onboardparams onboardparams/* && cd $OLDPWD
+cd "$SKELS" && rm -f onboardparams.zip && zip -r onboardparams onboardparams/* && cd $OLDPWD || exit -1
 
-cd "$SKELS" && rm -f onboardsoftware.zip && zip onboardsoftware onboardsoftware/* && cd $OLDPWD
+cd "$SKELS" && rm -f onboardsoftware.zip && zip -r onboardsoftware onboardsoftware/* && cd $OLDPWD || exit -1
 
 [ ! -z "$CLEANUP" ] && rm -rf binary*
 
@@ -145,11 +145,21 @@ else
     OUTPUTDIR=binary
 fi
 
+NO_BITFILE=""
+while getopts :-: o
+do
+case "$o$OPTARG"
+in
+(-no-bitfile) NO_BITFILE="--no-bitfile";;
+esac
+done
+
 cd "$CWD" && assert-builder-ocarina.py \
 	--fast \
 	$DEBUG_MODE \
 	--aadlv2 \
 	--keep-case \
+	$NO_BITFILE \
 	--interfaceView "$INTERFACEVIEW" \
 	--deploymentView "$DEPLOYMENTVIEW" \
 	-o "$OUTPUTDIR" \

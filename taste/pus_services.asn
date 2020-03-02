@@ -1,0 +1,286 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for the standard PUS services and subservices
+-- (cf. ECSS-E-ST-70-41C)
+-- Only a subset of the capabilities are implemented
+
+PUS-Services DEFINITIONS ::=
+
+BEGIN
+
+	IMPORTS PusUInt8 FROM PUS-TypesDefinitions;
+
+    -- PUS service types
+    PusServiceType     ::= PusUInt8
+    PusSubserviceType  ::= PusUInt8
+
+    -- Default value
+    pusService-NONE                         PusServiceType ::=  0
+
+	-- Standard service types (1..127)
+    pus-ST01-requestVerification            PusServiceType ::=  1
+    pus-ST02-deviceAccess           	    PusServiceType ::=  2
+    pus-ST03-housekeeping                   PusServiceType ::=  3
+    pus-ST04-parameterStatisticsReporting   PusServiceType ::=  4
+    pus-ST05-eventReporting                 PusServiceType ::=  5
+    pus-ST06-memoryManagement               PusServiceType ::=  6
+    -- reserved (7)
+    pus-ST08-functionManagement             PusServiceType ::=  8
+    pus-ST09-timeManagement                 PusServiceType ::=  9
+    -- reserved (10)
+    pus-ST11-timeBasedScheduling           PusServiceType ::= 11
+    pus-ST12-onBoardMonitoring             PusServiceType ::= 12
+    pus-ST13-largePacketTransfer           PusServiceType ::= 13
+    pus-ST14-realTimeForwardingControl     PusServiceType ::= 14
+    pus-ST15-onBoardStorageAndRetrieval    PusServiceType ::= 15
+	-- reserved (16)
+    pus-ST17-test                          PusServiceType ::= 17
+    pus-ST18-onBoardControlProcedure       PusServiceType ::= 18
+    pus-ST19-eventAction                   PusServiceType ::= 19
+    pus-ST20-parameterManagement           PusServiceType ::= 20
+    pus-ST21-requestSequencing             PusServiceType ::= 21
+    pus-ST22-partitionBasedScheduling      PusServiceType ::= 22
+    pus-ST23-fileManagement                PusServiceType ::= 23
+
+	-- Standard service subtypes
+
+    -- Default value
+    pusSubtype-NONE                        PusSubserviceType ::=  0
+
+	-- ST[01] Request Verification
+	pus-TM-1-1-successfulAcceptance         PusSubserviceType ::=  1
+	pus-TM-1-2-failedAcceptance             PusSubserviceType ::=  2
+	pus-TM-1-3-successfulStart              PusSubserviceType ::=  3 
+	pus-TM-1-4-failedStart                  PusSubserviceType ::=  4 
+	pus-TM-1-5-successfulProgress           PusSubserviceType ::=  5 
+	pus-TM-1-6-failedProgress               PusSubserviceType ::=  6 
+	pus-TM-1-7-successfulCompletion         PusSubserviceType ::=  7 
+	pus-TM-1-8-failedCompletion             PusSubserviceType ::=  8 
+	-- pus-TM-1-10-failedRouting               PusSubserviceType ::= 10 -- NOT IMPLEMENTED
+	
+	-- ST[02] Device Access
+	-- NOT IMPLEMENTED --
+	
+	-- ST[03] Housekeeping
+	-- Housekeeping
+	-- pus-TC-3-1-createHousekeepingStructure       PusSubserviceType ::=  1 -- NOT IMPLEMENTED
+	-- pus-TC-3-3-deleteHousekeepingStructure       PusSubserviceType ::=  3 -- NOT IMPLEMENTED
+	-- pus-TC-3-5-enablePeriodicHousekeeping        PusSubserviceType ::=  5 -- NOT IMPLEMENTED
+	-- pus-TC-3-6-disablePeridodicHousekeeping      PusSubserviceType ::=  6 -- NOT IMPLEMENTED
+	-- pus-TC-3-9-reportHousekeepingStructures      PusSubserviceType ::=  9 -- NOT IMPLEMENTED
+	-- pus-TM-3-10-reportHousekeepingStructures     PusSubserviceType ::= 10 -- NOT IMPLEMENTED
+	pus-TM-3-25-housekeepingReport               PusSubserviceType ::= 25
+	-- pus-TC-3-27-oneShotHousekeeping              PusSubserviceType ::= 27 -- NOT IMPLEMENTED
+	-- pus-TC-3-29-appendHousekeepingParameter      PusSubserviceType ::= 29 -- NOT IMPLEMENTED
+	-- pus-TC-3-31-modifyHousekeepingInterval       PusSubserviceType ::= 31 -- NOT IMPLEMENTED
+	-- pus-TC-3-33-reportHousekeepingPeriod         PusSubserviceType ::= 33 -- NOT IMPLEMENTED
+	-- pus-TM-3-35-reportHousekeepingPeriod         PusSubserviceType ::= 35 -- NOT IMPLEMENTED
+
+	-- Diagnostic
+	-- pus-TC-3-2-createDiagnosticStructure         PusSubserviceType ::=   2 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-3-4-deleteDiagnosticStructure         PusSubserviceType ::=   4 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-3-7-enablePeriodicDiagnostic          PusSubserviceType ::=   7 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-3-8-disablePeriodicDiagnostic         PusSubserviceType ::=   8 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-3-11-reportDiagnosticStructures       PusSubserviceType ::=  11 -- NOT IMPLEMENTED
+	-- pus-TM-3-12-reportDiagnosticStructures       PusSubserviceType ::=  12 -- NOT IMPLEMENTED
+	-- pus-TM-3-26-diagnosticReport                 PusSubserviceType ::=  26 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-3-28-oneShotDiagnostic                PusSubserviceType ::=  28 -- NOT IMPLEMENTED
+	-- pus-TC-3-30-appendDiagnosticParameter        PusSubserviceType ::=  30 -- NOT IMPLEMENTED
+	-- pus-TC-3-32-modifyDiagnosticInterval         PusSubserviceType ::=  32 -- NOT IMPLEMENTED
+	-- pus-TC-3-34-reportDiagnosticPeriod           PusSubserviceType ::=  34 -- NOT IMPLEMENTED
+	-- pus-TM-3-36-reportDiagnosticPeriod           PusSubserviceType ::=  36 -- NOT IMPLEMENTED
+
+	-- Parameter functional reporting
+	-- pus-TC-3-37-applyParameterFunctionalConfiguration    PusSubserviceType ::= 37 -- NOT IMPLEMENTED
+	-- pus-TC-3-38-createParameterFunctionalDefinition      PusSubserviceType ::= 38 -- NOT IMPLEMENTED
+	-- pus-TC-3-39-deleteParameterFunctionalDefinition      PusSubserviceType ::= 39 -- NOT IMPLEMENTED
+	-- pus-TC-3-40-reportParameterFunctionalDefinitions     PusSubserviceType ::= 40 -- NOT IMPLEMENTED
+	-- pus-TM-3-41-reportParameterFunctionalDefinitions     PusSubserviceType ::= 41 -- NOT IMPLEMENTED
+	-- pus-TC-3-42-addParamterReportDefinition              PusSubserviceType ::= 42 -- NOT IMPLEMENTED
+	-- pus-TC-3-43-removeParamterReportDefinition           PusSubserviceType ::= 43 -- NOT IMPLEMENTED
+	-- pus-TC-3-44-modifyParameterFunctionalPeriod          PusSubserviceType ::= 44 -- NOT IMPLEMENTED
+
+	-- ST[04] Parameter statistics reporting
+	-- NOT IMPLEMENTED --
+
+	-- ST[05] Event reporting
+	pus-TM-5-1-eventInformative            PusSubserviceType ::= 1
+	pus-TM-5-2-anomalyLowSeverity          PusSubserviceType ::= 2
+	pus-TM-5-3-anomalyMediumSeverity       PusSubserviceType ::= 3
+	pus-TM-5-4-anomalyHighSeverity         PusSubserviceType ::= 4
+	-- pus-TC-5-5-enableEventReport           PusSubserviceType ::= 5 -- NOT IMPLEMENTED
+	-- pus-TC-5-6-disableEventReport          PusSubserviceType ::= 6 -- NOT IMPLEMENTED
+	-- pus-TC-5-7-reportDisabledEvents        PusSubserviceType ::= 7 -- NOT IMPLEMENTED
+	-- pus-TM-5-8-reportDisabledEvents        PusSubserviceType ::= 8 -- NOT IMPLEMENTED
+	
+    -- ST[06] Memory management
+    -- NOT IMPLEMENTED --
+
+    -- ST[08] Function management
+    pus-TC-8-1-performFunction		PusSubserviceType ::= 1
+    
+    -- ST[09] Time management
+    pus-TC-9-1-setTimeReportRate     PusSubserviceType ::= 1
+    pus-TM-9-2-cucTimeReport         PusSubserviceType ::= 2
+    -- pus-TM-9-3-cdsTimeReport         PusSubserviceType ::= 3 -- NOT IMPLEMENTED (exclusive with TM[9,2])
+
+	-- ST[11] Time-based scheduling
+	pus-TC-11-1-enableTimeBasedScheduling        PusSubserviceType ::=  1
+	pus-TC-11-2-disableTimeBasedScheduling       PusSubserviceType ::=  2
+	pus-TC-11-3-resetTimeBasedSchedule           PusSubserviceType ::=  3
+	pus-TC-11-4-insertActivity                   PusSubserviceType ::=  4
+	-- pus-TC-11-5-deleteActivities                 PusSubserviceType ::=  5 -- NOT IMPLEMENTED
+	-- pus-TC-11-6-deleteByFilter                   PusSubserviceType ::=  6 -- NOT IMPLEMENTED
+	-- pus-TC-11-8-timeShiftByFilter                PusSubserviceType ::=  8 -- NOT IMPLEMENTED
+	-- pus-TC-11-9-detailReportActivities           PusSubserviceType ::=  9 -- NOT IMPLEMENTED
+	-- pus-TM-11-10-detailReport                    PusSubserviceType ::=  10 -- NOT IMPLEMENTED
+	-- pus-TC-11-11-detailReportByFilter            PusSubserviceType ::=  11 -- NOT IMPLEMENTED
+	-- pus-TC-11-12-summaryReportActivities         PusSubserviceType ::=  12 -- NOT IMPLEMENTED
+	-- pus-TM-11-13-summaryReport                   PusSubserviceType ::=  13 -- NOT IMPLEMENTED
+	-- pus-TC-11-14-summaryReportByFilter           PusSubserviceType ::=  14 -- NOT IMPLEMENTED
+	-- pus-TC-11-15-timeShiftAllActivities          PusSubserviceType ::=  15 -- NOT IMPLEMENTED
+	-- pus-TC-11-16-detailReportAll                 PusSubserviceType ::=  16 -- NOT IMPLEMENTED
+	-- pus-TC-11-17-timeShiftActivities             PusSubserviceType ::=  17 -- NOT IMPLEMENTED
+	-- pus-TC-11-18-reportSubschedulesStatus        PusSubserviceType ::=  18 -- NOT IMPLEMENTED
+	-- pus-TM-11-19-reportSubschedulesStatus        PusSubserviceType ::=  19 -- NOT IMPLEMENTED
+	-- pus-TC-11-20-enableSubschedules              PusSubserviceType ::=  20 -- NOT IMPLEMENTED
+	-- pus-TC-11-21-disableSubschedules             PusSubserviceType ::=  21 -- NOT IMPLEMENTED
+	-- pus-TC-11-22-createGroups                    PusSubserviceType ::=  22 -- NOT IMPLEMENTED
+	-- pus-TC-11-23-deleteGroups                    PusSubserviceType ::=  23 -- NOT IMPLEMENTED
+	-- pus-TC-11-24-enableGroups                    PusSubserviceType ::=  24 -- NOT IMPLEMENTED
+	-- pus-TC-11-25-disableGroups                   PusSubserviceType ::=  25 -- NOT IMPLEMENTED
+	-- pus-TC-11-26-reportGroupsStatus              PusSubserviceType ::=  26 -- NOT IMPLEMENTED
+	-- pus-TM-11-27-reportGroupsStatus              PusSubserviceType ::=  27 -- NOT IMPLEMENTED
+	
+	-- ST[12] On-board monitoring
+	-- Parameter monitoring
+	pus-TC-12-1-enableParameterMonitoringDefinitions         PusSubserviceType ::=  1
+	pus-TC-12-2-disableParameterMonitoringDefinitions        PusSubserviceType ::=  2
+	-- pus-TC-12-3-changeReportingDelay                         PusSubserviceType ::=  3 -- NOT IMPLEMENTED
+	-- pus-TC-12-4-deleteAllParameterMonitoringDefinitions      PusSubserviceType ::=  4 -- NOT IMPLEMENTED
+	-- pus-TC-12-5-addParameterMonitoringDefinitions            PusSubserviceType ::=  5 -- NOT IMPLEMENTED
+	-- pus-TC-12-6-deleteParameterMonitoringDefinitions         PusSubserviceType ::=  6 -- NOT IMPLEMENTED
+	-- pus-TC-12-7-modifyParameterMonitoringDefinitions         PusSubserviceType ::=  7 -- NOT IMPLEMENTED
+	-- pus-TC-12-8-reportParameterMonitoringDefinitions         PusSubserviceType ::=  8 -- NOT IMPLEMENTED
+	-- pus-TM-12-9-reportParameterMonitoringDefinitions         PusSubserviceType ::=  9 -- NOT IMPLEMENTED
+	-- pus-TC-12-10-reportOutOfLimits                           PusSubserviceType ::= 10 -- NOT IMPLEMENTED
+	-- pus-TM-12-11-reportOutOfLimits                           PusSubserviceType ::= 11 -- NOT IMPLEMENTED
+	-- pus-TM-12-12-checkTransitionReport                       PusSubserviceType ::= 12 -- NOT IMPLEMENTED (LOW PRIORITY)
+	-- pus-TC-12-13-reportParameterMonitoringDefinitionsStatus  PusSubserviceType ::= 13 -- NOT IMPLEMENTED
+	-- pus-TM-12-14-reportParameterMonitoringDefinitionsStatus  PusSubserviceType ::= 14 -- NOT IMPLEMENTED
+	pus-TC-12-15-enableParameterMonitoring                   PusSubserviceType ::= 15
+	pus-TC-12-16-disableParameterMonitoring                  PusSubserviceType ::= 16
+	
+	-- Functional monitoring
+	-- pus-TC-12-17-enableFunctionalMonitoring                         PusSubserviceType ::= 17 -- NOT IMPLEMENTED
+	-- pus-TC-12-18-disableFunctionalMonitoring                        PusSubserviceType ::= 18 -- NOT IMPLEMENTED
+	-- pus-TC-12-19-enableFunctionalMonitoringDefinitions              PusSubserviceType ::= 19 -- NOT IMPLEMENTED
+	-- pus-TC-12-20-disableFunctionalMonitoringDefinitions             PusSubserviceType ::= 20 -- NOT IMPLEMENTED
+	-- pus-TC-12-21-protectFunctionalMonitoringDefinitions             PusSubserviceType ::= 21 -- NOT IMPLEMENTED
+	-- pus-TC-12-22-unprotectFunctionalMonitoringDefinitions           PusSubserviceType ::= 22 -- NOT IMPLEMENTED
+	-- pus-TC-12-23-addFunctionalMonitoringDefinitions                 PusSubserviceType ::= 23 -- NOT IMPLEMENTED
+	-- pus-TC-12-24-deleteFunctionalMonitoringDefinitions              PusSubserviceType ::= 24 -- NOT IMPLEMENTED
+	-- pus-TC-12-25-reportFunctionalMonitoringDefinitions              PusSubserviceType ::= 25 -- NOT IMPLEMENTED
+	-- pus-TM-12-26-reportFunctionalMonitoringDefinitions              PusSubserviceType ::= 26 -- NOT IMPLEMENTED
+	-- pus-TC-12-27-reportFunctionalMonitoringDefinitionsStatus        PusSubserviceType ::= 27 -- NOT IMPLEMENTED
+	-- pus-TM-12-28-reportFunctionalMonitoringDefinitionsStatus        PusSubserviceType ::= 28 -- NOT IMPLEMENTED
+	
+	-- ST[13] Large packet transfer
+	-- NOT IMPLEMENTED --
+	
+	-- ST[14] Real-time forwarding control
+	-- NOT IMPLEMENTED --
+	
+	-- ST[15] On-board storage and retrieval
+	-- NOT IMPLEMENTED --
+	
+	-- ST[17] Test
+	pus-TC-17-1-connectionTest           PusSubserviceType ::= 1
+	pus-TM-17-2-connectionTest           PusSubserviceType ::= 2
+	-- pus-TC-17-3-onboardConnectionTest    PusSubserviceType ::= 3 -- NOT IMPLEMENTED
+	-- pus-TM-17-4-onboardConnectionTest    PusSubserviceType ::= 4 -- NOT IMPLEMENTED
+
+	-- ST[18] On-board operations procedure
+	-- OBCP management
+	pus-TC-18-1-loadObcpDirect                   PusSubserviceType ::= 1
+	pus-TC-18-2-unloadObcp                       PusSubserviceType ::= 2
+	pus-TC-18-3-activateObcp                     PusSubserviceType ::= 3
+	pus-TC-18-4-stopObcp                         PusSubserviceType ::= 4
+	pus-TC-18-5-suspendObcp                      PusSubserviceType ::= 5
+	pus-TC-18-6-resumeObcp                       PusSubserviceType ::= 6
+	-- pus-TC-18-7-communicateParameters            PusSubserviceType ::= 7 -- NOT IMPLEMENTED
+	-- pus-TC-18-8-reportExecutionStatus            PusSubserviceType ::= 8 -- NOT IMPLEMENTED
+	-- pus-TM-18-9-reportExecutionStatus            PusSubserviceType ::= 9 -- NOT IMPLEMENTED
+	pus-TC-18-12-abortObcp                       PusSubserviceType ::= 12
+	pus-TC-18-13-loadObcpByReference             PusSubserviceType ::= 13
+	-- pus-TC-18-14-activateAndExecuteStep          PusSubserviceType ::= 14 -- NOT IMPLEMENTED
+	-- pus-TC-18-15-resumeAndExecuteStep            PusSubserviceType ::= 15 -- NOT IMPLEMENTED
+	-- pus-TC-18-16-setObservabilityLevel           PusSubserviceType ::= 16 -- NOT IMPLEMENTED
+	-- pus-TC-18-17-abortAllObcpsAndReport          PusSubserviceType ::= 17 -- NOT IMPLEMENTED
+	-- pus-TC-18-18-abortedObcpReport               PusSubserviceType ::= 18 -- NOT IMPLEMENTED
+	-- pus-TC-18-19-loadByReferenceAndActivateObcp  PusSubserviceType ::= 19 -- NOT IMPLEMENTED
+	-- pus-TC-18-20-stopAndUnloadObcp               PusSubserviceType ::= 20 -- NOT IMPLEMENTED
+	
+	-- OBCP engine management
+	pus-TC-18-21-startObcpEngine                 PusSubserviceType ::= 21
+	pus-TC-18-22-stopObcpEngine                  PusSubserviceType ::= 22
+
+    -- ST[19] Event-action
+    pus-TC-19-1-addEventActionDefinitions        PusSubserviceType ::=  1
+    pus-TC-19-2-deleteEventActionDefinitions     PusSubserviceType ::=  2 
+    -- pus-TC-19-3-deleteAllEventActionDefinitions  PusSubserviceType ::=  3 -- NOT IMPLEMENTED
+    pus-TC-19-4-enableEventActionDefinitions     PusSubserviceType ::=  4
+    pus-TC-19-5-disableEventActionDefinitions    PusSubserviceType ::=  5
+    -- pus-TC-19-6-reportAllEventActionDefinitions  PusSubserviceType ::=  6 -- NOT IMPLEMENTED
+    -- pus-TM-19-7-reportEventActionDefinitions     PusSubserviceType ::=  7 -- NOT IMPLEMENTED
+    -- pus-TC-19-8-enableEventActionFunction        PusSubserviceType ::=  8 -- NOT IMPLEMENTED
+    -- pus-TC-19-9-disableEventActionFunction       PusSubserviceType ::=  9 -- NOT IMPLEMENTED
+    -- pus-TC-19-10-reportEventActionDefinitions    PusSubserviceType ::= 10 -- NOT IMPLEMENTED
+
+    -- ST[20] Parameter management
+    pus-TC-20-1-reportParameterValues            PusSubserviceType ::= 1
+    pus-TM-20-2-reportParameterValues            PusSubserviceType ::= 2
+    pus-TC-20-3-setParameterValues               PusSubserviceType ::= 3
+    -- pus-TC-20-4-changeRawMemoryDefinitions       PusSubserviceType ::= 4 -- NOT IMPLEMENTED
+    -- pus-TC-20-5-changeObjectMemoryDefinitions    PusSubserviceType ::= 5 -- NOT IMPLEMENTED
+    -- pus-TC-20-6-reportParameterDefinitions       PusSubserviceType ::= 6 -- NOT IMPLEMENTED
+    -- pus-TM-20-7-reportParameterDefinitions       PusSubserviceType ::= 7 -- NOT IMPLEMENTED
+
+    -- ST[21] Request sequencing
+	-- NOT IMPLEMENTED --
+
+    -- ST[22] Position-based scheduling
+	-- NOT IMPLEMENTED --
+
+    -- ST[23] File management
+    -- File handling
+    pus-TC-23-1-createFile                       PusSubserviceType ::=  1
+    pus-TC-23-2-deleteFile                       PusSubserviceType ::=  2
+    pus-TC-23-3-reportFileAttributes             PusSubserviceType ::=  3
+    pus-TM-23-4-reportFileAttributes             PusSubserviceType ::=  4
+    -- pus-TC-23-5-lockFile                         PusSubserviceType ::=  5
+    -- pus-TC-23-6-unlockFile                       PusSubserviceType ::=  6
+    -- pus-TC-23-7-findFiles                        PusSubserviceType ::=  7
+    -- pus-TM-23-8-findFiles                        PusSubserviceType ::=  8
+    -- pus-TC-23-9-createDirectory                  PusSubserviceType ::=  9
+    -- pus-TC-23-10-deleteDirectory                 PusSubserviceType ::= 10
+    -- pus-TC-23-11-renameDirectory                 PusSubserviceType ::= 11
+    -- pus-TC-23-12-summaryReport                   PusSubserviceType ::= 12
+    -- pus-TM-23-13-summaryReport                   PusSubserviceType ::= 13
+    
+    -- File copy
+    pus-TC-23-14-copyFile                        PusSubserviceType ::= 14
+    -- pus-TC-23-15-moveFile                        PusSubserviceType ::= 15
+    -- pus-TC-23-16-suspendFileCopyOperations       PusSubserviceType ::= 16
+    -- pus-TC-23-17-resumeFileCopyOperations        PusSubserviceType ::= 17
+    -- pus-TC-23-18-abortFileCopyOperations         PusSubserviceType ::= 18
+    -- pus-TC-23-19-suspendFileCopiesOfRepository   PusSubserviceType ::= 19
+    -- pus-TC-23-20-resumeFileCopiesOfRepository    PusSubserviceType ::= 20
+    -- pus-TC-23-21-abortFileCopiesOfRepository     PusSubserviceType ::= 21
+    -- pus-TC-23-22-enablePerodicCopyReporting      PusSubserviceType ::= 22
+    -- pus-TM-23-23-fileCopyStatusReport            PusSubserviceType ::= 23
+    -- pus-TC-23-24-disablePerodicCopyReporting     PusSubserviceType ::= 24
+
+END

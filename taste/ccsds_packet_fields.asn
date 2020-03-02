@@ -1,0 +1,92 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for CCSDS packets
+-- (cf. ECSS-E-ST-70-41C section 7.4)
+
+PUS-CcsdsPacketFields DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt4, PusUInt11, PusUInt14, PusUInt16, PusUInt32 FROM PUS-TypesDefinitions
+    PusServiceType, PusSubserviceType FROM PUS-Services;
+
+
+    -- Packet version number field
+    PusPacketVersion ::= ENUMERATED
+    {
+        pus-CCSDS-V1  (0) -- Version 0 for CCSDS 133. 0-B-1 (version 1 CCSDS packet)
+    }
+    
+    -- Default packet version
+    pus-PACKET-VERSION-CURRENT PusPacketVersion ::= pus-CCSDS-V1
+
+    -- Packet type field (1 bit)
+    PusPacketType ::= ENUMERATED
+    {
+        pus-TM  (0),
+        pus-TC  (1)
+    }
+    
+    -- Packet secondary header flag (1 bit)
+    PusSecondaryHeaderFlag ::= BOOLEAN
+    
+    -- Application Process ID (11 bits)
+    PusApid ::= PusUInt11
+    
+    -- reserved APIDs
+    pus-APID-TIME PusApid ::= 0       -- time packets
+    pus-APID-IDLE PusApid ::= 2047    -- idle packets
+    
+    -- Sequence flags (3 bits)
+    PusSequenceFlags ::= ENUMERATED
+    {
+        pus-STANDALONE-PACKET (3)     -- all PUS standard packets are standalone (11)
+    }
+    
+    -- Sequence count (14 bits)
+    PusSequenceCount ::= PusUInt14
+    
+    -- Packet data length (16 bits)
+    PusPacketDataLength ::= PusUInt16
+
+    -- PUS version numver (4 bits)
+    PusVersionNumber ::= ENUMERATED
+    {
+        pus-V0               (0),   -- ESA PSS-07-101
+        pus-V1               (1),   -- ECSS-E-70-41A
+        pus-V2               (2),   -- ECSS-E-ST-70-41C
+        pus-INVALID-VERSION (15)    -- Invalid value
+    }
+    
+    pus-VERSION-CURRENT PusVersionNumber ::= pus-V2    -- current version
+    
+    -- Spacecraft time reference status
+    PusTimeReferenceStatus ::= PusUInt4
+
+    pus-TIME-REFERENCE-STATUS-NONE PusTimeReferenceStatus ::= 0 -- value for application processes without the capability to report it
+    
+    -- Message type counter (per destination and type)
+    PusMessageTypeCounter ::= PusUInt16
+    
+    pus-MESSAGE-TYPE-COUNTER-NONE PusMessageTypeCounter ::= 0   -- value for application processes without such counter
+    
+    -- Acknowledgement flags (4 bits)
+    PusAcknowledgementFlags ::= SEQUENCE
+    {
+        acceptanceReportRequested   BOOLEAN,
+        startReportRequested        BOOLEAN,
+        progressReportRequested     BOOLEAN,
+        completionReportRequested   BOOLEAN
+    }
+    
+    -- Packet error control checksum (16 bits)
+    PusChecksum ::= PusUInt16
+    
+    -- Type to identify progress steps used e.g. by ST[01] and ST[18]
+	PusStepId ::= PusUInt32
+	
+	pus-STEP-NONE PusStepId ::= 0	-- Null step value
+    
+END

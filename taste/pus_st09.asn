@@ -1,0 +1,36 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[09] Time management
+-- (cf. ECSS-E-ST-70-41C sections 6.9, 8.9)
+--
+-- Limitations:
+-- * Only the minimal services are implemented
+
+
+PUS-ST09 DEFINITIONS ::=
+BEGIN
+
+  IMPORTS 
+  PusUInt32 FROM PUS-TypesDefinitions
+  PusTime FROM PUS-Time
+  ;
+    
+  PusSt09ExponentialRate ::= PusUInt32
+    
+  -- Data for TC[9,1] set time report generation rate
+  PusTC-9-1-Data ::= SEQUENCE
+  {
+    exponentialRate PusSt09ExponentialRate
+  }
+  
+  -- Data for TM[9,2] CUC time report
+  PusTM-9-2-Data ::= SEQUENCE
+  {
+    exponentialRate PusSt09ExponentialRate,
+    time PusTime
+    -- spacecraft time referenced status
+  }
+    
+END

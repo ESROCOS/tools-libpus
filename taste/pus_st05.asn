@@ -1,0 +1,53 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[05] Event reporting
+-- (cf. ECSS-E-ST-70-41C sections 6.5, 8.5)
+--
+-- Limitations:
+-- * Only the minimal services (event reports are implemented); enabling/disabling events is not included
+-- * All events use the same structure for their auxiliary data
+
+
+PUS-ST05 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    ;
+    
+    -- Event definition identifier
+    PusSt05EventId ::= PusUInt32
+    
+    -- EventId none
+    pus-EVENT-ID-NONE PusSt05EventId ::= 0
+
+	-- Event auxiliary data
+	PusSt05EventAuxData ::= SEQUENCE
+	{
+		data1 PusUInt64,
+		data2 PusUInt64
+	}
+	
+	-- AuxData none
+	pus-EVENT-AUXDATA-NONE PusSt05EventAuxData ::= 
+	{
+		data1 0, 
+		data2 0
+	}
+	
+	-- Event dataStored none
+	pus-EVENT-DATASTORED-NONE PusUInt64 ::= 0
+	
+	-- Event and data
+	PusSt05Event ::= SEQUENCE
+   {
+    	eventId PusSt05EventId,
+    	data PusSt05EventAuxData
+   }
+    
+    -- Data for TM[5,1] to TM[5,4] event/anomaly reports
+    PusTM-5-X-Data ::= PusSt05Event    
+    
+END

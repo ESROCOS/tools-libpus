@@ -1,0 +1,31 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[12] On-board monitoring
+-- (cf. ECSS-E-ST-70-41C sections 6.12, 8.12)
+--
+
+
+--TODO
+
+PUS-ST12 DEFINITIONS ::= 
+BEGIN
+
+	
+	IMPORTS 
+	PusUInt32 FROM PUS-TypesDefinitions
+	;
+	
+	 -- PMON identifier
+	PusSt12pmonId ::= PusUInt32
+	    
+	
+	
+	-- Data for TC[19,1] and TC[19,2], 
+	PusTC-12-1-2-Data  ::= SEQUENCE
+	{
+		pmonId PusSt12pmonId
+	}
+    
+END

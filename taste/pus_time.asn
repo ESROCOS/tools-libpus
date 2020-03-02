@@ -1,0 +1,34 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for the time types used in PUS packets
+-- (cf. ECSS-E-ST-70-41C)
+
+-- The PUS implementation is normally tailored using the CUC and CDS 
+-- time formats defined in CCSDS 301.0-B-4.
+--
+-- However, this implementation is not concerned with the encoding 
+-- details. Instead, a time type similar to the Linux implementation of
+-- timespec in <time.h>. This structure contains the fields:
+--
+--      time_t  tv_sec    Seconds
+--      long    tv_nsec   Nanoseconds
+--
+-- It is the structure returned by clock_gettime.
+
+
+PUS-Time DEFINITIONS ::=
+BEGIN
+
+    IMPORTS PusInt64 FROM PUS-TypesDefinitions;
+
+    -- Time type, based on C timespec <time.h>
+    -- For absolute times, it indicates the time from the epoch 1970-01-01 00:00:00 +0000 (UTC)
+    PusTime ::= SEQUENCE
+    {
+        tv-sec  PusInt64,
+        tv-nsec PusInt64
+    }
+
+END

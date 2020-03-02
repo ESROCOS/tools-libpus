@@ -1,0 +1,32 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[20] on-board parameter management
+-- (cf. ECSS-E-ST-70-41C sections 6.20, 8.20)
+--
+-- Limitations:
+-- * Only the minimal services are implemented, 20.1, 20.2, 20.3
+
+
+PUS-ST20 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS 
+    PusUInt32, PusUInt64 FROM PUS-TypesDefinitions
+    ;
+    
+    -- Identifier of on-board parameters
+    PusSt20OnBoardParameterId ::= PusUInt32
+    
+    -- StoredParam of reports
+    PusSt20StoredParam ::= PusUInt64
+    
+    -- Data for TC[20,1], TM[20,2] and TC[20,3], on-board parameter management
+    PusTC-TM-20-X-Data ::= SEQUENCE
+    {
+    	paramId PusSt20OnBoardParameterId,
+    	value PusSt20StoredParam
+    }
+    
+END
