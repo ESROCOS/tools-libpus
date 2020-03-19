@@ -75,6 +75,6 @@ void pusservices_st03HkReportTrigger()
 	}
 
 
-	pusservices_RI_addTm(&tm); 
+	pusservices_PI_addTm(&tm); 
 }
 

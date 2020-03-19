@@ -31,7 +31,7 @@ void pusservices_processTc20(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.1
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st20_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st20_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 
 		pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);
@@ -54,7 +54,7 @@ void pusservices_processTc20(const asn1SccPusPacket *IN_tcPacket)
 				errorCode = pus_tm_20_2_createParameterValueReport(&tm, apid, seqCount, destination, paramId, paramValue);
 				if( PUS_NO_ERROR == errorCode)
 				{
-					pusservices_RI_addTm(&tm);// st20_RI_newTm(&tm);
+					pusservices_PI_addTm(&tm);// st20_RI_newTm(&tm);
 				}
 			}
 		}
@@ -80,7 +80,7 @@ void pusservices_processTc20(const asn1SccPusPacket *IN_tcPacket)
 
 		//send 1.2
 		subtype = pus_TM_1_2_failedAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st20_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st20_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -88,13 +88,13 @@ void pusservices_processTc20(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st20_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st20_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st20_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st20_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
 

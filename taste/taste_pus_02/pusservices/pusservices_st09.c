@@ -87,7 +87,7 @@ void pusservices_processTc09(const pusPacket_t *tcPacket)
 		//send 1.1
 		printf(" - ST09: pus_TM_1_1_successfulAcceptance\n.");
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 
 		pusSt09ExponentialRate_t expRate;
 		if (PUS_NO_ERROR != pus_tc_9_1_getExponentialRate(&expRate, tcPacket))
@@ -107,7 +107,7 @@ void pusservices_processTc09(const pusPacket_t *tcPacket)
 		//send 1.2
 		printf(" -ST09: pus_TM_1_2_failedAcceptance\n");
 		subtype = pus_TM_1_2_failedAcceptance;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -115,13 +115,13 @@ void pusservices_processTc09(const pusPacket_t *tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
 

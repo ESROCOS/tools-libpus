@@ -20,12 +20,12 @@
 #include "pus_events.h"
 #include "pus_st05_config.h"
 
-asn1SccPusUInt64 counter;
+asn1SccPusUInt64 s05Counter;
 
 /*! Initialize the service */
 void pusservices_initService05()
 {
-	counter = 0;
+	s05Counter = 0;
     pus_events_initialize(NULL);
 }
 
@@ -33,13 +33,13 @@ void pusservices_st05_EventReportTrigger()
 {
     pusError_t pus_error;
 	pusSt05Event_t event;
-	asn1SccPusUInt64 lastCounter = counter;
+	asn1SccPusUInt64 lastCounter = s05Counter;
     
-	pusservices_events_getNextEvent(&lastCounter,&event, &counter);//st05_RI_getNextEvent(&lastCounter, &event, &counter); TODO
+	pusservices_events_getNextEvent(&lastCounter,&event, &s05Counter);//st05_RI_getNextEvent(&lastCounter, &event, &s05Counter); TODO
 
-	if(lastCounter != counter)
+	if(lastCounter != s05Counter)
 	{
-		printf(" -ST05: New event read. ID: %llu, count: %llu\n", pus_events_getEventId(&event), counter);
+		printf(" -ST05: New event read. ID: %llu, count: %llu\n", pus_events_getEventId(&event), s05Counter);
 		pusPacket_t outTm;
 		pusApid_t apid;
 		pusSequenceCount_t seqCount;

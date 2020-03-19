@@ -38,7 +38,7 @@ void pusservices_processTc08(const pusPacket_t *tcPacket)
 		printf(" - ST08: send pus_TM_1_1_successfulAcceptance \n");
 
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 
 		printf(" - ST08: Processing packet\n");
 		pusSt08FunctiontId_t functionId;
@@ -47,7 +47,7 @@ void pusservices_processTc08(const pusPacket_t *tcPacket)
 		{
 			subtype = pus_TM_1_3_successfulStart;
 			printf(" - ST08: send pus_TM_1_3_successfulStart\n");
-			pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+			pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 
 			errorExpect = pus_st08_functionTable[functionId]();
 			if( PUS_NO_ERROR == errorExpect )
@@ -55,21 +55,21 @@ void pusservices_processTc08(const pusPacket_t *tcPacket)
 				//send completion success
 				printf(" - ST08: send pus_TM_1_7_successfulCompletion \n");
 				subtype = pus_TM_1_7_successfulCompletion;
-				pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 			}
 			else
 			{
 				printf(" - ST08: send pus_TM_1_8_failedCompletion \n");
 				subtype = pus_TM_1_8_failedCompletion;
 				errorCode = errorExpect;
-				pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 			}
 			return;
 		}
 		printf(" - ST08: send pus_TM_1_8_failedCompletion \n");
 		subtype = pus_TM_1_4_failedStart;
 		errorCode = PUS_ERROR_UNEXPECTED_FUNCTION_ID;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 	else
@@ -77,7 +77,7 @@ void pusservices_processTc08(const pusPacket_t *tcPacket)
 		//send acceptance failure
 		printf(" - ST08: send pus_TM_1_2_failedAcceptance \n");
 		subtype = pus_TM_1_2_failedAcceptance;
-		pusservices_RI_ack(tcPacket, &subtype, &errorExpect, NULL, NULL);
+		pusservices_PI_ack(tcPacket, &subtype, &errorExpect, NULL, NULL);
 		return;
 	}
 }

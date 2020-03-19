@@ -103,11 +103,21 @@ else
     OUTPUTDIR=binary
 fi
 
+NO_BITFILE=""
+while getopts :-: o
+do
+case "$o$OPTARG"
+in
+(-no-bitfile) NO_BITFILE="--no-bitfile";;
+esac
+done
+
 cd "$CWD" && assert-builder-ocarina.py \
 	--fast \
 	$DEBUG_MODE \
 	--aadlv2 \
 	--keep-case \
+	$NO_BITFILE \
 	--interfaceView "$INTERFACEVIEW" \
 	--deploymentView "$DEPLOYMENTVIEW" \
 	-o "$OUTPUTDIR" \

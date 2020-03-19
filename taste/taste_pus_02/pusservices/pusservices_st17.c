@@ -36,7 +36,7 @@ void pusservices_processTc17(const pusPacket_t *tcPacket)
 
 		printf(" - ST17: sending packet to ST01 Acceptance success\n");
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 
 		printf(" - ST17: processing packet\n");
 		pusPacket_t outTm;
@@ -55,7 +55,7 @@ void pusservices_processTc17(const pusPacket_t *tcPacket)
 	{
 		subtype = pus_TM_1_2_failedAcceptance;
 		errorCode = error;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 		printf(" - ST17: Error in st17_PI_tc17, %d (continue)\n", error);
 	}
 }

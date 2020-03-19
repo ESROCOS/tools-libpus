@@ -41,7 +41,7 @@ void pusservices_processTc12(const asn1SccPusPacket *IN_tcPacket)
 		//send 1.1
 		printf(" -ST12: pus_TM_1_1_successfulAcceptance\n");
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 
 		pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);
@@ -85,7 +85,7 @@ void pusservices_processTc12(const asn1SccPusPacket *IN_tcPacket)
 		//send 1.2
 		printf(" -ST12: pus_TM_1_2_failedAcceptance\n");
 		subtype = pus_TM_1_2_failedAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -93,14 +93,14 @@ void pusservices_processTc12(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
 		printf("Error 19.4 %llu", errorCode);
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st12_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
 
@@ -120,7 +120,7 @@ void pusservices_st12_PmonTrigger()
 	{
 		if ( pus_pmon_getDefinitionStatus(i) )
 		{
-			isAvailable = pus_hk_getStoredParam(&i, &paramValue);//st12_RI_getParamValue(&i, &paramValue, &isAvailable);
+			isAvailable = pus_hk_getStoredParam(i, &paramValue);//st12_RI_getParamValue(&i, &paramValue, &isAvailable);
 
 			if( PUS_NO_ERROR == isAvailable )
 			{
@@ -175,7 +175,7 @@ void pusservices_st12_PmonTrigger()
 				if( PUS_NO_ERROR !=  error)
 				{
 					printf("Error en PMON %llu, %d\n", i, error);
-					pusSt05Event_t event;
+					static pusSt05Event_t event;
 					pus_events_createEVENT_ST12(&event, i, error);
 					pusservices_events_pushNewEvent(&event);// st12_RI_pushNewEvent(&event);
 				}

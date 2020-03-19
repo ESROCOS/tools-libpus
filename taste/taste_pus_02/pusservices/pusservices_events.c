@@ -33,12 +33,12 @@ void pusservices_events_getNextEvent(const asn1SccPusUInt64 *IN_actualCounter,
 	pusError_t error = pus_st05_getNextBufferEvent(OUT_eventInfo, &counter);
 	if( PUS_NO_ERROR == error )
 	{
-		//printf(" -EVENTS: getNextEvent successfully.\n");
+		printf(" -EVENTS: getNextEvent successfully.\n");
 		*OUT_nextCounter = counter;
 	}
 	else
 	{
-		//printf(" -EVENTS: getNextEvent fail %d\n", error);
+		printf(" -EVENTS: getNextEvent fail %d\n", error);
 		*OUT_nextCounter = *IN_actualCounter;
 		pus_clearError();
 	}

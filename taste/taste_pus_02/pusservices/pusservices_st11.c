@@ -35,7 +35,7 @@ void pusservices_processTc11(const pusPacket_t *tcPacket)
 	{
 		//send 1.1
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 
 		pusSubservice_t subtype = pus_getTcSubtype(tcPacket);
 		if( pus_TC_11_1_enableTimeBasedScheduling == subtype )
@@ -65,7 +65,7 @@ void pusservices_processTc11(const pusPacket_t *tcPacket)
 
 		//send 1.2
 		subtype = pus_TM_1_2_failedAcceptance;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -73,13 +73,13 @@ void pusservices_processTc11(const pusPacket_t *tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		pusservices_RI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
 

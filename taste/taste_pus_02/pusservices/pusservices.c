@@ -41,6 +41,9 @@ void pusservices_startup()
     /* Initialize APID */
     pusservices_initApid(pusservices_ctxt.apid);
 
+    /* Event debug */
+    pusservices_events_debugEventsTrigger();
+
     /* Initialize TC/TM queues */
 	pus_packetQueues_initialize();
 
@@ -107,7 +110,7 @@ void pusservices_PI_addTc(const asn1SccPusPacket *IN_tcPacket)
 	error = pus_packetQueues_push(IN_tcPacket, TC_QUEUE_ONBOARD);
 	if (PUS_NO_ERROR == error )
 	{
-		printf("ERROR pusservices_PI_newTc: TC%llu_%llu inserted in TcQueue.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
+		printf("INFO pusservices_PI_newTc: TC%llu_%llu inserted in TcQueue.\n", pus_getTcService(IN_tcPacket), pus_getTcSubtype(IN_tcPacket));
 	}
 	else if (PUS_ERROR_FULL_QUEUE == error )
 	{
@@ -148,7 +151,7 @@ void pusservices_PI_addTm(const asn1SccPusPacket *IN_tmPacket)
  */
 void pusservices_PI_newTc(const asn1SccPusPacket *IN_tcPacket)
 {
-    pusservices_RI_addTc(IN_tcPacket);
+    pusservices_PI_addTc(IN_tcPacket);
 }
 
 
@@ -164,6 +167,25 @@ void pusservices_PI_trigger()
             pusservices_dispatchTc();
         }
     }
+
+    /* Service 3 */
+    if (g_trigger_count % PUSSERVICES_PUS03_FREQUENCY == PUSSERVICES_PUS03_OFFSET)
+    {
+        for(count = 0; count < PUSSERVICES_PUS03_COUNT; count++)
+        {
+            pusservices_st03HkReportTrigger();
+        }
+    }
+
+
+    /* Service 5 */
+    if (g_trigger_count % PUSSERVICES_PUS05_FREQUENCY == PUSSERVICES_PUS05_OFFSET)
+    {
+        for(count = 0; count < PUSSERVICES_PUS05_COUNT; count++)
+        {
+            pusservices_st05_EventReportTrigger();
+        }
+    }
     
     /* Service 11 */
     if (g_trigger_count % PUSSERVICES_PUS11_FREQUENCY == PUSSERVICES_PUS11_OFFSET)
@@ -171,6 +193,24 @@ void pusservices_PI_trigger()
         for(count = 0; count < PUSSERVICES_PUS11_COUNT; count++)
         {
             pusservices_st11runNextTc();
+        }
+    }
+
+    /* Service 12 */
+    if (g_trigger_count % PUSSERVICES_PUS12_FREQUENCY == PUSSERVICES_PUS12_OFFSET)
+    {
+        for(count = 0; count < PUSSERVICES_PUS12_COUNT; count++)
+        {   
+            pusservices_st12_PmonTrigger();
+        }
+    }
+
+    /* Service 19 */
+    if (g_trigger_count % PUSSERVICES_PUS19_FREQUENCY == PUSSERVICES_PUS19_OFFSET)
+    {
+        for(count = 0; count < PUSSERVICES_PUS19_COUNT; count++)
+        {   
+            pusservices_st19_EventActionTrigger();
         }
     }
     

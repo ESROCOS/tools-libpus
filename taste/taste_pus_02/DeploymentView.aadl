@@ -11,6 +11,9 @@ PUBLIC
 WITH Taste;
 WITH Deployment;
 WITH TASTE_DV_Properties;
+WITH deploymentview::DV;
+WITH Memory_Properties;
+WITH ARINC653;
 PROCESS x86_partition
 END x86_partition;
 
@@ -72,8 +75,8 @@ END deploymentview.others;
 
 PROPERTIES
   Taste::coordinates => "0 0 297000 210000";
-  Taste::version => "2.2";
+  Taste::version => "2.3";
   Taste::interfaceView => "InterfaceView.aadl";
-  Taste::HWLibraries => ("../../../../../tool-inst/share/ocarina/AADLv2/ocarina_components.aadl");
+  Taste::HWLibraries => ("/home/peraspera/tool-inst/share/ocarina/AADLv2/ocarina_components.aadl");
 END deploymentview::DV;
 

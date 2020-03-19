@@ -33,7 +33,7 @@ void pusservices_processTc18(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.1
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st18_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st18_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 
 		pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);
@@ -168,7 +168,7 @@ void pusservices_processTc18(const asn1SccPusPacket *IN_tcPacket)
 
 		//send 1.2
 		subtype = pus_TM_1_2_failedAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st18_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st18_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -176,13 +176,13 @@ void pusservices_processTc18(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st18_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st18_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st18_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st18_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
 

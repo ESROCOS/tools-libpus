@@ -19,14 +19,14 @@
 
 #include "pus_events.h"
 
-asn1SccPusUInt64 counter;
+asn1SccPusUInt64 s19counter;
 
 /*! Initialize the service */
 void pusservices_initService19()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
-	counter = 0;
+	s19counter = 0;
 	pus_eventAction_initialize(NULL);
 }
 
@@ -44,7 +44,7 @@ void pusservices_processTc19(const asn1SccPusPacket *IN_tcPacket)
 		//send 1.1
 		//printf(" -ST19: pus_TM_1_1_successfulAcceptance\n.");
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 		pusSt05EventId_t eventID;
 		if( PUS_NO_ERROR != pus_tc_19_X_getEventId(&eventID, IN_tcPacket))
@@ -88,7 +88,7 @@ void pusservices_processTc19(const asn1SccPusPacket *IN_tcPacket)
 		//send 1.2
 		//printf(" -ST19: pus_TM_1_2_failedAcceptance\n");
 		subtype = pus_TM_1_2_failedAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -96,14 +96,14 @@ void pusservices_processTc19(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
 		//printf("Error 19.4 %llu", errorCode);
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st19_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 }
 
@@ -111,16 +111,16 @@ void pusservices_st19_EventActionTrigger()
 {
     /* Write your code here! */
 	pusSt05Event_t event;
-	asn1SccPusUInt64 lastCounter = counter;
-	pusservices_events_getNextEvent(&lastCounter, &event, &counter);//st19_RI_getNextEvent(&lastCounter, &event, &counter);
+	asn1SccPusUInt64 lastCounter = s19counter;
+	pusservices_events_getNextEvent(&lastCounter, &event, &s19counter);//st19_RI_getNextEvent(&lastCounter, &event, &s19counter);
 
-	if( lastCounter != counter )
+	if( lastCounter != s19counter )
 	{
 		pusPacket_t tcAction;
 		if(PUS_NO_ERROR == pus_eventAction_getAction(&tcAction, pus_events_getEventId(&event)))
 		{
 			printf(" -ST19: TC%llu_%llu generated.\n", pus_getTcService(&tcAction), pus_getTcSubtype(&tcAction));
-			pusservices_RI_addTc(&tcAction);//st19_RI_newTc(&tcAction);
+			pusservices_PI_addTc(&tcAction);//st19_RI_newTc(&tcAction);
 		}
 	}
 }

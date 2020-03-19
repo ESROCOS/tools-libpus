@@ -38,7 +38,7 @@ void pusservices_processTc23(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.1
 		subtype = pus_TM_1_1_successfulAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 
 		pusSubservice_t subtype = pus_getTcSubtype(IN_tcPacket);
@@ -51,26 +51,26 @@ void pusservices_processTc23(const asn1SccPusPacket *IN_tcPacket)
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-                pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+                pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 			errorCode = pus_tc_tm_23_X_getRepositoryPath(&repository, IN_tcPacket);
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 			errorCode = pus_tc_tm_23_1_4_getMaximumSize(&maxSize, IN_tcPacket);
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 
 			subtype = pus_TM_1_3_successfulStart;
-			pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+			pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 			errorCode = pus_files_createFile(&repository, &file, &maxSize);//st23_RI_create(&repository, &file, &maxSize, &errorCode);
 		}
@@ -82,19 +82,19 @@ void pusservices_processTc23(const asn1SccPusPacket *IN_tcPacket)
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 			errorCode = pus_tc_tm_23_X_getRepositoryPath(&repository, IN_tcPacket);
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 
 			subtype = pus_TM_1_3_successfulStart;
-			pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+			pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);// st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 			errorCode = pus_files_deleteFile(&repository, &file);//TODOst23_RI_delete(&repository, &file, &errorCode);
 		}
@@ -107,19 +107,19 @@ void pusservices_processTc23(const asn1SccPusPacket *IN_tcPacket)
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 			errorCode = pus_tc_tm_23_X_getRepositoryPath(&repository, IN_tcPacket);
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-                pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+                pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 
 			subtype = pus_TM_1_3_successfulStart;
-			pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+			pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 			errorCode = pus_files_getFileMaxSize(&maxSize, &repository, &file);// st23_RI_getAttributes(&repository, &file, &maxSize, &errorCode);
 			if(PUS_NO_ERROR == errorCode)
@@ -149,33 +149,33 @@ void pusservices_processTc23(const asn1SccPusPacket *IN_tcPacket)
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 			errorCode = pus_tc_23_14_getTargetFileName(&fileTarget, IN_tcPacket);
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 			errorCode = pus_tc_23_14_getSourceRepositoryPath(&repositorySource, IN_tcPacket);
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 			errorCode = pus_tc_23_14_getTargetRepositoryPath(&repositoryTarget, IN_tcPacket);
 			if(PUS_NO_ERROR != errorCode)
 			{
 				subtype = pus_TM_1_4_failedStart;
-				pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+				pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 				return;
 			}
 
 			subtype = pus_TM_1_3_successfulStart;
-			pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+			pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 
 			errorCode = pus_files_copyFile(&repositorySource, &fileSource, &repositoryTarget, &fileTarget);//st23_RI_copy(&repositorySource, &fileSource, &repositoryTarget, &fileTarget, &errorCode);
 		}
@@ -191,7 +191,7 @@ void pusservices_processTc23(const asn1SccPusPacket *IN_tcPacket)
 
 		//send 1.2
 		subtype = pus_TM_1_2_failedAcceptance;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 		return;
 	}
 
@@ -199,13 +199,13 @@ void pusservices_processTc23(const asn1SccPusPacket *IN_tcPacket)
 	{
 		//send 1.7
 		subtype = pus_TM_1_7_successfulCompletion;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 	else
 	{
 		//send 1.8
 		subtype = pus_TM_1_8_failedCompletion;
-		pusservices_RI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
+		pusservices_PI_ack(IN_tcPacket, &subtype, &errorCode, &info, &step);//st23_RI_ACK(IN_tcPacket, &subtype, &errorCode, &info, &step);
 	}
 
 }
