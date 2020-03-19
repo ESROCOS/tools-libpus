@@ -15,7 +15,7 @@
 /*! Initialize the service */
 void pusservices_initService20()
 {
-    /*Nothing to do*/
+    pusError_t pusParamInit = pus_parameters_initialize(NULL);
 }
 
 void pusservices_processTc20(const asn1SccPusPacket *IN_tcPacket)
