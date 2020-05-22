@@ -28,6 +28,7 @@ PUBLIC
 WITH interfaceview::IV::Ground;
 WITH interfaceview::IV::PusServices;
 WITH interfaceview::IV::OnBoardSW;
+WITH interfaceview::IV::DummyPrivateService;
 WITH ocarina_processors_x86;
 WITH deploymentview::DV::Node1;
 WITH Taste;
@@ -48,6 +49,9 @@ SUBCOMPONENTS
   IV_OnBoardSW : SYSTEM interfaceview::IV::OnBoardSW::OnBoardSW.others {
     Taste::FunctionName => "OnBoardSW";
   };
+  IV_DummyPrivateService : SYSTEM interfaceview::IV::DummyPrivateService::DummyPrivateService.others {
+    Taste::FunctionName => "DummyPrivateService";
+  };
   x86_partition : PROCESS deploymentview::DV::Node1::x86_partition.others {
     Taste::coordinates => "105305 63434 126973 80642";
     Deployment::Port_Number => 0;
@@ -59,6 +63,7 @@ PROPERTIES
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_Ground;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_PusServices;
   Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_OnBoardSW;
+  Taste::APLC_Binding => (reference (x86_partition)) APPLIES TO IV_DummyPrivateService;
   Actual_Processor_Binding => (reference (x86_linux)) APPLIES TO x86_partition;
 END Node1.others;
 

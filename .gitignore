@@ -72,3 +72,6 @@ taste/taste_pus_02/*.asn
 taste/*.md5
 taste/build-script*
 
+binaries
+build
+*.zip
