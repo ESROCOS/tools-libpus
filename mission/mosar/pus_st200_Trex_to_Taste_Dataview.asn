@@ -1,0 +1,193 @@
+
+--------------------------------------------------------------------------------------
+--!  ASN file generated automatically by the ERGO TREX2TASTE interface generator
+--!  This file will be overriten if output path given to code generator matches this
+--!  path.
+--!  I you want to keep changes made to this file keep it safe.
+--!  Was generated from configuration file: /home/peraspera/esrocos_workspace/control/mosar_agent/cfg/mosar_timeline.cfg and /home/peraspera/esrocos_workspace/control/mosar_agent/cfg/mosar_domain.cfg 
+--!  Date/time of generation: 2020-06-12 12:07:55 
+--------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+--!  This file defines the data types that are used to communicate with the Agent
+--!  controller.
+----------------------------------------------------------------------------------
+
+
+Agent-Trex-to-Taste-Dataview DEFINITIONS ::=
+BEGIN
+
+
+-- Import of TASTE predefined basic types (TASTE-ExtendedTypes DEFINITIONS)
+IMPORTS T-UInt32, T-Boolean, T-Int32 FROM TASTE-BasicTypes T-Double, T-Float, T-Int64, T-UInt16, T-String FROM TASTE-ExtendedTypes;
+
+
+-- Basic TREX-AGENT types
+IntegerIntervalDomain ::= SEQUENCE{
+    min   T-Int64,
+    max   T-Int64
+}
+
+FloatIntervalDomain ::= SEQUENCE{
+    min   T-Float,
+    max   T-Float
+}
+
+EnumDomain ::= SEQUENCE{
+    key     T-String,
+    value   T-Int64
+}
+
+HotdockcmdPred ::= ENUMERATED { hotdockcmd-sendState, hotdockcmd-idle, hotdockcmd-cancel }
+HotdockstatusPred ::= ENUMERATED { hotdockstatus-status, hotdockstatus-cancel }
+WmcmdPred ::= ENUMERATED { wmcmd-movetohd, wmcmd-movetoslot, wmcmd-idle, wmcmd-cancel }
+BasecmdPred ::= ENUMERATED { basecmd-error, basecmd-switchBase, basecmd-baseAt, basecmd-cancel }
+EfcmdPred ::= ENUMERATED { efcmd-pick, efcmd-drop, efcmd-idle, efcmd-cancel }
+PlannerPred ::= ENUMERATED { planner-fault, planner-idle, planner-planning, planner-cancel }
+MissionPred ::= ENUMERATED { mission-place, mission-loadinge3plan, mission-idle, mission-cancel }
+AutonomyPred ::= ENUMERATED { autonomy-E1, autonomy-E2, autonomy-E3, autonomy-E4, autonomy-cancel }
+
+-- BOOLD DOMAIN DATA (AGENT-FUNCTIONAL)
+Boold ::= SEQUENCE {
+    value        T-Int64
+    
+}
+
+-- INTD DOMAIN DATA (AGENT-FUNCTIONAL)
+Intd ::= SEQUENCE {
+    value        T-Int64
+    
+}
+
+-- FLOATD DOMAIN DATA (AGENT-FUNCTIONAL)
+Floatd ::= SEQUENCE {
+    value        T-Float
+    
+}
+
+-- STRINGD DOMAIN DATA (AGENT-FUNCTIONAL)
+Stringd ::= SEQUENCE {
+    value        T-String
+    
+}
+
+-- INT2D DOMAIN DATA (AGENT-FUNCTIONAL)
+Int2d ::= SEQUENCE {
+    x        T-Int64,
+    y        T-Int64
+    
+}
+
+-- SLOTID DOMAIN DATA (AGENT-FUNCTIONAL)
+Slotid ::= SEQUENCE {
+    x        T-Int64,
+    y        T-Int64,
+    z        T-Int64,
+    svc        T-Int64
+    
+}
+
+-- POSITION3D DOMAIN DATA (AGENT-FUNCTIONAL)
+Position3D ::= SEQUENCE {
+    x        T-Float,
+    y        T-Float
+    
+}
+
+-- QUATERNIOND DOMAIN DATA (AGENT-FUNCTIONAL)
+Quaterniond ::= SEQUENCE {
+    x        T-Float,
+    y        T-Float
+    
+}
+ 
+
+
+-- HOTDOCKCMD TIMELINE DATA (AGENT-FUNCTIONAL)
+Hotdockcmdstatus ::= SEQUENCE {
+    predicate       HotdockcmdPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    sm        EnumDomain,
+    hotdock        Stringd,
+    statehd        EnumDomain,
+    status        EnumDomain
+    
+}
+
+-- HOTDOCKSTATUS TIMELINE DATA (AGENT-FUNCTIONAL)
+Hotdockstatusstatus ::= SEQUENCE {
+    predicate       HotdockstatusPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    pathfile        Stringd
+    
+}
+
+-- WMCMD TIMELINE DATA (AGENT-FUNCTIONAL)
+Wmcmdstatus ::= SEQUENCE {
+    predicate       WmcmdPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    hotdock        Stringd,
+    slot        Slotid,
+    face        Stringd,
+    yaw        EnumDomain,
+    status        EnumDomain
+    
+}
+
+-- BASECMD TIMELINE DATA (AGENT-FUNCTIONAL)
+Basecmdstatus ::= SEQUENCE {
+    predicate       BasecmdPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    hotdock        Stringd
+    
+}
+
+-- EFCMD TIMELINE DATA (AGENT-FUNCTIONAL)
+Efcmdstatus ::= SEQUENCE {
+    predicate       EfcmdPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    hotdock        Stringd,
+    status        EnumDomain
+    
+}
+
+-- PLANNER TIMELINE DATA (AGENT-FUNCTIONAL)
+Plannerstatus ::= SEQUENCE {
+    predicate       PlannerPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    goals        Intd
+    
+}
+
+-- MISSION TIMELINE DATA (AGENT-FUNCTIONAL)
+Missionstatus ::= SEQUENCE {
+    predicate       MissionPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    sm        Stringd,
+    slot        Stringd,
+    orientation        Stringd,
+    file        Stringd
+    
+}
+
+-- AUTONOMY TIMELINE DATA (AGENT-FUNCTIONAL)
+Autonomystatus ::= SEQUENCE {
+    predicate       AutonomyPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain
+    
+}
+ 
+
+
+-- ASN.1 Type definitions must start with an uppercase
+-- Field names in records (SEQUENCE) must start with a lowercase
+-- Underscores are not allowed: use dash (hyphen) 
+
+END
