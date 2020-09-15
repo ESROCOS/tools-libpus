@@ -1,0 +1,59 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[220] Reconfiguration
+--
+-- Limitations:
+-- * This is part of a prototype for a demonstration
+
+
+PUS-ST220 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS
+    PusUInt32, PusInt32  FROM PUS-TypesDefinitions
+    PusSt03ParameterId, PusSt03HousekeepingReportId FROM PUS-ST03
+    ;
+
+    Pus-220-StateId ::= ENUMERATED { 
+        idle(0), mode1(1), mode2(2)
+    }
+    
+   
+    -- Data for TC[220,1]
+    PusTC-220-1-Data ::= SEQUENCE
+    {
+    	targetState Pus-220-StateId
+    }
+
+    -- Data for TM[220,1]
+    PusTM-220-1-Data ::= SEQUENCE
+    {
+    	value PusInt32
+    }
+
+
+    -- Identification of activable parts
+    pus-St220-Parameter-Active PusSt03ParameterId ::= 10
+
+    pus-St220-SM-DMS-Base					PusSt03ParameterId ::= 100
+    pus-St220-SM-PWS-Base					PusSt03ParameterId ::= 200
+    pus-St220-SM-THS-Base					PusSt03ParameterId ::= 300
+    pus-St220-SM-BAT-Base					PusSt03ParameterId ::= 400
+    pus-St220-SM-OSP-Base					PusSt03ParameterId ::= 500
+
+    Pus-220-ActiveIds ::= SEQUENCE (SIZE(0 .. 256)) OF PusSt03ParameterId
+    pus-St220-SMS Pus-220-ActiveIds ::= {
+        pus-St220-SM-DMS-Base, 
+        pus-St220-SM-PWS-Base, 
+        pus-St220-SM-THS-Base, 
+        pus-St220-SM-BAT-Base, 
+        pus-St220-SM-OSP-Base
+    }
+    
+    -- Fake power reserve report
+    pus-ST03-POWERRESERVE-HK-REPORT PusSt03HousekeepingReportId ::= 400 
+    
+
+END

@@ -305,5 +305,7 @@ BEGIN
     pus-TC-200-13-efcmdRequest		PusSubserviceType ::= 13 
     pus-TM-200-14-efcmdReport		PusSubserviceType ::= 14
     
+    pus-ST220-reconfigurationControl 		PusServiceType ::= 220 
+    
 
 END

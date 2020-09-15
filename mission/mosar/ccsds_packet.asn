@@ -49,6 +49,8 @@ BEGIN
      
     PusTC-200-13-Data, PusTM-200-14-Data FROM PUS-ST200 --  efcmd  
     
+    PusTC-220-1-Data, PusTM-220-1-Data FROM PUS-ST220 --  reconfiguration
+    
   	;
 
     -- dummy data field for packets with no data
@@ -83,7 +85,8 @@ BEGIN
         st-200-8 PusTM-200-8-Data, 
         st-200-10 PusTM-200-10-Data, 
         st-200-12 PusTM-200-12-Data, 
-        st-200-14 PusTM-200-14-Data
+        st-200-14 PusTM-200-14-Data,
+        st-220-1 PusTM-220-1-Data
     }
     
     -- TC secondary header
@@ -139,6 +142,7 @@ BEGIN
         st-200-9 PusTC-200-9-Data, 
         st-200-11 PusTC-200-11-Data, 
         st-200-13 PusTC-200-13-Data,
+        st-220-1 PusTC-220-1-Data,
     	-- No packet reduced
     	st-11-4 	PusTC-11-4-Data,
     	st-18-1 	PusTC-18-1-Data,
@@ -164,7 +168,8 @@ BEGIN
         st-200-5 PusTC-200-5-Data,
         st-200-9 PusTC-200-9-Data,
         st-200-11 PusTC-200-11-Data,
-        st-200-13 PusTC-200-13-Data
+        st-200-13 PusTC-200-13-Data, 
+        st-220-1 PusTC-220-1-Data
     }
     
     -- TM/TC header + data
