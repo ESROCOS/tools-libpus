@@ -69,6 +69,14 @@ typedef asn1SccPusTM_200_14_Data pusSt200_14_Observation; //!< Efcmd observation
 #define pus_TM_DATA_ST_200_14		((pusTmDataKind_t) st_200_14_PRESENT)
 
 
+// ST220
+
+typedef asn1SccPus_220_StateId pusSt220_stateID;
+
+#define pus_TC_DATA_ST_220_1		((pusTcDataKind_t) PusTcApplicationData_st_220_1_PRESENT)
+#define pus_TM_DATA_ST_220_3		((pusTmDataKind_t) st_220_3_PRESENT)
+
+
 #ifdef  __cplusplus
 }
 #endif

@@ -27,10 +27,12 @@ BEGIN
     	targetState Pus-220-StateId
     }
 
-    -- Data for TM[220,1]
-    PusTM-220-1-Data ::= SEQUENCE
+    -- No Data for TC[220,2]
+
+    -- Data for TM[220,3]
+    PusTM-220-3-Data ::= SEQUENCE
     {
-    	value PusInt32
+    	actual Pus-220-StateId
     }
 
 

@@ -41,7 +41,7 @@ void pusservices_startup()
     /* Initialize APID */
     pusservices_initApid(pusservices_ctxt.apid);
     
-    printf("Hola GMV\n")
+    printf("Hola GMV\n");
 
     /* Event debug */
     pusservices_events_debugEventsTrigger();
@@ -175,7 +175,7 @@ void pusservices_PI_trigger()
     {
         for(count = 0; count < PUSSERVICES_PUS03_COUNT; count++)
         {
-            pusservices_st03HkReportTrigger();
+            // pusservices_st03HkReportTrigger();
         }
     }
 
@@ -185,7 +185,7 @@ void pusservices_PI_trigger()
     {
         for(count = 0; count < PUSSERVICES_PUS05_COUNT; count++)
         {
-            pusservices_st05_EventReportTrigger();
+            // pusservices_st05_EventReportTrigger();
         }
     }
     
@@ -194,7 +194,7 @@ void pusservices_PI_trigger()
     {
         for(count = 0; count < PUSSERVICES_PUS11_COUNT; count++)
         {
-            pusservices_st11runNextTc();
+            // pusservices_st11runNextTc();
         }
     }
 
@@ -203,7 +203,7 @@ void pusservices_PI_trigger()
     {
         for(count = 0; count < PUSSERVICES_PUS12_COUNT; count++)
         {   
-            pusservices_st12_PmonTrigger();
+            // pusservices_st12_PmonTrigger();
         }
     }
 
@@ -212,7 +212,7 @@ void pusservices_PI_trigger()
     {
         for(count = 0; count < PUSSERVICES_PUS19_COUNT; count++)
         {   
-            pusservices_st19_EventActionTrigger();
+            // pusservices_st19_EventActionTrigger();
         }
     }
     

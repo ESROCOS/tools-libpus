@@ -12,11 +12,12 @@
 #include "pus_apid.h"
 #include "pus_mission_types.h"
 
-#include "pus_st200_packets.h"
-
 #include "pus_time.h"
 #include "pus_events.h"
 #include "pus_notify.h"
+
+#include "pus_st200_packets.h"
+#include "pus_st220_packets.h"
 
 namespace py = pybind11;
 
@@ -52,8 +53,34 @@ pusError_t pus_tc_200_13_createEfcmdRequest_(pusPacket_t* outTc, pusApid_t apid,
     return pus_tc_200_13_createEfcmdRequest(outTc, apid, sequenceCount, goal);
 }
 
+
+pusError_t pus_tc_220_1_createNewTargetState_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+{
+    pusSt220_stateID state = asn1Sccidle;
+    return pus_tc_220_1_createNewTargetState(outTc, apid, sequenceCount, state);
+}
+
+// ST220
+asn1SccPusUInt32 pus_tc_220_1_getTargetState_(pusPacket_t* inTc)
+{
+    return (asn1SccPusUInt32) pus_tc_220_1_getTargetState(inTc);
+}
+void pus_tc_220_1_setTargetState_(pusPacket_t* inTc, asn1SccPusUInt32 state)
+{
+    (void) pus_tc_220_1_setTargetState(inTc, (pusSt220_stateID)state);
+}
+asn1SccPusUInt32 pus_tm_220_3_getCurrentState_(pusPacket_t* inTc)
+{
+    return (asn1SccPusUInt32) pus_tm_220_3_getCurrentState(inTc);
+}
+void pus_tm_220_3_setCurrentState_(pusPacket_t* inTc, asn1SccPusUInt32 state)
+{
+    (void) pus_tm_220_3_setCurrentState(inTc, (pusSt220_stateID)state);
+}
+
 void init_mission_module(py::module &m)
 {
+    // ST 220
     m.doc() = "pus_st200_timelineControl";
 
     
@@ -363,6 +390,16 @@ void init_mission_module(py::module &m)
     m.def("pus_tc_200_13_setEfcmdGoal", &pus_tc_200_13_setEfcmdGoal, "pus_tc_200_13_setEfcmdGoal"); 
     m.def("pus_tm_200_14_createEfcmdReport", &pus_tm_200_14_createEfcmdReport, "pus_tm_200_14_createEfcmdReport");
     m.def("pus_tm_200_14_getEfcmdObservation", &pus_tm_200_14_getEfcmdObservation, "pus_tm_200_14_getEfcmdObservation");
+
+
+    // ST 220
+	m.def("pus_tc_220_1_createNewTargetState_", &pus_tc_220_1_createNewTargetState_, "pus_tc_220_1_createNewTargetState_");
+	m.def("pus_tc_200_2_createGetCurrentState", &pus_tc_200_2_createGetCurrentState, "pus_tc_200_2_createGetCurrentState");
+    m.def("pus_tm_220_3_createActualStatusReport", &pus_tm_220_3_createActualStatusReport, "pus_tm_220_3_createActualStatusReport");
+	m.def("pus_tc_220_1_getTargetState_", &pus_tc_220_1_getTargetState_, "pus_tc_220_1_getTargetState_");
+	m.def("pus_tc_220_1_setTargetState", &pus_tc_220_1_setTargetState, "pus_tc_220_1_setTargetState");
+	m.def("pus_tm_220_3_getCurrentState", &pus_tm_220_3_getCurrentState, "pus_tm_220_3_getCurrentState");
+	m.def("pus_tm_220_3_setCurrentState", &pus_tm_220_3_setCurrentState, "pus_tm_220_3_setCurrentState");
     
 }
 

@@ -4,28 +4,32 @@
 
 from PusGui import pb
 import numpy as np
-# Only telecommands needed
+
+# Only telecommands needed (default packets)
 def mission_create_packets(packet, svc, msg, apid=0, seq=0):
-    elif (svc, msg) == (200, 3):
+    #ST 200
+    if (svc, msg) == (200, 3):
         pb.pus_tc_200_3_createMissionRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 5):
         pb.pus_tc_200_5_createHotdockcmdRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 9):
         pb.pus_tc_200_9_createWmcmdRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 11):
         pb.pus_tc_200_11_createBasecmdRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 13):
         pb.pus_tc_200_13_createEfcmdRequest_(packet, apid, seq)
-        
+    #ST 220
+    elif (svc, msg) == (220, 1):
+        pb.pus_tc_220_1_createNewTargetState_(packet, apid, seq)
+    elif (svc, msg) == (220, 2):
+        pb.pus_tc_200_2_createGetCurrentState(packet, apid, seq)
+
     else:
         pass
         
-# Generic get data function for tms and tcs
+# Generic get data function for BOTH tms and tcs
 def mission_get_data(packet, svc, msg):
+    #St 200
     if (svc, msg) == (200, 2):
         data = tc_200_2_get_data(packet)
     elif (svc, msg) == (200, 4):
@@ -49,14 +53,20 @@ def mission_get_data(packet, svc, msg):
     elif (svc, msg) == (200, 14):
         data = tc_200_14_get_data(packet)
     elif (svc, msg) == (200, 13):
-        data = tc_200_13_get_data(packet)          
+        data = tc_200_13_get_data(packet)
+    #ST 220
+    elif (svc, msg) == (220, 1):
+        data = tc_220_1_get_data(packet)
+    elif (svc, msg) == (220, 3):
+        data = tm_220_3_get_data(packet)
     else:
         data = dict()  
     return data   
 
-# Generic set data funcition fot tcs
+# Generic set data funcition for tcs
 def mission_set_data(packet, svc, msg, data):
-    elif (svc, msg) == (200, 3):
+    # ST 200
+    if (svc, msg) == (200, 3):
         packet = tc_200_3_set_data(packet, data)
     elif (svc, msg) == (200, 5):
         packet = tc_200_5_set_data(packet, data)
@@ -65,9 +75,29 @@ def mission_set_data(packet, svc, msg, data):
     elif (svc, msg) == (200, 11):
         packet = tc_200_11_set_data(packet, data)
     elif (svc, msg) == (200, 13):
-        packet = tc_200_13_set_data(packet, data) 
+        packet = tc_200_13_set_data(packet, data)
+    # ST 220
+    elif (svc, msg) == (220, 1):
+        packet = tc_220_1_set_data(packet, data) 
 
-# Specific get and set functions
+# Specific get and set functions ST 220
+def tc_220_1_set_data(packet, data):
+    state = data["state"]
+    pb.pus_tc_220_1_setTargetState(packet, state)
+    return packet
+
+def tc_220_1_get_data(packet):
+    data = dict()
+    data["state"] = pb.pus_tc_220_1_getTargetState_(packet)    
+    return data
+
+def tm_220_3_get_data(packet):
+    data = dict()
+    data["state"] = pb.pus_tm_220_3_getCurrentState(packet)
+    return data
+
+
+# Specific get and set functions ST 200
 def tc_200_3_set_data(packet, data):
     goal = data["goal"]
     goalData = pb.pusSt200_3_Goal()

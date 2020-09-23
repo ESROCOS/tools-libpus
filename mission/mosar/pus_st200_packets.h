@@ -18,7 +18,7 @@
 #ifndef PUS_ST200_PACKETS_H
 #define PUS_ST200_PACKETS_H
 
-//#include "pus_types.h"
+#include "pus_enable_services.h"
 #ifdef PUS_CONFIGURE_ST200_ENABLED
 
 #include "pus_apid.h"

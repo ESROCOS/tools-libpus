@@ -121,7 +121,7 @@ void test_st11()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_resetFunction());
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_enableFunction());
 
-	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_ERROR_NO_SCHEDULED_TC, pus_scheduling_getScheduledActivity(&tc, &time));
 	pus_tc_17_1_createConnectionTestRequest(&tc, 1, 2);
 	pus_now(&time);
 	//printf("a: %lu, %lu\n", time.tv_sec, time.tv_nsec);
@@ -151,7 +151,7 @@ void test_st11()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
-	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_ERROR_NO_SCHEDULED_TC, pus_scheduling_getScheduledActivity(&tc, &time));
 
 	pus_clearError();
 
@@ -167,7 +167,7 @@ void test_st11()
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_tc_11_4_packetToTable(&tc));
 	pus_now(&time);
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_scheduling_getScheduledActivity(&tc, &time));
-	CU_ASSERT_EQUAL(PUS_ERROR_DEFINITION_NOT_FOUND, pus_scheduling_getScheduledActivity(&tc, &time));
+	CU_ASSERT_EQUAL(PUS_ERROR_NO_SCHEDULED_TC, pus_scheduling_getScheduledActivity(&tc, &time));
 
 	pus_clearError();
 }
