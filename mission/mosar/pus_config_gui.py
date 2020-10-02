@@ -82,8 +82,8 @@ def mission_set_data(packet, svc, msg, data):
 
 # Specific get and set functions ST 220
 def tc_220_1_set_data(packet, data):
-    state = data["state"]
-    pb.pus_tc_220_1_setTargetState(packet, state)
+    state = int(data["state"])
+    pb.pus_tc_220_1_setTargetState_(packet, state)
     return packet
 
 def tc_220_1_get_data(packet):
@@ -93,7 +93,7 @@ def tc_220_1_get_data(packet):
 
 def tm_220_3_get_data(packet):
     data = dict()
-    data["state"] = pb.pus_tm_220_3_getCurrentState(packet)
+    data["state"] = pb.pus_tm_220_3_getCurrentState_(packet)
     return data
 
 

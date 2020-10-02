@@ -73,10 +73,6 @@ asn1SccPusUInt32 pus_tm_220_3_getCurrentState_(pusPacket_t* inTc)
 {
     return (asn1SccPusUInt32) pus_tm_220_3_getCurrentState(inTc);
 }
-void pus_tm_220_3_setCurrentState_(pusPacket_t* inTc, asn1SccPusUInt32 state)
-{
-    (void) pus_tm_220_3_setCurrentState(inTc, (pusSt220_stateID)state);
-}
 
 void init_mission_module(py::module &m)
 {
@@ -395,11 +391,9 @@ void init_mission_module(py::module &m)
     // ST 220
 	m.def("pus_tc_220_1_createNewTargetState_", &pus_tc_220_1_createNewTargetState_, "pus_tc_220_1_createNewTargetState_");
 	m.def("pus_tc_200_2_createGetCurrentState", &pus_tc_200_2_createGetCurrentState, "pus_tc_200_2_createGetCurrentState");
-    m.def("pus_tm_220_3_createActualStatusReport", &pus_tm_220_3_createActualStatusReport, "pus_tm_220_3_createActualStatusReport");
+	m.def("pus_tc_220_1_setTargetState_", &pus_tc_220_1_setTargetState_, "pus_tc_220_1_setTargetState_");
 	m.def("pus_tc_220_1_getTargetState_", &pus_tc_220_1_getTargetState_, "pus_tc_220_1_getTargetState_");
-	m.def("pus_tc_220_1_setTargetState", &pus_tc_220_1_setTargetState, "pus_tc_220_1_setTargetState");
-	m.def("pus_tm_220_3_getCurrentState", &pus_tm_220_3_getCurrentState, "pus_tm_220_3_getCurrentState");
-	m.def("pus_tm_220_3_setCurrentState", &pus_tm_220_3_setCurrentState, "pus_tm_220_3_setCurrentState");
+	m.def("pus_tm_220_3_getCurrentState_", &pus_tm_220_3_getCurrentState_, "pus_tm_220_3_getCurrentState_");
     
 }
 

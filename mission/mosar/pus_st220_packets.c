@@ -69,7 +69,7 @@ pusError_t pus_tc_220_1_setTargetState(pusPacket_t* inTC, pusSt220_stateID state
 	}
 	if( PUS_NO_ERROR != PUS_EXPECT_ST220TC(inTC, pus_TC_220_1_setTargetState))
 	{
-		return 0;
+		return PUS_GET_ERROR();
 	}
 	
 	inTC->data.u.tcData.data.u.st_220_1.targetState = state;
@@ -176,7 +176,7 @@ pusError_t pus_tm_220_3_setCurrentState(pusPacket_t* inTm, pusSt220_stateID stat
 	}
 	if( PUS_NO_ERROR != PUS_EXPECT_ST220TM(inTm, pus_TM_220_3_reportCurrentState))
 	{
-		return 0;
+		return PUS_GET_ERROR();
 	}
 	
 	inTm->data.u.tmData.data.u.st_220_3.actual = state;
@@ -192,7 +192,7 @@ pusError_t pus_expectSt220Tc(const pusPacket_t* packet, pusSubservice_t expected
 		pusService_t service = pus_getTcService(packet);
 		pusSubservice_t subtype = pus_getTcSubtype(packet);
 
-		if (service != pus_ST200_timelineControl)
+		if (service != pus_ST220_reconfigurationControl)
 		{
 			pus_setError(PUS_ERROR_TC_SERVICE, function, (pusErrorData_t){.integer=service});
 			return PUS_ERROR_TC_SERVICE;
@@ -242,7 +242,7 @@ pusError_t pus_expectSt220Tm(const pusPacket_t* packet, pusSubservice_t expected
 		pusService_t service = pus_getTmService(packet);
 		pusSubservice_t subtype = pus_getTmSubtype(packet);
 
-		if (service != pus_ST200_timelineControl)
+		if (service != pus_ST220_reconfigurationControl)
 		{
 			pus_setError(PUS_ERROR_TM_SERVICE, function, (pusErrorData_t){.integer=service});
 			return PUS_ERROR_TM_SERVICE;
