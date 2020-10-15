@@ -81,7 +81,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Destination</string>
+    <string>APID-OB</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

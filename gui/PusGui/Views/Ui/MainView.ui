@@ -65,7 +65,7 @@
         </column>
         <column>
          <property name="text">
-          <string>Destination</string>
+          <string>APID-OB</string>
          </property>
         </column>
         <column>

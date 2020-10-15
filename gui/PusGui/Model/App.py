@@ -41,7 +41,6 @@ class App(object):
         """
         pt = PacketTranslator()
         elem = pt.packet2json(packet)
-        # print(elem)
         self.update_params(elem)
         from datetime import datetime
         list_ = []
@@ -51,7 +50,7 @@ class App(object):
             msg_subtype_id = int(elem["data"]["pck_sec_head"]["msg_type_id"]["msg_subtype_id"])
             if type_ == 0:
                 src = None
-                dst = int(elem["data"]["pck_sec_head"]["dst_id"])
+                dst = int(elem["primary_header"]["pck_id"]["apid"]) # ADID-OB
             else:
                 src = int(elem["data"]["pck_sec_head"]["src_id"])
                 dst = None
