@@ -19,45 +19,59 @@ extern "C" {
 
 // ST200: Timeline control 
 
-typedef asn1SccPusTM_200_2_Data pusSt200_2_Observation; //!< Planner observation ID
+typedef asn1SccPusTM_200_18_Data pusSt200_18_Observation; //!< Planner observation ID
  
 
-typedef asn1SccPusTC_200_3_Data pusSt200_3_Goal; //!< Mission goal ID 
+typedef asn1SccPusTC_200_19_Data pusSt200_19_Goal; //!< Mission goal ID 
 
-typedef asn1SccPusTM_200_4_Data pusSt200_4_Observation; //!< Mission observation ID
+typedef asn1SccPusTM_200_20_Data pusSt200_20_Observation; //!< Mission observation ID
  
 
-typedef asn1SccPusTC_200_5_Data pusSt200_5_Goal; //!< Hotdockcmd goal ID 
+typedef asn1SccPusTC_200_13_Data pusSt200_13_Goal; //!< Sodmission goal ID 
 
-typedef asn1SccPusTM_200_6_Data pusSt200_6_Observation; //!< Hotdockcmd observation ID
+typedef asn1SccPusTM_200_14_Data pusSt200_14_Observation; //!< Sodmission observation ID
  
 
-typedef asn1SccPusTM_200_8_Data pusSt200_8_Observation; //!< Hotdockstatus observation ID
+typedef asn1SccPusTC_200_1_Data pusSt200_1_Goal; //!< Hotdockcmd goal ID 
+
+typedef asn1SccPusTM_200_2_Data pusSt200_2_Observation; //!< Hotdockcmd observation ID
  
 
-typedef asn1SccPusTC_200_9_Data pusSt200_9_Goal; //!< Wmcmd goal ID 
-
-typedef asn1SccPusTM_200_10_Data pusSt200_10_Observation; //!< Wmcmd observation ID
+typedef asn1SccPusTM_200_4_Data pusSt200_4_Observation; //!< Hotdockstatus observation ID
  
 
-typedef asn1SccPusTC_200_11_Data pusSt200_11_Goal; //!< Basecmd goal ID 
+typedef asn1SccPusTC_200_5_Data pusSt200_5_Goal; //!< Wmcmd goal ID 
 
-typedef asn1SccPusTM_200_12_Data pusSt200_12_Observation; //!< Basecmd observation ID
+typedef asn1SccPusTM_200_6_Data pusSt200_6_Observation; //!< Wmcmd observation ID
  
 
-typedef asn1SccPusTC_200_13_Data pusSt200_13_Goal; //!< Efcmd goal ID 
+typedef asn1SccPusTC_200_9_Data pusSt200_9_Goal; //!< Basecmd goal ID 
 
-typedef asn1SccPusTM_200_14_Data pusSt200_14_Observation; //!< Efcmd observation ID
+typedef asn1SccPusTM_200_10_Data pusSt200_10_Observation; //!< Basecmd observation ID
  
+
+typedef asn1SccPusTC_200_11_Data pusSt200_11_Goal; //!< Efcmd goal ID 
+
+typedef asn1SccPusTM_200_12_Data pusSt200_12_Observation; //!< Efcmd observation ID
+ 
+
+typedef asn1SccPusTM_200_8_Data pusSt200_8_Observation; //!< Wmstatus observation ID
+ 
+#define pus_TM_DATA_ST_200_18		((pusTmDataKind_t) st_200_18_PRESENT)
+ 
+#define pus_TC_DATA_ST_200_19		((pusTcDataKind_t) PusTcApplicationData_st_200_19_PRESENT) 
+#define pus_TM_DATA_ST_200_20		((pusTmDataKind_t) st_200_20_PRESENT)
+ 
+#define pus_TC_DATA_ST_200_13		((pusTcDataKind_t) PusTcApplicationData_st_200_13_PRESENT) 
+#define pus_TM_DATA_ST_200_14		((pusTmDataKind_t) st_200_14_PRESENT)
+ 
+#define pus_TC_DATA_ST_200_1		((pusTcDataKind_t) PusTcApplicationData_st_200_1_PRESENT) 
 #define pus_TM_DATA_ST_200_2		((pusTmDataKind_t) st_200_2_PRESENT)
  
-#define pus_TC_DATA_ST_200_3		((pusTcDataKind_t) PusTcApplicationData_st_200_3_PRESENT) 
 #define pus_TM_DATA_ST_200_4		((pusTmDataKind_t) st_200_4_PRESENT)
  
 #define pus_TC_DATA_ST_200_5		((pusTcDataKind_t) PusTcApplicationData_st_200_5_PRESENT) 
 #define pus_TM_DATA_ST_200_6		((pusTmDataKind_t) st_200_6_PRESENT)
- 
-#define pus_TM_DATA_ST_200_8		((pusTmDataKind_t) st_200_8_PRESENT)
  
 #define pus_TC_DATA_ST_200_9		((pusTcDataKind_t) PusTcApplicationData_st_200_9_PRESENT) 
 #define pus_TM_DATA_ST_200_10		((pusTmDataKind_t) st_200_10_PRESENT)
@@ -65,8 +79,7 @@ typedef asn1SccPusTM_200_14_Data pusSt200_14_Observation; //!< Efcmd observation
 #define pus_TC_DATA_ST_200_11		((pusTcDataKind_t) PusTcApplicationData_st_200_11_PRESENT) 
 #define pus_TM_DATA_ST_200_12		((pusTmDataKind_t) st_200_12_PRESENT)
  
-#define pus_TC_DATA_ST_200_13		((pusTcDataKind_t) PusTcApplicationData_st_200_13_PRESENT) 
-#define pus_TM_DATA_ST_200_14		((pusTmDataKind_t) st_200_14_PRESENT)
+#define pus_TM_DATA_ST_200_8		((pusTmDataKind_t) st_200_8_PRESENT)
 
 
 // ST220

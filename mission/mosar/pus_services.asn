@@ -287,25 +287,30 @@ BEGIN
 	-- private services
 	-- ST200 Agent
 	pus-ST200-timelineControl 		PusServiceType ::= 200 
-    pus-TM-200-2-plannerReport			PusSubserviceType ::= 2
+    pus-TM-200-18-plannerReport		PusSubserviceType ::= 18
      
-    pus-TC-200-3-missionRequest			PusSubserviceType ::= 3 
-    pus-TM-200-4-missionReport			PusSubserviceType ::= 4
+    pus-TC-200-19-missionRequest		PusSubserviceType ::= 19 
+    pus-TM-200-20-missionReport		PusSubserviceType ::= 20
      
-    pus-TC-200-5-hotdockcmdRequest		PusSubserviceType ::= 5 
-    pus-TM-200-6-hotdockcmdReport		PusSubserviceType ::= 6
+    pus-TC-200-13-sodmissionRequest		PusSubserviceType ::= 13 
+    pus-TM-200-14-sodmissionReport		PusSubserviceType ::= 14
      
-    pus-TM-200-8-hotdockstatusReport	PusSubserviceType ::= 8
+    pus-TC-200-1-hotdockcmdRequest		PusSubserviceType ::= 1 
+    pus-TM-200-2-hotdockcmdReport		PusSubserviceType ::= 2
      
-    pus-TC-200-9-wmcmdRequest			PusSubserviceType ::= 9 
-    pus-TM-200-10-wmcmdReport			PusSubserviceType ::= 10
+    pus-TM-200-4-hotdockstatusReport		PusSubserviceType ::= 4
      
-    pus-TC-200-11-basecmdRequest		PusSubserviceType ::= 11 
-    pus-TM-200-12-basecmdReport			PusSubserviceType ::= 12
+    pus-TC-200-5-wmcmdRequest		PusSubserviceType ::= 5 
+    pus-TM-200-6-wmcmdReport		PusSubserviceType ::= 6
      
-    pus-TC-200-13-efcmdRequest			PusSubserviceType ::= 13 
-    pus-TM-200-14-efcmdReport			PusSubserviceType ::= 14
-    
+    pus-TC-200-9-basecmdRequest		PusSubserviceType ::= 9 
+    pus-TM-200-10-basecmdReport		PusSubserviceType ::= 10
+     
+    pus-TC-200-11-efcmdRequest		PusSubserviceType ::= 11 
+    pus-TM-200-12-efcmdReport		PusSubserviceType ::= 12
+     
+    pus-TM-200-8-wmstatusReport		PusSubserviceType ::= 8
+   
 	-- ST220 SW-reconfiguration
     pus-ST220-reconfigurationControl 	PusServiceType ::= 220 
 	pus-TC-220-1-setTargetState				PusSubserviceType ::= 1

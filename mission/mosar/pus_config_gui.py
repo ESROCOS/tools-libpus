@@ -8,17 +8,25 @@ import numpy as np
 # Only telecommands needed (default packets)
 def mission_create_packets(packet, svc, msg, apid=0, seq=0):
     #ST 200
-    if (svc, msg) == (200, 3):
-        pb.pus_tc_200_3_createMissionRequest_(packet, apid, seq)
-    elif (svc, msg) == (200, 5):
-        pb.pus_tc_200_5_createHotdockcmdRequest_(packet, apid, seq)
-    elif (svc, msg) == (200, 9):
-        pb.pus_tc_200_9_createWmcmdRequest_(packet, apid, seq)
-    elif (svc, msg) == (200, 11):
-        pb.pus_tc_200_11_createBasecmdRequest_(packet, apid, seq)
+    if (svc, msg) == (200, 19):
+        pb.pus_tc_200_19_createMissionRequest_(packet, apid, seq)
+    
     elif (svc, msg) == (200, 13):
-        pb.pus_tc_200_13_createEfcmdRequest_(packet, apid, seq)
-    #ST 220
+        pb.pus_tc_200_13_createSodmissionRequest_(packet, apid, seq)
+    
+    elif (svc, msg) == (200, 1):
+        pb.pus_tc_200_1_createHotdockcmdRequest_(packet, apid, seq)
+    
+    elif (svc, msg) == (200, 5):
+        pb.pus_tc_200_5_createWmcmdRequest_(packet, apid, seq)
+    
+    elif (svc, msg) == (200, 9):
+        pb.pus_tc_200_9_createBasecmdRequest_(packet, apid, seq)
+    
+    elif (svc, msg) == (200, 11):
+        pb.pus_tc_200_11_createEfcmdRequest_(packet, apid, seq)
+        
+ #ST 220
     elif (svc, msg) == (220, 1):
         pb.pus_tc_220_1_createNewTargetState_(packet, apid, seq)
     elif (svc, msg) == (220, 2):
@@ -29,19 +37,26 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
         
 # Generic get data function for BOTH tms and tcs
 def mission_get_data(packet, svc, msg):
-    #St 200
-    if (svc, msg) == (200, 2):
+    if (svc, msg) == (200, 18):
+        data = tc_200_18_get_data(packet)
+    elif (svc, msg) == (200, 20):
+        data = tc_200_20_get_data(packet)
+    elif (svc, msg) == (200, 19):
+        data = tc_200_19_get_data(packet)
+    elif (svc, msg) == (200, 14):
+        data = tc_200_14_get_data(packet)
+    elif (svc, msg) == (200, 13):
+        data = tc_200_13_get_data(packet)
+    elif (svc, msg) == (200, 2):
         data = tc_200_2_get_data(packet)
+    elif (svc, msg) == (200, 1):
+        data = tc_200_1_get_data(packet)
     elif (svc, msg) == (200, 4):
         data = tc_200_4_get_data(packet)
-    elif (svc, msg) == (200, 3):
-        data = tc_200_3_get_data(packet)
     elif (svc, msg) == (200, 6):
         data = tc_200_6_get_data(packet)
     elif (svc, msg) == (200, 5):
         data = tc_200_5_get_data(packet)
-    elif (svc, msg) == (200, 8):
-        data = tc_200_8_get_data(packet)
     elif (svc, msg) == (200, 10):
         data = tc_200_10_get_data(packet)
     elif (svc, msg) == (200, 9):
@@ -50,10 +65,8 @@ def mission_get_data(packet, svc, msg):
         data = tc_200_12_get_data(packet)
     elif (svc, msg) == (200, 11):
         data = tc_200_11_get_data(packet)
-    elif (svc, msg) == (200, 14):
-        data = tc_200_14_get_data(packet)
-    elif (svc, msg) == (200, 13):
-        data = tc_200_13_get_data(packet)
+    elif (svc, msg) == (200, 8):
+        data = tc_200_8_get_data(packet)
     #ST 220
     elif (svc, msg) == (220, 1):
         data = tc_220_1_get_data(packet)
@@ -65,17 +78,18 @@ def mission_get_data(packet, svc, msg):
 
 # Generic set data funcition for tcs
 def mission_set_data(packet, svc, msg, data):
-    # ST 200
-    if (svc, msg) == (200, 3):
-        packet = tc_200_3_set_data(packet, data)
+    elif (svc, msg) == (200, 19):
+        packet = tc_200_19_set_data(packet, data)
+    elif (svc, msg) == (200, 13):
+        packet = tc_200_13_set_data(packet, data)
+    elif (svc, msg) == (200, 1):
+        packet = tc_200_1_set_data(packet, data)
     elif (svc, msg) == (200, 5):
         packet = tc_200_5_set_data(packet, data)
     elif (svc, msg) == (200, 9):
         packet = tc_200_9_set_data(packet, data)
     elif (svc, msg) == (200, 11):
         packet = tc_200_11_set_data(packet, data)
-    elif (svc, msg) == (200, 13):
-        packet = tc_200_13_set_data(packet, data)
     # ST 220
     elif (svc, msg) == (220, 1):
         packet = tc_220_1_set_data(packet, data) 
@@ -98,30 +112,84 @@ def tm_220_3_get_data(packet):
 
 
 # Specific get and set functions ST 200
-def tc_200_3_set_data(packet, data):
+def tc_200_19_set_data(packet, data):
     goal = data["goal"]
-    goalData = pb.pusSt200_3_Goal()
+    goalData = pb.pusSt200_19_Goal()
     goalData.agent = getStringFromDict(data["agent"])
     goalData.goal.inittime = getIntervalFromDict(goal["inittime"])
     goalData.goal.endtime = getIntervalFromDict(goal["endtime"])
     if goal["predicate"] == "idle":
         goalData.goal.predicate = pb.asn1SccMissionPred.idle
     elif goal["predicate"] == "place":
-        goalData.goal.predicate = pb.asn1SccMissionPred.place 
-        goalData.goal.sm = getStringdFromDict(goal["attributes"]["sm"])
-        goalData.goal.slot = getStringdFromDict(goal["attributes"]["slot"])
-        goalData.goal.orientation = getStringdFromDict(goal["attributes"]["orientation"])
-        
+        goalData.goal.predicate = pb.asn1SccMissionPred.place
     elif goal["predicate"] == "loadinge3plan":
-        goalData.goal.predicate = pb.asn1SccMissionPred.loadinge3plan 
-        goalData.goal.file = getStringdFromDict(goal["attributes"]["file"])
-        
-    
+        goalData.goal.predicate = pb.asn1SccMissionPred.loadinge3plan
     else:
-        print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle place loadinge3plan ")
+        print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle, place, loadinge3plan, ")
     
-    pb.pus_tc_200_3_setMissionGoal(packet, goalData)
-    #pb.pus_tc_200_3_setMissionGoal(packet, goal)
+    goalData.goal.sm = getStringdFromDict(goal["attributes"]["sm"])
+    goalData.goal.slot = getStringdFromDict(goal["attributes"]["slot"])
+    goalData.goal.orientation = getStringdFromDict(goal["attributes"]["orientation"])
+    goalData.goal.file = getStringdFromDict(goal["attributes"]["file"])
+    
+    pb.pus_tc_200_19_setMissionGoal(packet, goalData)
+    #pb.pus_tc_200_19_setMissionGoal(packet, goal)
+    return packet
+    
+
+def tc_200_13_set_data(packet, data):
+    goal = data["goal"]
+    goalData = pb.pusSt200_13_Goal()
+    goalData.agent = getStringFromDict(data["agent"])
+    goalData.goal.inittime = getIntervalFromDict(goal["inittime"])
+    goalData.goal.endtime = getIntervalFromDict(goal["endtime"])
+    if goal["predicate"] == "picked":
+        goalData.goal.predicate = pb.asn1SccSodmissionPred.picked
+    elif goal["predicate"] == "idle":
+        goalData.goal.predicate = pb.asn1SccSodmissionPred.idle
+    elif goal["predicate"] == "pick":
+        goalData.goal.predicate = pb.asn1SccSodmissionPred.pick
+    elif goal["predicate"] == "dropsm":
+        goalData.goal.predicate = pb.asn1SccSodmissionPred.dropsm
+    elif goal["predicate"] == "changebase":
+        goalData.goal.predicate = pb.asn1SccSodmissionPred.changebase
+    elif goal["predicate"] == "executefromfile":
+        goalData.goal.predicate = pb.asn1SccSodmissionPred.executefromfile
+    else:
+        print("Invalid predicate " + goal["predicate"] + ". Valid options are: picked, idle, pick, dropsm, changebase, executefromfile, ")
+    
+    goalData.goal.face = getStringdFromDict(goal["attributes"]["face"])
+    goalData.goal.sm = getStringdFromDict(goal["attributes"]["sm"])
+    goalData.goal.status = getActionstatusFromDict(goal["attributes"]["status"])
+    goalData.goal.slot = getStringdFromDict(goal["attributes"]["slot"])
+    goalData.goal.orientation = getStringdFromDict(goal["attributes"]["orientation"])
+    goalData.goal.filename = getStringdFromDict(goal["attributes"]["filename"])
+    
+    pb.pus_tc_200_13_setSodmissionGoal(packet, goalData)
+    #pb.pus_tc_200_13_setSodmissionGoal(packet, goal)
+    return packet
+    
+
+def tc_200_1_set_data(packet, data):
+    goal = data["goal"]
+    goalData = pb.pusSt200_1_Goal()
+    goalData.agent = getStringFromDict(data["agent"])
+    goalData.goal.inittime = getIntervalFromDict(goal["inittime"])
+    goalData.goal.endtime = getIntervalFromDict(goal["endtime"])
+    if goal["predicate"] == "idle":
+        goalData.goal.predicate = pb.asn1SccHotdockcmdPred.idle
+    elif goal["predicate"] == "sendstate":
+        goalData.goal.predicate = pb.asn1SccHotdockcmdPred.sendstate
+    else:
+        print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle, sendstate, ")
+    
+    goalData.goal.status = getActionstatusFromDict(goal["attributes"]["status"])
+    goalData.goal.sm = getStringdFromDict(goal["attributes"]["sm"])
+    goalData.goal.hotdock = getStringdFromDict(goal["attributes"]["hotdock"])
+    goalData.goal.hdstate = getStateidFromDict(goal["attributes"]["hdstate"])
+    
+    pb.pus_tc_200_1_setHotdockcmdGoal(packet, goalData)
+    #pb.pus_tc_200_1_setHotdockcmdGoal(packet, goal)
     return packet
     
 
@@ -132,21 +200,24 @@ def tc_200_5_set_data(packet, data):
     goalData.goal.inittime = getIntervalFromDict(goal["inittime"])
     goalData.goal.endtime = getIntervalFromDict(goal["endtime"])
     if goal["predicate"] == "idle":
-        goalData.goal.predicate = pb.asn1SccHotdockcmdPred.idle 
-        goalData.goal.status = getEnumDomainFromDict(goal["attributes"]["status"])
-        
-    elif goal["predicate"] == "sendState":
-        goalData.goal.predicate = pb.asn1SccHotdockcmdPred.sendState 
-        goalData.goal.sm = getEnumDomainFromDict(goal["attributes"]["sm"])
-        goalData.goal.hotdock = getStringdFromDict(goal["attributes"]["hotdock"])
-        goalData.goal.statehd = getEnumDomainFromDict(goal["attributes"]["statehd"])
-        
-    
+        goalData.goal.predicate = pb.asn1SccWmcmdPred.idle
+    elif goal["predicate"] == "movetohd":
+        goalData.goal.predicate = pb.asn1SccWmcmdPred.movetohd
+    elif goal["predicate"] == "movetoslot":
+        goalData.goal.predicate = pb.asn1SccWmcmdPred.movetoslot
+    elif goal["predicate"] == "error":
+        goalData.goal.predicate = pb.asn1SccWmcmdPred.error
     else:
-        print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle sendState ")
+        print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle, movetohd, movetoslot, error, ")
     
-    pb.pus_tc_200_5_setHotdockcmdGoal(packet, goalData)
-    #pb.pus_tc_200_5_setHotdockcmdGoal(packet, goal)
+    goalData.goal.status = getActionstatusFromDict(goal["attributes"]["status"])
+    goalData.goal.hdid = getStringdFromDict(goal["attributes"]["hdid"])
+    goalData.goal.slot = getInt3dFromDict(goal["attributes"]["slot"])
+    goalData.goal.face = getStringdFromDict(goal["attributes"]["face"])
+    goalData.goal.yaw = getStringdFromDict(goal["attributes"]["yaw"])
+    
+    pb.pus_tc_200_5_setWmcmdGoal(packet, goalData)
+    #pb.pus_tc_200_5_setWmcmdGoal(packet, goal)
     return packet
     
 
@@ -156,26 +227,21 @@ def tc_200_9_set_data(packet, data):
     goalData.agent = getStringFromDict(data["agent"])
     goalData.goal.inittime = getIntervalFromDict(goal["inittime"])
     goalData.goal.endtime = getIntervalFromDict(goal["endtime"])
-    if goal["predicate"] == "idle":
-        goalData.goal.predicate = pb.asn1SccWmcmdPred.idle 
-        goalData.goal.status = getEnumDomainFromDict(goal["attributes"]["status"])
-        
-    elif goal["predicate"] == "movetohd":
-        goalData.goal.predicate = pb.asn1SccWmcmdPred.movetohd 
-        goalData.goal.hotdock = getStringdFromDict(goal["attributes"]["hotdock"])
-        
-    elif goal["predicate"] == "movetoslot":
-        goalData.goal.predicate = pb.asn1SccWmcmdPred.movetoslot 
-        goalData.goal.slot = getSlotidFromDict(goal["attributes"]["slot"])
-        goalData.goal.face = getStringdFromDict(goal["attributes"]["face"])
-        goalData.goal.yaw = getEnumDomainFromDict(goal["attributes"]["yaw"])
-        
+    if goal["predicate"] == "baseat":
+        goalData.goal.predicate = pb.asn1SccBasecmdPred.baseat
+    elif goal["predicate"] == "switchbase":
+        goalData.goal.predicate = pb.asn1SccBasecmdPred.switchbase
+    elif goal["predicate"] == "error":
+        goalData.goal.predicate = pb.asn1SccBasecmdPred.error
     
     else:
-        print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle movetohd movetoslot ")
+        print("Invalid predicate " + goal["predicate"] + ". Valid options are: baseat, switchbase, error, ")
     
-    pb.pus_tc_200_9_setWmcmdGoal(packet, goalData)
-    #pb.pus_tc_200_9_setWmcmdGoal(packet, goal)
+    goalData.goal.hdid = getStringdFromDict(goal["attributes"]["hdid"])
+    goalData.goal.status = getActionstatusFromDict(goal["attributes"]["status"])
+    
+    pb.pus_tc_200_9_setBasecmdGoal(packet, goalData)
+    #pb.pus_tc_200_9_setBasecmdGoal(packet, goal)
     return packet
     
 
@@ -185,47 +251,25 @@ def tc_200_11_set_data(packet, data):
     goalData.agent = getStringFromDict(data["agent"])
     goalData.goal.inittime = getIntervalFromDict(goal["inittime"])
     goalData.goal.endtime = getIntervalFromDict(goal["endtime"])
-    if goal["predicate"] == "baseAt":
-        goalData.goal.predicate = pb.asn1SccBasecmdPred.baseAt 
-        goalData.goal.hotdock = getStringdFromDict(goal["attributes"]["hotdock"])
-        
-    elif goal["predicate"] == "switchBase":
-        goalData.goal.predicate = pb.asn1SccBasecmdPred.switchBase 
-        goalData.goal.hotdock = getStringdFromDict(goal["attributes"]["hotdock"])
-        
-    elif goal["predicate"] == "error":
-        goalData.goal.predicate = pb.asn1SccBasecmdPred.error
-    
-    else:
-        print("Invalid predicate " + goal["predicate"] + ". Valid options are: baseAt switchBase error ")
-    
-    pb.pus_tc_200_11_setBasecmdGoal(packet, goalData)
-    #pb.pus_tc_200_11_setBasecmdGoal(packet, goal)
-    return packet
-    
-
-def tc_200_13_set_data(packet, data):
-    goal = data["goal"]
-    goalData = pb.pusSt200_13_Goal()
-    goalData.agent = getStringFromDict(data["agent"])
-    goalData.goal.inittime = getIntervalFromDict(goal["inittime"])
-    goalData.goal.endtime = getIntervalFromDict(goal["endtime"])
     if goal["predicate"] == "idle":
-        goalData.goal.predicate = pb.asn1SccEfcmdPred.idle 
-        goalData.goal.status = getEnumDomainFromDict(goal["attributes"]["status"])
-        
+        goalData.goal.predicate = pb.asn1SccEfcmdPred.idle
+    elif goal["predicate"] == "picked":
+        goalData.goal.predicate = pb.asn1SccEfcmdPred.picked
+    elif goal["predicate"] == "error":
+        goalData.goal.predicate = pb.asn1SccEfcmdPred.error
     elif goal["predicate"] == "pick":
-        goalData.goal.predicate = pb.asn1SccEfcmdPred.pick 
-        goalData.goal.hotdock = getStringdFromDict(goal["attributes"]["hotdock"])
-        
+        goalData.goal.predicate = pb.asn1SccEfcmdPred.pick
     elif goal["predicate"] == "drop":
         goalData.goal.predicate = pb.asn1SccEfcmdPred.drop
     
     else:
-        print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle pick drop ")
+        print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle, picked, error, pick, drop, ")
     
-    pb.pus_tc_200_13_setEfcmdGoal(packet, goalData)
-    #pb.pus_tc_200_13_setEfcmdGoal(packet, goal)
+    goalData.goal.status = getActionstatusFromDict(goal["attributes"]["status"])
+    goalData.goal.hdid = getStringdFromDict(goal["attributes"]["hdid"])
+    
+    pb.pus_tc_200_11_setEfcmdGoal(packet, goalData)
+    #pb.pus_tc_200_11_setEfcmdGoal(packet, goal)
     return packet
     
 
@@ -239,25 +283,22 @@ def getPlannerDict(inData):
     data["endtime"] = getIntervalDict(inData.endtime)
 
     attributes = dict()
-    attributes["goals"] = getIntdDict(inData.goals)
     
     if len(attributes) > 0:
         data["attributes"] = attributes
 
     return data
-def tc_200_2_get_data(packet):
+def tc_200_18_get_data(packet):
     try:
         data = dict()
-        obs = pb.pus_tm_200_2_getPlannerObservation(packet)
+        obs = pb.pus_tm_200_18_getPlannerObservation(packet)
         
         observation = dict()
         observation["timeline"] = "planner"
         observation["predicate"] = str(obs.observation.predicate).split(".",1)[1]
 
         attributes = dict()
-         
-        if observation["predicate"] == "planning":
-            attributes["goals"] = getIntdDict(obs.observation.goals)
+        
         
         if len(attributes) > 0:
             observation["attributes"] = attributes
@@ -277,29 +318,29 @@ def getMissionDict(inData):
     data["endtime"] = getIntervalDict(inData.endtime)
 
     attributes = dict()
-    attributes["sm"] = getStringdDict(inData.sm)
-    attributes["slot"] = getStringdDict(inData.slot)
-    attributes["orientation"] = getStringdDict(inData.orientation)
-    attributes["file"] = getStringdDict(inData.file)
     
+    attributes["sm"] =getStringdDict(inData.sm)
+    attributes["slot"] =getStringdDict(inData.slot)
+    attributes["orientation"] =getStringdDict(inData.orientation)
+    attributes["file"] =getStringdDict(inData.file)
     if len(attributes) > 0:
         data["attributes"] = attributes
 
     return data
-def tc_200_3_get_data(packet):
+def tc_200_19_get_data(packet):
     try:
         data = dict()
-        goal = pb.pus_tc_200_3_getMissionGoal(packet)
+        goal = pb.pus_tc_200_19_getMissionGoal(packet)
         data["goal"] = getMissionDict(goal.goal)
         data["agent"] = getStringDict(goal.agent)
     except Exception as e:
         print(str(e))
     
     return data
-def tc_200_4_get_data(packet):
+def tc_200_20_get_data(packet):
     try:
         data = dict()
-        obs = pb.pus_tm_200_4_getMissionObservation(packet)
+        obs = pb.pus_tm_200_20_getMissionObservation(packet)
         
         observation = dict()
         observation["timeline"] = "mission"
@@ -308,12 +349,81 @@ def tc_200_4_get_data(packet):
         attributes = dict()
          
         if observation["predicate"] == "place":
-            attributes["sm"] = getStringdDict(obs.observation.sm)
-            attributes["slot"] = getStringdDict(obs.observation.slot)
-            attributes["orientation"] = getStringdDict(obs.observation.orientation)
+            attributes["sm"] =attributes["sm"] = getStringdDict(obs.observation.sm)
+            attributes["slot"] =attributes["slot"] = getStringdDict(obs.observation.slot)
+            attributes["orientation"] =attributes["orientation"] = getStringdDict(obs.observation.orientation)
          
         if observation["predicate"] == "loadinge3plan":
-            attributes["file"] = getStringdDict(obs.observation.file)
+            attributes["file"] =attributes["file"] = getStringdDict(obs.observation.file)
+        if len(attributes) > 0:
+            observation["attributes"] = attributes
+        
+        data["observation"] = observation
+        data["agent"] = getStringDict(obs.agent)
+    except Exception as e:
+        print(str(e))
+    
+    return data
+
+def getSodmissionDict(inData):
+    data = dict()
+    data["timeline"] = "sodmission"
+    data["predicate"] = str(inData.predicate).split(".",1)[1]
+    data["inittime"] = getIntervalDict(inData.inittime)
+    data["endtime"] = getIntervalDict(inData.endtime)
+
+    attributes = dict()
+    
+    attributes["face"] =getStringdDict(inData.face)
+    attributes["sm"] =getStringdDict(inData.sm)
+    attributes["status"] =str(inData.status).split(".",1)[1]
+    attributes["slot"] =getStringdDict(inData.slot)
+    attributes["orientation"] =getStringdDict(inData.orientation)
+    attributes["filename"] =getStringdDict(inData.filename)
+    if len(attributes) > 0:
+        data["attributes"] = attributes
+
+    return data
+def tc_200_13_get_data(packet):
+    try:
+        data = dict()
+        goal = pb.pus_tc_200_13_getSodmissionGoal(packet)
+        data["goal"] = getSodmissionDict(goal.goal)
+        data["agent"] = getStringDict(goal.agent)
+    except Exception as e:
+        print(str(e))
+    
+    return data
+def tc_200_14_get_data(packet):
+    try:
+        data = dict()
+        obs = pb.pus_tm_200_14_getSodmissionObservation(packet)
+        
+        observation = dict()
+        observation["timeline"] = "sodmission"
+        observation["predicate"] = str(obs.observation.predicate).split(".",1)[1]
+
+        attributes = dict() 
+        if observation["predicate"] == "picked":
+            attributes["face"] =attributes["face"] = getStringdDict(obs.observation.face)
+            attributes["sm"] =attributes["sm"] = getStringdDict(obs.observation.sm)
+         
+        if observation["predicate"] == "idle":
+            attributes["status"] =str(obs.observation.status).split(".",1)[1]
+         
+        if observation["predicate"] == "pick":
+            attributes["face"] =attributes["face"] = getStringdDict(obs.observation.face)
+            attributes["sm"] =attributes["sm"] = getStringdDict(obs.observation.sm)
+         
+        if observation["predicate"] == "dropsm":
+            attributes["slot"] =attributes["slot"] = getStringdDict(obs.observation.slot)
+            attributes["orientation"] =attributes["orientation"] = getStringdDict(obs.observation.orientation)
+         
+        if observation["predicate"] == "changebase":
+            attributes["slot"] =attributes["slot"] = getStringdDict(obs.observation.slot)
+         
+        if observation["predicate"] == "executefromfile":
+            attributes["filename"] =attributes["filename"] = getStringdDict(obs.observation.filename)
         if len(attributes) > 0:
             observation["attributes"] = attributes
         
@@ -332,29 +442,29 @@ def getHotdockcmdDict(inData):
     data["endtime"] = getIntervalDict(inData.endtime)
 
     attributes = dict()
-    attributes["status"] = getEnumDomainDict(inData.status)
-    attributes["sm"] = getEnumDomainDict(inData.sm)
-    attributes["hotdock"] = getStringdDict(inData.hotdock)
-    attributes["statehd"] = getEnumDomainDict(inData.statehd)
     
+    attributes["status"] =str(inData.status).split(".",1)[1]
+    attributes["sm"] =getStringdDict(inData.sm)
+    attributes["hotdock"] =getStringdDict(inData.hotdock)
+    attributes["hdstate"] =str(inData.hdstate).split(".",1)[1]
     if len(attributes) > 0:
         data["attributes"] = attributes
 
     return data
-def tc_200_5_get_data(packet):
+def tc_200_1_get_data(packet):
     try:
         data = dict()
-        goal = pb.pus_tc_200_5_getHotdockcmdGoal(packet)
+        goal = pb.pus_tc_200_1_getHotdockcmdGoal(packet)
         data["goal"] = getHotdockcmdDict(goal.goal)
         data["agent"] = getStringDict(goal.agent)
     except Exception as e:
         print(str(e))
     
     return data
-def tc_200_6_get_data(packet):
+def tc_200_2_get_data(packet):
     try:
         data = dict()
-        obs = pb.pus_tm_200_6_getHotdockcmdObservation(packet)
+        obs = pb.pus_tm_200_2_getHotdockcmdObservation(packet)
         
         observation = dict()
         observation["timeline"] = "hotdockcmd"
@@ -362,12 +472,12 @@ def tc_200_6_get_data(packet):
 
         attributes = dict() 
         if observation["predicate"] == "idle":
-            attributes["status"] = getEnumDomainDict(obs.observation.status)
+            attributes["status"] =str(obs.observation.status).split(".",1)[1]
          
-        if observation["predicate"] == "sendState":
-            attributes["sm"] = getEnumDomainDict(obs.observation.sm)
-            attributes["hotdock"] = getStringdDict(obs.observation.hotdock)
-            attributes["statehd"] = getEnumDomainDict(obs.observation.statehd)
+        if observation["predicate"] == "sendstate":
+            attributes["sm"] =attributes["sm"] = getStringdDict(obs.observation.sm)
+            attributes["hotdock"] =attributes["hotdock"] = getStringdDict(obs.observation.hotdock)
+            attributes["hdstate"] =str(obs.observation.hdstate).split(".",1)[1]
         if len(attributes) > 0:
             observation["attributes"] = attributes
         
@@ -386,16 +496,16 @@ def getHotdockstatusDict(inData):
     data["endtime"] = getIntervalDict(inData.endtime)
 
     attributes = dict()
-    attributes["pathfile"] = getStringdDict(inData.pathfile)
     
+    attributes["pathfile"] =getStringdDict(inData.pathfile)
     if len(attributes) > 0:
         data["attributes"] = attributes
 
     return data
-def tc_200_8_get_data(packet):
+def tc_200_4_get_data(packet):
     try:
         data = dict()
-        obs = pb.pus_tm_200_8_getHotdockstatusObservation(packet)
+        obs = pb.pus_tm_200_4_getHotdockstatusObservation(packet)
         
         observation = dict()
         observation["timeline"] = "hotdockstatus"
@@ -403,7 +513,7 @@ def tc_200_8_get_data(packet):
 
         attributes = dict() 
         if observation["predicate"] == "status":
-            attributes["pathfile"] = getStringdDict(obs.observation.pathfile)
+            attributes["pathfile"] =attributes["pathfile"] = getStringdDict(obs.observation.pathfile)
         if len(attributes) > 0:
             observation["attributes"] = attributes
         
@@ -422,30 +532,30 @@ def getWmcmdDict(inData):
     data["endtime"] = getIntervalDict(inData.endtime)
 
     attributes = dict()
-    attributes["status"] = getEnumDomainDict(inData.status)
-    attributes["hotdock"] = getStringdDict(inData.hotdock)
-    attributes["slot"] = getSlotidDict(inData.slot)
-    attributes["face"] = getStringdDict(inData.face)
-    attributes["yaw"] = getEnumDomainDict(inData.yaw)
     
+    attributes["status"] =str(inData.status).split(".",1)[1]
+    attributes["hdid"] =getStringdDict(inData.hdid)
+    attributes["slot"] =getInt3dDict(inData.slot)
+    attributes["face"] =getStringdDict(inData.face)
+    attributes["yaw"] =getStringdDict(inData.yaw)
     if len(attributes) > 0:
         data["attributes"] = attributes
 
     return data
-def tc_200_9_get_data(packet):
+def tc_200_5_get_data(packet):
     try:
         data = dict()
-        goal = pb.pus_tc_200_9_getWmcmdGoal(packet)
+        goal = pb.pus_tc_200_5_getWmcmdGoal(packet)
         data["goal"] = getWmcmdDict(goal.goal)
         data["agent"] = getStringDict(goal.agent)
     except Exception as e:
         print(str(e))
     
     return data
-def tc_200_10_get_data(packet):
+def tc_200_6_get_data(packet):
     try:
         data = dict()
-        obs = pb.pus_tm_200_10_getWmcmdObservation(packet)
+        obs = pb.pus_tm_200_6_getWmcmdObservation(packet)
         
         observation = dict()
         observation["timeline"] = "wmcmd"
@@ -453,15 +563,16 @@ def tc_200_10_get_data(packet):
 
         attributes = dict() 
         if observation["predicate"] == "idle":
-            attributes["status"] = getEnumDomainDict(obs.observation.status)
+            attributes["status"] =str(obs.observation.status).split(".",1)[1]
          
         if observation["predicate"] == "movetohd":
-            attributes["hotdock"] = getStringdDict(obs.observation.hotdock)
+            attributes["hdid"] =attributes["hdid"] = getStringdDict(obs.observation.hdid)
          
         if observation["predicate"] == "movetoslot":
-            attributes["slot"] = getSlotidDict(obs.observation.slot)
-            attributes["face"] = getStringdDict(obs.observation.face)
-            attributes["yaw"] = getEnumDomainDict(obs.observation.yaw)
+            attributes["slot"] =attributes["slot"] = getInt3dDict(obs.observation.slot)
+            attributes["face"] =attributes["face"] = getStringdDict(obs.observation.face)
+            attributes["yaw"] =attributes["yaw"] = getStringdDict(obs.observation.yaw)
+        
         if len(attributes) > 0:
             observation["attributes"] = attributes
         
@@ -480,37 +591,39 @@ def getBasecmdDict(inData):
     data["endtime"] = getIntervalDict(inData.endtime)
 
     attributes = dict()
-    attributes["hotdock"] = getStringdDict(inData.hotdock)
     
+    attributes["hdid"] =getStringdDict(inData.hdid)
+    attributes["status"] =str(inData.status).split(".",1)[1]
     if len(attributes) > 0:
         data["attributes"] = attributes
 
     return data
-def tc_200_11_get_data(packet):
+def tc_200_9_get_data(packet):
     try:
         data = dict()
-        goal = pb.pus_tc_200_11_getBasecmdGoal(packet)
+        goal = pb.pus_tc_200_9_getBasecmdGoal(packet)
         data["goal"] = getBasecmdDict(goal.goal)
         data["agent"] = getStringDict(goal.agent)
     except Exception as e:
         print(str(e))
     
     return data
-def tc_200_12_get_data(packet):
+def tc_200_10_get_data(packet):
     try:
         data = dict()
-        obs = pb.pus_tm_200_12_getBasecmdObservation(packet)
+        obs = pb.pus_tm_200_10_getBasecmdObservation(packet)
         
         observation = dict()
         observation["timeline"] = "basecmd"
         observation["predicate"] = str(obs.observation.predicate).split(".",1)[1]
 
         attributes = dict() 
-        if observation["predicate"] == "baseAt":
-            attributes["hotdock"] = getStringdDict(obs.observation.hotdock)
+        if observation["predicate"] == "baseat":
+            attributes["hdid"] =attributes["hdid"] = getStringdDict(obs.observation.hdid)
+            attributes["status"] =str(obs.observation.status).split(".",1)[1]
          
-        if observation["predicate"] == "switchBase":
-            attributes["hotdock"] = getStringdDict(obs.observation.hotdock)
+        if observation["predicate"] == "switchbase":
+            attributes["hdid"] =attributes["hdid"] = getStringdDict(obs.observation.hdid)
         
         if len(attributes) > 0:
             observation["attributes"] = attributes
@@ -530,27 +643,27 @@ def getEfcmdDict(inData):
     data["endtime"] = getIntervalDict(inData.endtime)
 
     attributes = dict()
-    attributes["status"] = getEnumDomainDict(inData.status)
-    attributes["hotdock"] = getStringdDict(inData.hotdock)
     
+    attributes["status"] =str(inData.status).split(".",1)[1]
+    attributes["hdid"] =getStringdDict(inData.hdid)
     if len(attributes) > 0:
         data["attributes"] = attributes
 
     return data
-def tc_200_13_get_data(packet):
+def tc_200_11_get_data(packet):
     try:
         data = dict()
-        goal = pb.pus_tc_200_13_getEfcmdGoal(packet)
+        goal = pb.pus_tc_200_11_getEfcmdGoal(packet)
         data["goal"] = getEfcmdDict(goal.goal)
         data["agent"] = getStringDict(goal.agent)
     except Exception as e:
         print(str(e))
     
     return data
-def tc_200_14_get_data(packet):
+def tc_200_12_get_data(packet):
     try:
         data = dict()
-        obs = pb.pus_tm_200_14_getEfcmdObservation(packet)
+        obs = pb.pus_tm_200_12_getEfcmdObservation(packet)
         
         observation = dict()
         observation["timeline"] = "efcmd"
@@ -558,11 +671,51 @@ def tc_200_14_get_data(packet):
 
         attributes = dict() 
         if observation["predicate"] == "idle":
-            attributes["status"] = getEnumDomainDict(obs.observation.status)
+            attributes["status"] =str(obs.observation.status).split(".",1)[1]
+         
+        if observation["predicate"] == "picked":
+            attributes["hdid"] =attributes["hdid"] = getStringdDict(obs.observation.hdid)
+        
          
         if observation["predicate"] == "pick":
-            attributes["hotdock"] = getStringdDict(obs.observation.hotdock)
+            attributes["hdid"] =attributes["hdid"] = getStringdDict(obs.observation.hdid)
         
+        if len(attributes) > 0:
+            observation["attributes"] = attributes
+        
+        data["observation"] = observation
+        data["agent"] = getStringDict(obs.agent)
+    except Exception as e:
+        print(str(e))
+    
+    return data
+
+def getWmstatusDict(inData):
+    data = dict()
+    data["timeline"] = "wmstatus"
+    data["predicate"] = str(inData.predicate).split(".",1)[1]
+    data["inittime"] = getIntervalDict(inData.inittime)
+    data["endtime"] = getIntervalDict(inData.endtime)
+
+    attributes = dict()
+    
+    attributes["pathfile"] =getStringdDict(inData.pathfile)
+    if len(attributes) > 0:
+        data["attributes"] = attributes
+
+    return data
+def tc_200_8_get_data(packet):
+    try:
+        data = dict()
+        obs = pb.pus_tm_200_8_getWmstatusObservation(packet)
+        
+        observation = dict()
+        observation["timeline"] = "wmstatus"
+        observation["predicate"] = str(obs.observation.predicate).split(".",1)[1]
+
+        attributes = dict() 
+        if observation["predicate"] == "status":
+            attributes["pathfile"] =attributes["pathfile"] = getStringdDict(obs.observation.pathfile)
         if len(attributes) > 0:
             observation["attributes"] = attributes
         
@@ -577,48 +730,47 @@ def tc_200_14_get_data(packet):
 
 def getBooldDict(param):
     value = dict()
-    value["value"] = getIntDict(param.value)
+    value["value"] =getIntDict(param.value)
     return value
 
 def getIntdDict(param):
     value = dict()
-    value["value"] = getIntDict(param.value)
+    value["value"] =getIntDict(param.value)
     return value
 
 def getFloatdDict(param):
     value = dict()
-    value["value"] = getFloatDict(param.value)
+    value["value"] =getFloatDict(param.value)
     return value
 
 def getStringdDict(param):
     value = dict()
-    value["value"] = getStringDict(param.value)
+    value["value"] =getStringDict(param.value)
     return value
 
 def getInt2dDict(param):
     value = dict()
-    value["x"] = getIntDict(param.x)
-    value["y"] = getIntDict(param.y)
+    value["x"] =getIntDict(param.x)
+    value["y"] =getIntDict(param.y)
     return value
 
-def getSlotidDict(param):
+def getInt3dDict(param):
     value = dict()
-    value["x"] = getIntDict(param.x)
-    value["y"] = getIntDict(param.y)
-    value["z"] = getIntDict(param.z)
-    value["svc"] = getIntDict(param.svc)
+    value["x"] =getIntDict(param.x)
+    value["y"] =getIntDict(param.y)
+    value["z"] =getIntDict(param.z)
     return value
 
 def getPosition3DDict(param):
     value = dict()
-    value["x"] = getFloatDict(param.x)
-    value["y"] = getFloatDict(param.y)
+    value["x"] =getFloatDict(param.x)
+    value["y"] =getFloatDict(param.y)
     return value
 
 def getQuaterniondDict(param):
     value = dict()
-    value["x"] = getFloatDict(param.x)
-    value["y"] = getFloatDict(param.y)
+    value["x"] =getFloatDict(param.x)
+    value["y"] =getFloatDict(param.y)
     return value
 
 
@@ -651,12 +803,6 @@ def getStringDict(param):
 
     return alternative_string
 
-def getEnumDomainDict(param):
-    value = dict()
-    value["key"] = getStringDict(param.key)
-    value["value"] = getIntDict(param.value)
-    return value
-
 
 def getBooldFromDict(param):
     value = pb.asn1SccBoold()
@@ -684,12 +830,11 @@ def getInt2dFromDict(param):
     value.y = getIntFromDict(param["y"])
     return value
 
-def getSlotidFromDict(param):
-    value = pb.asn1SccSlotid()
+def getInt3dFromDict(param):
+    value = pb.asn1SccInt3d()
     value.x = getIntFromDict(param["x"])
     value.y = getIntFromDict(param["y"])
     value.z = getIntFromDict(param["z"])
-    value.svc = getIntFromDict(param["svc"])
     return value
 
 def getPosition3DFromDict(param):
@@ -723,8 +868,31 @@ def getStringFromDict(param):
     value = pb.asn1SccA_String(bytes(param, 'utf-8'))
     return value
 
-def getEnumDomainFromDict(param):
-    value = pb.asn1SccEnumDomain()
-    value.key = getStringFromDict(param["key"])
-    value.value = getIntFromDict(param["value"])
-    return value
+
+def getActionstatusFromDict(value):
+    
+    if value == "success":
+        return pb.asn1SccActionstatusEnum.success
+    if value == "failed":
+        return pb.asn1SccActionstatusEnum.failed
+    if value == "notachievable":
+        return pb.asn1SccActionstatusEnum.notachievable
+    if value == "notenoughtime":
+        return pb.asn1SccActionstatusEnum.notenoughtime
+    else:
+        return pb.asn1SccActionstatusEnum.unknown
+
+def getStateidFromDict(value):
+    
+    if value == "offline":
+        return pb.asn1SccStateidEnum.offline
+    if value == "idle":
+        return pb.asn1SccStateidEnum.idle
+    if value == "latched":
+        return pb.asn1SccStateidEnum.latched
+    if value == "locked":
+        return pb.asn1SccStateidEnum.locked
+    if value == "connected":
+        return pb.asn1SccStateidEnum.connected
+    else:
+        return pb.asn1SccStateidEnum.unknown

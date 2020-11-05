@@ -37,14 +37,27 @@ EnumDomain ::= SEQUENCE{
     value   T-Int64
 }
 
-HotdockcmdPred ::= ENUMERATED { hotdockcmd-sendState, hotdockcmd-idle, hotdockcmd-cancel }
-HotdockstatusPred ::= ENUMERATED { hotdockstatus-status, hotdockstatus-cancel }
-WmcmdPred ::= ENUMERATED { wmcmd-movetohd, wmcmd-movetoslot, wmcmd-idle, wmcmd-cancel }
-BasecmdPred ::= ENUMERATED { basecmd-error, basecmd-switchBase, basecmd-baseAt, basecmd-cancel }
-EfcmdPred ::= ENUMERATED { efcmd-pick, efcmd-drop, efcmd-idle, efcmd-cancel }
-PlannerPred ::= ENUMERATED { planner-fault, planner-idle, planner-planning, planner-cancel }
-MissionPred ::= ENUMERATED { mission-place, mission-loadinge3plan, mission-idle, mission-cancel }
-AutonomyPred ::= ENUMERATED { autonomy-E1, autonomy-E2, autonomy-E3, autonomy-E4, autonomy-cancel }
+
+
+HotdockcmdPred ::= ENUMERATED { hotdockcmd-sendstate, hotdockcmd-idle, hotdockcmd-cancel, hotdockcmd-unknown }
+HotdockstatusPred ::= ENUMERATED { hotdockstatus-status, hotdockstatus-cancel, hotdockstatus-unknown }
+WmcmdPred ::= ENUMERATED { wmcmd-error, wmcmd-movetohd, wmcmd-movetoslot, wmcmd-idle, wmcmd-cancel, wmcmd-unknown }
+WmstatusPred ::= ENUMERATED { wmstatus-status, wmstatus-cancel, wmstatus-unknown }
+BasecmdPred ::= ENUMERATED { basecmd-error, basecmd-switchbase, basecmd-baseat, basecmd-cancel, basecmd-unknown }
+EfcmdPred ::= ENUMERATED { efcmd-pick, efcmd-drop, efcmd-idle, efcmd-picked, efcmd-error, efcmd-cancel, efcmd-unknown }
+SodmissionPred ::= ENUMERATED { sodmission-pick, sodmission-dropsm, sodmission-changebase, sodmission-executefromfile, sodmission-picked, sodmission-idle, sodmission-cancel, sodmission-unknown }
+SodplannerPred ::= ENUMERATED { sodplanner-fault, sodplanner-planning, sodplanner-idle, sodplanner-failed, sodplanner-cancel, sodplanner-unknown }
+PlannerPred ::= ENUMERATED { planner-fault, planner-idle, planner-planning, planner-cancel, planner-unknown }
+MissionPred ::= ENUMERATED { mission-place, mission-loadinge3plan, mission-idle, mission-cancel, mission-unknown }
+AutonomyPred ::= ENUMERATED { autonomy-e1, autonomy-e2, autonomy-e3, autonomy-e4, autonomy-cancel, autonomy-unknown }
+
+-- ACTIONSTATUS ENUM DATA (AGENT-FUNCTIONAL)
+ActionstatusEnum ::= ENUMERATED { actionstatus-success, actionstatus-failed, actionstatus-notachievable, actionstatus-notenoughtime, actionstatus-unknown }
+
+-- STATEID ENUM DATA (AGENT-FUNCTIONAL)
+StateidEnum ::= ENUMERATED { stateid-offline, stateid-idle, stateid-latched, stateid-locked, stateid-connected, stateid-unknown }
+ 
+
 
 -- BOOLD DOMAIN DATA (AGENT-FUNCTIONAL)
 Boold ::= SEQUENCE {
@@ -77,12 +90,11 @@ Int2d ::= SEQUENCE {
     
 }
 
--- SLOTID DOMAIN DATA (AGENT-FUNCTIONAL)
-Slotid ::= SEQUENCE {
+-- INT3D DOMAIN DATA (AGENT-FUNCTIONAL)
+Int3d ::= SEQUENCE {
     x        T-Int64,
     y        T-Int64,
-    z        T-Int64,
-    svc        T-Int64
+    z        T-Int64
     
 }
 
@@ -107,10 +119,10 @@ Hotdockcmdstatus ::= SEQUENCE {
     predicate       HotdockcmdPred,
     inittime        IntegerIntervalDomain,
     endtime        IntegerIntervalDomain,
-    sm        EnumDomain,
+    sm        Stringd,
     hotdock        Stringd,
-    statehd        EnumDomain,
-    status        EnumDomain
+    hdstate        StateidEnum,
+    status        ActionstatusEnum
     
 }
 
@@ -128,11 +140,20 @@ Wmcmdstatus ::= SEQUENCE {
     predicate       WmcmdPred,
     inittime        IntegerIntervalDomain,
     endtime        IntegerIntervalDomain,
-    hotdock        Stringd,
-    slot        Slotid,
+    hdid        Stringd,
+    slot        Int3d,
     face        Stringd,
-    yaw        EnumDomain,
-    status        EnumDomain
+    yaw        Stringd,
+    status        ActionstatusEnum
+    
+}
+
+-- WMSTATUS TIMELINE DATA (AGENT-FUNCTIONAL)
+Wmstatusstatus ::= SEQUENCE {
+    predicate       WmstatusPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    pathfile        Stringd
     
 }
 
@@ -141,7 +162,8 @@ Basecmdstatus ::= SEQUENCE {
     predicate       BasecmdPred,
     inittime        IntegerIntervalDomain,
     endtime        IntegerIntervalDomain,
-    hotdock        Stringd
+    hdid        Stringd,
+    status        ActionstatusEnum
     
 }
 
@@ -150,8 +172,30 @@ Efcmdstatus ::= SEQUENCE {
     predicate       EfcmdPred,
     inittime        IntegerIntervalDomain,
     endtime        IntegerIntervalDomain,
-    hotdock        Stringd,
-    status        EnumDomain
+    hdid        Stringd,
+    status        ActionstatusEnum
+    
+}
+
+-- SODMISSION TIMELINE DATA (AGENT-FUNCTIONAL)
+Sodmissionstatus ::= SEQUENCE {
+    predicate       SodmissionPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    face        Stringd,
+    sm        Stringd,
+    slot        Stringd,
+    orientation        Stringd,
+    filename        Stringd,
+    status        ActionstatusEnum
+    
+}
+
+-- SODPLANNER TIMELINE DATA (AGENT-FUNCTIONAL)
+Sodplannerstatus ::= SEQUENCE {
+    predicate       SodplannerPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain
     
 }
 
@@ -159,8 +203,7 @@ Efcmdstatus ::= SEQUENCE {
 Plannerstatus ::= SEQUENCE {
     predicate       PlannerPred,
     inittime        IntegerIntervalDomain,
-    endtime        IntegerIntervalDomain,
-    goals        Intd
+    endtime        IntegerIntervalDomain
     
 }
 
