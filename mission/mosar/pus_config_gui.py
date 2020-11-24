@@ -865,7 +865,7 @@ def getIntFromDict(param):
     return value
 
 def getStringFromDict(param):
-    value = pb.asn1SccA_String(bytes(param, 'utf-8'))
+    value = pb.asn1SccT_String(bytes(param, 'utf-8'))
     return value
 
 

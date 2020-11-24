@@ -117,7 +117,8 @@ class PacketTranslator(object):
             try:
                 jsn["data"]["user_data"]["src_data"] = pfun.mission_get_data(pack, srvc_type_id, msg_type_id)
             except Exception as e:
-                pass
+                print("Get data exception: ")
+                print(e)
 
         return jsn
 
@@ -232,7 +233,8 @@ class PacketTranslator(object):
             try:
                 pfun.mission_set_data(pack, srvc_type_id, msg_type_id, data)
             except Exception as e:
-                pass 
+                print("Set data exception: ")
+                print(e) 
     
         return pack
 
@@ -314,7 +316,8 @@ class PacketTranslator(object):
             try:
                 pfun.mission_create_packets(packet, svc, msg)
             except Exception as e:
-                pass
+                print("Create packet exception: ")
+                print(e)
       
         return packet
 

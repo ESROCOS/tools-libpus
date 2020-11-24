@@ -322,7 +322,8 @@ class CreateTCController(object):
             try:
                 pfun.mission_create_packets(packet, svc, msg)
             except Exception as e:
-                pass
+                print("Create packet exception: ")
+                print(e)
 
         return packet_translator.packet2json(packet), packet
 
