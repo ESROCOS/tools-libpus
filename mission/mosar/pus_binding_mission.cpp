@@ -59,6 +59,27 @@ pusError_t pus_tc_200_11_createEfcmdRequest_(pusPacket_t* outTc, pusApid_t apid,
     return pus_tc_200_11_createEfcmdRequest(outTc, apid, sequenceCount, goal);
 }
 
+// ST220
+
+pusError_t pus_tc_220_1_createNewTargetState_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount)
+{
+    pusSt220_stateID state = asn1Sccidle;
+    return pus_tc_220_1_createNewTargetState(outTc, apid, sequenceCount, state);
+}
+
+asn1SccPusUInt32 pus_tc_220_1_getTargetState_(pusPacket_t* inTc)
+{
+    return (asn1SccPusUInt32) pus_tc_220_1_getTargetState(inTc);
+}
+void pus_tc_220_1_setTargetState_(pusPacket_t* inTc, asn1SccPusUInt32 state)
+{
+    (void) pus_tc_220_1_setTargetState(inTc, (pusSt220_stateID)state);
+}
+asn1SccPusUInt32 pus_tm_220_3_getCurrentState_(pusPacket_t* inTc)
+{
+    return (asn1SccPusUInt32) pus_tm_220_3_getCurrentState(inTc);
+}
+
 void init_mission_module(py::module &m)
 {
     // ST 220
@@ -464,11 +485,11 @@ void init_mission_module(py::module &m)
  
 
     // ST 220
-	m.def("pus_tc_220_1_createNewTargetState_", &pus_tc_220_1_createNewTargetState, "pus_tc_220_1_createNewTargetState_");
+	m.def("pus_tc_220_1_createNewTargetState_", &pus_tc_220_1_createNewTargetState_, "pus_tc_220_1_createNewTargetState_");
 	m.def("pus_tc_200_2_createGetCurrentState", &pus_tc_200_2_createGetCurrentState, "pus_tc_200_2_createGetCurrentState");
-	m.def("pus_tc_220_1_setTargetState_", &pus_tc_220_1_setTargetState, "pus_tc_220_1_setTargetState_");
-	m.def("pus_tc_220_1_getTargetState_", &pus_tc_220_1_getTargetState, "pus_tc_220_1_getTargetState_");
-	m.def("pus_tm_220_3_getCurrentState_", &pus_tm_220_3_getCurrentState, "pus_tm_220_3_getCurrentState_");
+	m.def("pus_tc_220_1_setTargetState_", &pus_tc_220_1_setTargetState_, "pus_tc_220_1_setTargetState_");
+	m.def("pus_tc_220_1_getTargetState_", &pus_tc_220_1_getTargetState_, "pus_tc_220_1_getTargetState_");
+	m.def("pus_tm_220_3_getCurrentState_", &pus_tm_220_3_getCurrentState_, "pus_tm_220_3_getCurrentState_");
     
 }
 

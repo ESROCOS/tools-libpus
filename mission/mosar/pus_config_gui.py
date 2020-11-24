@@ -78,7 +78,7 @@ def mission_get_data(packet, svc, msg):
 
 # Generic set data funcition for tcs
 def mission_set_data(packet, svc, msg, data):
-    elif (svc, msg) == (200, 19):
+    if (svc, msg) == (200, 19):
         packet = tc_200_19_set_data(packet, data)
     elif (svc, msg) == (200, 13):
         packet = tc_200_13_set_data(packet, data)
