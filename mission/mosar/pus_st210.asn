@@ -1,0 +1,48 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[210] RMAP management
+--
+-- Limitations:
+-- * This is part of a prototype for a demonstration
+
+
+PUS-ST210 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS
+    PusUInt16, PusUInt8, PusInt32  FROM PUS-TypesDefinitions
+--    PusSt03ParameterId, PusSt03HousekeepingReportId FROM PUS-ST03
+    ;
+  
+/* R_ICU_SPW_PNP */
+    -- Data for TC[210,1]
+    PusTC-210-1-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        setRoutingEntry PusUInt16,
+        spwTrafficPriority PusUInt8
+    }
+    -- Data for TC[210,2]
+    PusTC-210-2-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        setOwner PusUInt16
+    }
+/* R_ICU */
+    -- Data for TC[210,11]
+    PusTC-210-11-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        rIcuSecondsSinceEpoch PusInt32,
+        rIcuNanosecondsSinceEpoch PusInt32
+    }
+    -- Data for TC[210,12]
+    PusTC-210-12-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        rIcuSetLeds PusUInt8
+    }
+    
+END

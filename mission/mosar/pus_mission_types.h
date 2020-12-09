@@ -81,6 +81,17 @@ typedef asn1SccPusTM_200_8_Data pusSt200_8_Observation; //!< Wmstatus observatio
  
 #define pus_TM_DATA_ST_200_8		((pusTmDataKind_t) st_200_8_PRESENT)
 
+// ST 210
+
+// typedef ....
+
+/* R_ICU_SPW_PNP */
+#define pus_TC_DATA_ST_210_1   ((pusTcDataKind_t) PusTcApplicationData_st_210_1_PRESENT)
+#define pus_TC_DATA_ST_210_2   ((pusTcDataKind_t) PusTcApplicationData_st_210_2_PRESENT)
+
+/* R_ICU */
+#define pus_TC_DATA_ST_210_11   ((pusTcDataKind_t) PusTcApplicationData_st_210_11_PRESENT)
+#define pus_TC_DATA_ST_210_12   ((pusTcDataKind_t) PusTcApplicationData_st_210_12_PRESENT)
 
 // ST220
 

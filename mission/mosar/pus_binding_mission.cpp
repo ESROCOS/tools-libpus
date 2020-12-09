@@ -17,6 +17,7 @@
 #include "pus_notify.h"
 
 #include "pus_st200_packets.h"
+#include "pus_st210_packets.h"
 #include "pus_st220_packets.h"
 
 namespace py = pybind11;
@@ -483,6 +484,41 @@ void init_mission_module(py::module &m)
     m.def("pus_tm_200_8_createWmstatusReport", &pus_tm_200_8_createWmstatusReport, "pus_tm_200_8_createWmstatusReport");
     m.def("pus_tm_200_8_getWmstatusObservation", &pus_tm_200_8_getWmstatusObservation, "pus_tm_200_8_getWmstatusObservation");
  
+
+    // ST 210
+
+    /* R_ICU_SPW_PNP */
+    m.def("pus_tc_210_1_createSpwRoutingTableSetEntry", &pus_tc_210_1_createSpwRoutingTableSetEntry,"pus_tc_210_1_createSpwRoutingTableSetEntry");
+    m.def("pus_tc_210_1_getParamSM_ID", &pus_tc_210_1_getParamSM_ID, "pus_tc_210_1_getParamSM_ID");
+    m.def("pus_tc_210_1_setParamSM_ID", &pus_tc_210_1_setParamSM_ID, "pus_tc_210_1_setParamSM_ID");
+    m.def("pus_tc_210_1_getParamSetRoutingEntry", &pus_tc_210_1_getParamSetRoutingEntry, "pus_tc_210_1_getParamSetRoutingEntry");
+    m.def("pus_tc_210_1_setParamSetRoutingEntry", &pus_tc_210_1_setParamSetRoutingEntry, "pus_tc_210_1_setParamSetRoutingEntry");
+    m.def("pus_tc_210_1_getParamSpwTrafficPriority", &pus_tc_210_1_getParamSpwTrafficPriority, "pus_tc_210_1_getParamSpwTrafficPriority");
+    m.def("pus_tc_210_1_setParamSpwTrafficPriority", &pus_tc_210_1_setParamSpwTrafficPriority, "pus_tc_210_1_setParamSpwTrafficPriority");
+
+    m.def("pus_tc_210_2_createSpwPnpSetOwnerFields", &pus_tc_210_2_createSpwPnpSetOwnerFields,"pus_tc_210_2_createSpwPnpSetOwnerFields");
+    m.def("pus_tc_210_2_getParamSM_ID", &pus_tc_210_2_getParamSM_ID, "pus_tc_210_2_getParamSM_ID");
+    m.def("pus_tc_210_2_setParamSM_ID", &pus_tc_210_2_setParamSM_ID, "pus_tc_210_2_setParamSM_ID");
+    m.def("pus_tc_210_2_getParamSetOwner", &pus_tc_210_2_getParamSetOwner, "pus_tc_210_2_getParamSetOwner");
+    m.def("pus_tc_210_2_setParamSetOwner", &pus_tc_210_2_setParamSetOwner, "pus_tc_210_2_setParamSetOwner");
+
+
+    /* R_ICU */
+    m.def("pus_tc_210_11_createConfigureTimeEpoch", &pus_tc_210_11_createConfigureTimeEpoch,"pus_tc_210_11_createConfigureTimeEpoch");
+    m.def("pus_tc_210_11_getParamSM_ID", &pus_tc_210_11_getParamSM_ID, "pus_tc_210_11_getParamSM_ID");
+    m.def("pus_tc_210_11_setParamSM_ID", &pus_tc_210_11_setParamSM_ID, "pus_tc_210_11_setParamSM_ID");
+    m.def("pus_tc_210_11_getParamRIcuSecondsSinceEpoch", &pus_tc_210_11_getParamRIcuSecondsSinceEpoch, "pus_tc_210_11_getParamRIcuSecondsSinceEpoch");
+    m.def("pus_tc_210_11_setParamRIcuSecondsSinceEpoch", &pus_tc_210_11_setParamRIcuSecondsSinceEpoch, "pus_tc_210_11_setParamRIcuSecondsSinceEpoch");
+    m.def("pus_tc_210_11_getParamRIcuNanosecondsSinceEpoch", &pus_tc_210_11_getParamRIcuNanosecondsSinceEpoch, "pus_tc_210_11_getParamRIcuNanosecondsSinceEpoch");
+    m.def("pus_tc_210_11_setParamRIcuNanosecondsSinceEpoch", &pus_tc_210_11_setParamRIcuNanosecondsSinceEpoch, "pus_tc_210_11_setParamRIcuNanosecondsSinceEpoch");
+
+    m.def("pus_tc_210_12_createSetLeds", &pus_tc_210_12_createSetLeds,"pus_tc_210_12_createSetLeds");
+    m.def("pus_tc_210_12_getParamSM_ID", &pus_tc_210_12_getParamSM_ID, "pus_tc_210_12_getParamSM_ID");
+    m.def("pus_tc_210_12_setParamSM_ID", &pus_tc_210_12_setParamSM_ID, "pus_tc_210_12_setParamSM_ID");
+    m.def("pus_tc_210_12_getParamRIcuSetLeds", &pus_tc_210_12_getParamRIcuSetLeds, "pus_tc_210_12_getParamRIcuSetLeds");
+    m.def("pus_tc_210_12_setParamRIcuSetLeds", &pus_tc_210_12_setParamRIcuSetLeds, "pus_tc_210_12_setParamRIcuSetLeds");
+
+
 
     // ST 220
 	m.def("pus_tc_220_1_createNewTargetState_", &pus_tc_220_1_createNewTargetState_, "pus_tc_220_1_createNewTargetState_");

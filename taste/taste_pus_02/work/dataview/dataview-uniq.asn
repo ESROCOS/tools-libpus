@@ -36,6 +36,16 @@ BEGIN
   	PusUInt32 FROM PUS-TypesDefinitions
   	
   	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
+
+    PusTM-200-2-Data FROM PUS-ST200                     --  planner  
+    PusTC-200-3-Data, PusTM-200-4-Data FROM PUS-ST200   --  mission  
+    PusTC-200-5-Data, PusTM-200-6-Data FROM PUS-ST200   --  hotdockcmd  
+    PusTM-200-8-Data FROM PUS-ST200                     --  hotdockstatus  
+    PusTC-200-9-Data, PusTM-200-10-Data FROM PUS-ST200  --  wmcmd  
+    PusTC-200-11-Data, PusTM-200-12-Data FROM PUS-ST200 --  basecmd  
+    PusTC-200-13-Data, PusTM-200-14-Data FROM PUS-ST200 --  efcmd  
+    
+    PusTC-220-1-Data, PusTM-220-3-Data FROM PUS-ST220   --  reconfiguration
   	;
 
     -- dummy data field for packets with no data
@@ -57,13 +67,21 @@ BEGIN
     -- TM actual data
     PusTmSourceData ::= CHOICE
     {
-        st-0-0 PusTM-TC-Dummy-Data,
+        st-0-0  PusTM-TC-Dummy-Data,
         st-1-X 	PusTM-1-X-Data,
         st-3-25 PusTM-3-25-Data,
         st-5-X 	PusTM-5-X-Data,
         st-9-2 	PusTM-9-2-Data,
         st-20-2 PusTC-TM-20-X-Data,
-        st-23-4 PusTC-TM-23-1-4-Data
+        st-23-4 PusTC-TM-23-1-4-Data,
+        st-200-2 PusTM-200-2-Data, 
+        st-200-4 PusTM-200-4-Data, 
+        st-200-6 PusTM-200-6-Data, 
+        st-200-8 PusTM-200-8-Data, 
+        st-200-10 PusTM-200-10-Data, 
+        st-200-12 PusTM-200-12-Data, 
+        st-200-14 PusTM-200-14-Data,
+        st-220-3 PusTM-220-3-Data
     }
     
     -- TC secondary header
@@ -113,7 +131,13 @@ BEGIN
     	st-20-X 	PusTC-TM-20-X-Data,
     	st-23-1		PusTC-TM-23-1-4-Data,
     	st-23-2-3	PusTC-23-2-3-Data,
-    	st-23-14	PusTC-23-14-Data,
+    	st-23-14	PusTC-23-14-Data, 
+        st-200-3 PusTC-200-3-Data, 
+        st-200-5 PusTC-200-5-Data, 
+        st-200-9 PusTC-200-9-Data, 
+        st-200-11 PusTC-200-11-Data, 
+        st-200-13 PusTC-200-13-Data,
+        st-220-1 PusTC-220-1-Data,
     	-- No packet reduced
     	st-11-4 	PusTC-11-4-Data,
     	st-18-1 	PusTC-18-1-Data,
@@ -134,7 +158,13 @@ BEGIN
     	st-20-X 	PusTC-TM-20-X-Data,
     	st-23-1		PusTC-TM-23-1-4-Data,
     	st-23-2-3	PusTC-23-2-3-Data,
-    	st-23-14	PusTC-23-14-Data
+    	st-23-14	PusTC-23-14-Data,
+        st-200-3 PusTC-200-3-Data,
+        st-200-5 PusTC-200-5-Data,
+        st-200-9 PusTC-200-9-Data,
+        st-200-11 PusTC-200-11-Data,
+        st-200-13 PusTC-200-13-Data, 
+        st-220-1 PusTC-220-1-Data
     }
     
     -- TM/TC header + data
@@ -618,6 +648,36 @@ BEGIN
     -- pus-TM-23-23-fileCopyStatusReport            PusSubserviceType ::= 23
     -- pus-TC-23-24-disablePerodicCopyReporting     PusSubserviceType ::= 24
 
+
+	-- private services
+	-- ST200 Agent
+	pus-ST200-timelineControl 		PusServiceType ::= 200 
+    pus-TM-200-2-plannerReport			PusSubserviceType ::= 2
+     
+    pus-TC-200-3-missionRequest			PusSubserviceType ::= 3 
+    pus-TM-200-4-missionReport			PusSubserviceType ::= 4
+     
+    pus-TC-200-5-hotdockcmdRequest		PusSubserviceType ::= 5 
+    pus-TM-200-6-hotdockcmdReport		PusSubserviceType ::= 6
+     
+    pus-TM-200-8-hotdockstatusReport	PusSubserviceType ::= 8
+     
+    pus-TC-200-9-wmcmdRequest			PusSubserviceType ::= 9 
+    pus-TM-200-10-wmcmdReport			PusSubserviceType ::= 10
+     
+    pus-TC-200-11-basecmdRequest		PusSubserviceType ::= 11 
+    pus-TM-200-12-basecmdReport			PusSubserviceType ::= 12
+     
+    pus-TC-200-13-efcmdRequest			PusSubserviceType ::= 13 
+    pus-TM-200-14-efcmdReport			PusSubserviceType ::= 14
+    
+	-- ST220 SW-reconfiguration
+    pus-ST220-reconfigurationControl 	PusServiceType ::= 220 
+	pus-TC-220-1-setTargetState				PusSubserviceType ::= 1
+    pus-TC-220-2-getCurrentState			PusSubserviceType ::= 2 
+    pus-TM-220-3-reportCurrentState			PusSubserviceType ::= 3
+    
+
 END
 
 -- H2020 ESROCOS Project
@@ -1069,6 +1129,396 @@ END
 -- Company: GMV Aerospace & Defence S.A.U.
 -- Licence: GPLv2
 
+-- ASN.1 definitions for private service ST[200] Timeline Control
+--
+-- Several subservices are implemented:
+--  - TM[200,2] planner report
+ 
+--  - TC[200,3] mission request
+--  - TM[200,4] mission report
+ 
+--  - TC[200,5] hotdockcmd request
+--  - TM[200,6] hotdockcmd report
+
+--  - TM[200,8] hotdockstatus report
+ 
+--  - TC[200,9] wmcmd request
+--  - TM[200,10] wmcmd report
+ 
+--  - TC[200,11] basecmd request
+--  - TM[200,12] basecmd report
+ 
+--  - TC[200,13] efcmd request
+--  - TM[200,14] efcmd report
+
+
+PUS-ST200 DEFINITIONS ::= 
+BEGIN
+
+    IMPORTS 
+    PusUInt32 FROM PUS-TypesDefinitions T-String FROM TASTE-ExtendedTypes
+    Plannerstatus FROM Agent-Trex-to-Taste-Dataview
+    Missionstatus FROM Agent-Trex-to-Taste-Dataview
+    Hotdockcmdstatus FROM Agent-Trex-to-Taste-Dataview
+    Hotdockstatusstatus FROM Agent-Trex-to-Taste-Dataview
+    Wmcmdstatus FROM Agent-Trex-to-Taste-Dataview
+    Basecmdstatus FROM Agent-Trex-to-Taste-Dataview
+    Efcmdstatus FROM Agent-Trex-to-Taste-Dataview
+    ;
+    
+    -- Data for TM[200,2]
+    PusTM-200-2-Data ::= SEQUENCE
+    {
+    	observation Plannerstatus,
+        agent T-String
+    }
+    
+     
+    -- Data for TC[200,3]
+    PusTC-200-3-Data ::= SEQUENCE
+    {
+    	goal Missionstatus,
+        agent T-String
+    }
+    
+    -- Data for TM[200,4]
+    PusTM-200-4-Data ::= SEQUENCE
+    {
+    	observation Missionstatus,
+        agent T-String
+    }
+    
+     
+    -- Data for TC[200,5]
+    PusTC-200-5-Data ::= SEQUENCE
+    {
+    	goal Hotdockcmdstatus,
+        agent T-String
+    }
+    
+    -- Data for TM[200,6]
+    PusTM-200-6-Data ::= SEQUENCE
+    {
+    	observation Hotdockcmdstatus,
+        agent T-String
+    }
+    
+    
+    -- Data for TM[200,8]
+    PusTM-200-8-Data ::= SEQUENCE
+    {
+    	observation Hotdockstatusstatus,
+        agent T-String
+    }
+    
+     
+    -- Data for TC[200,9]
+    PusTC-200-9-Data ::= SEQUENCE
+    {
+    	goal Wmcmdstatus,
+        agent T-String
+    }
+    
+    -- Data for TM[200,10]
+    PusTM-200-10-Data ::= SEQUENCE
+    {
+    	observation Wmcmdstatus,
+        agent T-String
+    }
+    
+     
+    -- Data for TC[200,11]
+    PusTC-200-11-Data ::= SEQUENCE
+    {
+    	goal Basecmdstatus,
+        agent T-String
+    }
+    
+    -- Data for TM[200,12]
+    PusTM-200-12-Data ::= SEQUENCE
+    {
+    	observation Basecmdstatus,
+        agent T-String
+    }
+    
+     
+    -- Data for TC[200,13]
+    PusTC-200-13-Data ::= SEQUENCE
+    {
+    	goal Efcmdstatus,
+        agent T-String
+    }
+    
+    -- Data for TM[200,14]
+    PusTM-200-14-Data ::= SEQUENCE
+    {
+    	observation Efcmdstatus,
+        agent T-String
+    }
+    
+
+END
+
+
+--------------------------------------------------------------------------------------
+--!  ASN file generated automatically by the ERGO TREX2TASTE interface generator
+--!  This file will be overriten if output path given to code generator matches this
+--!  path.
+--!  I you want to keep changes made to this file keep it safe.
+--!  Was generated from configuration file: /home/peraspera/esrocos_workspace/control/mosar_agent/cfg/mosar_timeline.cfg and /home/peraspera/esrocos_workspace/control/mosar_agent/cfg/mosar_domain.cfg 
+--!  Date/time of generation: 2020-06-12 12:07:55 
+--------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+--!  This file defines the data types that are used to communicate with the Agent
+--!  controller.
+----------------------------------------------------------------------------------
+
+
+Agent-Trex-to-Taste-Dataview DEFINITIONS ::=
+BEGIN
+
+
+-- Import of TASTE predefined basic types (TASTE-ExtendedTypes DEFINITIONS)
+IMPORTS T-UInt32, T-Boolean, T-Int32 FROM TASTE-BasicTypes T-Double, T-Float, T-Int64, T-UInt16, T-String FROM TASTE-ExtendedTypes;
+
+
+-- Basic TREX-AGENT types
+IntegerIntervalDomain ::= SEQUENCE{
+    min   T-Int64,
+    max   T-Int64
+}
+
+FloatIntervalDomain ::= SEQUENCE{
+    min   T-Float,
+    max   T-Float
+}
+
+EnumDomain ::= SEQUENCE{
+    key     T-String,
+    value   T-Int64
+}
+
+HotdockcmdPred ::= ENUMERATED { hotdockcmd-sendState, hotdockcmd-idle, hotdockcmd-cancel }
+HotdockstatusPred ::= ENUMERATED { hotdockstatus-status, hotdockstatus-cancel }
+WmcmdPred ::= ENUMERATED { wmcmd-movetohd, wmcmd-movetoslot, wmcmd-idle, wmcmd-cancel }
+BasecmdPred ::= ENUMERATED { basecmd-error, basecmd-switchBase, basecmd-baseAt, basecmd-cancel }
+EfcmdPred ::= ENUMERATED { efcmd-pick, efcmd-drop, efcmd-idle, efcmd-cancel }
+PlannerPred ::= ENUMERATED { planner-fault, planner-idle, planner-planning, planner-cancel }
+MissionPred ::= ENUMERATED { mission-place, mission-loadinge3plan, mission-idle, mission-cancel }
+AutonomyPred ::= ENUMERATED { autonomy-E1, autonomy-E2, autonomy-E3, autonomy-E4, autonomy-cancel }
+
+-- BOOLD DOMAIN DATA (AGENT-FUNCTIONAL)
+Boold ::= SEQUENCE {
+    value        T-Int64
+    
+}
+
+-- INTD DOMAIN DATA (AGENT-FUNCTIONAL)
+Intd ::= SEQUENCE {
+    value        T-Int64
+    
+}
+
+-- FLOATD DOMAIN DATA (AGENT-FUNCTIONAL)
+Floatd ::= SEQUENCE {
+    value        T-Float
+    
+}
+
+-- STRINGD DOMAIN DATA (AGENT-FUNCTIONAL)
+Stringd ::= SEQUENCE {
+    value        T-String
+    
+}
+
+-- INT2D DOMAIN DATA (AGENT-FUNCTIONAL)
+Int2d ::= SEQUENCE {
+    x        T-Int64,
+    y        T-Int64
+    
+}
+
+-- SLOTID DOMAIN DATA (AGENT-FUNCTIONAL)
+Slotid ::= SEQUENCE {
+    x        T-Int64,
+    y        T-Int64,
+    z        T-Int64,
+    svc        T-Int64
+    
+}
+
+-- POSITION3D DOMAIN DATA (AGENT-FUNCTIONAL)
+Position3D ::= SEQUENCE {
+    x        T-Float,
+    y        T-Float
+    
+}
+
+-- QUATERNIOND DOMAIN DATA (AGENT-FUNCTIONAL)
+Quaterniond ::= SEQUENCE {
+    x        T-Float,
+    y        T-Float
+    
+}
+ 
+
+
+-- HOTDOCKCMD TIMELINE DATA (AGENT-FUNCTIONAL)
+Hotdockcmdstatus ::= SEQUENCE {
+    predicate       HotdockcmdPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    sm        EnumDomain,
+    hotdock        Stringd,
+    statehd        EnumDomain,
+    status        EnumDomain
+    
+}
+
+-- HOTDOCKSTATUS TIMELINE DATA (AGENT-FUNCTIONAL)
+Hotdockstatusstatus ::= SEQUENCE {
+    predicate       HotdockstatusPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    pathfile        Stringd
+    
+}
+
+-- WMCMD TIMELINE DATA (AGENT-FUNCTIONAL)
+Wmcmdstatus ::= SEQUENCE {
+    predicate       WmcmdPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    hotdock        Stringd,
+    slot        Slotid,
+    face        Stringd,
+    yaw        EnumDomain,
+    status        EnumDomain
+    
+}
+
+-- BASECMD TIMELINE DATA (AGENT-FUNCTIONAL)
+Basecmdstatus ::= SEQUENCE {
+    predicate       BasecmdPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    hotdock        Stringd
+    
+}
+
+-- EFCMD TIMELINE DATA (AGENT-FUNCTIONAL)
+Efcmdstatus ::= SEQUENCE {
+    predicate       EfcmdPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    hotdock        Stringd,
+    status        EnumDomain
+    
+}
+
+-- PLANNER TIMELINE DATA (AGENT-FUNCTIONAL)
+Plannerstatus ::= SEQUENCE {
+    predicate       PlannerPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    goals        Intd
+    
+}
+
+-- MISSION TIMELINE DATA (AGENT-FUNCTIONAL)
+Missionstatus ::= SEQUENCE {
+    predicate       MissionPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain,
+    sm        Stringd,
+    slot        Stringd,
+    orientation        Stringd,
+    file        Stringd
+    
+}
+
+-- AUTONOMY TIMELINE DATA (AGENT-FUNCTIONAL)
+Autonomystatus ::= SEQUENCE {
+    predicate       AutonomyPred,
+    inittime        IntegerIntervalDomain,
+    endtime        IntegerIntervalDomain
+    
+}
+ 
+
+
+-- ASN.1 Type definitions must start with an uppercase
+-- Field names in records (SEQUENCE) must start with a lowercase
+-- Underscores are not allowed: use dash (hyphen) 
+
+END
+
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for service ST[220] Reconfiguration
+--
+-- Limitations:
+-- * This is part of a prototype for a demonstration
+
+
+PUS-ST220 DEFINITIONS ::=
+BEGIN
+
+    IMPORTS
+    PusUInt32, PusInt32  FROM PUS-TypesDefinitions
+    PusSt03ParameterId, PusSt03HousekeepingReportId FROM PUS-ST03
+    ;
+
+    Pus-220-StateId ::= ENUMERATED { 
+        idle(0), mode1(1), mode2(2)
+    }
+    
+   
+    -- Data for TC[220,1]
+    PusTC-220-1-Data ::= SEQUENCE
+    {
+    	targetState Pus-220-StateId
+    }
+
+    -- No Data for TC[220,2]
+
+    -- Data for TM[220,3]
+    PusTM-220-3-Data ::= SEQUENCE
+    {
+    	actual Pus-220-StateId
+    }
+
+
+    -- Identification of activable parts
+    pus-St220-Parameter-Active PusSt03ParameterId ::= 10
+
+    pus-St220-SM-DMS-Base					PusSt03ParameterId ::= 100
+    pus-St220-SM-PWS-Base					PusSt03ParameterId ::= 200
+    pus-St220-SM-THS-Base					PusSt03ParameterId ::= 300
+    pus-St220-SM-BAT-Base					PusSt03ParameterId ::= 400
+    pus-St220-SM-OSP-Base					PusSt03ParameterId ::= 500
+
+    Pus-220-ActiveIds ::= SEQUENCE (SIZE(0 .. 256)) OF PusSt03ParameterId
+    pus-St220-SMS Pus-220-ActiveIds ::= {
+        pus-St220-SM-DMS-Base, 
+        pus-St220-SM-PWS-Base, 
+        pus-St220-SM-THS-Base, 
+        pus-St220-SM-BAT-Base, 
+        pus-St220-SM-OSP-Base
+    }
+    
+    -- Fake power reserve report
+    pus-ST03-POWERRESERVE-HK-REPORT PusSt03HousekeepingReportId ::= 400 
+    
+
+END
+
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
 -- ASN.1 definitions for service ST[23] File management
 -- (cf. ECSS-E-ST-70-41C sections 6.23, 8.23)
 
@@ -1127,6 +1577,41 @@ BEGIN
 	
 	
 END
+
+TASTE-ExtendedTypes DEFINITIONS ::=
+BEGIN
+
+IMPORTS 
+T-Int32, T-UInt32, T-Int8, T-UInt8, T-Boolean  FROM TASTE-BasicTypes;
+
+-- Set of TASTE predefined basic types
+
+T-Double ::= REAL (-1.7976931348623157e+308..1.7976931348623157E308)
+
+T-Float ::= REAL (-3.402823466E+38..3.402823466e+38)
+
+T-Int16 ::= INTEGER (-32768..32767 )
+
+T-UInt16 ::= INTEGER (0 .. 65535 )
+
+T-UInt64 ::= INTEGER (0..18446744073709551615)
+
+T-Int64 ::= INTEGER (-9223372036854775808.. 9223372036854775807)
+
+T-String ::= T-StringP{numT-String}
+
+T-StringP{T-UInt32: maxT-String} ::= OCTET STRING (SIZE(0..maxT-String))
+
+numT-String T-UInt32::= 40
+
+T-Time ::= SEQUENCE
+{
+    secs  T-UInt32,
+    nsecs T-UInt32
+}
+  
+END
+
 
 -- H2020 ESROCOS Project
 -- Company: GMV Aerospace & Defence S.A.U.

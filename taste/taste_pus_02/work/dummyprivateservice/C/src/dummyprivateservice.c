@@ -24,6 +24,8 @@ void dummyprivateservice_PI_forwardTc
 
 {
    // Write your code here
+   printf("[DUMMY privates] packet received: ");
+   PrintPusPacket("[DUMMY privates]", IN_tcpacket);
 }
 
 

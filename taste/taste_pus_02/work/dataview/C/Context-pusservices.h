@@ -23,30 +23,30 @@ flag asn1SccContext_pusservices_Equal(const asn1SccContext_pusservices* pVal1, c
 
 void asn1SccContext_pusservices_Initialize(asn1SccContext_pusservices* pVal);
 
-#define ERR_CONTEXT_PUSSERVICES		41251  /**/
-#define ERR_CONTEXT_PUSSERVICES_APID		41236  /**/
+#define ERR_CONTEXT_PUSSERVICES		128292  /**/
+#define ERR_CONTEXT_PUSSERVICES_APID		128277  /**/
 flag asn1SccContext_pusservices_IsConstraintValid(const asn1SccContext_pusservices* pVal, int* pErrCode);
 
-#define ERR_UPER_ENCODE_CONTEXT_PUSSERVICES		41252  /**/
-#define ERR_UPER_ENCODE_CONTEXT_PUSSERVICES_APID_2_2		41247  /**/
+#define ERR_UPER_ENCODE_CONTEXT_PUSSERVICES		128293  /**/
+#define ERR_UPER_ENCODE_CONTEXT_PUSSERVICES_APID_2_2		128288  /**/
 #define asn1SccContext_pusservices_REQUIRED_BYTES_FOR_ENCODING       2 
 #define asn1SccContext_pusservices_REQUIRED_BITS_FOR_ENCODING        11
 
 flag asn1SccContext_pusservices_Encode(const asn1SccContext_pusservices* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_UPER_DECODE_CONTEXT_PUSSERVICES		41253  /**/
-#define ERR_UPER_DECODE_CONTEXT_PUSSERVICES_APID_2_2		41248  /**/
+#define ERR_UPER_DECODE_CONTEXT_PUSSERVICES		128294  /**/
+#define ERR_UPER_DECODE_CONTEXT_PUSSERVICES_APID_2_2		128289  /**/
 flag asn1SccContext_pusservices_Decode(asn1SccContext_pusservices* pVal, BitStream* pBitStrm, int* pErrCode);
 
-#define ERR_ACN_ENCODE_CONTEXT_PUSSERVICES		41254  /**/
-#define ERR_ACN_ENCODE_CONTEXT_PUSSERVICES_APID		41239  /**/
+#define ERR_ACN_ENCODE_CONTEXT_PUSSERVICES		128295  /**/
+#define ERR_ACN_ENCODE_CONTEXT_PUSSERVICES_APID		128280  /**/
 #define asn1SccContext_pusservices_REQUIRED_BYTES_FOR_ACN_ENCODING       2 
 #define asn1SccContext_pusservices_REQUIRED_BITS_FOR_ACN_ENCODING        11
 
 flag asn1SccContext_pusservices_ACN_Encode(const asn1SccContext_pusservices* pVal, BitStream* pBitStrm, int* pErrCode, flag bCheckConstraints);
 
-#define ERR_ACN_DECODE_CONTEXT_PUSSERVICES		41255  /**/
-#define ERR_ACN_DECODE_CONTEXT_PUSSERVICES_APID		41240  /**/
+#define ERR_ACN_DECODE_CONTEXT_PUSSERVICES		128296  /**/
+#define ERR_ACN_DECODE_CONTEXT_PUSSERVICES_APID		128281  /**/
 flag asn1SccContext_pusservices_ACN_Decode(asn1SccContext_pusservices* pVal, BitStream* pBitStrm, int* pErrCode);
 
 extern const asn1SccContext_pusservices pusservices_ctxt; 

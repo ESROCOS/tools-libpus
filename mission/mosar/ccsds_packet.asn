@@ -46,6 +46,13 @@ BEGIN
     PusTC-200-11-Data, PusTM-200-12-Data FROM PUS-ST200 --  efcmd  
     PusTM-200-8-Data FROM PUS-ST200 --  wmstatus  
     
+/* R_ICU_SPW_PNP */
+    PusTC-210-1-Data FROM PUS-ST210                     --  SpW Routing Table Set Entry
+    PusTC-210-2-Data FROM PUS-ST210                     --  SpW PnP Set Owner Fields
+/* R_ICU */
+    PusTC-210-11-Data FROM PUS-ST210                     --  Configure Time Epoch
+    PusTC-210-12-Data FROM PUS-ST210                     --  Set LEDs
+
     PusTC-220-1-Data, PusTM-220-3-Data FROM PUS-ST220   --  reconfiguration
   	;
 
@@ -141,8 +148,16 @@ BEGIN
         st-200-5 PusTC-200-5-Data, 
         st-200-9 PusTC-200-9-Data, 
         st-200-11 PusTC-200-11-Data,
+
+        /* R_ICU_SPW_PNP */
+        st-210-1   PusTC-210-1-Data,
+        st-210-2   PusTC-210-2-Data,
+        /* R_ICU */
+        st-210-11   PusTC-210-11-Data,
+        st-210-12   PusTC-210-12-Data,
+
         st-220-1 PusTC-220-1-Data,
-    	-- No packet reduced
+        -- No packet reduced
     	st-11-4 	PusTC-11-4-Data,
     	st-18-1 	PusTC-18-1-Data,
     	st-19-1 	PusTC-19-1-Data
@@ -169,6 +184,14 @@ BEGIN
         st-200-5 PusTC-200-5-Data,
         st-200-9 PusTC-200-9-Data,
         st-200-11 PusTC-200-11-Data,
+
+        /* R_ICU_SPW_PNP */
+        st-210-1   PusTC-210-1-Data,
+        st-210-2   PusTC-210-2-Data,
+        /* R_ICU */
+        st-210-11   PusTC-210-11-Data,
+        st-210-12   PusTC-210-12-Data, 
+
         st-220-1 PusTC-220-1-Data
     }
     

@@ -25,7 +25,18 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
     
     elif (svc, msg) == (200, 11):
         pb.pus_tc_200_11_createEfcmdRequest_(packet, apid, seq)
-        
+
+ #ST 210
+    elif (svc, msg) == (210, 1):
+        pb.pus_tc_210_1_createSpwRoutingTableSetEntry(packet, apid, seq,0,0,0)
+    elif (svc, msg) == (210, 2):
+        pb.pus_tc_210_2_createSpwPnpSetOwnerFields(packet, apid, seq,0,0)
+    elif (svc, msg) == (210, 11):
+        pb.pus_tc_210_11_createConfigureTimeEpoch(packet, apid, seq,0,0,0)
+    elif (svc, msg) == (210, 21):
+        pb.pus_tc_210_12_createSetLeds(packet, apid, seq,0,0)
+
+
  #ST 220
     elif (svc, msg) == (220, 1):
         pb.pus_tc_220_1_createNewTargetState_(packet, apid, seq)
@@ -67,6 +78,15 @@ def mission_get_data(packet, svc, msg):
         data = tc_200_11_get_data(packet)
     elif (svc, msg) == (200, 8):
         data = tc_200_8_get_data(packet)
+    #ST 210
+    elif (svc, msg) == (210, 1):
+        data = tc_210_1_get_data(packet)
+    elif (svc, msg) == (210, 2):
+        data = tc_210_2_get_data(packet)
+    elif (svc, msg) == (210, 11):
+        data = tc_210_11_get_data(packet)
+    elif (svc, msg) == (210, 12):
+        data = tc_210_12_get_data(packet)
     #ST 220
     elif (svc, msg) == (220, 1):
         data = tc_220_1_get_data(packet)
@@ -90,9 +110,91 @@ def mission_set_data(packet, svc, msg, data):
         packet = tc_200_9_set_data(packet, data)
     elif (svc, msg) == (200, 11):
         packet = tc_200_11_set_data(packet, data)
+    # ST 210
+    elif (svc, msg) == (210, 1):
+        packet = tc_210_1_set_data(packet, data)
+    elif (svc, msg) == (210, 2):
+        packet = tc_210_2_set_data(packet, data)
+    elif (svc, msg) == (210, 11):
+        packet = tc_210_11_set_data(packet, data)
+    elif (svc, msg) == (210, 12):
+        packet = tc_210_12_set_data(packet, data)
     # ST 220
     elif (svc, msg) == (220, 1):
         packet = tc_220_1_set_data(packet, data) 
+
+# Specific get and set functions ST 210
+def tc_210_1_set_data(packet, data):
+    smId = int(data["smId"])
+    routingEntry = int(data["setRoutingEntry"])
+    spwTrafficPriority = int(data["spwTrafficPriority"])
+    
+    pb.pus_tc_210_1_setParamSM_ID(packet, smId)
+    pb.pus_tc_210_1_setParamSetRoutingEntry(packet,routingEntry)
+    pb.pus_tc_210_1_setParamSpwTrafficPriority(packet,spwTrafficPriority)
+
+    return packet
+
+def tc_210_1_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_1_getParamSM_ID(packet)
+    data["setRoutingEntry"] = pb.pus_tc_210_1_getParamSetRoutingEntry(packet)
+    data["spwTrafficPriority"] = pb.pus_tc_210_1_getParamSpwTrafficPriority(packet)
+
+    return data
+
+def tc_210_2_set_data(packet, data):
+    smId = int(data["smId"])
+    setOwner = int(data["setOwner"])
+    
+    pb.pus_tc_210_2_setParamSM_ID(packet, smId)
+    pb.pus_tc_210_2_setParamSetOwner(packet,setOwner)
+
+    return packet
+
+def tc_210_2_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_2_getParamSM_ID(packet)
+    data["setOwner"] = pb.pus_tc_210_2_getParamSetOwner(packet)
+    
+    return data
+
+def tc_210_11_set_data(packet, data):
+    smId = int(data["smId"])
+    rIcuSecondsSinceEpoch = int(data["rIcuSecondsSinceEpoch"])
+    rIcuNanosecondsSinceEpoch = int(data["rIcuNanosecondsSinceEpoch"])
+    
+    pb.pus_tc_210_11_setParamSM_ID(packet, smId)
+    pb.pus_tc_210_11_setParamRIcuSecondsSinceEpoch(packet,rIcuSecondsSinceEpoch)
+    pb.pus_tc_210_11_setParamRIcuNanosecondsSinceEpoch(packet,rIcuNanosecondsSinceEpoch)
+
+    return packet
+
+def tc_210_11_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_11_getParamSM_ID(packet)
+    data["rIcuSecondsSinceEpoch"] = pb.pus_tc_210_11_getParamRIcuSecondsSinceEpoch(packet)
+    data["rIcuNanosecondsSinceEpoch"] = pb.pus_tc_210_11_getParamRIcuNanosecondsSinceEpoch(packet)
+
+    return data
+
+def tc_210_12_set_data(packet, data):
+    smId = int(data["smId"])
+    rIcuSetLeds = int(data["rIcuSetLeds"])
+    
+    pb.pus_tc_210_12_setParamSM_ID(packet, smId)
+    pb.pus_tc_210_12_setParamRIcuSetLeds(packet,rIcuSetLeds)
+
+    return packet
+
+def tc_210_12_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_12_getParamSM_ID(packet)
+    data["rIcuSetLeds"] = pb.pus_tc_210_12_getParamRIcuSetLeds(packet)
+    
+    return data
+
+
 
 # Specific get and set functions ST 220
 def tc_220_1_set_data(packet, data):

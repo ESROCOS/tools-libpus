@@ -30,6 +30,7 @@
 
 //private services
 #define PUS_CONFIGURE_ST200_ENABLED
+#define PUS_CONFIGURE_ST210_ENABLED
 #define PUS_CONFIGURE_ST220_ENABLED
 
 #endif

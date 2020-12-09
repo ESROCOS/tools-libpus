@@ -303,14 +303,24 @@ BEGIN
     pus-TC-200-5-wmcmdRequest		PusSubserviceType ::= 5 
     pus-TM-200-6-wmcmdReport		PusSubserviceType ::= 6
      
+
     pus-TC-200-9-basecmdRequest		PusSubserviceType ::= 9 
     pus-TM-200-10-basecmdReport		PusSubserviceType ::= 10
      
     pus-TC-200-11-efcmdRequest		PusSubserviceType ::= 11 
     pus-TM-200-12-efcmdReport		PusSubserviceType ::= 12
-     
+   
     pus-TM-200-8-wmstatusReport		PusSubserviceType ::= 8
    
+    
+	-- ST210 RMAP management
+	pus-ST210-rmapManagement PusServiceType ::= 210 
+	pus-TC-210-1-SpwRoutingTableSetEntry    PusSubserviceType ::= 1
+	pus-TC-210-2-SpwPnpSetOwnerFields    PusSubserviceType ::= 2
+	pus-TC-210-11-ConfigureTimeEpoch    PusSubserviceType ::= 11
+	pus-TC-210-12-SetLeds    PusSubserviceType ::= 12
+
+
 	-- ST220 SW-reconfiguration
     pus-ST220-reconfigurationControl 	PusServiceType ::= 220 
 	pus-TC-220-1-setTargetState				PusSubserviceType ::= 1

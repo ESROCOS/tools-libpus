@@ -41,8 +41,6 @@ void pusservices_startup()
     /* Initialize APID */
     pusservices_initApid(pusservices_ctxt.apid);
     
-    printf("Hola GMV\n");
-
     /* Event debug */
     pusservices_events_debugEventsTrigger();
 
@@ -64,9 +62,9 @@ void pusservices_startup()
     pusservices_initService20();
     pusservices_initService23();
 
-    #ifdef PUSSERVICES_DISPATCH_OTHER_TC_ENABLED
-    pusservices_initOtherServices();
-    #endif
+    // #ifdef PUSSERVICES_DISPATCH_OTHER_TC_ENABLED
+    // pusservices_initOtherServices();
+    // #endif
 
 }
 
