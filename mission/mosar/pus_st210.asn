@@ -21,6 +21,7 @@ BEGIN
     PusTC-210-1-Data ::= SEQUENCE
     {
         smId PusUInt8,
+        componentId PusUInt8,
         setRoutingEntry PusUInt16,
         spwTrafficPriority PusUInt8
     }
@@ -28,6 +29,7 @@ BEGIN
     PusTC-210-2-Data ::= SEQUENCE
     {
         smId PusUInt8,
+        componentId PusUInt8,
         setOwner PusUInt16
     }
 /* R_ICU */
@@ -35,14 +37,16 @@ BEGIN
     PusTC-210-11-Data ::= SEQUENCE
     {
         smId PusUInt8,
-        rIcuSecondsSinceEpoch PusInt32,
-        rIcuNanosecondsSinceEpoch PusInt32
+        componentId PusUInt8,
+        secsSinceEpoch PusInt32,
+        nanosecsSinceEpoch PusInt32
     }
     -- Data for TC[210,12]
     PusTC-210-12-Data ::= SEQUENCE
     {
         smId PusUInt8,
-        rIcuSetLeds PusUInt8
+        componentId PusUInt8,
+        setLeds PusUInt8
     }
     
 END

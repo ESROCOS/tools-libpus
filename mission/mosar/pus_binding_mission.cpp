@@ -491,6 +491,8 @@ void init_mission_module(py::module &m)
     m.def("pus_tc_210_1_createSpwRoutingTableSetEntry", &pus_tc_210_1_createSpwRoutingTableSetEntry,"pus_tc_210_1_createSpwRoutingTableSetEntry");
     m.def("pus_tc_210_1_getParamSM_ID", &pus_tc_210_1_getParamSM_ID, "pus_tc_210_1_getParamSM_ID");
     m.def("pus_tc_210_1_setParamSM_ID", &pus_tc_210_1_setParamSM_ID, "pus_tc_210_1_setParamSM_ID");
+    m.def("pus_tc_210_1_getParamCOMP_ID", &pus_tc_210_1_getParamCOMP_ID, "pus_tc_210_1_getParamCOMP_ID");
+    m.def("pus_tc_210_1_setParamCOMP_ID", &pus_tc_210_1_setParamCOMP_ID, "pus_tc_210_1_setParamCOMP_ID");
     m.def("pus_tc_210_1_getParamSetRoutingEntry", &pus_tc_210_1_getParamSetRoutingEntry, "pus_tc_210_1_getParamSetRoutingEntry");
     m.def("pus_tc_210_1_setParamSetRoutingEntry", &pus_tc_210_1_setParamSetRoutingEntry, "pus_tc_210_1_setParamSetRoutingEntry");
     m.def("pus_tc_210_1_getParamSpwTrafficPriority", &pus_tc_210_1_getParamSpwTrafficPriority, "pus_tc_210_1_getParamSpwTrafficPriority");
@@ -499,6 +501,8 @@ void init_mission_module(py::module &m)
     m.def("pus_tc_210_2_createSpwPnpSetOwnerFields", &pus_tc_210_2_createSpwPnpSetOwnerFields,"pus_tc_210_2_createSpwPnpSetOwnerFields");
     m.def("pus_tc_210_2_getParamSM_ID", &pus_tc_210_2_getParamSM_ID, "pus_tc_210_2_getParamSM_ID");
     m.def("pus_tc_210_2_setParamSM_ID", &pus_tc_210_2_setParamSM_ID, "pus_tc_210_2_setParamSM_ID");
+    m.def("pus_tc_210_2_getParamCOMP_ID", &pus_tc_210_2_getParamCOMP_ID, "pus_tc_210_2_getParamCOMP_ID");
+    m.def("pus_tc_210_2_setParamCOMP_ID", &pus_tc_210_2_setParamCOMP_ID, "pus_tc_210_2_setParamCOMP_ID");
     m.def("pus_tc_210_2_getParamSetOwner", &pus_tc_210_2_getParamSetOwner, "pus_tc_210_2_getParamSetOwner");
     m.def("pus_tc_210_2_setParamSetOwner", &pus_tc_210_2_setParamSetOwner, "pus_tc_210_2_setParamSetOwner");
 
@@ -507,16 +511,20 @@ void init_mission_module(py::module &m)
     m.def("pus_tc_210_11_createConfigureTimeEpoch", &pus_tc_210_11_createConfigureTimeEpoch,"pus_tc_210_11_createConfigureTimeEpoch");
     m.def("pus_tc_210_11_getParamSM_ID", &pus_tc_210_11_getParamSM_ID, "pus_tc_210_11_getParamSM_ID");
     m.def("pus_tc_210_11_setParamSM_ID", &pus_tc_210_11_setParamSM_ID, "pus_tc_210_11_setParamSM_ID");
-    m.def("pus_tc_210_11_getParamRIcuSecondsSinceEpoch", &pus_tc_210_11_getParamRIcuSecondsSinceEpoch, "pus_tc_210_11_getParamRIcuSecondsSinceEpoch");
-    m.def("pus_tc_210_11_setParamRIcuSecondsSinceEpoch", &pus_tc_210_11_setParamRIcuSecondsSinceEpoch, "pus_tc_210_11_setParamRIcuSecondsSinceEpoch");
-    m.def("pus_tc_210_11_getParamRIcuNanosecondsSinceEpoch", &pus_tc_210_11_getParamRIcuNanosecondsSinceEpoch, "pus_tc_210_11_getParamRIcuNanosecondsSinceEpoch");
-    m.def("pus_tc_210_11_setParamRIcuNanosecondsSinceEpoch", &pus_tc_210_11_setParamRIcuNanosecondsSinceEpoch, "pus_tc_210_11_setParamRIcuNanosecondsSinceEpoch");
+    m.def("pus_tc_210_11_getParamCOMP_ID", &pus_tc_210_11_getParamCOMP_ID, "pus_tc_210_11_getParamCOMP_ID");
+    m.def("pus_tc_210_11_setParamCOMP_ID", &pus_tc_210_11_setParamCOMP_ID, "pus_tc_210_11_setParamCOMP_ID");
+    m.def("pus_tc_210_11_getParamSecsSinceEpoch", &pus_tc_210_11_getParamSecsSinceEpoch, "pus_tc_210_11_getParamSecsSinceEpoch");
+    m.def("pus_tc_210_11_setParamSecsSinceEpoch", &pus_tc_210_11_setParamSecsSinceEpoch, "pus_tc_210_11_setParamSecsSinceEpoch");
+    m.def("pus_tc_210_11_getParamNanosecsSinceEpoch", &pus_tc_210_11_getParamNanosecsSinceEpoch, "pus_tc_210_11_getParamNanosecsSinceEpoch");
+    m.def("pus_tc_210_11_setParamNanosecsSinceEpoch", &pus_tc_210_11_setParamNanosecsSinceEpoch, "pus_tc_210_11_setParamNanosecsSinceEpoch");
 
     m.def("pus_tc_210_12_createSetLeds", &pus_tc_210_12_createSetLeds,"pus_tc_210_12_createSetLeds");
     m.def("pus_tc_210_12_getParamSM_ID", &pus_tc_210_12_getParamSM_ID, "pus_tc_210_12_getParamSM_ID");
     m.def("pus_tc_210_12_setParamSM_ID", &pus_tc_210_12_setParamSM_ID, "pus_tc_210_12_setParamSM_ID");
-    m.def("pus_tc_210_12_getParamRIcuSetLeds", &pus_tc_210_12_getParamRIcuSetLeds, "pus_tc_210_12_getParamRIcuSetLeds");
-    m.def("pus_tc_210_12_setParamRIcuSetLeds", &pus_tc_210_12_setParamRIcuSetLeds, "pus_tc_210_12_setParamRIcuSetLeds");
+    m.def("pus_tc_210_12_getParamCOMP_ID", &pus_tc_210_12_getParamCOMP_ID, "pus_tc_210_12_getParamCOMP_ID");
+    m.def("pus_tc_210_12_setParamCOMP_ID", &pus_tc_210_12_setParamCOMP_ID, "pus_tc_210_12_setParamCOMP_ID");
+    m.def("pus_tc_210_12_getParamSetLeds", &pus_tc_210_12_getParamSetLeds, "pus_tc_210_12_getParamSetLeds");
+    m.def("pus_tc_210_12_setParamSetLeds", &pus_tc_210_12_setParamSetLeds, "pus_tc_210_12_setParamSetLeds");
 
 
 
