@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="packetTab">
      <attribute name="title">
@@ -89,14 +89,14 @@
     </widget>
     <widget class="QWidget" name="statusTab">
      <attribute name="title">
-      <string>System status</string>
+      <string>System status: OBC-C</string>
      </attribute>
      <widget class="QListWidget" name="hkParamList">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>60</y>
-        <width>361</width>
+        <width>831</width>
         <height>431</height>
        </rect>
       </property>
@@ -130,7 +130,7 @@
      <widget class="QLabel" name="sysParamsLabel">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>890</x>
         <y>40</y>
         <width>141</width>
         <height>17</height>
@@ -143,11 +143,75 @@
      <widget class="QListWidget" name="sysParamsList">
       <property name="geometry">
        <rect>
+        <x>890</x>
+        <y>60</y>
+        <width>271</width>
+        <height>431</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="statusTab_2">
+     <attribute name="title">
+      <string>System status: OBC-S</string>
+     </attribute>
+     <widget class="QLabel" name="sysParamsLabel_4">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>40</y>
+        <width>141</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>System parameters</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="sysParamsList_4">
+      <property name="geometry">
+       <rect>
         <x>390</x>
         <y>60</y>
         <width>361</width>
         <height>431</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="hkParamList_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>361</width>
+        <height>431</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="hkParamsLbl_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>191</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Housekeeping parameters</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="spacecraftTimeLbl_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>121</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>SpacecraftTime:</string>
       </property>
      </widget>
     </widget>
