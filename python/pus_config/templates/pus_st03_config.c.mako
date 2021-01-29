@@ -50,10 +50,12 @@ pusError_t pus_hk_configure()
 {
 	// Store parameters info
 % for param in config['parameters']:
-## <%
-##     tempvars['paramsCount'] = tempvars['paramsCount'] + 1 
-##     tempvars['paramIndex'][param['label']] = tempvars['paramsCount']
-## %>
+<% 
+if param['type'] == 'UINT16':
+    param['type'] = 'UINT32'
+elif param['type'] == 'REAL32':
+    param['type'] = 'REAL64'
+%>
     pus_st03_params[${param['label']}] = 0;
     pus_st03_paramInfo[${param['label']}].label = "${param['label']}";
     pus_st03_paramInfo[${param['label']}].type = PUS_${param['type']};
@@ -93,6 +95,12 @@ pusError_t pus_hk_getReportParams(pusSt03HousekeepingReportId_t reportId, size_t
 }
 
 % for param in config['parameters']:
+<% 
+if param['type'] == 'UINT16':
+    param['type'] = 'UINT32'
+elif param['type'] == 'REAL32':
+    param['type'] = 'REAL64'
+%>
 pusError_t pus_hk_set${param['label']}(${param['type']} value)
 {
 	%if str(param['type']) == str("INT32"):

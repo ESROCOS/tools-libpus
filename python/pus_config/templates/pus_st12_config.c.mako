@@ -67,6 +67,12 @@ pusSt12PmonDefinition pus_pmon_definitionList[PUS_ST12_PARAM_LIMIT];
 pusError_t pus_pmon_configure()
 {
 	% for param in config['parameters']:
+<% 
+if param['type'] == 'UINT16':
+    param['type'] = 'UINT32'
+elif param['type'] == 'REAL32':
+    param['type'] = 'REAL64'
+%>
 	pus_pmon_definitionList[${param['label']}].status = false;
 	pus_pmon_definitionList[${param['label']}].check.low_limit.${param['type']} = ${param['low_limit']};
 	pus_pmon_definitionList[${param['label']}].check.high_limit.${param['type']} = ${param['high_limit']};

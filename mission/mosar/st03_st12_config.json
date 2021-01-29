@@ -1,102 +1,119 @@
 {
 	"parameters": [
 		{
-			"label": "HK_PARAM_INT01",
-			"type": "INT32",
-			"low_limit": 4,
-			"high_limit": 10
-		},
-		{
 			"label": "OBCP_ACTIVES",
 			"type": "UINT32",
 			"low_limit": 0,
 			"high_limit": 100
 		},
 		{
-			"label": "HK_PARAM_REAL01",
-			"type": "REAL64",
-			"low_limit": -23,
-			"high_limit": 23.23
+			"label": "HK_PARAM_UINT16_01",
+			"type": "UINT16",
+			"low_limit": 4,
+			"high_limit": 10
 		},
 		{
-			"label": "HK_PARAM_INT02",
+			"label": "HK_PARAM_UINT32_01",
+			"type": "UINT32",
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_INT32_01",
 			"type": "INT32",
 			"low_limit": 4,
 			"high_limit": 10
 		},
 		{
-			"label": "HK_PARAM_UINT01",
-			"type": "UINT32",
-			"low_limit": 5,
+			"label": "HK_PARAM_REAL32_01",
+			"type": "REAL32",
+			"low_limit": 4,
 			"high_limit": 10
 		},
 		{
-			"label": "HK_PARAM_BYTE01",
+			"label": "HK_PARAM_REAL64_01",
+			"type": "REAL64",
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_BYTE_01",
 			"type": "BYTE",
-			"low_limit": 2,
+			"low_limit": 4,
 			"high_limit": 10
 		},
 		{
-			"label": "HK_PARAM_BOOL01",
+			"label": "HK_PARAM_BOOL_01",
 			"type": "BOOL",
-			"low_limit": 0,
-			"high_limit": 0
+			"low_limit": 4,
+			"high_limit": 10
 		},
 		{
-			"label": "UR5_JOINT_0",
-			"type": "REAL64",
-			"low_limit": -4,
-			"high_limit": 4
+			"label": "HK_PARAM_UINT16_02",
+			"type": "UINT16",
+			"low_limit": 4,
+			"high_limit": 10
 		},
 		{
-			"label": "UR5_JOINT_1",
-			"type": "REAL64",
-			"low_limit": -4,
-			"high_limit": 4
-		},
-		{
-			"label": "UR5_JOINT_2",
-			"type": "REAL64",
-			"low_limit": -4,
-			"high_limit": 4
-		},
-		{
-			"label": "UR5_JOINT_3",
-			"type": "REAL64",
-			"low_limit": -4,
-			"high_limit": 4
-		},
-		{
-			"label": "UR5_JOINT_4",
-			"type": "REAL64",
-			"low_limit": -4,
-			"high_limit": 4
-		},
-		{
-			"label": "UR5_JOINT_5",
-			"type": "REAL64",
-			"low_limit": -4,
-			"high_limit": 4
-		},
-		{
-			"label": "ROBOT_STATE",
+			"label": "HK_PARAM_UINT32_02",
 			"type": "UINT32",
-			"low_limit": 0,
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_INT32_02",
+			"type": "INT32",
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_REAL32_02",
+			"type": "REAL32",
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_REAL64_02",
+			"type": "REAL64",
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_BYTE_02",
+			"type": "BYTE",
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_BOOL_02",
+			"type": "BOOL",
+			"low_limit": 4,
 			"high_limit": 10
 		}
 	],
 	"hkReports": [
 		{
-			"name": "DEFAULT_REP",
+			"name": "HK_SID_0",
 			"parameters": [
-				"OBCP_ACTIVES",
-				"ROBOT_STATE",
-				"UR5_JOINT_0",
-				"UR5_JOINT_1",
-				"UR5_JOINT_2",
-				"UR5_JOINT_3",
-				"UR5_JOINT_4",
-				"UR5_JOINT_5"
+				"HK_PARAM_UINT16_01",
+				"HK_PARAM_UINT32_01",
+				"HK_PARAM_INT32_01",
+				"HK_PARAM_REAL32_01",
+				"HK_PARAM_REAL64_01",
+				"HK_PARAM_BYTE_01",
+				"HK_PARAM_BOOL_01"
+			]
+		},
+		{
+			"name": "HK_SID_1",
+			"parameters": [
+				"HK_PARAM_UINT16_02",
+				"HK_PARAM_UINT32_02",
+				"HK_PARAM_INT32_02",
+				"HK_PARAM_REAL32_02",
+				"HK_PARAM_REAL64_02",
+				"HK_PARAM_BYTE_02",
+				"HK_PARAM_BOOL_02"
 			]
 		}
 	]

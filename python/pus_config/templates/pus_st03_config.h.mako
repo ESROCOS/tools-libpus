@@ -37,6 +37,13 @@ extern "C" {
 // Datapool Parameter identifiers
 <% count = 0 %>
 % for param in config['parameters']:
+<% 
+if param['type'] == 'UINT16':
+    param['type'] = 'UINT32'
+elif param['type'] == 'REAL32':
+    param['type'] = 'REAL64'
+%>
+
 #define ${param['label']} ((pusSt03ParamId_t) ${count}U) \
 <% count = count + 1 %>
 % endfor
@@ -69,16 +76,20 @@ pusError_t pus_hk_configure();
 extern pusError_t pus_hk_getReportParams(pusSt03HousekeepingReportId_t reportId, size_t *numParams, pusSt03ParamId_t* paramIds);
 
 //Param types
-typedef uint16_t UINT16;
 typedef int32_t INT32;
 typedef uint32_t UINT32;
-typedef float REAL32;
 typedef double REAL64;
 typedef uint8_t BYTE;
 typedef bool BOOL;
 
 //Param getters/setters
 % for param in config['parameters']:
+<% 
+if param['type'] == 'UINT16':
+    param['type'] = 'UINT32'
+elif param['type'] == 'REAL32':
+    param['type'] = 'REAL64'
+%>
 pusError_t pus_hk_set${param['label']}(${param['type']} value);
 pusError_t pus_hk_get${param['label']}(${param['type']}* value);
 
