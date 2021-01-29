@@ -1,0 +1,49 @@
+-- H2020 ESROCOS Project
+-- Company: GMV Aerospace & Defence S.A.U.
+-- Licence: GPLv2
+
+-- ASN.1 definitions for private service ST[20] Robot control
+--
+-- Two subservices are implemented:
+--  - TC[201,1] Set home request
+--  - TC[201,2] Plan home request
+--  - TC[201,2] Plan move request
+--  - TM[201,2] Plan report
+
+
+PUS-ST201 DEFINITIONS ::= 
+BEGIN
+
+
+    IMPORTS 
+    PusUInt32, PusDouble FROM PUS-TypesDefinitions
+    ;
+    
+    -- Point
+    PusSt201Point ::= PusDouble --TODO
+    
+    -- Observation TODO enum
+    PusSt201PlanObservationId ::= PusUInt32
+    PusSt201PlanObservationCode ::= PusUInt32
+    
+    PusSt201PlanObservation  ::= SEQUENCE
+    {
+    	id		PusSt201PlanObservationId,
+    	code	PusSt201PlanObservationCode
+    }
+    
+    
+    -- Data for TC[201,1] and TC[201,3]
+    PusTC-201-1-3-Data  ::= SEQUENCE
+    {
+    	position		SEQUENCE SIZE(3) OF PusSt201Point,
+    	orientation		SEQUENCE SIZE(4) OF PusSt201Point
+    }
+    
+    -- Data for TM[201,1]
+    PusTM-201-4-Data  ::= SEQUENCE
+    {
+    	observation PusSt201PlanObservation
+    }
+    
+END

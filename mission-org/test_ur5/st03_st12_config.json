@@ -1,0 +1,98 @@
+{
+	"parameters": [
+		{
+			"label": "HK_PARAM_INT01",
+			"type": "INT32",
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "OBCP_ACTIVES",
+			"type": "UINT32",
+			"low_limit": 0,
+			"high_limit": 100
+		},
+		{
+			"label": "HK_PARAM_REAL01",
+			"type": "REAL64",
+			"low_limit": -23,
+			"high_limit": 23.23
+		},
+		{
+			"label": "HK_PARAM_INT02",
+			"type": "INT32",
+			"low_limit": 4,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_UINT01",
+			"type": "UINT32",
+			"low_limit": 5,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_BYTE01",
+			"type": "BYTE",
+			"low_limit": 2,
+			"high_limit": 10
+		},
+		{
+			"label": "HK_PARAM_BOOL01",
+			"type": "BOOL",
+			"low_limit": 0,
+			"high_limit": 0
+		},
+		{
+			"label": "UR5_JOINT_0",
+			"type": "REAL64",
+			"low_limit": -4,
+			"high_limit": 4
+		},
+		{
+			"label": "UR5_JOINT_1",
+			"type": "REAL64",
+			"low_limit": -4,
+			"high_limit": 4
+		},
+		{
+			"label": "UR5_JOINT_2",
+			"type": "REAL64",
+			"low_limit": -4,
+			"high_limit": 4
+		},
+		{
+			"label": "UR5_JOINT_3",
+			"type": "REAL64",
+			"low_limit": -4,
+			"high_limit": 4
+		},
+		{
+			"label": "UR5_JOINT_4",
+			"type": "REAL64",
+			"low_limit": -4,
+			"high_limit": 4
+		},
+		{
+			"label": "UR5_JOINT_5",
+			"type": "REAL64",
+			"low_limit": -4,
+			"high_limit": 4
+		},
+		{
+			"label": "ROBOT_STATE",
+			"type": "UINT32",
+			"low_limit": 0,
+			"high_limit": 10
+		}
+	],
+	"defaultHkReport": [
+		"OBCP_ACTIVES",
+		"ROBOT_STATE",
+		"UR5_JOINT_0",
+		"UR5_JOINT_1",
+		"UR5_JOINT_2",
+		"UR5_JOINT_3",
+		"UR5_JOINT_4",
+		"UR5_JOINT_5"
+	]
+}

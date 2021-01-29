@@ -292,7 +292,7 @@ void test_st03()
 
 	// Report contents
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getNumParameters(&tm, &len));
-	CU_ASSERT_EQUAL(len, pus_st03_defaultHkReportInfo.numParams);
+	CU_ASSERT_EQUAL(len, pus_st03_HkReportInfos[0].numParams);
 
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_tm_3_25_getParameterValue(&tm, 0, &val));
 	CU_ASSERT_EQUAL(PUS_NO_ERROR, pus_paramToReal64(&d1, val));
@@ -414,14 +414,6 @@ void test_st03()
 
 	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), 1234, pus_APID_IDLE));
 	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_ID_UNKNOWN, PUS_GET_ERROR()); pus_clearError();
-
-	extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
-	size_t oldNumParams = pus_st03_defaultHkReportInfo.numParams;
-
-/*	pus_st03_defaultHkReportInfo.numParams = 1000;
-	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, pus_tm_3_25_createHousekeepingReport(&tm, apid.apid, pus_getNextPacketCount(&apid), pus_ST03_DEFAULT_HK_REPORT, pus_APID_IDLE));
-	CU_ASSERT_EQUAL(PUS_ERROR_REPORT_LENGTH, PUS_GET_ERROR()); pus_clearError();*/
-	pus_st03_defaultHkReportInfo.numParams = oldNumParams;
 
 	// pus_tm_3_25_setParameterValues
 	CU_ASSERT_TRUE(pus_mutexDestroyOk(&mutexHk));

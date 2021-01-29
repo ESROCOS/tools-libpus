@@ -19,8 +19,10 @@
 						"description": "Data type of the parameter",
 						"type": "string",
 						"enum": [
+							"UINT16",
 							"INT32",
 							"UINT32",
+							"REAL32",
 							"REAL64",
 							"BYTE",
 							"BOOL"
@@ -43,16 +45,37 @@
 				]
 			}
 		},
-		"defaultHkReport": {
+		"hkReports": {
 			"type": "array",
+			"minItems": 1,
+			"maxItems": 50,
 			"items": {
-				"description": "Textual label for the parameter, matching the parameters array",
-				"type": "string"
+				"title": "Housekeeping reports identifiers.",
+				"type": "object",
+				"properties": {
+					"name": {
+						"description": "Name label for HK report",
+						"type": "string"
+					},
+					"parameters": {
+						"type": "array",
+						"minItems": 1,
+						"maxItems": 20,
+						"items": {
+							"description": "Textual label for the parameter, matching the parameters array",
+							"type": "string"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"parameters"
+				]
 			}
 		}
 	},
 	"required": [
 		"parameters",
-		"defaultHkReport"
+		"hkReports"
 	]
 }

@@ -1,0 +1,10 @@
+{
+	"maximumFiles": 2,
+	"repositories": [
+		{
+			"label": "PUS_REPOSITORY_TEST",
+			"domain": "/tmp/pus/",
+			"system": "LINUX"
+		}
+	]
+}

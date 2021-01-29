@@ -85,14 +85,19 @@
 			"high_limit": 10
 		}
 	],
-	"defaultHkReport": [
-		"OBCP_ACTIVES",
-		"ROBOT_STATE",
-		"UR5_JOINT_0",
-		"UR5_JOINT_1",
-		"UR5_JOINT_2",
-		"UR5_JOINT_3",
-		"UR5_JOINT_4",
-		"UR5_JOINT_5"
+	"hkReports": [
+		{
+			"name": "DEFAULT_REP",
+			"parameters": [
+				"OBCP_ACTIVES",
+				"ROBOT_STATE",
+				"UR5_JOINT_0",
+				"UR5_JOINT_1",
+				"UR5_JOINT_2",
+				"UR5_JOINT_3",
+				"UR5_JOINT_4",
+				"UR5_JOINT_5"
+			]
+		}
 	]
 }

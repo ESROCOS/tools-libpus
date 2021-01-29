@@ -18,6 +18,7 @@ extern pusStoredParam_t pus_st03_params[];
 // Structure of the default HK report
 extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
 
+extern pusError_t pus_hk_getReportParams(pusSt03HousekeepingReportId_t reportId, size_t *numParams, pusSt03ParamId_t* paramIds);
 
 //
 // Packet creation
@@ -58,16 +59,17 @@ pusError_t pus_tm_3_25_createHousekeepingReport(pusPacket_t* outTm, pusApid_t ap
 	pus_setTmPacketTimeNow(outTm);
 
 	// Report contents
-	if (pus_ST03_DEFAULT_HK_REPORT == reportId)
+	size_t numParams = 0;
+	pusSt03ParamId_t paramIds[20] = {0};
+	if (pus_hk_getReportParams(reportId, &numParams, paramIds) == PUS_NO_ERROR)
 	{
 		pus_tm_3_25_setReportId(outTm, reportId);
-		pus_tm_3_25_setNumParameters(outTm, pus_st03_defaultHkReportInfo.numParams);
+		pus_tm_3_25_setNumParameters(outTm, numParams);
 	}
 	else
 	{
 		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
 	}
-	// handle here user-defined HK reports (not yet implemented)
 
 	return PUS_GET_ERROR();
 }
@@ -119,16 +121,10 @@ pusError_t pus_tm_3_25_setParameterValues(pusPacket_t* outTm, pusSt03Housekeepin
 		return PUS_GET_ERROR();
 	}
 
-	size_t numParams = 0;
-	pusSt03ParamId_t* paramIds;
 	// Get the array defining the report contents
-	if (pus_ST03_DEFAULT_HK_REPORT == reportId)
-	{
-		numParams = pus_st03_defaultHkReportInfo.numParams;
-		paramIds = pus_st03_defaultHkReportInfo.paramIds;
-	}
-	// handle here user-defined HK reports (not yet implemented)
-	else
+	size_t numParams = 0;
+	pusSt03ParamId_t paramIds[20] = {0};
+	if (pus_hk_getReportParams(reportId, &numParams, paramIds) != PUS_NO_ERROR)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
 	}
