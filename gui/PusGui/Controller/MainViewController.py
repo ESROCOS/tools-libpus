@@ -222,21 +222,21 @@ class MainViewController(object):
             self.view.window.packagesTable.setRowHidden(row, True)
 
         # elem[6] = APID // elem[2] == svc
-        self.update_params(elem[6], elem[2])  # at this point system_params have already been updated from model
+        self.update_params_table(elem[6], elem[9].split()[-1], elem[2])  # at this point system_params have already been updated from model
         self.view.window.packagesTable.setSortingEnabled(True)
 
-    def update_params(self, apid, svc):
+    def update_params_table(self, apid, reportId, svc):
         """
         This method update parameters of system status tab
         :param svc: The service of the packet arrived
         """
-        params = self.model.get_params()
+        params = self.model.get_params(apid)
         for k, v in params.items():
             if k == "spacecraftTime" and svc == 9:
                 time_ = time.strftime('%H:%M:%S', time.localtime(v))
                 self.view.update_space_time(v)
             elif k != "spacecraftTime" and svc == 3:
-                self.view.update_system_params(apid, k, v)
+                self.view.update_system_params(apid, int(reportId), k, v)
 
     def clear_qtable_callback(self):
         """

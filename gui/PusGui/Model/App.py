@@ -23,6 +23,7 @@ class App(object):
         """
         self.table = PusConsoleTable()
         self.parameters_report_values = {"spacecraftTime": None}
+        self.parameters_report_values__2 = {"spacecraftTime": None}
         self.st3_param_numbers = list()
         self.tc_apid = pb.pusApidInfo_t()
         self.currentFilter = None
@@ -81,8 +82,11 @@ class App(object):
         list_.append(packet)
         self.table.append(list_)  # QtTable is updated here
 
-    def get_params(self):
-        return self.parameters_report_values
+    def get_params(self, apid):
+        if apid == 0:
+            return self.parameters_report_values
+        else:
+            return self.parameters_report_values__2
 
     def update_params(self, packet):
         if packet["primary_header"]["pck_id"]["sec_head_flg"]:
@@ -97,7 +101,11 @@ class App(object):
         elif svc == 3:
             report = packet["data"]["user_data"]["src_data"]["hk_param_report"]["params"]
             for k, v in report.items():
-                self.parameters_report_values[k] = v
+                apid = int(packet["primary_header"]["pck_id"]["apid"])
+                if apid == 0:
+                    self.parameters_report_values[k] = v
+                else:
+                    self.parameters_report_values__2[k] = v
 
     def set_filter(self, filter_: dict):
         """
