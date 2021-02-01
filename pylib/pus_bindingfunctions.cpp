@@ -289,7 +289,7 @@ pusParamType_t pus_st03_getHkReportInfoType(pusSt03ParamId_t paramIndex) {
 }
 
 pusSt03ParamId_t pus_st03_getHkInfoNameFromReport(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIdx) {
-	(void)reportId; //unused // JMSM
+	(void)reportId; //unused // TODO - JMSM
 	if (reportIdx < pus_ST03_PARAM_LIMIT) {
 		 return pus_st03_HkReportInfos[reportId].paramIds[reportIdx];
 	}

@@ -98,7 +98,7 @@ class App(object):
         if (svc, msg) == (9, 2):
             time_ = int(packet["data"]["user_data"]["src_data"]["time"])
             self.parameters_report_values["spacecraftTime"] = time_
-        elif svc == 3:
+        elif (svc, msg) == (3, 25):
             report = packet["data"]["user_data"]["src_data"]["hk_param_report"]["params"]
             for k, v in report.items():
                 apid = int(packet["primary_header"]["pck_id"]["apid"])

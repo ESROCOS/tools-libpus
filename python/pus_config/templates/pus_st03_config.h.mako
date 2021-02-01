@@ -43,7 +43,6 @@ if param['type'] == 'UINT16':
 elif param['type'] == 'REAL32':
     param['type'] = 'REAL64'
 %>
-
 #define ${param['label']} ((pusSt03ParamId_t) ${count}U) \
 <% count = count + 1 %>
 % endfor
@@ -68,6 +67,9 @@ extern pusSt03ReportInfo_t pus_st03_HkReportInfos[];
 
 //! First invalid parameter ID
 extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
+
+//! First invalid reportId ID
+extern const pusSt03HousekeepingReportId_t pus_ST03_REPORT_LIMIT;
 
 //! Initialize the configuration of the ST[03] service from the mission database
 pusError_t pus_hk_configure();

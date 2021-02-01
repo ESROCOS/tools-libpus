@@ -18,7 +18,7 @@ BEGIN
 	PusSequenceCount, PusPacketDataLength FROM PUS-CcsdsPacketFields
 
 	PusTM-1-X-Data FROM PUS-ST01
-	PusTM-3-25-Data FROM PUS-ST03
+	PusTM-3-25-Data, PusTC-3-5-Data, PusTC-3-6-Data FROM PUS-ST03
 	PusTM-5-X-Data FROM PUS-ST05
 	PusTC-8-1-Data FROM PUS-ST08
 	PusTC-9-1-Data, PusTM-9-2-Data FROM PUS-ST09
@@ -130,6 +130,8 @@ BEGIN
     PusTcApplicationData ::= CHOICE
     { -- The same order as the reduced
         st-0-0      PusTM-TC-Dummy-Data,
+        st-3-5      PusTC-3-5-Data,
+        st-3-6      PusTC-3-6-Data,
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,
@@ -166,6 +168,8 @@ BEGIN
     PusTcApplicationDataReduced ::= CHOICE
     {
         st-0-0      PusTM-TC-Dummy-Data,
+        st-3-5      PusTC-3-5-Data,
+        st-3-6      PusTC-3-6-Data,
     	st-8-1 		PusTC-8-1-Data,
     	st-9-1 		PusTC-9-1-Data,
     	st-12-1-2 	PusTC-12-1-2-Data,

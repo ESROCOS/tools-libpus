@@ -15,14 +15,148 @@ extern pusMutex_t* pus_hk_mutex;
 // Array for parameters values (all stored in 64 bits)
 extern pusStoredParam_t pus_st03_params[];
 
-// Structure of the default HK report
-extern pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
-
 extern pusError_t pus_hk_getReportParams(pusSt03HousekeepingReportId_t reportId, size_t *numParams, pusSt03ParamId_t* paramIds);
 
 //
 // Packet creation
 //
+
+/*! Builds a TC[3,5] packet in the packet passed as parameter.
+ *  \param[out] outTc Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCount sequence number
+ *  \param[in] reportId HK report ID
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_tc_3_5_createEnableHousekeepingGeneration(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt03HousekeepingReportId_t reportId)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST03_housekeeping);
+		pus_setTcSubtype(outTc, pus_TC_3_5_enablePeriodicHousekeeping);
+		pus_setTcSource(outTc, apid);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_3_5);
+		outTc->data.u.tcData.data.u.st_3_5.reportId = reportId;
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_3_5_setReportId(pusPacket_t* outTc, pusSt03HousekeepingReportId_t reportId)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (PUS_NO_ERROR == PUS_EXPECT_ST03TC(outTc, pus_TC_3_5_enablePeriodicHousekeeping))
+	{
+		outTc->data.u.tcData.data.u.st_3_5.reportId = reportId;
+		return PUS_NO_ERROR;
+	}
+
+	return PUS_GET_ERROR();
+}
+
+pusSt03HousekeepingReportId_t pus_tc_3_5_getReportId(const pusPacket_t* outTc)
+{
+	if (NULL == outTc)
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (PUS_NO_ERROR == PUS_EXPECT_ST03TC(outTc, pus_TC_3_5_enablePeriodicHousekeeping))
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+		return outTc->data.u.tcData.data.u.st_3_5.reportId;
+	}
+
+	return 0;
+}
+
+/*! Builds a TC[3,6] packet in the packet passed as parameter.
+ *  \param[out] outTc Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCount sequence number
+ *  \param[in] reportId HK report ID
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_tc_3_6_createDisableHousekeepingGeneration(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt03HousekeepingReportId_t reportId)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST03_housekeeping);
+		pus_setTcSubtype(outTc, pus_TC_3_6_disablePeridodicHousekeeping);
+		pus_setTcSource(outTc, apid);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_3_6);
+		outTc->data.u.tcData.data.u.st_3_6.reportId = reportId;
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+pusError_t pus_tc_3_6_setReportId(pusPacket_t* outTc, pusSt03HousekeepingReportId_t reportId)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (PUS_NO_ERROR == PUS_EXPECT_ST03TC(outTc, pus_TC_3_6_disablePeridodicHousekeeping))
+	{
+		outTc->data.u.tcData.data.u.st_3_6.reportId = reportId;
+		return PUS_NO_ERROR;
+	}
+	return PUS_GET_ERROR();
+}
+
+pusSt03HousekeepingReportId_t pus_tc_3_6_getReportId(const pusPacket_t* outTc)
+{
+	if (NULL == outTc)
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else if (PUS_NO_ERROR == PUS_EXPECT_ST03TC(outTc, pus_TC_3_6_disablePeridodicHousekeeping))
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+		return outTc->data.u.tcData.data.u.st_3_6.reportId;
+	}
+
+	return 0;
+}
 
 pusError_t pus_tm_3_25_createHousekeepingReportDefault(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination)
 {
@@ -241,6 +375,57 @@ pusError_t pus_tm_3_25_setNumParameters(pusPacket_t* tm, size_t inNumParams)
 //
 // Parameter checking
 //
+
+pusError_t pus_expectSt03Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
+{
+	pusError_t expectResult = pus_expectTcHeader(packet, function, (pusErrorData_t){.integer=0});
+
+	if (PUS_NO_ERROR == expectResult)
+	{
+		pusService_t service = pus_getTcService(packet);
+		pusSubservice_t subtype = pus_getTcSubtype(packet);
+
+		if (service != pus_ST03_housekeeping)
+		{
+			pus_setError(PUS_ERROR_TC_SERVICE, function, (pusErrorData_t){.integer=service});
+			return PUS_ERROR_TC_SERVICE;
+		}
+
+		if (expectedSubtype == pusSubtype_NONE)
+		{
+			if ((subtype != pus_TC_3_5_enablePeriodicHousekeeping) && 
+				(subtype != pus_TC_3_6_disablePeridodicHousekeeping))
+			{
+				pus_setError(PUS_ERROR_TC_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
+				return PUS_ERROR_TC_SUBTYPE;
+			}
+		}
+		else
+		{
+			if (subtype != expectedSubtype)
+			{
+				pus_setError(PUS_ERROR_TC_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
+				return PUS_ERROR_TC_SUBTYPE;
+
+			}
+		}
+
+		pusPacketDataKind_t kind = pus_getTcDataKind(packet);
+		if((kind != pus_TC_DATA_ST_3_5) &&
+			(kind != pus_TC_DATA_ST_3_6))
+		{
+			pus_setError(PUS_ERROR_TC_KIND, function, (pusErrorData_t){.integer=kind});
+			return PUS_ERROR_TC_KIND;
+		}
+
+		return PUS_NO_ERROR;
+	}
+	else
+	{
+		return expectResult;
+	}
+}
+
 
 pusError_t pus_expectSt03Tm(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
 {

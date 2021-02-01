@@ -31,6 +31,12 @@ extern pusStoredParam_t pus_st03_params[];
 // First invalid parameter ID
 extern const pusSt03ParamId_t pus_ST03_PARAM_LIMIT;
 
+//! First invalid reportId ID
+extern const pusSt03HousekeepingReportId_t pus_ST03_REPORT_LIMIT;
+
+// HK report information 
+extern pusSt03ReportInfo_t pus_st03_HkReportInfos[];
+
 pusError_t pus_hk_initialize(pusMutex_t* mutex)
 {
 	if (pus_hk_isInitialized())
@@ -80,6 +86,45 @@ pusError_t pus_hk_finalize()
 bool pus_hk_isInitialized()
 {
 	return pus_st03_initializedFlag;
+}
+
+pusError_t pus_hk_enableReport(pusSt03HousekeepingReportId_t reportId)
+{
+	if(reportId < pus_ST03_REPORT_LIMIT)
+	{
+		pus_st03_HkReportInfos[reportId].isEnabled = TRUE;
+		return PUS_NO_ERROR;
+	}
+	else
+	{
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
+	}
+}
+
+pusError_t pus_hk_disableReport(pusSt03HousekeepingReportId_t reportId)
+{
+	if(reportId < pus_ST03_REPORT_LIMIT)
+	{
+		pus_st03_HkReportInfos[reportId].isEnabled = FALSE;
+		return PUS_NO_ERROR;
+	}
+	else
+	{
+		return PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
+	}
+}
+
+bool pus_hk_isReportEnabled(pusSt03HousekeepingReportId_t reportId)
+{
+	if(reportId < pus_ST03_REPORT_LIMIT)
+	{
+		return pus_st03_HkReportInfos[reportId].isEnabled;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_ERROR_REPORT_ID_UNKNOWN);
+		return FALSE;
+	}
 }
 
 pusError_t pus_hk_getStoredParam(pusSt03ParamId_t param, pusStoredParam_t* outValue)

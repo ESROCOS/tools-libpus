@@ -67,8 +67,8 @@ BEGIN
 	-- Housekeeping
 	-- pus-TC-3-1-createHousekeepingStructure       PusSubserviceType ::=  1 -- NOT IMPLEMENTED
 	-- pus-TC-3-3-deleteHousekeepingStructure       PusSubserviceType ::=  3 -- NOT IMPLEMENTED
-	-- pus-TC-3-5-enablePeriodicHousekeeping        PusSubserviceType ::=  5 -- NOT IMPLEMENTED
-	-- pus-TC-3-6-disablePeridodicHousekeeping      PusSubserviceType ::=  6 -- NOT IMPLEMENTED
+	pus-TC-3-5-enablePeriodicHousekeeping        PusSubserviceType ::=  5 -- NOT IMPLEMENTED
+	pus-TC-3-6-disablePeridodicHousekeeping      PusSubserviceType ::=  6 -- NOT IMPLEMENTED
 	-- pus-TC-3-9-reportHousekeepingStructures      PusSubserviceType ::=  9 -- NOT IMPLEMENTED
 	-- pus-TM-3-10-reportHousekeepingStructures     PusSubserviceType ::= 10 -- NOT IMPLEMENTED
 	pus-TM-3-25-housekeepingReport               PusSubserviceType ::= 25

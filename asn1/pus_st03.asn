@@ -41,12 +41,24 @@ BEGIN
     -- Array of parameters in the report (all stored as PusUInt64)
     PusSt03ParameterArray ::= SEQUENCE (SIZE(0 .. pus-ST03-MAX-REPORT-LENGTH)) OF PusSt03StoredParam
     
+    -- Data for TC[3,5], Enable HouseKeeping Parameter Reports Generation
+    PusTC-3-5-Data ::= SEQUENCE
+    {
+    	reportId PusSt03HousekeepingReportId
+    }
+
+    -- Data for TC[3,6], Disable HouseKeeping Parameter Reports Generation
+    PusTC-3-6-Data ::= SEQUENCE
+    {
+    	reportId PusSt03HousekeepingReportId
+    }
+
     -- Data for TM[3,25], housekeeping parameter report
     PusTM-3-25-Data ::= SEQUENCE
     {
     	reportId PusSt03HousekeepingReportId,
     	parameters PusSt03ParameterArray
     }
-    
+
     
 END

@@ -45,6 +45,7 @@ pusSt03ReportInfo_t pus_st03_HkReportInfos[PUS_HK_NUMBER_REPORTS];
 
 // ST[03] constants
 const pusSt03ParamId_t pus_ST03_PARAM_LIMIT = PUS_ST03_PARAM_LIMIT;
+const pusSt03HousekeepingReportId_t pus_ST03_REPORT_LIMIT = PUS_HK_NUMBER_REPORTS;
 
 pusError_t pus_hk_configure()
 {
@@ -59,15 +60,19 @@ elif param['type'] == 'REAL32':
     pus_st03_params[${param['label']}] = 0;
     pus_st03_paramInfo[${param['label']}].label = "${param['label']}";
     pus_st03_paramInfo[${param['label']}].type = PUS_${param['type']};
-
 % endfor
 	// HK reports definition
-	% for report in config['hkReports']:
+	% for j, report in enumerate(config['hkReports']):
 % for i, param in enumerate(report['parameters']):
 	pus_st03_HkReportsIDs_${report['name']}[${i}] = ${param};
 % endfor
 	pus_st03_HkReportInfos[PUS_HK_REP_${report['name']}].numParams = ${len(report['parameters'])}U;
 	pus_st03_HkReportInfos[PUS_HK_REP_${report['name']}].paramIds = &pus_st03_HkReportsIDs_${report['name']}[0];
+	%if j == 0:
+    pus_st03_HkReportInfos[PUS_HK_REP_${report['name']}].isEnabled = TRUE;
+	%else:
+	pus_st03_HkReportInfos[PUS_HK_REP_${report['name']}].isEnabled = FALSE;
+	%endif
 
 % endfor
     return PUS_NO_ERROR;
