@@ -10,19 +10,14 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
     #ST 200
     if (svc, msg) == (200, 19):
         pb.pus_tc_200_19_createMissionRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 13):
         pb.pus_tc_200_13_createSodmissionRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 1):
         pb.pus_tc_200_1_createHotdockcmdRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 5):
         pb.pus_tc_200_5_createWmcmdRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 9):
         pb.pus_tc_200_9_createBasecmdRequest_(packet, apid, seq)
-    
     elif (svc, msg) == (200, 11):
         pb.pus_tc_200_11_createEfcmdRequest_(packet, apid, seq)
 
@@ -35,6 +30,18 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
         pb.pus_tc_210_11_createConfigureTimeEpoch(packet, apid, seq, 0, 0, 0, 0)
     elif (svc, msg) == (210, 12):
         pb.pus_tc_210_12_createSetLeds(packet, apid, seq, 0, 0, 0)
+    elif (svc, msg) == (210, 81):
+        pb.pus_tc_210_81_createModeCommand(packet, apid, seq, 0, 0, 0)
+    elif (svc, msg) == (210, 82):
+        pb.pus_tc_210_82_createComponentsCommand(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 91):
+        pb.pus_tc_210_91_createSpecificHkRequest(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 92):
+        pb.pus_tc_210_92_createAllHkRequest(packet, apid, seq, 0, 0, 0)
+    elif (svc, msg) == (210, 93):
+        pb.pus_tc_210_93_createCommandSwitch1(packet, apid, seq, 0, 0, 0, 0, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 94):
+        pb.pus_tc_210_94_createCommand24VConverterA(packet, apid, seq, 0, 0, 0, 0, 0, 0, 0)
 
 
  #ST 220
@@ -87,6 +94,18 @@ def mission_get_data(packet, svc, msg):
         data = pus_tc_210_11_get_data(packet)
     elif (svc, msg) == (210, 12):
         data = pus_tc_210_12_get_data(packet)
+    elif (svc, msg) == (210, 81):
+        data = pus_tc_210_81_get_data(packet)
+    elif (svc, msg) == (210, 82):
+        data = pus_tc_210_82_get_data(packet)
+    elif (svc, msg) == (210, 91):
+        data = pus_tc_210_91_get_data(packet)
+    elif (svc, msg) == (210, 92):
+        data = pus_tc_210_92_get_data(packet)
+    elif (svc, msg) == (210, 93):
+        data = pus_tc_210_93_get_data(packet)
+    elif (svc, msg) == (210, 94):
+        data = pus_tc_210_94_get_data(packet)
     #ST 220
     elif (svc, msg) == (220, 1):
         data = tc_220_1_get_data(packet)
@@ -119,6 +138,19 @@ def mission_set_data(packet, svc, msg, data):
         packet = pus_tc_210_11_set_data(packet, data)
     elif (svc, msg) == (210, 12):
         packet = pus_tc_210_12_set_data(packet, data)
+    elif (svc, msg) == (210, 81):
+        packet = pus_tc_210_81_set_data(packet, data)
+    elif (svc, msg) == (210, 82):
+        packet = pus_tc_210_82_set_data(packet, data)
+    elif (svc, msg) == (210, 91):
+        packet = pus_tc_210_91_set_data(packet, data)
+    elif (svc, msg) == (210, 92):
+        packet = pus_tc_210_92_set_data(packet, data)
+    elif (svc, msg) == (210, 93):
+        packet = pus_tc_210_93_set_data(packet, data)
+    elif (svc, msg) == (210, 94):
+        packet = pus_tc_210_94_set_data(packet, data)
+
     # ST 220
     elif (svc, msg) == (220, 1):
         packet = tc_220_1_set_data(packet, data) 
@@ -185,6 +217,108 @@ def pus_tc_210_12_get_data(packet):
     data["componentId"] = pb.pus_tc_210_12_getParamCOMP_ID(packet)
     data["setLeds"] = pb.pus_tc_210_12_getParamSetLeds(packet)
     return data
+
+
+def pus_tc_210_81_set_data(packet, data):
+    pb.pus_tc_210_81_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_81_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_81_setParamTargetMode(packet, int(data["targetMode"]))
+    return packet
+
+def pus_tc_210_81_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_81_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_81_getParamCOMP_ID(packet)
+    data["targetMode"] = pb.pus_tc_210_81_getParamTargetMode(packet)
+    return data
+
+def pus_tc_210_82_set_data(packet, data):
+    pb.pus_tc_210_82_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_82_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_82_setParamComponentTargetId(packet, int(data["componentTargetId"]))
+    pb.pus_tc_210_82_setParamComponentTargetStatus(packet, int(data["componentTargetStatus"]))
+    return packet
+
+def pus_tc_210_82_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_82_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_82_getParamCOMP_ID(packet)
+    data["componentTargetId"] = pb.pus_tc_210_82_getParamComponentTargetId(packet)
+    data["componentTargetStatus"] = pb.pus_tc_210_82_getParamComponentTargetStatus(packet)
+    return data
+
+def pus_tc_210_91_set_data(packet, data):
+    pb.pus_tc_210_91_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_91_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_91_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_91_setParamHkXRequest(packet, int(data["hkXRequest"]))
+    return packet
+
+def pus_tc_210_91_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_91_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_91_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_91_getParamSUBCOMP_ID(packet)
+    data["hkXRequest"] = pb.pus_tc_210_91_getParamHkXRequest(packet)
+    return data
+
+def pus_tc_210_92_set_data(packet, data):
+    pb.pus_tc_210_92_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_92_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_92_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    return packet
+
+def pus_tc_210_92_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_92_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_92_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_92_getParamSUBCOMP_ID(packet)
+    return data
+
+def pus_tc_210_93_set_data(packet, data):
+    pb.pus_tc_210_93_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_93_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_93_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_93_setParamSw1Cmd(packet, int(data["sw1Cmd"]))
+    pb.pus_tc_210_93_setParamSw2Cmd(packet, int(data["sw2Cmd"]))
+    pb.pus_tc_210_93_setParamSw3Cmd(packet, int(data["sw3Cmd"]))
+    pb.pus_tc_210_93_setParamSw4Cmd(packet, int(data["sw4Cmd"]))
+    pb.pus_tc_210_93_setParamSw5Cmd(packet, int(data["sw5Cmd"]))
+    return packet
+
+def pus_tc_210_93_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_93_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_93_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_93_getParamSUBCOMP_ID(packet)
+    data["sw1Cmd"] = pb.pus_tc_210_93_getParamSw1Cmd(packet)
+    data["sw2Cmd"] = pb.pus_tc_210_93_getParamSw2Cmd(packet)
+    data["sw3Cmd"] = pb.pus_tc_210_93_getParamSw3Cmd(packet)
+    data["sw4Cmd"] = pb.pus_tc_210_93_getParamSw4Cmd(packet)
+    data["sw5Cmd"] = pb.pus_tc_210_93_getParamSw5Cmd(packet)
+    return data
+
+def pus_tc_210_94_set_data(packet, data):
+    pb.pus_tc_210_94_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_94_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_94_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_94_setParamConv24vACmd(packet, int(data["conv24vACmd"]))
+    pb.pus_tc_210_94_setParamConv24vBCmd(packet, int(data["conv24vBCmd"]))
+    pb.pus_tc_210_94_setParamConv12vCmd(packet, int(data["conv12vCmd"]))
+    pb.pus_tc_210_94_setParamConv19vCmd(packet, int(data["conv19vCmd"]))
+    return packet
+
+def pus_tc_210_94_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_94_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_94_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_94_getParamSUBCOMP_ID(packet)
+    data["conv24vACmd"] = pb.pus_tc_210_94_getParamConv24vACmd(packet)
+    data["conv24vBCmd"] = pb.pus_tc_210_94_getParamConv24vBCmd(packet)
+    data["conv12vCmd"] = pb.pus_tc_210_94_getParamConv12vCmd(packet)
+    data["conv19vCmd"] = pb.pus_tc_210_94_getParamConv19vCmd(packet)
+    return data
+
 
 
 

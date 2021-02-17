@@ -52,6 +52,14 @@ BEGIN
 /* R_ICU */
     PusTC-210-11-Data FROM PUS-ST210                     --  Configure Time Epoch
     PusTC-210-12-Data FROM PUS-ST210                     --  Set LEDs
+/* THS */
+    PusTC-210-81-Data FROM PUS-ST210                     --  Mode Command
+    PusTC-210-82-Data FROM PUS-ST210                     --  Components Command
+/* CPDU */
+    PusTC-210-91-Data FROM PUS-ST210                     --  Specific HK Request
+    PusTC-210-92-Data FROM PUS-ST210                     --  All HK Request
+    PusTC-210-93-Data FROM PUS-ST210                     --  Command Switch 1
+    PusTC-210-94-Data FROM PUS-ST210                     --  Command 24V Converter A
 
     PusTC-220-1-Data, PusTM-220-3-Data FROM PUS-ST220   --  reconfiguration
   	;
@@ -157,6 +165,14 @@ BEGIN
         /* R_ICU */
         st-210-11   PusTC-210-11-Data,
         st-210-12   PusTC-210-12-Data,
+        /* THS */
+        st-210-81   PusTC-210-81-Data,
+        st-210-82   PusTC-210-82-Data,
+        /* CPDU */
+        st-210-91   PusTC-210-91-Data,
+        st-210-92   PusTC-210-92-Data,
+        st-210-93   PusTC-210-93-Data,
+        st-210-94   PusTC-210-94-Data,
 
         st-220-1 PusTC-220-1-Data,
         -- No packet reduced
@@ -194,7 +210,15 @@ BEGIN
         st-210-2   PusTC-210-2-Data,
         /* R_ICU */
         st-210-11   PusTC-210-11-Data,
-        st-210-12   PusTC-210-12-Data, 
+        st-210-12   PusTC-210-12-Data,
+        /* THS */
+        st-210-81   PusTC-210-81-Data,
+        st-210-82   PusTC-210-82-Data,
+        /* CPDU */
+        st-210-91   PusTC-210-91-Data,
+        st-210-92   PusTC-210-92-Data,
+        st-210-93   PusTC-210-93-Data,
+        st-210-94   PusTC-210-94-Data,
 
         st-220-1 PusTC-220-1-Data
     }

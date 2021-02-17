@@ -12,7 +12,7 @@ PUS-ST210 DEFINITIONS ::=
 BEGIN
 
     IMPORTS
-    PusUInt16, PusUInt8, PusInt32  FROM PUS-TypesDefinitions
+    PusUInt16, PusUInt8, PusInt32, PusBoolean FROM PUS-TypesDefinitions
 --    PusSt03ParameterId, PusSt03HousekeepingReportId FROM PUS-ST03
     ;
   
@@ -49,4 +49,60 @@ BEGIN
         setLeds PusUInt8
     }
     
+/* THS */
+    -- Data for TC[210,81]
+    PusTC-210-81-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        targetMode PusUInt8
+    }
+    -- Data for TC[210,82]
+    PusTC-210-82-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        componentTargetId PusUInt8,
+        componentTargetStatus PusBoolean
+    }
+/* CPDU */
+    -- Data for TC[210,91]
+    PusTC-210-91-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        subcomponentId PusUInt8,
+        hkXRequest PusUInt8
+    }
+    -- Data for TC[210,92]
+    PusTC-210-92-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        subcomponentId PusUInt8
+    }
+    -- Data for TC[210,93]
+    PusTC-210-93-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        subcomponentId PusUInt8,
+        sw1Cmd PusBoolean,
+        sw2Cmd PusBoolean,
+        sw3Cmd PusBoolean,
+        sw4Cmd PusBoolean,
+        sw5Cmd PusBoolean
+    }
+    -- Data for TC[210,94]
+    PusTC-210-94-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        subcomponentId PusUInt8,
+        conv24vACmd PusBoolean,
+        conv24vBCmd PusBoolean,
+        conv12vCmd PusBoolean,
+        conv19vCmd PusBoolean
+    }
+
 END

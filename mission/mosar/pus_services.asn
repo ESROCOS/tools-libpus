@@ -320,12 +320,20 @@ BEGIN
 	pus-TC-210-11-ConfigureTimeEpoch    PusSubserviceType ::= 11
 	pus-TC-210-12-SetLeds    PusSubserviceType ::= 12
 
+	pus-TC-210-81-ModeCommand    PusSubserviceType ::= 81
+	pus-TC-210-82-ComponentsCommand    PusSubserviceType ::= 82
+	pus-TC-210-91-SpecificHkRequest    PusSubserviceType ::= 91
+	pus-TC-210-92-AllHkRequest    PusSubserviceType ::= 92
+	pus-TC-210-93-CommandSwitch1    PusSubserviceType ::= 93
+	pus-TC-210-94-Command24VConverterA    PusSubserviceType ::= 94
 
 	-- ST220 SW-reconfiguration
     pus-ST220-reconfigurationControl 	PusServiceType ::= 220 
 	pus-TC-220-1-setTargetState				PusSubserviceType ::= 1
     pus-TC-220-2-getCurrentState			PusSubserviceType ::= 2 
     pus-TM-220-3-reportCurrentState			PusSubserviceType ::= 3
+
+	
     
 
 END

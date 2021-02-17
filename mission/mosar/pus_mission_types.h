@@ -93,6 +93,16 @@ typedef asn1SccPusTM_200_8_Data pusSt200_8_Observation; //!< Wmstatus observatio
 #define pus_TC_DATA_ST_210_11   ((pusTcDataKind_t) PusTcApplicationData_st_210_11_PRESENT)
 #define pus_TC_DATA_ST_210_12   ((pusTcDataKind_t) PusTcApplicationData_st_210_12_PRESENT)
 
+/* THS */
+#define pus_TC_DATA_ST_210_81   ((pusTcDataKind_t) PusTcApplicationData_st_210_81_PRESENT)
+#define pus_TC_DATA_ST_210_82   ((pusTcDataKind_t) PusTcApplicationData_st_210_82_PRESENT)
+
+/* CPDU */
+#define pus_TC_DATA_ST_210_91   ((pusTcDataKind_t) PusTcApplicationData_st_210_91_PRESENT)
+#define pus_TC_DATA_ST_210_92   ((pusTcDataKind_t) PusTcApplicationData_st_210_92_PRESENT)
+#define pus_TC_DATA_ST_210_93   ((pusTcDataKind_t) PusTcApplicationData_st_210_93_PRESENT)
+#define pus_TC_DATA_ST_210_94   ((pusTcDataKind_t) PusTcApplicationData_st_210_94_PRESENT)
+
 // ST220
 
 typedef asn1SccPus_220_StateId pusSt220_stateID;
