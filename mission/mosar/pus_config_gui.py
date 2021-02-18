@@ -30,6 +30,34 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
         pb.pus_tc_210_11_createConfigureTimeEpoch(packet, apid, seq, 0, 0, 0, 0)
     elif (svc, msg) == (210, 12):
         pb.pus_tc_210_12_createSetLeds(packet, apid, seq, 0, 0, 0)
+    elif (svc, msg) == (210, 21):
+        pb.pus_tc_210_21_createSetHouskeepingDataRate(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 22):
+        pb.pus_tc_210_22_createGoToState(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 23):
+        pb.pus_tc_210_23_createCommandP15VLine(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 24):
+        pb.pus_tc_210_24_createCommandP2V5Line(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 25):
+        pb.pus_tc_210_25_createCoomdadRelay(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 26):
+        pb.pus_tc_210_26_createSetLvdsPins(packet, apid, seq, 0, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 27):
+        pb.pus_tc_210_27_createPowerOnOffMotor(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 28):
+        pb.pus_tc_210_28_createSetMotorSpeed(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 29):
+        pb.pus_tc_210_29_createSetMotorDirection(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 30):
+        pb.pus_tc_210_30_createSetMotorCurrentLimit(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 31):
+        pb.pus_tc_210_31_createCalibrateController(packet, apid, seq, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 32):
+        pb.pus_tc_210_32_createResetController(packet, apid, seq, 0, 0, 0)
+    elif (svc, msg) == (210, 41):
+        pb.pus_tc_210_41_createOspControlCommand(packet, apid, seq, 0, 0, 0)
+    elif (svc, msg) == (210, 42):
+        pb.pus_tc_210_42_createCaptureImage(packet, apid, seq, 0, 0)
     elif (svc, msg) == (210, 81):
         pb.pus_tc_210_81_createModeCommand(packet, apid, seq, 0, 0, 0)
     elif (svc, msg) == (210, 82):
@@ -94,6 +122,34 @@ def mission_get_data(packet, svc, msg):
         data = pus_tc_210_11_get_data(packet)
     elif (svc, msg) == (210, 12):
         data = pus_tc_210_12_get_data(packet)
+    elif (svc, msg) == (210, 21):
+        data = pus_tc_210_21_get_data(packet)
+    elif (svc, msg) == (210, 22):
+        data = pus_tc_210_22_get_data(packet)
+    elif (svc, msg) == (210, 23):
+        data = pus_tc_210_23_get_data(packet)
+    elif (svc, msg) == (210, 24):
+        data = pus_tc_210_24_get_data(packet)
+    elif (svc, msg) == (210, 25):
+        data = pus_tc_210_25_get_data(packet)
+    elif (svc, msg) == (210, 26):
+        data = pus_tc_210_26_get_data(packet)
+    elif (svc, msg) == (210, 27):
+        data = pus_tc_210_27_get_data(packet)
+    elif (svc, msg) == (210, 28):
+        data = pus_tc_210_28_get_data(packet)
+    elif (svc, msg) == (210, 29):
+        data = pus_tc_210_29_get_data(packet)
+    elif (svc, msg) == (210, 30):
+        data = pus_tc_210_30_get_data(packet)
+    elif (svc, msg) == (210, 31):
+        data = pus_tc_210_31_get_data(packet)
+    elif (svc, msg) == (210, 32):
+        data = pus_tc_210_32_get_data(packet)
+    elif (svc, msg) == (210, 41):
+        data = pus_tc_210_41_get_data(packet)
+    elif (svc, msg) == (210, 42):
+        data = pus_tc_210_42_get_data(packet)   
     elif (svc, msg) == (210, 81):
         data = pus_tc_210_81_get_data(packet)
     elif (svc, msg) == (210, 82):
@@ -138,6 +194,34 @@ def mission_set_data(packet, svc, msg, data):
         packet = pus_tc_210_11_set_data(packet, data)
     elif (svc, msg) == (210, 12):
         packet = pus_tc_210_12_set_data(packet, data)
+    elif (svc, msg) == (210, 21):
+        packet = pus_tc_210_21_set_data(packet, data)
+    elif (svc, msg) == (210, 22):
+        packet = pus_tc_210_22_set_data(packet, data)
+    elif (svc, msg) == (210, 23):
+        packet = pus_tc_210_23_set_data(packet, data)
+    elif (svc, msg) == (210, 24):
+        packet = pus_tc_210_24_set_data(packet, data)
+    elif (svc, msg) == (210, 25):
+        packet = pus_tc_210_25_set_data(packet, data)
+    elif (svc, msg) == (210, 26):
+        packet = pus_tc_210_26_set_data(packet, data)
+    elif (svc, msg) == (210, 27):
+        packet = pus_tc_210_27_set_data(packet, data)
+    elif (svc, msg) == (210, 28):
+        packet = pus_tc_210_28_set_data(packet, data)
+    elif (svc, msg) == (210, 29):
+        packet = pus_tc_210_29_set_data(packet, data)
+    elif (svc, msg) == (210, 30):
+        packet = pus_tc_210_30_set_data(packet, data)
+    elif (svc, msg) == (210, 31):
+        packet = pus_tc_210_31_set_data(packet, data)
+    elif (svc, msg) == (210, 32):
+        packet = pus_tc_210_32_set_data(packet, data)
+    elif (svc, msg) == (210, 41):
+        packet = pus_tc_210_41_set_data(packet, data)
+    elif (svc, msg) == (210, 42):
+        packet = pus_tc_210_42_set_data(packet, data)
     elif (svc, msg) == (210, 81):
         packet = pus_tc_210_81_set_data(packet, data)
     elif (svc, msg) == (210, 82):
@@ -218,6 +302,209 @@ def pus_tc_210_12_get_data(packet):
     data["setLeds"] = pb.pus_tc_210_12_getParamSetLeds(packet)
     return data
 
+def pus_tc_210_21_set_data(packet, data):
+    pb.pus_tc_210_21_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_21_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_21_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_21_setParamPollingHkTm(packet, int(data["pollingHkTm"]))
+    return packet
+
+def pus_tc_210_21_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_21_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_21_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_21_getParamSUBCOMP_ID(packet)
+    data["pollingHkTm"] = pb.pus_tc_210_21_getParamPollingHkTm(packet)
+    return data
+
+def pus_tc_210_22_set_data(packet, data):
+    pb.pus_tc_210_22_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_22_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_22_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_22_setParamTargetState(packet, int(data["targetState"]))
+    return packet
+
+def pus_tc_210_22_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_22_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_22_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_22_getParamSUBCOMP_ID(packet)
+    data["targetState"] = pb.pus_tc_210_22_getParamTargetState(packet)
+    return data
+
+def pus_tc_210_23_set_data(packet, data):
+    pb.pus_tc_210_23_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_23_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_23_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_23_setParamP15vCmd(packet, int(data["p15vCmd"]))
+    return packet
+
+def pus_tc_210_23_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_23_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_23_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_23_getParamSUBCOMP_ID(packet)
+    data["p15vCmd"] = pb.pus_tc_210_23_getParamP15vCmd(packet)
+    return data
+
+def pus_tc_210_24_set_data(packet, data):
+    pb.pus_tc_210_24_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_24_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_24_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_24_setParamP2v5Cmd(packet, int(data["p2v5Cmd"]))
+    return packet
+
+def pus_tc_210_24_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_24_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_24_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_24_getParamSUBCOMP_ID(packet)
+    data["p2v5Cmd"] = pb.pus_tc_210_24_getParamP2v5Cmd(packet)
+    return data
+
+def pus_tc_210_25_set_data(packet, data):
+    pb.pus_tc_210_25_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_25_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_25_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_25_setParamRelayCmd(packet, int(data["relayCmd"]))
+    return packet
+
+def pus_tc_210_25_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_25_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_25_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_25_getParamSUBCOMP_ID(packet)
+    data["relayCmd"] = pb.pus_tc_210_25_getParamRelayCmd(packet)
+    return data
+
+def pus_tc_210_26_set_data(packet, data):
+    pb.pus_tc_210_26_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_26_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_26_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_26_setParamLvdsACmd(packet, int(data["lvdsACmd"]))
+    pb.pus_tc_210_26_setParamLvdsBCmd(packet, int(data["lvdsBCmd"]))
+    return packet
+
+def pus_tc_210_26_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_26_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_26_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_26_getParamSUBCOMP_ID(packet)
+    data["lvdsACmd"] = pb.pus_tc_210_26_getParamLvdsACmd(packet)
+    data["lvdsBCmd"] = pb.pus_tc_210_26_getParamLvdsBCmd(packet)
+    return data
+
+def pus_tc_210_27_set_data(packet, data):
+    pb.pus_tc_210_27_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_27_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_27_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_27_setParamMotorOnOff(packet, int(data["motorOnOff"]))
+    return packet
+
+def pus_tc_210_27_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_27_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_27_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_27_getParamSUBCOMP_ID(packet)
+    data["motorOnOff"] = pb.pus_tc_210_27_getParamMotorOnOff(packet)
+    return data
+
+def pus_tc_210_28_set_data(packet, data):
+    pb.pus_tc_210_28_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_28_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_28_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_28_setParamMotorTargetSpeed(packet, float(data["motorTargetSpeed"]))
+    return packet
+
+def pus_tc_210_28_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_28_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_28_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_28_getParamSUBCOMP_ID(packet)
+    data["motorTargetSpeed"] = pb.pus_tc_210_28_getParamMotorTargetSpeed(packet)
+    return data
+
+def pus_tc_210_29_set_data(packet, data):
+    pb.pus_tc_210_29_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_29_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_29_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_29_setParamMotorDirectionSpeed(packet, int(data["motorDirectionSpeed"]))
+    return packet
+
+def pus_tc_210_29_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_29_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_29_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_29_getParamSUBCOMP_ID(packet)
+    data["motorDirectionSpeed"] = pb.pus_tc_210_29_getParamMotorDirectionSpeed(packet)
+    return data
+
+def pus_tc_210_30_set_data(packet, data):
+    pb.pus_tc_210_30_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_30_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_30_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_30_setParamMotorCurrentLimit(packet, float(data["motorCurrentLimit"]))
+    return packet
+
+def pus_tc_210_30_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_30_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_30_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_30_getParamSUBCOMP_ID(packet)
+    data["motorCurrentLimit"] = pb.pus_tc_210_30_getParamMotorCurrentLimit(packet)
+    return data
+
+def pus_tc_210_31_set_data(packet, data):
+    pb.pus_tc_210_31_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_31_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_31_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    pb.pus_tc_210_31_setParamControllerCalib(packet, int(data["controllerCalib"]))
+    return packet
+
+def pus_tc_210_31_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_31_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_31_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_31_getParamSUBCOMP_ID(packet)
+    data["controllerCalib"] = pb.pus_tc_210_31_getParamControllerCalib(packet)
+    return data
+
+def pus_tc_210_32_set_data(packet, data):
+    pb.pus_tc_210_32_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_32_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_32_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    return packet
+
+def pus_tc_210_32_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_32_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_32_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_32_getParamSUBCOMP_ID(packet)
+    return data
+
+def pus_tc_210_41_set_data(packet, data):
+    pb.pus_tc_210_41_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_41_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_41_setParamCommand(packet, int(data["command"]))
+    return packet
+
+def pus_tc_210_41_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_41_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_41_getParamCOMP_ID(packet)
+    data["command"] = pb.pus_tc_210_41_getParamCommand(packet)
+    return data
+
+def pus_tc_210_42_set_data(packet, data):
+    pb.pus_tc_210_42_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_42_setParamCOMP_ID(packet, int(data["componentId"]))
+    return packet
+
+def pus_tc_210_42_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_42_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_42_getParamCOMP_ID(packet)
+    return data
 
 def pus_tc_210_81_set_data(packet, data):
     pb.pus_tc_210_81_setParamSM_ID(packet, int(data["smId"]))

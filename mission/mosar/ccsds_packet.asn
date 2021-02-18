@@ -52,6 +52,22 @@ BEGIN
 /* R_ICU */
     PusTC-210-11-Data FROM PUS-ST210                     --  Configure Time Epoch
     PusTC-210-12-Data FROM PUS-ST210                     --  Set LEDs
+/* HOTDOCK */
+    PusTC-210-21-Data FROM PUS-ST210                     --  Set Houskeeping Data Rate
+    PusTC-210-22-Data FROM PUS-ST210                     --  Go to state
+    PusTC-210-23-Data FROM PUS-ST210                     --  Command P15V Line
+    PusTC-210-24-Data FROM PUS-ST210                     --  Command P2V5 Line
+    PusTC-210-25-Data FROM PUS-ST210                     --  Coomdad Relay
+    PusTC-210-26-Data FROM PUS-ST210                     --  Set LVDS Pins
+    PusTC-210-27-Data FROM PUS-ST210                     --  Power On Off Motor
+    PusTC-210-28-Data FROM PUS-ST210                     --  Set Motor Speed
+    PusTC-210-29-Data FROM PUS-ST210                     --  Set Motor Direction
+    PusTC-210-30-Data FROM PUS-ST210                     --  Set Motor Current Limit
+    PusTC-210-31-Data FROM PUS-ST210                     --  Calibrate Controller
+    PusTC-210-32-Data FROM PUS-ST210                     --  Reset Controller
+/* OSP */
+    PusTC-210-41-Data FROM PUS-ST210                     --  OSP Control Command
+    PusTC-210-42-Data FROM PUS-ST210                     --  Capture Image
 /* THS */
     PusTC-210-81-Data FROM PUS-ST210                     --  Mode Command
     PusTC-210-82-Data FROM PUS-ST210                     --  Components Command
@@ -165,6 +181,22 @@ BEGIN
         /* R_ICU */
         st-210-11   PusTC-210-11-Data,
         st-210-12   PusTC-210-12-Data,
+        /* HOTDOCK */
+        st-210-21   PusTC-210-21-Data,
+        st-210-22   PusTC-210-22-Data,
+        st-210-23   PusTC-210-23-Data,
+        st-210-24   PusTC-210-24-Data,
+        st-210-25   PusTC-210-25-Data,
+        st-210-26   PusTC-210-26-Data,
+        st-210-27   PusTC-210-27-Data,
+        st-210-28   PusTC-210-28-Data,
+        st-210-29   PusTC-210-29-Data,
+        st-210-30   PusTC-210-30-Data,
+        st-210-31   PusTC-210-31-Data,
+        st-210-32   PusTC-210-32-Data,
+        /* OSP */
+        st-210-41   PusTC-210-41-Data,
+        st-210-42   PusTC-210-42-Data,
         /* THS */
         st-210-81   PusTC-210-81-Data,
         st-210-82   PusTC-210-82-Data,
@@ -211,6 +243,22 @@ BEGIN
         /* R_ICU */
         st-210-11   PusTC-210-11-Data,
         st-210-12   PusTC-210-12-Data,
+        /* HOTDOCK */
+        st-210-21   PusTC-210-21-Data,
+        st-210-22   PusTC-210-22-Data,
+        st-210-23   PusTC-210-23-Data,
+        st-210-24   PusTC-210-24-Data,
+        st-210-25   PusTC-210-25-Data,
+        st-210-26   PusTC-210-26-Data,
+        st-210-27   PusTC-210-27-Data,
+        st-210-28   PusTC-210-28-Data,
+        st-210-29   PusTC-210-29-Data,
+        st-210-30   PusTC-210-30-Data,
+        st-210-31   PusTC-210-31-Data,
+        st-210-32   PusTC-210-32-Data,
+        /* OSP */
+        st-210-41   PusTC-210-41-Data,
+        st-210-42   PusTC-210-42-Data,
         /* THS */
         st-210-81   PusTC-210-81-Data,
         st-210-82   PusTC-210-82-Data,

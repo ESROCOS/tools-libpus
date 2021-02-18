@@ -71,6 +71,143 @@ extern pusError_t pus_tc_210_12_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUI
 extern asn1SccPusUInt8 pus_tc_210_12_getParamSetLeds(const pusPacket_t* inTC);
 extern pusError_t pus_tc_210_12_setParamSetLeds(pusPacket_t* outTC, asn1SccPusUInt8 param);
 
+/* HOTDOCK */
+extern pusError_t pus_tc_210_21_createSetHouskeepingDataRate(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusUInt8 POLLING_HK_TM);
+extern asn1SccPusUInt8 pus_tc_210_21_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_21_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_21_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_21_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_21_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_21_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_21_getParamPollingHkTm(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_21_setParamPollingHkTm(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
+extern pusError_t pus_tc_210_22_createGoToState(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusUInt8 TARGET_STATE);
+extern asn1SccPusUInt8 pus_tc_210_22_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_22_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_22_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_22_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_22_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_22_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_22_getParamTargetState(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_22_setParamTargetState(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
+extern pusError_t pus_tc_210_23_createCommandP15VLine(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean P15V_CMD);
+extern asn1SccPusUInt8 pus_tc_210_23_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_23_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_23_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_23_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_23_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_23_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusBoolean pus_tc_210_23_getParamP15vCmd(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_23_setParamP15vCmd(pusPacket_t* outTC, asn1SccPusBoolean param);
+
+extern pusError_t pus_tc_210_24_createCommandP2V5Line(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean P2V5_CMD);
+extern asn1SccPusUInt8 pus_tc_210_24_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_24_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_24_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_24_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_24_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_24_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusBoolean pus_tc_210_24_getParamP2v5Cmd(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_24_setParamP2v5Cmd(pusPacket_t* outTC, asn1SccPusBoolean param);
+
+extern pusError_t pus_tc_210_25_createCoomdadRelay(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean RELAY_CMD);
+extern asn1SccPusUInt8 pus_tc_210_25_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_25_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_25_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_25_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_25_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_25_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusBoolean pus_tc_210_25_getParamRelayCmd(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_25_setParamRelayCmd(pusPacket_t* outTC, asn1SccPusBoolean param);
+
+extern pusError_t pus_tc_210_26_createSetLvdsPins(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusUInt8 LVDS_A_CMD, asn1SccPusUInt8 LVDS_B_CMD);
+extern asn1SccPusUInt8 pus_tc_210_26_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_26_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_26_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_26_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_26_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_26_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_26_getParamLvdsACmd(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_26_setParamLvdsACmd(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_26_getParamLvdsBCmd(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_26_setParamLvdsBCmd(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
+extern pusError_t pus_tc_210_27_createPowerOnOffMotor(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean MOTOR_ON_OFF);
+extern asn1SccPusUInt8 pus_tc_210_27_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_27_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_27_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_27_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_27_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_27_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusBoolean pus_tc_210_27_getParamMotorOnOff(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_27_setParamMotorOnOff(pusPacket_t* outTC, asn1SccPusBoolean param);
+
+extern pusError_t pus_tc_210_28_createSetMotorSpeed(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusFloat32 MOTOR_TARGET_SPEED);
+extern asn1SccPusUInt8 pus_tc_210_28_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_28_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_28_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_28_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_28_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_28_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusFloat32 pus_tc_210_28_getParamMotorTargetSpeed(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_28_setParamMotorTargetSpeed(pusPacket_t* outTC, asn1SccPusFloat32 param);
+
+extern pusError_t pus_tc_210_29_createSetMotorDirection(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean MOTOR_DIRECTION_SPEED);
+extern asn1SccPusUInt8 pus_tc_210_29_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_29_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_29_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_29_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_29_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_29_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusBoolean pus_tc_210_29_getParamMotorDirectionSpeed(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_29_setParamMotorDirectionSpeed(pusPacket_t* outTC, asn1SccPusBoolean param);
+
+extern pusError_t pus_tc_210_30_createSetMotorCurrentLimit(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusFloat32 MOTOR_CURRENT_LIMIT);
+extern asn1SccPusUInt8 pus_tc_210_30_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_30_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_30_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_30_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_30_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_30_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusFloat32 pus_tc_210_30_getParamMotorCurrentLimit(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_30_setParamMotorCurrentLimit(pusPacket_t* outTC, asn1SccPusFloat32 param);
+
+extern pusError_t pus_tc_210_31_createCalibrateController(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusUInt8 CONTROLLER_CALIB);
+extern asn1SccPusUInt8 pus_tc_210_31_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_31_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_31_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_31_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_31_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_31_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_31_getParamControllerCalib(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_31_setParamControllerCalib(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
+extern pusError_t pus_tc_210_32_createResetController(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId);
+extern asn1SccPusUInt8 pus_tc_210_32_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_32_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_32_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_32_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_32_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_32_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
+
+/* OSP */
+extern pusError_t pus_tc_210_41_createOspControlCommand(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 COMMAND);
+extern asn1SccPusUInt8 pus_tc_210_41_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_41_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_41_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_41_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_41_getParamCommand(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_41_setParamCommand(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
+extern pusError_t pus_tc_210_42_createCaptureImage(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId);
+extern asn1SccPusUInt8 pus_tc_210_42_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_42_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_42_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_42_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
 /* THS */
 extern pusError_t pus_tc_210_81_createModeCommand(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 TARGET_MODE);
 extern asn1SccPusUInt8 pus_tc_210_81_getParamSM_ID(const pusPacket_t* inTC);

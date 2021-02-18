@@ -317,15 +317,33 @@ BEGIN
 	pus-ST210-rmapManagement PusServiceType ::= 210 
 	pus-TC-210-1-SpwRoutingTableSetEntry    PusSubserviceType ::= 1
 	pus-TC-210-2-SpwPnpSetOwnerFields    PusSubserviceType ::= 2
+
 	pus-TC-210-11-ConfigureTimeEpoch    PusSubserviceType ::= 11
 	pus-TC-210-12-SetLeds    PusSubserviceType ::= 12
 
+	pus-TC-210-21-SetHouskeepingDataRate    PusSubserviceType ::= 21
+	pus-TC-210-22-GoToState    PusSubserviceType ::= 22
+	pus-TC-210-23-CommandP15vLine    PusSubserviceType ::= 23
+	pus-TC-210-24-CommandP2v5Line    PusSubserviceType ::= 24
+	pus-TC-210-25-CoomdadRelay    PusSubserviceType ::= 25
+	pus-TC-210-26-SetLvdsPins    PusSubserviceType ::= 26
+	pus-TC-210-27-PowerOnOffMotor    PusSubserviceType ::= 27
+	pus-TC-210-28-SetMotorSpeed    PusSubserviceType ::= 28
+	pus-TC-210-29-SetMotorDirection    PusSubserviceType ::= 29
+	pus-TC-210-30-SetMotorCurrentLimit    PusSubserviceType ::= 30
+	pus-TC-210-31-CalibrateController    PusSubserviceType ::= 31
+	pus-TC-210-32-ResetController    PusSubserviceType ::= 32
+	
+	pus-TC-210-41-OspControlCommand    PusSubserviceType ::= 41
+	pus-TC-210-42-CaptureImage    PusSubserviceType ::= 42
+
 	pus-TC-210-81-ModeCommand    PusSubserviceType ::= 81
 	pus-TC-210-82-ComponentsCommand    PusSubserviceType ::= 82
+	
 	pus-TC-210-91-SpecificHkRequest    PusSubserviceType ::= 91
 	pus-TC-210-92-AllHkRequest    PusSubserviceType ::= 92
 	pus-TC-210-93-CommandSwitch1    PusSubserviceType ::= 93
-	pus-TC-210-94-Command24VConverterA    PusSubserviceType ::= 94
+	pus-TC-210-94-Command24vConverterA    PusSubserviceType ::= 94
 
 	-- ST220 SW-reconfiguration
     pus-ST220-reconfigurationControl 	PusServiceType ::= 220 

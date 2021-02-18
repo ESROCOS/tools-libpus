@@ -53,7 +53,7 @@ asn1SccPusUInt8 pus_tc_210_1_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_1_SpwRoutingTableSetEntry)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_1_SpwRoutingTableSetEntry))
 	{
 		return 0;
 	}
@@ -121,7 +121,7 @@ asn1SccPusUInt16 pus_tc_210_1_getParamSetRoutingEntry(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_1_SpwRoutingTableSetEntry)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_1_SpwRoutingTableSetEntry))
 	{
 		return 0;
 	}
@@ -130,7 +130,7 @@ asn1SccPusUInt16 pus_tc_210_1_getParamSetRoutingEntry(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_1.setRoutingEntry; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_1.setRoutingEntry;
 }
 
 pusError_t pus_tc_210_1_setParamSetRoutingEntry(pusPacket_t* outTC, asn1SccPusUInt16 param)
@@ -144,7 +144,7 @@ pusError_t pus_tc_210_1_setParamSetRoutingEntry(pusPacket_t* outTC, asn1SccPusUI
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_1.setRoutingEntry = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_1.setRoutingEntry = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusUInt8 pus_tc_210_1_getParamSpwTrafficPriority(const pusPacket_t* inTC)
@@ -154,7 +154,7 @@ asn1SccPusUInt8 pus_tc_210_1_getParamSpwTrafficPriority(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_1_SpwRoutingTableSetEntry)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_1_SpwRoutingTableSetEntry))
 	{
 		return 0;
 	}
@@ -163,7 +163,7 @@ asn1SccPusUInt8 pus_tc_210_1_getParamSpwTrafficPriority(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_1.spwTrafficPriority; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_1.spwTrafficPriority;
 }
 
 pusError_t pus_tc_210_1_setParamSpwTrafficPriority(pusPacket_t* outTC, asn1SccPusUInt8 param)
@@ -177,7 +177,7 @@ pusError_t pus_tc_210_1_setParamSpwTrafficPriority(pusPacket_t* outTC, asn1SccPu
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_1.spwTrafficPriority = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_1.spwTrafficPriority = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
@@ -223,7 +223,7 @@ asn1SccPusUInt8 pus_tc_210_2_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_2_SpwPnpSetOwnerFields)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_2_SpwPnpSetOwnerFields))
 	{
 		return 0;
 	}
@@ -291,7 +291,7 @@ asn1SccPusUInt16 pus_tc_210_2_getParamSetOwner(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_2_SpwPnpSetOwnerFields)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_2_SpwPnpSetOwnerFields))
 	{
 		return 0;
 	}
@@ -300,7 +300,7 @@ asn1SccPusUInt16 pus_tc_210_2_getParamSetOwner(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_2.setOwner; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_2.setOwner;
 }
 
 pusError_t pus_tc_210_2_setParamSetOwner(pusPacket_t* outTC, asn1SccPusUInt16 param)
@@ -314,7 +314,7 @@ pusError_t pus_tc_210_2_setParamSetOwner(pusPacket_t* outTC, asn1SccPusUInt16 pa
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_2.setOwner = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_2.setOwner = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
@@ -363,7 +363,7 @@ asn1SccPusUInt8 pus_tc_210_11_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_11_ConfigureTimeEpoch)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_11_ConfigureTimeEpoch))
 	{
 		return 0;
 	}
@@ -431,7 +431,7 @@ asn1SccPusInt32 pus_tc_210_11_getParamSecsSinceEpoch(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_11_ConfigureTimeEpoch)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_11_ConfigureTimeEpoch))
 	{
 		return 0;
 	}
@@ -440,7 +440,7 @@ asn1SccPusInt32 pus_tc_210_11_getParamSecsSinceEpoch(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_11.secsSinceEpoch; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_11.secsSinceEpoch;
 }
 
 pusError_t pus_tc_210_11_setParamSecsSinceEpoch(pusPacket_t* outTC, asn1SccPusInt32 param)
@@ -454,7 +454,7 @@ pusError_t pus_tc_210_11_setParamSecsSinceEpoch(pusPacket_t* outTC, asn1SccPusIn
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_11.secsSinceEpoch = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_11.secsSinceEpoch = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusInt32 pus_tc_210_11_getParamNanosecsSinceEpoch(const pusPacket_t* inTC)
@@ -464,7 +464,7 @@ asn1SccPusInt32 pus_tc_210_11_getParamNanosecsSinceEpoch(const pusPacket_t* inTC
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_11_ConfigureTimeEpoch)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_11_ConfigureTimeEpoch))
 	{
 		return 0;
 	}
@@ -473,7 +473,7 @@ asn1SccPusInt32 pus_tc_210_11_getParamNanosecsSinceEpoch(const pusPacket_t* inTC
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_11.nanosecsSinceEpoch; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_11.nanosecsSinceEpoch;
 }
 
 pusError_t pus_tc_210_11_setParamNanosecsSinceEpoch(pusPacket_t* outTC, asn1SccPusInt32 param)
@@ -487,7 +487,7 @@ pusError_t pus_tc_210_11_setParamNanosecsSinceEpoch(pusPacket_t* outTC, asn1SccP
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_11.nanosecsSinceEpoch = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_11.nanosecsSinceEpoch = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
@@ -533,7 +533,7 @@ asn1SccPusUInt8 pus_tc_210_12_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_12_SetLeds)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_12_SetLeds))
 	{
 		return 0;
 	}
@@ -601,7 +601,7 @@ asn1SccPusUInt8 pus_tc_210_12_getParamSetLeds(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_12_SetLeds)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_12_SetLeds))
 	{
 		return 0;
 	}
@@ -610,7 +610,7 @@ asn1SccPusUInt8 pus_tc_210_12_getParamSetLeds(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_12.setLeds; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_12.setLeds;
 }
 
 pusError_t pus_tc_210_12_setParamSetLeds(pusPacket_t* outTC, asn1SccPusUInt8 param)
@@ -624,7 +624,2314 @@ pusError_t pus_tc_210_12_setParamSetLeds(pusPacket_t* outTC, asn1SccPusUInt8 par
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_12.setLeds = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_12.setLeds = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+
+/* HOTDOCK */
+pusError_t pus_tc_210_21_createSetHouskeepingDataRate(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusUInt8 pollingHkTm)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_21_SetHouskeepingDataRate);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_21);
+		pus_tc_210_21_setParamSM_ID(outTc, smId);
+		pus_tc_210_21_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_21_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_21_setParamPollingHkTm(outTc, pollingHkTm);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_21_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_21_SetHouskeepingDataRate))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_21.smId;
+}
+
+pusError_t pus_tc_210_21_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_21_SetHouskeepingDataRate))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_21.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_21_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_21_SetHouskeepingDataRate))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_21.componentId;
+}
+
+pusError_t pus_tc_210_21_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_21_SetHouskeepingDataRate))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_21.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_21_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_21_SetHouskeepingDataRate))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_21.subcomponentId;
+}
+
+pusError_t pus_tc_210_21_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_21_SetHouskeepingDataRate))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_21.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_21_getParamPollingHkTm(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_21_SetHouskeepingDataRate))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_21.pollingHkTm;
+}
+
+pusError_t pus_tc_210_21_setParamPollingHkTm(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_21_SetHouskeepingDataRate))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_21.pollingHkTm = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_22_createGoToState(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusUInt8 targetState)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_22_GoToState);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_22);
+		pus_tc_210_22_setParamSM_ID(outTc, smId);
+		pus_tc_210_22_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_22_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_22_setParamTargetState(outTc, targetState);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_22_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_22_GoToState))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_22.smId;
+}
+
+pusError_t pus_tc_210_22_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_22_GoToState))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_22.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_22_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_22_GoToState))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_22.componentId;
+}
+
+pusError_t pus_tc_210_22_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_22_GoToState))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_22.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_22_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_22_GoToState))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_22.subcomponentId;
+}
+
+pusError_t pus_tc_210_22_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_22_GoToState))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_22.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_22_getParamTargetState(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_22_GoToState))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_22.targetState;
+}
+
+pusError_t pus_tc_210_22_setParamTargetState(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_22_GoToState))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_22.targetState = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_23_createCommandP15VLine(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean p15vCmd)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_23_CommandP15vLine);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_23);
+		pus_tc_210_23_setParamSM_ID(outTc, smId);
+		pus_tc_210_23_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_23_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_23_setParamP15vCmd(outTc, p15vCmd);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_23_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_23_CommandP15vLine))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_23.smId;
+}
+
+pusError_t pus_tc_210_23_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_23_CommandP15vLine))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_23.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_23_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_23_CommandP15vLine))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_23.componentId;
+}
+
+pusError_t pus_tc_210_23_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_23_CommandP15vLine))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_23.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_23_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_23_CommandP15vLine))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_23.subcomponentId;
+}
+
+pusError_t pus_tc_210_23_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_23_CommandP15vLine))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_23.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusBoolean pus_tc_210_23_getParamP15vCmd(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_23_CommandP15vLine))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_23.p15vCmd;
+}
+
+pusError_t pus_tc_210_23_setParamP15vCmd(pusPacket_t* outTC, asn1SccPusBoolean param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_23_CommandP15vLine))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_23.p15vCmd = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_24_createCommandP2V5Line(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean p2v5Cmd)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_24_CommandP2v5Line);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_24);
+		pus_tc_210_24_setParamSM_ID(outTc, smId);
+		pus_tc_210_24_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_24_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_24_setParamP2v5Cmd(outTc, p2v5Cmd);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_24_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_24_CommandP2v5Line))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_24.smId;
+}
+
+pusError_t pus_tc_210_24_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_24_CommandP2v5Line))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_24.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_24_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_24_CommandP2v5Line))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_24.componentId;
+}
+
+pusError_t pus_tc_210_24_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_24_CommandP2v5Line))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_24.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_24_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_24_CommandP2v5Line))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_24.subcomponentId;
+}
+
+pusError_t pus_tc_210_24_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_24_CommandP2v5Line))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_24.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusBoolean pus_tc_210_24_getParamP2v5Cmd(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_24_CommandP2v5Line))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_24.p2v5Cmd;
+}
+
+pusError_t pus_tc_210_24_setParamP2v5Cmd(pusPacket_t* outTC, asn1SccPusBoolean param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_24_CommandP2v5Line))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_24.p2v5Cmd = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_25_createCoomdadRelay(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean relayCmd)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_25_CoomdadRelay);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_25);
+		pus_tc_210_25_setParamSM_ID(outTc, smId);
+		pus_tc_210_25_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_25_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_25_setParamRelayCmd(outTc, relayCmd);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_25_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_25_CoomdadRelay))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_25.smId;
+}
+
+pusError_t pus_tc_210_25_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_25_CoomdadRelay))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_25.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_25_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_25_CoomdadRelay))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_25.componentId;
+}
+
+pusError_t pus_tc_210_25_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_25_CoomdadRelay))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_25.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_25_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_25_CoomdadRelay))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_25.subcomponentId;
+}
+
+pusError_t pus_tc_210_25_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_25_CoomdadRelay))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_25.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusBoolean pus_tc_210_25_getParamRelayCmd(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_25_CoomdadRelay))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_25.relayCmd;
+}
+
+pusError_t pus_tc_210_25_setParamRelayCmd(pusPacket_t* outTC, asn1SccPusBoolean param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_25_CoomdadRelay))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_25.relayCmd = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_26_createSetLvdsPins(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusUInt8 lvdsACmd, asn1SccPusUInt8 lvdsBCmd)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_26_SetLvdsPins);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_26);
+		pus_tc_210_26_setParamSM_ID(outTc, smId);
+		pus_tc_210_26_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_26_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_26_setParamLvdsACmd(outTc, lvdsACmd);
+		pus_tc_210_26_setParamLvdsBCmd(outTc, lvdsBCmd);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_26_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_26.smId;
+}
+
+pusError_t pus_tc_210_26_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_26.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_26_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_26.componentId;
+}
+
+pusError_t pus_tc_210_26_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_26.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_26_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_26.subcomponentId;
+}
+
+pusError_t pus_tc_210_26_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_26.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_26_getParamLvdsACmd(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_26.lvdsACmd;
+}
+
+pusError_t pus_tc_210_26_setParamLvdsACmd(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_26.lvdsACmd = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+asn1SccPusUInt8 pus_tc_210_26_getParamLvdsBCmd(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_26.lvdsBCmd;
+}
+
+pusError_t pus_tc_210_26_setParamLvdsBCmd(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_26_SetLvdsPins))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_26.lvdsBCmd = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_27_createPowerOnOffMotor(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean motorOnOff)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_27_PowerOnOffMotor);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_27);
+		pus_tc_210_27_setParamSM_ID(outTc, smId);
+		pus_tc_210_27_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_27_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_27_setParamMotorOnOff(outTc, motorOnOff);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_27_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_27_PowerOnOffMotor))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_27.smId;
+}
+
+pusError_t pus_tc_210_27_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_27_PowerOnOffMotor))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_27.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_27_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_27_PowerOnOffMotor))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_27.componentId;
+}
+
+pusError_t pus_tc_210_27_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_27_PowerOnOffMotor))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_27.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_27_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_27_PowerOnOffMotor))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_27.subcomponentId;
+}
+
+pusError_t pus_tc_210_27_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_27_PowerOnOffMotor))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_27.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusBoolean pus_tc_210_27_getParamMotorOnOff(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_27_PowerOnOffMotor))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_27.motorOnOff;
+}
+
+pusError_t pus_tc_210_27_setParamMotorOnOff(pusPacket_t* outTC, asn1SccPusBoolean param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_27_PowerOnOffMotor))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_27.motorOnOff = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_28_createSetMotorSpeed(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusFloat32 motorTargetSpeed)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_28_SetMotorSpeed);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_28);
+		pus_tc_210_28_setParamSM_ID(outTc, smId);
+		pus_tc_210_28_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_28_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_28_setParamMotorTargetSpeed(outTc, motorTargetSpeed);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_28_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_28_SetMotorSpeed))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_28.smId;
+}
+
+pusError_t pus_tc_210_28_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_28_SetMotorSpeed))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_28.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_28_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_28_SetMotorSpeed))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_28.componentId;
+}
+
+pusError_t pus_tc_210_28_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_28_SetMotorSpeed))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_28.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_28_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_28_SetMotorSpeed))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_28.subcomponentId;
+}
+
+pusError_t pus_tc_210_28_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_28_SetMotorSpeed))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_28.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusFloat32 pus_tc_210_28_getParamMotorTargetSpeed(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_28_SetMotorSpeed))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_28.motorTargetSpeed;
+}
+
+pusError_t pus_tc_210_28_setParamMotorTargetSpeed(pusPacket_t* outTC, asn1SccPusFloat32 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_28_SetMotorSpeed))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_28.motorTargetSpeed = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_29_createSetMotorDirection(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusBoolean motorDirectionSpeed)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_29_SetMotorDirection);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_29);
+		pus_tc_210_29_setParamSM_ID(outTc, smId);
+		pus_tc_210_29_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_29_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_29_setParamMotorDirectionSpeed(outTc, motorDirectionSpeed);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_29_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_29_SetMotorDirection))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_29.smId;
+}
+
+pusError_t pus_tc_210_29_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_29_SetMotorDirection))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_29.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_29_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_29_SetMotorDirection))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_29.componentId;
+}
+
+pusError_t pus_tc_210_29_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_29_SetMotorDirection))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_29.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_29_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_29_SetMotorDirection))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_29.subcomponentId;
+}
+
+pusError_t pus_tc_210_29_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_29_SetMotorDirection))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_29.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusBoolean pus_tc_210_29_getParamMotorDirectionSpeed(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_29_SetMotorDirection))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_29.motorDirectionSpeed;
+}
+
+pusError_t pus_tc_210_29_setParamMotorDirectionSpeed(pusPacket_t* outTC, asn1SccPusBoolean param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_29_SetMotorDirection))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_29.motorDirectionSpeed = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_30_createSetMotorCurrentLimit(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusFloat32 motorCurrentLimit)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_30_SetMotorCurrentLimit);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_30);
+		pus_tc_210_30_setParamSM_ID(outTc, smId);
+		pus_tc_210_30_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_30_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_30_setParamMotorCurrentLimit(outTc, motorCurrentLimit);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_30_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_30_SetMotorCurrentLimit))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_30.smId;
+}
+
+pusError_t pus_tc_210_30_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_30_SetMotorCurrentLimit))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_30.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_30_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_30_SetMotorCurrentLimit))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_30.componentId;
+}
+
+pusError_t pus_tc_210_30_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_30_SetMotorCurrentLimit))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_30.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_30_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_30_SetMotorCurrentLimit))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_30.subcomponentId;
+}
+
+pusError_t pus_tc_210_30_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_30_SetMotorCurrentLimit))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_30.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusFloat32 pus_tc_210_30_getParamMotorCurrentLimit(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_30_SetMotorCurrentLimit))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_30.motorCurrentLimit;
+}
+
+pusError_t pus_tc_210_30_setParamMotorCurrentLimit(pusPacket_t* outTC, asn1SccPusFloat32 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_30_SetMotorCurrentLimit))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_30.motorCurrentLimit = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_31_createCalibrateController(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId, asn1SccPusUInt8 controllerCalib)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_31_CalibrateController);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_31);
+		pus_tc_210_31_setParamSM_ID(outTc, smId);
+		pus_tc_210_31_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_31_setParamSUBCOMP_ID(outTc, subcomponentId);
+		pus_tc_210_31_setParamControllerCalib(outTc, controllerCalib);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_31_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_31_CalibrateController))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_31.smId;
+}
+
+pusError_t pus_tc_210_31_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_31_CalibrateController))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_31.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_31_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_31_CalibrateController))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_31.componentId;
+}
+
+pusError_t pus_tc_210_31_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_31_CalibrateController))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_31.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_31_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_31_CalibrateController))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_31.subcomponentId;
+}
+
+pusError_t pus_tc_210_31_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_31_CalibrateController))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_31.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_31_getParamControllerCalib(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_31_CalibrateController))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_31.controllerCalib;
+}
+
+pusError_t pus_tc_210_31_setParamControllerCalib(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_31_CalibrateController))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_31.controllerCalib = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_32_createResetController(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_32_ResetController);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_32);
+		pus_tc_210_32_setParamSM_ID(outTc, smId);
+		pus_tc_210_32_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_32_setParamSUBCOMP_ID(outTc, subcomponentId);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_32_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_32_ResetController))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_32.smId;
+}
+
+pusError_t pus_tc_210_32_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_32_ResetController))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_32.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_32_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_32_ResetController))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_32.componentId;
+}
+
+pusError_t pus_tc_210_32_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_32_ResetController))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_32.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_32_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_32_ResetController))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_32.subcomponentId;
+}
+
+pusError_t pus_tc_210_32_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_32_ResetController))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_32.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+
+
+/* OSP */
+pusError_t pus_tc_210_41_createOspControlCommand(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 command)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_41_OspControlCommand);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_41);
+		pus_tc_210_41_setParamSM_ID(outTc, smId);
+		pus_tc_210_41_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_41_setParamCommand(outTc, command);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_41_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_41_OspControlCommand))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_41.smId;
+}
+
+pusError_t pus_tc_210_41_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_41_OspControlCommand))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_41.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_41_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_41_OspControlCommand))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_41.componentId;
+}
+
+pusError_t pus_tc_210_41_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_41_OspControlCommand))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_41.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_41_getParamCommand(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_41_OspControlCommand))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_41.command;
+}
+
+pusError_t pus_tc_210_41_setParamCommand(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_41_OspControlCommand))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_41.command = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+pusError_t pus_tc_210_42_createCaptureImage(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_42_CaptureImage);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_42);
+		pus_tc_210_42_setParamSM_ID(outTc, smId);
+		pus_tc_210_42_setParamCOMP_ID(outTc, componentId);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_42_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_42_CaptureImage))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_42.smId;
+}
+
+pusError_t pus_tc_210_42_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_42_CaptureImage))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_42.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_42_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_42_CaptureImage))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_42.componentId;
+}
+
+pusError_t pus_tc_210_42_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_42_CaptureImage))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_42.componentId = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
@@ -672,7 +2979,7 @@ asn1SccPusUInt8 pus_tc_210_81_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_81_ModeCommand)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_81_ModeCommand))
 	{
 		return 0;
 	}
@@ -740,7 +3047,7 @@ asn1SccPusUInt8 pus_tc_210_81_getParamTargetMode(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_81_ModeCommand)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_81_ModeCommand))
 	{
 		return 0;
 	}
@@ -749,7 +3056,7 @@ asn1SccPusUInt8 pus_tc_210_81_getParamTargetMode(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_81.targetMode; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_81.targetMode;
 }
 
 pusError_t pus_tc_210_81_setParamTargetMode(pusPacket_t* outTC, asn1SccPusUInt8 param)
@@ -763,7 +3070,7 @@ pusError_t pus_tc_210_81_setParamTargetMode(pusPacket_t* outTC, asn1SccPusUInt8 
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_81.targetMode = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_81.targetMode = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
@@ -810,7 +3117,7 @@ asn1SccPusUInt8 pus_tc_210_82_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_82_ComponentsCommand)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_82_ComponentsCommand))
 	{
 		return 0;
 	}
@@ -878,7 +3185,7 @@ asn1SccPusUInt8 pus_tc_210_82_getParamComponentTargetId(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_82_ComponentsCommand)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_82_ComponentsCommand))
 	{
 		return 0;
 	}
@@ -887,7 +3194,7 @@ asn1SccPusUInt8 pus_tc_210_82_getParamComponentTargetId(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_82.componentTargetId; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_82.componentTargetId;
 }
 
 pusError_t pus_tc_210_82_setParamComponentTargetId(pusPacket_t* outTC, asn1SccPusUInt8 param)
@@ -901,7 +3208,7 @@ pusError_t pus_tc_210_82_setParamComponentTargetId(pusPacket_t* outTC, asn1SccPu
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_82.componentTargetId = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_82.componentTargetId = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusBoolean pus_tc_210_82_getParamComponentTargetStatus(const pusPacket_t* inTC)
@@ -911,7 +3218,7 @@ asn1SccPusBoolean pus_tc_210_82_getParamComponentTargetStatus(const pusPacket_t*
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_82_ComponentsCommand)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_82_ComponentsCommand))
 	{
 		return 0;
 	}
@@ -920,7 +3227,7 @@ asn1SccPusBoolean pus_tc_210_82_getParamComponentTargetStatus(const pusPacket_t*
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_82.componentTargetStatus; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_82.componentTargetStatus;
 }
 
 pusError_t pus_tc_210_82_setParamComponentTargetStatus(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -934,7 +3241,7 @@ pusError_t pus_tc_210_82_setParamComponentTargetStatus(pusPacket_t* outTC, asn1S
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_82.componentTargetStatus = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_82.componentTargetStatus = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
@@ -983,7 +3290,7 @@ asn1SccPusUInt8 pus_tc_210_91_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_91_SpecificHkRequest)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_91_SpecificHkRequest))
 	{
 		return 0;
 	}
@@ -1051,7 +3358,7 @@ asn1SccPusUInt8 pus_tc_210_91_getParamSUBCOMP_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_91_SpecificHkRequest)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_91_SpecificHkRequest))
 	{
 		return 0;
 	}
@@ -1085,7 +3392,7 @@ asn1SccPusUInt8 pus_tc_210_91_getParamHkXRequest(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_91_SpecificHkRequest)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_91_SpecificHkRequest))
 	{
 		return 0;
 	}
@@ -1094,7 +3401,7 @@ asn1SccPusUInt8 pus_tc_210_91_getParamHkXRequest(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_91.hkXRequest; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_91.hkXRequest;
 }
 
 pusError_t pus_tc_210_91_setParamHkXRequest(pusPacket_t* outTC, asn1SccPusUInt8 param)
@@ -1108,7 +3415,7 @@ pusError_t pus_tc_210_91_setParamHkXRequest(pusPacket_t* outTC, asn1SccPusUInt8 
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_91.hkXRequest = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_91.hkXRequest = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
@@ -1154,7 +3461,7 @@ asn1SccPusUInt8 pus_tc_210_92_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_92_AllHkRequest)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_92_AllHkRequest))
 	{
 		return 0;
 	}
@@ -1222,7 +3529,7 @@ asn1SccPusUInt8 pus_tc_210_92_getParamSUBCOMP_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_92_AllHkRequest)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_92_AllHkRequest))
 	{
 		return 0;
 	}
@@ -1297,7 +3604,7 @@ asn1SccPusUInt8 pus_tc_210_93_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1))
 	{
 		return 0;
 	}
@@ -1365,7 +3672,7 @@ asn1SccPusUInt8 pus_tc_210_93_getParamSUBCOMP_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1))
 	{
 		return 0;
 	}
@@ -1399,7 +3706,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw1Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1))
 	{
 		return 0;
 	}
@@ -1408,7 +3715,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw1Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_93.sw1Cmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_93.sw1Cmd;
 }
 
 pusError_t pus_tc_210_93_setParamSw1Cmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1422,7 +3729,7 @@ pusError_t pus_tc_210_93_setParamSw1Cmd(pusPacket_t* outTC, asn1SccPusBoolean pa
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_93.sw1Cmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_93.sw1Cmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusBoolean pus_tc_210_93_getParamSw2Cmd(const pusPacket_t* inTC)
@@ -1432,7 +3739,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw2Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1))
 	{
 		return 0;
 	}
@@ -1441,7 +3748,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw2Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_93.sw2Cmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_93.sw2Cmd;
 }
 
 pusError_t pus_tc_210_93_setParamSw2Cmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1455,7 +3762,7 @@ pusError_t pus_tc_210_93_setParamSw2Cmd(pusPacket_t* outTC, asn1SccPusBoolean pa
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_93.sw2Cmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_93.sw2Cmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusBoolean pus_tc_210_93_getParamSw3Cmd(const pusPacket_t* inTC)
@@ -1465,7 +3772,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw3Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1))
 	{
 		return 0;
 	}
@@ -1474,7 +3781,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw3Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_93.sw3Cmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_93.sw3Cmd;
 }
 
 pusError_t pus_tc_210_93_setParamSw3Cmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1488,7 +3795,7 @@ pusError_t pus_tc_210_93_setParamSw3Cmd(pusPacket_t* outTC, asn1SccPusBoolean pa
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_93.sw3Cmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_93.sw3Cmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusBoolean pus_tc_210_93_getParamSw4Cmd(const pusPacket_t* inTC)
@@ -1498,7 +3805,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw4Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1))
 	{
 		return 0;
 	}
@@ -1507,7 +3814,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw4Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_93.sw4Cmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_93.sw4Cmd;
 }
 
 pusError_t pus_tc_210_93_setParamSw4Cmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1521,7 +3828,7 @@ pusError_t pus_tc_210_93_setParamSw4Cmd(pusPacket_t* outTC, asn1SccPusBoolean pa
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_93.sw4Cmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_93.sw4Cmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusBoolean pus_tc_210_93_getParamSw5Cmd(const pusPacket_t* inTC)
@@ -1531,7 +3838,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw5Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_93_CommandSwitch1))
 	{
 		return 0;
 	}
@@ -1540,7 +3847,7 @@ asn1SccPusBoolean pus_tc_210_93_getParamSw5Cmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_93.sw5Cmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_93.sw5Cmd;
 }
 
 pusError_t pus_tc_210_93_setParamSw5Cmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1554,7 +3861,7 @@ pusError_t pus_tc_210_93_setParamSw5Cmd(pusPacket_t* outTC, asn1SccPusBoolean pa
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_93.sw5Cmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_93.sw5Cmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
@@ -1580,7 +3887,7 @@ pusError_t pus_tc_210_94_createCommand24VConverterA(pusPacket_t* outTc, pusApid_
 
 		// Service identification
 		pus_setTcService(outTc, pus_ST210_rmapManagement);
-		pus_setTcSubtype(outTc, pus_TC_210_94_Command24VConverterA);
+		pus_setTcSubtype(outTc, pus_TC_210_94_Command24vConverterA);
 
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_94);
 		pus_tc_210_94_setParamSM_ID(outTc, smId);
@@ -1604,7 +3911,7 @@ asn1SccPusUInt8 pus_tc_210_94_getParamSM_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24VConverterA)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return 0;
 	}
@@ -1622,7 +3929,7 @@ pusError_t pus_tc_210_94_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24VConverterA))
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return PUS_GET_ERROR();
 	}
@@ -1638,7 +3945,7 @@ asn1SccPusUInt8 pus_tc_210_94_getParamCOMP_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24VConverterA))
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return 0;
 	}
@@ -1656,7 +3963,7 @@ pusError_t pus_tc_210_94_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 par
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24VConverterA))
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return PUS_GET_ERROR();
 	}
@@ -1672,7 +3979,7 @@ asn1SccPusUInt8 pus_tc_210_94_getParamSUBCOMP_ID(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24VConverterA)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return 0;
 	}
@@ -1690,7 +3997,7 @@ pusError_t pus_tc_210_94_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24VConverterA))
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return PUS_GET_ERROR();
 	}
@@ -1706,7 +4013,7 @@ asn1SccPusBoolean pus_tc_210_94_getParamConv24vACmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24VConverterA)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return 0;
 	}
@@ -1715,7 +4022,7 @@ asn1SccPusBoolean pus_tc_210_94_getParamConv24vACmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_94.conv24vACmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_94.conv24vACmd;
 }
 
 pusError_t pus_tc_210_94_setParamConv24vACmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1724,12 +4031,12 @@ pusError_t pus_tc_210_94_setParamConv24vACmd(pusPacket_t* outTC, asn1SccPusBoole
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24VConverterA))
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_94.conv24vACmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_94.conv24vACmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusBoolean pus_tc_210_94_getParamConv24vBCmd(const pusPacket_t* inTC)
@@ -1739,7 +4046,7 @@ asn1SccPusBoolean pus_tc_210_94_getParamConv24vBCmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24VConverterA)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return 0;
 	}
@@ -1748,7 +4055,7 @@ asn1SccPusBoolean pus_tc_210_94_getParamConv24vBCmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_94.conv24vBCmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_94.conv24vBCmd;
 }
 
 pusError_t pus_tc_210_94_setParamConv24vBCmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1757,12 +4064,12 @@ pusError_t pus_tc_210_94_setParamConv24vBCmd(pusPacket_t* outTC, asn1SccPusBoole
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24VConverterA))
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_94.conv24vBCmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_94.conv24vBCmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusBoolean pus_tc_210_94_getParamConv12vCmd(const pusPacket_t* inTC)
@@ -1772,7 +4079,7 @@ asn1SccPusBoolean pus_tc_210_94_getParamConv12vCmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24VConverterA)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return 0;
 	}
@@ -1781,7 +4088,7 @@ asn1SccPusBoolean pus_tc_210_94_getParamConv12vCmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_94.conv12vCmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_94.conv12vCmd;
 }
 
 pusError_t pus_tc_210_94_setParamConv12vCmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1790,12 +4097,12 @@ pusError_t pus_tc_210_94_setParamConv12vCmd(pusPacket_t* outTC, asn1SccPusBoolea
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24VConverterA))
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_94.conv12vCmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_94.conv12vCmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 asn1SccPusBoolean pus_tc_210_94_getParamConv19vCmd(const pusPacket_t* inTC)
@@ -1805,7 +4112,7 @@ asn1SccPusBoolean pus_tc_210_94_getParamConv19vCmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 		return 0;
 	}
-	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24VConverterA)) // TODO
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return 0;
 	}
@@ -1814,7 +4121,7 @@ asn1SccPusBoolean pus_tc_210_94_getParamConv19vCmd(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_94.conv19vCmd; // TODO - check ASN1 names
+	return inTC->data.u.tcData.data.u.st_210_94.conv19vCmd;
 }
 
 pusError_t pus_tc_210_94_setParamConv19vCmd(pusPacket_t* outTC, asn1SccPusBoolean param)
@@ -1823,14 +4130,15 @@ pusError_t pus_tc_210_94_setParamConv19vCmd(pusPacket_t* outTC, asn1SccPusBoolea
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24VConverterA))
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_94_Command24vConverterA))
 	{
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_94.conv19vCmd = param; // TODO - check ASN1 names
+	outTC->data.u.tcData.data.u.st_210_94.conv19vCmd = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
+
 
 
 pusError_t pus_expectSt210Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
@@ -1855,12 +4163,26 @@ pusError_t pus_expectSt210Tc(const pusPacket_t* packet, pusSubservice_t expected
 			    subtype != pus_TC_210_2_SpwPnpSetOwnerFields &&
 			    subtype != pus_TC_210_11_ConfigureTimeEpoch &&
 			    subtype != pus_TC_210_12_SetLeds &&
+				subtype != pus_TC_210_21_SetHouskeepingDataRate &&
+			    subtype != pus_TC_210_22_GoToState &&
+			    subtype != pus_TC_210_23_CommandP15vLine &&
+			    subtype != pus_TC_210_24_CommandP2v5Line &&
+			    subtype != pus_TC_210_25_CoomdadRelay &&
+			    subtype != pus_TC_210_26_SetLvdsPins &&
+			    subtype != pus_TC_210_27_PowerOnOffMotor &&
+			    subtype != pus_TC_210_28_SetMotorSpeed &&
+			    subtype != pus_TC_210_29_SetMotorDirection &&
+			    subtype != pus_TC_210_30_SetMotorCurrentLimit &&
+			    subtype != pus_TC_210_31_CalibrateController &&
+			    subtype != pus_TC_210_32_ResetController &&
+			    subtype != pus_TC_210_41_OspControlCommand &&
+			    subtype != pus_TC_210_42_CaptureImage &&
 				subtype != pus_TC_210_81_ModeCommand &&
 			    subtype != pus_TC_210_82_ComponentsCommand &&
 			    subtype != pus_TC_210_91_SpecificHkRequest &&
 			    subtype != pus_TC_210_92_AllHkRequest &&
 			    subtype != pus_TC_210_93_CommandSwitch1 &&
-			    subtype != pus_TC_210_94_Command24VConverterA
+			    subtype != pus_TC_210_94_Command24vConverterA
 			  )
 		 	{
 		 		pus_setError(PUS_ERROR_TC_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
@@ -1883,13 +4205,27 @@ pusError_t pus_expectSt210Tc(const pusPacket_t* packet, pusSubservice_t expected
             kind != PusTcApplicationData_st_210_2_PRESENT &&
             kind != PusTcApplicationData_st_210_11_PRESENT &&
             kind != PusTcApplicationData_st_210_12_PRESENT &&
-			kind != PusTcApplicationData_st_210_81_PRESENT &&
+            kind != PusTcApplicationData_st_210_21_PRESENT &&
+            kind != PusTcApplicationData_st_210_22_PRESENT &&
+            kind != PusTcApplicationData_st_210_23_PRESENT &&
+            kind != PusTcApplicationData_st_210_24_PRESENT &&
+            kind != PusTcApplicationData_st_210_25_PRESENT &&
+            kind != PusTcApplicationData_st_210_26_PRESENT &&
+            kind != PusTcApplicationData_st_210_27_PRESENT &&
+            kind != PusTcApplicationData_st_210_28_PRESENT &&
+            kind != PusTcApplicationData_st_210_29_PRESENT &&
+            kind != PusTcApplicationData_st_210_30_PRESENT &&
+            kind != PusTcApplicationData_st_210_31_PRESENT &&
+            kind != PusTcApplicationData_st_210_32_PRESENT &&
+            kind != PusTcApplicationData_st_210_41_PRESENT &&
+            kind != PusTcApplicationData_st_210_42_PRESENT &&
+            kind != PusTcApplicationData_st_210_81_PRESENT &&
             kind != PusTcApplicationData_st_210_82_PRESENT &&
             kind != PusTcApplicationData_st_210_91_PRESENT &&
             kind != PusTcApplicationData_st_210_92_PRESENT &&
             kind != PusTcApplicationData_st_210_93_PRESENT &&
             kind != PusTcApplicationData_st_210_94_PRESENT &&
-		 	kind != pus_TC_DATA_NONE)
+		    kind != pus_TC_DATA_NONE)
 		{
 		 	pus_setError(PUS_ERROR_TC_KIND, function, (pusErrorData_t){.integer=kind});
 		 	return PUS_ERROR_TC_KIND;

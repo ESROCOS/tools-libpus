@@ -526,6 +526,144 @@ void init_mission_module(py::module &m)
     m.def("pus_tc_210_12_getParamSetLeds", &pus_tc_210_12_getParamSetLeds, "pus_tc_210_12_getParamSetLeds");
     m.def("pus_tc_210_12_setParamSetLeds", &pus_tc_210_12_setParamSetLeds, "pus_tc_210_12_setParamSetLeds");
 
+    /* HOTDOCK */
+    m.def("pus_tc_210_21_createSetHouskeepingDataRate", &pus_tc_210_21_createSetHouskeepingDataRate,"pus_tc_210_21_createSetHouskeepingDataRate");
+    m.def("pus_tc_210_21_getParamSM_ID", &pus_tc_210_21_getParamSM_ID, "pus_tc_210_21_getParamSM_ID");
+    m.def("pus_tc_210_21_setParamSM_ID", &pus_tc_210_21_setParamSM_ID, "pus_tc_210_21_setParamSM_ID");
+    m.def("pus_tc_210_21_getParamCOMP_ID", &pus_tc_210_21_getParamCOMP_ID, "pus_tc_210_21_getParamCOMP_ID");
+    m.def("pus_tc_210_21_setParamCOMP_ID", &pus_tc_210_21_setParamCOMP_ID, "pus_tc_210_21_setParamCOMP_ID");
+    m.def("pus_tc_210_21_getParamSUBCOMP_ID", &pus_tc_210_21_getParamSUBCOMP_ID, "pus_tc_210_21_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_21_setParamSUBCOMP_ID", &pus_tc_210_21_setParamSUBCOMP_ID, "pus_tc_210_21_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_21_getParamPollingHkTm", &pus_tc_210_21_getParamPollingHkTm, "pus_tc_210_21_getParamPollingHkTm");
+    m.def("pus_tc_210_21_setParamPollingHkTm", &pus_tc_210_21_setParamPollingHkTm, "pus_tc_210_21_setParamPollingHkTm");
+
+    m.def("pus_tc_210_22_createGoToState", &pus_tc_210_22_createGoToState,"pus_tc_210_22_createGoToState");
+    m.def("pus_tc_210_22_getParamSM_ID", &pus_tc_210_22_getParamSM_ID, "pus_tc_210_22_getParamSM_ID");
+    m.def("pus_tc_210_22_setParamSM_ID", &pus_tc_210_22_setParamSM_ID, "pus_tc_210_22_setParamSM_ID");
+    m.def("pus_tc_210_22_getParamCOMP_ID", &pus_tc_210_22_getParamCOMP_ID, "pus_tc_210_22_getParamCOMP_ID");
+    m.def("pus_tc_210_22_setParamCOMP_ID", &pus_tc_210_22_setParamCOMP_ID, "pus_tc_210_22_setParamCOMP_ID");
+    m.def("pus_tc_210_22_getParamSUBCOMP_ID", &pus_tc_210_22_getParamSUBCOMP_ID, "pus_tc_210_22_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_22_setParamSUBCOMP_ID", &pus_tc_210_22_setParamSUBCOMP_ID, "pus_tc_210_22_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_22_getParamTargetState", &pus_tc_210_22_getParamTargetState, "pus_tc_210_22_getParamTargetState");
+    m.def("pus_tc_210_22_setParamTargetState", &pus_tc_210_22_setParamTargetState, "pus_tc_210_22_setParamTargetState");
+
+    m.def("pus_tc_210_23_createCommandP15VLine", &pus_tc_210_23_createCommandP15VLine,"pus_tc_210_23_createCommandP15VLine");
+    m.def("pus_tc_210_23_getParamSM_ID", &pus_tc_210_23_getParamSM_ID, "pus_tc_210_23_getParamSM_ID");
+    m.def("pus_tc_210_23_setParamSM_ID", &pus_tc_210_23_setParamSM_ID, "pus_tc_210_23_setParamSM_ID");
+    m.def("pus_tc_210_23_getParamCOMP_ID", &pus_tc_210_23_getParamCOMP_ID, "pus_tc_210_23_getParamCOMP_ID");
+    m.def("pus_tc_210_23_setParamCOMP_ID", &pus_tc_210_23_setParamCOMP_ID, "pus_tc_210_23_setParamCOMP_ID");
+    m.def("pus_tc_210_23_getParamSUBCOMP_ID", &pus_tc_210_23_getParamSUBCOMP_ID, "pus_tc_210_23_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_23_setParamSUBCOMP_ID", &pus_tc_210_23_setParamSUBCOMP_ID, "pus_tc_210_23_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_23_getParamP15vCmd", &pus_tc_210_23_getParamP15vCmd, "pus_tc_210_23_getParamP15vCmd");
+    m.def("pus_tc_210_23_setParamP15vCmd", &pus_tc_210_23_setParamP15vCmd, "pus_tc_210_23_setParamP15vCmd");
+
+    m.def("pus_tc_210_24_createCommandP2V5Line", &pus_tc_210_24_createCommandP2V5Line,"pus_tc_210_24_createCommandP2V5Line");
+    m.def("pus_tc_210_24_getParamSM_ID", &pus_tc_210_24_getParamSM_ID, "pus_tc_210_24_getParamSM_ID");
+    m.def("pus_tc_210_24_setParamSM_ID", &pus_tc_210_24_setParamSM_ID, "pus_tc_210_24_setParamSM_ID");
+    m.def("pus_tc_210_24_getParamCOMP_ID", &pus_tc_210_24_getParamCOMP_ID, "pus_tc_210_24_getParamCOMP_ID");
+    m.def("pus_tc_210_24_setParamCOMP_ID", &pus_tc_210_24_setParamCOMP_ID, "pus_tc_210_24_setParamCOMP_ID");
+    m.def("pus_tc_210_24_getParamSUBCOMP_ID", &pus_tc_210_24_getParamSUBCOMP_ID, "pus_tc_210_24_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_24_setParamSUBCOMP_ID", &pus_tc_210_24_setParamSUBCOMP_ID, "pus_tc_210_24_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_24_getParamP2v5Cmd", &pus_tc_210_24_getParamP2v5Cmd, "pus_tc_210_24_getParamP2v5Cmd");
+    m.def("pus_tc_210_24_setParamP2v5Cmd", &pus_tc_210_24_setParamP2v5Cmd, "pus_tc_210_24_setParamP2v5Cmd");
+
+    m.def("pus_tc_210_25_createCoomdadRelay", &pus_tc_210_25_createCoomdadRelay,"pus_tc_210_25_createCoomdadRelay");
+    m.def("pus_tc_210_25_getParamSM_ID", &pus_tc_210_25_getParamSM_ID, "pus_tc_210_25_getParamSM_ID");
+    m.def("pus_tc_210_25_setParamSM_ID", &pus_tc_210_25_setParamSM_ID, "pus_tc_210_25_setParamSM_ID");
+    m.def("pus_tc_210_25_getParamCOMP_ID", &pus_tc_210_25_getParamCOMP_ID, "pus_tc_210_25_getParamCOMP_ID");
+    m.def("pus_tc_210_25_setParamCOMP_ID", &pus_tc_210_25_setParamCOMP_ID, "pus_tc_210_25_setParamCOMP_ID");
+    m.def("pus_tc_210_25_getParamSUBCOMP_ID", &pus_tc_210_25_getParamSUBCOMP_ID, "pus_tc_210_25_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_25_setParamSUBCOMP_ID", &pus_tc_210_25_setParamSUBCOMP_ID, "pus_tc_210_25_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_25_getParamRelayCmd", &pus_tc_210_25_getParamRelayCmd, "pus_tc_210_25_getParamRelayCmd");
+    m.def("pus_tc_210_25_setParamRelayCmd", &pus_tc_210_25_setParamRelayCmd, "pus_tc_210_25_setParamRelayCmd");
+
+    m.def("pus_tc_210_26_createSetLvdsPins", &pus_tc_210_26_createSetLvdsPins,"pus_tc_210_26_createSetLvdsPins");
+    m.def("pus_tc_210_26_getParamSM_ID", &pus_tc_210_26_getParamSM_ID, "pus_tc_210_26_getParamSM_ID");
+    m.def("pus_tc_210_26_setParamSM_ID", &pus_tc_210_26_setParamSM_ID, "pus_tc_210_26_setParamSM_ID");
+    m.def("pus_tc_210_26_getParamCOMP_ID", &pus_tc_210_26_getParamCOMP_ID, "pus_tc_210_26_getParamCOMP_ID");
+    m.def("pus_tc_210_26_setParamCOMP_ID", &pus_tc_210_26_setParamCOMP_ID, "pus_tc_210_26_setParamCOMP_ID");
+    m.def("pus_tc_210_26_getParamSUBCOMP_ID", &pus_tc_210_26_getParamSUBCOMP_ID, "pus_tc_210_26_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_26_setParamSUBCOMP_ID", &pus_tc_210_26_setParamSUBCOMP_ID, "pus_tc_210_26_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_26_getParamLvdsACmd", &pus_tc_210_26_getParamLvdsACmd, "pus_tc_210_26_getParamLvdsACmd");
+    m.def("pus_tc_210_26_setParamLvdsACmd", &pus_tc_210_26_setParamLvdsACmd, "pus_tc_210_26_setParamLvdsACmd");
+    m.def("pus_tc_210_26_getParamLvdsBCmd", &pus_tc_210_26_getParamLvdsBCmd, "pus_tc_210_26_getParamLvdsBCmd");
+    m.def("pus_tc_210_26_setParamLvdsBCmd", &pus_tc_210_26_setParamLvdsBCmd, "pus_tc_210_26_setParamLvdsBCmd");
+
+    m.def("pus_tc_210_27_createPowerOnOffMotor", &pus_tc_210_27_createPowerOnOffMotor,"pus_tc_210_27_createPowerOnOffMotor");
+    m.def("pus_tc_210_27_getParamSM_ID", &pus_tc_210_27_getParamSM_ID, "pus_tc_210_27_getParamSM_ID");
+    m.def("pus_tc_210_27_setParamSM_ID", &pus_tc_210_27_setParamSM_ID, "pus_tc_210_27_setParamSM_ID");
+    m.def("pus_tc_210_27_getParamCOMP_ID", &pus_tc_210_27_getParamCOMP_ID, "pus_tc_210_27_getParamCOMP_ID");
+    m.def("pus_tc_210_27_setParamCOMP_ID", &pus_tc_210_27_setParamCOMP_ID, "pus_tc_210_27_setParamCOMP_ID");
+    m.def("pus_tc_210_27_getParamSUBCOMP_ID", &pus_tc_210_27_getParamSUBCOMP_ID, "pus_tc_210_27_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_27_setParamSUBCOMP_ID", &pus_tc_210_27_setParamSUBCOMP_ID, "pus_tc_210_27_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_27_getParamMotorOnOff", &pus_tc_210_27_getParamMotorOnOff, "pus_tc_210_27_getParamMotorOnOff");
+    m.def("pus_tc_210_27_setParamMotorOnOff", &pus_tc_210_27_setParamMotorOnOff, "pus_tc_210_27_setParamMotorOnOff");
+
+    m.def("pus_tc_210_28_createSetMotorSpeed", &pus_tc_210_28_createSetMotorSpeed,"pus_tc_210_28_createSetMotorSpeed");
+    m.def("pus_tc_210_28_getParamSM_ID", &pus_tc_210_28_getParamSM_ID, "pus_tc_210_28_getParamSM_ID");
+    m.def("pus_tc_210_28_setParamSM_ID", &pus_tc_210_28_setParamSM_ID, "pus_tc_210_28_setParamSM_ID");
+    m.def("pus_tc_210_28_getParamCOMP_ID", &pus_tc_210_28_getParamCOMP_ID, "pus_tc_210_28_getParamCOMP_ID");
+    m.def("pus_tc_210_28_setParamCOMP_ID", &pus_tc_210_28_setParamCOMP_ID, "pus_tc_210_28_setParamCOMP_ID");
+    m.def("pus_tc_210_28_getParamSUBCOMP_ID", &pus_tc_210_28_getParamSUBCOMP_ID, "pus_tc_210_28_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_28_setParamSUBCOMP_ID", &pus_tc_210_28_setParamSUBCOMP_ID, "pus_tc_210_28_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_28_getParamMotorTargetSpeed", &pus_tc_210_28_getParamMotorTargetSpeed, "pus_tc_210_28_getParamMotorTargetSpeed");
+    m.def("pus_tc_210_28_setParamMotorTargetSpeed", &pus_tc_210_28_setParamMotorTargetSpeed, "pus_tc_210_28_setParamMotorTargetSpeed");
+
+    m.def("pus_tc_210_29_createSetMotorDirection", &pus_tc_210_29_createSetMotorDirection,"pus_tc_210_29_createSetMotorDirection");
+    m.def("pus_tc_210_29_getParamSM_ID", &pus_tc_210_29_getParamSM_ID, "pus_tc_210_29_getParamSM_ID");
+    m.def("pus_tc_210_29_setParamSM_ID", &pus_tc_210_29_setParamSM_ID, "pus_tc_210_29_setParamSM_ID");
+    m.def("pus_tc_210_29_getParamCOMP_ID", &pus_tc_210_29_getParamCOMP_ID, "pus_tc_210_29_getParamCOMP_ID");
+    m.def("pus_tc_210_29_setParamCOMP_ID", &pus_tc_210_29_setParamCOMP_ID, "pus_tc_210_29_setParamCOMP_ID");
+    m.def("pus_tc_210_29_getParamSUBCOMP_ID", &pus_tc_210_29_getParamSUBCOMP_ID, "pus_tc_210_29_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_29_setParamSUBCOMP_ID", &pus_tc_210_29_setParamSUBCOMP_ID, "pus_tc_210_29_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_29_getParamMotorDirectionSpeed", &pus_tc_210_29_getParamMotorDirectionSpeed, "pus_tc_210_29_getParamMotorDirectionSpeed");
+    m.def("pus_tc_210_29_setParamMotorDirectionSpeed", &pus_tc_210_29_setParamMotorDirectionSpeed, "pus_tc_210_29_setParamMotorDirectionSpeed");
+
+    m.def("pus_tc_210_30_createSetMotorCurrentLimit", &pus_tc_210_30_createSetMotorCurrentLimit,"pus_tc_210_30_createSetMotorCurrentLimit");
+    m.def("pus_tc_210_30_getParamSM_ID", &pus_tc_210_30_getParamSM_ID, "pus_tc_210_30_getParamSM_ID");
+    m.def("pus_tc_210_30_setParamSM_ID", &pus_tc_210_30_setParamSM_ID, "pus_tc_210_30_setParamSM_ID");
+    m.def("pus_tc_210_30_getParamCOMP_ID", &pus_tc_210_30_getParamCOMP_ID, "pus_tc_210_30_getParamCOMP_ID");
+    m.def("pus_tc_210_30_setParamCOMP_ID", &pus_tc_210_30_setParamCOMP_ID, "pus_tc_210_30_setParamCOMP_ID");
+    m.def("pus_tc_210_30_getParamSUBCOMP_ID", &pus_tc_210_30_getParamSUBCOMP_ID, "pus_tc_210_30_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_30_setParamSUBCOMP_ID", &pus_tc_210_30_setParamSUBCOMP_ID, "pus_tc_210_30_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_30_getParamMotorCurrentLimit", &pus_tc_210_30_getParamMotorCurrentLimit, "pus_tc_210_30_getParamMotorCurrentLimit");
+    m.def("pus_tc_210_30_setParamMotorCurrentLimit", &pus_tc_210_30_setParamMotorCurrentLimit, "pus_tc_210_30_setParamMotorCurrentLimit");
+
+    m.def("pus_tc_210_31_createCalibrateController", &pus_tc_210_31_createCalibrateController,"pus_tc_210_31_createCalibrateController");
+    m.def("pus_tc_210_31_getParamSM_ID", &pus_tc_210_31_getParamSM_ID, "pus_tc_210_31_getParamSM_ID");
+    m.def("pus_tc_210_31_setParamSM_ID", &pus_tc_210_31_setParamSM_ID, "pus_tc_210_31_setParamSM_ID");
+    m.def("pus_tc_210_31_getParamCOMP_ID", &pus_tc_210_31_getParamCOMP_ID, "pus_tc_210_31_getParamCOMP_ID");
+    m.def("pus_tc_210_31_setParamCOMP_ID", &pus_tc_210_31_setParamCOMP_ID, "pus_tc_210_31_setParamCOMP_ID");
+    m.def("pus_tc_210_31_getParamSUBCOMP_ID", &pus_tc_210_31_getParamSUBCOMP_ID, "pus_tc_210_31_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_31_setParamSUBCOMP_ID", &pus_tc_210_31_setParamSUBCOMP_ID, "pus_tc_210_31_setParamSUBCOMP_ID");
+    m.def("pus_tc_210_31_getParamControllerCalib", &pus_tc_210_31_getParamControllerCalib, "pus_tc_210_31_getParamControllerCalib");
+    m.def("pus_tc_210_31_setParamControllerCalib", &pus_tc_210_31_setParamControllerCalib, "pus_tc_210_31_setParamControllerCalib");
+
+    m.def("pus_tc_210_32_createResetController", &pus_tc_210_32_createResetController,"pus_tc_210_32_createResetController");
+    m.def("pus_tc_210_32_getParamSM_ID", &pus_tc_210_32_getParamSM_ID, "pus_tc_210_32_getParamSM_ID");
+    m.def("pus_tc_210_32_setParamSM_ID", &pus_tc_210_32_setParamSM_ID, "pus_tc_210_32_setParamSM_ID");
+    m.def("pus_tc_210_32_getParamCOMP_ID", &pus_tc_210_32_getParamCOMP_ID, "pus_tc_210_32_getParamCOMP_ID");
+    m.def("pus_tc_210_32_setParamCOMP_ID", &pus_tc_210_32_setParamCOMP_ID, "pus_tc_210_32_setParamCOMP_ID");
+    m.def("pus_tc_210_32_getParamSUBCOMP_ID", &pus_tc_210_32_getParamSUBCOMP_ID, "pus_tc_210_32_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_32_setParamSUBCOMP_ID", &pus_tc_210_32_setParamSUBCOMP_ID, "pus_tc_210_32_setParamSUBCOMP_ID");
+
+
+    /* OSP */
+    m.def("pus_tc_210_41_createOspControlCommand", &pus_tc_210_41_createOspControlCommand,"pus_tc_210_41_createOspControlCommand");
+    m.def("pus_tc_210_41_getParamSM_ID", &pus_tc_210_41_getParamSM_ID, "pus_tc_210_41_getParamSM_ID");
+    m.def("pus_tc_210_41_setParamSM_ID", &pus_tc_210_41_setParamSM_ID, "pus_tc_210_41_setParamSM_ID");
+    m.def("pus_tc_210_41_getParamCOMP_ID", &pus_tc_210_41_getParamCOMP_ID, "pus_tc_210_41_getParamCOMP_ID");
+    m.def("pus_tc_210_41_setParamCOMP_ID", &pus_tc_210_41_setParamCOMP_ID, "pus_tc_210_41_setParamCOMP_ID");
+    m.def("pus_tc_210_41_getParamCommand", &pus_tc_210_41_getParamCommand, "pus_tc_210_41_getParamCommand");
+    m.def("pus_tc_210_41_setParamCommand", &pus_tc_210_41_setParamCommand, "pus_tc_210_41_setParamCommand");
+
+    m.def("pus_tc_210_42_createCaptureImage", &pus_tc_210_42_createCaptureImage,"pus_tc_210_42_createCaptureImage");
+    m.def("pus_tc_210_42_getParamSM_ID", &pus_tc_210_42_getParamSM_ID, "pus_tc_210_42_getParamSM_ID");
+    m.def("pus_tc_210_42_setParamSM_ID", &pus_tc_210_42_setParamSM_ID, "pus_tc_210_42_setParamSM_ID");
+    m.def("pus_tc_210_42_getParamCOMP_ID", &pus_tc_210_42_getParamCOMP_ID, "pus_tc_210_42_getParamCOMP_ID");
+    m.def("pus_tc_210_42_setParamCOMP_ID", &pus_tc_210_42_setParamCOMP_ID, "pus_tc_210_42_setParamCOMP_ID");
+
+
     /* THS */
     m.def("pus_tc_210_81_createModeCommand", &pus_tc_210_81_createModeCommand,"pus_tc_210_81_createModeCommand");
     m.def("pus_tc_210_81_getParamSM_ID", &pus_tc_210_81_getParamSM_ID, "pus_tc_210_81_getParamSM_ID");

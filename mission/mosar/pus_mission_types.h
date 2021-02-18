@@ -93,6 +93,24 @@ typedef asn1SccPusTM_200_8_Data pusSt200_8_Observation; //!< Wmstatus observatio
 #define pus_TC_DATA_ST_210_11   ((pusTcDataKind_t) PusTcApplicationData_st_210_11_PRESENT)
 #define pus_TC_DATA_ST_210_12   ((pusTcDataKind_t) PusTcApplicationData_st_210_12_PRESENT)
 
+/* HOTDOCK */
+#define pus_TC_DATA_ST_210_21   ((pusTcDataKind_t) PusTcApplicationData_st_210_21_PRESENT)
+#define pus_TC_DATA_ST_210_22   ((pusTcDataKind_t) PusTcApplicationData_st_210_22_PRESENT)
+#define pus_TC_DATA_ST_210_23   ((pusTcDataKind_t) PusTcApplicationData_st_210_23_PRESENT)
+#define pus_TC_DATA_ST_210_24   ((pusTcDataKind_t) PusTcApplicationData_st_210_24_PRESENT)
+#define pus_TC_DATA_ST_210_25   ((pusTcDataKind_t) PusTcApplicationData_st_210_25_PRESENT)
+#define pus_TC_DATA_ST_210_26   ((pusTcDataKind_t) PusTcApplicationData_st_210_26_PRESENT)
+#define pus_TC_DATA_ST_210_27   ((pusTcDataKind_t) PusTcApplicationData_st_210_27_PRESENT)
+#define pus_TC_DATA_ST_210_28   ((pusTcDataKind_t) PusTcApplicationData_st_210_28_PRESENT)
+#define pus_TC_DATA_ST_210_29   ((pusTcDataKind_t) PusTcApplicationData_st_210_29_PRESENT)
+#define pus_TC_DATA_ST_210_30   ((pusTcDataKind_t) PusTcApplicationData_st_210_30_PRESENT)
+#define pus_TC_DATA_ST_210_31   ((pusTcDataKind_t) PusTcApplicationData_st_210_31_PRESENT)
+#define pus_TC_DATA_ST_210_32   ((pusTcDataKind_t) PusTcApplicationData_st_210_32_PRESENT)
+
+/* OSP */
+#define pus_TC_DATA_ST_210_41   ((pusTcDataKind_t) PusTcApplicationData_st_210_41_PRESENT)
+#define pus_TC_DATA_ST_210_42   ((pusTcDataKind_t) PusTcApplicationData_st_210_42_PRESENT)
+
 /* THS */
 #define pus_TC_DATA_ST_210_81   ((pusTcDataKind_t) PusTcApplicationData_st_210_81_PRESENT)
 #define pus_TC_DATA_ST_210_82   ((pusTcDataKind_t) PusTcApplicationData_st_210_82_PRESENT)
