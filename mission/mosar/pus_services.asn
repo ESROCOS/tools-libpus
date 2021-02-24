@@ -337,6 +337,10 @@ BEGIN
 	pus-TC-210-41-OspControlCommand    PusSubserviceType ::= 41
 	pus-TC-210-42-CaptureImage    PusSubserviceType ::= 42
 
+	pus-TC-210-71-JointTraj    PusSubserviceType ::= 71
+	pus-TC-210-72-CartGoal    PusSubserviceType ::= 72
+	pus-TC-210-73-Interface    PusSubserviceType ::= 73
+
 	pus-TC-210-81-ModeCommand    PusSubserviceType ::= 81
 	pus-TC-210-82-ComponentsCommand    PusSubserviceType ::= 82
 	

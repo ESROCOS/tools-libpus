@@ -208,6 +208,26 @@ extern pusError_t pus_tc_210_42_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt
 extern asn1SccPusUInt8 pus_tc_210_42_getParamCOMP_ID(const pusPacket_t* inTC);
 extern pusError_t pus_tc_210_42_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 
+/* WM */
+extern pusError_t pus_tc_210_71_createJointTrajectory(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 nSteps, asn1SccPusTC_210_71_Data_goalValues goalValues);
+extern asn1SccPusUInt8 pus_tc_210_71_getParamSM_ID(const pusPacket_t* inTC);
+extern asn1SccPusUInt8 pus_tc_210_71_getParamCOMP_ID(const pusPacket_t* inTC);
+extern asn1SccPusUInt8 pus_tc_210_71_getParamN_STEPS(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_71_getParamGoalValues(const pusPacket_t* inTC, asn1SccPusTC_210_71_Data_goalValues *goalValues);
+
+extern pusError_t pus_tc_210_72_createCartGoal(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusTC_210_72_Data_desiredPos desiredPos);
+extern asn1SccPusUInt8 pus_tc_210_72_getParamSM_ID(const pusPacket_t* inTC);
+extern asn1SccPusUInt8 pus_tc_210_72_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_72_getParamDesiredPos(const pusPacket_t* inTC, asn1SccPusTC_210_72_Data_desiredPos *desiredPos);
+
+extern pusError_t pus_tc_210_73_createInterface(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusInt32 setMode, asn1SccPusInt32 hdId, asn1SccPusInt32 manipulatorBase, asn1SccPusInt32 graspRelease);
+extern asn1SccPusUInt8 pus_tc_210_73_getParamSM_ID(const pusPacket_t* inTC);
+extern asn1SccPusUInt8 pus_tc_210_73_getParamCOMP_ID(const pusPacket_t* inTC);
+extern asn1SccPusInt32 pus_tc_210_73_getParamSET_MODE(const pusPacket_t* inTC);
+extern asn1SccPusInt32 pus_tc_210_73_getParamHD_ID(const pusPacket_t* inTC);
+extern asn1SccPusInt32 pus_tc_210_73_getParamMANIPULATOR_BASE(const pusPacket_t* inTC);
+extern asn1SccPusInt32 pus_tc_210_73_getParamGRASP_RELEASE(const pusPacket_t* inTC);
+
 /* THS */
 extern pusError_t pus_tc_210_81_createModeCommand(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 TARGET_MODE);
 extern asn1SccPusUInt8 pus_tc_210_81_getParamSM_ID(const pusPacket_t* inTC);

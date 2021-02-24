@@ -12,7 +12,7 @@ PUS-ST210 DEFINITIONS ::=
 BEGIN
 
     IMPORTS
-    PusUInt16, PusUInt8, PusInt32, PusBoolean, PusFloat32 FROM PUS-TypesDefinitions
+    PusUInt16, PusUInt8, PusInt32, PusBoolean, PusFloat32, PusDouble FROM PUS-TypesDefinitions
 --    PusSt03ParameterId, PusSt03HousekeepingReportId FROM PUS-ST03
     ;
   
@@ -158,6 +158,34 @@ BEGIN
     {
         smId PusUInt8,
         componentId PusUInt8
+    }
+/* WM */
+    -- Data for TC[210,71]
+    PusTC-210-71-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        nSteps PusUInt8,
+        -- matrix [50][7]
+        goalValues SEQUENCE SIZE(350) OF PusDouble
+    }
+    -- Data for TC[210,72]
+    PusTC-210-72-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        -- matrix [3][4]
+        desiredPos SEQUENCE SIZE(12) OF PusDouble
+    }
+    -- Data for TC[210,73]
+    PusTC-210-73-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        setMode PusInt32,
+        hdId PusInt32,
+        manipulatorBase PusInt32,
+        graspRelease PusInt32
     }
 /* THS */
     -- Data for TC[210,81]

@@ -2935,6 +2935,359 @@ pusError_t pus_tc_210_42_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 par
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
+/* WM */
+pusError_t pus_tc_210_71_createJointTrajectory(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 nSteps, asn1SccPusTC_210_71_Data_goalValues goalValues)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_71_JointTraj);
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_71);
+
+		outTc->data.u.tcData.data.u.st_210_71.smId = smId;
+		outTc->data.u.tcData.data.u.st_210_71.componentId = componentId;
+		outTc->data.u.tcData.data.u.st_210_71.nSteps = nSteps;
+		outTc->data.u.tcData.data.u.st_210_71.goalValues = goalValues;
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_71_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_71_JointTraj))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_71.smId;
+}
+
+asn1SccPusUInt8 pus_tc_210_71_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_71_JointTraj))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_71.componentId;
+}
+
+asn1SccPusUInt8 pus_tc_210_71_getParamN_STEPS(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_71_JointTraj))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_71.nSteps;
+}
+
+pusError_t pus_tc_210_71_getParamGoalValues(const pusPacket_t* inTC, asn1SccPusTC_210_71_Data_goalValues *goalValues)
+{
+	if( (NULL == inTC) || (NULL == goalValues))
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_71_JointTraj))
+	{
+		return 0;
+	}
+	else
+	{
+		*goalValues = inTC->data.u.tcData.data.u.st_210_71.goalValues;
+		return PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+}
+
+pusError_t pus_tc_210_72_createCartGoal(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusTC_210_72_Data_desiredPos desiredPos)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_72_CartGoal);
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_72);
+
+		outTc->data.u.tcData.data.u.st_210_72.smId = smId;
+		outTc->data.u.tcData.data.u.st_210_72.componentId = componentId;
+		outTc->data.u.tcData.data.u.st_210_72.desiredPos = desiredPos;
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_72_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_72_CartGoal))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_72.smId;
+}
+
+asn1SccPusUInt8 pus_tc_210_72_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_72_CartGoal))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_72.componentId;
+}
+
+pusError_t pus_tc_210_72_getParamDesiredPos(const pusPacket_t* inTC, asn1SccPusTC_210_72_Data_desiredPos *desiredPos)
+{
+	if( (NULL == inTC) || (NULL == desiredPos))
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_72_CartGoal))
+	{
+		return PUS_GET_ERROR();
+	}
+	else
+	{
+		*desiredPos = inTC->data.u.tcData.data.u.st_210_72.desiredPos;
+		return PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+}
+
+pusError_t pus_tc_210_73_createInterface(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusInt32 setMode, asn1SccPusInt32 hdId, asn1SccPusInt32 manipulatorBase, asn1SccPusInt32 graspRelease)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_73_Interface);
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_73);
+
+		outTc->data.u.tcData.data.u.st_210_73.smId = smId;
+		outTc->data.u.tcData.data.u.st_210_73.componentId = componentId;
+		outTc->data.u.tcData.data.u.st_210_73.setMode = setMode;
+		outTc->data.u.tcData.data.u.st_210_73.hdId = hdId;
+		outTc->data.u.tcData.data.u.st_210_73.manipulatorBase = manipulatorBase;
+		outTc->data.u.tcData.data.u.st_210_73.graspRelease = graspRelease;
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_73_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_73_Interface))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_73.smId;
+}
+
+asn1SccPusUInt8 pus_tc_210_73_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_73_Interface))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_73.componentId;
+}
+
+asn1SccPusInt32 pus_tc_210_73_getParamSET_MODE(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_73_Interface))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_73.setMode;
+}
+
+asn1SccPusInt32 pus_tc_210_73_getParamHD_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_73_Interface))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_73.hdId;
+}
+
+asn1SccPusInt32 pus_tc_210_73_getParamMANIPULATOR_BASE(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_73_Interface))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_73.manipulatorBase;
+}
+
+asn1SccPusInt32 pus_tc_210_73_getParamGRASP_RELEASE(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_73_Interface))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_73.graspRelease;
+}
 
 /* THS */
 pusError_t pus_tc_210_81_createModeCommand(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 targetMode)
@@ -4177,6 +4530,9 @@ pusError_t pus_expectSt210Tc(const pusPacket_t* packet, pusSubservice_t expected
 			    subtype != pus_TC_210_32_ResetController &&
 			    subtype != pus_TC_210_41_OspControlCommand &&
 			    subtype != pus_TC_210_42_CaptureImage &&
+				subtype != pus_TC_210_71_JointTraj &&
+				subtype != pus_TC_210_72_CartGoal &&
+				subtype != pus_TC_210_73_Interface &&
 				subtype != pus_TC_210_81_ModeCommand &&
 			    subtype != pus_TC_210_82_ComponentsCommand &&
 			    subtype != pus_TC_210_91_SpecificHkRequest &&
@@ -4219,7 +4575,10 @@ pusError_t pus_expectSt210Tc(const pusPacket_t* packet, pusSubservice_t expected
             kind != PusTcApplicationData_st_210_32_PRESENT &&
             kind != PusTcApplicationData_st_210_41_PRESENT &&
             kind != PusTcApplicationData_st_210_42_PRESENT &&
-            kind != PusTcApplicationData_st_210_81_PRESENT &&
+            kind != PusTcApplicationData_st_210_71_PRESENT &&
+			kind != PusTcApplicationData_st_210_72_PRESENT &&
+			kind != PusTcApplicationData_st_210_73_PRESENT &&
+			kind != PusTcApplicationData_st_210_81_PRESENT &&
             kind != PusTcApplicationData_st_210_82_PRESENT &&
             kind != PusTcApplicationData_st_210_91_PRESENT &&
             kind != PusTcApplicationData_st_210_92_PRESENT &&
