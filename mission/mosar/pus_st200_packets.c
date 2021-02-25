@@ -968,6 +968,64 @@ pusSt200_8_Observation pus_tm_200_8_getWmstatusObservation(const pusPacket_t* in
 	return inTM->data.u.tmData.data.u.st_200_8;
 	
 }
+pusError_t pus_tm_200_16_createSodplannerReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination, pusSt200_16_Observation observation)
+{
+	if (NULL == outTm )
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTmPacket(outTm);
+
+		// Source information
+		pus_setApid(outTm, apid);
+		pus_setSequenceCount(outTm, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTm, sizeof(pusPacketData_t));
+
+		// Destination
+		pus_setTmDestination(outTm, destination);
+
+		// Timestamp
+		pus_setTmPacketTimeNow(outTm);
+
+		// Service identification
+		pus_setTmService(outTm, pus_ST200_timelineControl);
+		pus_setTmSubtype(outTm, pus_TM_200_16_sodplannerReport);
+
+		//TODO set data
+		pus_setTmDataKind(outTm, st_200_16_PRESENT);
+		outTm->data.u.tmData.data.u.st_200_16 = observation;
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+pusSt200_16_Observation pus_tm_200_16_getSodplannerObservation(const pusPacket_t* inTM)
+{
+	
+	if( NULL == inTM  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		//return NULL;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST200TM(inTM, pus_TM_200_16_sodplannerReport))
+	{
+		//return NULL;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTM->data.u.tmData.data.u.st_200_16;
+	
+}
 
 
 pusError_t pus_expectSt200Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
@@ -1055,7 +1113,8 @@ pusError_t pus_expectSt200Tm(const pusPacket_t* packet, pusSubservice_t expected
                 subtype != pus_TM_200_6_wmcmdReport && 
                 subtype != pus_TM_200_10_basecmdReport && 
                 subtype != pus_TM_200_12_efcmdReport && 
-                subtype != pus_TM_200_8_wmstatusReport 
+                subtype != pus_TM_200_8_wmstatusReport && 
+                subtype != pus_TM_200_16_sodplannerReport 
                 )
 			{
 				pus_setError(PUS_ERROR_TM_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
@@ -1081,7 +1140,8 @@ pusError_t pus_expectSt200Tm(const pusPacket_t* packet, pusSubservice_t expected
             kind != pus_TM_DATA_ST_200_6 && 
             kind != pus_TM_DATA_ST_200_10 && 
             kind != pus_TM_DATA_ST_200_12 && 
-            kind != pus_TM_DATA_ST_200_8 
+            kind != pus_TM_DATA_ST_200_8 && 
+            kind != pus_TM_DATA_ST_200_16 
             )
 		{
 			pus_setError(PUS_ERROR_TM_KIND, function, (pusErrorData_t){.integer=kind});

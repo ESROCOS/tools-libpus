@@ -57,6 +57,9 @@ typedef asn1SccPusTM_200_12_Data pusSt200_12_Observation; //!< Efcmd observation
 
 typedef asn1SccPusTM_200_8_Data pusSt200_8_Observation; //!< Wmstatus observation ID
  
+
+typedef asn1SccPusTM_200_16_Data pusSt200_16_Observation; //!< Sodplanner observation ID
+ 
 #define pus_TM_DATA_ST_200_18		((pusTmDataKind_t) st_200_18_PRESENT)
  
 #define pus_TC_DATA_ST_200_19		((pusTcDataKind_t) PusTcApplicationData_st_200_19_PRESENT) 
@@ -80,6 +83,9 @@ typedef asn1SccPusTM_200_8_Data pusSt200_8_Observation; //!< Wmstatus observatio
 #define pus_TM_DATA_ST_200_12		((pusTmDataKind_t) st_200_12_PRESENT)
  
 #define pus_TM_DATA_ST_200_8		((pusTmDataKind_t) st_200_8_PRESENT)
+ 
+#define pus_TM_DATA_ST_200_16		((pusTmDataKind_t) st_200_16_PRESENT)
+
 
 // ST 210
 

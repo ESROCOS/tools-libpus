@@ -303,7 +303,6 @@ BEGIN
     pus-TC-200-5-wmcmdRequest		PusSubserviceType ::= 5 
     pus-TM-200-6-wmcmdReport		PusSubserviceType ::= 6
      
-
     pus-TC-200-9-basecmdRequest		PusSubserviceType ::= 9 
     pus-TM-200-10-basecmdReport		PusSubserviceType ::= 10
      
@@ -311,6 +310,9 @@ BEGIN
     pus-TM-200-12-efcmdReport		PusSubserviceType ::= 12
    
     pus-TM-200-8-wmstatusReport		PusSubserviceType ::= 8
+
+    pus-TM-200-16-sodplannerReport		PusSubserviceType ::= 16
+    
    
     
 	-- ST210 RMAP management

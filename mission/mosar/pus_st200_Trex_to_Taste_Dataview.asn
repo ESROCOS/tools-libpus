@@ -1,12 +1,4 @@
 
---------------------------------------------------------------------------------------
---!  ASN file generated automatically by the ERGO TREX2TASTE interface generator
---!  This file will be overriten if output path given to code generator matches this
---!  path.
---!  I you want to keep changes made to this file keep it safe.
---!  Was generated from configuration file: /home/peraspera/esrocos_workspace/control/mosar_agent/cfg/mosar_timeline.cfg and /home/peraspera/esrocos_workspace/control/mosar_agent/cfg/mosar_domain.cfg 
---!  Date/time of generation: 2020-06-12 12:07:55 
---------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
 --!  This file defines the data types that are used to communicate with the Agent
 --!  controller.
@@ -32,13 +24,6 @@ FloatIntervalDomain ::= SEQUENCE{
     max   T-Float
 }
 
-EnumDomain ::= SEQUENCE{
-    key     T-String,
-    value   T-Int64
-}
-
-
-
 HotdockcmdPred ::= ENUMERATED { hotdockcmd-sendstate, hotdockcmd-idle, hotdockcmd-cancel, hotdockcmd-unknown }
 HotdockstatusPred ::= ENUMERATED { hotdockstatus-status, hotdockstatus-cancel, hotdockstatus-unknown }
 WmcmdPred ::= ENUMERATED { wmcmd-error, wmcmd-movetohd, wmcmd-movetoslot, wmcmd-idle, wmcmd-cancel, wmcmd-unknown }
@@ -56,6 +41,12 @@ ActionstatusEnum ::= ENUMERATED { actionstatus-success, actionstatus-failed, act
 
 -- STATEID ENUM DATA (AGENT-FUNCTIONAL)
 StateidEnum ::= ENUMERATED { stateid-offline, stateid-idle, stateid-latched, stateid-locked, stateid-connected, stateid-unknown }
+
+-- COMMANDSTATE ENUM DATA (AGENT-FUNCTIONAL)
+CommandstateEnum ::= ENUMERATED { commandstate-offline, commandstate-idle, commandstate-latched, commandstate-connected, commandstate-unknown }
+
+-- YAWID ENUM DATA (AGENT-FUNCTIONAL)
+YawidEnum ::= ENUMERATED { yawid-yaw0, yawid-yaw90, yawid-yaw180, yawid-yaw270, yawid-unknown }
  
 
 

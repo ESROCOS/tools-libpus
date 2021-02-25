@@ -158,6 +158,15 @@ pusError_t pus_tm_200_8_createWmstatusReport(pusPacket_t* outTm, pusApid_t apid,
 pusSt200_8_Observation pus_tm_200_8_getWmstatusObservation(const pusPacket_t* inTM);
 
 
+/*! Builds a TC[20,16] packet in the packet passed as parameter.
+ *  \param[out] outTm Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \return Error code (PUS_NO_ERROR if success)
+ */ 
+pusError_t pus_tm_200_16_createSodplannerReport(pusPacket_t* outTm, pusApid_t apid, pusSequenceCount_t sequenceCount, pusApid_t destination, pusSt200_16_Observation observation);
+pusSt200_16_Observation pus_tm_200_16_getSodplannerObservation(const pusPacket_t* inTM);
+
+
 
 //! Check that a packet is of a PUS ST[20] TC kind
 /*! \param[in] packet The PUS packet

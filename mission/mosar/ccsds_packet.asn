@@ -37,14 +37,21 @@ BEGIN
   	
   	pus-ST11-MAX-SCHEDULED-ACTIVITIES FROM PUS-Config
     PusTM-200-18-Data FROM PUS-ST200 --  planner  
+     
     PusTC-200-19-Data, PusTM-200-20-Data FROM PUS-ST200 --  mission  
+     
     PusTC-200-13-Data, PusTM-200-14-Data FROM PUS-ST200 --  sodmission  
+     
     PusTC-200-1-Data, PusTM-200-2-Data FROM PUS-ST200 --  hotdockcmd  
     PusTM-200-4-Data FROM PUS-ST200 --  hotdockstatus  
+     
     PusTC-200-5-Data, PusTM-200-6-Data FROM PUS-ST200 --  wmcmd  
+     
     PusTC-200-9-Data, PusTM-200-10-Data FROM PUS-ST200 --  basecmd  
+     
     PusTC-200-11-Data, PusTM-200-12-Data FROM PUS-ST200 --  efcmd  
     PusTM-200-8-Data FROM PUS-ST200 --  wmstatus  
+    PusTM-200-16-Data FROM PUS-ST200 --  sodplanner  
     
 /* R_ICU_SPW_PNP */
     PusTC-210-1-Data FROM PUS-ST210                     --  SpW Routing Table Set Entry
@@ -118,8 +125,9 @@ BEGIN
         st-200-6 PusTM-200-6-Data, 
         st-200-10 PusTM-200-10-Data, 
         st-200-12 PusTM-200-12-Data, 
-        st-200-8 PusTM-200-8-Data,
-        st-220-3 PusTM-220-3-Data
+        st-200-8 PusTM-200-8-Data, 
+        st-200-16 PusTM-200-16-Data,
+	st-220-3 PusTM-220-3-Data
     }
     
     -- TC secondary header
