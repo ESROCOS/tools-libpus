@@ -34,13 +34,13 @@ class MakoTranslate(object):
             param_id += 1
 
         #  In the future library there can be more than one report id
-        param_id = 0
-        read_value = " "
-        while read_value is not None:
-            read_value = pb.pus_st03_getHkReportInfoName(param_id)
-            if read_value is not None:
-                self.st3_12_params[read_value] = param_id
-            param_id += 1
+        # param_id = 0
+        # read_value = " "
+        # while read_value is not None:
+        #     read_value = pb.pus_st03_getHkReportInfoName(param_id)
+        #     if read_value is not None:
+        #         self.st3_12_params[read_value] = param_id
+        #     param_id += 1
 
 
         param_id = 0
