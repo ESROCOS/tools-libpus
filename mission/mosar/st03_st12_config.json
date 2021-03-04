@@ -91,6 +91,48 @@
 			"high_limit": 10
 		},
         {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_TM_1_CONNECTED_NODES",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_TM_1_VOLTAGE_INT",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_TM_1_VOLTAGE_AUX",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_TM_1_TEMPERATURE",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_TM_1_SW_TASK_ERROR",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
             "label": "DP_RMAP_SM1_DMS_HOTDOCK_A_TM_1_CURRENT_STATE",
             "type": "BYTE",
             "low_limit": 0,
