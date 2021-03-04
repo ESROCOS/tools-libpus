@@ -111,6 +111,12 @@ typedef asn1SccPusTM_200_8_Data pusSt200_8_Observation; //!< Wmstatus observatio
 #define pus_TC_DATA_ST_210_41   ((pusTcDataKind_t) PusTcApplicationData_st_210_41_PRESENT)
 #define pus_TC_DATA_ST_210_42   ((pusTcDataKind_t) PusTcApplicationData_st_210_42_PRESENT)
 
+/* BAT */
+#define pus_TC_DATA_ST_210_61   ((pusTcDataKind_t) PusTcApplicationData_st_210_61_PRESENT)
+#define pus_TC_DATA_ST_210_62   ((pusTcDataKind_t) PusTcApplicationData_st_210_62_PRESENT)
+#define pus_TC_DATA_ST_210_63   ((pusTcDataKind_t) PusTcApplicationData_st_210_63_PRESENT)
+#define pus_TC_DATA_ST_210_64   ((pusTcDataKind_t) PusTcApplicationData_st_210_64_PRESENT)
+
 /* WM */
 #define pus_TC_DATA_ST_210_71   ((pusTcDataKind_t) PusTcApplicationData_st_210_71_PRESENT)
 #define pus_TC_DATA_ST_210_72   ((pusTcDataKind_t) PusTcApplicationData_st_210_72_PRESENT)

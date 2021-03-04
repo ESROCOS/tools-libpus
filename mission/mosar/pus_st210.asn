@@ -159,6 +159,33 @@ BEGIN
         smId PusUInt8,
         componentId PusUInt8
     }
+/* BAT */
+    -- Data for TC[210,61]
+    PusTC-210-61-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8
+    }
+    -- Data for TC[210,62]
+    PusTC-210-62-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8
+    }
+    -- Data for TC[210,63]
+    PusTC-210-63-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        conv48vCmd PusBoolean
+    }
+    -- Data for TC[210,64]
+    PusTC-210-64-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        batChCmd PusBoolean
+    }
 /* WM */
     -- Data for TC[210,71]
     PusTC-210-71-Data ::= SEQUENCE

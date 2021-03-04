@@ -208,6 +208,35 @@ extern pusError_t pus_tc_210_42_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt
 extern asn1SccPusUInt8 pus_tc_210_42_getParamCOMP_ID(const pusPacket_t* inTC);
 extern pusError_t pus_tc_210_42_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 
+/* BAT */
+extern pusError_t pus_tc_210_61_createHk1Request(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId);
+extern asn1SccPusUInt8 pus_tc_210_61_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_61_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_61_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_61_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
+extern pusError_t pus_tc_210_62_createAllHkRequest(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId);
+extern asn1SccPusUInt8 pus_tc_210_62_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_62_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_62_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_62_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
+extern pusError_t pus_tc_210_63_createCommand48VConverter(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusBoolean CONV_48V_CMD);
+extern asn1SccPusUInt8 pus_tc_210_63_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_63_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_63_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_63_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusBoolean pus_tc_210_63_getParamConv48vCmd(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_63_setParamConv48vCmd(pusPacket_t* outTC, asn1SccPusBoolean param);
+
+extern pusError_t pus_tc_210_64_createCommandBatCharger(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusBoolean BAT_CH_CMD);
+extern asn1SccPusUInt8 pus_tc_210_64_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_64_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_64_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_64_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusBoolean pus_tc_210_64_getParamBatChCmd(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_64_setParamBatChCmd(pusPacket_t* outTC, asn1SccPusBoolean param);
+
 /* WM */
 extern pusError_t pus_tc_210_71_createJointTrajectory(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 nSteps, asn1SccPusTC_210_71_Data_goalValues goalValues);
 extern asn1SccPusUInt8 pus_tc_210_71_getParamSM_ID(const pusPacket_t* inTC);

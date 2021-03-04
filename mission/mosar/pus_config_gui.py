@@ -58,6 +58,14 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
         pb.pus_tc_210_41_createOspControlCommand(packet, apid, seq, 0, 0, 0)
     elif (svc, msg) == (210, 42):
         pb.pus_tc_210_42_createCaptureImage(packet, apid, seq, 0, 0)
+    elif (svc, msg) == (210, 61):
+        pb.pus_tc_210_61_createHk1Request(packet, apid, seq, 0, 0)
+    elif (svc, msg) == (210, 62):
+        pb.pus_tc_210_62_createAllHkRequest(packet, apid, seq, 0, 0)
+    elif (svc, msg) == (210, 63):
+        pb.pus_tc_210_63_createCommand48VConverter(packet, apid, seq, 0, 0, 0)
+    elif (svc, msg) == (210, 64):
+        pb.pus_tc_210_64_createCommandBatCharger(packet, apid, seq, 0, 0, 0)
     elif (svc, msg) == (210, 81):
         pb.pus_tc_210_81_createModeCommand(packet, apid, seq, 0, 0, 0)
     elif (svc, msg) == (210, 82):
@@ -149,7 +157,15 @@ def mission_get_data(packet, svc, msg):
     elif (svc, msg) == (210, 41):
         data = pus_tc_210_41_get_data(packet)
     elif (svc, msg) == (210, 42):
-        data = pus_tc_210_42_get_data(packet)   
+        data = pus_tc_210_42_get_data(packet) 
+    elif (svc, msg) == (210, 61):
+        data = pus_tc_210_61_get_data(packet)
+    elif (svc, msg) == (210, 62):
+        data = pus_tc_210_62_get_data(packet)
+    elif (svc, msg) == (210, 63):
+        data = pus_tc_210_63_get_data(packet)
+    elif (svc, msg) == (210, 64):
+        data = pus_tc_210_64_get_data(packet)  
     elif (svc, msg) == (210, 81):
         data = pus_tc_210_81_get_data(packet)
     elif (svc, msg) == (210, 82):
@@ -222,6 +238,14 @@ def mission_set_data(packet, svc, msg, data):
         packet = pus_tc_210_41_set_data(packet, data)
     elif (svc, msg) == (210, 42):
         packet = pus_tc_210_42_set_data(packet, data)
+    elif (svc, msg) == (210, 61):
+        packet = pus_tc_210_61_set_data(packet, data)
+    elif (svc, msg) == (210, 62):
+        packet = pus_tc_210_62_set_data(packet, data)
+    elif (svc, msg) == (210, 63):
+        packet = pus_tc_210_63_set_data(packet, data)
+    elif (svc, msg) == (210, 64):
+        packet = pus_tc_210_64_set_data(packet, data)
     elif (svc, msg) == (210, 81):
         packet = pus_tc_210_81_set_data(packet, data)
     elif (svc, msg) == (210, 82):
@@ -504,6 +528,54 @@ def pus_tc_210_42_get_data(packet):
     data = dict()
     data["smId"] = pb.pus_tc_210_42_getParamSM_ID(packet)
     data["componentId"] = pb.pus_tc_210_42_getParamCOMP_ID(packet)
+    return data
+
+def pus_tc_210_61_set_data(packet, data):
+    pb.pus_tc_210_61_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_61_setParamCOMP_ID(packet, int(data["componentId"]))
+    return packet
+
+def pus_tc_210_61_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_61_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_61_getParamCOMP_ID(packet)
+    return data
+
+def pus_tc_210_62_set_data(packet, data):
+    pb.pus_tc_210_62_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_62_setParamCOMP_ID(packet, int(data["componentId"]))
+    return packet
+
+def pus_tc_210_62_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_62_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_62_getParamCOMP_ID(packet)
+    return data
+
+def pus_tc_210_63_set_data(packet, data):
+    pb.pus_tc_210_63_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_63_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_63_setParamConv48vCmd(packet, int(data["conv48vCmd"]))
+    return packet
+
+def pus_tc_210_63_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_63_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_63_getParamCOMP_ID(packet)
+    data["conv48vCmd"] = pb.pus_tc_210_63_getParamConv48vCmd(packet)
+    return data
+
+def pus_tc_210_64_set_data(packet, data):
+    pb.pus_tc_210_64_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_64_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_64_setParamBatChCmd(packet, int(data["batChCmd"]))
+    return packet
+
+def pus_tc_210_64_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_64_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_64_getParamCOMP_ID(packet)
+    data["batChCmd"] = pb.pus_tc_210_64_getParamBatChCmd(packet)
     return data
 
 def pus_tc_210_81_set_data(packet, data):
