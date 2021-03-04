@@ -29,6 +29,8 @@
 
 --  - TM[200,8] wmstatus report
 
+--  - TM[200,16] sodplanner report
+
 
 PUS-ST200 DEFINITIONS ::= 
 BEGIN
@@ -45,6 +47,7 @@ BEGIN
     Basecmdstatus FROM Agent-Trex-to-Taste-Dataview
     Efcmdstatus FROM Agent-Trex-to-Taste-Dataview
     Wmstatusstatus FROM Agent-Trex-to-Taste-Dataview
+    Sodplannerstatus FROM Agent-Trex-to-Taste-Dataview
     ;
     
     -- Data for TM[200,18]
@@ -157,6 +160,14 @@ BEGIN
     PusTM-200-8-Data ::= SEQUENCE
     {
     	observation Wmstatusstatus,
+        agent T-String
+    }
+    
+    
+    -- Data for TM[200,16]
+    PusTM-200-16-Data ::= SEQUENCE
+    {
+    	observation Sodplannerstatus,
         agent T-String
     }
     

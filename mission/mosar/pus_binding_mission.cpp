@@ -171,6 +171,22 @@ void init_mission_module(py::module &m)
         .value("unknown", asn1SccStateidEnum::asn1Sccstateid_unknown)
         .export_values();
     
+    py::enum_<asn1SccCommandstateEnum>(m, "asn1SccCommandstateEnum")
+        .value("offline", asn1SccCommandstateEnum::asn1Scccommandstate_offline)
+        .value("idle", asn1SccCommandstateEnum::asn1Scccommandstate_idle)
+        .value("latched", asn1SccCommandstateEnum::asn1Scccommandstate_latched)
+        .value("connected", asn1SccCommandstateEnum::asn1Scccommandstate_connected)
+        .value("unknown", asn1SccCommandstateEnum::asn1Scccommandstate_unknown)
+        .export_values();
+    
+    py::enum_<asn1SccYawidEnum>(m, "asn1SccYawidEnum")
+        .value("yaw0", asn1SccYawidEnum::asn1Sccyawid_yaw0)
+        .value("yaw90", asn1SccYawidEnum::asn1Sccyawid_yaw90)
+        .value("yaw180", asn1SccYawidEnum::asn1Sccyawid_yaw180)
+        .value("yaw270", asn1SccYawidEnum::asn1Sccyawid_yaw270)
+        .value("unknown", asn1SccYawidEnum::asn1Sccyawid_unknown)
+        .export_values();
+    
 
     py::enum_<asn1SccHotdockcmdPred>(m, "asn1SccHotdockcmdPred")
         .value("idle", asn1SccHotdockcmdPred::asn1Scchotdockcmd_idle)
@@ -229,6 +245,15 @@ void init_mission_module(py::module &m)
         .value("unknown", asn1SccSodmissionPred::asn1Sccsodmission_unknown)
         .export_values();
 
+    py::enum_<asn1SccSodplannerPred>(m, "asn1SccSodplannerPred")
+        .value("idle", asn1SccSodplannerPred::asn1Sccsodplanner_idle)
+        .value("failed", asn1SccSodplannerPred::asn1Sccsodplanner_failed)
+        .value("planning", asn1SccSodplannerPred::asn1Sccsodplanner_planning)
+        .value("fault", asn1SccSodplannerPred::asn1Sccsodplanner_fault)
+        .value("cancel", asn1SccSodplannerPred::asn1Sccsodplanner_cancel)
+        .value("unknown", asn1SccSodplannerPred::asn1Sccsodplanner_unknown)
+        .export_values();
+
     py::enum_<asn1SccPlannerPred>(m, "asn1SccPlannerPred")
         .value("idle", asn1SccPlannerPred::asn1Sccplanner_idle)
         .value("planning", asn1SccPlannerPred::asn1Sccplanner_planning)
@@ -244,6 +269,8 @@ void init_mission_module(py::module &m)
         .value("cancel", asn1SccMissionPred::asn1Sccmission_cancel)
         .value("unknown", asn1SccMissionPred::asn1Sccmission_unknown)
         .export_values();
+    
+    
     
 
     py::class_<asn1SccPlannerstatus>(m, "asn1SccPlannerstatus")
@@ -437,6 +464,22 @@ void init_mission_module(py::module &m)
         .def_readwrite("agent", &pusSt200_8_Observation::agent);
 
     
+    
+
+    py::class_<asn1SccSodplannerstatus>(m, "asn1SccSodplannerstatus")
+        .def(py::init<>())
+        .def_readwrite("predicate", &asn1SccSodplannerstatus::predicate)
+        .def_readwrite("inittime", &asn1SccSodplannerstatus::inittime)
+        .def_readwrite("endtime", &asn1SccSodplannerstatus::endtime);
+
+    
+
+    py::class_<pusSt200_16_Observation>(m, "pusSt200_16_Observation")
+        .def(py::init<>())
+        .def_readwrite("observation", &pusSt200_16_Observation::observation)
+        .def_readwrite("agent", &pusSt200_16_Observation::agent);
+
+    
 
      
     m.def("pus_tm_200_18_createPlannerReport", &pus_tm_200_18_createPlannerReport, "pus_tm_200_18_createPlannerReport");
@@ -483,9 +526,11 @@ void init_mission_module(py::module &m)
      
     m.def("pus_tm_200_8_createWmstatusReport", &pus_tm_200_8_createWmstatusReport, "pus_tm_200_8_createWmstatusReport");
     m.def("pus_tm_200_8_getWmstatusObservation", &pus_tm_200_8_getWmstatusObservation, "pus_tm_200_8_getWmstatusObservation");
- 
-
+     
+    m.def("pus_tm_200_16_createSodplannerReport", &pus_tm_200_16_createSodplannerReport, "pus_tm_200_16_createSodplannerReport");
+    m.def("pus_tm_200_16_getSodplannerObservation", &pus_tm_200_16_getSodplannerObservation, "pus_tm_200_16_getSodplannerObservation");
     // ST 210
+
 
     /* R_ICU_SPW_PNP */
     m.def("pus_tc_210_1_createSpwRoutingTableSetEntry", &pus_tc_210_1_createSpwRoutingTableSetEntry,"pus_tc_210_1_createSpwRoutingTableSetEntry");

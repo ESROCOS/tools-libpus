@@ -10,14 +10,19 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
     #ST 200
     if (svc, msg) == (200, 19):
         pb.pus_tc_200_19_createMissionRequest_(packet, apid, seq)
+    
     elif (svc, msg) == (200, 13):
         pb.pus_tc_200_13_createSodmissionRequest_(packet, apid, seq)
+    
     elif (svc, msg) == (200, 1):
         pb.pus_tc_200_1_createHotdockcmdRequest_(packet, apid, seq)
+    
     elif (svc, msg) == (200, 5):
         pb.pus_tc_200_5_createWmcmdRequest_(packet, apid, seq)
+    
     elif (svc, msg) == (200, 9):
         pb.pus_tc_200_9_createBasecmdRequest_(packet, apid, seq)
+    
     elif (svc, msg) == (200, 11):
         pb.pus_tc_200_11_createEfcmdRequest_(packet, apid, seq)
 
@@ -121,6 +126,8 @@ def mission_get_data(packet, svc, msg):
         data = tc_200_11_get_data(packet)
     elif (svc, msg) == (200, 8):
         data = tc_200_8_get_data(packet)
+    elif (svc, msg) == (200, 16):
+        data = tc_200_16_get_data(packet)          
     #ST 210
     elif (svc, msg) == (210, 1):
         data = pus_tc_210_1_get_data(packet)
@@ -201,6 +208,7 @@ def mission_set_data(packet, svc, msg, data):
         packet = tc_200_9_set_data(packet, data)
     elif (svc, msg) == (200, 11):
         packet = tc_200_11_set_data(packet, data)
+    
     # ST 210
     elif (svc, msg) == (210, 1):
         packet = pus_tc_210_1_set_data(packet, data)
@@ -820,7 +828,6 @@ def tc_200_9_set_data(packet, data):
         goalData.goal.predicate = pb.asn1SccBasecmdPred.switchbase
     elif goal["predicate"] == "error":
         goalData.goal.predicate = pb.asn1SccBasecmdPred.error
-    
     else:
         print("Invalid predicate " + goal["predicate"] + ". Valid options are: baseat, switchbase, error, ")
     
@@ -848,7 +855,6 @@ def tc_200_11_set_data(packet, data):
         goalData.goal.predicate = pb.asn1SccEfcmdPred.pick
     elif goal["predicate"] == "drop":
         goalData.goal.predicate = pb.asn1SccEfcmdPred.drop
-    
     else:
         print("Invalid predicate " + goal["predicate"] + ". Valid options are: idle, picked, error, pick, drop, ")
     
@@ -1312,6 +1318,42 @@ def tc_200_8_get_data(packet):
         print(str(e))
     
     return data
+
+def getSodplannerDict(inData):
+    data = dict()
+    data["timeline"] = "sodplanner"
+    data["predicate"] = str(inData.predicate).split(".",1)[1]
+    data["inittime"] = getIntervalDict(inData.inittime)
+    data["endtime"] = getIntervalDict(inData.endtime)
+
+    attributes = dict()
+    
+    if len(attributes) > 0:
+        data["attributes"] = attributes
+
+    return data
+def tc_200_16_get_data(packet):
+    try:
+        data = dict()
+        obs = pb.pus_tm_200_16_getSodplannerObservation(packet)
+        
+        observation = dict()
+        observation["timeline"] = "sodplanner"
+        observation["predicate"] = str(obs.observation.predicate).split(".",1)[1]
+
+        attributes = dict()
+        
+        
+        
+        if len(attributes) > 0:
+            observation["attributes"] = attributes
+        
+        data["observation"] = observation
+        data["agent"] = getStringDict(obs.agent)
+    except Exception as e:
+        print(str(e))
+    
+    return data
  
 
 
@@ -1483,3 +1525,29 @@ def getStateidFromDict(value):
         return pb.asn1SccStateidEnum.connected
     else:
         return pb.asn1SccStateidEnum.unknown
+
+def getCommandstateFromDict(value):
+    
+    if value == "offline":
+        return pb.asn1SccCommandstateEnum.offline
+    if value == "idle":
+        return pb.asn1SccCommandstateEnum.idle
+    if value == "latched":
+        return pb.asn1SccCommandstateEnum.latched
+    if value == "connected":
+        return pb.asn1SccCommandstateEnum.connected
+    else:
+        return pb.asn1SccCommandstateEnum.unknown
+
+def getYawidFromDict(value):
+    
+    if value == "yaw0":
+        return pb.asn1SccYawidEnum.yaw0
+    if value == "yaw90":
+        return pb.asn1SccYawidEnum.yaw90
+    if value == "yaw180":
+        return pb.asn1SccYawidEnum.yaw180
+    if value == "yaw270":
+        return pb.asn1SccYawidEnum.yaw270
+    else:
+        return pb.asn1SccYawidEnum.unknown
