@@ -8403,15 +8403,13 @@
 			]
 		},
 		{
-			"name": "HK_SID_1",
+			"name": "CLT_R_ICU",
 			"parameters": [
-				"HK_PARAM_UINT16_02",
-				"HK_PARAM_UINT32_02",
-				"HK_PARAM_INT32_02",
-				"HK_PARAM_REAL32_02",
-				"HK_PARAM_REAL64_02",
-				"HK_PARAM_BYTE_02",
-				"HK_PARAM_BOOL_02"
+				"DP_RMAP_CLT_R_ICU_TM_1_CONNECTED_NODES",
+				"DP_RMAP_CLT_R_ICU_TM_1_VOLTAGE_INT",
+				"DP_RMAP_CLT_R_ICU_TM_1_VOLTAGE_AUX",
+				"DP_RMAP_CLT_R_ICU_TM_1_TEMPERATURE",
+				"DP_RMAP_CLT_R_ICU_TM_1_SW_TASK_ERROR"
 			]
 		}
 	]
