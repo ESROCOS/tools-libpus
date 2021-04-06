@@ -461,7 +461,6 @@ class PacketTranslator(object):
         report_id = pb.pus_tc_3_5_getReportId(packet)
         data["report_id"] = report_id
 
-        print(">>>>>>>",data)
         return data
 
     @staticmethod
@@ -472,7 +471,6 @@ class PacketTranslator(object):
         :param packet: The packet we want to fill in
         :param data: A data dictionary with all the parameters
         """
-        print(">>>>>>>1",data)
         report_id = data["report_id"]  # Shall be integer
         pb.pus_tc_3_5_setReportId(packet, report_id)
 
