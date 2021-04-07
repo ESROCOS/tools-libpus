@@ -91,18 +91,6 @@
 			"high_limit": 10
 		},
         {
-            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
             "label": "DP_RMAP_SM1_DMS_R_ICU_TM_1_CONNECTED_NODES",
             "type": "BYTE",
             "low_limit": 0,
@@ -697,18 +685,6 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
             "label": "DP_RMAP_SM2_PWS_R_ICU_TM_1_CONNECTED_NODES",
             "type": "BYTE",
             "low_limit": 0,
@@ -975,18 +951,6 @@
         {
             "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_19V_BUS_STATUS",
             "type": "BOOL",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
-            "type": "BYTE",
             "low_limit": 0,
             "high_limit": 999999
         },
@@ -1261,13 +1225,73 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_VOLTAGE",
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_VOLTAGE__0",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_CURRENT",
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_VOLTAGE__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_VOLTAGE__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_VOLTAGE__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_VOLTAGE__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_VOLTAGE__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_CURRENT__0",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_CURRENT__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_CURRENT__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_CURRENT__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_CURRENT__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_BAT_TM_1_BUS_CURRENT__5",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
@@ -1395,18 +1419,6 @@
         {
             "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_19V_BUS_STATUS",
             "type": "BOOL",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
-            "type": "BYTE",
             "low_limit": 0,
             "high_limit": 999999
         },
@@ -1903,18 +1915,6 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
             "label": "DP_RMAP_SM5_OSP1_R_ICU_TM_1_CONNECTED_NODES",
             "type": "BYTE",
             "low_limit": 0,
@@ -2300,25 +2300,13 @@
         },
         {
             "label": "DP_RMAP_SM5_OSP1_OSP_TM_1_FRAME_ADDRESS",
-            "type": "INT32",
+            "type": "UINT32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
             "label": "DP_RMAP_SM5_OSP1_OSP_TM_1_FRAME_SIZE",
-            "type": "INT32",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
-            "type": "BYTE",
+            "type": "UINT32",
             "low_limit": 0,
             "high_limit": 999999
         },
@@ -2708,13 +2696,13 @@
         },
         {
             "label": "DP_RMAP_SM6_OSP2_OSP_TM_1_FRAME_ADDRESS",
-            "type": "INT32",
+            "type": "UINT32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
             "label": "DP_RMAP_SM6_OSP2_OSP_TM_1_FRAME_SIZE",
-            "type": "INT32",
+            "type": "UINT32",
             "low_limit": 0,
             "high_limit": 999999
         },
@@ -3175,49 +3163,337 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POWER",
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POWER__0",
             "type": "INT32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_JOINT_CONTROL",
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POWER__1",
             "type": "INT32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_JOINT_STATE",
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POWER__2",
             "type": "INT32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_IN",
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POWER__3",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POWER__4",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POWER__5",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POWER__6",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_CONTROL__0",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_CONTROL__1",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_CONTROL__2",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_CONTROL__3",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_CONTROL__4",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_CONTROL__5",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_CONTROL__6",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_STATE__0",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_STATE__1",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_STATE__2",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_STATE__3",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_STATE__4",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_STATE__5",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_STATE__6",
+            "type": "INT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_IN__0",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_OUT",
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_IN__1",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_IN",
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_IN__2",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_OUT",
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_IN__3",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_JOINT_TORQUE",
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_IN__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_IN__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_IN__6",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_OUT__0",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_OUT__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_OUT__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_OUT__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_OUT__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_OUT__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_POSE_OUT__6",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_IN__0",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_IN__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_IN__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_IN__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_IN__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_IN__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_IN__6",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_OUT__0",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_OUT__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_OUT__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_OUT__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_OUT__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_OUT__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_VEL_OUT__6",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_TORQUE__0",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_TORQUE__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_TORQUE__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_TORQUE__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_TORQUE__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_TORQUE__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_JOINT_TORQUE__6",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
@@ -3247,7 +3523,73 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE",
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__0",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__6",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__7",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__8",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__9",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__10",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_IF_BASE_POSE__11",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
@@ -3259,13 +3601,115 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS",
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__0",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE",
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__6",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__0",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__1",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__2",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__3",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__4",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__5",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__6",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__7",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__8",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__9",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__10",
+            "type": "REAL32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__11",
             "type": "REAL32",
             "low_limit": 0,
             "high_limit": 999999
@@ -3279,18 +3723,6 @@
         {
             "label": "DP_RMAP_WM_WM_TM_1_ERROR_STATE",
             "type": "INT32",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
-            "type": "BYTE",
             "low_limit": 0,
             "high_limit": 999999
         },
@@ -3441,18 +3873,6 @@
         {
             "label": "DP_RMAP_SVC_CPDU_A_TM_1_19V_BUS_STATUS",
             "type": "BOOL",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_1_NETWORK_STATUS",
-            "type": "BYTE",
-            "low_limit": 0,
-            "high_limit": 999999
-        },
-        {
-            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE",
-            "type": "BYTE",
             "low_limit": 0,
             "high_limit": 999999
         },
