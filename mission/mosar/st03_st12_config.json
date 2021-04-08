@@ -4391,6 +4391,42 @@
 				"DP_RMAP_CLT_R_ICU_TM_1_TEMPERATURE",
 				"DP_RMAP_CLT_R_ICU_TM_1_SW_TASK_ERROR"
 			]
+		},
+		{
+			"name": "WM_TM_HK_1",
+			"parameters": [
+                "DP_RMAP_WM_WM_TM_1_MODE",
+                "DP_RMAP_WM_WM_TM_1_JOINT_POWER__0",
+                "DP_RMAP_WM_WM_TM_1_ACTIVE_BASE",
+                "DP_RMAP_WM_WM_TM_1_IF_ACTIVE_BASE",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_STEP",
+                "DP_RMAP_WM_WM_TM_1_ERROR_STATE",
+                "DP_RMAP_WM_WM_TM_1_IF_OBJECT_GRASPER"
+			]
+		},
+        {
+			"name": "WM_TM_HK_2",
+			"parameters": [
+				"DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__0",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__1",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__2",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__3",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__4",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__5",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_JOINTS__6",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__0",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__1",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__2",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__3",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__4",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__5",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__6",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__7",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__8",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__9",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__10",
+                "DP_RMAP_WM_WM_TM_1_TRAJ_CURRENT_CARTESIAN_POSE__11"
+			]
 		}
 	]
 }
