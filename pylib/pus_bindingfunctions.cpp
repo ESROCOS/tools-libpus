@@ -97,8 +97,8 @@ void pus_setTmPacketTime_(pusPacket_t *packet, time_t time_)
 }
 
 
-uint32_t pus_paramToUint32_(pusStoredParam_t paramValue) {
-	uint32_t outValue = 0;
+asn1SccPusUInt64 pus_paramToUint32_(pusStoredParam_t paramValue) {
+	asn1SccPusUInt64 outValue = 0;
 	pusError_t error;
 	error = pus_paramToUint32(&outValue, paramValue);
 	PUS_SET_ERROR(error);

@@ -79,7 +79,7 @@ extern pusError_t pus_hk_getReportParams(pusSt03HousekeepingReportId_t reportId,
 
 //Param types
 typedef int32_t INT32;
-typedef uint32_t UINT32;
+typedef asn1SccPusUInt64 UINT32;
 typedef double REAL64;
 typedef uint8_t BYTE;
 typedef bool BOOL;
