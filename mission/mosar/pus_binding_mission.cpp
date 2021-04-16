@@ -20,6 +20,7 @@
 #include "pus_st210_packets.h"
 #include "pus_st220_packets.h"
 
+#include <vector>
 namespace py = pybind11;
 
 //Wrapper functions 
@@ -58,6 +59,36 @@ pusError_t pus_tc_200_11_createEfcmdRequest_(pusPacket_t* outTc, pusApid_t apid,
     pusSt200_11_Goal goal{};
     goal.goal.predicate = asn1Sccefcmd_pick;
     return pus_tc_200_11_createEfcmdRequest(outTc, apid, sequenceCount, goal);
+}
+
+// ST 210
+pusError_t  pus_tc_210_72_createCartGoal_(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId)
+{
+    asn1SccPusTC_210_72_Data_desiredPos pos = {0};
+    return pus_tc_210_72_createCartGoal(outTc, apid, sequenceCount, smId, componentId, pos);
+}
+
+std::vector<double> pus_tc_210_72_getParamDesiredPose_(const pusPacket_t* inTC)
+{
+    asn1SccPusTC_210_72_Data_desiredPos pos;
+    std::vector<double> vec;
+    (void) pus_tc_210_72_getParamDesiredPos(inTC, &pos);
+
+    for(int i = 0; i < 12; i++)
+    {
+        vec.push_back(pos.arr[i]);
+    }
+    return vec;
+}
+
+pusError_t pus_tc_210_72_setParamDesiredPose_(pusPacket_t* inTC, std::vector<double> arr)
+{
+    for(int i = 0; i < 12; i++)
+    {
+        inTC->data.u.tcData.data.u.st_210_72.desiredPos.arr[i] = arr[i];
+    }
+
+    return PUS_NO_ERROR;
 }
 
 // ST220
@@ -736,6 +767,29 @@ void init_mission_module(py::module &m)
     m.def("pus_tc_210_64_setParamCOMP_ID", &pus_tc_210_64_setParamCOMP_ID, "pus_tc_210_64_setParamCOMP_ID");
     m.def("pus_tc_210_64_getParamBatChCmd", &pus_tc_210_64_getParamBatChCmd, "pus_tc_210_64_getParamBatChCmd");
     m.def("pus_tc_210_64_setParamBatChCmd", &pus_tc_210_64_setParamBatChCmd, "pus_tc_210_64_setParamBatChCmd");
+
+    /* WM */
+    m.def("pus_tc_210_72_createCartesianGoal", &pus_tc_210_72_createCartGoal_,"pus_tc_210_72_createCartesianGoal");
+    m.def("pus_tc_210_72_getParamSM_ID", &pus_tc_210_72_getParamSM_ID, "pus_tc_210_72_getParamSM_ID");
+    m.def("pus_tc_210_72_setParamSM_ID", &pus_tc_210_72_setParamSM_ID, "pus_tc_210_72_setParamSM_ID");
+    m.def("pus_tc_210_72_getParamCOMP_ID", &pus_tc_210_72_getParamCOMP_ID, "pus_tc_210_72_getParamCOMP_ID");
+    m.def("pus_tc_210_72_setParamCOMP_ID", &pus_tc_210_72_setParamCOMP_ID, "pus_tc_210_72_setParamCOMP_ID");
+    m.def("pus_tc_210_72_getParamDesiredPose", &pus_tc_210_72_getParamDesiredPose_, "pus_tc_210_72_getParamDesiredPose");
+    m.def("pus_tc_210_72_setParamDesiredPose", &pus_tc_210_72_setParamDesiredPose_, "pus_tc_210_72_setParamDesiredPose");
+
+    m.def("pus_tc_210_73_createInterfaceCommand", &pus_tc_210_73_createInterface,"pus_tc_210_73_createInterfaceCommand");
+    m.def("pus_tc_210_73_getParamSM_ID", &pus_tc_210_73_getParamSM_ID, "pus_tc_210_73_getParamSM_ID");
+    m.def("pus_tc_210_73_setParamSM_ID", &pus_tc_210_73_setParamSM_ID, "pus_tc_210_73_setParamSM_ID");
+    m.def("pus_tc_210_73_getParamCOMP_ID", &pus_tc_210_73_getParamCOMP_ID, "pus_tc_210_73_getParamCOMP_ID");
+    m.def("pus_tc_210_73_setParamCOMP_ID", &pus_tc_210_73_setParamCOMP_ID, "pus_tc_210_73_setParamCOMP_ID");
+    m.def("pus_tc_210_73_getParamMode", &pus_tc_210_73_getParamSET_MODE, "pus_tc_210_73_getParamMode");
+    m.def("pus_tc_210_73_setParamMode", &pus_tc_210_73_setParamMode, "pus_tc_210_73_setParamMode");
+    m.def("pus_tc_210_73_getParamHdId", &pus_tc_210_73_getParamHD_ID, "pus_tc_210_73_getParamHdId");
+    m.def("pus_tc_210_73_setParamHdId", &pus_tc_210_73_setParamHdId, "pus_tc_210_73_setParamHdId");
+    m.def("pus_tc_210_73_getParamManipulatorBase", &pus_tc_210_73_getParamMANIPULATOR_BASE, "pus_tc_210_73_getParamManipulatorBase");
+    m.def("pus_tc_210_73_setParamManipulatorBase", &pus_tc_210_73_setParamManipulatorBase, "pus_tc_210_73_setParamManipulatorBase");
+    m.def("pus_tc_210_73_getParamGraspRelease", &pus_tc_210_73_getParamGRASP_RELEASE, "pus_tc_210_73_getParamGraspRelease");
+    m.def("pus_tc_210_73_setParamGraspRelease", &pus_tc_210_73_setParamGraspRelease, "pus_tc_210_73_setParamGraspRelease");
 
     /* THS */
     m.def("pus_tc_210_81_createModeCommand", &pus_tc_210_81_createModeCommand,"pus_tc_210_81_createModeCommand");

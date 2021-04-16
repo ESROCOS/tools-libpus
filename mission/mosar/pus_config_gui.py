@@ -71,6 +71,10 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
         pb.pus_tc_210_63_createCommand48VConverter(packet, apid, seq, 0, 0, 0)
     elif (svc, msg) == (210, 64):
         pb.pus_tc_210_64_createCommandBatCharger(packet, apid, seq, 0, 0, 0)
+    elif (svc, msg) == (210, 72):
+        pb.pus_tc_210_72_createCartesianGoal(packet, apid, seq, 0, 0)
+    elif (svc, msg) == (210, 73):
+        pb.pus_tc_210_73_createInterfaceCommand(packet, apid, seq, 0, 0, 0, 0, 0, 0)
     elif (svc, msg) == (210, 81):
         pb.pus_tc_210_81_createModeCommand(packet, apid, seq, 0, 0, 0)
     elif (svc, msg) == (210, 82):
@@ -173,6 +177,10 @@ def mission_get_data(packet, svc, msg):
         data = pus_tc_210_63_get_data(packet)
     elif (svc, msg) == (210, 64):
         data = pus_tc_210_64_get_data(packet)  
+    elif (svc, msg) == (210, 72):
+        data = pus_tc_210_72_get_data(packet)
+    elif (svc, msg) == (210, 73):
+        data = pus_tc_210_73_get_data(packet)
     elif (svc, msg) == (210, 81):
         data = pus_tc_210_81_get_data(packet)
     elif (svc, msg) == (210, 82):
@@ -254,6 +262,10 @@ def mission_set_data(packet, svc, msg, data):
         packet = pus_tc_210_63_set_data(packet, data)
     elif (svc, msg) == (210, 64):
         packet = pus_tc_210_64_set_data(packet, data)
+    elif (svc, msg) == (210, 72):
+        packet = pus_tc_210_72_set_data(packet, data)
+    elif (svc, msg) == (210, 73):
+        packet = pus_tc_210_73_set_data(packet, data)
     elif (svc, msg) == (210, 81):
         packet = pus_tc_210_81_set_data(packet, data)
     elif (svc, msg) == (210, 82):
@@ -584,6 +596,39 @@ def pus_tc_210_64_get_data(packet):
     data["smId"] = pb.pus_tc_210_64_getParamSM_ID(packet)
     data["componentId"] = pb.pus_tc_210_64_getParamCOMP_ID(packet)
     data["batChCmd"] = pb.pus_tc_210_64_getParamBatChCmd(packet)
+    return data
+
+def pus_tc_210_72_set_data(packet, data):
+    pb.pus_tc_210_72_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_72_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_72_setParamDesiredPose(packet, data["desiredPose"])
+    return packet
+
+def pus_tc_210_72_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_72_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_72_getParamCOMP_ID(packet)
+    data["desiredPose"] = pb.pus_tc_210_72_getParamDesiredPose(packet)
+    print(data)
+    return data
+
+def pus_tc_210_73_set_data(packet, data):
+    pb.pus_tc_210_73_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_73_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_73_setParamMode(packet, int(data["mode"]))
+    pb.pus_tc_210_73_setParamHdId(packet, int(data["hdId"]))
+    pb.pus_tc_210_73_setParamManipulatorBase(packet, int(data["manipulatorBase"]))
+    pb.pus_tc_210_73_setParamGraspRelease(packet, int(data["graspRelease"]))
+    return packet
+
+def pus_tc_210_73_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_73_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_73_getParamCOMP_ID(packet)
+    data["mode"] = pb.pus_tc_210_73_getParamMode(packet)
+    data["hdId"] = pb.pus_tc_210_73_getParamHdId(packet)
+    data["manipulatorBase"] = pb.pus_tc_210_73_getParamManipulatorBase(packet)
+    data["graspRelease"] = pb.pus_tc_210_73_getParamGraspRelease(packet)
     return data
 
 def pus_tc_210_81_set_data(packet, data):

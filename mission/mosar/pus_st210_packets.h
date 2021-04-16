@@ -246,16 +246,25 @@ extern pusError_t pus_tc_210_71_getParamGoalValues(const pusPacket_t* inTC, asn1
 
 extern pusError_t pus_tc_210_72_createCartGoal(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusTC_210_72_Data_desiredPos desiredPos);
 extern asn1SccPusUInt8 pus_tc_210_72_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_72_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 extern asn1SccPusUInt8 pus_tc_210_72_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_72_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 extern pusError_t pus_tc_210_72_getParamDesiredPos(const pusPacket_t* inTC, asn1SccPusTC_210_72_Data_desiredPos *desiredPos);
+extern pusError_t pus_tc_210_72_setParamDesiredPose(pusPacket_t* outTC, asn1SccPusTC_210_72_Data_desiredPos param);
 
 extern pusError_t pus_tc_210_73_createInterface(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusInt32 setMode, asn1SccPusInt32 hdId, asn1SccPusInt32 manipulatorBase, asn1SccPusInt32 graspRelease);
 extern asn1SccPusUInt8 pus_tc_210_73_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_73_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 extern asn1SccPusUInt8 pus_tc_210_73_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_73_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 extern asn1SccPusInt32 pus_tc_210_73_getParamSET_MODE(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_73_setParamMode(pusPacket_t* outTC, asn1SccPusInt32 param);
 extern asn1SccPusInt32 pus_tc_210_73_getParamHD_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_73_setParamHdId(pusPacket_t* outTC, asn1SccPusInt32 param);
 extern asn1SccPusInt32 pus_tc_210_73_getParamMANIPULATOR_BASE(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_73_setParamManipulatorBase(pusPacket_t* outTC, asn1SccPusInt32 param);
 extern asn1SccPusInt32 pus_tc_210_73_getParamGRASP_RELEASE(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_73_setParamGraspRelease(pusPacket_t* outTC, asn1SccPusInt32 param);
 
 /* THS */
 extern pusError_t pus_tc_210_81_createModeCommand(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 TARGET_MODE);
