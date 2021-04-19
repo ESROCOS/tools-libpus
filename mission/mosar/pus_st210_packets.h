@@ -33,23 +33,26 @@ extern "C" {
  */ 
 
 /* R_ICU_SPW_PNP */
-extern pusError_t pus_tc_210_1_createSpwRoutingTableSetEntry(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt16 SET_ROUTING_ENTRY, asn1SccPusUInt8 SPW_TRAFFIC_PRIORITY);
+extern pusError_t pus_tc_210_1_createSpwRoutingTableSetEntry(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 ROUTING_TABLE_INDEX, asn1SccPusUInt8 ROUTING_TABLE_DIRECTION, asn1SccPusUInt8 TRAFFIC_PRIORITY);
 extern asn1SccPusUInt8 pus_tc_210_1_getParamSM_ID(const pusPacket_t* inTC);
 extern pusError_t pus_tc_210_1_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 extern asn1SccPusUInt8 pus_tc_210_1_getParamCOMP_ID(const pusPacket_t* inTC);
 extern pusError_t pus_tc_210_1_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
-extern asn1SccPusUInt16 pus_tc_210_1_getParamSetRoutingEntry(const pusPacket_t* inTC);
-extern pusError_t pus_tc_210_1_setParamSetRoutingEntry(pusPacket_t* outTC, asn1SccPusUInt16 param);
-extern asn1SccPusUInt8 pus_tc_210_1_getParamSpwTrafficPriority(const pusPacket_t* inTC);
-extern pusError_t pus_tc_210_1_setParamSpwTrafficPriority(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_1_getParamRoutingTableIndex(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_1_setParamRoutingTableIndex(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_1_getParamRoutingTableDirection(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_1_setParamRoutingTableDirection(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_1_getParamTrafficPriority(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_1_setParamTrafficPriority(pusPacket_t* outTC, asn1SccPusUInt8 param);
 
-extern pusError_t pus_tc_210_2_createSpwPnpSetOwnerFields(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt16 SET_OWNER);
+extern pusError_t pus_tc_210_2_createSpwPnpSetOwnerFields(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 SET_OWNER);
 extern asn1SccPusUInt8 pus_tc_210_2_getParamSM_ID(const pusPacket_t* inTC);
 extern pusError_t pus_tc_210_2_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 extern asn1SccPusUInt8 pus_tc_210_2_getParamCOMP_ID(const pusPacket_t* inTC);
 extern pusError_t pus_tc_210_2_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
-extern asn1SccPusUInt16 pus_tc_210_2_getParamSetOwner(const pusPacket_t* inTC);
-extern pusError_t pus_tc_210_2_setParamSetOwner(pusPacket_t* outTC, asn1SccPusUInt16 param);
+extern asn1SccPusUInt8 pus_tc_210_2_getParamSetOwner(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_2_setParamSetOwner(pusPacket_t* outTC, asn1SccPusUInt8 param);
+
 
 
 /* R_ICU */
@@ -338,6 +341,14 @@ extern asn1SccPusBoolean pus_tc_210_94_getParamConv12vCmd(const pusPacket_t* inT
 extern pusError_t pus_tc_210_94_setParamConv12vCmd(pusPacket_t* outTC, asn1SccPusBoolean param);
 extern asn1SccPusBoolean pus_tc_210_94_getParamConv19vCmd(const pusPacket_t* inTC);
 extern pusError_t pus_tc_210_94_setParamConv19vCmd(pusPacket_t* outTC, asn1SccPusBoolean param);
+
+extern pusError_t pus_tc_210_95_createSmPowerOff(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId);
+extern asn1SccPusUInt8 pus_tc_210_95_getParamSM_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_95_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_95_getParamCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_95_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
+extern asn1SccPusUInt8 pus_tc_210_95_getParamSUBCOMP_ID(const pusPacket_t* inTC);
+extern pusError_t pus_tc_210_95_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param);
 
 
 //! Check that a packet is of a PUS ST[210] TC kind

@@ -22,15 +22,16 @@ BEGIN
     {
         smId PusUInt8,
         componentId PusUInt8,
-        setRoutingEntry PusUInt16,
-        spwTrafficPriority PusUInt8
+        routingTableIndex PusUInt8,
+        routingTableDirection PusUInt8,
+        trafficPriority PusUInt8
     }
     -- Data for TC[210,2]
     PusTC-210-2-Data ::= SEQUENCE
     {
         smId PusUInt8,
         componentId PusUInt8,
-        setOwner PusUInt16
+        setOwner PusUInt8
     }
 /* R_ICU */
     -- Data for TC[210,11]
@@ -269,5 +270,12 @@ BEGIN
         conv12vCmd PusBoolean,
         conv19vCmd PusBoolean
     }
-
+    -- Data for TC[210,95]
+    PusTC-210-95-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        subcomponentId PusUInt8
+    }
+    
 END

@@ -28,7 +28,7 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
 
  #ST 210
     elif (svc, msg) == (210, 1):
-        pb.pus_tc_210_1_createSpwRoutingTableSetEntry(packet, apid, seq, 0, 0, 0, 0)
+        pb.pus_tc_210_1_createSpwRoutingTableSetEntry(packet, apid, seq, 0, 0, 0, 0, 0)
     elif (svc, msg) == (210, 2):
         pb.pus_tc_210_2_createSpwPnpSetOwnerFields(packet, apid, seq, 0, 0, 0)
     elif (svc, msg) == (210, 11):
@@ -87,6 +87,8 @@ def mission_create_packets(packet, svc, msg, apid=0, seq=0):
         pb.pus_tc_210_93_createCommandSwitch1(packet, apid, seq, 0, 0, 0, 0, 0, 0, 0, 0)
     elif (svc, msg) == (210, 94):
         pb.pus_tc_210_94_createCommand24VConverterA(packet, apid, seq, 0, 0, 0, 0, 0, 0, 0)
+    elif (svc, msg) == (210, 95):
+        pb.pus_tc_210_95_createSmPowerOff(packet, apid, seq, 0, 0, 0)
 
 
  #ST 220
@@ -193,6 +195,8 @@ def mission_get_data(packet, svc, msg):
         data = pus_tc_210_93_get_data(packet)
     elif (svc, msg) == (210, 94):
         data = pus_tc_210_94_get_data(packet)
+    elif (svc, msg) == (210, 95):
+        data = pus_tc_210_95_get_data(packet)
     #ST 220
     elif (svc, msg) == (220, 1):
         data = tc_220_1_get_data(packet)
@@ -278,6 +282,8 @@ def mission_set_data(packet, svc, msg, data):
         packet = pus_tc_210_93_set_data(packet, data)
     elif (svc, msg) == (210, 94):
         packet = pus_tc_210_94_set_data(packet, data)
+    elif (svc, msg) == (210, 95):
+        packet = pus_tc_210_95_set_data(packet, data)
 
     # ST 220
     elif (svc, msg) == (220, 1):
@@ -285,23 +291,20 @@ def mission_set_data(packet, svc, msg, data):
 
 # Specific get and set functions ST 210
 def pus_tc_210_1_set_data(packet, data):
-    smId = int(data["smId"])
-    componentId = int(data["componentId"])
-    routingEntry = int(data["setRoutingEntry"])
-    spwTrafficPriority = int(data["spwTrafficPriority"])
-
-    pb.pus_tc_210_1_setParamSM_ID(packet, smId)
-    pb.pus_tc_210_1_setParamCOMP_ID(packet, componentId)
-    pb.pus_tc_210_1_setParamSetRoutingEntry(packet, routingEntry)
-    pb.pus_tc_210_1_setParamSpwTrafficPriority(packet, spwTrafficPriority)
+    pb.pus_tc_210_1_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_1_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_1_setParamRoutingTableIndex(packet, int(data["routingTableIndex"]))
+    pb.pus_tc_210_1_setParamRoutingTableDirection(packet, int(data["routingTableDirection"]))
+    pb.pus_tc_210_1_setParamTrafficPriority(packet, int(data["trafficPriority"]))
     return packet
 
 def pus_tc_210_1_get_data(packet):
     data = dict()
     data["smId"] = pb.pus_tc_210_1_getParamSM_ID(packet)
     data["componentId"] = pb.pus_tc_210_1_getParamCOMP_ID(packet)
-    data["setRoutingEntry"] = pb.pus_tc_210_1_getParamSetRoutingEntry(packet)
-    data["spwTrafficPriority"] = pb.pus_tc_210_1_getParamSpwTrafficPriority(packet)
+    data["routingTableIndex"] = pb.pus_tc_210_1_getParamRoutingTableIndex(packet)
+    data["routingTableDirection"] = pb.pus_tc_210_1_getParamRoutingTableDirection(packet)
+    data["trafficPriority"] = pb.pus_tc_210_1_getParamTrafficPriority(packet)
     return data
 
 def pus_tc_210_2_set_data(packet, data):
@@ -731,7 +734,18 @@ def pus_tc_210_94_get_data(packet):
     data["conv19vCmd"] = pb.pus_tc_210_94_getParamConv19vCmd(packet)
     return data
 
+def pus_tc_210_95_set_data(packet, data):
+    pb.pus_tc_210_95_setParamSM_ID(packet, int(data["smId"]))
+    pb.pus_tc_210_95_setParamCOMP_ID(packet, int(data["componentId"]))
+    pb.pus_tc_210_95_setParamSUBCOMP_ID(packet, int(data["subcomponentId"]))
+    return packet
 
+def pus_tc_210_95_get_data(packet):
+    data = dict()
+    data["smId"] = pb.pus_tc_210_95_getParamSM_ID(packet)
+    data["componentId"] = pb.pus_tc_210_95_getParamCOMP_ID(packet)
+    data["subcomponentId"] = pb.pus_tc_210_95_getParamSUBCOMP_ID(packet)
+    return data
 
 
 # Specific get and set functions ST 220

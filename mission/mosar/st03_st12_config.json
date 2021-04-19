@@ -91,6 +91,102 @@
 			"high_limit": 10
 		},
         {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_1_SM_ID",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_1_SM_ID_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_1_SM_VERSION_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_1_SPW_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_1_PNP_OWNER",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_32_39",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_40_47",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_APPLICATION_SUPPORT_0TO7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_0",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_1",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_2",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_3",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_4",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_5",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_6",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM1_DMS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
             "label": "DP_RMAP_SM1_DMS_R_ICU_TM_1_CONNECTED_NODES",
             "type": "BYTE",
             "low_limit": 0,
@@ -685,6 +781,102 @@
             "high_limit": 999999
         },
         {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_1_SM_ID",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_1_SM_ID_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_1_SM_VERSION_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_1_SPW_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_1_PNP_OWNER",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_32_39",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_40_47",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_APPLICATION_SUPPORT_0TO7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_0",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_1",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_2",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_3",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_4",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_5",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_6",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM2_PWS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
             "label": "DP_RMAP_SM2_PWS_R_ICU_TM_1_CONNECTED_NODES",
             "type": "BYTE",
             "low_limit": 0,
@@ -951,6 +1143,102 @@
         {
             "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_19V_BUS_STATUS",
             "type": "BOOL",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_1_SM_ID",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_1_SM_ID_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_1_SM_VERSION_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_1_SPW_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_1_PNP_OWNER",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_32_39",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_40_47",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_APPLICATION_SUPPORT_0TO7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_0",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_1",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_2",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_3",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_4",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_5",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_6",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM3_BAT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_7",
+            "type": "UINT32",
             "low_limit": 0,
             "high_limit": 999999
         },
@@ -1419,6 +1707,102 @@
         {
             "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_19V_BUS_STATUS",
             "type": "BOOL",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_1_SM_ID",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_1_SM_ID_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_1_SM_VERSION_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_1_SPW_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_1_PNP_OWNER",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_32_39",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_40_47",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_APPLICATION_SUPPORT_0TO7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_0",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_1",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_2",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_3",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_4",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_5",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_6",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM4_THS_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_7",
+            "type": "UINT32",
             "low_limit": 0,
             "high_limit": 999999
         },
@@ -1915,6 +2299,102 @@
             "high_limit": 999999
         },
         {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_1_SM_ID",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_1_SM_ID_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_1_SM_VERSION_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_1_SPW_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_1_PNP_OWNER",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_32_39",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_40_47",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_APPLICATION_SUPPORT_0TO7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_0",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_1",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_2",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_3",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_4",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_5",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_6",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM5_OSP1_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
             "label": "DP_RMAP_SM5_OSP1_R_ICU_TM_1_CONNECTED_NODES",
             "type": "BYTE",
             "low_limit": 0,
@@ -2306,6 +2786,102 @@
         },
         {
             "label": "DP_RMAP_SM5_OSP1_OSP_TM_1_FRAME_SIZE",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_1_SM_ID",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_1_SM_ID_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_1_SM_VERSION_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_1_SPW_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_1_PNP_OWNER",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_32_39",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_40_47",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_APPLICATION_SUPPORT_0TO7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_0",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_1",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_2",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_3",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_4",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_5",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_6",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SM6_OSP2_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_7",
             "type": "UINT32",
             "low_limit": 0,
             "high_limit": 999999
@@ -3727,6 +4303,102 @@
             "high_limit": 999999
         },
         {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_1_SM_ID",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_1_SM_ID_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_1_SM_VERSION_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_1_SPW_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_1_PNP_OWNER",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_32_39",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_40_47",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_APPLICATION_SUPPORT_0TO7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_0",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_1",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_2",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_3",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_4",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_5",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_6",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_SVC_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
             "label": "DP_RMAP_SVC_R_ICU_TM_1_CONNECTED_NODES",
             "type": "BYTE",
             "low_limit": 0,
@@ -3873,6 +4545,102 @@
         {
             "label": "DP_RMAP_SVC_CPDU_A_TM_1_19V_BUS_STATUS",
             "type": "BOOL",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_1_SM_ID",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_1_SM_ID_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_1_SM_VERSION_STRING",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_1_SPW_STATUS",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_1_PNP_OWNER",
+            "type": "BYTE",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_32_39",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_2_ROUTING_TABLE_40_47",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_APPLICATION_SUPPORT_0TO7",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_0",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_1",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_2",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_3",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_4",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_5",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_6",
+            "type": "UINT32",
+            "low_limit": 0,
+            "high_limit": 999999
+        },
+        {
+            "label": "DP_RMAP_CLT_R_ICU_SPW_PNP_TM_3_COMPONENT_ADDRESS_7",
+            "type": "UINT32",
             "low_limit": 0,
             "high_limit": 999999
         },

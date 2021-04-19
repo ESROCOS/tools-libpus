@@ -10,7 +10,7 @@
 #ifdef PUS_CONFIGURE_ST210_ENABLED
 
 /* R_ICU_SPW_PNP */
-pusError_t pus_tc_210_1_createSpwRoutingTableSetEntry(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt16 setRoutingEntry, asn1SccPusUInt8 spwTrafficPriority)
+pusError_t pus_tc_210_1_createSpwRoutingTableSetEntry(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 routingTableIndex, asn1SccPusUInt8 routingTableDirection, asn1SccPusUInt8 trafficPriority)
 {
 	if (NULL == outTc)
 	{
@@ -37,8 +37,9 @@ pusError_t pus_tc_210_1_createSpwRoutingTableSetEntry(pusPacket_t* outTc, pusApi
 		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_1);
 		pus_tc_210_1_setParamSM_ID(outTc, smId);
 		pus_tc_210_1_setParamCOMP_ID(outTc, componentId);
-		pus_tc_210_1_setParamSetRoutingEntry(outTc, setRoutingEntry);
-		pus_tc_210_1_setParamSpwTrafficPriority(outTc, spwTrafficPriority);
+		pus_tc_210_1_setParamRoutingTableIndex(outTc, routingTableIndex);
+		pus_tc_210_1_setParamRoutingTableDirection(outTc, routingTableDirection);
+		pus_tc_210_1_setParamTrafficPriority(outTc, trafficPriority);
 
 		return PUS_GET_ERROR();
 	}
@@ -114,7 +115,7 @@ pusError_t pus_tc_210_1_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 para
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-asn1SccPusUInt16 pus_tc_210_1_getParamSetRoutingEntry(const pusPacket_t* inTC)
+asn1SccPusUInt8 pus_tc_210_1_getParamRoutingTableIndex(const pusPacket_t* inTC)
 {
 	if( NULL == inTC  )
 	{
@@ -130,10 +131,10 @@ asn1SccPusUInt16 pus_tc_210_1_getParamSetRoutingEntry(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_1.setRoutingEntry;
+	return inTC->data.u.tcData.data.u.st_210_1.routingTableIndex;
 }
 
-pusError_t pus_tc_210_1_setParamSetRoutingEntry(pusPacket_t* outTC, asn1SccPusUInt16 param)
+pusError_t pus_tc_210_1_setParamRoutingTableIndex(pusPacket_t* outTC, asn1SccPusUInt8 param)
 {
 	if(NULL == outTC)
 	{
@@ -144,10 +145,10 @@ pusError_t pus_tc_210_1_setParamSetRoutingEntry(pusPacket_t* outTC, asn1SccPusUI
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_1.setRoutingEntry = param;
+	outTC->data.u.tcData.data.u.st_210_1.routingTableIndex = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
-asn1SccPusUInt8 pus_tc_210_1_getParamSpwTrafficPriority(const pusPacket_t* inTC)
+asn1SccPusUInt8 pus_tc_210_1_getParamRoutingTableDirection(const pusPacket_t* inTC)
 {
 	if( NULL == inTC  )
 	{
@@ -163,10 +164,10 @@ asn1SccPusUInt8 pus_tc_210_1_getParamSpwTrafficPriority(const pusPacket_t* inTC)
 		PUS_SET_ERROR(PUS_NO_ERROR);
 	}
 	
-	return inTC->data.u.tcData.data.u.st_210_1.spwTrafficPriority;
+	return inTC->data.u.tcData.data.u.st_210_1.routingTableDirection;
 }
 
-pusError_t pus_tc_210_1_setParamSpwTrafficPriority(pusPacket_t* outTC, asn1SccPusUInt8 param)
+pusError_t pus_tc_210_1_setParamRoutingTableDirection(pusPacket_t* outTC, asn1SccPusUInt8 param)
 {
 	if(NULL == outTC)
 	{
@@ -177,11 +178,44 @@ pusError_t pus_tc_210_1_setParamSpwTrafficPriority(pusPacket_t* outTC, asn1SccPu
 		return PUS_GET_ERROR();
 	}
 	
-	outTC->data.u.tcData.data.u.st_210_1.spwTrafficPriority = param;
+	outTC->data.u.tcData.data.u.st_210_1.routingTableDirection = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+asn1SccPusUInt8 pus_tc_210_1_getParamTrafficPriority(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_1_SpwRoutingTableSetEntry))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_1.trafficPriority;
+}
+
+pusError_t pus_tc_210_1_setParamTrafficPriority(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_1_SpwRoutingTableSetEntry))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_1.trafficPriority = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-pusError_t pus_tc_210_2_createSpwPnpSetOwnerFields(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt16 setOwner)
+pusError_t pus_tc_210_2_createSpwPnpSetOwnerFields(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 setOwner)
 {
 	if (NULL == outTc)
 	{
@@ -284,7 +318,7 @@ pusError_t pus_tc_210_2_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 para
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
-asn1SccPusUInt16 pus_tc_210_2_getParamSetOwner(const pusPacket_t* inTC)
+asn1SccPusUInt8 pus_tc_210_2_getParamSetOwner(const pusPacket_t* inTC)
 {
 	if( NULL == inTC  )
 	{
@@ -303,7 +337,7 @@ asn1SccPusUInt16 pus_tc_210_2_getParamSetOwner(const pusPacket_t* inTC)
 	return inTC->data.u.tcData.data.u.st_210_2.setOwner;
 }
 
-pusError_t pus_tc_210_2_setParamSetOwner(pusPacket_t* outTC, asn1SccPusUInt16 param)
+pusError_t pus_tc_210_2_setParamSetOwner(pusPacket_t* outTC, asn1SccPusUInt8 param)
 {
 	if(NULL == outTC)
 	{
@@ -317,7 +351,6 @@ pusError_t pus_tc_210_2_setParamSetOwner(pusPacket_t* outTC, asn1SccPusUInt16 pa
 	outTC->data.u.tcData.data.u.st_210_2.setOwner = param;
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
-
 
 /* R_ICU */
 pusError_t pus_tc_210_11_createConfigureTimeEpoch(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusInt32 secsSinceEpoch, asn1SccPusInt32 nanosecsSinceEpoch)
@@ -5109,6 +5142,142 @@ pusError_t pus_tc_210_94_setParamConv19vCmd(pusPacket_t* outTC, asn1SccPusBoolea
 	return PUS_SET_ERROR(PUS_NO_ERROR);
 }
 
+pusError_t pus_tc_210_95_createSmPowerOff(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, asn1SccPusUInt8 smId, asn1SccPusUInt8 componentId, asn1SccPusUInt8 subcomponentId)
+{
+	if (NULL == outTc)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	else
+	{
+		pus_clearError();
+		pus_initTcPacket(outTc);
+
+		// Source information
+		pus_setApid(outTc, apid);
+		pus_setSequenceCount(outTc, sequenceCount);
+
+		// Data length
+		pus_setPacketDataLength(outTc, sizeof(pusPacketData_t));
+
+		pus_setTcSource(outTc, apid);
+
+		// Service identification
+		pus_setTcService(outTc, pus_ST210_rmapManagement);
+		pus_setTcSubtype(outTc, pus_TC_210_95_SmPowerOff);
+
+		pus_setTcDataKind(outTc, pus_TC_DATA_ST_210_95);
+		pus_tc_210_95_setParamSM_ID(outTc, smId);
+		pus_tc_210_95_setParamCOMP_ID(outTc, componentId);
+		pus_tc_210_95_setParamSUBCOMP_ID(outTc, subcomponentId);
+
+		return PUS_GET_ERROR();
+	}
+
+	return PUS_NO_ERROR;
+}
+
+asn1SccPusUInt8 pus_tc_210_95_getParamSM_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_95_SmPowerOff))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_95.smId;
+}
+
+pusError_t pus_tc_210_95_setParamSM_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_95_SmPowerOff))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_95.smId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_95_getParamCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_95_SmPowerOff))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+
+	return inTC->data.u.tcData.data.u.st_210_95.componentId;
+}
+
+pusError_t pus_tc_210_95_setParamCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_95_SmPowerOff))
+	{
+		return PUS_GET_ERROR();
+	}
+
+	outTC->data.u.tcData.data.u.st_210_95.componentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
+
+asn1SccPusUInt8 pus_tc_210_95_getParamSUBCOMP_ID(const pusPacket_t* inTC)
+{
+	if( NULL == inTC  )
+	{
+		PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+		return 0;
+	}
+	if( PUS_NO_ERROR != PUS_EXPECT_ST210TC(inTC, pus_TC_210_95_SmPowerOff))
+	{
+		return 0;
+	}
+	else
+	{
+		PUS_SET_ERROR(PUS_NO_ERROR);
+	}
+	
+	return inTC->data.u.tcData.data.u.st_210_95.subcomponentId;
+}
+
+pusError_t pus_tc_210_95_setParamSUBCOMP_ID(pusPacket_t* outTC, asn1SccPusUInt8 param)
+{
+	if(NULL == outTC)
+	{
+		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+	}
+	if(PUS_NO_ERROR != PUS_EXPECT_ST210TC(outTC, pus_TC_210_95_SmPowerOff))
+	{
+		return PUS_GET_ERROR();
+	}
+	
+	outTC->data.u.tcData.data.u.st_210_95.subcomponentId = param;
+	return PUS_SET_ERROR(PUS_NO_ERROR);
+}
 
 
 pusError_t pus_expectSt210Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function)
@@ -5159,7 +5328,8 @@ pusError_t pus_expectSt210Tc(const pusPacket_t* packet, pusSubservice_t expected
 			    subtype != pus_TC_210_91_SpecificHkRequest &&
 			    subtype != pus_TC_210_92_AllHkRequest &&
 			    subtype != pus_TC_210_93_CommandSwitch1 &&
-			    subtype != pus_TC_210_94_Command24vConverterA
+			    subtype != pus_TC_210_94_Command24vConverterA &&
+			    subtype != pus_TC_210_95_SmPowerOff
 			  )
 		 	{
 		 		pus_setError(PUS_ERROR_TC_SUBTYPE, function, (pusErrorData_t){.integer=subtype});
@@ -5209,6 +5379,7 @@ pusError_t pus_expectSt210Tc(const pusPacket_t* packet, pusSubservice_t expected
             kind != PusTcApplicationData_st_210_92_PRESENT &&
             kind != PusTcApplicationData_st_210_93_PRESENT &&
             kind != PusTcApplicationData_st_210_94_PRESENT &&
+			kind != PusTcApplicationData_st_210_95_PRESENT &&
 		    kind != pus_TC_DATA_NONE)
 		{
 		 	pus_setError(PUS_ERROR_TC_KIND, function, (pusErrorData_t){.integer=kind});

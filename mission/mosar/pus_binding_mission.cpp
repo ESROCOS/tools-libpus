@@ -569,10 +569,12 @@ void init_mission_module(py::module &m)
     m.def("pus_tc_210_1_setParamSM_ID", &pus_tc_210_1_setParamSM_ID, "pus_tc_210_1_setParamSM_ID");
     m.def("pus_tc_210_1_getParamCOMP_ID", &pus_tc_210_1_getParamCOMP_ID, "pus_tc_210_1_getParamCOMP_ID");
     m.def("pus_tc_210_1_setParamCOMP_ID", &pus_tc_210_1_setParamCOMP_ID, "pus_tc_210_1_setParamCOMP_ID");
-    m.def("pus_tc_210_1_getParamSetRoutingEntry", &pus_tc_210_1_getParamSetRoutingEntry, "pus_tc_210_1_getParamSetRoutingEntry");
-    m.def("pus_tc_210_1_setParamSetRoutingEntry", &pus_tc_210_1_setParamSetRoutingEntry, "pus_tc_210_1_setParamSetRoutingEntry");
-    m.def("pus_tc_210_1_getParamSpwTrafficPriority", &pus_tc_210_1_getParamSpwTrafficPriority, "pus_tc_210_1_getParamSpwTrafficPriority");
-    m.def("pus_tc_210_1_setParamSpwTrafficPriority", &pus_tc_210_1_setParamSpwTrafficPriority, "pus_tc_210_1_setParamSpwTrafficPriority");
+    m.def("pus_tc_210_1_getParamRoutingTableIndex", &pus_tc_210_1_getParamRoutingTableIndex, "pus_tc_210_1_getParamRoutingTableIndex");
+    m.def("pus_tc_210_1_setParamRoutingTableIndex", &pus_tc_210_1_setParamRoutingTableIndex, "pus_tc_210_1_setParamRoutingTableIndex");
+    m.def("pus_tc_210_1_getParamRoutingTableDirection", &pus_tc_210_1_getParamRoutingTableDirection, "pus_tc_210_1_getParamRoutingTableDirection");
+    m.def("pus_tc_210_1_setParamRoutingTableDirection", &pus_tc_210_1_setParamRoutingTableDirection, "pus_tc_210_1_setParamRoutingTableDirection");
+    m.def("pus_tc_210_1_getParamTrafficPriority", &pus_tc_210_1_getParamTrafficPriority, "pus_tc_210_1_getParamTrafficPriority");
+    m.def("pus_tc_210_1_setParamTrafficPriority", &pus_tc_210_1_setParamTrafficPriority, "pus_tc_210_1_setParamTrafficPriority");
 
     m.def("pus_tc_210_2_createSpwPnpSetOwnerFields", &pus_tc_210_2_createSpwPnpSetOwnerFields,"pus_tc_210_2_createSpwPnpSetOwnerFields");
     m.def("pus_tc_210_2_getParamSM_ID", &pus_tc_210_2_getParamSM_ID, "pus_tc_210_2_getParamSM_ID");
@@ -863,6 +865,14 @@ void init_mission_module(py::module &m)
     m.def("pus_tc_210_94_setParamConv12vCmd", &pus_tc_210_94_setParamConv12vCmd, "pus_tc_210_94_setParamConv12vCmd");
     m.def("pus_tc_210_94_getParamConv19vCmd", &pus_tc_210_94_getParamConv19vCmd, "pus_tc_210_94_getParamConv19vCmd");
     m.def("pus_tc_210_94_setParamConv19vCmd", &pus_tc_210_94_setParamConv19vCmd, "pus_tc_210_94_setParamConv19vCmd");
+
+    m.def("pus_tc_210_95_createSmPowerOff", &pus_tc_210_95_createSmPowerOff,"pus_tc_210_95_createSmPowerOff");
+    m.def("pus_tc_210_95_getParamSM_ID", &pus_tc_210_95_getParamSM_ID, "pus_tc_210_95_getParamSM_ID");
+    m.def("pus_tc_210_95_setParamSM_ID", &pus_tc_210_95_setParamSM_ID, "pus_tc_210_95_setParamSM_ID");
+    m.def("pus_tc_210_95_getParamCOMP_ID", &pus_tc_210_95_getParamCOMP_ID, "pus_tc_210_95_getParamCOMP_ID");
+    m.def("pus_tc_210_95_setParamCOMP_ID", &pus_tc_210_95_setParamCOMP_ID, "pus_tc_210_95_setParamCOMP_ID");
+    m.def("pus_tc_210_95_getParamSUBCOMP_ID", &pus_tc_210_95_getParamSUBCOMP_ID, "pus_tc_210_95_getParamSUBCOMP_ID");
+    m.def("pus_tc_210_95_setParamSUBCOMP_ID", &pus_tc_210_95_setParamSUBCOMP_ID, "pus_tc_210_95_setParamSUBCOMP_ID");
 
     // ST 220
 	m.def("pus_tc_220_1_createNewTargetState_", &pus_tc_220_1_createNewTargetState_, "pus_tc_220_1_createNewTargetState_");

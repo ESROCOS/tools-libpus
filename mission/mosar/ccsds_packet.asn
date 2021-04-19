@@ -92,6 +92,7 @@ BEGIN
     PusTC-210-92-Data FROM PUS-ST210                     --  All HK Request
     PusTC-210-93-Data FROM PUS-ST210                     --  Command Switch 1
     PusTC-210-94-Data FROM PUS-ST210                     --  Command 24V Converter A
+    PusTC-210-95-Data FROM PUS-ST210                     --  SM Power Off
 
     PusTC-220-1-Data, PusTM-220-3-Data FROM PUS-ST220   --  reconfiguration
   	;
@@ -231,6 +232,7 @@ BEGIN
         st-210-92   PusTC-210-92-Data,
         st-210-93   PusTC-210-93-Data,
         st-210-94   PusTC-210-94-Data,
+        st-210-95   PusTC-210-95-Data,
 
         st-220-1 PusTC-220-1-Data,
         -- No packet reduced
@@ -302,6 +304,7 @@ BEGIN
         st-210-92   PusTC-210-92-Data,
         st-210-93   PusTC-210-93-Data,
         st-210-94   PusTC-210-94-Data,
+        st-210-95   PusTC-210-95-Data,
 
         st-220-1 PusTC-220-1-Data
     }

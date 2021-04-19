@@ -355,6 +355,7 @@ BEGIN
 	pus-TC-210-92-AllHkRequest    PusSubserviceType ::= 92
 	pus-TC-210-93-CommandSwitch1    PusSubserviceType ::= 93
 	pus-TC-210-94-Command24vConverterA    PusSubserviceType ::= 94
+	pus-TC-210-95-SmPowerOff    PusSubserviceType ::= 95
 
 	-- ST220 SW-reconfiguration
     pus-ST220-reconfigurationControl 	PusServiceType ::= 220 
