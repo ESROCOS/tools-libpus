@@ -757,25 +757,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM1_DMS_CPDU_A_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_SM1_DMS_CPDU_A_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM1_DMS_CPDU_A_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_SM1_DMS_CPDU_A_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM1_DMS_CPDU_A_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_SM1_DMS_CPDU_A_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM1_DMS_CPDU_A_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_SM1_DMS_CPDU_A_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
@@ -1123,25 +1123,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_SM2_PWS_CPDU_A_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
@@ -1687,25 +1687,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_SM3_BAT_CPDU_A_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
@@ -2275,25 +2275,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM4_THS_CPDU_A_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_SM4_THS_CPDU_A_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM4_THS_CPDU_A_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_SM4_THS_CPDU_A_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM4_THS_CPDU_A_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_SM4_THS_CPDU_A_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM4_THS_CPDU_A_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_SM4_THS_CPDU_A_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
@@ -2743,25 +2743,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM5_OSP1_CPDU_A_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_SM5_OSP1_CPDU_A_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM5_OSP1_CPDU_A_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_SM5_OSP1_CPDU_A_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM5_OSP1_CPDU_A_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_SM5_OSP1_CPDU_A_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM5_OSP1_CPDU_A_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_SM5_OSP1_CPDU_A_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
@@ -3235,25 +3235,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM6_OSP2_CPDU_A_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_SM6_OSP2_CPDU_A_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM6_OSP2_CPDU_A_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_SM6_OSP2_CPDU_A_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM6_OSP2_CPDU_A_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_SM6_OSP2_CPDU_A_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SM6_OSP2_CPDU_A_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_SM6_OSP2_CPDU_A_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
@@ -4525,25 +4525,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SVC_CPDU_A_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_SVC_CPDU_A_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SVC_CPDU_A_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_SVC_CPDU_A_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SVC_CPDU_A_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_SVC_CPDU_A_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_SVC_CPDU_A_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_SVC_CPDU_A_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
@@ -4993,25 +4993,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_CLT_CPDU_A_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_CLT_CPDU_A_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_CLT_CPDU_A_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_CLT_CPDU_A_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_CLT_CPDU_A_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_CLT_CPDU_A_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_CLT_CPDU_A_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_CLT_CPDU_A_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
@@ -5113,25 +5113,25 @@
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_CLT_CPDU_B_TM_1_24V_CONVERTER_J6_STATUS",
+            "label": "DP_RMAP_CLT_CPDU_B_TM_1_STATUS_24V_CONVERTER_J6",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_CLT_CPDU_B_TM_1_24V_CONVERTER_J7_STATUS",
+            "label": "DP_RMAP_CLT_CPDU_B_TM_1_STATUS_24V_CONVERTER_J7",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_CLT_CPDU_B_TM_1_12V_BUS_STATUS",
+            "label": "DP_RMAP_CLT_CPDU_B_TM_1_STATUS_12V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
         },
         {
-            "label": "DP_RMAP_CLT_CPDU_B_TM_1_19V_BUS_STATUS",
+            "label": "DP_RMAP_CLT_CPDU_B_TM_1_STATUS_19V_BUS",
             "type": "BOOL",
             "low_limit": 0,
             "high_limit": 999999
