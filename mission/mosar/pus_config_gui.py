@@ -1576,12 +1576,14 @@ def getStateidFromDict(value):
         return pb.asn1SccStateidEnum.offline
     if value == "idle":
         return pb.asn1SccStateidEnum.idle
+    if value == "aligned":
+        return pb.asn1SccStateidEnum.aligned
     if value == "latched":
         return pb.asn1SccStateidEnum.latched
-    if value == "locked":
-        return pb.asn1SccStateidEnum.locked
     if value == "connected":
         return pb.asn1SccStateidEnum.connected
+    if value == "locked":
+        return pb.asn1SccStateidEnum.locked
     else:
         return pb.asn1SccStateidEnum.unknown
 

@@ -196,9 +196,10 @@ void init_mission_module(py::module &m)
     py::enum_<asn1SccStateidEnum>(m, "asn1SccStateidEnum")
         .value("offline", asn1SccStateidEnum::asn1Sccstateid_offline)
         .value("idle", asn1SccStateidEnum::asn1Sccstateid_idle)
+        .value("aligned", asn1SccStateidEnum::asn1Sccstateid_aligned)
         .value("latched", asn1SccStateidEnum::asn1Sccstateid_latched)
-        .value("locked", asn1SccStateidEnum::asn1Sccstateid_locked)
         .value("connected", asn1SccStateidEnum::asn1Sccstateid_connected)
+        .value("locked", asn1SccStateidEnum::asn1Sccstateid_locked)
         .value("unknown", asn1SccStateidEnum::asn1Sccstateid_unknown)
         .export_values();
     

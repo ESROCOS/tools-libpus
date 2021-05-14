@@ -40,7 +40,7 @@ AutonomyPred ::= ENUMERATED { autonomy-e1, autonomy-e2, autonomy-e3, autonomy-e4
 ActionstatusEnum ::= ENUMERATED { actionstatus-success, actionstatus-failed, actionstatus-notachievable, actionstatus-notenoughtime, actionstatus-unknown }
 
 -- STATEID ENUM DATA (AGENT-FUNCTIONAL)
-StateidEnum ::= ENUMERATED { stateid-offline, stateid-idle, stateid-latched, stateid-locked, stateid-connected, stateid-unknown }
+StateidEnum ::= ENUMERATED { stateid-offline, stateid-idle, stateid-aligned, stateid-latched, stateid-connected, stateid-locked, stateid-unknown }
 
 -- COMMANDSTATE ENUM DATA (AGENT-FUNCTIONAL)
 CommandstateEnum ::= ENUMERATED { commandstate-offline, commandstate-idle, commandstate-latched, commandstate-connected, commandstate-unknown }
