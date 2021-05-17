@@ -340,9 +340,11 @@ BEGIN
 	pus-TC-210-42-CaptureImage    PusSubserviceType ::= 42
 
 	pus-TC-210-61-Hk1Request    PusSubserviceType ::= 61
-	pus-TC-210-62-AllHkRequest    PusSubserviceType ::= 62
-	pus-TC-210-63-Command48vConverter    PusSubserviceType ::= 63
-	pus-TC-210-64-CommandBatCharger    PusSubserviceType ::= 64
+	pus-TC-210-62-Hk2Request    PusSubserviceType ::= 62
+	pus-TC-210-63-AllHkRequest    PusSubserviceType ::= 63
+	pus-TC-210-64-GoToState    PusSubserviceType ::= 64
+	pus-TC-210-65-Command48vConverter    PusSubserviceType ::= 65
+	pus-TC-210-66-CommandBatCharger    PusSubserviceType ::= 66
 
 	pus-TC-210-71-JointTraj    PusSubserviceType ::= 71
 	pus-TC-210-72-CartGoal    PusSubserviceType ::= 72

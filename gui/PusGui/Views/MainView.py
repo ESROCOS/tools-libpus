@@ -129,7 +129,10 @@ class MainView:
                 try:
                     self.system_params[idx].setText("{}: {} - {}".format(idx, val, hex(val)))
                 except Exception as _:
-                    self.system_params[idx].setText("{}: {:.3f}".format(idx, val))
+                    try:
+                        self.system_params[idx].setText("{}: {:.3f}".format(idx, val))
+                    except Exception as _:
+                        self.system_params[idx].setText("{}: {}".format(idx, val))
         else:
             self.__add_system_params_2__(reportId, idx)  # The param is added if it is not already
             if val is not None:
@@ -137,7 +140,10 @@ class MainView:
                 try:
                     self.system_params_2[idx].setText("{}: {} - {}".format(idx, val, hex(val)))
                 except Exception as _:
-                    self.system_params_2[idx].setText("{}: {:.3f}".format(idx, val))
+                    try:
+                        self.system_params_2[idx].setText("{}: {:.3f}".format(idx, val))
+                    except Exception as _:
+                        self.system_params_2[idx].setText("{}: {}".format(idx, val))
 
     def set_close_event(self, func):
         self.view.closeEvent = func

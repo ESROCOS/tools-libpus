@@ -122,6 +122,8 @@ typedef asn1SccPusTM_200_16_Data pusSt200_16_Observation; //!< Sodplanner observ
 #define pus_TC_DATA_ST_210_62   ((pusTcDataKind_t) PusTcApplicationData_st_210_62_PRESENT)
 #define pus_TC_DATA_ST_210_63   ((pusTcDataKind_t) PusTcApplicationData_st_210_63_PRESENT)
 #define pus_TC_DATA_ST_210_64   ((pusTcDataKind_t) PusTcApplicationData_st_210_64_PRESENT)
+#define pus_TC_DATA_ST_210_65   ((pusTcDataKind_t) PusTcApplicationData_st_210_65_PRESENT)
+#define pus_TC_DATA_ST_210_66   ((pusTcDataKind_t) PusTcApplicationData_st_210_66_PRESENT)
 
 /* WM */
 #define pus_TC_DATA_ST_210_71   ((pusTcDataKind_t) PusTcApplicationData_st_210_71_PRESENT)

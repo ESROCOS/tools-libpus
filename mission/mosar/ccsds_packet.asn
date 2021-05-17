@@ -77,9 +77,11 @@ BEGIN
     PusTC-210-42-Data FROM PUS-ST210                     --  Capture Image
 /* BAT */
     PusTC-210-61-Data FROM PUS-ST210                     --  HK1 Request
-    PusTC-210-62-Data FROM PUS-ST210                     --  All HK Request
-    PusTC-210-63-Data FROM PUS-ST210                     --  Command 48V converter
-    PusTC-210-64-Data FROM PUS-ST210                     --  Command Bat charger 
+    PusTC-210-62-Data FROM PUS-ST210                     --  HK2 Request
+    PusTC-210-63-Data FROM PUS-ST210                     --  All HK Request
+    PusTC-210-64-Data FROM PUS-ST210                     --  Go to state
+    PusTC-210-65-Data FROM PUS-ST210                     --  Command 48V converter
+    PusTC-210-66-Data FROM PUS-ST210                     --  Command Bat charger 
 /* WM */
     PusTC-210-71-Data FROM PUS-ST210                     --  Mode Command
     PusTC-210-72-Data FROM PUS-ST210                     --  Control Mode Command
@@ -220,6 +222,8 @@ BEGIN
         st-210-62   PusTC-210-62-Data,
         st-210-63   PusTC-210-63-Data,
         st-210-64   PusTC-210-64-Data,
+        st-210-65   PusTC-210-65-Data,
+        st-210-66   PusTC-210-66-Data,
         /* WM */
         st-210-71   PusTC-210-71-Data,
         st-210-72   PusTC-210-72-Data,
@@ -292,6 +296,8 @@ BEGIN
         st-210-62   PusTC-210-62-Data,
         st-210-63   PusTC-210-63-Data,
         st-210-64   PusTC-210-64-Data,
+        st-210-65   PusTC-210-65-Data,
+        st-210-66   PusTC-210-66-Data,
         /* WM */
         st-210-71   PusTC-210-71-Data,
         st-210-72   PusTC-210-72-Data,

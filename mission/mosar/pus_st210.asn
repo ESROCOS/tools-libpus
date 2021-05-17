@@ -177,11 +177,24 @@ BEGIN
     PusTC-210-63-Data ::= SEQUENCE
     {
         smId PusUInt8,
-        componentId PusUInt8,
-        conv48vCmd PusBoolean
+        componentId PusUInt8
     }
     -- Data for TC[210,64]
     PusTC-210-64-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        targetState PusUInt8
+    }
+    -- Data for TC[210,65]
+    PusTC-210-65-Data ::= SEQUENCE
+    {
+        smId PusUInt8,
+        componentId PusUInt8,
+        conv48vCmd PusBoolean
+    }
+    -- Data for TC[210,66]
+    PusTC-210-66-Data ::= SEQUENCE
     {
         smId PusUInt8,
         componentId PusUInt8,
