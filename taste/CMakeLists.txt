@@ -2,6 +2,5 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-#add_subdirectory(taste_pus_01)
-add_subdirectory(taste_pus_02)
+add_subdirectory(taste_pus)
 
