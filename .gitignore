@@ -66,6 +66,7 @@ test_results
 
 taste/*.md5
 taste/build-script*
+skeleton_built
 dataview
 binaries
 build
