@@ -64,14 +64,9 @@ taste.ur5/.tc_history
 
 test_results
 
-taste/taste_pus_02/ground/dataview
-taste/taste_pus_02/onboardsw/dataview
-taste/taste_pus_02/pusservices/dataview
-taste/taste_pus_02/ConcurrencyView
-taste/taste_pus_02/*.asn
 taste/*.md5
 taste/build-script*
-
+dataview
 binaries
 build
 *.zip
