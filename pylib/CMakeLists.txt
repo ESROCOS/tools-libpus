@@ -23,7 +23,6 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_binding_mission.cpp")
     ${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_binding_mission.cpp
     )
 	target_compile_definitions(${LIBPUS_MISSION}_py PRIVATE ESROCOS_PYMODULE_NAME=${LIBPUS_MISSION} MISSION_BINDING=1)
-    message (STATUS "RAQUEL: !! pus_binding included")
 else()
 	target_compile_definitions(${LIBPUS_MISSION}_py PRIVATE ESROCOS_PYMODULE_NAME=${LIBPUS_MISSION})
 endif()
