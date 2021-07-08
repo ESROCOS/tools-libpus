@@ -44,8 +44,8 @@ void pusservices_st03HkReportTrigger()
 	if ( pus_ST03_DEFAULT_HK_REPORT == reportId )
 	{
 		//pus_hk_getReportParams
-		//reportInfo.numParams = pus_st03_defaultHkReportInfo.numParams;
-		//reportInfo.paramIds = pus_st03_defaultHkReportInfo.paramIds;
+		reportInfo.numParams = pus_st03_HkReportInfos[reportId].numParams;
+		reportInfo.paramIds = pus_st03_HkReportInfos[reportId].paramIds;
 	}
 	else
 	{
@@ -76,5 +76,52 @@ void pusservices_st03HkReportTrigger()
 
 
 	pusservices_PI_addTm(&tm); 
+}
+
+void pusservices_processTc03(const pusPacket_t *tcPacket)
+{
+    pusSubservice_t subtype;
+    pusSt01FailureCode_t errorCode = PUS_NO_ERROR;
+    pusSt01FailureInfo_t info;
+    pusStepId_t step = 0;
+    pusSt03HousekeepingReportId_t reportId;
+    pusSt01FailureCode_t errorExpect = PUS_EXPECT_ST03TC(tcPacket, pusSubtype_NONE);
+    if( PUS_NO_ERROR == errorExpect )
+    {
+        printf(" - ST03: TC%llu_%llu received.\n", pus_getTcService(tcPacket), pus_getTcSubtype(tcPacket));
+        subtype = pus_TM_1_1_successfulAcceptance;
+        pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+        if(pus_getTcSubtype(tcPacket) == pus_TC_3_5_enablePeriodicHousekeeping)
+        {
+            reportId = pus_tc_3_5_getReportId(tcPacket);
+            errorCode = pus_hk_enableReport(reportId);
+        }
+        else /* TC(3,6) */
+        {
+            reportId = pus_tc_3_6_getReportId(tcPacket);
+            errorCode = pus_hk_disableReport(reportId);
+        }
+        if(errorCode == PUS_NO_ERROR)
+        {
+            printf(" - ST03: send pus_TM_1_7_successfulCompletion \n");
+            subtype = pus_TM_1_7_successfulCompletion;
+            pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+        }
+        else
+        {
+            printf(" - ST03: send pus_TM_1_8_failedCompletion \n");
+            subtype = pus_TM_1_8_failedCompletion;
+            pusservices_PI_ack(tcPacket, &subtype, &errorCode, &info, &step);
+        }
+        return;
+    }
+    else
+    {
+        //send acceptance failure
+        printf(" - ST08: send pus_TM_1_2_failedAcceptance \n");
+        subtype = pus_TM_1_2_failedAcceptance;
+        pusservices_PI_ack(tcPacket, &subtype, &errorExpect, &info, &step);
+        return;
+    }
 }
 

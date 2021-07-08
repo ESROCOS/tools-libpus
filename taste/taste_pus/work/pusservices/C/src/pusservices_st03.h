@@ -21,6 +21,8 @@ void pusservices_initService03(void);
 
 void pusservices_st03HkReportTrigger(void);
 
+void pusservices_processTc03(const pusPacket_t *tcPacket);
+
 #ifdef __cplusplus
 }
 #endif

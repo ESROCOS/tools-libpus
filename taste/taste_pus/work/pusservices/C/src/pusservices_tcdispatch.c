@@ -6,6 +6,7 @@
 
 #include "pusservices_tcdispatch.h"
 #include "pusservices_config.h"
+#include "pusservices_st03.h"
 #include "pusservices_st08.h"
 #include "pusservices_st09.h"
 #include "pusservices_st11.h"
@@ -68,6 +69,11 @@ void pusservices_dispatchTc(void)
 
 		switch(pus_getTcService(&tc))
 		{
+			#ifdef PUSSERVICES_03_ENABLED
+			case 3:
+				pusservices_processTc03(&tc);
+				break;
+            #endif
             #ifdef PUSSERVICES_08_ENABLED
 			case 8:
 				pusservices_processTc08(&tc);
