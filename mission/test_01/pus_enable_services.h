@@ -30,8 +30,8 @@
 
 
 // TODO delete, it is just to avoid eclipse colors
-#define PUS_CONFIGURE_ST200_ENABLED
-#define PUS_CONFIGURE_ST201_ENABLED
+/*#define PUS_CONFIGURE_ST200_ENABLED
+#define PUS_CONFIGURE_ST201_ENABLED*/
 
 
 

@@ -67,7 +67,7 @@ void ground_PI_newTm(const asn1SccPusPacket *IN_tmPacket)
 {
     /* Write your code here! */
     pus_notify_writeTm(IN_tmPacket);
-    printf("Recibido\n");  
+    printf("Received\n");  
 }
 
 
