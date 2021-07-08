@@ -76,7 +76,7 @@ char *pus_st03_getHkReportInfoName(pusSt03ParamId_t paramIndex);
 pusParamType_t pus_st03_getHkReportInfoType(pusSt03ParamId_t paramIndex);
 pusSt03ParamId_t pus_st03_getHkInfoNameFromReport(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIdx);
 
-uint32_t pus_paramToUint32_(pusStoredParam_t paramValue);
+asn1SccPusUInt64 pus_paramToUint32_(pusStoredParam_t paramValue);
 int32_t pus_paramToInt32_(pusStoredParam_t paramValue);
 double pus_paramToReal64_(pusStoredParam_t paramValue);
 bool pus_paramToBool_(pusStoredParam_t paramValue);

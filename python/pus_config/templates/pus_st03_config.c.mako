@@ -36,55 +36,76 @@ tempvars['paramIndex'] = dict()
 // ST[03] arrays
 pusSt03ParamInfo_t pus_st03_paramInfo[${tempvars['numParams']}];
 pusStoredParam_t pus_st03_params[${tempvars['numParams']}];
-pusSt03ParamId_t pus_st03_defaultHkReport[${len(config['defaultHkReport'])}];
-pusSt03ReportInfo_t pus_st03_defaultHkReportInfo;
+
+// ST[03] reports
+% for report in config['hkReports']:
+pusSt03ParamId_t pus_st03_HkReportsIDs_${report['name']}[${len(report['parameters'])}];
+% endfor
+pusSt03ReportInfo_t pus_st03_HkReportInfos[PUS_HK_NUMBER_REPORTS];
 
 // ST[03] constants
 const pusSt03ParamId_t pus_ST03_PARAM_LIMIT = PUS_ST03_PARAM_LIMIT;
-
+const pusSt03HousekeepingReportId_t pus_ST03_REPORT_LIMIT = PUS_HK_NUMBER_REPORTS;
 
 pusError_t pus_hk_configure()
 {
-	pus_st03_defaultHkReportInfo.numParams = 0;
-	pus_st03_defaultHkReportInfo.paramIds = &pus_st03_defaultHkReport[0];
-
 	// Store parameters info
 % for param in config['parameters']:
-<%
-    tempvars['paramsCount'] = tempvars['paramsCount'] + 1
-    tempvars['paramIndex'][param['label']] = tempvars['paramsCount']
+<% 
+if param['type'] == 'UINT16':
+    param['type'] = 'UINT32'
+elif param['type'] == 'REAL32':
+    param['type'] = 'REAL64'
 %>
-    
     pus_st03_params[${param['label']}] = 0;
     pus_st03_paramInfo[${param['label']}].label = "${param['label']}";
     pus_st03_paramInfo[${param['label']}].type = PUS_${param['type']};
 % endfor
-
-	// Default HK report
-% for id in config['defaultHkReport']:
-% if id in tempvars['paramIndex']:
-<%
-    tempvars['defaultReportCount'] = tempvars['defaultReportCount'] + 1
-%>\
-    pus_st03_defaultHkReport[${tempvars['defaultReportCount']}] = ${tempvars['paramIndex'][id]}; 
-% else:
-<% 
-    raise Exception('ST[03] configuration: unknown parameter ID {} in defaultHKReport'.format(id)) 
-%>
-% endif
+	// HK reports definition
+	% for j, report in enumerate(config['hkReports']):
+% for i, param in enumerate(report['parameters']):
+	pus_st03_HkReportsIDs_${report['name']}[${i}] = ${param};
 % endfor
-% if tempvars['defaultReportCount'] >= 0:
-	pus_st03_defaultHkReportInfo.numParams = ${tempvars['defaultReportCount'] + 1};
-% else:
-<% 
-    raise Exception('ST[03] configuration: defaultHKReport is empty') 
-%>
-% endif  
+	pus_st03_HkReportInfos[PUS_HK_REP_${report['name']}].numParams = ${len(report['parameters'])}U;
+	pus_st03_HkReportInfos[PUS_HK_REP_${report['name']}].paramIds = &pus_st03_HkReportsIDs_${report['name']}[0];
+	%if j == 0:
+    pus_st03_HkReportInfos[PUS_HK_REP_${report['name']}].isEnabled = TRUE;
+	%else:
+	pus_st03_HkReportInfos[PUS_HK_REP_${report['name']}].isEnabled = FALSE;
+	%endif
 
+% endfor
     return PUS_NO_ERROR;
 }
 
+pusError_t pus_hk_getReportParams(pusSt03HousekeepingReportId_t reportId, size_t *numParams, pusSt03ParamId_t* paramIds)
+{
+    if((numParams == NULL) || (paramIds == NULL))
+    {
+        return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
+    }
+
+    if(reportId >= PUS_HK_NUMBER_REPORTS)
+    {
+        return PUS_SET_ERROR(PUS_ERROR_INVALID_ID);
+    }
+    else
+    {
+        *numParams = pus_st03_HkReportInfos[reportId].numParams;
+    	memcpy(paramIds, pus_st03_HkReportInfos[reportId].paramIds, sizeof(pusSt03ParamId_t) * 20);
+
+        
+        return PUS_SET_ERROR(PUS_NO_ERROR);
+    }
+}
+
 % for param in config['parameters']:
+<% 
+if param['type'] == 'UINT16':
+    param['type'] = 'UINT32'
+elif param['type'] == 'REAL32':
+    param['type'] = 'REAL64'
+%>
 pusError_t pus_hk_set${param['label']}(${param['type']} value)
 {
 	%if str(param['type']) == str("INT32"):

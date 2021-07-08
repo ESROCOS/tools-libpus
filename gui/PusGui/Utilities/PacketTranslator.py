@@ -69,6 +69,10 @@ class PacketTranslator(object):
             jsn["data"]["user_data"]["src_data"] = self.tm_1_x_get_data(pack)
         elif (srvc_type_id, msg_type_id) == (3, 25):
             jsn["data"]["user_data"]["src_data"] = self.tm_3_25_get_data(pack)
+        elif (srvc_type_id, msg_type_id) == (3, 5):
+            jsn["data"]["user_data"]["src_data"] = self.tc_3_5_get_data(pack)
+        elif (srvc_type_id, msg_type_id) == (3, 6):
+            jsn["data"]["user_data"]["src_data"] = self.tc_3_6_get_data(pack)
         elif srvc_type_id == 5:
             jsn["data"]["user_data"]["src_data"] = self.tm_5_x_get_data(pack)
         elif (srvc_type_id, msg_type_id) == (8, 1):
@@ -117,7 +121,8 @@ class PacketTranslator(object):
             try:
                 jsn["data"]["user_data"]["src_data"] = pfun.mission_get_data(pack, srvc_type_id, msg_type_id)
             except Exception as e:
-                pass
+                print("Get data exception: ")
+                print(e)
 
         return jsn
 
@@ -192,6 +197,10 @@ class PacketTranslator(object):
             # REVISAR
             #  jsn["data"]["user_data"]["src_data"] = self.tm_3_25_set_data(pack)
             pass
+        elif (srvc_type_id, msg_type_id) == (3, 5):
+            self.tc_3_5_set_data(pack, data) 
+        elif (srvc_type_id, msg_type_id) == (3, 6): 
+            self.tc_3_6_set_data(pack, data)
         elif (srvc_type_id, msg_type_id) == (8, 1):
             self.tc_8_1_set_data(pack, data)
         elif (srvc_type_id, msg_type_id) == (9, 1):
@@ -232,7 +241,8 @@ class PacketTranslator(object):
             try:
                 pfun.mission_set_data(pack, srvc_type_id, msg_type_id, data)
             except Exception as e:
-                pass 
+                print("Set data exception: ")
+                print(e) 
     
         return pack
 
@@ -248,7 +258,11 @@ class PacketTranslator(object):
         svc = jsn["data"]["pck_sec_head"]["msg_type_id"]["service_type_id"]
         msg = jsn["data"]["pck_sec_head"]["msg_type_id"]["msg_subtype_id"]
 
-        if (svc, msg) == (8, 1):
+        if (svc, msg) == (3, 5):
+            pb.pus_tc_3_5_createEnableHousekeepingGeneration(packet, 0, 0, 0)
+        elif (svc, msg) == (3, 6):
+            pb.pus_tc_3_6_createDisableHousekeepingGeneration(packet, 0, 0, 0)
+        elif (svc, msg) == (8, 1):
             pb.pus_tc_8_1_createPerformFuctionRequest(packet, 0, 0, 0)
         elif (svc, msg) == (9, 1):
             pb.pus_tc_9_1_createSetTimeReportRate(packet, 0, 0, 0)
@@ -314,7 +328,8 @@ class PacketTranslator(object):
             try:
                 pfun.mission_create_packets(packet, svc, msg)
             except Exception as e:
-                pass
+                print("Create packet exception: ")
+                print(e)
       
         return packet
 
@@ -435,6 +450,53 @@ class PacketTranslator(object):
 
         return data
 
+    @staticmethod
+    def tc_3_5_get_data(packet):
+        """
+        This function parses the st3-5 packet data field to json
+        :param packet: The packet which data field we want to parse
+        :return: A JSON object with all the parsed information
+        """
+        data = dict()
+        report_id = pb.pus_tc_3_5_getReportId(packet)
+        data["report_id"] = report_id
+
+        return data
+
+    @staticmethod
+    def tc_3_5_set_data(packet, data):
+        """
+        This function fills in a st3-5 packet data field with
+        a data dictionary passed as an argument
+        :param packet: The packet we want to fill in
+        :param data: A data dictionary with all the parameters
+        """
+        report_id = data["report_id"]  # Shall be integer
+        pb.pus_tc_3_5_setReportId(packet, report_id)
+
+    @staticmethod
+    def tc_3_6_get_data(packet):
+        """
+        This function parses the st3-5 packet data field to json
+        :param packet: The packet which data field we want to parse
+        :return: A JSON object with all the parsed information
+        """
+        data = dict()
+        report_id = pb.pus_tc_3_6_getReportId(packet)
+        data["report_id"] = report_id
+        return data
+
+    @staticmethod
+    def tc_3_6_set_data(packet, data):
+        """
+        This function fills in a st3-5 packet data field with
+        a data dictionary passed as an argument
+        :param packet: The packet we want to fill in
+        :param data: A data dictionary with all the parameters
+        """
+        report_id = data["report_id"]  # Shall be integer
+        a = pb.pus_tc_3_6_setReportId(packet, report_id)
+        
     @staticmethod
     def tc_8_1_get_data(packet):
         """

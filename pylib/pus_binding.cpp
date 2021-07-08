@@ -258,6 +258,15 @@ PYBIND11_MODULE(ESROCOS_PYMODULE_NAME, m) {
 
 #ifdef PUS_CONFIGURE_ST03_ENABLED
 	m.doc() = "pus_st03_packets binding";
+
+	m.def("pus_tc_3_5_createEnableHousekeepingGeneration", &pus_tc_3_5_createEnableHousekeepingGeneration, "Binding for pus_tc_3_5_createEnableHousekeepingGeneration");
+	m.def("pus_tc_3_5_setReportId", &pus_tc_3_5_setReportId, "Binding for pus_tc_3_5_setReportId");
+	m.def("pus_tc_3_5_getReportId", &pus_tc_3_5_getReportId, "Binding for pus_tc_3_5_getReportId");
+	
+	m.def("pus_tc_3_6_createDisableHousekeepingGeneration", &pus_tc_3_6_createDisableHousekeepingGeneration, "Binding for pus_tc_3_6_createDisableHousekeepingGeneration");
+	m.def("pus_tc_3_6_setReportId", &pus_tc_3_6_setReportId, "Binding for pus_tc_3_6_setReportId");
+	m.def("pus_tc_3_6_getReportId", &pus_tc_3_6_getReportId, "Binding for pus_tc_3_6_getReportId");
+
 	m.def("pus_tm_3_25_createHousekeepingReportDefault", &pus_tm_3_25_createHousekeepingReportDefault, "Binding for pus_tm_3_25_createHousekeepingReportDefault");
 	m.def("pus_tm_3_25_createHousekeepingReport", &pus_tm_3_25_createHousekeepingReport, "Binding for pus_tm_3_25_createHousekeepingReport");
 	m.def("pus_hk_getUInt32Param", &pus_hk_getUInt32Param, "Binding for pus_hk_getUInt32Param");
@@ -280,6 +289,7 @@ PYBIND11_MODULE(ESROCOS_PYMODULE_NAME, m) {
 	m.def("pus_st03_getHkReportInfoName", &pus_st03_getHkReportInfoName, "Binding for pus_st03_getHkReportInfoName");
 	m.def("pus_st03_getHkReportInfoType", &pus_st03_getHkReportInfoType, "Binding for pus_st03_getHkReportInfoType");
 	m.def("pus_st03_getHkInfoNameFromReport", &pus_st03_getHkInfoNameFromReport, "Binding for pus_st03_getHkInfoNameFromReport");
+	m.def("pus_expectSt03Tc", &pus_expectSt03Tm, "Binding for pus_expectSt03Tc");
 	m.def("pus_expectSt03Tm", &pus_expectSt03Tm, "Binding for pus_expectSt03Tm");
 
 	m.def("pus_paramToUint32", &pus_paramToUint32_, "Binding for pus_paramToUint32");

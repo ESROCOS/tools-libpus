@@ -35,7 +35,7 @@ typedef enum
 
 
 //! Convert a value from the internal parameter format to uint32_t
-pusError_t pus_paramToUint32(uint32_t* outValue, pusStoredParam_t paramValue);
+pusError_t pus_paramToUint32(asn1SccPusUInt64* outValue, pusStoredParam_t paramValue);
 
 //! Convert a value from the internal parameter format to int32_t
 pusError_t pus_paramToInt32(int32_t* outValue, pusStoredParam_t paramValue);

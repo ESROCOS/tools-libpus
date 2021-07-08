@@ -19,10 +19,10 @@ if len(sys.argv) != 2:
 
 
 import builtins
-builtins.ESROCOS_PUSGUI_MODULE = sys.argv[1]
-builtins.ESROCOS_PUSGUI_CONFIG = "config.json"
-builtins.ESROCOS_PUSGUI_MISSION = "/home/esrocos/esrocos_workspace/tools/libpus/mission/test_ur5"
-import pus.PusGui
+builtins.ESROCOS_PUSGUI_MODULE = "esrocos_pus_mosar"
+builtins.ESROCOS_PUSGUI_CONFIG = "/home/peraspera/esrocos_workspace/tools/libpus/mission/mosar/gui_config.json"
+builtins.ESROCOS_PUSGUI_MISSION = "/home/esrocos/esrocos_workspace/tools/libpus/mission/mosar"
+import PusGui
 
 
 if __name__ == "__main__":

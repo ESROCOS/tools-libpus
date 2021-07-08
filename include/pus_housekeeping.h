@@ -45,6 +45,7 @@ typedef struct
 {
 	size_t numParams;			//!< Number of parameters in the report
 	pusSt03ParamId_t* paramIds;	//!< IDs of the parameters in the report
+	bool isEnabled;				//!< HK report enable flag
 } pusSt03ReportInfo_t;
 
 
@@ -75,6 +76,18 @@ pusError_t pus_hk_finalize();
 //! Check if the service ST[03] is initialized
 bool pus_hk_isInitialized();
 
+//! Set a HK report as enabled
+/*! \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_hk_enableReport(pusSt03HousekeepingReportId_t reportId);
+
+//! Set a HK report as disabled
+/*! \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_hk_disableReport(pusSt03HousekeepingReportId_t reportId);
+
+//! Check if the a HK report is enabled
+bool pus_hk_isReportEnabled(pusSt03HousekeepingReportId_t reportId);
 
 //
 // Getters and setters for HK parameters

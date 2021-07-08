@@ -97,8 +97,8 @@ void pus_setTmPacketTime_(pusPacket_t *packet, time_t time_)
 }
 
 
-uint32_t pus_paramToUint32_(pusStoredParam_t paramValue) {
-	uint32_t outValue = 0;
+asn1SccPusUInt64 pus_paramToUint32_(pusStoredParam_t paramValue) {
+	asn1SccPusUInt64 outValue = 0;
 	pusError_t error;
 	error = pus_paramToUint32(&outValue, paramValue);
 	PUS_SET_ERROR(error);
@@ -289,9 +289,9 @@ pusParamType_t pus_st03_getHkReportInfoType(pusSt03ParamId_t paramIndex) {
 }
 
 pusSt03ParamId_t pus_st03_getHkInfoNameFromReport(pusSt03HousekeepingReportId_t reportId, pusSt03ParamId_t reportIdx) {
-	(void)reportId; //unused
+	(void)reportId; //unused // TODO - JMSM
 	if (reportIdx < pus_ST03_PARAM_LIMIT) {
-		 return pus_st03_defaultHkReportInfo.paramIds[reportIdx];
+		 return pus_st03_HkReportInfos[reportId].paramIds[reportIdx];
 	}
 	return -1;
 }

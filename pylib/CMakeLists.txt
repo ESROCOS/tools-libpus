@@ -8,7 +8,7 @@ set(SOURCES
 	pus_bindingfunctions.cpp
 	${PUS_BINDING_MISISON_${MISSION}}
 )
-
+message(STATUS "RAQUEEL  es ??? ${PUS_BINDING_MISISON_${MISSION}}")
 
 pybind11_add_module(${LIBPUS_MISSION}_py ${SOURCES})
 set_target_properties(${LIBPUS_MISSION}_py PROPERTIES 
@@ -18,6 +18,10 @@ set_target_properties(${LIBPUS_MISSION}_py PROPERTIES
 
 # Missionization pusbinding module
 if(EXISTS "${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_binding_mission.cpp")
+    set (SOURCES
+    $SOURCES
+    ${CMAKE_SOURCE_DIR}/mission/${MISSION}/pus_binding_mission.cpp
+    )
 	target_compile_definitions(${LIBPUS_MISSION}_py PRIVATE ESROCOS_PYMODULE_NAME=${LIBPUS_MISSION} MISSION_BINDING=1)
 else()
 	target_compile_definitions(${LIBPUS_MISSION}_py PRIVATE ESROCOS_PYMODULE_NAME=${LIBPUS_MISSION})

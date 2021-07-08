@@ -232,6 +232,10 @@ class CreateTCController(object):
         apid = pb.pus_getInfoApid(apid_info)
         seq = pb.pus_getNextPacketCount(apid_info) # REVISAR parece que la secuencia no aumenta
 
+        if (svc, msg) == (3, 5):
+            pb.pus_tc_3_5_createEnableHousekeepingGeneration(packet, apid, seq, 0)
+        if (svc, msg) == (3, 6):
+            pb.pus_tc_3_6_createDisableHousekeepingGeneration(packet, apid, seq, 0)
         if (svc, msg) == (8, 1):
             pb.pus_tc_8_1_createPerformFuctionRequest(packet, apid, seq, 0)
         elif (svc, msg) == (9, 1):
@@ -322,7 +326,8 @@ class CreateTCController(object):
             try:
                 pfun.mission_create_packets(packet, svc, msg)
             except Exception as e:
-                pass
+                print("Create packet exception: ")
+                print(e)
 
         return packet_translator.packet2json(packet), packet
 

@@ -68,7 +68,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 # the directories src, mpy and pylib are added from the CMakeLists.txt in the mission 
 # directory.
 
-add_subdirectory(doc)
+#add_subdirectory(doc)
 add_subdirectory(python)
 add_subdirectory(mission)
 add_subdirectory(test)
@@ -83,6 +83,6 @@ endif()
 
 # Coverage for tests
 if(NOT CMAKE_CROSSCOMPILING)
-    coverage_evaluate()
+    #coverage_evaluate()
 endif()
 

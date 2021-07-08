@@ -16,19 +16,19 @@
 // Cast parameter to type
 //
 
-pusError_t pus_paramToUint32(uint32_t* outValue, pusStoredParam_t paramValue)
+pusError_t pus_paramToUint32(asn1SccPusUInt64* outValue, pusStoredParam_t paramValue)
 {
 	if (NULL == outValue)
 	{
 		return PUS_SET_ERROR(PUS_ERROR_NULLPTR);
 	}
-	else if (paramValue > UINT32_MAX)
-	{
-		return PUS_SET_ERROR(PUS_ERROR_LIMIT);
-	}
+	// else if (paramValue > UINT32_MAX)
+	// {
+	// 	return PUS_SET_ERROR(PUS_ERROR_LIMIT);
+	// }
 	else
 	{
-		*outValue = (uint32_t)paramValue;
+		*outValue = (asn1SccPusUInt64)paramValue;
 		return PUS_NO_ERROR;
 	}
 }

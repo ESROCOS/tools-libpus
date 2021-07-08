@@ -23,6 +23,7 @@ class App(object):
         """
         self.table = PusConsoleTable()
         self.parameters_report_values = {"spacecraftTime": None}
+        self.parameters_report_values__2 = {"spacecraftTime": None}
         self.st3_param_numbers = list()
         self.tc_apid = pb.pusApidInfo_t()
         self.currentFilter = None
@@ -41,7 +42,6 @@ class App(object):
         """
         pt = PacketTranslator()
         elem = pt.packet2json(packet)
-        # print(elem)
         self.update_params(elem)
         from datetime import datetime
         list_ = []
@@ -51,7 +51,7 @@ class App(object):
             msg_subtype_id = int(elem["data"]["pck_sec_head"]["msg_type_id"]["msg_subtype_id"])
             if type_ == 0:
                 src = None
-                dst = int(elem["data"]["pck_sec_head"]["dst_id"])
+                dst = int(elem["primary_header"]["pck_id"]["apid"]) # ADID-OB
             else:
                 src = int(elem["data"]["pck_sec_head"]["src_id"])
                 dst = None
@@ -82,8 +82,11 @@ class App(object):
         list_.append(packet)
         self.table.append(list_)  # QtTable is updated here
 
-    def get_params(self):
-        return self.parameters_report_values
+    def get_params(self, apid):
+        if apid == 0:
+            return self.parameters_report_values
+        else:
+            return self.parameters_report_values__2
 
     def update_params(self, packet):
         if packet["primary_header"]["pck_id"]["sec_head_flg"]:
@@ -95,10 +98,14 @@ class App(object):
         if (svc, msg) == (9, 2):
             time_ = int(packet["data"]["user_data"]["src_data"]["time"])
             self.parameters_report_values["spacecraftTime"] = time_
-        elif svc == 3:
+        elif (svc, msg) == (3, 25):
             report = packet["data"]["user_data"]["src_data"]["hk_param_report"]["params"]
             for k, v in report.items():
-                self.parameters_report_values[k] = v
+                apid = int(packet["primary_header"]["pck_id"]["apid"])
+                if apid == 0:
+                    self.parameters_report_values[k] = v
+                else:
+                    self.parameters_report_values__2[k] = v
 
     def set_filter(self, filter_: dict):
         """

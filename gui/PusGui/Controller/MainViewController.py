@@ -198,6 +198,15 @@ class MainViewController(object):
         :param elem: json of the package to add to the table
         """
         self.view.window.packagesTable.setSortingEnabled(False)
+
+        while (self.view.window.packagesTable.rowCount() > 100):
+            a = int(self.view.window.packagesTable.item(0, 0).text())
+            b = int(self.view.window.packagesTable.item(self.view.window.packagesTable.rowCount() - 1, 0).text())
+            if(a > b):
+                self.view.window.packagesTable.removeRow(self.view.window.packagesTable.rowCount() - 1)
+            else:
+                self.view.window.packagesTable.removeRow(0)
+
         column_type = [IntegerTableWidgetItem, QtGui.QTableWidgetItem, IntegerTableWidgetItem,
                        IntegerTableWidgetItem, TimeTableWidgetItem, QtGui.QTableWidgetItem,
                        QtGui.QTableWidgetItem, IntegerTableWidgetItem, QtGui.QTableWidgetItem,
@@ -208,10 +217,10 @@ class MainViewController(object):
 
         for i, e in enumerate(elem[:-2]):
             itm = column_type[i](str(e))
-            self.view.window.packagesTable.setItem(row, i, itm)
+            self.view.window.packagesTable.setItem(row_count, i, itm)
 
             if i != len(elem[:-2])-1:
-                self.view.window.packagesTable.item(row, i).setTextAlignment(QtCore.Qt.AlignCenter |
+                self.view.window.packagesTable.item(row_count, i).setTextAlignment(QtCore.Qt.AlignCenter |
                                                                              QtCore.Qt.AlignVCenter)
 
         if self.model.active_filter():
@@ -219,22 +228,24 @@ class MainViewController(object):
 
         if not self.model.check_filter(elem):
             row_count = self.view.window.packagesTable.rowCount()
-            self.view.window.packagesTable.setRowHidden(row, True)
-        self.update_params(elem[2])  # at this point system_params have already been updated from model
+            self.view.window.packagesTable.setRowHidden(row_count, True)
+
+        # elem[6] = APID // elem[2] == svc
+        self.update_params_table(elem[6], elem[9].split()[-1], elem[2], elem[3])  # at this point system_params have already been updated from model
         self.view.window.packagesTable.setSortingEnabled(True)
 
-    def update_params(self, svc):
+    def update_params_table(self, apid, reportId, svc, subtype):
         """
         This method update parameters of system status tab
         :param svc: The service of the packet arrived
         """
-        params = self.model.get_params()
+        params = self.model.get_params(apid)
         for k, v in params.items():
             if k == "spacecraftTime" and svc == 9:
                 time_ = time.strftime('%H:%M:%S', time.localtime(v))
                 self.view.update_space_time(v)
-            elif k != "spacecraftTime" and svc == 3:
-                self.view.update_system_params(k, v)
+            elif k != "spacecraftTime" and (svc, subtype) == (3,25):
+                self.view.update_system_params(apid, int(reportId), k, v)
 
     def clear_qtable_callback(self):
         """

@@ -171,6 +171,8 @@ typedef __typeof__(PusTcApplicationData_NONE) pusTcDataKind_t;  //!< Type of the
 
 // pusPacketTcDataKind_t
 #define pus_TC_DATA_NONE 		((pusTcDataKind_t) PusTcApplicationData_st_0_0_PRESENT)
+#define pus_TC_DATA_ST_3_5 		((pusTcDataKind_t) PusTcApplicationData_st_3_5_PRESENT)
+#define pus_TC_DATA_ST_3_6 		((pusTcDataKind_t) PusTcApplicationData_st_3_6_PRESENT)
 #define pus_TC_DATA_ST_8_1 		((pusTcDataKind_t) PusTcApplicationData_st_8_1_PRESENT)
 #define pus_TC_DATA_ST_9_1		((pusTcDataKind_t) PusTcApplicationData_st_9_1_PRESENT)
 #define pus_TC_DATA_ST_11_4		((pusTcDataKind_t) st_11_4_PRESENT)

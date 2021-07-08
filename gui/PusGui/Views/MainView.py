@@ -24,6 +24,9 @@ class MainView:
         self.window.setupUi(self.view)
         self.spacecraftTimeValue = DigitalClock(0, self.window.statusTab)
         self.system_params = dict()
+        self.system_params_2 = dict()
+        self.system_params_Added = dict()
+        self.system_params_Added_2 = dict()
         self.extra_customization()
         self.window.centralwidget.resizeEvent = self.resize_elements
 
@@ -93,23 +96,54 @@ class MainView:
                                      self.window.centralwidget.frameGeometry().height() - 2*padding)
         self.window.label.move(self.window.centralwidget.frameGeometry().width() - img_w - 3*padding, img_y)
 
-    def __add_system_params__(self, name: str):
+    def __add_system_params__(self, reportId, name: str):
         if name not in self.system_params:
             obj = QtGui.QListWidgetItem()
             obj.setHidden(True)
-            self.window.hkParamList.addItem(obj)
+            if reportId == 0:
+                self.window.hkParamList.addItem(obj)
+            else:
+                self.window.sysParamsList.addItem(obj)
             self.system_params[name] = obj
+
+    def __add_system_params_2__(self, reportId, name: str):
+        if name not in self.system_params_2:
+            obj = QtGui.QListWidgetItem()
+            obj.setHidden(True)
+            if reportId == 0:
+                self.window.hkParamList_4.addItem(obj)
+            else:
+                self.window.sysParamsList_4.addItem(obj)
+            self.system_params_2[name] = obj
 
     def update_space_time(self, val):
         if val is not None:
             self.spacecraftTimeValue.setVisible(True)
             self.spacecraftTimeValue.setText(val)
 
-    def update_system_params(self, idx: str, val):
-        self.__add_system_params__(idx)  # The param is added if it is not already
-        if val is not None:
-            self.system_params[idx].setHidden(False)
-            self.system_params[idx].setText("{}: {}".format(idx, val))
+    def update_system_params(self, apid, reportId: int, idx: str, val):
+        if apid == 0:
+            self.__add_system_params__(reportId, idx)  # The param is added if it is not already
+            if val is not None:
+                self.system_params[idx].setHidden(False)
+                try:
+                    self.system_params[idx].setText("{}: {} - {}".format(idx, val, hex(val)))
+                except Exception as _:
+                    try:
+                        self.system_params[idx].setText("{}: {:.3f}".format(idx, val))
+                    except Exception as _:
+                        self.system_params[idx].setText("{}: {}".format(idx, val))
+        else:
+            self.__add_system_params_2__(reportId, idx)  # The param is added if it is not already
+            if val is not None:
+                self.system_params_2[idx].setHidden(False)
+                try:
+                    self.system_params_2[idx].setText("{}: {} - {}".format(idx, val, hex(val)))
+                except Exception as _:
+                    try:
+                        self.system_params_2[idx].setText("{}: {:.3f}".format(idx, val))
+                    except Exception as _:
+                        self.system_params_2[idx].setText("{}: {}".format(idx, val))
 
     def set_close_event(self, func):
         self.view.closeEvent = func

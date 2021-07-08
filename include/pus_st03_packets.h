@@ -33,6 +33,38 @@
 extern "C" {
 #endif
 
+//! TCs creation
+
+/*! Builds a TC[3,5] packet in the packet passed as parameter.
+ *  \param[out] outTc Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCount sequence number
+ *  \param[in] reportId HK report ID
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_tc_3_5_createEnableHousekeepingGeneration(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt03HousekeepingReportId_t reportId);
+
+//! Setter for the TC[3,5] report ID field
+pusError_t pus_tc_3_5_setReportId(pusPacket_t* outTc, pusSt03HousekeepingReportId_t reportId);
+
+//! Getter for the TC[3,5] report ID field
+pusSt03HousekeepingReportId_t pus_tc_3_5_getReportId(const pusPacket_t* outTc);
+
+/*! Builds a TC[3,6] packet in the packet passed as parameter.
+ *  \param[out] outTc Packet variable to build the TM
+ *  \param[in] apid APID of the process sending the report
+ *  \param[in] sequenceCount sequence number
+ *  \param[in] reportId HK report ID
+ *  \return Error code (PUS_NO_ERROR if success)
+ */
+pusError_t pus_tc_3_6_createDisableHousekeepingGeneration(pusPacket_t* outTc, pusApid_t apid, pusSequenceCount_t sequenceCount, pusSt03HousekeepingReportId_t reportId);
+
+//! Setter for the TC[3,6] report ID field
+pusError_t pus_tc_3_6_setReportId(pusPacket_t* outTc, pusSt03HousekeepingReportId_t reportId);
+
+//! Getter for the TC[3,6] report ID field
+pusSt03HousekeepingReportId_t pus_tc_3_6_getReportId(const pusPacket_t* outTc);
+
 //
 // Report creation
 //
@@ -111,7 +143,18 @@ pusError_t pus_tm_3_25_setNumParameters(pusPacket_t* tm, size_t outNumParams);
  *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST03 to include the caller function's name)
  *  \return If valid TM, PUS_NO_ERROR; otherwise, an error code
  */
+pusError_t pus_expectSt03Tc(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
+
+//! Check that a packet is of a PUS ST[03] kind
+/*! \param[in] packet The PUS packet
+ *  \param[in] expectedSubtype Check that the TM has this subtype; use pusSubtype_NONE to check for all TM types in ST[03]
+ *  \param[in] function Function name to write as error information (use with the macro \ref PUS_EXPECT_ST03 to include the caller function's name)
+ *  \return If valid TM, PUS_NO_ERROR; otherwise, an error code
+ */
 pusError_t pus_expectSt03Tm(const pusPacket_t* packet, pusSubservice_t expectedSubtype, const char* function);
+
+//! Helper macro for pus_expectSt03; adds function name
+#define PUS_EXPECT_ST03TC(packet, subtype) pus_expectSt03Tc((packet), (subtype), __func__)
 
 //! Helper macro for pus_expectSt03; adds function name
 #define PUS_EXPECT_ST03(packet, subtype) pus_expectSt03Tm((packet), (subtype), __func__)
