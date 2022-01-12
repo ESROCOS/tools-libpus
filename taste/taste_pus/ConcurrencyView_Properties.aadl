@@ -1,0 +1,23 @@
+
+PACKAGE Process_Package_proxy
+PUBLIC
+WITH Process_Package;
+WITH AI;
+
+SYSTEM DeploymentView
+EXTENDS Process_Package::DeploymentView
+END DeploymentView;
+
+SYSTEM IMPLEMENTATION DeploymentView.final
+EXTENDS Process_Package::DeploymentView.final
+PROPERTIES
+  AI::root_system => "SELECTED";
+  Stack_Size => 5000000 bytes APPLIES TO x86_partition.ground_newtm;
+  Stack_Size => 5000000 bytes APPLIES TO x86_partition.ground_triggertmgui;
+  Stack_Size => 5000000 bytes APPLIES TO x86_partition.onboardsw_trigger;
+  Stack_Size => 5000000 bytes APPLIES TO x86_partition.pusservices_newtc;
+  Stack_Size => 5000000 bytes APPLIES TO x86_partition.pusservices_trigger;
+END DeploymentView.final;
+
+END Process_Package_proxy;
+
