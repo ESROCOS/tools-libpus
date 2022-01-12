@@ -2,7 +2,7 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-from PySide import QtGui
+from PySide2 import QtGui, QtWidgets
 
 from .Ui.Ui_CreateTCView import Ui_CreateTCView
 import json
@@ -17,7 +17,7 @@ class CreateTCView(object):
     resizeFlag = False
 
     def __init__(self):
-        self.view = QtGui.QWidget()
+        self.view = QtWidgets.QWidget()
         self.window = Ui_CreateTCView()
         self.window.setupUi(self.view)
         self.extra_customization()

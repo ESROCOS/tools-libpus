@@ -3,7 +3,7 @@
 # Licence: GPLv2
 
 from PusGui.Views import CodeView
-from PySide import QtGui
+from PySide2 import QtGui, QtWidgets
 from ..Utilities import convert_py_to_hex
 
 
@@ -30,7 +30,7 @@ class CodeController(object):
         self.view.set_close_event(self.close_event_callback)
 
     def load_obcp_callback(self):
-        filename = QtGui.QFileDialog.getOpenFileName()[0]
+        filename = QtWidgets.QFileDialog.getOpenFileName()[0]
         with open(filename) as filedata:
             self.view.set_code(filedata.read())
 

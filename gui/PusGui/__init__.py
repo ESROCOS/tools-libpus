@@ -28,7 +28,7 @@ the mission-specific elements using the Python "builtins" module:
 """
 
 import os, sys
-from PySide import QtGui
+from PySide2 import QtGui, QtWidgets
 from importlib import import_module
 import builtins
 
@@ -69,7 +69,7 @@ from .Utilities import PacketTranslator
 
 def create():
     """Create the PUS GUI application."""
-    gui = QtGui.QApplication(())
+    gui = QtWidgets.QApplication([])
     app = App()
     view = MainView()
     controller = MainViewController(app, view)

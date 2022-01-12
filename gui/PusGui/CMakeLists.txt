@@ -27,7 +27,7 @@ install(
     PATTERN "*\.json"
 )
 
-# Install generated (from PySide .ui files) Python files
+# Install generated (from PySide2 .ui files) Python files
 install(
     DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} 
     DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/python/

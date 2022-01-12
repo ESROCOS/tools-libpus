@@ -2,7 +2,7 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-from PySide import QtGui, QtCore
+from PySide2 import QtGui, QtCore, QtWidgets
 
 from .Ui.Ui_FilterView import Ui_FilterView
 
@@ -19,7 +19,7 @@ class FilterView(object):
         """
         This is the constructor of the class
         """
-        self.view = QtGui.QDialog()
+        self.view = QtWidgets.QDialog()
         self.window = Ui_FilterView()
         self.window.setupUi(self.view)
         self.fixedWidth = 0

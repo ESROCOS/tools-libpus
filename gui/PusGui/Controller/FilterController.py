@@ -2,7 +2,7 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-from PySide import QtCore, QtGui
+from PySide2 import QtCore, QtGui, QtWidgets
 from PusGui.Views import FilterView
 from PusGui.Model import FilterModel
 
@@ -55,9 +55,9 @@ class FilterController(object):
             self.model.set_filter_options(type, svc, msg)
             self.view.view.accept()
         except ValueError as ve:
-            msg_box = QtGui.QMessageBox()
+            msg_box = QtWidgets.QMessageBox()
             msg_box.setText('Some fields may be incorrect {}'.format(ve))
-            msg_box.setStandardButtons(QtGui.QMessageBox.Ok | QtGui.QMessageBox.Cancel)
+            msg_box.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
             msg_box.exec_()
 
     def reject_callback(self):

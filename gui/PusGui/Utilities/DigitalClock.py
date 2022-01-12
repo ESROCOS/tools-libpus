@@ -2,11 +2,11 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-from PySide import QtCore, QtGui
+from PySide2 import QtCore, QtGui, QtWidgets
 import time
 
 
-class DigitalClock(QtGui.QLabel):
+class DigitalClock(QtWidgets.QLabel):
     def __init__(self, tim, parent=None):
         super().__init__(parent)
         self.tim = tim

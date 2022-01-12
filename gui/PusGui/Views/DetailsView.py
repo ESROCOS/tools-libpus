@@ -2,7 +2,7 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-from PySide import QtGui, QtCore
+from PySide2 import QtGui, QtCore, QtWidgets
 from .Ui.Ui_DetailsView import Ui_DetailsView
 
 
@@ -18,7 +18,7 @@ class DetailsView:
         """
         This is the constructor of the class
         """
-        self.view = QtGui.QWidget()
+        self.view = QtWidgets.QWidget()
         self.window = Ui_DetailsView()
         self.window.setupUi(self.view)
         self.extra_customization()

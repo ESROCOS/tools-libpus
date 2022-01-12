@@ -5,8 +5,8 @@
 import os, sys, json, builtins
 from jsonschema.exceptions import ValidationError
 from json.decoder import JSONDecodeError
-from PySide import QtGui
-from PySide.QtGui import QInputDialog
+from PySide2 import QtGui, QtWidgets
+from PySide2.QtWidgets import QInputDialog
 
 from PusGui.Model import CreateTCModel
 from PusGui.Views import CreateTCView, AddTCView, CodeView
@@ -155,9 +155,9 @@ class CreateTCController(object):
             self.view.window.addTcButton.hide()
             self.view.close()
         except (ValidationError, JSONDecodeError) as err:
-            msg_box = QtGui.QMessageBox()
+            msg_box = QtWidgets.QMessageBox()
             msg_box.setText('Some fields may be incorrect {}'.format(err))
-            msg_box.setStandardButtons(QtGui.QMessageBox.Ok | QtGui.QMessageBox.Cancel)
+            msg_box.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
             msg_box.exec_()
 
     def add_tc_callback(self):

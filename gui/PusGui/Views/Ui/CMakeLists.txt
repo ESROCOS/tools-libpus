@@ -3,7 +3,7 @@
 # Licence: GPLv2
 
 
-# PySide UI files
+# PySide2 UI files
 file(GLOB PYSIDE_UI RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.ui")
 
 # Generate *.py from *.ui
@@ -12,7 +12,7 @@ foreach(F ${PYSIDE_UI})
     list(APPEND PYTHON_GEN ${FNAME}.py)
     add_custom_command(
         OUTPUT ${FNAME}.py
-        COMMAND pyside-uic -o ${FNAME}.py ${CMAKE_CURRENT_SOURCE_DIR}/${F} 
+        COMMAND pyside2-uic -o ${FNAME}.py ${CMAKE_CURRENT_SOURCE_DIR}/${F} 
         COMMENT "Generate Python code for ${F}"
     )
 endforeach()

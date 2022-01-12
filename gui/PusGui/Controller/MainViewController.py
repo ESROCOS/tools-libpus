@@ -3,8 +3,8 @@
 # Licence: GPLv2
 
 import os, sys, json, collections, time
-from PySide import QtGui, QtCore
-from PySide.QtCore import Slot
+from PySide2 import QtGui, QtCore, QtWidgets
+from PySide2.QtCore import Slot
 
 from PusGui.Views import MainView
 from PusGui.Views import CreateTCView
@@ -89,7 +89,7 @@ class MainViewController(object):
             qtable.setRowHidden(i, False)
         for i in range(qtable.rowCount()):
             id_ = int(qtable.item(i, 0).text())
-            if id_ not in filtered_index:
+            if id_ not in [filtered_index]:
                 qtable.setRowHidden(i, True)
 
     def deactivate_filter_callback(self):
@@ -123,7 +123,7 @@ class MainViewController(object):
         """
         This method makes an insert query to the database
         """
-        file = QtGui.QFileDialog.getSaveFileName()
+        file = QtWidgets.QFileDialog.getSaveFileName()
         d = Database(file[0])
         d.create_dump_table()
         packages = [tuple(e[1:-1]) for e in self.model.table]
@@ -138,7 +138,7 @@ class MainViewController(object):
         dump from file. This method makes a query to the database and adds each
         result to the table
         """
-        file = QtGui.QFileDialog.getOpenFileName()
+        file = QtWidgets.QFileDialog.getOpenFileName()
         d = Database(file[0])
         d.create_dump_table()
 
@@ -150,14 +150,14 @@ class MainViewController(object):
         self.__is_not_used__()
 
     def load_tcs_callback(self):
-        file = QtGui.QFileDialog.getOpenFileName()
+        file = QtWidgets.QFileDialog.getOpenFileName()
         file = file[0]
         if file is None or file is "":
             return
 
         
         if not file.endswith(".json.mako"):
-            msg_box = QtGui.QMessageBox()
+            msg_box = QtWidgets.QMessageBox()
             msg_box.setText('Please select a .json.mako file')
             msg_box.exec_()
         else:
@@ -207,10 +207,10 @@ class MainViewController(object):
             else:
                 self.view.window.packagesTable.removeRow(0)
 
-        column_type = [IntegerTableWidgetItem, QtGui.QTableWidgetItem, IntegerTableWidgetItem,
-                       IntegerTableWidgetItem, TimeTableWidgetItem, QtGui.QTableWidgetItem,
-                       QtGui.QTableWidgetItem, IntegerTableWidgetItem, QtGui.QTableWidgetItem,
-                       QtGui.QTableWidgetItem]
+        column_type = [IntegerTableWidgetItem, QtWidgets.QTableWidgetItem, IntegerTableWidgetItem,
+                       IntegerTableWidgetItem, TimeTableWidgetItem, QtWidgets.QTableWidgetItem,
+                       QtWidgets.QTableWidgetItem, IntegerTableWidgetItem, QtWidgets.QTableWidgetItem,
+                       QtWidgets.QTableWidgetItem]
 
         row_count = self.view.window.packagesTable.rowCount()
         self.view.window.packagesTable.insertRow(row_count)
@@ -266,13 +266,13 @@ class MainViewController(object):
         pass
 
 
-class IntegerTableWidgetItem(QtGui.QTableWidgetItem):
+class IntegerTableWidgetItem(QtWidgets.QTableWidgetItem):
     """
     This class inherits QTableWidgetItem to be able to
     sort the table by integers
     """
     def __lt__(self, other):
-        if isinstance(other, QtGui.QTableWidgetItem):
+        if isinstance(other, QtWidgets.QTableWidgetItem):
             my_value = int(self.data(QtCore.Qt.EditRole))
             other_value = int(other.data(QtCore.Qt.EditRole))
 
@@ -281,13 +281,13 @@ class IntegerTableWidgetItem(QtGui.QTableWidgetItem):
         return super().__lt__(other)
 
 
-class TimeTableWidgetItem(QtGui.QTableWidgetItem):
+class TimeTableWidgetItem(QtWidgets.QTableWidgetItem):
     """
     This class inherits QTableWidgetItem to be able to
     sort the table by time
     """
     def __lt__(self, other):
-        if isinstance(other, QtGui.QTableWidgetItem):
+        if isinstance(other, QtWidgets.QTableWidgetItem):
             import datetime
             my_value = datetime.datetime.strptime(self.data(QtCore.Qt.EditRole), '%H:%M:%S').time()
             other_value = datetime.datetime.strptime(other.data(QtCore.Qt.EditRole), '%H:%M:%S').time()

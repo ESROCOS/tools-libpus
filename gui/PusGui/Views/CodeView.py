@@ -2,7 +2,7 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-from PySide import QtGui, QtCore
+from PySide2 import QtGui, QtCore, QtWidgets
 from .Ui.Ui_CodeView import Ui_CodeView
 
 
@@ -18,7 +18,7 @@ class CodeView:
         """
         This is the constructor of the class
         """
-        self.view = QtGui.QDialog()
+        self.view = QtWidgets.QDialog()
         self.window = Ui_CodeView()
         self.window.setupUi(self.view)
         self.extra_customization()

@@ -3,7 +3,7 @@
 # Licence: GPLv2
 
 import os, sys, json
-from PySide import QtCore
+from PySide2 import QtCore
 
 from PusGui.Model import CreateTCModel
 from PusGui.Views import AddTCView

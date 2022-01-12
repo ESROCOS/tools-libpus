@@ -2,7 +2,7 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-from PySide import QtGui, QtCore
+from PySide2 import QtGui, QtCore, QtWidgets
 
 from .Ui.Ui_MainView import Ui_MainView
 from PusGui.Utilities import DigitalClock
@@ -19,7 +19,7 @@ class MainView:
         """
         This is the constructor of the class
         """
-        self.view = QtGui.QMainWindow()
+        self.view = QtWidgets.QMainWindow()
         self.window = Ui_MainView()
         self.window.setupUi(self.view)
         self.spacecraftTimeValue = DigitalClock(0, self.window.statusTab)
@@ -45,17 +45,17 @@ class MainView:
         giving us a extra level of abstraction
         """
         header = self.window.packagesTable.horizontalHeader()
-        header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(3, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(4, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(5, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(6, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(7, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(8, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(9, QtGui.QHeaderView.ResizeToContents)
-        self.window.packagesTable.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(5, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(6, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(7, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(8, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(9, QtWidgets.QHeaderView.ResizeToContents)
+        self.window.packagesTable.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.view.setStyleSheet("background-color: white")
         self.window.menubar.setStyleSheet("background: 3c3b37")
         # self.window.label.setText(
@@ -98,7 +98,7 @@ class MainView:
 
     def __add_system_params__(self, reportId, name: str):
         if name not in self.system_params:
-            obj = QtGui.QListWidgetItem()
+            obj = QtWidgets.QListWidgetItem()
             obj.setHidden(True)
             if reportId == 0:
                 self.window.hkParamList.addItem(obj)
@@ -108,7 +108,7 @@ class MainView:
 
     def __add_system_params_2__(self, reportId, name: str):
         if name not in self.system_params_2:
-            obj = QtGui.QListWidgetItem()
+            obj = QtWidgets.QListWidgetItem()
             obj.setHidden(True)
             if reportId == 0:
                 self.window.hkParamList_4.addItem(obj)

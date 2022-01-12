@@ -3,7 +3,7 @@
 # Licence: GPLv2
 
 import os, json, sys, time, builtins
-from PySide.QtCore import Slot
+from PySide2.QtCore import Slot
 
 from PusGui.Utilities import PusConsoleTable
 from PusGui.Utilities import PacketTranslator

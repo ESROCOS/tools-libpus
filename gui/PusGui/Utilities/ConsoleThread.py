@@ -3,8 +3,8 @@
 # Licence: GPLv2
 
 import json, sys, os
-from PySide.QtCore import QObject, Signal, Slot
-from PySide.QtCore import QThread, QWaitCondition, QMutex, QTimer
+from PySide2.QtCore import QObject, Signal, Slot
+from PySide2.QtCore import QThread, QWaitCondition, QMutex, QTimer
 
 from . import PacketTranslator, MakoTranslate, Database
 from .TestTags import TestTags

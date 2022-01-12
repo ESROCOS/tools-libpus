@@ -2,8 +2,8 @@
 # Company: GMV Aerospace & Defence S.A.U.
 # Licence: GPLv2
 
-from PySide import QtGui, QtCore
-from PySide.QtCore import QDateTime
+from PySide2 import QtGui, QtCore, QtWidgets
+from PySide2.QtCore import QDateTime
 import time
 from .Ui.Ui_AddTCView import Ui_AddTCView
 import json
@@ -21,7 +21,7 @@ class AddTCView(object):
         """
         This is the constructor of the class
         """
-        self.view = QtGui.QDialog()
+        self.view = QtWidgets.QDialog()
         self.window = Ui_AddTCView()
         self.window.setupUi(self.view)
         self.is_19_svc = False
@@ -125,12 +125,12 @@ class AddTCView(object):
         :param pck_sec_head: Data field of the packet secondary header
         :param source_data: Data field of the source_data
         """
-        font = QtGui.QFont()
+        font = QtWidgets.QFont()
         font.setFamily("Courier")
-        font.setStyleHint(QtGui.QFont.Monospace)
+        font.setStyleHint(QtWidgets.QFont.Monospace)
         font.setFixedPitch(True)
         font.setPointSize(10)
-        metrics = QtGui.QFontMetrics(font)
+        metrics = QtWidgets.QFontMetrics(font)
         self.window.pckSecHeaderTextEdit.setTabStopWidth(metrics.width(' '))
         self.window.pckSecHeaderTextEdit.setPlainText(pck_sec_head)
         self.window.srcDataTextEdit.setTabStopWidth(metrics.width(' '))
