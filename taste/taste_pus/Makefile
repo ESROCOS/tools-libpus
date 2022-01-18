@@ -4,11 +4,11 @@ KAZOO?=kazoo
 # Use upper case for the partition name:
 
 
-export X86_PARTITION_EXTERNAL_SOURCE_PATH = $(AUTOPROJ_CURRENT_ROOT)/install/include/pus:$(AUTOPROJ_CURRENT_ROOT)/install/include/pus/mission/test_01:$(AUTOPROJ_CURRENT_ROOT)/install/include/pus/mission/test_01/mpy:/usr/include/python3.6m
+export X86_PARTITION_EXTERNAL_SOURCE_PATH = $(AUTOPROJ_CURRENT_ROOT)/install/include/pus:$(AUTOPROJ_CURRENT_ROOT)/install/include/pus/mission/test_01:$(AUTOPROJ_CURRENT_ROOT)/install/include/pus/mission/test_01/mpy:/usr/include/python3.8
 
 export X86_PARTITION_USER_LDFLAGS = -L$(AUTOPROJ_CURRENT_ROOT)/install/lib \
 	-lesrocos_pus_core_test_01 \
-	-lesrocos_pus_test_01 -lpython3.6m
+	-lesrocos_pus_test_01 -lpython3.8
 	
 
 
