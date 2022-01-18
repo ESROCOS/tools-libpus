@@ -82,6 +82,7 @@ class PusThread(QThread):
         self.timer.timeout.connect(self.update_packets)
         self.json_file_loaded = QWaitCondition()
         self.mutex = QMutex()
+        self.timer.start(1000)
 
     def run(self):
         """
@@ -90,9 +91,6 @@ class PusThread(QThread):
         seconds between packet and packet according
         to the interval defined in the json file.
         """
-
-        self.timer.start(1000)
-
         while True:
             self.mutex.lock()
             self.json_file_loaded.wait(self.mutex)
