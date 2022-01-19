@@ -125,12 +125,12 @@ class AddTCView(object):
         :param pck_sec_head: Data field of the packet secondary header
         :param source_data: Data field of the source_data
         """
-        font = QtWidgets.QFont()
+        font = QtGui.QFont()
         font.setFamily("Courier")
-        font.setStyleHint(QtWidgets.QFont.Monospace)
+        font.setStyleHint(QtGui.QFont.Monospace)
         font.setFixedPitch(True)
         font.setPointSize(10)
-        metrics = QtWidgets.QFontMetrics(font)
+        metrics = QtGui.QFontMetrics(font)
         self.window.pckSecHeaderTextEdit.setTabStopWidth(metrics.width(' '))
         self.window.pckSecHeaderTextEdit.setPlainText(pck_sec_head)
         self.window.srcDataTextEdit.setTabStopWidth(metrics.width(' '))
