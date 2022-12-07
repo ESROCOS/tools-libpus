@@ -71,3 +71,7 @@ dataview
 binaries
 build
 *.zip
+
+
+#TASTE generated code
+**/wrappers/
