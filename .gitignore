@@ -75,3 +75,14 @@ build
 
 #TASTE generated code
 **/wrappers/
+taste/taste_pus/work/*.pro
+taste/taste_pus/work/*/*.pro
+taste/taste_pus/work/Dump
+taste/taste_pus/work/system.asn
+taste/taste_pus/work/Makefile
+dummyprivateservice.h
+ground.h
+onboardsw.h
+pusservices.h
+
+
